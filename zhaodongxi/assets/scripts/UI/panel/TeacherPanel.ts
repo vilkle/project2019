@@ -214,68 +214,108 @@ export default class TeacherPanel extends BaseUI {
 
     animal(toggle) {
         if(toggle.isChecked) {
-            DaAnData.getInstance().picArr.push(picType.animal);
+            if(DaAnData.getInstance().picArr.indexOf(picType.animal) == -1) {
+                DaAnData.getInstance().picArr.push(picType.animal);
+            }  
         }
         else{
-            DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.animal);
+            if(DaAnData.getInstance().picArr.indexOf(picType.animal) != -1) {
+                DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.animal);
+            }  
         }
+        cc.log(DaAnData.getInstance().picArr);
     }
     food(toggle) {
         if(toggle.isChecked) {
-            DaAnData.getInstance().picArr.push(picType.food);
+            if(DaAnData.getInstance().picArr.indexOf(picType.food) == -1) {
+                DaAnData.getInstance().picArr.push(picType.food);
+            }  
         }
         else{
-            DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.food);
+            if(DaAnData.getInstance().picArr.indexOf(picType.food) != -1) {
+                DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.food);
+            }  
         }
+        cc.log(DaAnData.getInstance().picArr);
     }
 
     figure(toggle){
         if(toggle.isChecked) {
-            DaAnData.getInstance().picArr.push(picType.figure);
+            if(DaAnData.getInstance().picArr.indexOf(picType.figure) == -1) {
+                DaAnData.getInstance().picArr.push(picType.figure);
+            }  
         }
         else{
-            DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.figure);
+            if(DaAnData.getInstance().picArr.indexOf(picType.figure) != -1) {
+                DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.figure);
+            }  
         }
+        cc.log(DaAnData.getInstance().picArr);
     }
     dailyuse(toggle){
         if(toggle.isChecked) {
-            DaAnData.getInstance().picArr.push(picType.dailyuse);
+            if(DaAnData.getInstance().picArr.indexOf(picType.dailyuse) == -1) {
+                DaAnData.getInstance().picArr.push(picType.dailyuse);
+            }  
         }
         else{
-            DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.dailyuse);
+            if(DaAnData.getInstance().picArr.indexOf(picType.dailyuse) != -1) {
+                DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.dailyuse);
+            }  
         }
+        cc.log(DaAnData.getInstance().picArr);
     }
     number(toggle){
         if(toggle.isChecked) {
-            DaAnData.getInstance().picArr.push(picType.number);
+            if(DaAnData.getInstance().picArr.indexOf(picType.number) == -1) {
+                DaAnData.getInstance().picArr.push(picType.number);
+            }  
         }
         else{
-            DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.number);
+            if(DaAnData.getInstance().picArr.indexOf(picType.number) != -1) {
+                DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.number);
+            }  
         }
+        cc.log(DaAnData.getInstance().picArr);
     }
     stationery(toggle){
         if(toggle.isChecked) {
-            DaAnData.getInstance().picArr.push(picType.stationery);
+            if(DaAnData.getInstance().picArr.indexOf(picType.stationery) == -1) {
+                DaAnData.getInstance().picArr.push(picType.stationery);
+            }  
         }
         else{
-            DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.stationery);
+            if(DaAnData.getInstance().picArr.indexOf(picType.stationery) != -1) {
+                DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.stationery);
+            }  
         }
+        cc.log(DaAnData.getInstance().picArr);
     }
     clothes(toggle){
         if(toggle.isChecked) {
-            DaAnData.getInstance().picArr.push(picType.clothes);
+            if(DaAnData.getInstance().picArr.indexOf(picType.clothes) == -1) {
+                DaAnData.getInstance().picArr.push(picType.clothes);
+            }  
         }
         else{
-            DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.clothes);
+            if(DaAnData.getInstance().picArr.indexOf(picType.clothes) != -1) {
+                DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.clothes);
+            }  
         }
+        cc.log(DaAnData.getInstance().picArr);
     }
     letter(toggle){
         if(toggle.isChecked) {
-            DaAnData.getInstance().picArr.push(picType.letter);
+            if(DaAnData.getInstance().picArr.indexOf(picType.letter) == -1) {
+                DaAnData.getInstance().picArr.push(picType.letter);
+            }  
         }
         else{
-            DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.letter);
+            if(DaAnData.getInstance().picArr.indexOf(picType.letter) != -1) {
+                DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.letter);
+            }  
         }
+        cc.log(DaAnData.getInstance().picArr);
     }
     errorChecking():Boolean {
         // var whatever;
@@ -325,6 +365,7 @@ export default class TeacherPanel extends BaseUI {
                     }
                     if(data.picArr) {
                         DaAnData.getInstance().picArr = data.picArr;
+                        //DaAnData.getInstance().picArr = [];
                         cc.log("data picarr", DaAnData.getInstance().picArr);
                     }
                     this.initData();

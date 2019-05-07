@@ -14,6 +14,10 @@ export default class GamePanel extends BaseUI {
 
     protected static className = "GamePanel";
 
+    @property(cc.Label)
+    label1 : cc.Label;
+    @property(cc.Label)
+    label2 : cc.Label;
     @property(cc.Button)
     back : cc.Button;
     @property(cc.Button)
@@ -151,13 +155,17 @@ export default class GamePanel extends BaseUI {
         this.cueNum = 0;
         this.checkpoints = 0;
         this.checkpointsNum = DaAnData.getInstance().checkpointsNum;
+        this.label1.string = String(1);
+        this.label2.string = String(this.checkpointsNum);
     }
 
     loadSourcePFArr() {
         var num = 0;
+        cc.log("picArr is ", DaAnData.getInstance().picArr);
         DaAnData.getInstance().picArr.forEach((value, index, array) => {
             switch(value) {
                 case 1:
+                cc.log("11111111111");
                    cc.loader.loadResDir("images/gameUI/pic/animal", cc.SpriteFrame, function (err, assets, urls) {
                     if(!err){
                         for(var i = 0; i < assets.length; i++){
@@ -173,6 +181,7 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                     break;
                 case 2:
+                cc.log("222222222222");
                     cc.loader.loadResDir("images/gameUI/pic/food", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -186,6 +195,7 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                     break;
                 case 3:
+                cc.log("333333333333");
                     cc.loader.loadResDir("images/gameUI/pic/figure", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -199,6 +209,7 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                     break;
                 case 4:
+                cc.log("44444444444444");
                     cc.loader.loadResDir("images/gameUI/pic/dailyuse", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -212,6 +223,7 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                     break;
                 case 5:
+                cc.log("555555555555555");
                     cc.loader.loadResDir("images/gameUI/pic/number", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -225,6 +237,7 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                     break;
                 case 6:
+                cc.log("66666666666666");
                     cc.loader.loadResDir("images/gameUI/pic/stationery", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -238,6 +251,7 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                     break;
                 case 7:
+                cc.log("77777777777777");
                     cc.loader.loadResDir("images/gameUI/pic/clothes", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -251,6 +265,7 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                     break;
                 case 8:
+                cc.log("8888888888888888");
                     cc.loader.loadResDir("images/gameUI/pic/letter", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -360,7 +375,6 @@ export default class GamePanel extends BaseUI {
             if(err) {
                 cc.log("loader err");
             }else{
-                cc.log("success jj");
                 item = cc.instantiate(prefab);
                 if(isChange){
                     cc.loader.loadRes("images/gameUI/shen", cc.SpriteFrame, function(err, spriteFrame){
@@ -473,6 +487,7 @@ export default class GamePanel extends BaseUI {
        this.loadDirSFArr();
        this.creatPicBoard();
        this.creatAnswerBoard();
+       this.label1.string = String(this.checkpoints + 1);
     }
 
     submisson() {
@@ -480,8 +495,11 @@ export default class GamePanel extends BaseUI {
             return;
         }
         var rightNum = 0;
+        cc.log(this.answerSFNumArr);
+        cc.log(this.playerItemArr);
         for(let i = 0; i < this.playerItemArr.length; i++) {
                 if(this.answerSFNumArr.indexOf(this.dirSFNumArr[this.playerItemArr[i]]) != -1) {
+                cc.log("==",this.dirSFNumArr[this.playerItemArr[i]]);
                 rightNum++;
             }
         }
@@ -494,7 +512,9 @@ export default class GamePanel extends BaseUI {
                 this.nextCheckPoints();
             }else {
                 UIHelp.showTip("闯关成功！");
-                this.submit.node.active = true;
+                if(ConstValue.IS_TEACHER) {
+                    this.submit.node.active = true;
+                }
                 //this.submit.interactable = true;
             }
         }else {

@@ -183,67 +183,107 @@ var TeacherPanel = /** @class */ (function (_super) {
     };
     TeacherPanel.prototype.animal = function (toggle) {
         if (toggle.isChecked) {
-            DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.animal);
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.animal) == -1) {
+                DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.animal);
+            }
         }
         else {
-            DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.animal; });
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.animal) != -1) {
+                DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.animal; });
+            }
         }
+        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.food = function (toggle) {
         if (toggle.isChecked) {
-            DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.food);
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.food) == -1) {
+                DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.food);
+            }
         }
         else {
-            DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.food; });
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.food) != -1) {
+                DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.food; });
+            }
         }
+        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.figure = function (toggle) {
         if (toggle.isChecked) {
-            DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.figure);
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.figure) == -1) {
+                DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.figure);
+            }
         }
         else {
-            DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.figure; });
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.figure) != -1) {
+                DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.figure; });
+            }
         }
+        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.dailyuse = function (toggle) {
         if (toggle.isChecked) {
-            DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.dailyuse);
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.dailyuse) == -1) {
+                DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.dailyuse);
+            }
         }
         else {
-            DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.dailyuse; });
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.dailyuse) != -1) {
+                DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.dailyuse; });
+            }
         }
+        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.number = function (toggle) {
         if (toggle.isChecked) {
-            DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.number);
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.number) == -1) {
+                DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.number);
+            }
         }
         else {
-            DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.number; });
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.number) != -1) {
+                DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.number; });
+            }
         }
+        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.stationery = function (toggle) {
         if (toggle.isChecked) {
-            DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.stationery);
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.stationery) == -1) {
+                DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.stationery);
+            }
         }
         else {
-            DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.stationery; });
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.stationery) != -1) {
+                DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.stationery; });
+            }
         }
+        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.clothes = function (toggle) {
         if (toggle.isChecked) {
-            DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.clothes);
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.clothes) == -1) {
+                DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.clothes);
+            }
         }
         else {
-            DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.clothes; });
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.clothes) != -1) {
+                DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.clothes; });
+            }
         }
+        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.letter = function (toggle) {
         if (toggle.isChecked) {
-            DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.letter);
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.letter) == -1) {
+                DaAnData_1.DaAnData.getInstance().picArr.push(DaAnData_1.picType.letter);
+            }
         }
         else {
-            DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.letter; });
+            if (DaAnData_1.DaAnData.getInstance().picArr.indexOf(DaAnData_1.picType.letter) != -1) {
+                DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.letter; });
+            }
         }
+        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.errorChecking = function () {
         // var whatever;
@@ -295,6 +335,7 @@ var TeacherPanel = /** @class */ (function (_super) {
                     }
                     if (data.picArr) {
                         DaAnData_1.DaAnData.getInstance().picArr = data.picArr;
+                        //DaAnData.getInstance().picArr = [];
                         cc.log("data picarr", DaAnData_1.DaAnData.getInstance().picArr);
                     }
                     this.initData();
