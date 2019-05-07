@@ -1,0 +1,98 @@
+"use strict";
+cc._RF.push(module, 'fcb706mngZPXIeAjofYaIuT', 'UIManager');
+// scripts/Manager/UIManager.ts
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var UIManager = /** @class */ (function () {
+    function UIManager() {
+        this.uiList = [];
+        this.uiRoot = null;
+        this.uiRoot = cc.find("Canvas");
+    }
+    UIManager.getInstance = function () {
+        if (this.instance == null) {
+            this.instance = new UIManager();
+        }
+        return this.instance;
+    };
+    UIManager.prototype.openUI = function (uiClass, zOrder, callback, onProgress) {
+        var _this = this;
+        var args = [];
+        for (var _i = 4; _i < arguments.length; _i++) {
+            args[_i - 4] = arguments[_i];
+        }
+        if (this.getUI(uiClass)) {
+            return;
+        }
+        cc.loader.loadRes(uiClass.getUrl(), function (completedCount, totalCount, item) {
+            if (onProgress) {
+                onProgress(completedCount, totalCount, item);
+            }
+        }, function (error, prefab) {
+            if (error) {
+                cc.log(error);
+                return;
+            }
+            if (_this.getUI(uiClass)) {
+                return;
+            }
+            var uiNode = cc.instantiate(prefab);
+            uiNode.parent = _this.uiRoot;
+            //zOrder && uiNode.setLocalZOrder(zOrder);
+            if (zOrder) {
+                uiNode.zIndex = zOrder;
+            }
+            var ui = uiNode.getComponent(uiClass);
+            ui.tag = uiClass;
+            _this.uiList.push(ui);
+            if (callback) {
+                callback(args);
+            }
+        });
+    };
+    UIManager.prototype.closeUI = function (uiClass) {
+        for (var i = 0; i < this.uiList.length; ++i) {
+            if (this.uiList[i].tag === uiClass) {
+                this.uiList[i].node.destroy();
+                this.uiList.splice(i, 1);
+                return;
+            }
+        }
+    };
+    UIManager.prototype.showUI = function (uiClass, callback) {
+        var _this = this;
+        var ui = this.getUI(uiClass);
+        if (ui) {
+            ui.node.active = true;
+            ui.onShow();
+            if (callback) {
+                callback();
+            }
+        }
+        else {
+            this.openUI(uiClass, 0, function () {
+                callback && callback();
+                var ui = _this.getUI(uiClass);
+                ui.onShow();
+            });
+        }
+    };
+    UIManager.prototype.hideUI = function (uiClass) {
+        var ui = this.getUI(uiClass);
+        if (ui) {
+            ui.node.active = false;
+        }
+    };
+    UIManager.prototype.getUI = function (uiClass) {
+        for (var i = 0; i < this.uiList.length; ++i) {
+            if (this.uiList[i].tag === uiClass) {
+                return this.uiList[i];
+            }
+        }
+        return null;
+    };
+    return UIManager;
+}());
+exports.UIManager = UIManager;
+
+cc._RF.pop();

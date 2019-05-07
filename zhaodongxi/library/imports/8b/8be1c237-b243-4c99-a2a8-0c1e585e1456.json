@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "shen",
+    "texture": "bf58bb25-6f37-45b8-ad6c-1a8d7c4aa327",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      175,
+      175
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      175,
+      175
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

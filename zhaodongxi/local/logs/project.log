@@ -1,0 +1,4844 @@
+2019-05-07T03:18:52.652Z - normal: Load ~/.CocosCreator/settings.json
+2019-05-07T03:18:52.718Z - normal: Initializing Asset Database
+2019-05-07T03:18:52.721Z - normal: checking language setting...
+2019-05-07T03:18:52.722Z - normal: Language: zh
+2019-05-07T03:18:53.534Z - success: preview server running at http://localhost:7456
+2019-05-07T03:18:53.588Z - success: protocol editor-framework registered
+2019-05-07T03:18:53.588Z - success: protocol app registered
+2019-05-07T03:18:53.588Z - success: protocol theme registered
+2019-05-07T03:18:53.588Z - success: protocol packages registered
+2019-05-07T03:18:53.588Z - success: protocol uuid registerred
+2019-05-07T03:18:53.589Z - success: protocol db registerred
+2019-05-07T03:18:53.589Z - success: protocol thumbnail registerred
+2019-05-07T03:18:53.589Z - success: protocol unpack registerred
+2019-05-07T03:18:53.589Z - success: protocol disable-commonjs registerred
+2019-05-07T03:18:53.679Z - normal: connected!
+2019-05-07T03:18:53.680Z - normal: Check project /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:18:53.682Z - normal: Initializing project /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:18:54.058Z - normal: Initializing Cocos2d
+2019-05-07T03:18:54.908Z - normal: Initializing engine extends
+2019-05-07T03:18:54.960Z - success: asset-db-debugger loaded
+2019-05-07T03:18:54.962Z - success: baidu-adapter loaded
+2019-05-07T03:18:54.963Z - success: color-picker loaded
+2019-05-07T03:18:55.068Z - success: fb-audience-network loaded
+2019-05-07T03:18:55.119Z - success: fb-live-stream loaded
+2019-05-07T03:18:55.123Z - success: google-play-instant loaded
+2019-05-07T03:18:55.129Z - success: huawei-runtime loaded
+2019-05-07T03:18:55.131Z - success: jsb-adapter loaded
+2019-05-07T03:18:55.137Z - success: oppo-runtime loaded
+2019-05-07T03:18:55.157Z - success: package-manager loaded
+2019-05-07T03:18:55.305Z - success: qqplay-adapter loaded
+2019-05-07T03:18:55.308Z - success: runtime-dev-tools loaded
+2019-05-07T03:18:55.329Z - success: sdkbox loaded
+2019-05-07T03:18:55.352Z - success: tester loaded
+2019-05-07T03:18:55.374Z - success: ui-grid loaded
+2019-05-07T03:18:55.392Z - success: ui-kit-preview-extra loaded
+2019-05-07T03:18:55.413Z - success: ui-kit-preview loaded
+2019-05-07T03:18:55.433Z - success: ui-kit loaded
+2019-05-07T03:18:55.453Z - success: ui-tree loaded
+2019-05-07T03:18:55.463Z - success: vivo-runtime loaded
+2019-05-07T03:18:55.464Z - success: weapp-adapter loaded
+2019-05-07T03:18:55.524Z - success: assets loaded
+2019-05-07T03:18:55.546Z - success: builder loaded
+2019-05-07T03:18:55.887Z - success: cocos-services loaded
+2019-05-07T03:18:55.912Z - success: console loaded
+2019-05-07T03:18:55.956Z - success: fb-instant-games loaded
+2019-05-07T03:18:55.963Z - success: google-instant-games loaded
+2019-05-07T03:18:55.991Z - success: hierarchy loaded
+2019-05-07T03:18:56.025Z - success: inspector loaded
+2019-05-07T03:18:56.082Z - success: keystore loaded
+2019-05-07T03:18:56.116Z - success: node-library loaded
+2019-05-07T03:18:56.118Z - success: package-asset loaded
+2019-05-07T03:18:56.123Z - success: preferences loaded
+2019-05-07T03:18:56.158Z - success: project-exporter loaded
+2019-05-07T03:18:56.192Z - success: project-importer loaded
+2019-05-07T03:18:56.215Z - success: project-settings loaded
+2019-05-07T03:18:56.280Z - success: scene loaded
+2019-05-07T03:18:56.287Z - success: simulator-debugger loaded
+2019-05-07T03:18:56.292Z - success: sprite-editor loaded
+2019-05-07T03:18:56.345Z - success: store loaded
+2019-05-07T03:18:56.388Z - success: timeline loaded
+2019-05-07T03:18:57.403Z - info: Cocos Services load base data!
+2019-05-07T03:19:02.535Z - normal: Loading packages
+2019-05-07T03:19:02.540Z - normal: Watching packages
+2019-05-07T03:19:02.648Z - normal: Run Application
+2019-05-07T03:19:08.650Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:19:08.651Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:19:08.652Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:19:08.653Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:19:08.653Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:19:08.653Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:19:08.654Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:19:08.657Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:19:08.657Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:19:08.657Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:19:08.658Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:19:08.658Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:19:08.658Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:19:08.659Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:19:08.659Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:19:08.659Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:19:08.660Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:19:08.660Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:19:08.661Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:20:36.206Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb",
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "sourceMaps": false,
+  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T03:20:36.211Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:20:36.212Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T03:20:36.395Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T03:20:39.601Z - normal: Start building assets
+2019-05-07T03:20:39.601Z - normal: Start spawn build-worker
+2019-05-07T03:20:40.321Z - normal: Finish spawn build-worker
+2019-05-07T03:20:40.321Z - normal: Start init build-worker
+2019-05-07T03:20:43.405Z - normal: Finish init build-worker
+2019-05-07T03:20:43.405Z - normal: Start build-assets in worker
+2019-05-07T03:20:44.937Z - normal: Finish build-assets in worker
+2019-05-07T03:20:44.941Z - normal: Finish building assets
+2019-05-07T03:20:45.003Z - normal: Start building plugin scripts
+2019-05-07T03:20:45.056Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T03:20:45.081Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T03:20:45.546Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T03:22:04.503Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb",
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "sourceMaps": false,
+  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T03:22:04.510Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:22:04.510Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T03:22:04.513Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T03:22:07.766Z - normal: Start building assets
+2019-05-07T03:22:07.766Z - normal: Start spawn build-worker
+2019-05-07T03:22:08.505Z - normal: Finish spawn build-worker
+2019-05-07T03:22:08.505Z - normal: Start init build-worker
+2019-05-07T03:22:11.493Z - normal: Finish init build-worker
+2019-05-07T03:22:11.493Z - normal: Start build-assets in worker
+2019-05-07T03:22:13.054Z - normal: Finish build-assets in worker
+2019-05-07T03:22:13.058Z - normal: Finish building assets
+2019-05-07T03:22:13.101Z - normal: Start building plugin scripts
+2019-05-07T03:22:13.150Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T03:22:13.162Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T03:22:13.627Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T03:23:25.825Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T03:23:25.826Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:23:25.827Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T03:23:25.828Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T03:23:28.936Z - normal: Start building assets
+2019-05-07T03:23:28.936Z - normal: Start spawn build-worker
+2019-05-07T03:23:29.731Z - normal: Finish spawn build-worker
+2019-05-07T03:23:29.731Z - normal: Start init build-worker
+2019-05-07T03:23:32.829Z - normal: Finish init build-worker
+2019-05-07T03:23:32.830Z - normal: Start build-assets in worker
+2019-05-07T03:23:34.232Z - normal: Finish build-assets in worker
+2019-05-07T03:23:34.237Z - normal: Finish building assets
+2019-05-07T03:23:34.295Z - normal: Start building plugin scripts
+2019-05-07T03:23:34.338Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T03:23:34.345Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T03:23:34.790Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T03:24:18.710Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T03:24:18.711Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:24:18.711Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T03:24:18.712Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T03:24:21.858Z - normal: Start building assets
+2019-05-07T03:24:21.858Z - normal: Start spawn build-worker
+2019-05-07T03:24:22.581Z - normal: Finish spawn build-worker
+2019-05-07T03:24:22.582Z - normal: Start init build-worker
+2019-05-07T03:24:25.609Z - normal: Finish init build-worker
+2019-05-07T03:24:25.609Z - normal: Start build-assets in worker
+2019-05-07T03:24:27.161Z - normal: Finish build-assets in worker
+2019-05-07T03:24:27.165Z - normal: Finish building assets
+2019-05-07T03:24:27.200Z - normal: Start building plugin scripts
+2019-05-07T03:24:27.242Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T03:24:27.251Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T03:24:27.535Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T03:25:18.958Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T03:25:18.960Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:25:18.961Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T03:25:18.963Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T03:25:22.302Z - normal: Start building assets
+2019-05-07T03:25:22.303Z - normal: Start spawn build-worker
+2019-05-07T03:25:23.023Z - normal: Finish spawn build-worker
+2019-05-07T03:25:23.024Z - normal: Start init build-worker
+2019-05-07T03:25:26.303Z - normal: Finish init build-worker
+2019-05-07T03:25:26.304Z - normal: Start build-assets in worker
+2019-05-07T03:25:27.941Z - normal: Finish build-assets in worker
+2019-05-07T03:25:27.947Z - normal: Finish building assets
+2019-05-07T03:25:28.005Z - normal: Start building plugin scripts
+2019-05-07T03:25:28.056Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T03:25:28.070Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T03:25:28.500Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T03:25:31.972Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T03:25:31.972Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:25:31.973Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T03:25:31.975Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T03:25:35.087Z - normal: Start building assets
+2019-05-07T03:25:35.088Z - normal: Start spawn build-worker
+2019-05-07T03:25:35.805Z - normal: Finish spawn build-worker
+2019-05-07T03:25:35.805Z - normal: Start init build-worker
+2019-05-07T03:25:38.824Z - normal: Finish init build-worker
+2019-05-07T03:25:38.832Z - normal: Start build-assets in worker
+2019-05-07T03:25:40.353Z - normal: Finish build-assets in worker
+2019-05-07T03:25:40.358Z - normal: Finish building assets
+2019-05-07T03:25:40.390Z - normal: Start building plugin scripts
+2019-05-07T03:25:40.432Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T03:25:40.438Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T03:25:40.723Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T03:26:39.655Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:26:39.656Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:26:39.656Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:26:39.656Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:26:39.657Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:26:39.657Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:26:39.657Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:26:39.662Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:26:39.662Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:26:39.662Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:26:39.663Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:26:39.663Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:26:39.663Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:26:39.664Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:26:39.664Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:26:39.664Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:26:39.665Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:26:39.665Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:26:39.665Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:26:46.066Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T03:26:46.067Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T03:26:46.067Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T03:26:46.069Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T03:26:49.629Z - normal: Start building assets
+2019-05-07T03:26:49.629Z - normal: Start spawn build-worker
+2019-05-07T03:26:50.412Z - normal: Finish spawn build-worker
+2019-05-07T03:26:50.413Z - normal: Start init build-worker
+2019-05-07T03:26:53.620Z - normal: Finish init build-worker
+2019-05-07T03:26:53.623Z - normal: Start build-assets in worker
+2019-05-07T03:26:55.436Z - normal: Finish build-assets in worker
+2019-05-07T03:26:55.441Z - normal: Finish building assets
+2019-05-07T03:26:55.483Z - normal: Start building plugin scripts
+2019-05-07T03:26:55.555Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T03:26:55.563Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T03:26:55.911Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T03:31:28.678Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:31:28.682Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:31:28.684Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:31:28.685Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:31:28.687Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:31:28.689Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:31:28.690Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:31:28.693Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:31:28.693Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:31:28.694Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:31:28.694Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:31:28.694Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:31:28.696Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:31:28.698Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:31:28.704Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:31:28.707Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:31:28.708Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:31:28.709Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:31:28.710Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:40:04.161Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:40:04.163Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:40:04.163Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:40:04.164Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:40:04.165Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:40:04.167Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:40:04.168Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:40:04.176Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:40:04.176Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:40:04.177Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:40:04.177Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:40:04.177Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:40:04.178Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:40:04.178Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:40:04.179Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:40:04.179Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:40:04.179Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:40:04.180Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:40:04.180Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:48:12.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:48:12.371Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:48:12.372Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:48:12.373Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:48:12.374Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:48:12.375Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:48:12.377Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:48:12.379Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:48:12.381Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:48:12.381Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:48:12.382Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:48:12.382Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:48:12.383Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:48:12.383Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:48:12.384Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:48:12.384Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:48:12.385Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:48:12.385Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:48:12.386Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:49:24.590Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:49:24.593Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:49:24.593Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:49:24.594Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:49:24.594Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:49:24.594Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:49:24.594Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:49:24.599Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:49:24.599Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:49:24.600Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:49:24.600Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:49:24.601Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:49:24.604Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:49:24.604Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:49:24.605Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:49:24.605Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:49:24.605Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:49:24.605Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:49:24.606Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:50:22.667Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:50:22.670Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:50:22.670Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:50:22.671Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:50:22.672Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:50:22.672Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:50:22.673Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:50:22.683Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:50:22.683Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:50:22.685Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:50:22.687Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:50:22.687Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:50:22.687Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:50:22.688Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:50:22.688Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:50:22.688Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:50:22.689Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:50:22.690Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:50:22.691Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:51:44.814Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:51:44.822Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:51:44.822Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:51:44.823Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:51:44.823Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:51:44.823Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:51:44.824Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:51:44.824Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:51:44.825Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:51:44.825Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:51:44.825Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:51:44.826Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:51:44.826Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:51:44.827Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:51:44.827Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:51:44.828Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:51:44.829Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:51:44.829Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:51:44.829Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:54:19.943Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:54:19.945Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:54:19.945Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:54:19.946Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:54:19.946Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:54:19.946Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:54:19.947Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:54:19.948Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:54:19.949Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:54:19.949Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:54:19.949Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:54:19.949Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:54:19.950Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:54:19.950Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:54:19.950Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:54:19.950Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:54:19.950Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:54:19.951Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:54:19.951Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T03:54:42.586Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T03:54:42.587Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T03:54:42.587Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T03:54:42.588Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T03:54:42.588Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T03:54:42.589Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T03:54:42.589Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T03:54:42.591Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T03:54:42.592Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T03:54:42.593Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T03:54:42.593Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T03:54:42.594Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T03:54:42.595Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T03:54:42.596Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T03:54:42.596Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T03:54:42.596Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T03:54:42.597Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T03:54:42.597Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T03:54:42.598Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T04:36:05.750Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T04:36:05.753Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T04:36:05.754Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T04:36:05.754Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T04:36:05.755Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T04:36:05.755Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T04:36:05.755Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T04:36:05.756Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T04:36:05.756Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T04:36:05.756Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T04:36:05.757Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T04:36:05.757Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T04:36:05.757Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T04:36:05.757Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T04:36:05.758Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T04:36:05.758Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T04:36:05.758Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T04:36:05.758Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T04:36:05.759Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T04:36:14.600Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T04:36:14.601Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T04:36:14.601Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T04:36:14.602Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T04:36:14.602Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T04:36:14.602Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T04:36:14.603Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T04:36:14.605Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T04:36:14.606Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T04:36:14.606Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T04:36:14.607Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T04:36:14.607Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T04:36:14.608Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T04:36:14.608Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T04:36:14.609Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T04:36:14.609Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T04:36:14.610Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T04:36:14.610Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T04:36:14.611Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T04:42:11.273Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T04:42:11.277Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T04:42:11.278Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T04:42:11.279Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T04:42:11.280Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T04:42:11.280Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T04:42:11.281Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T04:42:11.283Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T04:42:11.284Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T04:42:11.284Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T04:42:11.285Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T04:42:11.285Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T04:42:11.286Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T04:42:11.286Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T04:42:11.287Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T04:42:11.287Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T04:42:11.287Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T04:42:11.288Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T04:42:11.288Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T04:45:00.749Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T04:45:00.753Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T04:45:00.753Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T04:45:00.754Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T04:45:00.755Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T04:45:00.755Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T04:45:00.755Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T04:45:00.756Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T04:45:00.756Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T04:45:00.757Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T04:45:00.757Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T04:45:00.758Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T04:45:00.759Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T04:45:00.759Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T04:45:00.760Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T04:45:00.760Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T04:45:00.760Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T04:45:00.761Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T04:45:00.761Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T04:48:44.234Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T04:48:44.236Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T04:48:44.237Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T04:48:44.237Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T04:48:44.238Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T04:48:44.238Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T04:48:44.239Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T04:48:44.243Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T04:48:44.244Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T04:48:44.245Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T04:48:44.246Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T04:48:44.247Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T04:48:44.248Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T04:48:44.249Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T04:48:44.249Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T04:48:44.249Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T04:48:44.250Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T04:48:44.250Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T04:48:44.251Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T04:49:34.012Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T04:49:34.013Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T04:49:34.013Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T04:49:34.014Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T04:49:34.015Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T04:49:34.015Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T04:49:34.016Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T04:49:34.020Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T04:49:34.021Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T04:49:34.021Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T04:49:34.022Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T04:49:34.022Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T04:49:34.023Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T04:49:34.024Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T04:49:34.024Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T04:49:34.025Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T04:49:34.025Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T04:49:34.026Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T04:49:34.026Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T04:50:04.366Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T04:50:04.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T04:50:04.368Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T04:50:04.369Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T04:50:04.371Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T04:50:04.374Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T04:50:04.374Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T04:50:04.374Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T04:50:04.375Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T04:50:04.375Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T04:50:04.375Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T04:50:04.376Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T04:50:04.376Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T04:50:04.377Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T04:50:04.377Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T04:50:04.378Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T04:50:04.378Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T04:50:04.379Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T04:50:04.381Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T04:50:59.292Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T04:50:59.297Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T04:50:59.297Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T04:50:59.300Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T04:51:04.532Z - normal: Start building assets
+2019-05-07T04:51:04.532Z - normal: Start spawn build-worker
+2019-05-07T04:51:05.757Z - normal: Finish spawn build-worker
+2019-05-07T04:51:05.757Z - normal: Start init build-worker
+2019-05-07T04:51:10.512Z - normal: Finish init build-worker
+2019-05-07T04:51:10.514Z - normal: Start build-assets in worker
+2019-05-07T04:51:13.933Z - normal: Finish build-assets in worker
+2019-05-07T04:51:13.945Z - normal: Finish building assets
+2019-05-07T04:51:14.006Z - normal: Start building plugin scripts
+2019-05-07T04:51:14.065Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T04:51:14.077Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T04:51:14.615Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T04:52:15.466Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:29276
+2019-05-07T04:52:15.468Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:29278
+2019-05-07T04:53:47.483Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T04:53:47.494Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T04:53:47.494Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T04:53:47.495Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T04:53:54.348Z - normal: Start building assets
+2019-05-07T04:53:54.349Z - normal: Start spawn build-worker
+2019-05-07T04:53:56.098Z - normal: Finish spawn build-worker
+2019-05-07T04:53:56.098Z - normal: Start init build-worker
+2019-05-07T04:54:02.932Z - normal: Finish init build-worker
+2019-05-07T04:54:02.937Z - normal: Start build-assets in worker
+2019-05-07T04:54:06.818Z - normal: Finish build-assets in worker
+2019-05-07T04:54:06.835Z - normal: Finish building assets
+2019-05-07T04:54:06.907Z - normal: Start building plugin scripts
+2019-05-07T04:54:06.975Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T04:54:06.984Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T04:54:07.648Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T04:54:31.283Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T04:54:31.288Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T04:54:31.288Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T04:54:31.290Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T04:54:39.852Z - normal: Start building assets
+2019-05-07T04:54:39.852Z - normal: Start spawn build-worker
+2019-05-07T04:54:41.590Z - normal: Finish spawn build-worker
+2019-05-07T04:54:41.590Z - normal: Start init build-worker
+2019-05-07T04:54:48.356Z - normal: Finish init build-worker
+2019-05-07T04:54:48.356Z - normal: Start build-assets in worker
+2019-05-07T04:54:52.230Z - normal: Finish build-assets in worker
+2019-05-07T04:54:52.244Z - normal: Finish building assets
+2019-05-07T04:54:52.317Z - normal: Start building plugin scripts
+2019-05-07T04:54:52.406Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T04:54:52.418Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T04:54:53.186Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T06:07:01.233Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T06:07:01.235Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T06:07:01.236Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T06:07:01.236Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T06:07:01.237Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T06:07:01.238Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T06:07:01.238Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T06:07:01.246Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T06:07:01.247Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T06:07:01.247Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T06:07:01.248Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T06:07:01.248Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T06:07:01.249Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T06:07:01.249Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T06:07:01.250Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T06:07:01.250Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T06:07:01.251Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T06:07:01.251Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T06:07:01.252Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T06:10:31.541Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T06:10:31.544Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T06:10:31.545Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T06:10:31.551Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T06:10:31.556Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T06:10:31.560Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T06:10:31.568Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T06:10:31.607Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T06:10:31.611Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T06:10:31.617Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T06:10:31.622Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T06:10:31.625Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T06:10:31.636Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T06:10:31.640Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T06:10:31.643Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T06:10:31.648Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T06:10:31.652Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T06:10:31.656Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T06:10:31.661Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T06:20:11.336Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T06:20:11.340Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T06:20:11.341Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T06:20:11.359Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T06:20:11.361Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T06:20:11.449Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T06:20:11.453Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T06:20:11.455Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T06:20:11.456Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T06:20:11.457Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T06:20:11.458Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T06:20:11.458Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T06:20:11.459Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T06:20:11.459Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T06:20:11.460Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T06:20:11.460Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T06:20:11.461Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T06:20:11.461Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T06:20:11.462Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T06:27:29.362Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T06:27:29.370Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T06:27:29.371Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T06:27:29.372Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T06:27:33.358Z - normal: Start building assets
+2019-05-07T06:27:33.359Z - normal: Start spawn build-worker
+2019-05-07T06:27:34.213Z - normal: Finish spawn build-worker
+2019-05-07T06:27:34.213Z - normal: Start init build-worker
+2019-05-07T06:27:37.434Z - normal: Finish init build-worker
+2019-05-07T06:27:37.434Z - normal: Start build-assets in worker
+2019-05-07T06:27:39.454Z - normal: Finish build-assets in worker
+2019-05-07T06:27:39.483Z - normal: Finish building assets
+2019-05-07T06:27:39.532Z - normal: Start building plugin scripts
+2019-05-07T06:27:39.615Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T06:27:39.632Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T06:27:40.181Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T06:29:23.422Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T06:29:23.426Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T06:29:23.428Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T06:29:23.430Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T06:29:23.432Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T06:29:23.434Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T06:29:23.434Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T06:29:23.439Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T06:29:23.443Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T06:29:23.445Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T06:29:23.448Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T06:29:23.448Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T06:29:23.449Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T06:29:23.450Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T06:29:23.451Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T06:29:23.451Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T06:29:23.452Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T06:29:23.452Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T06:29:23.453Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T06:30:08.788Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T06:30:08.793Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T06:30:08.794Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T06:30:08.796Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T06:30:16.646Z - normal: Start building assets
+2019-05-07T06:30:16.646Z - normal: Start spawn build-worker
+2019-05-07T06:30:18.359Z - normal: Finish spawn build-worker
+2019-05-07T06:30:18.360Z - normal: Start init build-worker
+2019-05-07T06:30:24.208Z - normal: Finish init build-worker
+2019-05-07T06:30:24.210Z - normal: Start build-assets in worker
+2019-05-07T06:30:28.412Z - normal: Finish build-assets in worker
+2019-05-07T06:30:28.426Z - normal: Finish building assets
+2019-05-07T06:30:28.484Z - normal: Start building plugin scripts
+2019-05-07T06:30:28.537Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T06:30:28.550Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T06:30:29.431Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T06:32:01.001Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-07T06:32:01.003Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-07T06:32:01.004Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bg
+2019-05-07T06:32:01.004Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 picBoard
+2019-05-07T06:32:01.004Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 answerBoard
+2019-05-07T06:32:01.005Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 board
+2019-05-07T06:32:01.005Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 sure
+2019-05-07T06:32:01.006Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointEditbox
+2019-05-07T06:32:01.006Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 animalToggle
+2019-05-07T06:32:01.006Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 foodToggle
+2019-05-07T06:32:01.006Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 figureToggle
+2019-05-07T06:32:01.006Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 dailyuseToggle
+2019-05-07T06:32:01.007Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberToggle
+2019-05-07T06:32:01.007Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 stationeryToggle
+2019-05-07T06:32:01.007Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 clothesToggle
+2019-05-07T06:32:01.007Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 letterToggle
+2019-05-07T06:32:01.008Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 choicescopeButton
+2019-05-07T06:32:01.008Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissionButton
+2019-05-07T06:32:01.008Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-07T06:32:46.619Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/zhaodongxi/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/zhaodongxi/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollBar",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "zhaodongxi",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/zhaodongxi",
+  "projectName": "zhaodongxi",
+  "debugBuildWorker": false
+}
+2019-05-07T06:32:46.623Z - normal: Building /Users/xes/Desktop/zhaodongxi
+2019-05-07T06:32:46.624Z - normal: Destination /Users/xes/Desktop/zhaodongxi/build/web-mobile
+2019-05-07T06:32:46.626Z - normal: Delete /Users/xes/Desktop/zhaodongxi/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/zhaodongxi/build/web-mobile/**/*
+2019-05-07T06:32:49.986Z - normal: Start building assets
+2019-05-07T06:32:49.987Z - normal: Start spawn build-worker
+2019-05-07T06:32:50.759Z - normal: Finish spawn build-worker
+2019-05-07T06:32:50.759Z - normal: Start init build-worker
+2019-05-07T06:32:53.995Z - normal: Finish init build-worker
+2019-05-07T06:32:53.996Z - normal: Start build-assets in worker
+2019-05-07T06:32:55.662Z - normal: Finish build-assets in worker
+2019-05-07T06:32:55.670Z - normal: Finish building assets
+2019-05-07T06:32:55.716Z - normal: Start building plugin scripts
+2019-05-07T06:32:55.775Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-05-07T06:32:55.786Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-05-07T06:32:56.131Z - normal: Built to "/Users/xes/Desktop/zhaodongxi/build/web-mobile" successfully
+2019-05-07T06:38:32.569Z - info: shutdown preview server
