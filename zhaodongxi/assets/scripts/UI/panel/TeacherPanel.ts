@@ -6,6 +6,8 @@ import { LogWrap } from "../../Utils/LogWrap";
 import {picType, scopeRange, DaAnData} from "../../Data/DaAnData";
 import { ConstValue } from "../../Data/ConstValue";
 import GamePanel from "./GamePanel";
+import {ListenerManager} from "../../Manager/ListenerManager";
+import {ListenerType} from "../../Data/ListenerType";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -44,7 +46,6 @@ export default class TeacherPanel extends BaseUI {
     }
 
     start() {
-        cc.log("2222222", this.checkpointEditbox.string);
         this.getNet();
     }
 
@@ -75,8 +76,6 @@ export default class TeacherPanel extends BaseUI {
                 this.stationeryToggle.isChecked = true;
             }
         }
-        cc.log("iiiii", DaAnData.getInstance().range);
-        cc.log("rang", scopeRange[DaAnData.getInstance().range]);
         this.choicescopeButton.node.getChildByName("Label").getComponent(cc.Label).string = scopeRange[DaAnData.getInstance().range]; 
     }
     
@@ -92,14 +91,13 @@ export default class TeacherPanel extends BaseUI {
         // }
         if(this.errorChecking()) {
                 UIManager.getInstance().showUI(GamePanel, () => {
-                cc.log("test game panel");
+                    ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
             });
         }
        
     }
 
     tips() {
-        cc.log(DaAnData.getInstance().picArr);
         this.tipNode.active = true;
         this.tipNode.getChildByName("layout").on(cc.Node.EventType.TOUCH_START, function(e){
             e.stopPropagation();
@@ -129,7 +127,6 @@ export default class TeacherPanel extends BaseUI {
         var label = this.choicescopeButton.node.getChildByName("Label").getComponent(cc.Label);
         var range = DaAnData.getInstance().range; 
         label.string = scopeRange[range];
-        cc.log("range is :", DaAnData.getInstance().range);
     }    
 
     FOUR_FOUR(){
@@ -185,7 +182,6 @@ export default class TeacherPanel extends BaseUI {
             default:
                 break
         }
-        cc.log("type is :", DaAnData.getInstance().types);
     }
     
     editBoxEndEditing(sender) {
@@ -207,7 +203,6 @@ export default class TeacherPanel extends BaseUI {
                text = "";
                this.checkpointEditbox.string = '';
                DaAnData.getInstance().checkpointsNum = 0;
-               cc.log("checkpoints nu is =======");
             break
         }
     }
@@ -223,7 +218,6 @@ export default class TeacherPanel extends BaseUI {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.animal);
             }  
         }
-        cc.log(DaAnData.getInstance().picArr);
     }
     food(toggle) {
         if(toggle.isChecked) {
@@ -236,7 +230,6 @@ export default class TeacherPanel extends BaseUI {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.food);
             }  
         }
-        cc.log(DaAnData.getInstance().picArr);
     }
 
     figure(toggle){
@@ -250,7 +243,6 @@ export default class TeacherPanel extends BaseUI {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.figure);
             }  
         }
-        cc.log(DaAnData.getInstance().picArr);
     }
     dailyuse(toggle){
         if(toggle.isChecked) {
@@ -263,7 +255,6 @@ export default class TeacherPanel extends BaseUI {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.dailyuse);
             }  
         }
-        cc.log(DaAnData.getInstance().picArr);
     }
     number(toggle){
         if(toggle.isChecked) {
@@ -276,7 +267,6 @@ export default class TeacherPanel extends BaseUI {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.number);
             }  
         }
-        cc.log(DaAnData.getInstance().picArr);
     }
     stationery(toggle){
         if(toggle.isChecked) {
@@ -289,7 +279,6 @@ export default class TeacherPanel extends BaseUI {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.stationery);
             }  
         }
-        cc.log(DaAnData.getInstance().picArr);
     }
     clothes(toggle){
         if(toggle.isChecked) {
@@ -302,7 +291,6 @@ export default class TeacherPanel extends BaseUI {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.clothes);
             }  
         }
-        cc.log(DaAnData.getInstance().picArr);
     }
     letter(toggle){
         if(toggle.isChecked) {
@@ -315,12 +303,10 @@ export default class TeacherPanel extends BaseUI {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.letter);
             }  
         }
-        cc.log(DaAnData.getInstance().picArr);
     }
     errorChecking():Boolean {
         // var whatever;
         // this.editBoxEndEditing(whatever);
-        cc.log("------checkpoint num is ", DaAnData.getInstance().checkpointsNum);
         if(DaAnData.getInstance().checkpointsNum == 0) {
             this.tipNode.getChildByName("tipLabel").getComponent(cc.Label).string = "请填写关卡数量，不能为空。";
             this.tips();
@@ -340,33 +326,23 @@ export default class TeacherPanel extends BaseUI {
     
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
-            console.log("消息返回" + response);
             if (!err) {
                 let response_data = JSON.parse(response);
                 if (response_data.data.courseware_content == null) {
-                    cc.log("no last=========");
                 } else {
-                   cc.log("respoinse---------",response_data);
                    let data = JSON.parse(response_data.data.courseware_content);
-                    cc.log("data ", data);
-                    cc.log("data types", data.types);
 
                    if(data.types) {
                         DaAnData.getInstance().types = data.types;
-                        cc.log("data types", DaAnData.getInstance().types);
                    }
                    if(data.checkpointsNum) {
                         DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                        cc.log("data checkpointsNum", DaAnData.getInstance().checkpointsNum);
                    }
                     if(data.range) {
                         DaAnData.getInstance().range = data.range;
-                        cc.log("data range", DaAnData.getInstance().range);
                     }
                     if(data.picArr) {
                         DaAnData.getInstance().picArr = data.picArr;
-                        //DaAnData.getInstance().picArr = [];
-                        cc.log("data picarr", DaAnData.getInstance().picArr);
                     }
                     this.initData();
                 }

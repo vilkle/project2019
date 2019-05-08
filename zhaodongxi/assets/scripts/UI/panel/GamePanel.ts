@@ -6,6 +6,8 @@ import {NetWork} from "../../Http/NetWork";
 import { ConstValue } from "../../Data/ConstValue";
 import { UIManager } from "../../Manager/UIManager";
 import SubmissionPanel from "./SubmissionPanel";
+import {ListenerManager} from "../../Manager/ListenerManager";
+import {ListenerType} from "../../Data/ListenerType";
 
 const { ccclass, property } = cc._decorator;
 
@@ -77,8 +79,6 @@ export default class GamePanel extends BaseUI {
             //this.submit.interactable = false;
             this.initData();
             this.loadSourcePFArr(); 
-            this.creatPicBoard();
-            this.creatAnswerBoard();
         }else {
             this.getNet();
             this.back.node.active = false;
@@ -161,11 +161,9 @@ export default class GamePanel extends BaseUI {
 
     loadSourcePFArr() {
         var num = 0;
-        cc.log("picArr is ", DaAnData.getInstance().picArr);
         DaAnData.getInstance().picArr.forEach((value, index, array) => {
             switch(value) {
                 case 1:
-                cc.log("11111111111");
                    cc.loader.loadResDir("images/gameUI/pic/animal", cc.SpriteFrame, function (err, assets, urls) {
                     if(!err){
                         for(var i = 0; i < assets.length; i++){
@@ -174,14 +172,13 @@ export default class GamePanel extends BaseUI {
                             num ++;
                             if(num == DaAnData.getInstance().picArr.length)
                             {
-                                cc.log(this.sourceSFArr);
                                 this.loadDirSFArr();
+                                
                             }
                         }
                     }.bind(this));
                     break;
                 case 2:
-                cc.log("222222222222");
                     cc.loader.loadResDir("images/gameUI/pic/food", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -189,13 +186,11 @@ export default class GamePanel extends BaseUI {
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
                         {
-                            cc.log(this.sourceSFArr);
                             this.loadDirSFArr();
                         }
                     }.bind(this));
                     break;
                 case 3:
-                cc.log("333333333333");
                     cc.loader.loadResDir("images/gameUI/pic/figure", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -203,13 +198,11 @@ export default class GamePanel extends BaseUI {
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
                         {
-                            cc.log(this.sourceSFArr);
                             this.loadDirSFArr();
                         }
                     }.bind(this));
                     break;
                 case 4:
-                cc.log("44444444444444");
                     cc.loader.loadResDir("images/gameUI/pic/dailyuse", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -217,13 +210,11 @@ export default class GamePanel extends BaseUI {
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
                         {
-                            cc.log(this.sourceSFArr);
                             this.loadDirSFArr();
                         }
                     }.bind(this));
                     break;
                 case 5:
-                cc.log("555555555555555");
                     cc.loader.loadResDir("images/gameUI/pic/number", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -231,13 +222,11 @@ export default class GamePanel extends BaseUI {
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
                         {
-                            cc.log(this.sourceSFArr);
                             this.loadDirSFArr();
                         }
                     }.bind(this));
                     break;
                 case 6:
-                cc.log("66666666666666");
                     cc.loader.loadResDir("images/gameUI/pic/stationery", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -245,13 +234,11 @@ export default class GamePanel extends BaseUI {
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
                         {
-                            cc.log(this.sourceSFArr);
                             this.loadDirSFArr();
                         }
                     }.bind(this));
                     break;
                 case 7:
-                cc.log("77777777777777");
                     cc.loader.loadResDir("images/gameUI/pic/clothes", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -259,13 +246,11 @@ export default class GamePanel extends BaseUI {
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
                         {
-                            cc.log(this.sourceSFArr);
                             this.loadDirSFArr();
                         }
                     }.bind(this));
                     break;
                 case 8:
-                cc.log("8888888888888888");
                     cc.loader.loadResDir("images/gameUI/pic/letter", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
@@ -273,7 +258,6 @@ export default class GamePanel extends BaseUI {
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
                         {
-                            cc.log(this.sourceSFArr);
                             this.loadDirSFArr();
                         }
                     }.bind(this));
@@ -297,15 +281,12 @@ export default class GamePanel extends BaseUI {
             while(this.answerSFNumArr.indexOf(randomNum) != -1) {
                  num = this.getRandomNum(0, totalNum - 1);
                  randomNum = this.dirSFNumArr[num];
-                cc.log("randomNum is ", randomNum);
             }
             this.answerPosNumArr[j] = num;
             this.answerSFNumArr[j] = randomNum 
-            cc.log(this.answerSFNumArr);
         }
-        cc.log("answerPosNumArr :", this.answerPosNumArr);
-        cc.log("dirNumArr :",this.dirSFNumArr);
-        cc.log("answerNumArr :", this.answerSFNumArr);
+        this.creatAnswerBoard();
+        this.creatPicBoard();
     }
 
     getRandomNum(min : number, max : number):number {
@@ -373,15 +354,14 @@ export default class GamePanel extends BaseUI {
         var item : cc.Node; 
         cc.loader.loadRes("prefab/ui/Item/picItem", function(err, prefab){
             if(err) {
-                cc.log("loader err");
+                
             }else{
                 item = cc.instantiate(prefab);
                 if(isChange){
                     cc.loader.loadRes("images/gameUI/shen", cc.SpriteFrame, function(err, spriteFrame){
                         if(err){
-                            cc.log("loader err");
+                            
                         }else {
-                            cc.log("success");
                             item.getChildByName("bg").getComponent(cc.Sprite).spriteFrame = spriteFrame;
                         }
                     }.bind(this));
@@ -390,13 +370,11 @@ export default class GamePanel extends BaseUI {
                 if(isAnswer){
                     this.answerItemArr[num] = item;
                     this.creatItemNum++;
-                    cc.log("------------------", this.creatItemNum);
                     this.action(this.creatItemNum);
                     item.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = this.sourceSFArr[this.answerSFNumArr[num]];
                 }else{
                     this.itemArr[num] = item;
                     this.creatItemNum++;
-                    cc.log("------------------", this.creatItemNum);
                     this.action(this.creatItemNum);
                     item.getChildByName("bg").on(cc.Node.EventType.TOUCH_START, function(t){
                             if (item.getChildByName("box").active == false) {
@@ -408,7 +386,6 @@ export default class GamePanel extends BaseUI {
                                             item.zIndex = 10;
                                             this.playerItemArr.push(num);
                                             this.playerItemSFArr.push(this.dirSFNumArr[num]);
-                                            cc.log("___________________________", this.playerItemArr);
                                         }
                                     }
                                 }
@@ -419,7 +396,6 @@ export default class GamePanel extends BaseUI {
                                     item.zIndex = 0;
                                     this.playerItemArr = this.playerItemArr.filter(item => item !== num);
                                     this.playerItemSFArr = this.playerItemSFArr.filter(item => item != this.dirSFNumArr[num]);
-                                    cc.log("___________________________", this.playerItemArr);
                                 }
                             }
                         
@@ -441,15 +417,12 @@ export default class GamePanel extends BaseUI {
             }
         }
         this.playerErroArr = this.answerSFNumArr;
-        
-        cc.log(this.playerErroArr);
+    
         for(let i = 0;i < this.playerItemArr.length; i++) {
             this.playerErroArr =  this.playerErroArr.filter(item => item != this.dirSFNumArr[this.playerItemArr[i]]);
         }
-        cc.log(this.playerErroArr);
         for(let i = 0; i < this.playerErroArr.length; i++) {
             var index = this.answerSFNumArr.indexOf(this.playerErroArr[i]);
-            cc.log("index is :", index);
             var seq = cc.sequence(cc.fadeOut(0.2),cc.fadeIn(0.2),cc.fadeOut(0.2), cc.fadeIn(0.2));
             this.itemArr[this.answerPosNumArr[index]].runAction(seq);
             AudioManager.getInstance().playSound("erro", false);
@@ -495,18 +468,13 @@ export default class GamePanel extends BaseUI {
             return;
         }
         var rightNum = 0;
-        cc.log(this.answerSFNumArr);
-        cc.log(this.playerItemArr);
         for(let i = 0; i < this.playerItemArr.length; i++) {
                 if(this.answerSFNumArr.indexOf(this.dirSFNumArr[this.playerItemArr[i]]) != -1) {
-                cc.log("==",this.dirSFNumArr[this.playerItemArr[i]]);
                 rightNum++;
             }
         }
-        cc.log("rightnum is :", rightNum);
         if(rightNum == this.answerNum) {
             this.checkpoints++;
-            cc.log("checkpoint checkpointnum",this.checkpoints, this.checkpointsNum);
             if(this.checkpoints < this.checkpointsNum) {
                 UIHelp.showTip("答对了，你真棒！");
                 this.nextCheckPoints();
@@ -522,7 +490,6 @@ export default class GamePanel extends BaseUI {
                 return;
             }
             this.cueNum++;
-            cc.log("cueNum is ", this.cueNum);
             if(this.cueNum == 3) {
                 this.cueNum = 100;
                 //UIHelp.showTip("----------啊哦，请再试试吧。");
@@ -536,32 +503,23 @@ export default class GamePanel extends BaseUI {
 
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
-            console.log("消息返回" + response);
             if (!err) {
                 let response_data = JSON.parse(response);
                 if (response_data.data.courseware_content == null) {
-                    cc.log("no last=========");
                 } else {
-                   cc.log("respoinse---------",response_data);
                    let data = JSON.parse(response_data.data.courseware_content);
-                    cc.log("data ", data);
-                    cc.log("data types", data.types);
 
                    if(data.types) {
                         DaAnData.getInstance().types = data.types;
-                        cc.log("data types", DaAnData.getInstance().types);
                    }
                    if(data.checkpointsNum) {
                         DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                        cc.log("data checkpointsNum", DaAnData.getInstance().checkpointsNum);
                    }
                     if(data.range) {
                         DaAnData.getInstance().range = data.range;
-                        cc.log("data range", DaAnData.getInstance().range);
                     }
                     if(data.picArr) {
                         DaAnData.getInstance().picArr = data.picArr;
-                        cc.log("data picarr", DaAnData.getInstance().picArr);
                     }
                     this.initData();
                     this.loadSourcePFArr(); 
@@ -573,6 +531,7 @@ export default class GamePanel extends BaseUI {
     }
     backButton(){
         UIManager.getInstance().closeUI(GamePanel);
+        ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0}); 
     }
     submitButton(){
         UIManager.getInstance().openUI(SubmissionPanel);

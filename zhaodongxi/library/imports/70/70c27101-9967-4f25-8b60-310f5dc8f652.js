@@ -8,6 +8,8 @@ var UIManager_1 = require("../../Manager/UIManager");
 var NetWork_1 = require("../../Http/NetWork");
 var DaAnData_1 = require("../../Data/DaAnData");
 var GamePanel_1 = require("./GamePanel");
+var ListenerManager_1 = require("../../Manager/ListenerManager");
+var ListenerType_1 = require("../../Data/ListenerType");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var TeacherPanel = /** @class */ (function (_super) {
     __extends(TeacherPanel, _super);
@@ -19,7 +21,6 @@ var TeacherPanel = /** @class */ (function (_super) {
     TeacherPanel.prototype.onLoad = function () {
     };
     TeacherPanel.prototype.start = function () {
-        cc.log("2222222", this.checkpointEditbox.string);
         this.getNet();
     };
     TeacherPanel.prototype.initData = function () {
@@ -57,8 +58,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.stationeryToggle.isChecked = true;
             }
         }
-        cc.log("iiiii", DaAnData_1.DaAnData.getInstance().range);
-        cc.log("rang", DaAnData_1.scopeRange[DaAnData_1.DaAnData.getInstance().range]);
         this.choicescopeButton.node.getChildByName("Label").getComponent(cc.Label).string = DaAnData_1.scopeRange[DaAnData_1.DaAnData.getInstance().range];
     };
     //上传课件按钮
@@ -70,12 +69,11 @@ var TeacherPanel = /** @class */ (function (_super) {
         // }
         if (this.errorChecking()) {
             UIManager_1.UIManager.getInstance().showUI(GamePanel_1.default, function () {
-                cc.log("test game panel");
+                ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 1 });
             });
         }
     };
     TeacherPanel.prototype.tips = function () {
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
         this.tipNode.active = true;
         this.tipNode.getChildByName("layout").on(cc.Node.EventType.TOUCH_START, function (e) {
             e.stopPropagation();
@@ -102,7 +100,6 @@ var TeacherPanel = /** @class */ (function (_super) {
         var label = this.choicescopeButton.node.getChildByName("Label").getComponent(cc.Label);
         var range = DaAnData_1.DaAnData.getInstance().range;
         label.string = DaAnData_1.scopeRange[range];
-        cc.log("range is :", DaAnData_1.DaAnData.getInstance().range);
     };
     TeacherPanel.prototype.FOUR_FOUR = function () {
         DaAnData_1.DaAnData.getInstance().range = 1;
@@ -156,7 +153,6 @@ var TeacherPanel = /** @class */ (function (_super) {
             default:
                 break;
         }
-        cc.log("type is :", DaAnData_1.DaAnData.getInstance().types);
     };
     TeacherPanel.prototype.editBoxEndEditing = function (sender) {
         var text = this.checkpointEditbox.string;
@@ -177,7 +173,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 text = "";
                 this.checkpointEditbox.string = '';
                 DaAnData_1.DaAnData.getInstance().checkpointsNum = 0;
-                cc.log("checkpoints nu is =======");
                 break;
         }
     };
@@ -192,7 +187,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.animal; });
             }
         }
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.food = function (toggle) {
         if (toggle.isChecked) {
@@ -205,7 +199,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.food; });
             }
         }
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.figure = function (toggle) {
         if (toggle.isChecked) {
@@ -218,7 +211,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.figure; });
             }
         }
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.dailyuse = function (toggle) {
         if (toggle.isChecked) {
@@ -231,7 +223,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.dailyuse; });
             }
         }
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.number = function (toggle) {
         if (toggle.isChecked) {
@@ -244,7 +235,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.number; });
             }
         }
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.stationery = function (toggle) {
         if (toggle.isChecked) {
@@ -257,7 +247,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.stationery; });
             }
         }
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.clothes = function (toggle) {
         if (toggle.isChecked) {
@@ -270,7 +259,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.clothes; });
             }
         }
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.letter = function (toggle) {
         if (toggle.isChecked) {
@@ -283,12 +271,10 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().picArr = DaAnData_1.DaAnData.getInstance().picArr.filter(function (item) { return item !== DaAnData_1.picType.letter; });
             }
         }
-        cc.log(DaAnData_1.DaAnData.getInstance().picArr);
     };
     TeacherPanel.prototype.errorChecking = function () {
         // var whatever;
         // this.editBoxEndEditing(whatever);
-        cc.log("------checkpoint num is ", DaAnData_1.DaAnData.getInstance().checkpointsNum);
         if (DaAnData_1.DaAnData.getInstance().checkpointsNum == 0) {
             this.tipNode.getChildByName("tipLabel").getComponent(cc.Label).string = "请填写关卡数量，不能为空。";
             this.tips();
@@ -310,33 +296,23 @@ var TeacherPanel = /** @class */ (function (_super) {
     };
     TeacherPanel.prototype.getNet = function () {
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_TITLE + "?title_id=" + NetWork_1.NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
-            console.log("消息返回" + response);
             if (!err) {
                 var response_data = JSON.parse(response);
                 if (response_data.data.courseware_content == null) {
-                    cc.log("no last=========");
                 }
                 else {
-                    cc.log("respoinse---------", response_data);
                     var data = JSON.parse(response_data.data.courseware_content);
-                    cc.log("data ", data);
-                    cc.log("data types", data.types);
                     if (data.types) {
                         DaAnData_1.DaAnData.getInstance().types = data.types;
-                        cc.log("data types", DaAnData_1.DaAnData.getInstance().types);
                     }
                     if (data.checkpointsNum) {
                         DaAnData_1.DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                        cc.log("data checkpointsNum", DaAnData_1.DaAnData.getInstance().checkpointsNum);
                     }
                     if (data.range) {
                         DaAnData_1.DaAnData.getInstance().range = data.range;
-                        cc.log("data range", DaAnData_1.DaAnData.getInstance().range);
                     }
                     if (data.picArr) {
                         DaAnData_1.DaAnData.getInstance().picArr = data.picArr;
-                        //DaAnData.getInstance().picArr = [];
-                        cc.log("data picarr", DaAnData_1.DaAnData.getInstance().picArr);
                     }
                     this.initData();
                 }
