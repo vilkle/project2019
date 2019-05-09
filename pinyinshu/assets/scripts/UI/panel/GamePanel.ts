@@ -33,13 +33,15 @@ export default class GamePanel extends BaseUI {
     minutes : cc.Label;
     @property(cc.Label)
     second : cc.Label;
+    @property(cc.Label)
+    numberStr : cc.Label;
    
     isStart : boolean;
     timer : number;
     intervalIndex : number;
     minStr : string;
     secStr : string;
-    
+    YZ : Array<number> = new Array<number>();
      onLoad () {
         this.isTecher();
         this.initData();
@@ -47,6 +49,7 @@ export default class GamePanel extends BaseUI {
 
     start() {
         this.openClock();
+        this.decompose(DaAnData.getInstance().number);
     }
    
 
@@ -68,6 +71,7 @@ export default class GamePanel extends BaseUI {
 
     initData() {
         this.timer = 0;
+        cc.loader.loadRes("")
     }
  
 
@@ -89,6 +93,38 @@ export default class GamePanel extends BaseUI {
                 }
             } 
         }.bind(this), null);
+    }
+
+    decompose(num: number) {
+        DaAnData.getInstance().number = 266;
+        var index = 0;
+        var i=2;
+        var a = String(DaAnData.getInstance().number) + '=';
+		if (num==1||num==2||num==3) {
+			this.YZ[index++]=num;
+			return this.YZ;
+		}
+		for(;i<=num/2;i++){
+			if(num%i==0){
+				this.YZ[index++]=i;//每得到一个质因数就存进YZ
+				this.decompose(num/i);
+				break;
+			}
+		}
+		if (i>num/2) {
+				this.YZ[index++]=num;//存放最后一次结果
+			}
+        var StrArr = '';
+        for(let i = 0; i < this.YZ.length; i++) {
+            if(i < this.YZ.length - 1) {
+                StrArr = StrArr + String(this.YZ[i]) + '*';
+            }else {
+                StrArr = StrArr + String(this.YZ[i]);
+            }
+        }
+        cc.log(this.YZ);
+
+        this.numberStr.getComponent(cc.Label).string = StrArr;
     }
 
     openClock() {
@@ -118,6 +154,6 @@ export default class GamePanel extends BaseUI {
         ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0}); 
     }
     submitButton(){
-        this.openClock();
+        this.decompose(DaAnData.getInstance().number);
         //UIManager.getInstance().openUI(SubmissionPanel);
     }

@@ -8,7 +8,7 @@
       "x": 1280,
       "y": 23,
       "width": 1920,
-      "height": 985,
+      "height": 1057,
       "layout": {
         "children": [
           {
@@ -18,7 +18,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 431.953125,
+                "height": 465.671875,
                 "type": "panel",
                 "width": 312
               },
@@ -27,12 +27,12 @@
                 "children": [
                   "assets"
                 ],
-                "height": 469.046875,
+                "height": 505.546875,
                 "type": "panel",
                 "width": 312
               }
             ],
-            "height": 903,
+            "height": 973.21875,
             "type": "dock-v",
             "width": 312
           },
@@ -45,7 +45,7 @@
                     "children": [
                       "scene"
                     ],
-                    "height": 583.28125,
+                    "height": 628.4375,
                     "type": "panel",
                     "width": 940.984375
                   },
@@ -54,12 +54,12 @@
                     "children": [
                       "node-library"
                     ],
-                    "height": 583.28125,
+                    "height": 628.4375,
                     "type": "panel",
                     "width": 298
                   }
                 ],
-                "height": 583.28125,
+                "height": 628.4375,
                 "type": "dock-h",
                 "width": 1240.984375
               },
@@ -69,12 +69,12 @@
                   "console",
                   "timeline"
                 ],
-                "height": 317.703125,
+                "height": 342.78125,
                 "type": "panel",
                 "width": 1240.984375
               }
             ],
-            "height": 903,
+            "height": 973.21875,
             "type": "dock-v",
             "width": 1240.984375
           },
@@ -83,7 +83,7 @@
             "children": [
               "inspector"
             ],
-            "height": 903,
+            "height": 973.21875,
             "type": "panel",
             "width": 363
           }

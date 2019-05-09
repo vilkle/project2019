@@ -1,0 +1,86 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "_name": "letter.plist",
+  "_objFlags": 0,
+  "_native": "",
+  "_spriteFrames": {
+    "letter0": {
+      "__uuid__": "78d0acf2-29d6-4cd8-9b43-df596ca1725d"
+    },
+    "letter1": {
+      "__uuid__": "88381e9e-92a3-453a-a198-b33132a7a4ac"
+    },
+    "letter10": {
+      "__uuid__": "50ef4475-62f2-495e-860c-750d5f092f7a"
+    },
+    "letter11": {
+      "__uuid__": "64b6684e-f366-4ff8-99e0-55ddf967efad"
+    },
+    "letter12": {
+      "__uuid__": "588875fe-90a9-446d-ae02-2952e1ee58dc"
+    },
+    "letter13": {
+      "__uuid__": "0f6cbcb3-4516-4ecd-8eb3-2edba98a1ed9"
+    },
+    "letter14": {
+      "__uuid__": "901fe9a8-a2d4-4a95-b68c-845e4a0c604d"
+    },
+    "letter15": {
+      "__uuid__": "8ad7c9f9-3001-4e7b-8eca-4338d437e109"
+    },
+    "letter16": {
+      "__uuid__": "ad295490-a775-4457-a215-a04e2ab2299d"
+    },
+    "letter17": {
+      "__uuid__": "de4eee21-2f83-4175-bf58-d17967e74f6d"
+    },
+    "letter18": {
+      "__uuid__": "422f0f15-1a82-4e4b-bf1b-80187e67a692"
+    },
+    "letter19": {
+      "__uuid__": "8983f197-8c4c-4dc4-9615-da12cfd5dbb5"
+    },
+    "letter2": {
+      "__uuid__": "8151aa09-17b1-456c-83ec-f5e6a409b19e"
+    },
+    "letter20": {
+      "__uuid__": "d322b331-28f9-4ac8-93b0-a019c76ee868"
+    },
+    "letter21": {
+      "__uuid__": "94851ec9-f883-4a45-a3e5-f0d9cde06c36"
+    },
+    "letter22": {
+      "__uuid__": "0352e2a8-294f-464b-bc9d-c85c57b04019"
+    },
+    "letter23": {
+      "__uuid__": "d5229a98-4344-442b-a131-f855792b9891"
+    },
+    "letter24": {
+      "__uuid__": "c1e13ec8-ad96-4c11-8157-92a47c5b0c6e"
+    },
+    "letter25": {
+      "__uuid__": "6f53022e-94f1-42fd-9040-6c95e5f4940d"
+    },
+    "letter3": {
+      "__uuid__": "f8573f9a-2fa8-4537-80d6-10f4d80d96e2"
+    },
+    "letter4": {
+      "__uuid__": "6260ac7d-0170-45a5-a5ee-f495dfbe9a22"
+    },
+    "letter5": {
+      "__uuid__": "d8f7829e-340d-4651-b1c9-24e118dff0b9"
+    },
+    "letter6": {
+      "__uuid__": "52d104c6-b6a2-4ab5-94e8-f112e6f01998"
+    },
+    "letter7": {
+      "__uuid__": "f2a56204-9a4e-4cbb-a7f8-f4283f3c503d"
+    },
+    "letter8": {
+      "__uuid__": "8a603559-e675-4da9-b4c3-eb7053cbef4f"
+    },
+    "letter9": {
+      "__uuid__": "07d773ea-e168-4c75-a339-96e431a39bf4"
+    }
+  }
+}

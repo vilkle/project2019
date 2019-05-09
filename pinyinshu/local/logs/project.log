@@ -1,68 +1,68 @@
-2019-05-09T03:17:10.026Z - normal: Load ~/.CocosCreator/settings.json
-2019-05-09T03:17:10.097Z - normal: Initializing Asset Database
-2019-05-09T03:17:10.100Z - normal: checking language setting...
-2019-05-09T03:17:10.100Z - normal: Language: zh
-2019-05-09T03:17:10.898Z - success: preview server running at http://localhost:7456
-2019-05-09T03:17:10.946Z - success: protocol editor-framework registered
-2019-05-09T03:17:10.946Z - success: protocol app registered
-2019-05-09T03:17:10.946Z - success: protocol theme registered
-2019-05-09T03:17:10.947Z - success: protocol packages registered
-2019-05-09T03:17:10.947Z - success: protocol uuid registerred
-2019-05-09T03:17:10.947Z - success: protocol db registerred
-2019-05-09T03:17:10.947Z - success: protocol thumbnail registerred
-2019-05-09T03:17:10.947Z - success: protocol unpack registerred
-2019-05-09T03:17:10.947Z - success: protocol disable-commonjs registerred
-2019-05-09T03:17:11.046Z - normal: connected!
-2019-05-09T03:17:11.047Z - normal: Check project /Users/xes/Desktop/hub/pinyinshu
-2019-05-09T03:17:11.048Z - normal: Initializing project /Users/xes/Desktop/hub/pinyinshu
-2019-05-09T03:17:11.432Z - normal: Initializing Cocos2d
-2019-05-09T03:17:12.236Z - normal: Initializing engine extends
-2019-05-09T03:17:12.286Z - success: asset-db-debugger loaded
-2019-05-09T03:17:12.288Z - success: baidu-adapter loaded
-2019-05-09T03:17:12.289Z - success: color-picker loaded
-2019-05-09T03:17:12.395Z - success: fb-audience-network loaded
-2019-05-09T03:17:12.445Z - success: fb-live-stream loaded
-2019-05-09T03:17:12.449Z - success: google-play-instant loaded
-2019-05-09T03:17:12.454Z - success: huawei-runtime loaded
-2019-05-09T03:17:12.456Z - success: jsb-adapter loaded
-2019-05-09T03:17:12.461Z - success: oppo-runtime loaded
-2019-05-09T03:17:12.482Z - success: package-manager loaded
-2019-05-09T03:17:12.630Z - success: qqplay-adapter loaded
-2019-05-09T03:17:12.632Z - success: runtime-dev-tools loaded
-2019-05-09T03:17:12.651Z - success: sdkbox loaded
-2019-05-09T03:17:12.670Z - success: tester loaded
-2019-05-09T03:17:12.692Z - success: ui-grid loaded
-2019-05-09T03:17:12.710Z - success: ui-kit-preview-extra loaded
-2019-05-09T03:17:12.729Z - success: ui-kit-preview loaded
-2019-05-09T03:17:12.747Z - success: ui-kit loaded
-2019-05-09T03:17:12.764Z - success: ui-tree loaded
-2019-05-09T03:17:12.773Z - success: vivo-runtime loaded
-2019-05-09T03:17:12.775Z - success: weapp-adapter loaded
-2019-05-09T03:17:12.832Z - success: assets loaded
-2019-05-09T03:17:12.851Z - success: builder loaded
-2019-05-09T03:17:13.186Z - success: cocos-services loaded
-2019-05-09T03:17:13.220Z - success: console loaded
-2019-05-09T03:17:13.257Z - success: fb-instant-games loaded
-2019-05-09T03:17:13.261Z - success: google-instant-games loaded
-2019-05-09T03:17:13.281Z - success: hierarchy loaded
-2019-05-09T03:17:13.336Z - success: inspector loaded
-2019-05-09T03:17:13.339Z - success: keystore loaded
-2019-05-09T03:17:13.360Z - success: node-library loaded
-2019-05-09T03:17:13.363Z - success: package-asset loaded
-2019-05-09T03:17:13.364Z - success: preferences loaded
-2019-05-09T03:17:13.383Z - success: project-exporter loaded
-2019-05-09T03:17:13.408Z - success: project-importer loaded
-2019-05-09T03:17:13.429Z - success: project-settings loaded
-2019-05-09T03:17:13.449Z - success: scene loaded
-2019-05-09T03:17:13.451Z - success: simulator-debugger loaded
-2019-05-09T03:17:13.456Z - success: sprite-editor loaded
-2019-05-09T03:17:13.476Z - success: store loaded
-2019-05-09T03:17:13.499Z - success: timeline loaded
-2019-05-09T03:17:14.715Z - info: Cocos Services load base data!
-2019-05-09T03:17:15.550Z - normal: Loading packages
-2019-05-09T03:17:15.555Z - normal: Watching packages
-2019-05-09T03:17:15.710Z - normal: Run Application
-2019-05-09T03:17:21.377Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-09T08:27:20.951Z - normal: Load ~/.CocosCreator/settings.json
+2019-05-09T08:27:21.072Z - normal: Initializing Asset Database
+2019-05-09T08:27:21.078Z - normal: checking language setting...
+2019-05-09T08:27:21.078Z - normal: Language: zh
+2019-05-09T08:27:22.389Z - success: preview server running at http://localhost:7456
+2019-05-09T08:27:22.489Z - success: protocol editor-framework registered
+2019-05-09T08:27:22.490Z - success: protocol app registered
+2019-05-09T08:27:22.490Z - success: protocol theme registered
+2019-05-09T08:27:22.490Z - success: protocol packages registered
+2019-05-09T08:27:22.490Z - success: protocol uuid registerred
+2019-05-09T08:27:22.490Z - success: protocol db registerred
+2019-05-09T08:27:22.491Z - success: protocol thumbnail registerred
+2019-05-09T08:27:22.491Z - success: protocol unpack registerred
+2019-05-09T08:27:22.491Z - success: protocol disable-commonjs registerred
+2019-05-09T08:27:22.605Z - normal: connected!
+2019-05-09T08:27:22.606Z - normal: Check project /Users/xes/Desktop/hub/pinyinshu
+2019-05-09T08:27:22.608Z - normal: Initializing project /Users/xes/Desktop/hub/pinyinshu
+2019-05-09T08:27:23.305Z - normal: Initializing Cocos2d
+2019-05-09T08:27:24.506Z - normal: Initializing engine extends
+2019-05-09T08:27:24.647Z - success: asset-db-debugger loaded
+2019-05-09T08:27:24.658Z - success: baidu-adapter loaded
+2019-05-09T08:27:24.660Z - success: color-picker loaded
+2019-05-09T08:27:24.897Z - success: fb-audience-network loaded
+2019-05-09T08:27:25.043Z - success: fb-live-stream loaded
+2019-05-09T08:27:25.050Z - success: google-play-instant loaded
+2019-05-09T08:27:25.063Z - success: huawei-runtime loaded
+2019-05-09T08:27:25.065Z - success: jsb-adapter loaded
+2019-05-09T08:27:25.076Z - success: oppo-runtime loaded
+2019-05-09T08:27:25.126Z - success: package-manager loaded
+2019-05-09T08:27:25.458Z - success: qqplay-adapter loaded
+2019-05-09T08:27:25.461Z - success: runtime-dev-tools loaded
+2019-05-09T08:27:25.506Z - success: sdkbox loaded
+2019-05-09T08:27:25.543Z - success: tester loaded
+2019-05-09T08:27:25.579Z - success: ui-grid loaded
+2019-05-09T08:27:25.613Z - success: ui-kit-preview-extra loaded
+2019-05-09T08:27:25.647Z - success: ui-kit-preview loaded
+2019-05-09T08:27:25.686Z - success: ui-kit loaded
+2019-05-09T08:27:25.721Z - success: ui-tree loaded
+2019-05-09T08:27:25.727Z - success: vivo-runtime loaded
+2019-05-09T08:27:25.728Z - success: weapp-adapter loaded
+2019-05-09T08:27:25.842Z - success: assets loaded
+2019-05-09T08:27:25.877Z - success: builder loaded
+2019-05-09T08:27:26.523Z - success: cocos-services loaded
+2019-05-09T08:27:26.545Z - success: console loaded
+2019-05-09T08:27:26.606Z - success: fb-instant-games loaded
+2019-05-09T08:27:26.610Z - success: google-instant-games loaded
+2019-05-09T08:27:26.640Z - success: hierarchy loaded
+2019-05-09T08:27:26.663Z - success: inspector loaded
+2019-05-09T08:27:26.666Z - success: keystore loaded
+2019-05-09T08:27:26.742Z - success: node-library loaded
+2019-05-09T08:27:26.746Z - success: package-asset loaded
+2019-05-09T08:27:26.750Z - success: preferences loaded
+2019-05-09T08:27:26.774Z - success: project-exporter loaded
+2019-05-09T08:27:26.795Z - success: project-importer loaded
+2019-05-09T08:27:26.825Z - success: project-settings loaded
+2019-05-09T08:27:26.852Z - success: scene loaded
+2019-05-09T08:27:26.855Z - success: simulator-debugger loaded
+2019-05-09T08:27:26.857Z - success: sprite-editor loaded
+2019-05-09T08:27:26.881Z - success: store loaded
+2019-05-09T08:27:26.908Z - success: timeline loaded
+2019-05-09T08:27:27.857Z - info: Cocos Services load base data!
+2019-05-09T08:27:29.532Z - normal: Loading packages
+2019-05-09T08:27:29.551Z - normal: Watching packages
+2019-05-09T08:27:29.707Z - normal: Run Application
+2019-05-09T08:27:35.900Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -70,7 +70,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-09T03:17:21.377Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-09T08:27:35.901Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -78,71 +78,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-09T03:17:21.379Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-09T03:17:21.379Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-09T03:17:21.381Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-09T03:17:21.382Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-09T03:17:21.382Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-09T03:17:21.383Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-09T03:23:00.708Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-09T03:23:00.711Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-09T03:23:00.712Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-09T08:27:35.903Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -150,7 +86,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-09T03:23:00.712Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-09T08:27:35.904Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -158,7 +94,7 @@ value;
 // After:
 @property(...)
 value = 0 quxiao
-2019-05-09T03:23:00.713Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-09T08:27:35.904Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -166,7 +102,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-09T03:23:00.714Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-09T08:27:35.905Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -174,7 +110,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-09T03:23:00.714Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-09T08:27:35.905Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -182,7 +118,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-09T03:23:00.715Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-09T08:27:35.906Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -190,7 +126,15 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-09T03:23:00.716Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-09T08:27:35.907Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberStr
+2019-05-09T08:27:35.910Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -198,7 +142,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-09T03:23:00.716Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-09T08:27:35.911Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -206,7 +150,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-09T03:23:00.717Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-09T08:27:35.911Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -214,7 +158,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-09T03:23:00.717Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-09T08:27:35.912Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -222,196 +166,4 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-09T03:23:22.341Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-09T03:23:22.342Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-09T03:23:22.342Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-09T03:23:22.343Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 quxiao
-2019-05-09T03:23:22.343Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-09T03:23:22.344Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-09T03:23:22.344Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-09T03:23:22.346Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-09T03:23:22.346Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-09T03:23:22.347Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-09T03:23:22.347Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-09T03:23:22.347Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-09T03:32:24.516Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:9643
-2019-05-09T03:40:45.487Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-09T03:40:45.489Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-09T03:40:45.490Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-09T03:40:45.490Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 quxiao
-2019-05-09T03:40:45.490Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-09T03:40:45.491Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-09T03:40:45.492Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-09T03:40:45.492Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-09T03:40:45.493Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-09T03:40:45.494Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-09T03:40:45.495Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-09T03:40:45.495Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
+2019-05-09T08:49:47.043Z - info: shutdown preview server
