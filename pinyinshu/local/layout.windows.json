@@ -18,7 +18,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 431.109375,
+                "height": 431.953125,
                 "type": "panel",
                 "width": 312
               },
@@ -27,12 +27,12 @@
                 "children": [
                   "assets"
                 ],
-                "height": 468.109375,
+                "height": 469.046875,
                 "type": "panel",
                 "width": 312
               }
             ],
-            "height": 901.21875,
+            "height": 903,
             "type": "dock-v",
             "width": 312
           },
@@ -45,7 +45,7 @@
                     "children": [
                       "scene"
                     ],
-                    "height": 582.125,
+                    "height": 583.28125,
                     "type": "panel",
                     "width": 940.984375
                   },
@@ -54,12 +54,12 @@
                     "children": [
                       "node-library"
                     ],
-                    "height": 582.125,
+                    "height": 583.28125,
                     "type": "panel",
                     "width": 298
                   }
                 ],
-                "height": 582.125,
+                "height": 583.28125,
                 "type": "dock-h",
                 "width": 1240.984375
               },
@@ -69,12 +69,12 @@
                   "console",
                   "timeline"
                 ],
-                "height": 317.078125,
+                "height": 317.703125,
                 "type": "panel",
                 "width": 1240.984375
               }
             ],
-            "height": 901.21875,
+            "height": 903,
             "type": "dock-v",
             "width": 1240.984375
           },
@@ -83,7 +83,7 @@
             "children": [
               "inspector"
             ],
-            "height": 901.21875,
+            "height": 903,
             "type": "panel",
             "width": 363
           }

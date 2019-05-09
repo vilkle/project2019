@@ -21,9 +21,24 @@ export default class GamePanel extends BaseUI {
     back : cc.Button;
     @property(cc.Button)
     submit : cc.Button;
+    @property(cc.Button)
+    queren : cc.Button;
+    @property(cc.Button)
+    quxiao : cc.Button;
+    @property(cc.Button)
+    chongzhi : cc.Button;
+    @property(cc.Button)
+    tijiao : cc.Button;
+    @property(cc.Label)
+    minutes : cc.Label;
+    @property(cc.Label)
+    second : cc.Label;
    
     isStart : boolean;
     timer : number;
+    intervalIndex : number;
+    minStr : string;
+    secStr : string;
     
      onLoad () {
         this.isTecher();
@@ -31,8 +46,7 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
-    //    this.creatPicBoard();
-    //    this.creatAnswerBoard();
+        this.openClock();
     }
    
 
@@ -41,11 +55,7 @@ export default class GamePanel extends BaseUI {
     }
 
    update (dt) {
-        if(this.isStart) {
-            this.timer += dt;
-            cc.log(dt);
-
-        }
+    
    }
 
     isTecher() {
@@ -80,11 +90,34 @@ export default class GamePanel extends BaseUI {
             } 
         }.bind(this), null);
     }
+
+    openClock() {
+        this.intervalIndex = setInterval(function(){
+            this.timer = this.timer + 1;
+            let minutes = this.timer / 60 >> 0;
+            let second = this.timer % 60;
+            this.minStr = String(minutes);
+            this.secStr = String(second);
+            if(minutes < 10) {
+                this.minStr = "0" + this.minStr;
+            }
+            if(second < 10) {
+                this.secStr = "0" + this.secStr;
+            }
+            this.minutes.getComponent(cc.Label).string = this.minStr;
+            this.second.getComponent(cc.Label).string = this.secStr;
+        }.bind(this), 1000);
+    }
+
+    closeClock() {
+
+    }
+
     backButton(){
         UIManager.getInstance().closeUI(GamePanel);
         ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0}); 
     }
     submitButton(){
-        this.isStart = true;
+        this.openClock();
         //UIManager.getInstance().openUI(SubmissionPanel);
     }

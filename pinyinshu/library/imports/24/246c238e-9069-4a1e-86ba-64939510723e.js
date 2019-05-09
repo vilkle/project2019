@@ -22,16 +22,11 @@ var GamePanel = /** @class */ (function (_super) {
         this.initData();
     };
     GamePanel.prototype.start = function () {
-        //    this.creatPicBoard();
-        //    this.creatAnswerBoard();
+        this.openClock();
     };
     GamePanel.prototype.onDestroy = function () {
     };
     GamePanel.prototype.update = function (dt) {
-        if (this.isStart) {
-            this.timer += dt;
-            cc.log(dt);
-        }
     };
     GamePanel.prototype.isTecher = function () {
         if (ConstValue_1.ConstValue.IS_TEACHER) {
@@ -60,12 +55,31 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }.bind(this), null);
     };
+    GamePanel.prototype.openClock = function () {
+        this.intervalIndex = setInterval(function () {
+            this.timer = this.timer + 1;
+            var minutes = this.timer / 60 >> 0;
+            var second = this.timer % 60;
+            this.minStr = String(minutes);
+            this.secStr = String(second);
+            if (minutes < 10) {
+                this.minStr = "0" + this.minStr;
+            }
+            if (second < 10) {
+                this.secStr = "0" + this.secStr;
+            }
+            this.minutes.getComponent(cc.Label).string = this.minStr;
+            this.second.getComponent(cc.Label).string = this.secStr;
+        }.bind(this), 1000);
+    };
+    GamePanel.prototype.closeClock = function () {
+    };
     GamePanel.prototype.backButton = function () {
         UIManager_1.UIManager.getInstance().closeUI(GamePanel_1);
         ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 0 });
     };
     GamePanel.prototype.submitButton = function () {
-        this.isStart = true;
+        this.openClock();
         //UIManager.getInstance().openUI(SubmissionPanel);
     };
     var GamePanel_1;
@@ -76,6 +90,24 @@ var GamePanel = /** @class */ (function (_super) {
     __decorate([
         property(cc.Button)
     ], GamePanel.prototype, "submit", void 0);
+    __decorate([
+        property(cc.Button)
+    ], GamePanel.prototype, "queren", void 0);
+    __decorate([
+        property(cc.Button)
+    ], GamePanel.prototype, "quxiao", void 0);
+    __decorate([
+        property(cc.Button)
+    ], GamePanel.prototype, "chongzhi", void 0);
+    __decorate([
+        property(cc.Button)
+    ], GamePanel.prototype, "tijiao", void 0);
+    __decorate([
+        property(cc.Label)
+    ], GamePanel.prototype, "minutes", void 0);
+    __decorate([
+        property(cc.Label)
+    ], GamePanel.prototype, "second", void 0);
     GamePanel = GamePanel_1 = __decorate([
         ccclass
     ], GamePanel);
