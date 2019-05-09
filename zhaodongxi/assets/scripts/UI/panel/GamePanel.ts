@@ -40,6 +40,9 @@ export default class GamePanel extends BaseUI {
     itemArr : cc.Node[] = [];
     @property([cc.Node])
     answerItemArr : cc.Node[] = [];
+    @property(cc.Layout)
+    layout : cc.Layout;
+
     dirSFNumArr : Array<number> = new Array<number>();
     answerSFNumArr : Array<number> = new Array<number>();
     answerPosNumArr : Array<number> = new Array<number>();
@@ -53,7 +56,8 @@ export default class GamePanel extends BaseUI {
     verticalNum : number;
     cueNum : number;
     creatItemNum : number;
-    
+    rightNum : number;
+
      onLoad () {
         this.isTecher();
     }
@@ -147,6 +151,7 @@ export default class GamePanel extends BaseUI {
                 break;
             case 2:
                 this.answerNum = 4;
+                this.rightNum = 4;
                 break;
             default:
                 break;
@@ -273,17 +278,62 @@ export default class GamePanel extends BaseUI {
         for(let i = 0; i < totalNum; i ++) {
             let randomNum = this.getRandomNum(0, this.sourceSFArr.length - 1);
             this.dirSFNumArr[i] = randomNum;
-           
         }
-        for(let j = 0; j < this.answerNum; j ++) {
-            let num = this.getRandomNum(0, totalNum - 1);;
-            let randomNum = this.dirSFNumArr[num];
-            while(this.answerSFNumArr.indexOf(randomNum) != -1) {
-                 num = this.getRandomNum(0, totalNum - 1);
-                 randomNum = this.dirSFNumArr[num];
+        if(this.answerNum == 1) {
+            var num = this.getRandomNum(0, totalNum - 1);
+            var randomNum = this.dirSFNumArr[num];
+            for(let i = 0; i < this.dirSFNumArr.length; i++) {
+                if(this.dirSFNumArr[i] == randomNum) {
+                    var sfNum = this.dirSFNumArr[i];
+                    this.answerPosNumArr.push(i);
+                    this.answerSFNumArr.push(sfNum);
+                }
             }
-            this.answerPosNumArr[j] = num;
-            this.answerSFNumArr[j] = randomNum 
+            this.rightNum = this.answerPosNumArr.length;
+        }else {
+            var num = this.getRandomNum(0, totalNum - 1);
+            var num1 = 0;
+            var num2 = 0;
+            var num3 = 0;
+            if(num + this.horizonNum <= totalNum - 1) {
+                num1 = num + this.horizonNum;
+                if(num + 1 <= Math.ceil(num / this.horizonNum) * this.horizonNum - 1) {
+                    num2 = num + this.horizonNum + 1;
+                    num3 = num + 1;
+                    this.answerPosNumArr[0] = num;
+                    this.answerPosNumArr[1] = num3;
+                    this.answerPosNumArr[2] = num1;
+                    this.answerPosNumArr[3] = num2;
+                }else {
+                    num2 = num + this.horizonNum - 1;
+                    num3 = num - 1;
+                    this.answerPosNumArr[0] = num3;
+                    this.answerPosNumArr[1] = num;
+                    this.answerPosNumArr[2] = num2;
+                    this.answerPosNumArr[3] = num1;
+                }
+            }else {
+                num1 = num - this.horizonNum;
+                if(num + 1 <= Math.ceil(num / this.horizonNum) * this.horizonNum - 1) {
+                    num2 = num - this.horizonNum + 1;
+                    num3 = num + 1;
+                    this.answerPosNumArr[0] = num1;
+                    this.answerPosNumArr[1] = num2;
+                    this.answerPosNumArr[2] = num;
+                    this.answerPosNumArr[3] = num3;
+                }else {
+                    num2 = num - this.horizonNum - 1;
+                    num3 = num - 1;
+                    this.answerPosNumArr[0] = num2;
+                    this.answerPosNumArr[1] = num1;
+                    this.answerPosNumArr[2] = num3;
+                    this.answerPosNumArr[3] = num;
+                }
+            }
+            this.answerSFNumArr[0] = this.dirSFNumArr[this.answerPosNumArr[0]];
+            this.answerSFNumArr[1] = this.dirSFNumArr[this.answerPosNumArr[1]];
+            this.answerSFNumArr[2] = this.dirSFNumArr[this.answerPosNumArr[2]];
+            this.answerSFNumArr[3] = this.dirSFNumArr[this.answerPosNumArr[3]];
         }
         this.creatAnswerBoard();
         this.creatPicBoard();
@@ -378,8 +428,8 @@ export default class GamePanel extends BaseUI {
                     this.action(this.creatItemNum);
                     item.getChildByName("bg").on(cc.Node.EventType.TOUCH_START, function(t){
                             if (item.getChildByName("box").active == false) {
-                                if(this.playerItemArr.length < this.answerNum) {
-                                    if(this.playerItemSFArr.indexOf(this.dirSFNumArr[num]) == -1) {
+                                //if(this.playerItemArr.length < this.rightNum) {
+                                    //if(this.playerItemSFArr.indexOf(this.dirSFNumArr[num]) == -1) {
                                         if(item.getChildByName("bg").getComponent(cc.Sprite).getState() != 1) {
                                             AudioManager.getInstance().playSound("click", false);
                                             item.getChildByName("box").active = true;
@@ -387,8 +437,8 @@ export default class GamePanel extends BaseUI {
                                             this.playerItemArr.push(num);
                                             this.playerItemSFArr.push(this.dirSFNumArr[num]);
                                         }
-                                    }
-                                }
+                                    //}
+                                //}
                             }else {
                                 if(this.playerItemArr.length > 0) {
                                     AudioManager.getInstance().playSound("click", false);
@@ -411,11 +461,28 @@ export default class GamePanel extends BaseUI {
 
     cueAnswer() {
         for(let i = 0; i < this.playerItemArr.length; i++) {
-            if(this.answerSFNumArr.indexOf(this.dirSFNumArr[this.playerItemArr[i]]) == -1) {
+            if(this.answerPosNumArr.indexOf(this.playerItemArr[i]) == -1) {
                 this.itemArr[this.playerItemArr[i]].getChildByName("bg").getComponent(cc.Sprite).setState(1);
                 this.itemArr[this.playerItemArr[i]].getChildByName("pic").getComponent(cc.Sprite).setState(1);
             }
         }
+
+        for(let i = 0; i < this.answerPosNumArr.length; i++) {
+            if(this.playerItemArr.indexOf(this.answerPosNumArr[i]) == -1) {
+                var seq;
+                if(this.cueNum == 3) {
+                    seq = cc.sequence(cc.fadeOut(0.2),cc.fadeIn(0.2),cc.fadeOut(0.2), cc.fadeIn(0.2),cc.fadeOut(0.2), cc.fadeIn(0.2));
+                }else if(this.cueNum > 3) {
+                    seq = cc.sequence(cc.fadeOut(0.2),cc.fadeIn(0.2));
+                }
+                this.itemArr[this.answerPosNumArr[i]].runAction(seq);
+            }
+        }
+
+
+
+
+
         this.playerErroArr = this.answerSFNumArr;
     
         for(let i = 0;i < this.playerItemArr.length; i++) {
@@ -423,7 +490,12 @@ export default class GamePanel extends BaseUI {
         }
         for(let i = 0; i < this.playerErroArr.length; i++) {
             var index = this.answerSFNumArr.indexOf(this.playerErroArr[i]);
-            var seq = cc.sequence(cc.fadeOut(0.2),cc.fadeIn(0.2),cc.fadeOut(0.2), cc.fadeIn(0.2));
+            var seq;
+            if(this.cueNum == 3) {
+                seq = cc.sequence(cc.fadeOut(0.2),cc.fadeIn(0.2),cc.fadeOut(0.2), cc.fadeIn(0.2),cc.fadeOut(0.2), cc.fadeIn(0.2));
+            }else if(this.cueNum > 3) {
+                seq = cc.sequence(cc.fadeOut(0.2),cc.fadeIn(0.2));
+            }
             this.itemArr[this.answerPosNumArr[index]].runAction(seq);
             AudioManager.getInstance().playSound("erro", false);
         }
@@ -469,11 +541,11 @@ export default class GamePanel extends BaseUI {
         }
         var rightNum = 0;
         for(let i = 0; i < this.playerItemArr.length; i++) {
-                if(this.answerSFNumArr.indexOf(this.dirSFNumArr[this.playerItemArr[i]]) != -1) {
+                if(this.answerPosNumArr.indexOf(this.playerItemArr[i]) != -1) {
                 rightNum++;
             }
         }
-        if(rightNum == this.answerNum) {
+        if(rightNum == this.rightNum && this.playerItemArr.length == this.rightNum) {
             this.checkpoints++;
             if(this.checkpoints < this.checkpointsNum) {
                 UIHelp.showTip("答对了，你真棒！");
@@ -482,17 +554,18 @@ export default class GamePanel extends BaseUI {
                 UIHelp.showTip("闯关成功！");
                 if(ConstValue.IS_TEACHER) {
                     this.submit.node.active = true;
-                }
+                }   
+                this.layout.node.on(cc.Node.EventType.TOUCH_START, function(e){
+                    e.stopPropagation();
+                });
                 //this.submit.interactable = true;
             }
         }else {
-            if(this.cueNum == 100){
-                return;
-            }
             this.cueNum++;
             if(this.cueNum == 3) {
-                this.cueNum = 100;
                 //UIHelp.showTip("----------啊哦，请再试试吧。");
+                this.cueAnswer();
+            }else if(this.cueNum > 3) {
                 this.cueAnswer();
             }else {
                 UIHelp.showTip("啊哦，请再试试吧。");
