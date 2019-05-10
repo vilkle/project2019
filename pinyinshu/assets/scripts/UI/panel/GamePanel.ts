@@ -31,6 +31,10 @@ export default class GamePanel extends BaseUI {
     minutes : cc.Label;
     @property(cc.Label)
     second : cc.Label;
+    @property(cc.Node)
+    minuteHand : cc.Node;
+    @property(cc.Node)
+    secondHand : cc.Node;
     @property(cc.Label)
     numberStr : cc.Label;
     @property(cc.Sprite)
@@ -43,13 +47,13 @@ export default class GamePanel extends BaseUI {
     garbageNode : cc.Node;
     @property(cc.Node)
     mask : cc.Node;
-   
+    ballArr : Array<cc.Node> = Array<cc.Node>();
+    answerArr : Array<cc.Node> = Array<cc.Node>();
     isStart : boolean;
     timer : number;
     intervalIndex : number;
     minStr : string;
     secStr : string;
-   
      onLoad () {
         this.isTecher();
         this.initData();
@@ -58,18 +62,9 @@ export default class GamePanel extends BaseUI {
     start() {
         this.openClock();
        
-        var StrArr = String(DaAnData.getInstance().number) + '=';
-        var YZ =  this.decompose(DaAnData.getInstance().number);
-        cc.log(YZ);
-        for(let i = 0; i < YZ.length; i++) {
-            if(i < YZ.length - 1) {
-                StrArr = StrArr + String(YZ[i]) + '*';
-            }else {
-                StrArr = StrArr + String(YZ[i]);
-            }
-        }
-        this.numberStr.getComponent(cc.Label).string = StrArr;
-
+       
+        this.decompose(DaAnData.getInstance().number);
+        
 
     }
    
@@ -92,9 +87,70 @@ export default class GamePanel extends BaseUI {
 
     initData() {
         this.timer = 0;
-        cc.loader.loadRes("")
+        
     }
  
+    createBall(num : number) : cc.Node {
+        var ballNode : cc.Node;
+        cc.loader.loadRes('prefab/ui/Item/ballNode', function(err, prefab){
+            if(!err){
+                ballNode = cc.instantiate(prefab);
+                var label = ballNode.getChildByName('label').getComponent(cc.Label).string = String(num);
+                var ball = ballNode.getChildByName('ball').getComponent(cc.Sprite);
+
+                switch(num){
+                    case 1:
+                    cc.loader.loadRes('images/gameUI/bubble_1', cc.SpriteFrame, function(err, spriteframe){
+                        ball.spriteFrame = spriteframe;
+                    });
+                    break;
+                    case 2:
+                    cc.loader.loadRes('images/gameUI/bubble_2', cc.SpriteFrame, function(err, spriteframe){
+                        ball.spriteFrame = spriteframe;
+                    });
+                    break;
+                    case 3:
+                    cc.loader.loadRes('images/gameUI/bubble_3', cc.SpriteFrame, function(err, spriteframe){
+                        ball.spriteFrame = spriteframe;
+                    });
+                    break;
+                    case 5:
+                    cc.loader.loadRes('images/gameUI/bubble_4', cc.SpriteFrame, function(err, spriteframe){
+                        ball.spriteFrame = spriteframe;
+                    });
+                    break;
+                    case 7:
+                    cc.loader.loadRes('images/gameUI/bubble_5', cc.SpriteFrame, function(err, spriteframe){
+                        ball.spriteFrame = spriteframe;
+                    });
+                    break;
+                    case 11:
+                    cc.loader.loadRes('images/gameUI/bubble_6', cc.SpriteFrame, function(err, spriteframe){
+                        ball.spriteFrame = spriteframe;
+                    });
+                    break;
+                    case 13:
+                    cc.loader.loadRes('images/gameUI/bubble_7', cc.SpriteFrame, function(err, spriteframe){
+                        ball.spriteFrame = spriteframe;
+                    });
+                    break;
+                    default:
+                        if(num.toString().length == 2||num.toString().length == 1) {
+                            cc.loader.loadRes('images/gameUI/bubble_8', cc.SpriteFrame, function(err, spriteframe){
+                                ball.spriteFrame = spriteframe;
+                            }) ;
+                        }else if(num.toString().length == 3) {
+                            cc.loader.loadRes('images/gameUI/bubble_9', cc.SpriteFrame, function(err, spriteframe){
+                                ball.spriteFrame = spriteframe;
+                            });
+                        }
+                    break;
+
+                }
+            }
+        });
+        return ballNode;
+    }
 
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
@@ -117,26 +173,40 @@ export default class GamePanel extends BaseUI {
     }
 
     decompose(num: number) {
-        var index = 0;
-        var YZ = [];
-        var i=2;
-        
-		if (num==1||num==2||num==3) {
-			YZ[index++]=num;
-			return YZ;
-		}
-		for(;i<=num/2;i++){
-			if(num%i==0){
-				YZ[index++]=i;//每得到一个质因数就存进YZ
-				this.decompose(num/i);
-				break;
-			}
-		}
-		if (i>num/2) {
-				YZ[index++]=num;//存放最后一次结果
-			}
-        
-       return YZ;
+          var num1 = num;
+            var li = [];
+            var i = 1;
+            while (i<num1) {
+                i += 1;
+                while (num1 % i == 0) {
+                    num1/=i;
+                    li.push(i);
+                }
+            }
+        var str = String(num) + '  =  ';
+        for(let i = 0; i < li.length; i++) {
+            if(i < li.length - 1) {
+                str += String(li[i]) + '  *  ';
+            }else {
+                str += String(li[i]) + '  =  ';
+            }
+        }
+            this.numberStr.getComponent(cc.Label).string = str;
+            var x = this.numberStr.node.width + this.numberStr.node.x;
+            var y = this.numberStr.node.y;
+            var space = 150;
+            for(let i = 0; i < li.length; i++) {
+                let item = this.createBall(li[i]);
+                if(i%2) {
+                    item.x = x + 150 * (i + 2);
+                }else {
+                    item.x = x + 150 * (i + 1);
+                }
+                item.y = y;
+                item.parent = this.node;
+            }
+
+            cc.log(str);
     }
 
     openClock() {
@@ -152,8 +222,13 @@ export default class GamePanel extends BaseUI {
             if(second < 10) {
                 this.secStr = "0" + this.secStr;
             }
+            this.minuteHand.rotation = minutes * 6;
+            this.secondHand.rotation = second * 6;
             this.minutes.getComponent(cc.Label).string = this.minStr;
             this.second.getComponent(cc.Label).string = this.secStr;
+            if(minutes == 60) {
+                clearInterval(this.intervalIndex)
+            }
         }.bind(this), 1000);
     }
 

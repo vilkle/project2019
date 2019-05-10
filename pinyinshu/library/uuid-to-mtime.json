@@ -659,11 +659,6 @@
     "meta": 1556885730000,
     "relativePath": "resources/images/gameUI"
   },
-  "b2bbd569-e4bd-458d-9c9d-4619b89b5b32": {
-    "asset": 1557041793000,
-    "meta": 1557199138408,
-    "relativePath": "resources/prefab/ui/Item/picItem.prefab"
-  },
   "16d7a567-994d-4f42-ba45-8fd3f5171bdb": {
     "asset": 1557041789000,
     "meta": 1557199139363,
@@ -695,8 +690,8 @@
     "relativePath": "resources/audio/begin.mp3"
   },
   "a75e94dc-05bd-44a5-bdab-af7a2bed76a7": {
-    "asset": 1557469080857,
-    "meta": 1557469080867,
+    "asset": 1557479538032,
+    "meta": 1557479538045,
     "relativePath": "scene/Teacher.fire"
   },
   "04f623a9-6e58-4c61-bebe-00e23ea0e1eb": {
@@ -728,11 +723,6 @@
     "asset": 1557315957083,
     "meta": 1557316098771,
     "relativePath": "scripts/UI/panel/SubmissionPanel.ts"
-  },
-  "32f855fb-ac45-4a70-9924-652cc84cf88d": {
-    "asset": 1557475752438,
-    "meta": 1557475752454,
-    "relativePath": "resources/prefab/ui/panel/GamePanel.prefab"
   },
   "70c27101-9967-4f25-8b60-310f5dc8f652": {
     "asset": 1557405642659,
@@ -929,29 +919,34 @@
     "meta": 1557457711815,
     "relativePath": "resources/images/gameUI/submit_pressed.png"
   },
+  "64b4d5b6-3a99-4579-bc1a-3d7cbd104914": {
+    "asset": 1557486706217,
+    "meta": 1557486706230,
+    "relativePath": "resources/prefab/ui/Item/ballNode.prefab"
+  },
   "fe8050ea-212d-4f7c-a1d4-4a4431f07ccf": {
-    "asset": 1557468263765,
-    "meta": 1557468398094,
+    "asset": 1557479927837,
+    "meta": 1557479985868,
     "relativePath": "resources/images/gameUI/clock_h.png"
   },
-  "a453d2dd-169f-45ac-a714-ed953b47b482": {
-    "asset": 1557468352717,
-    "meta": 1557468398098,
-    "relativePath": "resources/images/gameUI/bg.png"
-  },
   "be30f665-3484-4369-8c79-0325684ecc9d": {
-    "asset": 1557468256772,
-    "meta": 1557468398107,
+    "asset": 1557479918483,
+    "meta": 1557479985890,
     "relativePath": "resources/images/gameUI/clock_m.png"
   },
-  "64b4d5b6-3a99-4579-bc1a-3d7cbd104914": {
-    "asset": 1557474773892,
-    "meta": 1557474773900,
-    "relativePath": "resources/prefab/ui/panel/ballNode.prefab"
+  "a453d2dd-169f-45ac-a714-ed953b47b482": {
+    "asset": 1557479936726,
+    "meta": 1557479985960,
+    "relativePath": "resources/images/gameUI/bg.png"
+  },
+  "32f855fb-ac45-4a70-9924-652cc84cf88d": {
+    "asset": 1557488622269,
+    "meta": 1557488622287,
+    "relativePath": "resources/prefab/ui/panel/GamePanel.prefab"
   },
   "246c238e-9069-4a1e-86ba-64939510723e": {
-    "asset": 1557475677281,
-    "meta": 1557475682203,
+    "asset": 1557488619410,
+    "meta": 1557488621706,
     "relativePath": "scripts/UI/panel/GamePanel.ts"
   }
 }
