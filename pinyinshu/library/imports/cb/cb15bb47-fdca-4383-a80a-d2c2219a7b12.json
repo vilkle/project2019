@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "button_normal",
+    "texture": "ddfe375a-9a08-4cdd-8d71-5efee124ce9c",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      156,
+      122
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      156,
+      122
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

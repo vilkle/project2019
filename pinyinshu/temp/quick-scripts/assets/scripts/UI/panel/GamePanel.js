@@ -14,9 +14,7 @@ var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GamePanel = /** @class */ (function (_super) {
     __extends(GamePanel, _super);
     function GamePanel() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.YZ = new Array();
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     GamePanel_1 = GamePanel;
     GamePanel.prototype.onLoad = function () {
@@ -25,7 +23,18 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.start = function () {
         this.openClock();
-        this.decompose(DaAnData_1.DaAnData.getInstance().number);
+        var StrArr = String(DaAnData_1.DaAnData.getInstance().number) + '=';
+        var YZ = this.decompose(DaAnData_1.DaAnData.getInstance().number);
+        cc.log(YZ);
+        for (var i = 0; i < YZ.length; i++) {
+            if (i < YZ.length - 1) {
+                StrArr = StrArr + String(YZ[i]) + '*';
+            }
+            else {
+                StrArr = StrArr + String(YZ[i]);
+            }
+        }
+        this.numberStr.getComponent(cc.Label).string = StrArr;
     };
     GamePanel.prototype.onDestroy = function () {
     };
@@ -60,35 +69,24 @@ var GamePanel = /** @class */ (function (_super) {
         }.bind(this), null);
     };
     GamePanel.prototype.decompose = function (num) {
-        DaAnData_1.DaAnData.getInstance().number = 266;
         var index = 0;
+        var YZ = [];
         var i = 2;
-        var a = String(DaAnData_1.DaAnData.getInstance().number) + '=';
         if (num == 1 || num == 2 || num == 3) {
-            this.YZ[index++] = num;
-            return this.YZ;
+            YZ[index++] = num;
+            return YZ;
         }
         for (; i <= num / 2; i++) {
             if (num % i == 0) {
-                this.YZ[index++] = i; //每得到一个质因数就存进YZ
+                YZ[index++] = i; //每得到一个质因数就存进YZ
                 this.decompose(num / i);
                 break;
             }
         }
         if (i > num / 2) {
-            this.YZ[index++] = num; //存放最后一次结果
+            YZ[index++] = num; //存放最后一次结果
         }
-        var StrArr = '';
-        for (var i_1 = 0; i_1 < this.YZ.length; i_1++) {
-            if (i_1 < this.YZ.length - 1) {
-                StrArr = StrArr + String(this.YZ[i_1]) + '*';
-            }
-            else {
-                StrArr = StrArr + String(this.YZ[i_1]);
-            }
-        }
-        cc.log(this.YZ);
-        this.numberStr.getComponent(cc.Label).string = StrArr;
+        return YZ;
     };
     GamePanel.prototype.openClock = function () {
         this.intervalIndex = setInterval(function () {
@@ -130,9 +128,6 @@ var GamePanel = /** @class */ (function (_super) {
     ], GamePanel.prototype, "queren", void 0);
     __decorate([
         property(cc.Button)
-    ], GamePanel.prototype, "quxiao", void 0);
-    __decorate([
-        property(cc.Button)
     ], GamePanel.prototype, "chongzhi", void 0);
     __decorate([
         property(cc.Button)
@@ -146,6 +141,21 @@ var GamePanel = /** @class */ (function (_super) {
     __decorate([
         property(cc.Label)
     ], GamePanel.prototype, "numberStr", void 0);
+    __decorate([
+        property(cc.Sprite)
+    ], GamePanel.prototype, "bubble_none1", void 0);
+    __decorate([
+        property(cc.Sprite)
+    ], GamePanel.prototype, "bubble_none2", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GamePanel.prototype, "gunNode", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GamePanel.prototype, "garbageNode", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GamePanel.prototype, "mask", void 0);
     GamePanel = GamePanel_1 = __decorate([
         ccclass
     ], GamePanel);

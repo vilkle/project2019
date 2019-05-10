@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "submit_disabled",
+    "texture": "918ebfda-c46e-4975-9d36-ce70c5ef0b08",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      276,
+      132
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      276,
+      132
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

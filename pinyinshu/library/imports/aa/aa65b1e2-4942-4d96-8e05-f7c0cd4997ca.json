@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bins",
+    "texture": "b1f0e9e8-676a-415e-8a92-f4bf3bb32d81",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      146,
+      165
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      146,
+      165
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

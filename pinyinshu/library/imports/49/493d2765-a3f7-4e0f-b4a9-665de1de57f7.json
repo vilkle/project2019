@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bubble_move_bg",
+    "texture": "8bac0d62-cfb1-453c-a22a-43021f8c5694",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      164,
+      164
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      164,
+      164
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

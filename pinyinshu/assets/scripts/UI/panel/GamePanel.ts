@@ -24,8 +24,6 @@ export default class GamePanel extends BaseUI {
     @property(cc.Button)
     queren : cc.Button;
     @property(cc.Button)
-    quxiao : cc.Button;
-    @property(cc.Button)
     chongzhi : cc.Button;
     @property(cc.Button)
     tijiao : cc.Button;
@@ -35,13 +33,23 @@ export default class GamePanel extends BaseUI {
     second : cc.Label;
     @property(cc.Label)
     numberStr : cc.Label;
+    @property(cc.Sprite)
+    bubble_none1 : cc.Sprite;
+    @property(cc.Sprite)
+    bubble_none2 : cc.Sprite;
+    @property(cc.Node)
+    gunNode : cc.Node;
+    @property(cc.Node)
+    garbageNode : cc.Node;
+    @property(cc.Node)
+    mask : cc.Node;
    
     isStart : boolean;
     timer : number;
     intervalIndex : number;
     minStr : string;
     secStr : string;
-    YZ : Array<number> = new Array<number>();
+   
      onLoad () {
         this.isTecher();
         this.initData();
@@ -49,7 +57,20 @@ export default class GamePanel extends BaseUI {
 
     start() {
         this.openClock();
-        this.decompose(DaAnData.getInstance().number);
+       
+        var StrArr = String(DaAnData.getInstance().number) + '=';
+        var YZ =  this.decompose(DaAnData.getInstance().number);
+        cc.log(YZ);
+        for(let i = 0; i < YZ.length; i++) {
+            if(i < YZ.length - 1) {
+                StrArr = StrArr + String(YZ[i]) + '*';
+            }else {
+                StrArr = StrArr + String(YZ[i]);
+            }
+        }
+        this.numberStr.getComponent(cc.Label).string = StrArr;
+
+
     }
    
 
@@ -96,35 +117,26 @@ export default class GamePanel extends BaseUI {
     }
 
     decompose(num: number) {
-        DaAnData.getInstance().number = 266;
         var index = 0;
+        var YZ = [];
         var i=2;
-        var a = String(DaAnData.getInstance().number) + '=';
+        
 		if (num==1||num==2||num==3) {
-			this.YZ[index++]=num;
-			return this.YZ;
+			YZ[index++]=num;
+			return YZ;
 		}
 		for(;i<=num/2;i++){
 			if(num%i==0){
-				this.YZ[index++]=i;//每得到一个质因数就存进YZ
+				YZ[index++]=i;//每得到一个质因数就存进YZ
 				this.decompose(num/i);
 				break;
 			}
 		}
 		if (i>num/2) {
-				this.YZ[index++]=num;//存放最后一次结果
+				YZ[index++]=num;//存放最后一次结果
 			}
-        var StrArr = '';
-        for(let i = 0; i < this.YZ.length; i++) {
-            if(i < this.YZ.length - 1) {
-                StrArr = StrArr + String(this.YZ[i]) + '*';
-            }else {
-                StrArr = StrArr + String(this.YZ[i]);
-            }
-        }
-        cc.log(this.YZ);
-
-        this.numberStr.getComponent(cc.Label).string = StrArr;
+        
+       return YZ;
     }
 
     openClock() {

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bubble_gun_bg",
+    "texture": "bb6d243e-b177-4f73-a321-bc528ad9424e",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      170,
+      170
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      170,
+      170
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
