@@ -939,14 +939,19 @@
     "meta": 1557573982908,
     "relativePath": "scripts\\Data\\ConstValue.ts"
   },
-  "246c238e-9069-4a1e-86ba-64939510723e": {
-    "asset": 1557592760531,
-    "meta": 1557592763090,
-    "relativePath": "scripts\\UI\\panel\\GamePanel.ts"
+  "d35b6fbb-65ff-41dd-a0de-21177fb6e712": {
+    "asset": 1557673545484,
+    "meta": 1557673545499,
+    "relativePath": "resources\\prefab\\ui\\Item\\progressNode.prefab"
   },
   "32f855fb-ac45-4a70-9924-652cc84cf88d": {
-    "asset": 1557592764360,
-    "meta": 1557592871451,
+    "asset": 1557676846483,
+    "meta": 1557676846513,
     "relativePath": "resources\\prefab\\ui\\panel\\GamePanel.prefab"
+  },
+  "246c238e-9069-4a1e-86ba-64939510723e": {
+    "asset": 1557676842035,
+    "meta": 1557676844912,
+    "relativePath": "scripts\\UI\\panel\\GamePanel.ts"
   }
 }

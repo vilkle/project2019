@@ -18,23 +18,23 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 480.32501220703125,
+                "height": 480.6125183105469,
                 "type": "panel",
-                "width": 353.82501220703125
+                "width": 354.07501220703125
               },
               {
                 "active": 0,
                 "children": [
                   "assets"
                 ],
-                "height": 517.2750244140625,
+                "height": 518.5875244140625,
                 "type": "panel",
-                "width": 353.82501220703125
+                "width": 354.07501220703125
               }
             ],
-            "height": 1000.6000366210938,
+            "height": 1002.2000122070312,
             "type": "dock-v",
-            "width": 353.82501220703125
+            "width": 354.07501220703125
           },
           {
             "children": [
@@ -45,23 +45,23 @@
                     "children": [
                       "scene"
                     ],
-                    "height": 731.4375,
+                    "height": 733.1375122070312,
                     "type": "panel",
-                    "width": 927.4125366210938
+                    "width": 928.1875
                   },
                   {
                     "active": 0,
                     "children": [
                       "node-library"
                     ],
-                    "height": 731.4375,
+                    "height": 733.1375122070312,
                     "type": "panel",
-                    "width": 264
+                    "width": 264.0500183105469
                   }
                 ],
-                "height": 731.4375,
+                "height": 733.1375122070312,
                 "type": "dock-h",
-                "width": 1194.4124755859375
+                "width": 1195.237548828125
               },
               {
                 "active": 0,
@@ -69,23 +69,23 @@
                   "console",
                   "timeline"
                 ],
-                "height": 266.1625061035156,
+                "height": 266.0500183105469,
                 "type": "panel",
-                "width": 1194.4124755859375
+                "width": 1195.237548828125
               }
             ],
-            "height": 1000.6000366210938,
+            "height": 1002.2000122070312,
             "type": "dock-v",
-            "width": 1194.4124755859375
+            "width": 1195.237548828125
           },
           {
             "active": 0,
             "children": [
               "inspector"
             ],
-            "height": 1000.6000366210938,
+            "height": 1002.2000122070312,
             "type": "panel",
-            "width": 487.76251220703125
+            "width": 489.1000061035156
           }
         ],
         "type": "dock-h"

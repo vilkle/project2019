@@ -8,6 +8,7 @@ var DaAnData_1 = require("../../Data/DaAnData");
 var NetWork_1 = require("../../Http/NetWork");
 var ConstValue_1 = require("../../Data/ConstValue");
 var UIManager_1 = require("../../Manager/UIManager");
+var SubmissionPanel_1 = require("./SubmissionPanel");
 var ListenerManager_1 = require("../../Manager/ListenerManager");
 var ListenerType_1 = require("../../Data/ListenerType");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -17,7 +18,8 @@ var GamePanel = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.decomposeArr = Array();
         _this.answerArr = Array();
-        _this.li = Array();
+        _this.progressArr = Array();
+        _this.li = Array(); //需要重置
         return _this;
     }
     GamePanel_1 = GamePanel;
@@ -45,6 +47,55 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.initData = function () {
         this.timer = 0;
         this.decoposeNum = DaAnData_1.DaAnData.getInstance().number;
+        this.checkpoint = 3;
+        this.checkpointsNum = 3; //DaAnData.getInstance().checkpointsNum;
+        this.defaultValue();
+        this.initProgress(this.checkpointsNum);
+    };
+    GamePanel.prototype.initProgress = function (checkpointsNum) {
+        var long = 200;
+        cc.loader.loadRes('prefab/ui/Item/progressNode', function (err, prefab) {
+            if (!err) {
+                for (var i = 0; i < checkpointsNum; i++) {
+                    var progressNode = cc.instantiate(prefab);
+                    this.progressArr[i] = progressNode;
+                    var y = 350 - long * i;
+                    progressNode.setPosition(cc.v2(-900, y));
+                    progressNode.parent = this.node;
+                    progressNode.getChildByName('ball').getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
+                    progressNode.getChildByName('bubble').getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
+                    progressNode.getChildByName('whiteball').getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
+                    if (i == checkpointsNum - 1) {
+                        progressNode.getChildByName('line').active = false;
+                        progressNode.getChildByName('lineup').active = false;
+                    }
+                }
+                this.setprogress(this.checkpoint);
+            }
+        }.bind(this));
+    };
+    GamePanel.prototype.setprogress = function (checkpoints) {
+        for (var i = 0; i < this.progressArr.length; i++) {
+            if (i < checkpoints - 1) {
+                this.progressArr[i].getChildByName('bubble').active = true;
+                if (this.progressArr.length > 1) {
+                    this.progressArr[i].getChildByName('lineup').active = true;
+                }
+            }
+            else if (i == checkpoints - 1) {
+                this.progressArr[i].getChildByName('bubble').active = true;
+                this.progressArr[i].getChildByName('whiteball').active = true;
+            }
+            else {
+                this.progressArr[i].getChildByName('bubble').active = false;
+                this.progressArr[i].getChildByName('whiteball').active = false;
+            }
+        }
+    };
+    GamePanel.prototype.defaultValue = function () {
+        var parent = this.node.getChildByName('1');
+        var pos = parent.getPosition();
+        this.createBall(1, pos.x, pos.y, parent, true);
     };
     GamePanel.prototype.createBall = function (num, x, y, parent, isAnswer) {
         var ballNode;
@@ -164,12 +215,10 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
         this.numberStr.getComponent(cc.Label).string = str;
-        cc.log(str);
     };
     GamePanel.prototype.createDecomposeBall = function () {
         var x = this.numberStr.node.getContentSize().width + 100;
         var y = 0;
-        cc.log(x, "====", y);
         var space = 150;
         for (var i = 0; i < this.li.length; i++) {
             cc.log(this.li[i]);
@@ -392,6 +441,32 @@ var GamePanel = /** @class */ (function (_super) {
         var pos = cc.v2(posx, posy);
         return pos;
     };
+    GamePanel.prototype.reset = function () {
+        //重置时间
+        this.closeClock();
+        this.minuteHand.rotation = 0;
+        this.secondHand.rotation = 0;
+        this.timer = 0;
+        //销毁实例
+        for (var i = 0; i < this.decomposeArr.length; i++) {
+            this.decompose[i].destroy();
+        }
+        for (var i = 0; i < this.answerArr.length; i++) {
+            this.answerArr[i].destroy();
+        }
+        //清空数组
+        this.decomposeArr = [];
+        this.answerArr = [];
+        //重置ui
+        this.bubble.active = false;
+        this.bubble_1.opacity = 0;
+        this.bubble_2.opacity = 0;
+        this.gunNode.getChildByName('ballNode').opacity = 0;
+        this.bullet.opacity = 0;
+        this.openClock();
+    };
+    GamePanel.prototype.isRight = function () {
+    };
     GamePanel.prototype.openClock = function () {
         this.intervalIndex = setInterval(function () {
             this.timer = this.timer + 1;
@@ -415,14 +490,14 @@ var GamePanel = /** @class */ (function (_super) {
         }.bind(this), 1000);
     };
     GamePanel.prototype.closeClock = function () {
+        clearInterval(this.intervalIndex);
     };
     GamePanel.prototype.backButton = function () {
         UIManager_1.UIManager.getInstance().closeUI(GamePanel_1);
         ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 0 });
     };
     GamePanel.prototype.submitButton = function () {
-        this.decompose(DaAnData_1.DaAnData.getInstance().number);
-        //UIManager.getInstance().openUI(SubmissionPanel);
+        UIManager_1.UIManager.getInstance().openUI(SubmissionPanel_1.default);
     };
     var GamePanel_1;
     GamePanel.className = "GamePanel";
@@ -483,6 +558,9 @@ var GamePanel = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], GamePanel.prototype, "mask", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GamePanel.prototype, "progressNode", void 0);
     __decorate([
         property(cc.BitmapFont)
     ], GamePanel.prototype, "font", void 0);

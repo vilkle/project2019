@@ -55,14 +55,17 @@ export default class GamePanel extends BaseUI {
     garbageNode : cc.Node;
     @property(cc.Node)
     mask : cc.Node;
+    @property(cc.Node)
+    progressNode : cc.Node;
     @property(cc.BitmapFont)
     font : cc.BitmapFont;
     decomposeArr : Array<cc.Node> = Array<cc.Node>();
     answerArr : Array<cc.Node> = Array<cc.Node>();
-    li : Array<number> = Array<number>();
+    progressArr : Array<cc.Node> = Array<cc.Node>();
+    li : Array<number> = Array<number>();   //需要重置
     isStart : boolean;
     timer : number;
-    decoposeNum : number;
+    decoposeNum : number;    //需要重置
     intervalIndex : number;
     minStr : string;
     secStr : string;
@@ -75,7 +78,8 @@ export default class GamePanel extends BaseUI {
     spriteframe7 : cc.SpriteFrame;
     spriteframe8 : cc.SpriteFrame;
     spriteframe9 : cc.SpriteFrame;
-
+    checkpointsNum : number;
+    checkpoint : number;
 
      onLoad () {
          DaAnData.getInstance().checkpointsNum = 3;
@@ -111,8 +115,61 @@ export default class GamePanel extends BaseUI {
     initData() {
         this.timer = 0;
         this.decoposeNum = DaAnData.getInstance().number;
+        this.checkpoint = 3;
+        this.checkpointsNum = 3;//DaAnData.getInstance().checkpointsNum;
+        this.defaultValue();
+        this.initProgress(this.checkpointsNum);
     }
- 
+    
+    initProgress(checkpointsNum : number) {
+        var long = 200;
+        
+        cc.loader.loadRes('prefab/ui/Item/progressNode',function(err, prefab){
+            if(!err) {
+                for(let i = 0; i < checkpointsNum; i++) {
+                    let progressNode = cc.instantiate(prefab);
+                    this.progressArr[i] = progressNode;
+                    let y = 350 - long * i;
+                    progressNode.setPosition(cc.v2(-900, y));
+                    progressNode.parent = this.node;
+                    progressNode.getChildByName('ball').getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
+                    progressNode.getChildByName('bubble').getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
+                    progressNode.getChildByName('whiteball').getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
+                    if(i == checkpointsNum - 1) {
+                        progressNode.getChildByName('line').active = false;
+                        progressNode.getChildByName('lineup').active = false;
+                    }
+                }
+                this.setprogress(this.checkpoint);
+            }
+        }.bind(this));
+
+    }
+
+    setprogress(checkpoints : number) {
+       for(let i = 0; i < this.progressArr.length; i++) {
+           if(i < checkpoints - 1) {
+                this.progressArr[i].getChildByName('bubble').active = true;
+                if(this.progressArr.length > 1) {
+                    this.progressArr[i].getChildByName('lineup').active = true;
+                }
+           }else if(i == checkpoints - 1) {
+                this.progressArr[i].getChildByName('bubble').active = true;
+                this.progressArr[i].getChildByName('whiteball').active = true;
+           }else {
+                this.progressArr[i].getChildByName('bubble').active = false;
+                this.progressArr[i].getChildByName('whiteball').active = false;
+           }
+           
+       }
+    }
+
+    defaultValue() {
+        var parent = this.node.getChildByName('1');
+        var pos = parent.getPosition();
+        this.createBall(1, pos.x, pos.y, parent, true);
+    }
+
     createBall(num : number, x : number, y : number, parent : cc.Node, isAnswer : boolean){
         var ballNode : cc.Node;
         cc.loader.loadRes('prefab/ui/Item/ballNode', function(err, prefab){
@@ -232,13 +289,11 @@ export default class GamePanel extends BaseUI {
             }
         }
             this.numberStr.getComponent(cc.Label).string = str;
-            cc.log(str);
     }
 
     createDecomposeBall() {
         var x = this.numberStr.node.getContentSize().width + 100;
         var y = 0;
-        cc.log(x,"====", y)
         var space = 150;
       
         for(let i = 0; i < this.li.length; i++) {
@@ -466,6 +521,35 @@ export default class GamePanel extends BaseUI {
         return pos;
     }
    
+    reset() {
+        //重置时间
+        this.closeClock();
+        this.minuteHand.rotation = 0;
+        this.secondHand.rotation = 0;
+        this.timer = 0;
+        //销毁实例
+        for(let i = 0; i < this.decomposeArr.length;  i++) {
+            this.decompose[i].destroy();
+        }
+        for(let i = 0; i < this.answerArr.length; i++) {
+            this.answerArr[i].destroy();
+        }
+        //清空数组
+        this.decomposeArr = [];
+        this.answerArr = [];
+        //重置ui
+        this.bubble.active = false;
+        this.bubble_1.opacity = 0;
+        this.bubble_2.opacity = 0;
+        this.gunNode.getChildByName('ballNode').opacity = 0;
+        this.bullet.opacity = 0;
+
+        this.openClock();
+    }
+
+    isRight() {
+
+    }
 
     openClock() {
         this.intervalIndex = setInterval(function(){
@@ -491,7 +575,7 @@ export default class GamePanel extends BaseUI {
     }
 
     closeClock() {
-
+        clearInterval(this.intervalIndex);
     }
 
     backButton(){
@@ -499,6 +583,5 @@ export default class GamePanel extends BaseUI {
         ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0}); 
     }
     submitButton(){
-        this.decompose(DaAnData.getInstance().number);
-        //UIManager.getInstance().openUI(SubmissionPanel);
+        UIManager.getInstance().openUI(SubmissionPanel);
     }
