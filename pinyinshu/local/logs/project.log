@@ -1,61 +1,68 @@
-2019-05-12T14:28:53.173Z - normal: Load ~/.CocosCreator/settings.json
-2019-05-12T14:28:53.173Z - normal: checking language setting...
-2019-05-12T14:28:53.173Z - normal: Language: zh
-2019-05-12T14:28:55.016Z - success: protocol editor-framework registered
-2019-05-12T14:28:55.016Z - success: protocol app registered
-2019-05-12T14:28:55.016Z - success: protocol theme registered
-2019-05-12T14:28:55.016Z - success: protocol packages registered
-2019-05-12T14:28:55.016Z - success: protocol unpack registerred
-2019-05-12T14:28:55.016Z - success: protocol disable-commonjs registerred
-2019-05-12T14:28:55.126Z - normal: connected!
-2019-05-12T14:28:55.126Z - normal: Check project C:\Users\machao\Desktop\hub\pinyinshu
-2019-05-12T14:28:55.126Z - normal: Initializing project C:\Users\machao\Desktop\hub\pinyinshu
-2019-05-12T14:28:55.157Z - normal: Initializing Cocos2d
-2019-05-12T14:28:56.126Z - normal: Initializing Asset Database
-2019-05-12T14:28:56.251Z - success: protocol uuid registerred
-2019-05-12T14:28:56.251Z - success: protocol db registerred
-2019-05-12T14:28:56.251Z - success: protocol thumbnail registerred
-2019-05-12T14:28:56.251Z - normal: Loading editor/builtin packages
-2019-05-12T14:28:56.455Z - success: assets loaded
-2019-05-12T14:28:56.455Z - success: builder loaded
-2019-05-12T14:28:56.471Z - success: cocos-analytics loaded
-2019-05-12T14:28:56.471Z - success: console loaded
-2019-05-12T14:28:56.502Z - success: fb-instant-games loaded
-2019-05-12T14:28:56.518Z - success: google-instant-games loaded
-2019-05-12T14:28:56.518Z - success: hierarchy loaded
-2019-05-12T14:28:56.518Z - success: inspector loaded
-2019-05-12T14:28:56.518Z - success: keystore loaded
-2019-05-12T14:28:56.534Z - success: node-library loaded
-2019-05-12T14:28:56.534Z - success: package-asset loaded
-2019-05-12T14:28:56.534Z - success: preferences loaded
-2019-05-12T14:28:56.540Z - success: project-exporter loaded
-2019-05-12T14:28:56.556Z - success: project-importer loaded
-2019-05-12T14:28:56.556Z - success: project-settings loaded
-2019-05-12T14:28:56.556Z - success: ui-kit loaded
-2019-05-12T14:28:56.556Z - success: scene loaded
-2019-05-12T14:28:56.556Z - success: sprite-editor loaded
-2019-05-12T14:28:56.571Z - success: store loaded
-2019-05-12T14:28:56.571Z - success: timeline loaded
-2019-05-12T14:28:56.571Z - normal: Loading builtin packages
-2019-05-12T14:28:56.571Z - success: asset-db-debugger loaded
-2019-05-12T14:28:56.587Z - success: code-editor loaded
-2019-05-12T14:28:56.587Z - success: color-picker loaded
-2019-05-12T14:28:56.703Z - success: google-play-instant loaded
-2019-05-12T14:28:56.703Z - success: jsb-adapter loaded
-2019-05-12T14:28:56.703Z - success: package-manager loaded
-2019-05-12T14:28:56.841Z - success: qqplay-adapter loaded
-2019-05-12T14:28:56.857Z - success: sdkbox loaded
-2019-05-12T14:28:56.857Z - success: tester loaded
-2019-05-12T14:28:56.857Z - success: ui-grid loaded
-2019-05-12T14:28:56.857Z - success: ui-kit-preview-extra loaded
-2019-05-12T14:28:56.872Z - success: ui-kit-preview loaded
-2019-05-12T14:28:56.872Z - success: ui-tree loaded
-2019-05-12T14:28:56.872Z - success: weapp-adapter loaded
-2019-05-12T14:28:58.323Z - normal: Loading packages
-2019-05-12T14:28:58.338Z - normal: Watching packages
-2019-05-12T14:28:59.178Z - normal: Run Application
-2019-05-12T14:29:00.445Z - success: preview server running at http://localhost:7456
-2019-05-12T14:29:09.790Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:28.767Z - normal: Load ~/.CocosCreator/settings.json
+2019-05-13T04:49:28.858Z - normal: Initializing Asset Database
+2019-05-13T04:49:28.861Z - normal: checking language setting...
+2019-05-13T04:49:28.861Z - normal: Language: zh
+2019-05-13T04:49:29.953Z - success: preview server running at http://localhost:7456
+2019-05-13T04:49:30.011Z - success: protocol editor-framework registered
+2019-05-13T04:49:30.011Z - success: protocol app registered
+2019-05-13T04:49:30.011Z - success: protocol theme registered
+2019-05-13T04:49:30.011Z - success: protocol packages registered
+2019-05-13T04:49:30.011Z - success: protocol uuid registerred
+2019-05-13T04:49:30.012Z - success: protocol db registerred
+2019-05-13T04:49:30.012Z - success: protocol thumbnail registerred
+2019-05-13T04:49:30.012Z - success: protocol unpack registerred
+2019-05-13T04:49:30.012Z - success: protocol disable-commonjs registerred
+2019-05-13T04:49:30.103Z - normal: connected!
+2019-05-13T04:49:30.106Z - normal: Check project /Users/xes/Desktop/hub/pinyinshu
+2019-05-13T04:49:30.108Z - normal: Initializing project /Users/xes/Desktop/hub/pinyinshu
+2019-05-13T04:49:30.536Z - normal: Initializing Cocos2d
+2019-05-13T04:49:31.407Z - normal: Initializing engine extends
+2019-05-13T04:49:31.446Z - success: asset-db-debugger loaded
+2019-05-13T04:49:31.447Z - success: baidu-adapter loaded
+2019-05-13T04:49:31.448Z - success: color-picker loaded
+2019-05-13T04:49:31.535Z - success: fb-audience-network loaded
+2019-05-13T04:49:31.605Z - success: fb-live-stream loaded
+2019-05-13T04:49:31.608Z - success: google-play-instant loaded
+2019-05-13T04:49:31.614Z - success: huawei-runtime loaded
+2019-05-13T04:49:31.615Z - success: jsb-adapter loaded
+2019-05-13T04:49:31.621Z - success: oppo-runtime loaded
+2019-05-13T04:49:31.663Z - success: package-manager loaded
+2019-05-13T04:49:31.822Z - success: qqplay-adapter loaded
+2019-05-13T04:49:31.824Z - success: runtime-dev-tools loaded
+2019-05-13T04:49:31.850Z - success: sdkbox loaded
+2019-05-13T04:49:31.879Z - success: tester loaded
+2019-05-13T04:49:31.900Z - success: ui-grid loaded
+2019-05-13T04:49:31.921Z - success: ui-kit-preview-extra loaded
+2019-05-13T04:49:31.950Z - success: ui-kit-preview loaded
+2019-05-13T04:49:31.970Z - success: ui-kit loaded
+2019-05-13T04:49:31.992Z - success: ui-tree loaded
+2019-05-13T04:49:31.997Z - success: vivo-runtime loaded
+2019-05-13T04:49:31.999Z - success: weapp-adapter loaded
+2019-05-13T04:49:32.059Z - success: assets loaded
+2019-05-13T04:49:32.077Z - success: builder loaded
+2019-05-13T04:49:32.393Z - success: cocos-services loaded
+2019-05-13T04:49:32.410Z - success: console loaded
+2019-05-13T04:49:32.451Z - success: fb-instant-games loaded
+2019-05-13T04:49:32.457Z - success: google-instant-games loaded
+2019-05-13T04:49:32.475Z - success: hierarchy loaded
+2019-05-13T04:49:32.492Z - success: inspector loaded
+2019-05-13T04:49:32.493Z - success: keystore loaded
+2019-05-13T04:49:32.511Z - success: node-library loaded
+2019-05-13T04:49:32.513Z - success: package-asset loaded
+2019-05-13T04:49:32.547Z - success: preferences loaded
+2019-05-13T04:49:32.562Z - success: project-exporter loaded
+2019-05-13T04:49:32.579Z - success: project-importer loaded
+2019-05-13T04:49:32.595Z - success: project-settings loaded
+2019-05-13T04:49:32.611Z - success: scene loaded
+2019-05-13T04:49:32.614Z - success: simulator-debugger loaded
+2019-05-13T04:49:32.620Z - success: sprite-editor loaded
+2019-05-13T04:49:32.642Z - success: store loaded
+2019-05-13T04:49:32.658Z - success: timeline loaded
+2019-05-13T04:49:33.846Z - info: Cocos Services load base data!
+2019-05-13T04:49:34.502Z - normal: Loading packages
+2019-05-13T04:49:34.508Z - normal: Watching packages
+2019-05-13T04:49:34.627Z - normal: Run Application
+2019-05-13T04:49:40.465Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -63,7 +70,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T14:29:09.790Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.466Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -71,7 +78,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T14:29:09.791Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.468Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -79,7 +86,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T14:29:09.791Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.468Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -87,7 +94,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T14:29:09.791Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.469Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -95,7 +102,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T14:29:09.792Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.469Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -103,7 +110,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T14:29:09.792Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.470Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -111,7 +118,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T14:29:09.792Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.470Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -119,7 +126,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T14:29:09.793Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.471Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -127,7 +134,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T14:29:09.795Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.471Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -135,7 +142,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T14:29:09.796Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.471Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -143,7 +150,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T14:29:09.796Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.472Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -151,7 +158,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T14:29:09.796Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.472Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -159,7 +166,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T14:29:09.797Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.472Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -167,7 +174,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T14:29:09.797Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.472Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -175,7 +182,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T14:29:09.798Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.473Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -183,7 +190,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T14:29:09.798Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.473Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -191,7 +198,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T14:29:09.799Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.473Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -199,7 +206,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T14:29:09.799Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.474Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -207,7 +214,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T14:29:09.800Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:49:40.474Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberNode
+2019-05-13T04:49:40.474Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -215,7 +230,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T14:29:09.800Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:49:40.475Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -223,7 +238,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T14:29:09.800Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:49:40.475Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -231,7 +246,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T14:29:09.800Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:49:40.475Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -239,7 +254,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T14:29:09.801Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:49:40.476Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -247,7 +262,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T14:47:36.258Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.758Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -255,7 +270,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T14:47:36.261Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.762Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -263,7 +278,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T14:47:36.261Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.762Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -271,7 +286,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T14:47:36.262Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.763Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -279,7 +294,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T14:47:36.262Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.763Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -287,7 +302,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T14:47:36.262Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.764Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -295,7 +310,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T14:47:36.262Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.769Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -303,7 +318,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T14:47:36.263Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.770Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -311,7 +326,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T14:47:36.263Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.770Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -319,7 +334,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T14:47:36.263Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.771Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -327,7 +342,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T14:47:36.263Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.772Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -335,7 +350,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T14:47:36.263Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.772Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -343,7 +358,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T14:47:36.264Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.772Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -351,7 +366,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T14:47:36.264Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.773Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -359,7 +374,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T14:47:36.264Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.773Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -367,7 +382,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T14:47:36.264Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.773Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -375,7 +390,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T14:47:36.264Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.774Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -383,7 +398,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T14:47:36.265Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.774Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -391,7 +406,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T14:47:36.265Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.774Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -399,15 +414,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T14:47:36.265Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:54:20.775Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T14:47:36.265Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T04:54:20.775Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -415,7 +430,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T14:47:36.270Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:54:20.776Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -423,7 +438,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T14:47:36.271Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:54:20.777Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -431,7 +446,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T14:47:36.272Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:54:20.778Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -439,7 +454,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T14:47:36.273Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:54:20.778Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -447,37 +462,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T14:56:55.523Z - error: SyntaxError: Unexpected token (439:17) while parsing C:\Users\machao\Desktop\hub\pinyinshu\temp\quick-scripts\assets\scripts\UI\panel\GamePanel.js while parsing file: C:\Users\machao\Desktop\hub\pinyinshu\temp\quick-scripts\assets\scripts\UI\panel\GamePanel.js
-    at DestroyableTransform.end [as _flush] (C:\CocosCreator\resources\app.asar\node_modules\insert-module-globals\index.js:96:21)
-    at DestroyableTransform.prefinish (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_transform.js:138:10)
-    at emitNone (events.js:86:13)
-    at DestroyableTransform.emit (events.js:188:7)
-    at prefinish (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_writable.js:619:14)
-    at finishMaybe (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_writable.js:627:5)
-    at endWritable (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_writable.js:638:3)
-    at DestroyableTransform.Writable.end (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_writable.js:594:41)
-    at DestroyableTransform.onend (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_readable.js:577:10)
-    at Object.onceWrapper (events.js:293:19)
-    at process.on.e (C:\CocosCreator\resources\app.asar\editor\core\editor-init.js:1:345)
-    at emitOne (events.js:101:20)
-    at process.emit (events.js:191:7)
-    at process._fatalException (bootstrap_node.js:308:26)
-2019-05-12T15:08:10.354Z - error: SyntaxError: Unexpected token (454:17) while parsing C:\Users\machao\Desktop\hub\pinyinshu\temp\quick-scripts\assets\scripts\UI\panel\GamePanel.js while parsing file: C:\Users\machao\Desktop\hub\pinyinshu\temp\quick-scripts\assets\scripts\UI\panel\GamePanel.js
-    at DestroyableTransform.end [as _flush] (C:\CocosCreator\resources\app.asar\node_modules\insert-module-globals\index.js:96:21)
-    at DestroyableTransform.prefinish (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_transform.js:138:10)
-    at emitNone (events.js:86:13)
-    at DestroyableTransform.emit (events.js:188:7)
-    at prefinish (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_writable.js:619:14)
-    at finishMaybe (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_writable.js:627:5)
-    at endWritable (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_writable.js:638:3)
-    at DestroyableTransform.Writable.end (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_writable.js:594:41)
-    at DestroyableTransform.onend (C:\CocosCreator\resources\app.asar\node_modules\readable-stream\lib\_stream_readable.js:577:10)
-    at Object.onceWrapper (events.js:293:19)
-    at process.on.e (C:\CocosCreator\resources\app.asar\editor\core\editor-init.js:1:345)
-    at emitOne (events.js:101:20)
-    at process.emit (events.js:191:7)
-    at process._fatalException (bootstrap_node.js:308:26)
-2019-05-12T15:25:05.943Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.335Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -485,7 +470,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:25:05.946Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.338Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -493,7 +478,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:25:05.946Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.339Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -501,7 +486,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:25:05.946Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.340Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -509,7 +494,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:25:05.947Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.341Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -517,7 +502,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:25:05.947Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.341Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -525,7 +510,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:25:05.947Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.341Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -533,7 +518,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:25:05.947Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.342Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -541,7 +526,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:25:05.948Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.342Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -549,7 +534,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:25:05.948Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.343Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -557,7 +542,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:25:05.948Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.343Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -565,7 +550,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:25:05.949Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.344Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -573,7 +558,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:25:05.954Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.345Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -581,7 +566,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:25:05.956Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.346Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -589,7 +574,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:25:05.956Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.347Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -597,7 +582,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:25:05.957Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.347Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -605,7 +590,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:25:05.957Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.348Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -613,7 +598,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:25:05.957Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.349Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -621,7 +606,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:25:05.957Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.349Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -629,15 +614,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:25:05.958Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T04:57:52.350Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:25:05.958Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T04:57:52.350Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -645,7 +630,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:25:05.967Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:57:52.351Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -653,7 +638,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:25:05.968Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:57:52.352Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -661,7 +646,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:25:05.968Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:57:52.354Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -669,7 +654,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:25:05.969Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T04:57:52.354Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -677,25 +662,412 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T15:25:06.984Z - warn: The Asset used is missing. Detailed information:
-Missing uuid: "8a428050-0b5c-4292-948b-85da54d69227"
+2019-05-13T04:59:14.048Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-13T04:59:14.051Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-13T04:59:14.052Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 queren
+2019-05-13T04:59:14.052Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 chongzhi
+2019-05-13T04:59:14.052Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tijiao
+2019-05-13T04:59:14.053Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 minutes
+2019-05-13T04:59:14.053Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 second
+2019-05-13T04:59:14.053Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 minuteHand
+2019-05-13T04:59:14.054Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 secondHand
+2019-05-13T04:59:14.055Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberStr
+2019-05-13T04:59:14.056Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble_none1
+2019-05-13T04:59:14.056Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble_none2
+2019-05-13T04:59:14.057Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble_1
+2019-05-13T04:59:14.058Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble_2
+2019-05-13T04:59:14.058Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble
+2019-05-13T04:59:14.059Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bullet
+2019-05-13T04:59:14.059Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 gunNode
+2019-05-13T04:59:14.060Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 garbageNode
+2019-05-13T04:59:14.062Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 mask
+2019-05-13T04:59:14.062Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberNode
+2019-05-13T04:59:14.063Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 font
+2019-05-13T04:59:14.067Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointsEditBox
+2019-05-13T04:59:14.068Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 NumEditBox
+2019-05-13T04:59:14.069Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissonButton
+2019-05-13T04:59:14.070Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-13T04:59:32.284Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 back
+2019-05-13T04:59:32.284Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submit
+2019-05-13T04:59:32.285Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 queren
+2019-05-13T04:59:32.286Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 chongzhi
+2019-05-13T04:59:32.286Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tijiao
+2019-05-13T04:59:32.286Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 minutes
+2019-05-13T04:59:32.287Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 second
+2019-05-13T04:59:32.287Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 minuteHand
+2019-05-13T04:59:32.287Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 secondHand
+2019-05-13T04:59:32.287Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberStr
+2019-05-13T04:59:32.288Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble_none1
+2019-05-13T04:59:32.288Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble_none2
+2019-05-13T04:59:32.288Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble_1
+2019-05-13T04:59:32.289Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble_2
+2019-05-13T04:59:32.289Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bubble
+2019-05-13T04:59:32.289Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 bullet
+2019-05-13T04:59:32.290Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 gunNode
+2019-05-13T04:59:32.290Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 garbageNode
+2019-05-13T04:59:32.291Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 mask
+2019-05-13T04:59:32.291Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 numberNode
+2019-05-13T04:59:32.291Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 font
+2019-05-13T04:59:32.292Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 checkpointsEditBox
+2019-05-13T04:59:32.292Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 NumEditBox
+2019-05-13T04:59:32.293Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 submissonButton
+2019-05-13T04:59:32.293Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+ 
+// Before:
+@property(...)
+value; 
+// After:
+@property(...)
+value = 0 tipNode
+2019-05-13T05:00:35.799Z - warn: The Asset used by component "cc.Label" in prefab "ballNode.prefab" is missing. Detailed information:
+Node path: "ballNode/label"
+Asset url: "db://assets/resources/prefab/ui/Item/ballNode.prefab"
+Missing uuid: "9c8f7ae1-ddfb-44c3-8d49-8d02e549d63d"
 
-2019-05-12T15:25:06.985Z - warn: The Asset used is missing. Detailed information:
-Missing uuid: "8a428050-0b5c-4292-948b-85da54d69227"
-
-2019-05-12T15:25:06.985Z - warn: The Asset used is missing. Detailed information:
-Missing uuid: "8a428050-0b5c-4292-948b-85da54d69227"
-
-2019-05-12T15:25:06.986Z - warn: The Asset used is missing. Detailed information:
-Missing uuid: "8a428050-0b5c-4292-948b-85da54d69227"
-
-2019-05-12T15:25:06.986Z - warn: The Asset used is missing. Detailed information:
-Missing uuid: "8a428050-0b5c-4292-948b-85da54d69227"
-
-2019-05-12T15:25:06.986Z - warn: The Asset used is missing. Detailed information:
-Missing uuid: "8a428050-0b5c-4292-948b-85da54d69227"
-
-2019-05-12T15:29:10.216Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.352Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -703,7 +1075,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:29:10.220Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.361Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -711,7 +1083,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:29:10.220Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.362Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -719,7 +1091,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:29:10.220Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.362Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -727,7 +1099,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:29:10.221Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.362Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -735,7 +1107,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:29:10.221Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.363Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -743,7 +1115,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:29:10.222Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.363Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -751,7 +1123,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:29:10.222Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -759,7 +1131,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:29:10.223Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -767,7 +1139,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:29:10.223Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -775,7 +1147,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:29:10.223Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.368Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -783,7 +1155,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:29:10.223Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.369Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -791,7 +1163,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:29:10.224Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.369Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -799,7 +1171,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:29:10.224Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.370Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -807,7 +1179,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:29:10.224Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.370Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -815,7 +1187,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:29:10.224Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.370Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -823,7 +1195,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:29:10.224Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.371Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -831,7 +1203,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:29:10.224Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.371Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -839,7 +1211,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:29:10.224Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.371Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -847,15 +1219,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:29:10.225Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:05:02.372Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:29:10.225Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T05:05:02.372Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -863,7 +1235,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:29:10.225Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:05:02.375Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -871,7 +1243,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:29:10.226Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:05:02.376Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -879,7 +1251,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:29:10.228Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:05:02.378Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -887,7 +1259,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:29:10.229Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:05:02.378Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -895,7 +1267,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T15:30:57.030Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.763Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -903,7 +1275,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:30:57.033Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.765Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -911,7 +1283,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:30:57.034Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.766Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -919,7 +1291,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:30:57.034Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.766Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -927,7 +1299,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:30:57.034Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.766Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -935,7 +1307,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:30:57.034Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.767Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -943,7 +1315,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:30:57.035Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.767Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -951,7 +1323,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:30:57.035Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.767Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -959,7 +1331,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:30:57.035Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.767Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -967,7 +1339,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:30:57.035Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.767Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -975,7 +1347,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:30:57.035Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.768Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -983,7 +1355,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:30:57.036Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.769Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -991,7 +1363,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:30:57.036Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.770Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -999,7 +1371,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:30:57.036Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.770Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1007,7 +1379,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:30:57.036Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.771Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1015,7 +1387,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:30:57.037Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.771Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1023,7 +1395,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:30:57.037Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.772Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1031,7 +1403,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:30:57.037Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.772Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1039,7 +1411,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:30:57.037Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.773Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1047,15 +1419,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:30:57.038Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:08:13.773Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:30:57.038Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T05:08:13.774Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1063,7 +1435,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:30:57.040Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:08:13.774Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1071,7 +1443,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:30:57.040Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:08:13.774Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1079,7 +1451,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:30:57.040Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:08:13.775Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1087,7 +1459,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:30:57.040Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:08:13.775Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1095,7 +1467,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T15:32:23.916Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.792Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1103,7 +1475,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:32:23.918Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.794Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1111,7 +1483,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:32:23.918Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.795Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1119,7 +1491,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:32:23.921Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.795Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1127,7 +1499,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:32:23.921Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.796Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1135,7 +1507,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:32:23.921Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.796Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1143,7 +1515,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:32:23.922Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.796Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1151,7 +1523,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:32:23.922Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.796Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1159,7 +1531,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:32:23.922Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.797Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1167,7 +1539,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:32:23.923Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.797Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1175,7 +1547,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:32:23.923Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.798Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1183,7 +1555,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:32:23.923Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.798Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1191,7 +1563,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:32:23.924Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.798Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1199,7 +1571,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:32:23.924Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.799Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1207,7 +1579,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:32:23.924Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.800Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1215,7 +1587,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:32:23.925Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.800Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1223,7 +1595,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:32:23.925Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.801Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1231,7 +1603,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:32:23.926Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.802Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1239,7 +1611,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:32:23.926Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.803Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1247,15 +1619,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:32:23.926Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:08.804Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:32:23.926Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T05:10:08.805Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1263,7 +1635,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:32:23.928Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:10:08.805Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1271,7 +1643,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:32:23.929Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:10:08.806Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1279,7 +1651,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:32:23.929Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:10:08.806Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1287,7 +1659,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:32:23.929Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:10:08.807Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1295,7 +1667,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T15:33:29.629Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.451Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1303,7 +1675,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:33:29.629Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.454Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1311,7 +1683,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:33:29.630Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.454Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1319,7 +1691,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:33:29.630Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.455Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1327,7 +1699,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:33:29.630Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.456Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1335,7 +1707,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:33:29.630Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.456Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1343,7 +1715,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:33:29.631Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.457Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1351,7 +1723,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:33:29.631Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.458Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1359,7 +1731,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:33:29.631Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.458Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1367,7 +1739,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:33:29.632Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.459Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1375,7 +1747,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:33:29.632Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.459Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1383,7 +1755,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:33:29.632Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.460Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1391,7 +1763,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:33:29.633Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.460Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1399,7 +1771,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:33:29.633Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.460Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1407,7 +1779,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:33:29.633Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.461Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1415,7 +1787,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:33:29.633Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.461Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1423,7 +1795,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:33:29.634Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.462Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1431,7 +1803,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:33:29.634Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.462Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1439,7 +1811,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:33:29.634Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.463Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1447,15 +1819,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:33:29.635Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:10:54.463Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:33:29.635Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T05:10:54.464Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1463,7 +1835,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:33:29.635Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:10:54.464Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1471,7 +1843,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:33:29.636Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:10:54.465Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1479,7 +1851,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:33:29.637Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:10:54.466Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1487,7 +1859,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:33:29.638Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:10:54.466Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1495,7 +1867,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T15:36:38.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.756Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1503,7 +1875,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:36:38.368Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.760Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1511,7 +1883,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:36:38.369Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.760Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1519,7 +1891,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:36:38.369Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.760Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1527,7 +1899,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:36:38.369Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.761Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1535,7 +1907,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:36:38.370Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.761Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1543,7 +1915,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:36:38.370Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.762Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1551,7 +1923,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:36:38.370Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.762Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1559,7 +1931,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:36:38.371Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.763Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1567,7 +1939,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:36:38.371Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.764Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1575,7 +1947,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:36:38.372Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.764Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1583,7 +1955,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:36:38.372Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.765Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1591,7 +1963,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:36:38.372Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.766Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1599,7 +1971,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:36:38.372Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.767Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1607,7 +1979,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:36:38.373Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.767Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1615,7 +1987,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:36:38.373Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.767Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1623,7 +1995,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:36:38.373Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.768Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1631,7 +2003,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:36:38.373Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.768Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1639,7 +2011,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:36:38.373Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.769Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1647,15 +2019,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:36:38.374Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:12:33.769Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:36:38.374Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T05:12:33.769Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1663,7 +2035,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:36:38.377Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:12:33.770Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1671,7 +2043,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:36:38.377Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:12:33.770Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1679,7 +2051,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:36:38.378Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:12:33.771Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1687,7 +2059,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:36:38.378Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:12:33.772Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1695,7 +2067,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T15:38:25.804Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.895Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1703,7 +2075,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:38:25.808Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.898Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1711,7 +2083,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:38:25.808Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.898Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1719,7 +2091,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:38:25.809Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.899Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1727,7 +2099,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:38:25.809Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.899Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1735,7 +2107,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:38:25.809Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.899Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1743,7 +2115,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:38:25.810Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.900Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1751,7 +2123,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:38:25.810Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.900Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1759,7 +2131,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:38:25.811Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.900Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1767,7 +2139,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:38:25.811Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.901Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1775,7 +2147,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:38:25.811Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.901Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1783,7 +2155,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:38:25.812Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.903Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1791,7 +2163,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:38:25.812Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.903Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1799,7 +2171,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:38:25.813Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.904Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1807,7 +2179,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:38:25.813Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.904Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1815,7 +2187,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:38:25.813Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.904Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1823,7 +2195,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:38:25.814Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.905Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1831,7 +2203,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:38:25.814Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.905Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1839,7 +2211,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:38:25.815Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.906Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1847,15 +2219,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:38:25.815Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:15:09.906Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:38:25.816Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T05:15:09.907Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1863,7 +2235,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:38:25.818Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:15:09.907Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1871,7 +2243,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:38:25.820Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:15:09.908Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1879,7 +2251,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:38:25.820Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:15:09.908Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1887,7 +2259,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:38:25.821Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:15:09.908Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1895,7 +2267,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T15:39:08.797Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.652Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1903,7 +2275,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:39:08.798Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.655Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1911,7 +2283,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:39:08.798Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.655Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1919,7 +2291,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:39:08.798Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.656Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1927,7 +2299,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:39:08.799Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.656Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1935,7 +2307,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:39:08.799Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.657Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1943,7 +2315,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:39:08.799Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.657Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1951,7 +2323,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:39:08.800Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.658Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1959,7 +2331,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:39:08.800Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.659Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1967,7 +2339,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:39:08.800Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.659Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1975,7 +2347,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:39:08.800Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.660Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1983,7 +2355,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:39:08.801Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.660Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1991,7 +2363,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:39:08.801Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.660Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -1999,7 +2371,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:39:08.801Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.661Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2007,7 +2379,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:39:08.801Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.661Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2015,7 +2387,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:39:08.802Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.662Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2023,7 +2395,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:39:08.802Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.662Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2031,7 +2403,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:39:08.803Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.663Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2039,7 +2411,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:39:08.803Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.663Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2047,15 +2419,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:39:08.803Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:17:59.664Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:39:08.804Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T05:17:59.664Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2063,7 +2435,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:39:08.807Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:17:59.665Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2071,7 +2443,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:39:08.808Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:17:59.665Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2079,7 +2451,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:39:08.808Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:17:59.666Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2087,7 +2459,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:39:08.809Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:17:59.667Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2095,7 +2467,7 @@ value;
 // After:
 @property(...)
 value = 0 tipNode
-2019-05-12T15:41:29.511Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.355Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2103,7 +2475,7 @@ value;
 // After:
 @property(...)
 value = 0 back
-2019-05-12T15:41:29.515Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.358Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2111,7 +2483,7 @@ value;
 // After:
 @property(...)
 value = 0 submit
-2019-05-12T15:41:29.515Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.358Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2119,7 +2491,7 @@ value;
 // After:
 @property(...)
 value = 0 queren
-2019-05-12T15:41:29.515Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.359Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2127,7 +2499,7 @@ value;
 // After:
 @property(...)
 value = 0 chongzhi
-2019-05-12T15:41:29.516Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.360Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2135,7 +2507,7 @@ value;
 // After:
 @property(...)
 value = 0 tijiao
-2019-05-12T15:41:29.516Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.361Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2143,7 +2515,7 @@ value;
 // After:
 @property(...)
 value = 0 minutes
-2019-05-12T15:41:29.517Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.361Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2151,7 +2523,7 @@ value;
 // After:
 @property(...)
 value = 0 second
-2019-05-12T15:41:29.518Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.361Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2159,7 +2531,7 @@ value;
 // After:
 @property(...)
 value = 0 minuteHand
-2019-05-12T15:41:29.519Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.363Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2167,7 +2539,7 @@ value;
 // After:
 @property(...)
 value = 0 secondHand
-2019-05-12T15:41:29.520Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.363Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2175,7 +2547,7 @@ value;
 // After:
 @property(...)
 value = 0 numberStr
-2019-05-12T15:41:29.521Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2183,7 +2555,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none1
-2019-05-12T15:41:29.521Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2191,7 +2563,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_none2
-2019-05-12T15:41:29.522Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2199,7 +2571,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_1
-2019-05-12T15:41:29.522Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2207,7 +2579,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble_2
-2019-05-12T15:41:29.525Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2215,7 +2587,7 @@ value;
 // After:
 @property(...)
 value = 0 bubble
-2019-05-12T15:41:29.526Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2223,7 +2595,7 @@ value;
 // After:
 @property(...)
 value = 0 bullet
-2019-05-12T15:41:29.528Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.366Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2231,7 +2603,7 @@ value;
 // After:
 @property(...)
 value = 0 gunNode
-2019-05-12T15:41:29.533Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.366Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2239,7 +2611,7 @@ value;
 // After:
 @property(...)
 value = 0 garbageNode
-2019-05-12T15:41:29.534Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2247,215 +2619,15 @@ value;
 // After:
 @property(...)
 value = 0 mask
-2019-05-12T15:41:29.536Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+2019-05-13T05:55:30.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
 value; 
 // After:
 @property(...)
-value = 0 progressNode
-2019-05-12T15:41:29.537Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:41:29.559Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:41:29.560Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:41:29.567Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:41:29.568Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:44:44.860Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:44:44.863Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:44:44.863Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:44:44.863Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:44:44.864Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:44:44.865Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:44:44.867Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:44:44.867Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:44:44.868Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:44:44.868Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:44:44.869Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:44:44.870Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:44:44.871Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:44:44.871Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:44:44.872Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:44:44.872Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:44:44.873Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:44:44.873Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:44:44.873Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:44:44.874Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:44:44.874Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
+value = 0 numberNode
+2019-05-13T05:55:30.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2463,7 +2635,7 @@ value;
 // After:
 @property(...)
 value = 0 font
-2019-05-12T15:44:44.887Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:55:30.368Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2471,7 +2643,7 @@ value;
 // After:
 @property(...)
 value = 0 checkpointsEditBox
-2019-05-12T15:44:44.887Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:55:30.368Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2479,7 +2651,7 @@ value;
 // After:
 @property(...)
 value = 0 NumEditBox
-2019-05-12T15:44:44.887Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:55:30.369Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)
@@ -2487,2817 +2659,7 @@ value;
 // After:
 @property(...)
 value = 0 submissonButton
-2019-05-12T15:44:44.887Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:45:16.453Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:45:16.454Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:45:16.455Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:45:16.455Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:45:16.457Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:45:16.458Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:45:16.458Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:45:16.459Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:45:16.462Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:45:16.462Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:45:16.463Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:45:16.463Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:45:16.464Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:45:16.465Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:45:16.469Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:45:16.470Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:45:16.470Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:45:16.471Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:45:16.473Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:45:16.473Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:45:16.475Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:45:16.489Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:45:16.490Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:45:16.491Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:45:16.491Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:46:47.827Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:46:47.828Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:46:47.828Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:46:47.828Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:46:47.829Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:46:47.829Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:46:47.830Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:46:47.830Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:46:47.830Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:46:47.831Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:46:47.831Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:46:47.832Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:46:47.832Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:46:47.832Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:46:47.833Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:46:47.833Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:46:47.835Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:46:47.835Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:46:47.836Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:46:47.836Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:46:47.836Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:46:47.838Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:46:47.840Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:46:47.841Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:46:47.841Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:47:07.505Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:47:07.506Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:47:07.506Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:47:07.507Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:47:07.507Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:47:07.508Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:47:07.508Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:47:07.508Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:47:07.509Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:47:07.509Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:47:07.510Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:47:07.510Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:47:07.511Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:47:07.511Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:47:07.511Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:47:07.512Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:47:07.512Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:47:07.513Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:47:07.513Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:47:07.515Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:47:07.516Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:47:07.522Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:47:07.522Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:47:07.523Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:47:07.523Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:47:41.462Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:47:41.462Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:47:41.463Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:47:41.464Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:47:41.464Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:47:41.464Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:47:41.466Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:47:41.467Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:47:41.467Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:47:41.467Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:47:41.467Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:47:41.468Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:47:41.468Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:47:41.468Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:47:41.469Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:47:41.469Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:47:41.469Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:47:41.469Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:47:41.470Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:47:41.471Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:47:41.472Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:47:41.473Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:47:41.473Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:47:41.473Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:47:41.474Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:49:07.623Z - error: Failed to apply "GamePanel" because the prefab asset is missing, please save the prefab to a new asset by dragging and drop the node from Node Tree into Assets.
-    at Object.applyPrefab (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\index.js:1:5783)
-    at Object.save (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\edit-mode\modes\prefab.js:1:2317)
-    at Object.run (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\edit-mode\index.js:1:2061)
-    at _queue.s.queue (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\lib\tasks.js:1:539)
-    at C:\CocosCreator\resources\app.asar\node_modules\async\lib\async.js:987:13
-    at Immediate.process (C:\CocosCreator\resources\app.asar\node_modules\async\lib\async.js:953:21)
-    at runCallback (timers.js:672:20)
-    at tryOnImmediate (timers.js:645:5)
-    at processImmediate [as _immediateCallback] (timers.js:617:5)
-2019-05-12T15:49:10.020Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:49:10.022Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:49:10.022Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:49:10.023Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:49:10.023Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:49:10.023Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:49:10.024Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:49:10.024Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:49:10.031Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:49:10.033Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:49:10.033Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:49:10.033Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:49:10.034Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:49:10.034Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:49:10.035Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:49:10.035Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:49:10.035Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:49:10.036Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:49:10.036Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:49:10.037Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:49:10.037Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:49:10.041Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:49:10.041Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:49:10.044Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:49:10.044Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:49:33.510Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:49:33.510Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:49:33.510Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:49:33.511Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:49:33.512Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:49:33.512Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:49:33.512Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:49:33.515Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:49:33.516Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:49:33.517Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:49:33.519Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:49:33.521Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:49:33.521Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:49:33.522Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:49:33.522Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:49:33.522Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:49:33.523Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:49:33.523Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:49:33.524Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:49:33.524Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:49:33.524Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:49:33.534Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:49:33.535Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:49:33.535Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:49:33.536Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:51:32.321Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:51:32.324Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:51:32.325Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:51:32.325Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:51:32.325Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:51:32.326Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:51:32.326Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:51:32.326Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:51:32.327Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:51:32.327Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:51:32.327Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:51:32.327Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:51:32.328Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:51:32.328Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:51:32.328Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:51:32.329Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:51:32.329Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:51:32.329Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:51:32.330Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:51:32.331Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:51:32.331Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:51:32.335Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:51:32.336Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:51:32.336Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:51:32.337Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:51:57.007Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:51:57.008Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:51:57.008Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:51:57.009Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:51:57.009Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:51:57.011Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:51:57.011Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:51:57.013Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:51:57.014Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:51:57.015Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:51:57.015Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:51:57.016Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:51:57.016Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:51:57.016Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:51:57.017Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:51:57.018Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:51:57.018Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:51:57.018Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:51:57.019Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:51:57.019Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:51:57.020Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:51:57.025Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:51:57.027Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:51:57.029Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:51:57.029Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:54:02.879Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:54:02.882Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:54:02.883Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:54:02.883Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:54:02.883Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:54:02.884Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:54:02.884Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:54:02.884Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:54:02.885Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:54:02.885Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:54:02.886Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:54:02.886Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:54:02.886Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:54:02.887Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:54:02.887Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:54:02.887Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:54:02.888Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:54:02.888Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:54:02.888Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:54:02.889Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:54:02.889Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:54:02.896Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:54:02.897Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:54:02.897Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:54:02.898Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:55:18.016Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:55:18.017Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:55:18.017Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:55:18.018Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:55:18.018Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:55:18.018Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:55:18.018Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:55:18.019Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:55:18.019Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:55:18.019Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:55:18.020Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:55:18.020Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:55:18.020Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:55:18.021Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:55:18.021Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:55:18.021Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:55:18.021Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:55:18.022Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:55:18.022Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:55:18.022Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:55:18.023Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:55:18.024Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:55:18.024Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:55:18.024Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:55:18.025Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:57:21.360Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:57:21.363Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:57:21.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:57:21.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:57:21.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:57:21.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:57:21.364Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:57:21.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:57:21.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:57:21.365Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:57:21.366Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:57:21.366Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:57:21.366Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:57:21.366Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:57:21.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:57:21.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:57:21.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:57:21.367Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:57:21.368Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:57:21.368Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:57:21.368Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:57:21.369Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:57:21.370Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:57:21.370Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:57:21.370Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:58:51.836Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:58:51.837Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:58:51.837Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:58:51.837Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:58:51.838Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:58:51.838Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:58:51.838Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:58:51.838Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:58:51.839Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:58:51.839Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:58:51.839Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:58:51.840Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:58:51.840Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:58:51.840Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:58:51.840Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:58:51.841Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:58:51.841Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:58:51.841Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:58:51.842Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:58:51.842Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:58:51.842Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:58:51.844Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:58:51.845Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:58:51.846Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:58:51.846Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T15:59:41.683Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T15:59:41.684Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T15:59:41.684Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T15:59:41.685Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T15:59:41.685Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T15:59:41.686Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T15:59:41.686Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T15:59:41.686Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T15:59:41.687Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T15:59:41.688Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T15:59:41.688Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T15:59:41.688Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T15:59:41.689Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T15:59:41.690Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T15:59:41.691Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T15:59:41.692Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T15:59:41.694Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T15:59:41.694Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T15:59:41.695Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T15:59:41.695Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T15:59:41.695Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T15:59:41.697Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T15:59:41.698Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T15:59:41.699Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T15:59:41.699Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tipNode
-2019-05-12T16:00:45.832Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 back
-2019-05-12T16:00:45.832Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submit
-2019-05-12T16:00:45.833Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 queren
-2019-05-12T16:00:45.833Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 chongzhi
-2019-05-12T16:00:45.833Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 tijiao
-2019-05-12T16:00:45.834Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minutes
-2019-05-12T16:00:45.834Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 second
-2019-05-12T16:00:45.834Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 minuteHand
-2019-05-12T16:00:45.835Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 secondHand
-2019-05-12T16:00:45.835Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 numberStr
-2019-05-12T16:00:45.835Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none1
-2019-05-12T16:00:45.835Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_none2
-2019-05-12T16:00:45.835Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_1
-2019-05-12T16:00:45.836Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble_2
-2019-05-12T16:00:45.836Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bubble
-2019-05-12T16:00:45.836Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 bullet
-2019-05-12T16:00:45.836Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 gunNode
-2019-05-12T16:00:45.837Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 garbageNode
-2019-05-12T16:00:45.837Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 mask
-2019-05-12T16:00:45.837Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 progressNode
-2019-05-12T16:00:45.837Z - warn: Please specifiy a default value for "GamePanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 font
-2019-05-12T16:00:45.846Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 checkpointsEditBox
-2019-05-12T16:00:45.846Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 NumEditBox
-2019-05-12T16:00:45.846Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
- 
-// Before:
-@property(...)
-value; 
-// After:
-@property(...)
-value = 0 submissonButton
-2019-05-12T16:00:45.847Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
+2019-05-13T05:55:30.369Z - warn: Please specifiy a default value for "TeacherPanel" property at its declaration:
  
 // Before:
 @property(...)

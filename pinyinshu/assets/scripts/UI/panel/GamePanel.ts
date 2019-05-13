@@ -56,7 +56,7 @@ export default class GamePanel extends BaseUI {
     @property(cc.Node)
     mask : cc.Node;
     @property(cc.Node)
-    progressNode : cc.Node;
+    numberNode : cc.Node;
     @property(cc.BitmapFont)
     font : cc.BitmapFont;
     decomposeArr : Array<cc.Node> = Array<cc.Node>();
@@ -92,7 +92,6 @@ export default class GamePanel extends BaseUI {
         this.openClock();
         this.decompose(this.decoposeNum);
         this.createDecomposeBall();
-
     }
    
 
@@ -115,7 +114,7 @@ export default class GamePanel extends BaseUI {
     initData() {
         this.timer = 0;
         this.decoposeNum = DaAnData.getInstance().number;
-        this.checkpoint = 3;
+        this.checkpoint = 1;
         this.checkpointsNum = 3;//DaAnData.getInstance().checkpointsNum;
         this.defaultValue();
         this.initProgress(this.checkpointsNum);
@@ -172,18 +171,27 @@ export default class GamePanel extends BaseUI {
 
     createBall(num : number, x : number, y : number, parent : cc.Node, isAnswer : boolean){
         var ballNode : cc.Node;
-        cc.loader.loadRes('prefab/ui/Item/ballNode', function(err, prefab){
+        cc.loader.loadRes("prefab/ui/Item/ballNode", function(err, prefab){
             if(!err){
                 ballNode = cc.instantiate(prefab);
                 ballNode.getChildByName('label').getComponent(cc.Label).string = String(num);
                 var ball = ballNode.getChildByName('ball').getComponent(cc.Sprite);
                 ballNode.x = x;
-                ballNode.y = y;
+                    ballNode.y = y;
                 ballNode.parent = parent;
+                cc.log('add ball node');
                 if(isAnswer) {
                    this.answerArr.push(ballNode);
                    this.addListenerOnAnswerBall(ballNode);
                 }else {
+                    if(num != this.li.length - 1) {
+                        let node = new cc.Node("label");
+                        let labelX = node.addComponent(cc.Label);
+                        labelX.string = "*";
+                        labelX.font = this.font;
+                        labelX.node.y = 0;
+                        node.parent = this.numberStr.node.parent;
+                    }
                     this.decomposeArr.push(ballNode);
                     this.addListenerOnDecomposeBall(ballNode);
                 }
@@ -243,8 +251,9 @@ export default class GamePanel extends BaseUI {
                             }.bind(this));
                         }
                     break;
-
                 }
+            }else {
+                cc.log("load error");
             }
         }.bind(this));
     }
@@ -288,11 +297,13 @@ export default class GamePanel extends BaseUI {
                 str += String(this.li[i]) + '  =  ';
             }
         }
-            this.numberStr.getComponent(cc.Label).string = str;
+        this.numberStr.getComponent(cc.Label).string = str;
+        cc.log('numberStr is :', this.numberStr.getComponent(cc.Label).string);
     }
 
     createDecomposeBall() {
         var x = this.numberStr.node.getContentSize().width + 100;
+        cc.log('numberstr width is ', this.numberStr.node.getContentSize().width);
         var y = 0;
         var space = 150;
       
@@ -302,16 +313,6 @@ export default class GamePanel extends BaseUI {
             ballx = x + 200 * i;
             cc.log(x);
             this.createBall(this.li[i], ballx, y, this.numberStr.node.parent, false);
-        }
-
-        for(let i = 0 ; i < this.li.length - 1; i++) {
-            let node = new cc.Node("label");
-            let labelX = node.addComponent(cc.Label);
-            labelX.string = "0";
-            labelX.font = this.font;
-            node.x = x + 100 + 200 * i;
-            node.y = y;
-            node.parent = this.numberStr.node.parent;
         }
     }
 

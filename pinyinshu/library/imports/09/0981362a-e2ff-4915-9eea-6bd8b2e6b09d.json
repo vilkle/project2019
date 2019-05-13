@@ -1,8 +1,8 @@
 {
   "__type__": "cc.SpriteFrame",
   "content": {
-    "name": "bitMapTxt",
-    "texture": "b96f783c-03d0-4fff-807d-85ab69db71d7",
+    "name": "BitMapFot",
+    "texture": "aa8ca9b1-10d5-42bb-8a97-c816b0d4ef1e",
     "atlas": "",
     "rect": [
       1,

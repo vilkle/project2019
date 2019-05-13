@@ -1,18 +1,29 @@
 {
   "__type__": "cc.BitmapFont",
-  "_name": "bitMapTxt",
+  "_name": "BitMapFot",
   "_objFlags": 0,
   "_native": "",
   "fntDataStr": "",
   "spriteFrame": {
-    "__uuid__": "ad5ab63f-82f4-45b2-a534-182b275b7031"
+    "__uuid__": "0981362a-e2ff-4915-9eea-6bd8b2e6b09d"
   },
   "fontSize": 40,
   "_fntConfig": {
     "commonHeight": 40,
     "fontSize": 40,
-    "atlasName": "bitMapTxt.png",
+    "atlasName": "BitMapFot.png",
     "fontDefDictionary": {
+      "42": {
+        "rect": {
+          "x": 129,
+          "y": 108,
+          "width": 43,
+          "height": 54
+        },
+        "xOffset": 0,
+        "yOffset": 0,
+        "xAdvance": 43
+      },
       "48": {
         "rect": {
           "x": 43,
@@ -126,17 +137,6 @@
       "61": {
         "rect": {
           "x": 86,
-          "y": 108,
-          "width": 43,
-          "height": 54
-        },
-        "xOffset": 0,
-        "yOffset": 0,
-        "xAdvance": 43
-      },
-      "110": {
-        "rect": {
-          "x": 129,
           "y": 108,
           "width": 43,
           "height": 54
