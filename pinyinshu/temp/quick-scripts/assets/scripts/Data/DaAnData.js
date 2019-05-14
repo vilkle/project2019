@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var DaAnData = /** @class */ (function () {
     function DaAnData() {
         this.checkpointsNum = 0; //关卡数目
-        this.number = 0; //被分解质因数
+        this.numberArr = new Array(); //被分解质因数
     }
     DaAnData.getInstance = function () {
         if (this.instance == null) {

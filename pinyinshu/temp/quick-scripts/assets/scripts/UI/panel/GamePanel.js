@@ -5,10 +5,12 @@ cc._RF.push(module, '246c2OOkGlKHoa6ZJOVEHI+', 'GamePanel', __filename);
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var DaAnData_1 = require("../../Data/DaAnData");
+var UIHelp_1 = require("../../Utils/UIHelp");
 var NetWork_1 = require("../../Http/NetWork");
 var ConstValue_1 = require("../../Data/ConstValue");
 var UIManager_1 = require("../../Manager/UIManager");
 var SubmissionPanel_1 = require("./SubmissionPanel");
+var OverTips_1 = require("../../UI/Item/OverTips");
 var ListenerManager_1 = require("../../Manager/ListenerManager");
 var ListenerType_1 = require("../../Data/ListenerType");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -16,22 +18,63 @@ var GamePanel = /** @class */ (function (_super) {
     __extends(GamePanel, _super);
     function GamePanel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.back = null;
+        _this.submit = null;
+        _this.queren = null;
+        _this.chongzhi = null;
+        _this.tijiao = null;
+        _this.minutes = null;
+        _this.second = null;
+        _this.minuteHand = null;
+        _this.secondHand = null;
+        _this.numberStr = null;
+        _this.bubble_none1 = null;
+        _this.bubble_none2 = null;
+        _this.bubble_1 = null;
+        _this.bubble_2 = null;
+        _this.bubble = null;
+        _this.bullet = null;
+        _this.gunNode = null;
+        _this.garbageNode = null;
+        _this.mask = null;
+        _this.numberNode = null;
+        _this.font = null;
         _this.decomposeArr = Array();
         _this.answerArr = Array();
+        _this.labelArr = Array();
         _this.progressArr = Array();
-        _this.li = Array(); //需要重置
+        _this.li = Array(); //质因数
+        _this.an = Array(); //约数
+        _this.pl = Array(); //玩家答案
+        _this.timer = null;
+        _this.decoposeNum = null; //被分解的数
+        _this.intervalIndex = null; //clock的interval的index值
+        _this.minStr = null;
+        _this.secStr = null;
+        _this.spriteframe1 = null;
+        _this.spriteframe2 = null;
+        _this.spriteframe3 = null;
+        _this.spriteframe4 = null;
+        _this.spriteframe5 = null;
+        _this.spriteframe6 = null;
+        _this.spriteframe7 = null;
+        _this.spriteframe8 = null;
+        _this.spriteframe9 = null;
+        _this.checkpointsNum = null;
+        _this.checkpoint = null;
         return _this;
     }
     GamePanel_1 = GamePanel;
     GamePanel.prototype.onLoad = function () {
         DaAnData_1.DaAnData.getInstance().checkpointsNum = 3;
-        DaAnData_1.DaAnData.getInstance().number = 24;
+        DaAnData_1.DaAnData.getInstance().numberArr = [24, 25, 26];
         this.isTecher();
         this.initData();
     };
     GamePanel.prototype.start = function () {
         this.openClock();
         this.decompose(this.decoposeNum);
+        this.answer(this.decoposeNum);
         this.createDecomposeBall();
     };
     GamePanel.prototype.onDestroy = function () {
@@ -46,7 +89,7 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.initData = function () {
         this.timer = 0;
-        this.decoposeNum = DaAnData_1.DaAnData.getInstance().number;
+        this.decoposeNum = DaAnData_1.DaAnData.getInstance().numberArr[0];
         this.checkpoint = 1;
         this.checkpointsNum = 3; //DaAnData.getInstance().checkpointsNum;
         this.defaultValue();
@@ -120,6 +163,7 @@ var GamePanel = /** @class */ (function (_super) {
                         labelX.font = this.font;
                         labelX.node.y = 0;
                         node.parent = this.numberStr.node.parent;
+                        this.labelArr.push(node);
                     }
                     this.decomposeArr.push(ballNode);
                     this.addListenerOnDecomposeBall(ballNode);
@@ -197,7 +241,7 @@ var GamePanel = /** @class */ (function (_super) {
                 else {
                     var data = JSON.parse(response_data.data.courseware_content);
                     if (data.number) {
-                        DaAnData_1.DaAnData.getInstance().number = data.number;
+                        DaAnData_1.DaAnData.getInstance().numberArr = data.numberArr;
                     }
                     if (data.checkpointsNum) {
                         DaAnData_1.DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
@@ -205,6 +249,13 @@ var GamePanel = /** @class */ (function (_super) {
                 }
             }
         }.bind(this), null);
+    };
+    GamePanel.prototype.answer = function (num) {
+        for (var i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                this.an.push(i);
+            }
+        }
     };
     GamePanel.prototype.decompose = function (num) {
         var num1 = num;
@@ -393,6 +444,10 @@ var GamePanel = /** @class */ (function (_super) {
             var anchorPos = this.gunNode.getPosition();
             var angle = this.getAngle(dirPos, anchorPos);
             var oriPos = this.getRotationPos(pos1, pos3, angle);
+            var answerNum = parseInt(gunBall.getChildByName('label').getComponent(cc.Label).string);
+            if (this.pl.indexOf(answerNum) == -1) {
+                this.pl.push(answerNum);
+            }
             this.bullet.getChildByName('ball').getComponent(cc.Sprite).spriteFrame = gunBall.getChildByName('ball').getComponent(cc.Sprite).spriteFrame;
             this.bullet.getChildByName('label').getComponent(cc.Label).string = gunBall.getChildByName('label').getComponent(cc.Label).string;
             var shootStart = cc.callFunc(function () {
@@ -446,7 +501,7 @@ var GamePanel = /** @class */ (function (_super) {
         var pos = cc.v2(posx, posy);
         return pos;
     };
-    GamePanel.prototype.reset = function () {
+    GamePanel.prototype.nextCheckPoint = function (checkpoint) {
         //重置时间
         this.closeClock();
         this.minuteHand.rotation = 0;
@@ -454,14 +509,45 @@ var GamePanel = /** @class */ (function (_super) {
         this.timer = 0;
         //销毁实例
         for (var i = 0; i < this.decomposeArr.length; i++) {
-            this.decompose[i].destroy();
+            this.decomposeArr[i].destroy();
         }
         for (var i = 0; i < this.answerArr.length; i++) {
             this.answerArr[i].destroy();
         }
+        for (var i = 0; i < this.labelArr.length; i++) {
+            this.labelArr[i].destroy();
+        }
         //清空数组
         this.decomposeArr = [];
         this.answerArr = [];
+        this.labelArr = [];
+        this.pl = [];
+        //重置ui
+        this.bubble.active = false;
+        this.bubble_1.opacity = 0;
+        this.bubble_2.opacity = 0;
+        this.gunNode.getChildByName('ballNode').opacity = 0;
+        this.bullet.opacity = 0;
+        //初始化游戏
+        this.checkpointsNum = DaAnData_1.DaAnData.getInstance().numberArr[checkpoint - 1];
+        this.decompose(this.decoposeNum);
+        this.answer(this.decoposeNum);
+        this.createDecomposeBall();
+        this.openClock();
+    };
+    GamePanel.prototype.reset = function () {
+        //重置时间
+        this.closeClock();
+        this.minuteHand.rotation = 0;
+        this.secondHand.rotation = 0;
+        this.timer = 0;
+        //销毁实例
+        for (var i = 0; i < this.answerArr.length; i++) {
+            this.answerArr[i].destroy();
+        }
+        //清空数组
+        this.answerArr = [];
+        this.pl = [];
         //重置ui
         this.bubble.active = false;
         this.bubble_1.opacity = 0;
@@ -471,6 +557,33 @@ var GamePanel = /** @class */ (function (_super) {
         this.openClock();
     };
     GamePanel.prototype.isRight = function () {
+        var rightNum = 0;
+        for (var i = 0; i < this.pl.length; i++) {
+            if (this.an.indexOf(this.an[i]) != -1) {
+                rightNum++;
+            }
+        }
+        if (rightNum == this.an.length) {
+            this.checkpoint++;
+            if (this.checkpoint == this.checkpointsNum + 1) {
+                this.closeClock();
+                UIHelp_1.UIHelp.showOverTips(1, this.timer, '恭喜全部通关', function () {
+                }.bind(this), function () {
+                    UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
+                }.bind(this));
+            }
+            else {
+                this.closeClock();
+                UIHelp_1.UIHelp.showOverTips(2, this.timer, '挑战成功', function () {
+                    this.nextCheckPoint(this.checkpoint);
+                }.bind(this), function () {
+                }.bind(this));
+            }
+        }
+        else {
+            this.closeClock();
+            UIHelp_1.UIHelp.showOverTips(3, this.timer, '挑战失败！点击重置后再次挑战');
+        }
     };
     GamePanel.prototype.openClock = function () {
         this.intervalIndex = setInterval(function () {

@@ -25,7 +25,7 @@ export default class SubmissionPanel extends BaseUI {
 
     //提交或者修改答案
     DetectionNet() {
-       let data = JSON.stringify({ number: DaAnData.getInstance().number, checkpointsNum: DaAnData.getInstance().checkpointsNum});
+       let data = JSON.stringify({ numberArr: DaAnData.getInstance().numberArr, checkpointsNum: DaAnData.getInstance().checkpointsNum});
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 response = JSON.parse(response);

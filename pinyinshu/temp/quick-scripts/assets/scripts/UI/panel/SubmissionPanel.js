@@ -26,7 +26,7 @@ var SubmissionPanel = /** @class */ (function (_super) {
     };
     //提交或者修改答案
     SubmissionPanel.prototype.DetectionNet = function () {
-        var data = JSON.stringify({ number: DaAnData_1.DaAnData.getInstance().number, checkpointsNum: DaAnData_1.DaAnData.getInstance().checkpointsNum });
+        var data = JSON.stringify({ numberArr: DaAnData_1.DaAnData.getInstance().numberArr, checkpointsNum: DaAnData_1.DaAnData.getInstance().checkpointsNum });
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_TITLE + "?title_id=" + NetWork_1.NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 response = JSON.parse(response);

@@ -14,10 +14,18 @@ var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var TeacherPanel = /** @class */ (function (_super) {
     __extends(TeacherPanel, _super);
     function TeacherPanel() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.checkpointsEditBox = null;
+        _this.editBoxNode = null;
+        _this.submissonButton = null;
+        _this.tipNode = null;
+        _this.editbox2 = null;
+        _this.editboxArr = Array();
+        return _this;
     }
     TeacherPanel.prototype.onLoad = function () {
         this.getNet();
+        this.initData();
     };
     TeacherPanel.prototype.start = function () {
     };
@@ -25,7 +33,7 @@ var TeacherPanel = /** @class */ (function (_super) {
     };
     TeacherPanel.prototype.initData = function () {
         this.checkpointsEditBox.string = String(DaAnData_1.DaAnData.getInstance().checkpointsNum);
-        this.NumEditBox.string = String(DaAnData_1.DaAnData.getInstance().number);
+        this.checkpointEditingEnd(null);
     };
     TeacherPanel.prototype.ShowTips = function (tipString) {
         this.tipNode.active = true;
@@ -38,7 +46,7 @@ var TeacherPanel = /** @class */ (function (_super) {
         this.tipNode.active = false;
     };
     TeacherPanel.prototype.button = function () {
-        cc.log("checkpoint num", DaAnData_1.DaAnData.getInstance().checkpointsNum, DaAnData_1.DaAnData.getInstance().number);
+        cc.log("checkpoint num", DaAnData_1.DaAnData.getInstance().checkpointsNum, DaAnData_1.DaAnData.getInstance().numberArr);
         if (this.errorChecking()) {
             UIManager_1.UIManager.getInstance().showUI(GamePanel_1.default, function () {
                 ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 1 });
@@ -65,17 +73,26 @@ var TeacherPanel = /** @class */ (function (_super) {
                 DaAnData_1.DaAnData.getInstance().checkpointsNum = 0;
                 break;
         }
-    };
-    TeacherPanel.prototype.numberEditingEnd = function (sender) {
-        DaAnData_1.DaAnData.getInstance().number = 0;
-        var text = this.NumEditBox.string;
-        var num = Number(text);
-        if (num > 0) {
-            DaAnData_1.DaAnData.getInstance().number = num;
+        for (var i = 0; i < this.editboxArr.length; i++) {
+            this.editboxArr[i].destroy();
         }
-        else {
-            this.NumEditBox.string = '';
-            DaAnData_1.DaAnData.getInstance().number = 0;
+        var _loop_1 = function (i) {
+            var editbox = cc.instantiate(this_1.editbox2);
+            editbox.x = 0;
+            this_1.editboxArr.push(editbox);
+            editbox.parent = this_1.editBoxNode;
+            editbox.getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
+            editbox.on('editing-did-ended', function (sender) {
+                DaAnData_1.DaAnData.getInstance().numberArr[i] = parseInt(editbox.getComponent(cc.EditBox).string);
+                cc.log(DaAnData_1.DaAnData.getInstance().numberArr);
+            }.bind(this_1));
+            if (DaAnData_1.DaAnData.getInstance().numberArr[i]) {
+                editbox.getComponent(cc.EditBox).string = DaAnData_1.DaAnData.getInstance().numberArr[i].toString();
+            }
+        };
+        var this_1 = this;
+        for (var i = 0; i < parseInt(this.checkpointsEditBox.string); i++) {
+            _loop_1(i);
         }
     };
     TeacherPanel.prototype.errorChecking = function () {
@@ -83,7 +100,7 @@ var TeacherPanel = /** @class */ (function (_super) {
             this.ShowTips("关卡数不能为空，请输入关卡数。");
             return false;
         }
-        else if (DaAnData_1.DaAnData.getInstance().number == 0) {
+        else if (DaAnData_1.DaAnData.getInstance().numberArr.length < DaAnData_1.DaAnData.getInstance().checkpointsNum) {
             this.ShowTips("被分解质因数的数不能为空。");
             return false;
         }
@@ -99,9 +116,9 @@ var TeacherPanel = /** @class */ (function (_super) {
                 }
                 else {
                     var data = JSON.parse(response_data.data.courseware_content);
-                    DaAnData_1.DaAnData.getInstance().number = data.number;
+                    DaAnData_1.DaAnData.getInstance().numberArr = data.numberARR;
                     DaAnData_1.DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                    cc.log("number is", DaAnData_1.DaAnData.getInstance().number);
+                    cc.log("number is", DaAnData_1.DaAnData.getInstance().numberArr);
                     cc.log("checkpointsNum is ", DaAnData_1.DaAnData.getInstance().checkpointsNum);
                     this.initData();
                 }
@@ -113,14 +130,17 @@ var TeacherPanel = /** @class */ (function (_super) {
         property(cc.EditBox)
     ], TeacherPanel.prototype, "checkpointsEditBox", void 0);
     __decorate([
-        property(cc.EditBox)
-    ], TeacherPanel.prototype, "NumEditBox", void 0);
+        property(cc.Node)
+    ], TeacherPanel.prototype, "editBoxNode", void 0);
     __decorate([
         property(cc.Button)
     ], TeacherPanel.prototype, "submissonButton", void 0);
     __decorate([
         property(cc.Node)
     ], TeacherPanel.prototype, "tipNode", void 0);
+    __decorate([
+        property(cc.Prefab)
+    ], TeacherPanel.prototype, "editbox2", void 0);
     TeacherPanel = __decorate([
         ccclass
     ], TeacherPanel);

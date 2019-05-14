@@ -14,12 +14,22 @@ export  class OverTips extends BaseUI {
     private NodeDes: cc.Node = null; //描述节点
     @property(cc.Label)
     private des: cc.Label= null;
+    @property(cc.Label)
+    private time: cc.Label= null;
     @property(cc.Button)
     private close: cc.Button= null;
     @property(sp.Skeleton)
     private sp_BgAnimator: sp.Skeleton= null; // 背景动画
     @property(sp.Skeleton)
     private sp_lightAnimator: sp.Skeleton= null; // 光动画
+    @property(cc.Button)
+    private rightButton: cc.Button= null;
+    @property(cc.Button)
+    private leftButton: cc.Button= null;
+    @property(cc.Button)
+    private closeButton: cc.Button= null;
+    @property(cc.Layout)
+    private layout: cc.Layout= null;
 
     private callback = null;
     private type:number;
@@ -27,33 +37,62 @@ export  class OverTips extends BaseUI {
 
     }
 
-    //type 成功 1 失败 2
-    init(type:number, str:string, callback:any) {
+    //type 通关1 成功 2 失败 3
+    init(type:number, time : number, str:string, callback1?:any, callback2?:any) {
         this.type = type;
-        this.callback = callback;
+        //this.callback = callback;
         Tools.playSpine(this.sp_BgAnimator, "fault", false);
-        
+        let minutes = time / 60 >> 0;
+        let second = time % 60;
+        var timestr = '用时 ' + minutes.toString() + ':'+ second.toString();
+        this.time.string = timestr;
         this.NodeDes.setScale(0.001, 0.001);
-        this.callback = callback;
+        //this.callback = callback;
+        this.layout.node.on(cc.Node.EventType.TOUCH_START, function(e){
+            e.stopPropagation();
+        });
         if (type == 1) {
-            this.Successful(str);
+            this.Successful(str,1);
             this.close.node.active = false;
+            this.leftButton.node.active = false;
+            this.closeButton.node.active = false;
+            this.rightButton.node.active = false;
+            this.leftButton.node.on('click', callback1, this);
+            this.rightButton.node.on('click', callback2, this);
         } else if (type == 2) {
-           this.failure(str);
-           this.close.node.active = true;
+            this.Successful(str,2);
+           this.close.node.active = false;
+           this.leftButton.node.active = false;
+           this.rightButton.node.active = false;
+           this.closeButton.node.active = false;
+        }else if(type == 3) {
+            this.failure(str);
+            this.time.node.active = false;
+            this.closeButton.node.active = false;
+            this.rightButton.node.active = false;
+            this.leftButton.node.active = false;
+            this.time.node.active = false;
+
+            this.close.node.active = true;
         }
         this.TipsAnimatorScale(this.NodeDes);
 
     }
 
      //成功
-     Successful(str:string) {
+     Successful(str:string, type:number) {
         this.des.node.active = true;
         this.sp_lightAnimator.node.active = true;
         Tools.playSpine(this.sp_BgAnimator, "fault", false);
         Tools.playSpine(this.sp_BgAnimator, "right_1", false, function () {
-            // console.log("播发完成");
-        });
+           if(type == 1) {
+                this.leftButton.node.active = true;
+                this.closeButton.node.active = true;
+           }else if(type == 2) {
+                this.leftButton.node.active = true;
+                this.rightButton.node.active = true;
+           }
+        }.bind(this));
         Tools.playSpine(this.sp_lightAnimator, "light", false, function () {
         }.bind(this));
         this.des.string = str;
@@ -70,12 +109,9 @@ export  class OverTips extends BaseUI {
     }
 
     OnClickClose() {
-        if(this.type ==1){
-           //界面不关闭
-        }else{
-            UIManager.getInstance().closeUI(OverTips);
-        }
-       // this.node.active = false;
+        
+        UIManager.getInstance().closeUI(OverTips);
+    
     }
 
      //通用动画

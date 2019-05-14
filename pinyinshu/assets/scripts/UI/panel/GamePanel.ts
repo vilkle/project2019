@@ -6,6 +6,7 @@ import {NetWork} from "../../Http/NetWork";
 import { ConstValue } from "../../Data/ConstValue";
 import { UIManager } from "../../Manager/UIManager";
 import SubmissionPanel from "./SubmissionPanel";
+import {OverTips} from "../../UI/Item/OverTips"
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
 
@@ -18,72 +19,74 @@ export default class GamePanel extends BaseUI {
 
   
     @property(cc.Button)
-    back : cc.Button;
+    back : cc.Button = null;
     @property(cc.Button)
-    submit : cc.Button;
+    submit : cc.Button = null;
     @property(cc.Button)
-    queren : cc.Button;
+    queren : cc.Button = null;
     @property(cc.Button)
-    chongzhi : cc.Button;
+    chongzhi : cc.Button = null;
     @property(cc.Button)
-    tijiao : cc.Button;
+    tijiao : cc.Button = null;
     @property(cc.Label)
-    minutes : cc.Label;
+    minutes : cc.Label = null;
     @property(cc.Label)
-    second : cc.Label;
+    second : cc.Label = null;
     @property(cc.Node)
-    minuteHand : cc.Node;
+    minuteHand : cc.Node = null;
     @property(cc.Node)
-    secondHand : cc.Node;
+    secondHand : cc.Node = null;
     @property(cc.Label)
-    numberStr : cc.Label;
+    numberStr : cc.Label = null;
     @property(cc.Sprite)
-    bubble_none1 : cc.Sprite;
+    bubble_none1 : cc.Sprite = null;
     @property(cc.Sprite)
-    bubble_none2 : cc.Sprite;
+    bubble_none2 : cc.Sprite = null;
     @property(cc.Node)
-    bubble_1 : cc.Node;
+    bubble_1 : cc.Node = null;
     @property(cc.Node)
-    bubble_2 : cc.Node;
+    bubble_2 : cc.Node = null;
     @property(cc.Node)
-    bubble : cc.Node;
+    bubble : cc.Node = null;
     @property(cc.Node)
-    bullet : cc.Node;
+    bullet : cc.Node = null;
     @property(cc.Node)
-    gunNode : cc.Node;
+    gunNode : cc.Node = null;
     @property(cc.Node)
-    garbageNode : cc.Node;
+    garbageNode : cc.Node = null;
     @property(cc.Node)
-    mask : cc.Node;
+    mask : cc.Node = null;
     @property(cc.Node)
-    numberNode : cc.Node;
+    numberNode : cc.Node = null;
     @property(cc.BitmapFont)
-    font : cc.BitmapFont;
+    font : cc.BitmapFont = null;
     decomposeArr : Array<cc.Node> = Array<cc.Node>();
     answerArr : Array<cc.Node> = Array<cc.Node>();
-    progressArr : Array<cc.Node> = Array<cc.Node>();
-    li : Array<number> = Array<number>();   //需要重置
-    isStart : boolean;
-    timer : number;
-    decoposeNum : number;    //需要重置
-    intervalIndex : number;
-    minStr : string;
-    secStr : string;
-    spriteframe1 : cc.SpriteFrame;
-    spriteframe2 : cc.SpriteFrame;
-    spriteframe3 : cc.SpriteFrame;
-    spriteframe4 : cc.SpriteFrame;
-    spriteframe5 : cc.SpriteFrame;
-    spriteframe6 : cc.SpriteFrame;
-    spriteframe7 : cc.SpriteFrame;
-    spriteframe8 : cc.SpriteFrame;
-    spriteframe9 : cc.SpriteFrame;
-    checkpointsNum : number;
-    checkpoint : number;
+    labelArr : Array<cc.Node> = Array<cc.Node>();
+    progressArr : Array<cc.Node> = Array<cc.Node>(); 
+    li : Array<number> = Array<number>();   //质因数
+    an : Array<number> = Array<number>();   //约数
+    pl : Array<number> = Array<number>();   //玩家答案
+    timer : number = null;
+    decoposeNum : number = null;    //被分解的数
+    intervalIndex : number = null;    //clock的interval的index值
+    minStr : string = null;
+    secStr : string = null;
+    spriteframe1 : cc.SpriteFrame = null;
+    spriteframe2 : cc.SpriteFrame = null;
+    spriteframe3 : cc.SpriteFrame = null;
+    spriteframe4 : cc.SpriteFrame = null;
+    spriteframe5 : cc.SpriteFrame = null; 
+    spriteframe6 : cc.SpriteFrame = null;
+    spriteframe7 : cc.SpriteFrame = null;
+    spriteframe8 : cc.SpriteFrame = null;
+    spriteframe9 : cc.SpriteFrame = null;
+    checkpointsNum : number = null;
+    checkpoint : number = null;
 
      onLoad () {
          DaAnData.getInstance().checkpointsNum = 3;
-         DaAnData.getInstance().number = 24;
+         DaAnData.getInstance().numberArr = [24, 25, 26];
         this.isTecher();
         this.initData();
     }
@@ -91,6 +94,7 @@ export default class GamePanel extends BaseUI {
     start() {
         this.openClock();
         this.decompose(this.decoposeNum);
+        this.answer(this.decoposeNum);
         this.createDecomposeBall();
     }
    
@@ -113,7 +117,7 @@ export default class GamePanel extends BaseUI {
 
     initData() {
         this.timer = 0;
-        this.decoposeNum = DaAnData.getInstance().number;
+        this.decoposeNum = DaAnData.getInstance().numberArr[0];
         this.checkpoint = 1;
         this.checkpointsNum = 3;//DaAnData.getInstance().checkpointsNum;
         this.defaultValue();
@@ -191,6 +195,7 @@ export default class GamePanel extends BaseUI {
                         labelX.font = this.font;
                         labelX.node.y = 0;
                         node.parent = this.numberStr.node.parent;
+                        this.labelArr.push(node);
                     }
                     this.decomposeArr.push(ballNode);
                     this.addListenerOnDecomposeBall(ballNode);
@@ -267,7 +272,7 @@ export default class GamePanel extends BaseUI {
                    let data = JSON.parse(response_data.data.courseware_content);
 
                    if(data.number) {
-                        DaAnData.getInstance().number = data.number;
+                        DaAnData.getInstance().numberArr = data.numberArr;
                    }
                    if(data.checkpointsNum) {
                         DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
@@ -276,6 +281,14 @@ export default class GamePanel extends BaseUI {
                 }
             } 
         }.bind(this), null);
+    }
+
+    answer(num : number) {
+        for(let i = 1; i <= num; i++) {
+            if(num % i == 0) {
+                this.an.push(i);
+            }
+        }
     }
 
     decompose(num: number) {
@@ -306,7 +319,6 @@ export default class GamePanel extends BaseUI {
         cc.log('numberstr width is ', this.numberStr.node.getContentSize().width);
         var y = 0;
         var space = 150;
-      
         for(let i = 0; i < this.li.length; i++) {
             cc.log(this.li[i]);
             var ballx = 0;
@@ -470,6 +482,10 @@ export default class GamePanel extends BaseUI {
             var anchorPos = this.gunNode.getPosition();
             var angle = this.getAngle(dirPos, anchorPos); 
             var oriPos = this.getRotationPos(pos1, pos3, angle);
+            var answerNum = parseInt(gunBall.getChildByName('label').getComponent(cc.Label).string);
+            if(this.pl.indexOf(answerNum) == -1) {
+                this.pl.push(answerNum);
+            }     
             this.bullet.getChildByName('ball').getComponent(cc.Sprite).spriteFrame = gunBall.getChildByName('ball').getComponent(cc.Sprite).spriteFrame;
             this.bullet.getChildByName('label').getComponent(cc.Label).string = gunBall.getChildByName('label').getComponent(cc.Label).string;
             var shootStart = cc.callFunc(function(){
@@ -521,8 +537,7 @@ export default class GamePanel extends BaseUI {
         var pos = cc.v2(posx,posy);
         return pos;
     }
-   
-    reset() {
+    nextCheckPoint(checkpoint : number) {
         //重置时间
         this.closeClock();
         this.minuteHand.rotation = 0;
@@ -530,14 +545,47 @@ export default class GamePanel extends BaseUI {
         this.timer = 0;
         //销毁实例
         for(let i = 0; i < this.decomposeArr.length;  i++) {
-            this.decompose[i].destroy();
+            this.decomposeArr[i].destroy();
         }
         for(let i = 0; i < this.answerArr.length; i++) {
             this.answerArr[i].destroy();
         }
+        for(let i = 0; i < this.labelArr.length; i++) {
+            this.labelArr[i].destroy();
+        }
         //清空数组
         this.decomposeArr = [];
         this.answerArr = [];
+        this.labelArr = [];
+        this.pl = [];
+        //重置ui
+        this.bubble.active = false;
+        this.bubble_1.opacity = 0;
+        this.bubble_2.opacity = 0;
+        this.gunNode.getChildByName('ballNode').opacity = 0;
+        this.bullet.opacity = 0;
+        //初始化游戏
+        this.checkpointsNum = DaAnData.getInstance().numberArr[checkpoint - 1]
+        this.decompose(this.decoposeNum);
+        this.answer(this.decoposeNum);
+        this.createDecomposeBall();
+        this.openClock();
+    }
+    reset() {
+        //重置时间
+        this.closeClock();
+        this.minuteHand.rotation = 0;
+        this.secondHand.rotation = 0;
+        this.timer = 0;
+        //销毁实例
+        for(let i = 0; i < this.answerArr.length;  i++) {
+            this.answerArr[i].destroy();
+        }
+        //清空数组
+        this.answerArr = [];
+        this.pl = [];
+
+
         //重置ui
         this.bubble.active = false;
         this.bubble_1.opacity = 0;
@@ -548,7 +596,42 @@ export default class GamePanel extends BaseUI {
         this.openClock();
     }
 
+    cueAnswer() {
+        for(let i = 0; i < this.pl.length; i++) {
+            
+        }
+    }
+
     isRight() {
+        var rightNum = 0;
+        for(let i = 0; i < this.pl.length; i++) {
+            if(this.an.indexOf(this.an[i]) != -1) {
+                rightNum ++;
+            }
+        }
+        if(rightNum == this.an.length) {
+           this.checkpoint ++;
+           if(this.checkpoint == this.checkpointsNum + 1) {
+               this.closeClock();
+                UIHelp.showOverTips(1, this.timer, '恭喜全部通关', function(){
+                    this.reset();
+                }.bind(this), function(){
+                    UIManager.getInstance().closeUI(OverTips);
+                }.bind(this));
+           }else {
+            this.closeClock();
+            UIHelp.showOverTips(2, this.timer, '挑战成功', function(){
+                this.reset();
+            }.bind(this), function(){
+                this.nextCheckPoint(this.checkpoint);
+            }.bind(this));
+           }
+        }else {
+            this.closeClock();
+           UIHelp.showOverTips(3, this.timer, '挑战失败！点击重置后再次挑战');
+        }
+
+
 
     }
 

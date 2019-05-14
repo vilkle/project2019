@@ -5,6 +5,7 @@ cc._RF.push(module, 'c44e6cLg85JzaIFNvBdsH7x', 'UIHelp');
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIManager_1 = require("../Manager/UIManager");
 var TipUI_1 = require("../UI/panel/TipUI");
+var OverTips_1 = require("../UI/Item/OverTips");
 var UIHelp = /** @class */ (function () {
     function UIHelp() {
     }
@@ -17,6 +18,17 @@ var UIHelp = /** @class */ (function () {
         }
         else {
             tipUI.showTip(message);
+        }
+    };
+    UIHelp.showOverTips = function (type, time, str, callback1, callback2) {
+        var overTips = UIManager_1.UIManager.getInstance().getUI(OverTips_1.OverTips);
+        if (!overTips) {
+            UIManager_1.UIManager.getInstance().openUI(OverTips_1.OverTips, 200, function () {
+                UIHelp.showOverTips(type, time, str, callback1, callback2);
+            });
+        }
+        else {
+            overTips.init(type, time, str, callback1, callback2);
         }
     };
     return UIHelp;

@@ -13,9 +13,14 @@ var OverTips = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.NodeDes = null; //描述节点
         _this.des = null;
+        _this.time = null;
         _this.close = null;
         _this.sp_BgAnimator = null; // 背景动画
         _this.sp_lightAnimator = null; // 光动画
+        _this.rightButton = null;
+        _this.leftButton = null;
+        _this.closeButton = null;
+        _this.layout = null;
         _this.callback = null;
         return _this;
         // update (dt) {}
@@ -23,31 +28,62 @@ var OverTips = /** @class */ (function (_super) {
     OverTips_1 = OverTips;
     OverTips.prototype.start = function () {
     };
-    //type 成功 1 失败 2
-    OverTips.prototype.init = function (type, str, callback) {
+    //type 通关1 成功 2 失败 3
+    OverTips.prototype.init = function (type, time, str, callback1, callback2) {
         this.type = type;
-        this.callback = callback;
+        //this.callback = callback;
         Tools_1.Tools.playSpine(this.sp_BgAnimator, "fault", false);
+        var minutes = time / 60 >> 0;
+        var second = time % 60;
+        var timestr = '用时 ' + minutes.toString() + ':' + second.toString();
+        this.time.string = timestr;
         this.NodeDes.setScale(0.001, 0.001);
-        this.callback = callback;
+        //this.callback = callback;
+        this.layout.node.on(cc.Node.EventType.TOUCH_START, function (e) {
+            e.stopPropagation();
+        });
         if (type == 1) {
-            this.Successful(str);
+            this.Successful(str, 1);
             this.close.node.active = false;
+            this.leftButton.node.active = false;
+            this.closeButton.node.active = false;
+            this.rightButton.node.active = false;
+            this.leftButton.node.on('click', callback1, this);
+            this.rightButton.node.on('click', callback2, this);
         }
         else if (type == 2) {
+            this.Successful(str, 2);
+            this.close.node.active = false;
+            this.leftButton.node.active = false;
+            this.rightButton.node.active = false;
+            this.closeButton.node.active = false;
+        }
+        else if (type == 3) {
             this.failure(str);
+            this.time.node.active = false;
+            this.closeButton.node.active = false;
+            this.rightButton.node.active = false;
+            this.leftButton.node.active = false;
+            this.time.node.active = false;
             this.close.node.active = true;
         }
         this.TipsAnimatorScale(this.NodeDes);
     };
     //成功
-    OverTips.prototype.Successful = function (str) {
+    OverTips.prototype.Successful = function (str, type) {
         this.des.node.active = true;
         this.sp_lightAnimator.node.active = true;
         Tools_1.Tools.playSpine(this.sp_BgAnimator, "fault", false);
         Tools_1.Tools.playSpine(this.sp_BgAnimator, "right_1", false, function () {
-            // console.log("播发完成");
-        });
+            if (type == 1) {
+                this.leftButton.node.active = true;
+                this.closeButton.node.active = true;
+            }
+            else if (type == 2) {
+                this.leftButton.node.active = true;
+                this.rightButton.node.active = true;
+            }
+        }.bind(this));
         Tools_1.Tools.playSpine(this.sp_lightAnimator, "light", false, function () {
         }.bind(this));
         this.des.string = str;
@@ -62,13 +98,7 @@ var OverTips = /** @class */ (function (_super) {
         // this.des.node.color = new cc.Color(39, 178, 187);
     };
     OverTips.prototype.OnClickClose = function () {
-        if (this.type == 1) {
-            //界面不关闭
-        }
-        else {
-            UIManager_1.UIManager.getInstance().closeUI(OverTips_1);
-        }
-        // this.node.active = false;
+        UIManager_1.UIManager.getInstance().closeUI(OverTips_1);
     };
     //通用动画
     OverTips.prototype.TipsAnimatorScale = function (nodeObj) {
@@ -86,6 +116,9 @@ var OverTips = /** @class */ (function (_super) {
         property(cc.Label)
     ], OverTips.prototype, "des", void 0);
     __decorate([
+        property(cc.Label)
+    ], OverTips.prototype, "time", void 0);
+    __decorate([
         property(cc.Button)
     ], OverTips.prototype, "close", void 0);
     __decorate([
@@ -94,6 +127,18 @@ var OverTips = /** @class */ (function (_super) {
     __decorate([
         property(sp.Skeleton)
     ], OverTips.prototype, "sp_lightAnimator", void 0);
+    __decorate([
+        property(cc.Button)
+    ], OverTips.prototype, "rightButton", void 0);
+    __decorate([
+        property(cc.Button)
+    ], OverTips.prototype, "leftButton", void 0);
+    __decorate([
+        property(cc.Button)
+    ], OverTips.prototype, "closeButton", void 0);
+    __decorate([
+        property(cc.Layout)
+    ], OverTips.prototype, "layout", void 0);
     OverTips = OverTips_1 = __decorate([
         ccclass
     ], OverTips);

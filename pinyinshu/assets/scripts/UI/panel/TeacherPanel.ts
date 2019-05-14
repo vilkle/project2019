@@ -15,16 +15,19 @@ export default class TeacherPanel extends BaseUI {
     protected static className = "TeacherPanel";
 
     @property(cc.EditBox)
-    checkpointsEditBox : cc.EditBox;
-    @property(cc.EditBox)
-    NumEditBox : cc.EditBox;
-    @property(cc.Button)
-    submissonButton : cc.Button;
+    checkpointsEditBox : cc.EditBox = null;
     @property(cc.Node)
-    tipNode : cc.Node;
-  
+    editBoxNode : cc.Node = null;
+    @property(cc.Button)
+    submissonButton : cc.Button = null;
+    @property(cc.Node)
+    tipNode : cc.Node = null;
+    @property(cc.Prefab)
+    editbox2 : cc.Prefab = null;
+    editboxArr : Array<cc.Node> = Array<cc.Node>();
     onLoad () {
         this.getNet();
+        this.initData();
     }
 
     start() {
@@ -37,7 +40,7 @@ export default class TeacherPanel extends BaseUI {
 
     initData() {
         this.checkpointsEditBox.string = String(DaAnData.getInstance().checkpointsNum);
-        this.NumEditBox.string = String(DaAnData.getInstance().number);
+        this.checkpointEditingEnd(null);
     }
 
     ShowTips(tipString : string) {
@@ -53,7 +56,7 @@ export default class TeacherPanel extends BaseUI {
     }
 
     button() {
-        cc.log("checkpoint num", DaAnData.getInstance().checkpointsNum, DaAnData.getInstance().number);
+        cc.log("checkpoint num", DaAnData.getInstance().checkpointsNum, DaAnData.getInstance().numberArr);
         if(this.errorChecking()) {
             UIManager.getInstance().showUI(GamePanel, () => {
                 ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
@@ -81,18 +84,22 @@ export default class TeacherPanel extends BaseUI {
                DaAnData.getInstance().checkpointsNum = 0;
             break
         }
-    }
-
-    numberEditingEnd(sender) {
-        DaAnData.getInstance().number = 0;
-        var text = this.NumEditBox.string;
-        var num = Number(text);
-        if(num > 0) {
-            DaAnData.getInstance().number = num;
-        }else {
-            this.NumEditBox.string = '';
-            DaAnData.getInstance().number = 0;
-
+        for(let i = 0; i < this.editboxArr.length; i++) {
+            this.editboxArr[i].destroy();
+        }
+        for(let i = 0; i < parseInt(this.checkpointsEditBox.string); i++) {
+            let editbox = cc.instantiate(this.editbox2);
+            editbox.x = 0;
+            this.editboxArr.push(editbox);
+            editbox.parent = this.editBoxNode;
+            editbox.getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
+            editbox.on('editing-did-ended', function(sender){
+                DaAnData.getInstance().numberArr[i] = parseInt(editbox.getComponent(cc.EditBox).string);
+                cc.log(DaAnData.getInstance().numberArr);
+            }.bind(this));
+            if(DaAnData.getInstance().numberArr[i]) {
+                editbox.getComponent(cc.EditBox).string = DaAnData.getInstance().numberArr[i].toString();
+            }
         }
     }
 
@@ -100,7 +107,7 @@ export default class TeacherPanel extends BaseUI {
         if(DaAnData.getInstance().checkpointsNum == 0) {
             this.ShowTips("关卡数不能为空，请输入关卡数。");
             return false;
-        }else if(DaAnData.getInstance().number == 0) {
+        }else if(DaAnData.getInstance().numberArr.length <  DaAnData.getInstance().checkpointsNum) {
             this.ShowTips("被分解质因数的数不能为空。");
             return false;
         }else {
@@ -116,9 +123,9 @@ export default class TeacherPanel extends BaseUI {
                 if (response_data.data.courseware_content == null) {
                 } else {
                    let data = JSON.parse(response_data.data.courseware_content);
-                   DaAnData.getInstance().number = data.number;
+                   DaAnData.getInstance().numberArr = data.numberARR;
                    DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                   cc.log("number is", DaAnData.getInstance().number);
+                   cc.log("number is", DaAnData.getInstance().numberArr);
                    cc.log("checkpointsNum is ", DaAnData.getInstance().checkpointsNum);
                    this.initData();
                 }
