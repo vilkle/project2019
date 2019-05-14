@@ -556,6 +556,10 @@ var GamePanel = /** @class */ (function (_super) {
         this.bullet.opacity = 0;
         this.openClock();
     };
+    GamePanel.prototype.cueAnswer = function () {
+        for (var i = 0; i < this.pl.length; i++) {
+        }
+    };
     GamePanel.prototype.isRight = function () {
         var rightNum = 0;
         for (var i = 0; i < this.pl.length; i++) {
@@ -568,6 +572,7 @@ var GamePanel = /** @class */ (function (_super) {
             if (this.checkpoint == this.checkpointsNum + 1) {
                 this.closeClock();
                 UIHelp_1.UIHelp.showOverTips(1, this.timer, '恭喜全部通关', function () {
+                    this.reset();
                 }.bind(this), function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
                 }.bind(this));
@@ -575,8 +580,9 @@ var GamePanel = /** @class */ (function (_super) {
             else {
                 this.closeClock();
                 UIHelp_1.UIHelp.showOverTips(2, this.timer, '挑战成功', function () {
-                    this.nextCheckPoint(this.checkpoint);
+                    this.reset();
                 }.bind(this), function () {
+                    this.nextCheckPoint(this.checkpoint);
                 }.bind(this));
             }
         }
