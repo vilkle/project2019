@@ -100,7 +100,6 @@ export default class GamePanel extends BaseUI {
     }
 
     initData() {
-
         switch(DaAnData.getInstance().range) {
             case 1:
                this.horizonNum = 4;
@@ -177,8 +176,7 @@ export default class GamePanel extends BaseUI {
                             num ++;
                             if(num == DaAnData.getInstance().picArr.length)
                             {
-                                this.loadDirSFArr();
-                                
+                                this.loadDirSFArr(); 
                             }
                         }
                     }.bind(this));
@@ -390,25 +388,28 @@ export default class GamePanel extends BaseUI {
                 let x = h * 175 + 175 / 2;
                 let y = v * 175 + 175 / 2;
                 let ischange = false;
-                if(horizonNum%2) {
-                    if(num%2) {
-                        ischange = true;
+                if(this.answerNum == 4) {
+                    if(horizonNum%2) {
+                        if(num%2) {
+                            ischange = true;
+                        }
+                    }else {
+                        if(v%2){
+                            if(num%2 == 0) {
+                                ischange = true;
+                            }
+                        }
+                        else{
+                            if(num%2 != 0) {
+                                ischange = true;
+                            }
+                        }
                     }
                 }else {
-                    if(v%2){
-                        if(num%2 == 0) {
-                            ischange = true;
-                        }
-                    }
-                    else{
-                        if(num%2 != 0) {
-                            ischange = true;
-                        }
-                    }
+                    ischange = true;
+                    cc.log('------------------------ischange');
                 }
-
                 this.creatItem( num, cc.v2(x,y), ischange, board, isAnswer); 
-               
             }
         }
         var width = horizonNum * 175;
@@ -467,6 +468,11 @@ export default class GamePanel extends BaseUI {
                                 item.zIndex = 0;
                                 this.playerItemArr = this.playerItemArr.filter(item => item !== num);
                                 this.playerItemSFArr = this.playerItemSFArr.filter(item => item != this.dirSFNumArr[num]);
+                                if(this.isAllRight()) {
+                                    if(this.sure.interactable == false) {
+                                        this.sure.interactable = true;
+                                    }
+                                }
                             }
                         }   
                     }.bind(this), this);

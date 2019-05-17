@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bubble_wrong",
+    "texture": "6a0732f1-8ef2-42b9-bffa-317abd72abd0",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      184,
+      184
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      184,
+      184
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
