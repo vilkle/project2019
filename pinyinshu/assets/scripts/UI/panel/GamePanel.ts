@@ -81,14 +81,11 @@ export default class GamePanel extends BaseUI {
     checkpoint : number = null;
 
      onLoad () {
+        
         DaAnData.getInstance().checkpointsNum = 3;
-        DaAnData.getInstance().numberArr = [24, 25, 26];
+        DaAnData.getInstance().numberArr = [1, 2, 26];
         this.isTecher();
         this.initData();
-        this.addSpineListener();
-        this.updateNode.push(this.bubble_1);
-        this.updateNode.push(this.bubble_2);
-        this.updateNode.push(this.gunNode.getChildByName('ballNode'));
     }
 
     start() {
@@ -121,11 +118,14 @@ export default class GamePanel extends BaseUI {
 
     initData() {
         this.timer = 0;
-        this.decoposeNum = DaAnData.getInstance().numberArr[0];
         this.checkpoint = 1;
+        this.decoposeNum = DaAnData.getInstance().numberArr[this.checkpoint - 1];
         this.checkpointsNum = 3;//DaAnData.getInstance().checkpointsNum;
         this.defaultValue();
         this.initProgress(this.checkpointsNum);
+        this.updateNode.push(this.bubble_1);
+        this.updateNode.push(this.bubble_2);
+        this.updateNode.push(this.gunNode.getChildByName('ballNode'));
     }
     
     initProgress(checkpointsNum : number) {
@@ -175,7 +175,7 @@ export default class GamePanel extends BaseUI {
         var parent = this.node.getChildByName('1');
         var pos = parent.getPosition();
         this.createBall(1, 0, 0, parent, true);
-        this.an.push(1);
+        this.pl.push(1);
     }
 
     createBall(num : number, x : number, y : number, parent : cc.Node, isAnswer : boolean){
@@ -191,6 +191,7 @@ export default class GamePanel extends BaseUI {
             ballNode.y = y;
             ballNode.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
             this.answerArr.push(ballNode);
+            cc.log('push a answer ball', ballNode);
             this.updateNode.push(ballNode);
             this.addListenerOnAnswerBall(ballNode);
         }else {
@@ -237,7 +238,7 @@ export default class GamePanel extends BaseUI {
                 this.an.push(i);
             }
         }
-        this.an.push(1);
+        cc.log(this.an);
     }
 
     decompose(num: number) {
@@ -250,6 +251,9 @@ export default class GamePanel extends BaseUI {
                     this.li.push(i);
                 }
             }
+        if(num == 1) {
+            this.li.push(1);
+        }
         var str = String(num) + '  =  ';
         this.numberStr.getComponent(cc.Label).string = str;
         var repeat = 1;
@@ -262,6 +266,7 @@ export default class GamePanel extends BaseUI {
                 label.fontSize = 50;
                 node.parent = this.numberNode;
                 node.y = 10;
+                this.labelArr.push(node);
                 if(i < this.li.length - 1) {
                     label.string = String(this.li[i]) + '  *  ';
                 }else {
@@ -277,6 +282,7 @@ export default class GamePanel extends BaseUI {
                     label0.string = this.li[i].toString();
                     node0.parent = this.numberNode;
                     node0.y = 10;
+                    this.labelArr.push(node0);
                     let node = new cc.Node();
                     const label = node.addComponent(cc.Label);
                     label.string = repeat.toString();
@@ -284,10 +290,12 @@ export default class GamePanel extends BaseUI {
                     label.fontSize = 30;
                     node.parent = this.numberNode;
                     node.y = 40;
+                    this.labelArr.push(node);
                     let node1 = new cc.Node();
                     const label1 = node1.addComponent(cc.Label);
                     label1.font = this.font;
                     label1.fontSize = 50;
+                    this.labelArr.push(node1);
                     if(this.li[i + 2]) {
                         label1.string = '  *  ';
                     }else{
@@ -328,38 +336,6 @@ export default class GamePanel extends BaseUI {
         }
     }
 
-    addSpineListener() {
-       var gunBall = this.gunNode.getChildByName('ballNode');
-        gunBall.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
-            if(trackEntry.animation.name == 'ball_out') {
-                cc.log('gunball=================');
-                gunBall.opacity = 0;
-            }else if(trackEntry.animation.name == 'ball_fire') {
-                gunBall.opacity = 0;
-            }  
-        });
-        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
-            if(trackEntry.animation.name == 'ball_out') {
-                this.gunballIn();
-                this.bubble_1.opacity = 0;
-                this.bubble_2.opacity = 0;
-                this.bubble_none1.node.opacity = 255;
-                this.bubble_none2.node.opacity = 255;
-                cc.log('bubble1================');
-            }
-        });
-        this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
-            if(trackEntry.animation.name == 'ball_out') {
-                this.gunballIn();
-                this.bubble_1.opacity = 0;
-                this.bubble_2.opacity = 0;
-                this.bubble_none1.node.opacity = 255;
-                this.bubble_none2.node.opacity = 255;
-                cc.log('bubble2================');
-            }
-        });
-    }
-
     addListenerOnDecomposeBall(ballNode : cc.Node) {
         cc.log(ballNode);
         var ball = ballNode.getChildByName('spine');
@@ -387,7 +363,12 @@ export default class GamePanel extends BaseUI {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_CANCEL, function(e){
-          
+            if(this.gunNode.rotation != 0) {
+                if(this.bubble.opacity == 255) {
+                    this.bubble.opacity = 0;
+                    return;
+                }
+            }
             var num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);  
             var skinStr = skinStrEnum[num];
             if(this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
@@ -549,14 +530,12 @@ export default class GamePanel extends BaseUI {
         ball.on(cc.Node.EventType.TOUCH_END, function(e){
             if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
-                cc.log(this.answerArr);
                 let index = this.answerArr.indexOf(ballNode);
-                cc.log("index is ",  index);
                 this.answerArr.splice(index, 1);
+                this.pl.splice(index, 1);
                 let updateIndex = this.updateNode.indexOf(ballNode);
                 this.updateNode.splice(updateIndex, 1); 
                 //this.answerArr.filter(item => item !== ballNode);
-                cc.log(this.answerArr);
                 this.updatePos();
                 ballNode.destroy();
             }else {
@@ -586,7 +565,6 @@ export default class GamePanel extends BaseUI {
         }
         if(this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_1.opacity) {
             let num = parseInt(this.bubble_1.getChildByName('label').getComponent(cc.Label).string);
-            this.pl.push(num);
             let ballNode =  this.gunNode.getChildByName('ballNode');
             ballNode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
             ballNode.getChildByName('label').getComponent(cc.Label).string = num.toString();
@@ -605,7 +583,6 @@ export default class GamePanel extends BaseUI {
             this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false);
         }else if(this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_2.opacity) {
             let num = parseInt(this.bubble_2.getChildByName('label').getComponent(cc.Label).string);
-            this.pl.push(num);
             let ballNode =  this.gunNode.getChildByName('ballNode');
             ballNode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
             ballNode.getChildByName('label').getComponent(cc.Label).string = num.toString();
@@ -622,6 +599,9 @@ export default class GamePanel extends BaseUI {
             });
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).clearTracks();
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false); 
+        }
+        if(this.bubble_none1.node.opacity == 0 || this.bubble_none2.node.opacity == 0) {
+            return;
         }
         if(this.gunNode.getChildByName('ballNode').opacity == 255 && this.answerArr.length < 25) {
             var gunBall = this.gunNode.getChildByName('ballNode');
@@ -669,6 +649,7 @@ export default class GamePanel extends BaseUI {
             var shootEnd = cc.callFunc(function(){
                 this.bullet.opacity = 0;
                 this.createBall(parseInt(num), 0, 0, parent, true);
+                cc.log('create a answer ball', this.answerArr);
                 this.gunNode.runAction(cc.rotateTo(0.5, 0));
             }.bind(this), this);
             this.gunNode.runAction(cc.sequence(cc.rotateBy(0.5, angle), shootStart));
@@ -696,7 +677,6 @@ export default class GamePanel extends BaseUI {
         var cos = Math.cos(radina);
         var y = z * cos;
         var x = Math.sqrt(Math.pow(z,2) - Math.pow(y,2));
-        cc.log(x, '============',y);
         var posx = anchorPos.x + x;
         var posy = anchorPos.y + y;
         if(angle > 0){
@@ -709,11 +689,12 @@ export default class GamePanel extends BaseUI {
     }
     nextCheckPoint(checkpoint : number) {
         //重置时间
-        this.closeClock();
         this.minuteHand.rotation = 0;
         this.secondHand.rotation = 0;
         this.timer = 0;
+        this.openClock();
         //销毁实例
+        this.updateNode = [];
         for(let i = 0; i < this.decomposeArr.length;  i++) {
             this.decomposeArr[i].destroy();
         }
@@ -728,86 +709,104 @@ export default class GamePanel extends BaseUI {
         this.answerArr = [];
         this.labelArr = [];
         this.pl = [];
+        this.li = [];
+        this.an = [];
         //重置ui
-        this.bubble.active = false;
+        this.bubble.opacity = 0;
         this.bubble_1.opacity = 0;
         this.bubble_2.opacity = 0;
         this.gunNode.getChildByName('ballNode').opacity = 0;
         this.bullet.opacity = 0;
         //初始化游戏
-        this.checkpointsNum = DaAnData.getInstance().numberArr[checkpoint - 1]
+        this.decoposeNum = DaAnData.getInstance().numberArr[checkpoint - 1]
+        cc.log('next point is ', checkpoint);
+        cc.log('checkpointsnum is ', this.checkpointsNum);
         this.decompose(this.decoposeNum);
         this.answer(this.decoposeNum);
         this.createDecomposeBall();
-        this.openClock();
+        this.defaultValue();
+        this.initProgress(this.checkpoint);
+        this.updateNode.push(this.bubble_1);
+        this.updateNode.push(this.bubble_2);
+        this.updateNode.push(this.gunNode.getChildByName('ballNode'));
     }
     reset() {
         //重置时间
-        this.closeClock();
         this.minuteHand.rotation = 0;
         this.secondHand.rotation = 0;
         this.timer = 0;
+        this.openClock();
         //销毁实例
+
         for(let i = 0; i < this.answerArr.length;  i++) {
+            if(this.updateNode.indexOf(this.answerArr[i]) != -1) {
+                this.updateNode.splice(this.updateNode.indexOf(this.answerArr[i]), 1);
+            }
             this.answerArr[i].destroy();
         }
         //清空数组
         this.answerArr = [];
         this.pl = [];
 
-
         //重置ui
-        this.bubble.active = false;
+        this.defaultValue();
+        this.bubble.opacity = 0;
         this.bubble_1.opacity = 0;
         this.bubble_2.opacity = 0;
         this.gunNode.getChildByName('ballNode').opacity = 0;
         this.bullet.opacity = 0;
-
-        this.openClock();
     }
 
     cueAnswer() {
         for(let i = 0; i < this.pl.length; i++) {
             if(this.an.indexOf(this.pl[i]) == -1) {
                 this.answerArr[i].getChildByName('err').active = true;
-            }
-            for(let j = 0; j < i - 1; j ++) {
-                if(this.pl[j] == this.pl[i]) {
-                    this.answerArr[i].getChildByName('err').active = true;
+            }else {
+                for(let j = 0; j < i; j ++) {
+                    if(this.pl[j] == this.pl[i]) {
+                        this.answerArr[i].getChildByName('err').active = true;
+                    }
                 }
             }
         }
     }
 
     isRight() {
+        cc.log(this.an);
+        cc.log(this.pl);
+        cc.log(this.answerArr);
         var rightNum = 0;
-        for(let i = 0; i < this.pl.length; i++) {
-            if(this.an.indexOf(this.an[i]) != -1) {
+        for(let i = 0; i < this.an.length; i++) {
+            if(this.pl.indexOf(this.an[i]) != -1) {
                 rightNum ++;
             }
         }
         if(rightNum == this.an.length && this.pl.length == this.an.length) {
            this.checkpoint ++;
-           if(this.checkpoint == this.checkpointsNum + 1) {
+           if(this.checkpoint >= this.checkpointsNum + 1) {
                this.closeClock();
                 UIHelp.showOverTips(1, this.timer, '恭喜全部通关', function(){
+                    UIManager.getInstance().closeUI(OverTips);
                     this.reset();
                 }.bind(this), function(){
                     UIManager.getInstance().closeUI(OverTips);
+                    this.mask.on(cc.Node.EventType.TOUCH_START, function(e) {
+                        e.stopPropagation();
+                    }.bind(this));
                 }.bind(this));
            }else {
             this.closeClock();
             UIHelp.showOverTips(2, this.timer, '挑战成功', function(){
+                UIManager.getInstance().closeUI(OverTips);
                 this.reset();
             }.bind(this), function(){
+                UIManager.getInstance().closeUI(OverTips);
                 this.nextCheckPoint(this.checkpoint);
             }.bind(this));
            }
         }else {
             this.closeClock();
-            this.reset();
-            this.cueAnswer();
-           UIHelp.showOverTips(3, this.timer, '挑战失败！点击重置后再次挑战');
+           UIHelp.showOverTips(3, this.timer, '挑战失败！点击重置后再次挑战',this.cueAnswer.bind(this));
         }
     }
 

@@ -14,10 +14,10 @@ export default class AdaptiveScreen extends cc.Component {
     bgNode: cc.Node = null;
     /**舞台设计宽度 */
     @property
-    public viewWidth: number = 640;
+    public viewWidth: number = 960;//640
     /**舞台设计高度 */
     @property
-    public viewHeight: number = 1136;
+    public viewHeight: number = 1994;//1136
 
     /**当前场景 舞台 */
     public stage: cc.Node;

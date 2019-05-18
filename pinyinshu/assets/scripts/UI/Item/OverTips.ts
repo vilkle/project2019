@@ -31,7 +31,8 @@ export  class OverTips extends BaseUI {
     @property(cc.Layout)
     private layout: cc.Layout= null;
 
-    private callback = null;
+    private callback1 = null;
+    private callback2 = null;
     private type:number;
     start () {
 
@@ -51,28 +52,24 @@ export  class OverTips extends BaseUI {
         this.layout.node.on(cc.Node.EventType.TOUCH_START, function(e){
             e.stopPropagation();
         });
+        this.leftButton.node.active = false;
+        this.closeButton.node.active = false;
+        this.rightButton.node.active = false;
         if (type == 1) {
             this.Successful(str,1);
             this.close.node.active = false;
-            this.leftButton.node.active = false;
-            this.closeButton.node.active = false;
-            this.rightButton.node.active = false;
-            this.leftButton.node.on('click', callback1, this);
-            this.rightButton.node.on('click', callback2, this);
+            this.callback1 = callback1;
+            this.callback2 = callback2;
         } else if (type == 2) {
             this.Successful(str,2);
-           this.close.node.active = false;
-           this.leftButton.node.active = false;
-           this.rightButton.node.active = false;
-           this.closeButton.node.active = false;
+           this.close.node.active = false; 
+           this.callback1 = callback1;
+           this.callback2 = callback2;
         }else if(type == 3) {
             this.failure(str);
             this.time.node.active = false;
-            this.closeButton.node.active = false;
-            this.rightButton.node.active = false;
-            this.leftButton.node.active = false;
             this.time.node.active = false;
-
+            this.callback1 = callback1;
             this.close.node.active = true;
         }
         this.TipsAnimatorScale(this.NodeDes);
@@ -88,9 +85,13 @@ export  class OverTips extends BaseUI {
            if(type == 1) {
                 this.leftButton.node.active = true;
                 this.closeButton.node.active = true;
+                this.leftButton.node.on('click', this.callback1, this);
+                this.closeButton.node.on('click', this.callback2, this);
            }else if(type == 2) {
                 this.leftButton.node.active = true;
                 this.rightButton.node.active = true;
+                this.leftButton.node.on('click', this.callback1, this);
+                this.rightButton.node.on('click', this.callback2, this);
            }
         }.bind(this));
         Tools.playSpine(this.sp_lightAnimator, "light", false, function () {
@@ -109,7 +110,7 @@ export  class OverTips extends BaseUI {
     }
 
     OnClickClose() {
-        
+        this.callback1();
         UIManager.getInstance().closeUI(OverTips);
     
     }
