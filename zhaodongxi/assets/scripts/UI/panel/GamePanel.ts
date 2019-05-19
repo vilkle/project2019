@@ -448,6 +448,9 @@ export default class GamePanel extends BaseUI {
                     item.getChildByName("bg").on(cc.Node.EventType.TOUCH_START, function(t){
                         if (item.getChildByName("box").active == false) {
                             if(item.getChildByName("mask").opacity == 0) {
+                                if(this.sure.interactable == false) {
+                                    this.sure.interactable = true;
+                                }
                                 AudioManager.getInstance().stopAll();
                                 AudioManager.getInstance().playSound("click", false);
                                 item.getChildByName("box").active = true;
@@ -473,6 +476,8 @@ export default class GamePanel extends BaseUI {
                                         this.sure.interactable = true;
                                     }
                                 }
+                            }else {
+                                this.sure.interactable = false;
                             }
                         }   
                     }.bind(this), this);
@@ -576,12 +581,18 @@ export default class GamePanel extends BaseUI {
         }
         if(rightNum == this.rightNum && this.playerItemArr.length == this.rightNum) {
             this.checkpoints++;
-            if(this.checkpoints < this.checkpointsNum) {
-                UIHelp.showOverTips(1, '答对了，你真棒！', function(){
-                    this.nextCheckPoints();
-                }.bind(this));
+            if(this.checkpoints < this.checkpointsNum || this.checkpointsNum == 1) {
+                if(this.cueNum >= 3) {
+                    UIHelp.showOverTips(1, '你真棒~', function(){
+                        this.nextCheckPoints();
+                    }.bind(this));
+                }else {
+                    UIHelp.showOverTips(1, '答对啦！你真棒~', function(){
+                        this.nextCheckPoints();
+                    }.bind(this));
+                }
             }else {
-                UIHelp.showOverTips(1, '闯关成功！', function(){
+                UIHelp.showOverTips(1, '太棒啦，闯关结束！', function(){
                     if(ConstValue.IS_TEACHER) {
                         this.submit.node.active = true;
                     }   

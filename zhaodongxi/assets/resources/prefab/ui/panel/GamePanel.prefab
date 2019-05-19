@@ -1200,7 +1200,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "8fd774ba-09b7-4acb-a84b-c6f6fea85c3b"
+      "__uuid__": "4cf2fbf0-0f2a-4dbf-955b-5b20abd18fe9"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -1234,7 +1234,7 @@
         "__id__": 35
       }
     ],
-    "_N$interactable": true,
+    "_N$interactable": false,
     "_N$enableAutoGrayEffect": false,
     "_N$transition": 2,
     "transition": 2,
