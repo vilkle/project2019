@@ -490,32 +490,38 @@ export default class GamePanel extends BaseUI {
     }
 
     cueAnswer() {
-        cc.log('enter the cueanswer');
-        for(let i = 0; i < this.playerItemArr.length; i++) {
-            if(this.answerPosNumArr.indexOf(this.playerItemArr[i]) == -1) {
-                this.itemArr[this.playerItemArr[i]].getChildByName("mask").opacity = 80;
-            }
-        }
         for(let i = 0; i < this.answerPosNumArr.length; i++) {
-            if(this.playerItemArr.indexOf(this.answerPosNumArr[i]) == -1) {
-                var seq;
-                if(this.cueNum == 3) {
-                    seq = cc.sequence(cc.fadeOut(0.3),cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3));
-                }else if(this.cueNum > 3) {
-                    seq = cc.sequence(cc.fadeOut(0.3),cc.fadeIn(0.3));
-                }
-                this.itemArr[this.answerPosNumArr[i]].runAction(seq);
-            }
+            let rightBox = this.itemArr[this.answerPosNumArr[i]].getChildByName('right');
+            rightBox.runAction(cc.sequence(cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3), cc.fadeOut(0.3)));
         }
-        for(let i = 0; i < this.itemArr.length; i++) {
-            if(this.answerPosNumArr.indexOf(i) == -1) {
-                if(this.playerItemArr.indexOf(i) == -1) {
-                    this.itemArr[i].getChildByName('mask').on(cc.Node.EventType.TOUCH_START, function(e){
-                    e.stopPropagation();
-                    },this);
-                }
-            }
-        }
+
+
+
+        // for(let i = 0; i < this.playerItemArr.length; i++) {
+        //     if(this.answerPosNumArr.indexOf(this.playerItemArr[i]) == -1) {
+        //         this.itemArr[this.playerItemArr[i]].getChildByName("mask").opacity = 255;
+        //     }
+        // }
+        // for(let i = 0; i < this.answerPosNumArr.length; i++) {
+        //     if(this.playerItemArr.indexOf(this.answerPosNumArr[i]) == -1) {
+        //         var seq;
+        //         if(this.cueNum == 3) {
+        //             seq = cc.sequence(cc.fadeOut(0.3),cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3));
+        //         }else if(this.cueNum > 3) {
+        //             seq = cc.sequence(cc.fadeOut(0.3),cc.fadeIn(0.3));
+        //         }
+        //         this.itemArr[this.answerPosNumArr[i]].runAction(seq);
+        //     }
+        // }
+        // for(let i = 0; i < this.itemArr.length; i++) {
+        //     if(this.answerPosNumArr.indexOf(i) == -1) {
+        //         if(this.playerItemArr.indexOf(i) == -1) {
+        //             this.itemArr[i].getChildByName('mask').on(cc.Node.EventType.TOUCH_START, function(e){
+        //             e.stopPropagation();
+        //             },this);
+        //         }
+        //     }
+        // }
     }
 
     reset() {
