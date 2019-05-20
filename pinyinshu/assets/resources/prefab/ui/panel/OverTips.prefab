@@ -315,18 +315,18 @@
     "_prefab": {
       "__id__": 11
     },
-    "_opacity": 0,
+    "_opacity": 60,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 2000,
-      "height": 1065
+      "width": 1994,
+      "height": 960
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -397,8 +397,8 @@
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
-      "width": 2000,
-      "height": 1065
+      "width": 1994,
+      "height": 960
     },
     "_resize": 0,
     "_N$layoutType": 0,

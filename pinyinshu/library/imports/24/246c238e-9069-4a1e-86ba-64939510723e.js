@@ -56,20 +56,17 @@ var GamePanel = /** @class */ (function (_super) {
         _this.secStr = null;
         _this.checkpointsNum = null;
         _this.checkpoint = null;
+        _this.cueNum = 0;
         return _this;
     }
     GamePanel_1 = GamePanel;
     GamePanel.prototype.onLoad = function () {
-        DaAnData_1.DaAnData.getInstance().checkpointsNum = 3;
-        DaAnData_1.DaAnData.getInstance().numberArr = [1, 2, 26];
+        //测试用
+        // DaAnData.getInstance().checkpointsNum = 3;
+        // DaAnData.getInstance().numberArr = [24, 2, 26];
         this.isTecher();
-        this.initData();
     };
     GamePanel.prototype.start = function () {
-        this.openClock();
-        this.decompose(this.decoposeNum);
-        this.answer(this.decoposeNum);
-        this.createDecomposeBall();
     };
     GamePanel.prototype.onDestroy = function () {
     };
@@ -79,26 +76,69 @@ var GamePanel = /** @class */ (function (_super) {
             var scaley = this.updateNode[i].getChildByName('spine').getComponent(sp.Skeleton).findBone('bubble_11').scaleY;
             this.updateNode[i].getChildByName('label').setScale(cc.v2(scalex, scaley));
         }
+        if (this.pl.length <= 1) {
+            if (this.tijiao.interactable == true) {
+                this.tijiao.interactable = false;
+            }
+            if (this.chongzhi.interactable == true) {
+                this.chongzhi.interactable = false;
+            }
+        }
+        else {
+            if (this.checkpoint >= this.checkpointsNum + 1) {
+                return;
+            }
+            if (this.tijiao.interactable == false && this.cueNum == 0) {
+                this.tijiao.interactable = true;
+            }
+            if (this.chongzhi.interactable == false) {
+                this.chongzhi.interactable = true;
+            }
+        }
+        if (this.cueNum > 0) {
+            if (this.tijiao.interactable == true) {
+                this.tijiao.interactable = false;
+            }
+        }
     };
     GamePanel.prototype.isTecher = function () {
         if (ConstValue_1.ConstValue.IS_TEACHER) {
+            this.submit.node.active = false;
+            this.back.node.active = true;
+            this.initData();
         }
         else {
+            this.submit.node.active = false;
+            this.back.node.active = false;
+            this.getNet();
         }
     };
     GamePanel.prototype.initData = function () {
+        cc.log('---------------------initdata');
         this.timer = 0;
         this.checkpoint = 1;
         this.decoposeNum = DaAnData_1.DaAnData.getInstance().numberArr[this.checkpoint - 1];
-        this.checkpointsNum = 3; //DaAnData.getInstance().checkpointsNum;
+        this.checkpointsNum = DaAnData_1.DaAnData.getInstance().checkpointsNum;
         this.defaultValue();
         this.initProgress(this.checkpointsNum);
         this.updateNode.push(this.bubble_1);
         this.updateNode.push(this.bubble_2);
         this.updateNode.push(this.gunNode.getChildByName('ballNode'));
+        this.mask.on(cc.Node.EventType.TOUCH_START, function (e) {
+            e.stopPropagation();
+        }.bind(this));
+        this.mask.active = false;
+        //开始游戏
+        this.openClock();
+        this.decompose(this.decoposeNum);
+        this.answer(this.decoposeNum);
+        this.createDecomposeBall();
     };
     GamePanel.prototype.initProgress = function (checkpointsNum) {
         var long = 200;
+        if (this.checkpointsNum == 1) {
+            return;
+        }
         cc.loader.loadRes('prefab/ui/Item/progressNode', function (err, prefab) {
             if (!err) {
                 for (var i = 0; i < checkpointsNum; i++) {
@@ -138,10 +178,16 @@ var GamePanel = /** @class */ (function (_super) {
         }
     };
     GamePanel.prototype.defaultValue = function () {
-        var parent = this.node.getChildByName('1');
-        var pos = parent.getPosition();
-        this.createBall(1, 0, 0, parent, true);
-        this.pl.push(1);
+        // var parent = this.node.getChildByName('1');
+        // var pos = parent.getPosition();
+        // this.createBall(1, 0, 0, parent, true);
+        // this.pl.push(1);
+        var ballnode = this.gunNode.getChildByName('ballNode');
+        ballnode.opacity = 255;
+        ballnode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(DaAnData_1.skinStrEnum[1]);
+        ballnode.getChildByName('label').getComponent(cc.Label).string = '1';
+        ballnode.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+        this.shoot();
     };
     GamePanel.prototype.createBall = function (num, x, y, parent, isAnswer) {
         var ballNode = cc.instantiate(this.ballNodeP);
@@ -183,12 +229,14 @@ var GamePanel = /** @class */ (function (_super) {
                 }
                 else {
                     var data = JSON.parse(response_data.data.courseware_content);
-                    if (data.number) {
+                    if (data.numberArr) {
                         DaAnData_1.DaAnData.getInstance().numberArr = data.numberArr;
                     }
                     if (data.checkpointsNum) {
                         DaAnData_1.DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
                     }
+                    cc.log('---------------------initdata');
+                    this.initData();
                 }
             }
         }.bind(this), null);
@@ -306,9 +354,8 @@ var GamePanel = /** @class */ (function (_super) {
             this.bubble.x = location.x;
             this.bubble.y = location.y;
             var num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
-            var skinStr = DaAnData_1.skinStrEnum[num];
+            var skinStr = this.skinString(num);
             this.bubble.getChildByName('label').getComponent(cc.Label).string = num;
-            cc.log(skinStr);
             this.bubble.opacity = 255;
             this.bubble.getChildByName('spine').getComponent(sp.Skeleton).setSkin(skinStr);
         }.bind(this), this);
@@ -331,7 +378,7 @@ var GamePanel = /** @class */ (function (_super) {
                 }
             }
             var num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
-            var skinStr = DaAnData_1.skinStrEnum[num];
+            var skinStr = this.skinString(num);
             if (this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if (this.gunNode.getChildByName('ballNode').opacity) {
                     var gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string);
@@ -685,13 +732,17 @@ var GamePanel = /** @class */ (function (_super) {
         this.decompose(this.decoposeNum);
         this.answer(this.decoposeNum);
         this.createDecomposeBall();
-        this.defaultValue();
         this.initProgress(this.checkpoint);
+        this.defaultValue();
         this.updateNode.push(this.bubble_1);
         this.updateNode.push(this.bubble_2);
         this.updateNode.push(this.gunNode.getChildByName('ballNode'));
+        this.cueNum = 0;
     };
     GamePanel.prototype.reset = function () {
+        if (this.gunNode.rotation != 0) {
+            return;
+        }
         //重置时间
         this.minuteHand.rotation = 0;
         this.secondHand.rotation = 0;
@@ -708,12 +759,14 @@ var GamePanel = /** @class */ (function (_super) {
         this.answerArr = [];
         this.pl = [];
         //重置ui
-        this.defaultValue();
         this.bubble.opacity = 0;
         this.bubble_1.opacity = 0;
         this.bubble_2.opacity = 0;
         this.gunNode.getChildByName('ballNode').opacity = 0;
         this.bullet.opacity = 0;
+        this.cueNum = 0;
+        this.defaultValue();
+        this.mask.active = false;
     };
     GamePanel.prototype.cueAnswer = function () {
         for (var i = 0; i < this.pl.length; i++) {
@@ -730,9 +783,9 @@ var GamePanel = /** @class */ (function (_super) {
         }
     };
     GamePanel.prototype.isRight = function () {
-        cc.log(this.an);
-        cc.log(this.pl);
-        cc.log(this.answerArr);
+        if (this.gunNode.rotation != 0) {
+            return;
+        }
         var rightNum = 0;
         for (var i = 0; i < this.an.length; i++) {
             if (this.pl.indexOf(this.an[i]) != -1) {
@@ -743,14 +796,17 @@ var GamePanel = /** @class */ (function (_super) {
             this.checkpoint++;
             if (this.checkpoint >= this.checkpointsNum + 1) {
                 this.closeClock();
+                this.tijiao.interactable = false;
+                this.chongzhi.interactable = false;
                 UIHelp_1.UIHelp.showOverTips(1, this.timer, '恭喜全部通关', function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
                     this.reset();
                 }.bind(this), function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
-                    this.mask.on(cc.Node.EventType.TOUCH_START, function (e) {
-                        e.stopPropagation();
-                    }.bind(this));
+                    this.mask.active = true;
+                    if (ConstValue_1.ConstValue.IS_TEACHER) {
+                        this.submit.node.active = true;
+                    }
                 }.bind(this));
             }
             else {
@@ -765,6 +821,8 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
         else {
+            this.cueNum++;
+            this.mask.active = true;
             this.closeClock();
             UIHelp_1.UIHelp.showOverTips(3, this.timer, '挑战失败！点击重置后再次挑战', this.cueAnswer.bind(this));
         }
@@ -795,6 +853,7 @@ var GamePanel = /** @class */ (function (_super) {
         clearInterval(this.intervalIndex);
     };
     GamePanel.prototype.backButton = function () {
+        this.closeClock();
         UIManager_1.UIManager.getInstance().closeUI(GamePanel_1);
         ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 0 });
     };

@@ -34,6 +34,7 @@ var TeacherPanel = /** @class */ (function (_super) {
     TeacherPanel.prototype.initData = function () {
         this.checkpointsEditBox.string = String(DaAnData_1.DaAnData.getInstance().checkpointsNum);
         this.checkpointEditingEnd(null);
+        cc.log('checkpointsnum is =', DaAnData_1.DaAnData.getInstance().checkpointsNum);
     };
     TeacherPanel.prototype.ShowTips = function (tipString) {
         this.tipNode.active = true;
@@ -112,14 +113,16 @@ var TeacherPanel = /** @class */ (function (_super) {
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_TITLE + "?title_id=" + NetWork_1.NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 var response_data = JSON.parse(response);
+                cc.log('response_data is ', response_data);
                 if (response_data.data.courseware_content == null) {
                 }
                 else {
                     var data = JSON.parse(response_data.data.courseware_content);
-                    DaAnData_1.DaAnData.getInstance().numberArr = data.numberARR;
+                    DaAnData_1.DaAnData.getInstance().numberArr = data.numberArr;
                     DaAnData_1.DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                    cc.log("number is", DaAnData_1.DaAnData.getInstance().numberArr);
-                    cc.log("checkpointsNum is ", DaAnData_1.DaAnData.getInstance().checkpointsNum);
+                    cc.log('data is ', data);
+                    cc.log("---------number is", DaAnData_1.DaAnData.getInstance().numberArr);
+                    cc.log("---------checkpointsNum is ", DaAnData_1.DaAnData.getInstance().checkpointsNum);
                     this.initData();
                 }
             }

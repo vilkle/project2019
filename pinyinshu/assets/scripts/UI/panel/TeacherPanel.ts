@@ -41,6 +41,7 @@ export default class TeacherPanel extends BaseUI {
     initData() {
         this.checkpointsEditBox.string = String(DaAnData.getInstance().checkpointsNum);
         this.checkpointEditingEnd(null);
+        cc.log('checkpointsnum is =',DaAnData.getInstance().checkpointsNum);
     }
 
     ShowTips(tipString : string) {
@@ -120,13 +121,15 @@ export default class TeacherPanel extends BaseUI {
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 let response_data = JSON.parse(response);
+                cc.log('response_data is ',response_data);
                 if (response_data.data.courseware_content == null) {
                 } else {
                    let data = JSON.parse(response_data.data.courseware_content);
-                   DaAnData.getInstance().numberArr = data.numberARR;
+                   DaAnData.getInstance().numberArr = data.numberArr;
                    DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                   cc.log("number is", DaAnData.getInstance().numberArr);
-                   cc.log("checkpointsNum is ", DaAnData.getInstance().checkpointsNum);
+                   cc.log('data is ',data);
+                   cc.log("---------number is", DaAnData.getInstance().numberArr);
+                   cc.log("---------checkpointsNum is ", DaAnData.getInstance().checkpointsNum);
                    this.initData();
                 }
             } 
