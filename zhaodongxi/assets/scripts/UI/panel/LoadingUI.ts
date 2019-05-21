@@ -3,6 +3,8 @@ import { ConstValue } from "../../Data/ConstValue";
 import TeacherPanel from "./TeacherPanel";
 import GamePanel from "./GamePanel";
 import { UIManager } from "../../Manager/UIManager";
+import { UIHelp } from "../../Utils/UIHelp";
+import { NetWork } from "../../Http/NetWork";
 
 const { ccclass, property } = cc._decorator;
 
@@ -19,12 +21,10 @@ export class LoadingUI extends BaseUI {
     private dragonNode: cc.Node = null;
 
     onLoad() {
-        cc.log("enterLoadingUI========");
         let onProgress = (completedCount: number, totalCount: number, item: any) => {
             this.progressBar.progress = completedCount / totalCount;
             let value = Math.round(completedCount / totalCount * 100);
             if (ConstValue.IS_EDITIONS) {
-                cc.log("is editions======");
                 courseware.page.sendToParent('loading', value);
             }
             this.progressLabel.string = value.toString() + '%';
@@ -41,7 +41,6 @@ export class LoadingUI extends BaseUI {
                 courseware.page.sendToParent('load end');
                 courseware.page.sendToParent('start');
             }
-            cc.log("enter techerpanel=====");
             this.node.active = false;
         }, onProgress);
     }

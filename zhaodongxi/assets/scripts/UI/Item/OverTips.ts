@@ -76,10 +76,10 @@ export  class OverTips extends BaseUI {
     }
 
     OnClickClose() {
+        
         this.callback();
-       
         UIManager.getInstance().closeUI(OverTips);
-       
+        
        // this.node.active = false;
     }
 

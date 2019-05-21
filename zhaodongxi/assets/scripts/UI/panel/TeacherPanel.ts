@@ -55,7 +55,9 @@ export default class TeacherPanel extends BaseUI {
         }else if(DaAnData.getInstance().types == 2) {
             this.toggleContainer[1].isChecked = true;
         }
-        this.checkpointEditbox.string = String(DaAnData.getInstance().checkpointsNum);
+        if(DaAnData.getInstance().checkpointsNum) {
+            this.checkpointEditbox.string = String(DaAnData.getInstance().checkpointsNum);
+        }
         this.animalToggle.isChecked = false;
         for(let i = 0; i < DaAnData.getInstance().picArr.length; i++) {
             if(DaAnData.getInstance().picArr[i] == picType.animal) {
@@ -76,7 +78,10 @@ export default class TeacherPanel extends BaseUI {
                 this.stationeryToggle.isChecked = true;
             }
         }
-        this.choicescopeButton.node.getChildByName("Label").getComponent(cc.Label).string = scopeRange[DaAnData.getInstance().range]; 
+        if(DaAnData.getInstance().range) {
+            this.choicescopeButton.node.getChildByName("Label").getComponent(cc.Label).string = scopeRange[DaAnData.getInstance().range]; 
+        }
+       
     }
     
     
@@ -326,12 +331,14 @@ export default class TeacherPanel extends BaseUI {
     
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
+            cc.log('err----------', err);
             if (!err) {
-                let response_data = JSON.parse(response);
+                let response_data = response;
+                cc.log('response_data---------', response_data);
                 if (response_data.data.courseware_content == null) {
                 } else {
                    let data = JSON.parse(response_data.data.courseware_content);
-
+                    cc.log('data---------', data);
                    if(data.types) {
                         DaAnData.getInstance().types = data.types;
                    }

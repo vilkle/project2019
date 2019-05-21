@@ -448,7 +448,7 @@ export default class GamePanel extends BaseUI {
                     item.getChildByName("bg").on(cc.Node.EventType.TOUCH_START, function(t){
                         if (item.getChildByName("box").active == false) {
                             if(item.getChildByName("mask").opacity == 0) {
-                                if(this.sure.interactable == false) {
+                                if(this.sure.interactable == false && this.cueNum < 3) {
                                     this.sure.interactable = true;
                                 }
                                 AudioManager.getInstance().stopAll();
@@ -465,12 +465,18 @@ export default class GamePanel extends BaseUI {
                             }
                         }else {
                             if(this.playerItemArr.length > 0) {
+                                if(item.getChildByName('right').opacity != 0) {
+                                    return;
+                                }
                                 AudioManager.getInstance().stopAll();
                                 AudioManager.getInstance().playSound("click", false);
                                 item.getChildByName("box").active = false;
                                 item.zIndex = 0;
                                 this.playerItemArr = this.playerItemArr.filter(item => item !== num);
                                 this.playerItemSFArr = this.playerItemSFArr.filter(item => item != this.dirSFNumArr[num]);
+                                if(this.cueNum >= 3) {
+                                    item.getChildByName('mask').opacity = 255;
+                                }
                                 if(this.isAllRight()) {
                                     if(this.sure.interactable == false) {
                                         this.sure.interactable = true;
@@ -491,10 +497,18 @@ export default class GamePanel extends BaseUI {
 
     cueAnswer() {
         for(let i = 0; i < this.answerPosNumArr.length; i++) {
+            this.itemArr[this.answerPosNumArr[i]].zIndex = 100;
             let rightBox = this.itemArr[this.answerPosNumArr[i]].getChildByName('right');
-            rightBox.runAction(cc.sequence(cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3), cc.fadeOut(0.3)));
+            //rightBox.opacity = 255;
+            rightBox.runAction(cc.repeatForever(cc.sequence(cc.fadeIn(0.2), cc.fadeOut(0.3))));
+            cc.log('right opacity is ', rightBox.opacity);
         }
-
+        for(let i = 0; i < this.itemArr.length; i++) {
+            if(this.answerPosNumArr.indexOf(i) == -1 && this.itemArr[i].getChildByName('box').active == false) {
+                this.itemArr[i].getChildByName('mask').opacity = 255;
+                cc.log('mask opacity is ', this.itemArr[i].getChildByName('mask').opacity);
+            }
+        }
 
 
         // for(let i = 0; i < this.playerItemArr.length; i++) {
@@ -556,6 +570,7 @@ export default class GamePanel extends BaseUI {
        this.creatPicBoard();
        this.creatAnswerBoard();
        this.label1.string = String(this.checkpoints + 1);
+       this.sure.interactable = false;
     }
 
     isAllRight():boolean {
@@ -607,7 +622,7 @@ export default class GamePanel extends BaseUI {
             }
         }else {
             this.cueNum++;
-            if(this.cueNum >= 3) {
+            if(this.cueNum >= 3) {   
                 UIHelp.showOverTips(2, '啊哦！请在试一试吧。', function(){
                     this.sure.interactable = false;
                     this.cueAnswer();
@@ -632,15 +647,17 @@ export default class GamePanel extends BaseUI {
 
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
+            cc.log('err----------', err);
             if (!err) {
-                let response_data = JSON.parse(response);
+                let response_data = response;
+                cc.log('response_data---------', response_data);
                 if (response_data.data.courseware_content == null) {
                 } else {
                    let data = JSON.parse(response_data.data.courseware_content);
-
+                   cc.log('data---------', data);
                    if(data.types) {
                         DaAnData.getInstance().types = data.types;
-                   }
+                   }       
                    if(data.checkpointsNum) {
                         DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
                    }

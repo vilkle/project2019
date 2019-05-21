@@ -91,16 +91,7 @@
         ],
         "type": "dock-h"
       },
-      "panels": [
-        "hierarchy",
-        "assets",
-        "node-library",
-        "console",
-        "timeline",
-        "inspector",
-        "cocos-services",
-        "scene"
-      ]
+      "panels": []
     }
   },
   "panels": {
