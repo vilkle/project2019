@@ -8,6 +8,7 @@ var ConstValue_1 = require("../../Data/ConstValue");
 var TeacherPanel_1 = require("./TeacherPanel");
 var GamePanel_1 = require("./GamePanel");
 var UIManager_1 = require("../../Manager/UIManager");
+var NetWork_1 = require("../../Http/NetWork");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var LoadingUI = /** @class */ (function (_super) {
     __extends(LoadingUI, _super);
@@ -20,12 +21,11 @@ var LoadingUI = /** @class */ (function (_super) {
     }
     LoadingUI.prototype.onLoad = function () {
         var _this = this;
-        cc.log("enterLoadingUI========");
+        NetWork_1.NetWork.getInstance().GetRequest();
         var onProgress = function (completedCount, totalCount, item) {
             _this.progressBar.progress = completedCount / totalCount;
             var value = Math.round(completedCount / totalCount * 100);
             if (ConstValue_1.ConstValue.IS_EDITIONS) {
-                cc.log("is editions======");
                 courseware.page.sendToParent('loading', value);
             }
             _this.progressLabel.string = value.toString() + '%';
@@ -41,7 +41,6 @@ var LoadingUI = /** @class */ (function (_super) {
                 courseware.page.sendToParent('load end');
                 courseware.page.sendToParent('start');
             }
-            cc.log("enter techerpanel=====");
             _this.node.active = false;
         }, onProgress);
     };

@@ -27,12 +27,12 @@ export default class SubmissionPanel extends BaseUI {
     //提交或者修改答案
     DetectionNet() {
         if (!NetWork.title_id) {
-            UIManager.getInstance().showUI(ErrorPanel, () => {
+            UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
                 (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel("titleId为空,请联系技术老师解决！\ntitleId=" + NetWork.title_id, "", "", "确定");
             });
             return;
         }
-        let data = JSON.stringify({CoursewareKey: ConstValue.CoursewareKey, types: DaAnData.getInstance().types, checkpointsNum: DaAnData.getInstance().checkpointsNum, picArr: DaAnData.getInstance().picArr, range : DaAnData.getInstance().range });
+        let data = JSON.stringify({ CoursewareKey: ConstValue.CoursewareKey, types: DaAnData.getInstance().types, checkpointsNum: DaAnData.getInstance().checkpointsNum, picArr: DaAnData.getInstance().picArr, range : DaAnData.getInstance().range);
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 if (response.data.courseware_content == null || response.data.courseware_content == "") {
@@ -44,7 +44,7 @@ export default class SubmissionPanel extends BaseUI {
                         if (res.CoursewareKey == ConstValue.CoursewareKey) {
                             this.ModifyNet(data);
                         } else {
-                            UIManager.getInstance().showUI(ErrorPanel, () => {
+                            UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
                                 (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel("该titleId已被使用,请联系技术老师解决！\ntitleId=" + NetWork.title_id, "", "", "确定");
                             });
                         }

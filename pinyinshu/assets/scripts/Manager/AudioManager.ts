@@ -20,8 +20,10 @@ export class AudioManager
      * @param soundName 音频名字
      * @param loop 是否循环
      * @param volume 音量大小
+     * @param audioIdCbk 回传播放的音频的AudioID
+     * @param endCbk 音频播放结束的回调
      */
-    public playSound(soundName: string, loop?: boolean, volume?: number)
+    public playSound(soundName: string, loop?: boolean, volume?: number, audioIdCbk:Function = null, endCbk:Function = null)
     {
         // if(GameDataManager.getInstance().getGameData().playerInfo.closeAudio)
         // {
@@ -34,9 +36,25 @@ export class AudioManager
                 cc.error(err);
                 return;
             }
-		    var audioID = cc.audioEngine.play(clip, loop?loop:false, volume?volume:1);
+            let audioID = cc.audioEngine.play(clip, loop?loop:false, volume?volume:1);
+            //LogWrap.log('playSound: ', path)
+            if(audioIdCbk){
+                audioIdCbk(audioID)
+            }
+            if(endCbk){
+                cc.audioEngine.setFinishCallback(audioID, endCbk)
+            }
 		});
     }
+
+    /**
+     * 停止播放指定的音频
+     * @param audioId 
+     */
+    public stopAudio(audioId:number){
+        cc.audioEngine.stop(audioId)
+    }
+    
     /**
      * 停止正在播放的所有音频
      */

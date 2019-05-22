@@ -311,7 +311,6 @@ export default class GamePanel extends BaseUI {
             if(num + this.horizonNum <= totalNum - 1) {
                 num1 = num + this.horizonNum;
                 if(num + 1 <= Math.ceil((num + 1) / this.horizonNum) * this.horizonNum - 1) {
-                    cc.log('11111111111',num);
                     num2 = num + this.horizonNum + 1;
                     num3 = num + 1;
                     this.answerPosNumArr[0] = num;
@@ -319,7 +318,6 @@ export default class GamePanel extends BaseUI {
                     this.answerPosNumArr[2] = num1;
                     this.answerPosNumArr[3] = num2;
                 }else {
-                    cc.log('2222222222', num);
                     num2 = num + this.horizonNum - 1;
                     num3 = num - 1;
                     this.answerPosNumArr[0] = num3;
@@ -330,7 +328,6 @@ export default class GamePanel extends BaseUI {
             }else {
                 num1 = num - this.horizonNum;
                 if(num + 1 <= Math.ceil((num + 1) / this.horizonNum) * this.horizonNum - 1) {
-                    cc.log('33333333333',num);
                     num2 = num - this.horizonNum + 1;
                     num3 = num + 1;
                     this.answerPosNumArr[0] = num1;
@@ -338,7 +335,6 @@ export default class GamePanel extends BaseUI {
                     this.answerPosNumArr[2] = num;
                     this.answerPosNumArr[3] = num3;
                 }else {
-                    cc.log('444444444444', num);
                     num2 = num - this.horizonNum - 1;
                     num3 = num - 1;
                     this.answerPosNumArr[0] = num2;
@@ -407,7 +403,6 @@ export default class GamePanel extends BaseUI {
                     }
                 }else {
                     ischange = true;
-                    cc.log('------------------------ischange');
                 }
                 this.creatItem( num, cc.v2(x,y), ischange, board, isAnswer); 
             }
@@ -499,43 +494,13 @@ export default class GamePanel extends BaseUI {
         for(let i = 0; i < this.answerPosNumArr.length; i++) {
             this.itemArr[this.answerPosNumArr[i]].zIndex = 100;
             let rightBox = this.itemArr[this.answerPosNumArr[i]].getChildByName('right');
-            //rightBox.opacity = 255;
             rightBox.runAction(cc.repeatForever(cc.sequence(cc.fadeIn(0.2), cc.fadeOut(0.3))));
-            cc.log('right opacity is ', rightBox.opacity);
         }
         for(let i = 0; i < this.itemArr.length; i++) {
             if(this.answerPosNumArr.indexOf(i) == -1 && this.itemArr[i].getChildByName('box').active == false) {
                 this.itemArr[i].getChildByName('mask').opacity = 255;
-                cc.log('mask opacity is ', this.itemArr[i].getChildByName('mask').opacity);
             }
         }
-
-
-        // for(let i = 0; i < this.playerItemArr.length; i++) {
-        //     if(this.answerPosNumArr.indexOf(this.playerItemArr[i]) == -1) {
-        //         this.itemArr[this.playerItemArr[i]].getChildByName("mask").opacity = 255;
-        //     }
-        // }
-        // for(let i = 0; i < this.answerPosNumArr.length; i++) {
-        //     if(this.playerItemArr.indexOf(this.answerPosNumArr[i]) == -1) {
-        //         var seq;
-        //         if(this.cueNum == 3) {
-        //             seq = cc.sequence(cc.fadeOut(0.3),cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3),cc.fadeOut(0.3), cc.fadeIn(0.3));
-        //         }else if(this.cueNum > 3) {
-        //             seq = cc.sequence(cc.fadeOut(0.3),cc.fadeIn(0.3));
-        //         }
-        //         this.itemArr[this.answerPosNumArr[i]].runAction(seq);
-        //     }
-        // }
-        // for(let i = 0; i < this.itemArr.length; i++) {
-        //     if(this.answerPosNumArr.indexOf(i) == -1) {
-        //         if(this.playerItemArr.indexOf(i) == -1) {
-        //             this.itemArr[i].getChildByName('mask').on(cc.Node.EventType.TOUCH_START, function(e){
-        //             e.stopPropagation();
-        //             },this);
-        //         }
-        //     }
-        // }
     }
 
     reset() {
@@ -604,16 +569,29 @@ export default class GamePanel extends BaseUI {
             this.checkpoints++;
             if(this.checkpoints < this.checkpointsNum || this.checkpointsNum == 1) {
                 if(this.cueNum >= 3) {
+                    
                     UIHelp.showOverTips(1, '你真棒~', function(){
+                        AudioManager.getInstance().stopAll();
+                        AudioManager.getInstance().playSound("point1", false);
+                    }.bind(this),
+                    function(){
                         this.nextCheckPoints();
                     }.bind(this));
                 }else {
-                    UIHelp.showOverTips(1, '答对啦！你真棒~', function(){
+                    UIHelp.showOverTips(1, '答对啦！你真棒~',function(){
+                        AudioManager.getInstance().stopAll();
+                        AudioManager.getInstance().playSound("point2", false);
+                    }.bind(this), 
+                    function(){
                         this.nextCheckPoints();
                     }.bind(this));
                 }
             }else {
                 UIHelp.showOverTips(1, '太棒啦，闯关结束！', function(){
+                    AudioManager.getInstance().stopAll();
+                    AudioManager.getInstance().playSound("point3", false);
+                }.bind(this),
+                function(){
                     if(ConstValue.IS_TEACHER) {
                         this.submit.node.active = true;
                     }   
@@ -623,12 +601,20 @@ export default class GamePanel extends BaseUI {
         }else {
             this.cueNum++;
             if(this.cueNum >= 3) {   
-                UIHelp.showOverTips(2, '啊哦！请在试一试吧。', function(){
+                UIHelp.showOverTips(2, '啊哦，再试一试吧。', function(){
+                    AudioManager.getInstance().stopAll();
+                    AudioManager.getInstance().playSound("point4", false);
+                }.bind(this),
+                function(){
                     this.sure.interactable = false;
                     this.cueAnswer();
                 }.bind(this));
             }else {
-                UIHelp.showOverTips(2, '啊哦！请再试一试吧。', function(){}.bind(this));
+                UIHelp.showOverTips(2, '啊哦，再试一试吧。', function(){
+                    AudioManager.getInstance().stopAll();
+                    AudioManager.getInstance().playSound("point4", false);
+                }.bind(this),
+                function(){}.bind(this));
             }
         }
     }
@@ -647,32 +633,33 @@ export default class GamePanel extends BaseUI {
 
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
-            cc.log('err----------', err);
             if (!err) {
                 let response_data = response;
-                cc.log('response_data---------', response_data);
-                if (response_data.data.courseware_content == null) {
-                } else {
-                   let data = JSON.parse(response_data.data.courseware_content);
-                   cc.log('data---------', data);
-                   if(data.types) {
-                        DaAnData.getInstance().types = data.types;
+                if (Array.isArray(response_data.data)) {
+                    return;
+                }
+                let content = JSON.parse(response_data.data.courseware_content);
+                if (content != null) {
+                    if(content.types) {
+                        DaAnData.getInstance().types = content.types;
                    }       
-                   if(data.checkpointsNum) {
-                        DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
+                   if(content.checkpointsNum) {
+                        DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
                    }
-                    if(data.range) {
-                        DaAnData.getInstance().range = data.range;
+                    if(content.range) {
+                        DaAnData.getInstance().range = content.range;
                     }
-                    if(data.picArr) {
-                        DaAnData.getInstance().picArr = data.picArr;
+                    if(content.picArr) {
+                        DaAnData.getInstance().picArr = content.picArr;
                     }
                     this.initData();
                     this.loadSourcePFArr(); 
                     this.creatPicBoard();
                     this.creatAnswerBoard();
                 }
-            } 
+            } else {
+                
+            }
         }.bind(this), null);
     }
     backButton(){

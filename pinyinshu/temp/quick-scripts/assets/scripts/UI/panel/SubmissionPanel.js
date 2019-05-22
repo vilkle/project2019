@@ -6,8 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var UIManager_1 = require("../../Manager/UIManager");
 var NetWork_1 = require("../../Http/NetWork");
-var LogWrap_1 = require("../../Utils/LogWrap");
 var UIHelp_1 = require("../../Utils/UIHelp");
+var ConstValue_1 = require("../../Data/ConstValue");
+var ErrorPanel_1 = require("./ErrorPanel");
 var DaAnData_1 = require("../../Data/DaAnData");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var SubmissionPanel = /** @class */ (function (_super) {
@@ -26,22 +27,32 @@ var SubmissionPanel = /** @class */ (function (_super) {
     };
     //提交或者修改答案
     SubmissionPanel.prototype.DetectionNet = function () {
-        var data = JSON.stringify({ numberArr: DaAnData_1.DaAnData.getInstance().numberArr, checkpointsNum: DaAnData_1.DaAnData.getInstance().checkpointsNum });
+        if (!NetWork_1.NetWork.title_id) {
+            UIManager_1.UIManager.getInstance().openUI(ErrorPanel_1.default, 1000, function () {
+                UIManager_1.UIManager.getInstance().getUI(ErrorPanel_1.default).setPanel("titleId为空,请联系技术老师解决！\ntitleId=" + NetWork_1.NetWork.title_id, "", "", "确定");
+            });
+            return;
+        }
+        var data = JSON.stringify({ CoursewareKey: ConstValue_1.ConstValue.CoursewareKey, numberArr: DaAnData_1.DaAnData.getInstance().numberArr, checkpointsNum: DaAnData_1.DaAnData.getInstance().checkpointsNum });
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_TITLE + "?title_id=" + NetWork_1.NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
-                response = JSON.parse(response);
-                if (response.data.courseware_content == null) {
-                    LogWrap_1.LogWrap.log(response.data);
+                if (response.data.courseware_content == null || response.data.courseware_content == "") {
                     this.AddNet(data);
                 }
                 else {
                     NetWork_1.NetWork.courseware_id = response.data.courseware_id;
-                    this.ModifyNet(data);
-                    LogWrap_1.LogWrap.log("data modify===", data);
+                    var res = JSON.parse(response.data.courseware_content);
+                    if (!NetWork_1.NetWork.empty) {
+                        if (res.CoursewareKey == ConstValue_1.ConstValue.CoursewareKey) {
+                            this.ModifyNet(data);
+                        }
+                        else {
+                            UIManager_1.UIManager.getInstance().openUI(ErrorPanel_1.default, 1000, function () {
+                                UIManager_1.UIManager.getInstance().getUI(ErrorPanel_1.default).setPanel("该titleId已被使用,请联系技术老师解决！\ntitleId=" + NetWork_1.NetWork.title_id, "", "", "确定");
+                            });
+                        }
+                    }
                 }
-            }
-            else {
-                UIManager_1.UIManager.getInstance().closeUI(SubmissionPanel_1);
             }
         }.bind(this), null);
     };
@@ -50,7 +61,6 @@ var SubmissionPanel = /** @class */ (function (_super) {
         var data = { title_id: NetWork_1.NetWork.title_id, courseware_content: gameDataJson };
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.ADD, "POST", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
-                // LogWrap.log(response);
                 UIHelp_1.UIHelp.showTip("答案提交成功");
                 UIManager_1.UIManager.getInstance().closeUI(SubmissionPanel_1);
             }
@@ -59,11 +69,8 @@ var SubmissionPanel = /** @class */ (function (_super) {
     //修改课件
     SubmissionPanel.prototype.ModifyNet = function (gameDataJson) {
         var jsonData = { courseware_id: NetWork_1.NetWork.courseware_id, courseware_content: gameDataJson };
-        cc.log("-------------------////");
-        cc.log(jsonData);
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.MODIFY, "POST", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
-                // LogWrap.log(response);
                 UIHelp_1.UIHelp.showTip("答案修改成功");
                 UIManager_1.UIManager.getInstance().closeUI(SubmissionPanel_1);
             }

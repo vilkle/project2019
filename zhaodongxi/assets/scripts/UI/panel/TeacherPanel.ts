@@ -8,6 +8,7 @@ import { ConstValue } from "../../Data/ConstValue";
 import GamePanel from "./GamePanel";
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
+import { UIHelp } from "../../Utils/UIHelp";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -333,27 +334,44 @@ export default class TeacherPanel extends BaseUI {
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             cc.log('err----------', err);
             if (!err) {
-                let response_data = response;
-                cc.log('response_data---------', response_data);
-                if (response_data.data.courseware_content == null) {
-                } else {
-                   let data = JSON.parse(response_data.data.courseware_content);
-                    cc.log('data---------', data);
-                   if(data.types) {
-                        DaAnData.getInstance().types = data.types;
-                   }
-                   if(data.checkpointsNum) {
-                        DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                   }
-                    if(data.range) {
-                        DaAnData.getInstance().range = data.range;
-                    }
-                    if(data.picArr) {
-                        DaAnData.getInstance().picArr = data.picArr;
-                    }
-                    this.initData();
+                let res = response;
+                if (Array.isArray(res.data)) {
+                   
+                    return;
                 }
-            } 
+                let content = JSON.parse(res.data.courseware_content);
+                NetWork.courseware_id = res.data.courseware_id;
+                if (NetWork.empty) {//如果URL里面带了empty参数 并且为true  就立刻清除数据
+                    this.ClearNet();
+                } else {
+                    if (content != null) {
+                        if(content.types) {
+                            DaAnData.getInstance().types = content.types;
+                       }
+                       if(content.checkpointsNum) {
+                            DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
+                       }
+                        if(content.range) {
+                            DaAnData.getInstance().range = content.range;
+                        }
+                        if(content.picArr) {
+                            DaAnData.getInstance().picArr = content.picArr;
+                        }
+                        this.initData();
+                    } else {
+                        
+                    }
+                }
+            }
         }.bind(this), null);
+    }
+      //删除课件数据  一般为脏数据清理
+      ClearNet() {
+        let jsonData = { courseware_id: NetWork.courseware_id };
+        NetWork.getInstance().httpRequest(NetWork.CLEAR, "POST", "application/json;charset=utf-8", function (err, response) {
+            if (!err) {
+                UIHelp.showTip("答案删除成功");
+            }
+        }.bind(this), JSON.stringify(jsonData));
     }
 }

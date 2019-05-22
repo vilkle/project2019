@@ -77,11 +77,21 @@ var GamePanel = /** @class */ (function (_super) {
             this.updateNode[i].getChildByName('label').setScale(cc.v2(scalex, scaley));
         }
         if (this.pl.length <= 1) {
-            if (this.tijiao.interactable == true) {
-                this.tijiao.interactable = false;
+            if (this.decoposeNum == 1) {
+                if (this.tijiao.interactable == false && this.cueNum == 0) {
+                    this.tijiao.interactable = true;
+                }
+                if (this.chongzhi.interactable == false) {
+                    this.chongzhi.interactable = true;
+                }
             }
-            if (this.chongzhi.interactable == true) {
-                this.chongzhi.interactable = false;
+            else {
+                if (this.tijiao.interactable == true) {
+                    this.tijiao.interactable = false;
+                }
+                if (this.chongzhi.interactable == true) {
+                    this.chongzhi.interactable = false;
+                }
             }
         }
         else {
@@ -178,16 +188,17 @@ var GamePanel = /** @class */ (function (_super) {
         }
     };
     GamePanel.prototype.defaultValue = function () {
-        // var parent = this.node.getChildByName('1');
-        // var pos = parent.getPosition();
-        // this.createBall(1, 0, 0, parent, true);
-        // this.pl.push(1);
-        var ballnode = this.gunNode.getChildByName('ballNode');
-        ballnode.opacity = 255;
-        ballnode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(DaAnData_1.skinStrEnum[1]);
-        ballnode.getChildByName('label').getComponent(cc.Label).string = '1';
-        ballnode.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
-        this.shoot();
+        var _this = this;
+        this.bubble_1.opacity = 255;
+        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setSkin(DaAnData_1.skinStrEnum[1]);
+        this.bubble_1.getChildByName('label').getComponent(cc.Label).string = '1';
+        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
+        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
+            if (trackEntry.animation.name == 'ball_in') {
+                _this.shoot();
+            }
+        });
     };
     GamePanel.prototype.createBall = function (num, x, y, parent, isAnswer) {
         var ballNode = cc.instantiate(this.ballNodeP);
@@ -224,20 +235,23 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.getNet = function () {
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_QUESTION + "?courseware_id=" + NetWork_1.NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
-                var response_data = JSON.parse(response);
-                if (response_data.data.courseware_content == null) {
+                var response_data = response;
+                if (Array.isArray(response_data.data)) {
+                    return;
                 }
-                else {
-                    var data = JSON.parse(response_data.data.courseware_content);
-                    if (data.numberArr) {
-                        DaAnData_1.DaAnData.getInstance().numberArr = data.numberArr;
+                var content = JSON.parse(response_data.data.courseware_content);
+                if (content != null) {
+                    if (content.numberArr) {
+                        DaAnData_1.DaAnData.getInstance().numberArr = content.numberArr;
                     }
-                    if (data.checkpointsNum) {
-                        DaAnData_1.DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
+                    if (content.checkpointsNum) {
+                        DaAnData_1.DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
                     }
                     cc.log('---------------------initdata');
                     this.initData();
                 }
+            }
+            else {
             }
         }.bind(this), null);
     };

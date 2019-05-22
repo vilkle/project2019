@@ -21,6 +21,7 @@ export class LoadingUI extends BaseUI {
     private dragonNode: cc.Node = null;
 
     onLoad() {
+        NetWork.getInstance().GetRequest();
         let onProgress = (completedCount: number, totalCount: number, item: any) => {
             this.progressBar.progress = completedCount / totalCount;
             let value = Math.round(completedCount / totalCount * 100);

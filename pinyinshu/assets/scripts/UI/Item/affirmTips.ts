@@ -1,14 +1,12 @@
 
 import { BaseUI } from "../BaseUI";
-import { Tools } from "../../UIComm/Tools";
 import { UIManager } from "../../Manager/UIManager";
-import { GameMain } from "../../Main/GameMain";
 
 const {ccclass, property} = cc._decorator;
 @ccclass
-export  class affirmTips extends BaseUI {
+export  class AffirmTips extends BaseUI {
 
-    protected static className = "affirmTips";
+    protected static className = "AffirmTips";
     
     @property(cc.Node)
     private NodeDes: cc.Node = null; //描述节点
@@ -71,13 +69,13 @@ export  class affirmTips extends BaseUI {
     //ok 1 确认 0 取消
     OnClickOk(){
         console.log("确认");
-        UIManager.getInstance().closeUI(affirmTips);
+        UIManager.getInstance().closeUI(AffirmTips);
         this.callback(1);
     }
 
     OnClickCancel(){
         console.log("取消");
-        UIManager.getInstance().closeUI(affirmTips);
+        UIManager.getInstance().closeUI(AffirmTips);
         this.callback(0);
     }
 

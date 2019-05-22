@@ -306,9 +306,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 231,
+      "g": 231,
+      "b": 231,
       "a": 255
     },
     "_contentSize": {
@@ -356,8 +356,8 @@
     },
     "_enabled": true,
     "_useOriginalSize": true,
-    "_string": "非0正整数",
-    "_N$string": "非0正整数",
+    "_string": "2～200以内正整数",
+    "_N$string": "2～200以内正整数",
     "_fontSize": 30,
     "_lineHeight": 50,
     "_enableWrapText": false,
@@ -613,13 +613,13 @@
       "b": 255,
       "a": 255
     },
-    "_N$placeholder": "非0正整数",
+    "_N$placeholder": "2～200以内正整数",
     "_N$placeholderFontSize": 30,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 231,
+      "g": 231,
+      "b": 231,
       "a": 255
     },
     "_N$maxLength": 8,

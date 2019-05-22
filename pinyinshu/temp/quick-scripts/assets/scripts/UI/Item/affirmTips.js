@@ -1,14 +1,14 @@
-(function() {"use strict";var __module = CC_EDITOR ? module : {exports:{}};var __filename = 'preview-scripts/assets/scripts/UI/Item/affirmTips.js';var __require = CC_EDITOR ? function (request) {return cc.require(request, require);} : function (request) {return cc.require(request, __filename);};function __define (exports, require, module) {"use strict";
-cc._RF.push(module, '67e25WAGoRADq1zkpxqqwdF', 'affirmTips', __filename);
-// scripts/UI/Item/affirmTips.ts
+(function() {"use strict";var __module = CC_EDITOR ? module : {exports:{}};var __filename = 'preview-scripts/assets/scripts/UI/Item/AffirmTips.js';var __require = CC_EDITOR ? function (request) {return cc.require(request, require);} : function (request) {return cc.require(request, __filename);};function __define (exports, require, module) {"use strict";
+cc._RF.push(module, '24dd1nJj21KVJAhop019p7z', 'AffirmTips', __filename);
+// scripts/UI/Item/AffirmTips.ts
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var UIManager_1 = require("../../Manager/UIManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var affirmTips = /** @class */ (function (_super) {
-    __extends(affirmTips, _super);
-    function affirmTips() {
+var AffirmTips = /** @class */ (function (_super) {
+    __extends(AffirmTips, _super);
+    function AffirmTips() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.NodeDes = null; //描述节点
         _this.title = null;
@@ -21,11 +21,11 @@ var affirmTips = /** @class */ (function (_super) {
         return _this;
         // update (dt) {}
     }
-    affirmTips_1 = affirmTips;
-    affirmTips.prototype.start = function () {
+    AffirmTips_1 = AffirmTips;
+    AffirmTips.prototype.start = function () {
     };
     //type 成功 1 失败 2
-    affirmTips.prototype.init = function (type, des, callback) {
+    AffirmTips.prototype.init = function (type, des, callback) {
         this.title.node.active = false;
         this.des.node.active = true;
         this.type = type;
@@ -35,57 +35,57 @@ var affirmTips = /** @class */ (function (_super) {
         this.des.string = des;
         this.callback = callback;
     };
-    affirmTips.prototype.OnClickClose = function () {
+    AffirmTips.prototype.OnClickClose = function () {
         //console.log("关闭");
     };
     //通用动画
-    affirmTips.prototype.TipsAnimatorScale = function (nodeObj) {
+    AffirmTips.prototype.TipsAnimatorScale = function (nodeObj) {
         nodeObj.stopAllActions();
         var seq = cc.sequence(cc.delayTime(1), cc.scaleTo(0.2, 1, 1));
         nodeObj.runAction(seq);
         // nodeObj.runAction(cc.scaleTo(0.2, 1, 1));
     };
     //ok 1 确认 0 取消
-    affirmTips.prototype.OnClickOk = function () {
+    AffirmTips.prototype.OnClickOk = function () {
         console.log("确认");
-        UIManager_1.UIManager.getInstance().closeUI(affirmTips_1);
+        UIManager_1.UIManager.getInstance().closeUI(AffirmTips_1);
         this.callback(1);
     };
-    affirmTips.prototype.OnClickCancel = function () {
+    AffirmTips.prototype.OnClickCancel = function () {
         console.log("取消");
-        UIManager_1.UIManager.getInstance().closeUI(affirmTips_1);
+        UIManager_1.UIManager.getInstance().closeUI(AffirmTips_1);
         this.callback(0);
     };
-    var affirmTips_1;
-    affirmTips.className = "affirmTips";
+    var AffirmTips_1;
+    AffirmTips.className = "AffirmTips";
     __decorate([
         property(cc.Node)
-    ], affirmTips.prototype, "NodeDes", void 0);
+    ], AffirmTips.prototype, "NodeDes", void 0);
     __decorate([
         property(cc.Label)
-    ], affirmTips.prototype, "title", void 0);
+    ], AffirmTips.prototype, "title", void 0);
     __decorate([
         property(cc.Label)
-    ], affirmTips.prototype, "des", void 0);
+    ], AffirmTips.prototype, "des", void 0);
     __decorate([
         property(cc.Button)
-    ], affirmTips.prototype, "close", void 0);
+    ], AffirmTips.prototype, "close", void 0);
     __decorate([
         property(cc.Button)
-    ], affirmTips.prototype, "ok", void 0);
+    ], AffirmTips.prototype, "ok", void 0);
     __decorate([
         property(cc.Button),
         property(sp.Skeleton)
-    ], affirmTips.prototype, "sp_BgAnimator", void 0);
+    ], AffirmTips.prototype, "sp_BgAnimator", void 0);
     __decorate([
         property(sp.Skeleton)
-    ], affirmTips.prototype, "sp_lightAnimator", void 0);
-    affirmTips = affirmTips_1 = __decorate([
+    ], AffirmTips.prototype, "sp_lightAnimator", void 0);
+    AffirmTips = AffirmTips_1 = __decorate([
         ccclass
-    ], affirmTips);
-    return affirmTips;
+    ], AffirmTips);
+    return AffirmTips;
 }(BaseUI_1.BaseUI));
-exports.affirmTips = affirmTips;
+exports.AffirmTips = AffirmTips;
 
 cc._RF.pop();
         }
@@ -98,5 +98,5 @@ cc._RF.pop();
             });
         }
         })();
-        //# sourceMappingURL=affirmTips.js.map
+        //# sourceMappingURL=AffirmTips.js.map
         

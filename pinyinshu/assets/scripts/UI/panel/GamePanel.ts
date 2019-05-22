@@ -106,11 +106,20 @@ export default class GamePanel extends BaseUI {
         }
         
         if(this.pl.length <= 1 ) {
-            if(this.tijiao.interactable == true) {
-                this.tijiao.interactable = false;
-            }
-            if(this.chongzhi.interactable == true) {
-                this.chongzhi.interactable = false;
+            if(this.decoposeNum == 1) {
+                if(this.tijiao.interactable == false && this.cueNum == 0) {
+                    this.tijiao.interactable = true;
+                }
+                if(this.chongzhi.interactable == false) {
+                    this.chongzhi.interactable = true;
+                }
+            }else {
+                if(this.tijiao.interactable == true) {
+                    this.tijiao.interactable = false;
+                }
+                if(this.chongzhi.interactable == true) {
+                    this.chongzhi.interactable = false;
+                }
             }
         }else {
             if(this.checkpoint >= this.checkpointsNum+1) {
@@ -210,16 +219,17 @@ export default class GamePanel extends BaseUI {
     }
 
     defaultValue() {
-        // var parent = this.node.getChildByName('1');
-        // var pos = parent.getPosition();
-        // this.createBall(1, 0, 0, parent, true);
-        // this.pl.push(1);
-        var ballnode = this.gunNode.getChildByName('ballNode');
-        ballnode.opacity = 255;
-        ballnode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(skinStrEnum[1]);
-        ballnode.getChildByName('label').getComponent(cc.Label).string = '1';
-        ballnode.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
-        this.shoot();
+        this.bubble_1.opacity = 255;
+        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setSkin(skinStrEnum[1]);
+        this.bubble_1.getChildByName('label').getComponent(cc.Label).string = '1';
+        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
+        this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
+            if(trackEntry.animation.name == 'ball_in') {
+               this.shoot();
+            }
+        });
+       
     }
 
     createBall(num : number, x : number, y : number, parent : cc.Node, isAnswer : boolean){
@@ -259,21 +269,24 @@ export default class GamePanel extends BaseUI {
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
-                let response_data = JSON.parse(response);
-                if (response_data.data.courseware_content == null) {
-                } else {
-                   let data = JSON.parse(response_data.data.courseware_content);
-
-                   if(data.numberArr) {
-                        DaAnData.getInstance().numberArr = data.numberArr;
-                   }
-                   if(data.checkpointsNum) {
-                        DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                   }
-                   cc.log('---------------------initdata');
-                   this.initData();
+                let response_data = response;
+                if (Array.isArray(response_data.data)) {
+                    return;
                 }
-            } 
+                let content = JSON.parse(response_data.data.courseware_content);
+                if (content != null) {
+                    if(content.numberArr) {
+                         DaAnData.getInstance().numberArr = content.numberArr;
+                    }
+                    if(content.checkpointsNum) {
+                         DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
+                    }
+                    cc.log('---------------------initdata');
+                    this.initData();
+                }
+            } else {
+                
+            }
         }.bind(this), null);
     }
 

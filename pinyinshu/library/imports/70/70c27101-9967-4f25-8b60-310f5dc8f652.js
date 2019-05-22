@@ -32,8 +32,10 @@ var TeacherPanel = /** @class */ (function (_super) {
     TeacherPanel.prototype.update = function () {
     };
     TeacherPanel.prototype.initData = function () {
-        this.checkpointsEditBox.string = String(DaAnData_1.DaAnData.getInstance().checkpointsNum);
-        this.checkpointEditingEnd(null);
+        if (DaAnData_1.DaAnData.getInstance().checkpointsNum) {
+            this.checkpointsEditBox.string = String(DaAnData_1.DaAnData.getInstance().checkpointsNum);
+            this.checkpointEditingEnd(null);
+        }
         cc.log('checkpointsnum is =', DaAnData_1.DaAnData.getInstance().checkpointsNum);
     };
     TeacherPanel.prototype.ShowTips = function (tipString) {
@@ -77,6 +79,8 @@ var TeacherPanel = /** @class */ (function (_super) {
         for (var i = 0; i < this.editboxArr.length; i++) {
             this.editboxArr[i].destroy();
         }
+        this.editboxArr = [];
+        cc.log('=========numberarr is ', DaAnData_1.DaAnData.getInstance().numberArr);
         var _loop_1 = function (i) {
             var editbox = cc.instantiate(this_1.editbox2);
             editbox.x = 0;
@@ -84,8 +88,15 @@ var TeacherPanel = /** @class */ (function (_super) {
             editbox.parent = this_1.editBoxNode;
             editbox.getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
             editbox.on('editing-did-ended', function (sender) {
-                DaAnData_1.DaAnData.getInstance().numberArr[i] = parseInt(editbox.getComponent(cc.EditBox).string);
-                cc.log(DaAnData_1.DaAnData.getInstance().numberArr);
+                if (parseInt(editbox.getComponent(cc.EditBox).string) > 200 || parseInt(editbox.getComponent(cc.EditBox).string) <= 1) {
+                    editbox.getComponent(cc.EditBox).string = '';
+                    editbox.getChildByName('PLACEHOLDER_LABEL').active = true;
+                    cc.log(editbox.getChildByName('PLACEHOLDER_LABEL'));
+                }
+                else {
+                    DaAnData_1.DaAnData.getInstance().numberArr[i] = parseInt(editbox.getComponent(cc.EditBox).string);
+                    cc.log(DaAnData_1.DaAnData.getInstance().numberArr);
+                }
             }.bind(this_1));
             if (DaAnData_1.DaAnData.getInstance().numberArr[i]) {
                 editbox.getComponent(cc.EditBox).string = DaAnData_1.DaAnData.getInstance().numberArr[i].toString();
@@ -97,6 +108,17 @@ var TeacherPanel = /** @class */ (function (_super) {
         }
     };
     TeacherPanel.prototype.errorChecking = function () {
+        var repeatNum = 0;
+        for (var i = 0; i < parseInt(this.checkpointsEditBox.string); i++) {
+            if (this.editboxArr[i].getComponent(cc.EditBox).string == '') {
+                cc.log('edit box is null');
+                repeatNum++;
+            }
+        }
+        if (repeatNum > 0) {
+            this.ShowTips('还没有输入数字啦～');
+            return false;
+        }
         if (DaAnData_1.DaAnData.getInstance().checkpointsNum == 0) {
             this.ShowTips("关卡数不能为空，请输入关卡数。");
             return false;
@@ -112,18 +134,34 @@ var TeacherPanel = /** @class */ (function (_super) {
     TeacherPanel.prototype.getNet = function () {
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_TITLE + "?title_id=" + NetWork_1.NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
-                var response_data = JSON.parse(response);
+                var response_data = response;
+                if (Array.isArray(response_data.data)) {
+                    return;
+                }
                 cc.log('response_data is ', response_data);
                 if (response_data.data.courseware_content == null) {
                 }
                 else {
-                    var data = JSON.parse(response_data.data.courseware_content);
-                    DaAnData_1.DaAnData.getInstance().numberArr = data.numberArr;
-                    DaAnData_1.DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                    cc.log('data is ', data);
-                    cc.log("---------number is", DaAnData_1.DaAnData.getInstance().numberArr);
-                    cc.log("---------checkpointsNum is ", DaAnData_1.DaAnData.getInstance().checkpointsNum);
-                    this.initData();
+                    var content = JSON.parse(response_data.data.courseware_content);
+                    if (NetWork_1.NetWork.empty) { //如果URL里面带了empty参数 并且为true  就立刻清除数据
+                        this.ClearNet();
+                    }
+                    else {
+                        if (content != null) {
+                            if (content.numberArr) {
+                                DaAnData_1.DaAnData.getInstance().numberArr = content.numberArr;
+                            }
+                            if (content.checkpointsNum) {
+                                DaAnData_1.DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
+                            }
+                            cc.log('data is ', content);
+                            cc.log("---------number is", DaAnData_1.DaAnData.getInstance().numberArr);
+                            cc.log("---------checkpointsNum is ", DaAnData_1.DaAnData.getInstance().checkpointsNum);
+                            this.initData();
+                        }
+                        else {
+                        }
+                    }
                 }
             }
         }.bind(this), null);

@@ -3,6 +3,9 @@ cc._RF.push(module, '9cd01aQNbFMUY4sUMN0yYH5', 'NetWork');
 // scripts/Http/NetWork.ts
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var ConstValue_1 = require("../Data/ConstValue");
+var UIManager_1 = require("../Manager/UIManager");
+var ErrorPanel_1 = require("../UI/panel/ErrorPanel");
 var NetWork = /** @class */ (function () {
     function NetWork() {
     }
@@ -23,6 +26,18 @@ var NetWork = /** @class */ (function () {
     NetWork.prototype.httpRequest = function (url, openType, contentType, callback, params) {
         if (callback === void 0) { callback = null; }
         if (params === void 0) { params = ""; }
+        if (ConstValue_1.ConstValue.IS_TEACHER && !NetWork.title_id) { //教师端没有titleId的情况
+            UIManager_1.UIManager.getInstance().openUI(ErrorPanel_1.default, 1000, function () {
+                UIManager_1.UIManager.getInstance().getUI(ErrorPanel_1.default).setPanel("URL参数错误,请联系技术人员！", "", "", "确定");
+            });
+            return;
+        }
+        else if (!ConstValue_1.ConstValue.IS_TEACHER && (!NetWork.courseware_id || !NetWork.user_id)) { //学生端没有userid或coursewareId的情况
+            UIManager_1.UIManager.getInstance().openUI(ErrorPanel_1.default, 1000, function () {
+                UIManager_1.UIManager.getInstance().getUI(ErrorPanel_1.default).setPanel("异常编号为001,请联系客服！", "", "", "确定");
+            });
+            return;
+        }
         var xhr = new XMLHttpRequest();
         xhr.open(openType, url);
         xhr.timeout = 10000;
@@ -30,18 +45,44 @@ var NetWork = /** @class */ (function () {
         xhr.withCredentials = true;
         //回调
         xhr.onreadystatechange = function () {
-            console.log("httpRequest rsp status", xhr.status, "        xhr.readyState", xhr.readyState);
+            console.log("httpRequest rsp status", xhr.status, "        xhr.readyState", xhr.readyState, "        xhr.responseText", xhr.responseText);
             if (xhr.readyState == 4 && (xhr.status >= 200 && xhr.status <= 400)) {
-                callback && callback(false, xhr.responseText);
+                var response_1 = JSON.parse(xhr.responseText);
+                if (callback && response_1.errcode == 0) {
+                    callback(false, response_1);
+                }
+                else {
+                    if (ConstValue_1.ConstValue.IS_EDITIONS) {
+                        UIManager_1.UIManager.getInstance().openUI(ErrorPanel_1.default, 1000, function () {
+                            UIManager_1.UIManager.getInstance().getUI(ErrorPanel_1.default).setPanel(response_1.errmsg + ",请联系客服！", "", "", "确定", function () {
+                                NetWork.getInstance().httpRequest(url, openType, contentType, callback, params);
+                            }, false);
+                        });
+                    }
+                }
             }
         };
         //超时回调
         xhr.ontimeout = function (event) {
+            if (ConstValue_1.ConstValue.IS_EDITIONS) {
+                UIManager_1.UIManager.getInstance().openUI(ErrorPanel_1.default, 1000, function () {
+                    UIManager_1.UIManager.getInstance().getUI(ErrorPanel_1.default).setPanel("网络不佳，请稍后重试", "", "若重新连接无效，请联系客服", "重新连接", function () {
+                        NetWork.getInstance().httpRequest(url, openType, contentType, callback, params);
+                    }, true);
+                });
+            }
             console.log('httpRequest timeout');
             callback && callback(true, null);
         };
         //出错
         xhr.onerror = function (error) {
+            if (ConstValue_1.ConstValue.IS_EDITIONS) {
+                UIManager_1.UIManager.getInstance().openUI(ErrorPanel_1.default, 1000, function () {
+                    UIManager_1.UIManager.getInstance().getUI(ErrorPanel_1.default).setPanel("网络出错，请稍后重试", "若重新连接无效，请联系客服", "", "重新连接", function () {
+                        NetWork.getInstance().httpRequest(url, openType, contentType, callback, params);
+                    }, true);
+                });
+            }
             console.log('httpRequest error');
             callback && callback(true, null);
         };
@@ -60,7 +101,22 @@ var NetWork = /** @class */ (function () {
                 theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
             }
         }
-        return theRequest;
+        NetWork.courseware_id = theRequest["id"];
+        NetWork.title_id = theRequest["title_id"];
+        NetWork.user_id = theRequest["user_id"];
+        NetWork.empty = theRequest["empty"];
+        // LogWrap.log(typeof(theRequest["empty"]), "   ", NetWork.empty);
+        if (ConstValue_1.ConstValue.IS_EDITIONS) {
+            var img = new Image();
+            img.src = (NetWork.isOnlineEnv ? 'https://logserver.haibian.com/statistical/?type=7&' : 'https://ceshi-statistical.haibian.com/?type=7&') +
+                'course_id=' + theRequest["id"] +
+                "&chapter_id=" + theRequest["chapter_id"] +
+                "&user_id=" + theRequest["user_id"] +
+                "&subject=" + theRequest["subject"] +
+                "&event=" + "CoursewareLogEvent" +
+                "&identity=1" +
+                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue_1.ConstValue.CoursewareKey, empty: theRequest["empty"] });
+        }
     };
     NetWork.isOnlineEnv = /\/\/static\.haibian\.com/.test(window['location'].href);
     NetWork.isProtocol = /http:/.test(window['location'].protocol);
@@ -71,9 +127,11 @@ var NetWork = /** @class */ (function () {
     NetWork.GET_TITLE = NetWork.BASE + "/get/title";
     NetWork.ADD = NetWork.BASE + "/add";
     NetWork.MODIFY = NetWork.BASE + "/modify";
-    NetWork.courseware_id = 0;
+    NetWork.CLEAR = NetWork.BASE + "/clear";
+    NetWork.courseware_id = null;
     NetWork.title_id = null;
     NetWork.user_id = null;
+    NetWork.empty = false; //清理脏数据的开关，在URL里面拼此参数 = true；
     return NetWork;
 }());
 exports.NetWork = NetWork;

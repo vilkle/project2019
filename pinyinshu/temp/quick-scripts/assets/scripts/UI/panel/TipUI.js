@@ -15,6 +15,13 @@ var TipUI = /** @class */ (function (_super) {
         return _this;
     }
     TipUI.prototype.showTip = function (message) {
+        for (var j = 0; j < this.tipPool.length; j++) {
+            if (!this.tipPool[j].isReady()) {
+                this.tipPool[j].reset();
+                this.tipPool[j].playTip(message);
+                return;
+            }
+        }
         for (var i = 0; i < this.tipPool.length; ++i) {
             if (this.tipPool[i] != null && this.tipPool[i].isReady()) {
                 this.tipPool[i].node.setSiblingIndex(200);

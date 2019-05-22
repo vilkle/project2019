@@ -22,7 +22,7 @@ export  class OverTips extends BaseUI {
     private sp_BgAnimator: sp.Skeleton= null; // 背景动画
     @property(sp.Skeleton)
     private sp_lightAnimator: sp.Skeleton= null; // 光动画
-
+    private initCallback = null;
     private callback = null;
     private type:number;
     start () {
@@ -30,11 +30,12 @@ export  class OverTips extends BaseUI {
     }
 
     //type 成功 1 失败 2
-    init(type:number, str:string, callback:any) {
+    init(type:number, str:string, init:any, callback:any) {
         this.type = type;
         //this.callback = callback;
         Tools.playSpine(this.sp_BgAnimator, "fault", false);
-        
+        this.initCallback = init;
+        cc.log('------------init initCallback', this.initCallback);
         this.NodeDes.setScale(0.001, 0.001);
         this.callback = callback;
         if (type == 1) {
@@ -57,9 +58,10 @@ export  class OverTips extends BaseUI {
         this.des.node.active = true;
         this.sp_lightAnimator.node.active = true;
         // Tools.playSpine(this.sp_BgAnimator, "fault", false);
-        Tools.playSpine(this.sp_BgAnimator, "right", false, function () {
-            // console.log("播发完成");
-        });
+        Tools.playSpine(this.sp_BgAnimator, "right", false, function () { 
+            this.initCallback();
+            //console.log("播发完成");
+        }.bind(this));
         Tools.playSpine(this.sp_lightAnimator, "light", false, function () {
         }.bind(this));
         this.des.string = str;
@@ -70,7 +72,10 @@ export  class OverTips extends BaseUI {
     failure(str:string) {
         this.des.node.active = true;
         this.sp_lightAnimator.node.active = false;
-        Tools.playSpine(this.sp_BgAnimator, "fault", false);
+        Tools.playSpine(this.sp_BgAnimator, "fault", false, function () {
+            //console.log("播发完成");
+            this.initCallback();
+        }.bind(this));
         this.des.string = str;
         // this.des.node.color = new cc.Color(39, 178, 187);
     }

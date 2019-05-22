@@ -20,18 +20,18 @@ export class UIHelp {
         }
     }
 
-    public static showOverTips(type:number,str:string,callback:any)
+    public static showOverTips(type:number,str:string,init:any, callback:any)
     {
         let overTips = UIManager.getInstance().getUI(OverTips) as OverTips;
         if(!overTips)
         {
             UIManager.getInstance().openUI(OverTips, 200, ()=>{
-                UIHelp.showOverTips(type,str,callback);
+                UIHelp.showOverTips(type,str, init, callback);
             });
         }
         else
         {
-           overTips.init(type,str,callback);
+           overTips.init(type,str,init,callback);
         }
     }
 }

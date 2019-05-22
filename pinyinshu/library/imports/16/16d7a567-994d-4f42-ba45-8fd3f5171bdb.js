@@ -19,8 +19,12 @@ var AudioManager = /** @class */ (function () {
      * @param soundName 音频名字
      * @param loop 是否循环
      * @param volume 音量大小
+     * @param audioIdCbk 回传播放的音频的AudioID
+     * @param endCbk 音频播放结束的回调
      */
-    AudioManager.prototype.playSound = function (soundName, loop, volume) {
+    AudioManager.prototype.playSound = function (soundName, loop, volume, audioIdCbk, endCbk) {
+        if (audioIdCbk === void 0) { audioIdCbk = null; }
+        if (endCbk === void 0) { endCbk = null; }
         // if(GameDataManager.getInstance().getGameData().playerInfo.closeAudio)
         // {
         //     return;
@@ -32,7 +36,21 @@ var AudioManager = /** @class */ (function () {
                 return;
             }
             var audioID = cc.audioEngine.play(clip, loop ? loop : false, volume ? volume : 1);
+            //LogWrap.log('playSound: ', path)
+            if (audioIdCbk) {
+                audioIdCbk(audioID);
+            }
+            if (endCbk) {
+                cc.audioEngine.setFinishCallback(audioID, endCbk);
+            }
         });
+    };
+    /**
+     * 停止播放指定的音频
+     * @param audioId
+     */
+    AudioManager.prototype.stopAudio = function (audioId) {
+        cc.audioEngine.stop(audioId);
     };
     /**
      * 停止正在播放的所有音频

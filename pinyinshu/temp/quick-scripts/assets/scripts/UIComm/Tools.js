@@ -12,6 +12,23 @@ cc._RF.push(module, '8c9926FhnVH2Z4Gs2ZXOlDV', 'Tools', __filename);
 //  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 Object.defineProperty(exports, "__esModule", { value: true });
+/**美术提供的位移动画参数 */
+var ArtMoveParam = /** @class */ (function () {
+    /**
+     * @param t 时刻，ms
+     * @param p 位置
+     */
+    function ArtMoveParam(t, p) {
+        /**时刻，ms */
+        this.time = 0;
+        /**位置 */
+        this.pos = cc.Vec2.ZERO;
+        this.time = t;
+        this.pos = p;
+    }
+    return ArtMoveParam;
+}());
+exports.ArtMoveParam = ArtMoveParam;
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var Tools = /** @class */ (function () {
     function Tools() {
@@ -24,8 +41,8 @@ var Tools = /** @class */ (function () {
       * @param {*} callback 播放完毕回调
       */
     Tools.playSpine = function (sp_Skeleton, animName, loop, callback) {
+        // sp_Skeleton.premultipliedAlpha=false;//这样设置在cocos creator中才能有半透明效果
         if (callback === void 0) { callback = null; }
-        sp_Skeleton.premultipliedAlpha = false; //这样设置在cocos creator中才能有半透明效果
         // let spine = this.node.getComponent(sp.Skeleton);
         var track = sp_Skeleton.setAnimation(0, animName, loop);
         if (track) {
@@ -53,6 +70,61 @@ var Tools = /** @class */ (function () {
             }
         }
         return (false);
+    };
+    /**
+     * 使节点直接运行美术提供的位移动画参数，
+     * (节点当前位置对应美术参数列表最后一个参数位置，
+     * 函数内部会做相对位置的处理)
+     * @param node
+     * @param params
+     * @param endCbk
+     */
+    Tools.runArtMoveSequence = function (node, params, endCbk) {
+        if (endCbk === void 0) { endCbk = null; }
+        var nodeOriPos = node.getPosition();
+        //节点实际坐标与美术参数坐标的差
+        var gapPos = nodeOriPos.sub(params[params.length - 1].pos);
+        function transArtPosToNodePos(artPos) {
+            return artPos.add(gapPos);
+        }
+        node.setPosition(transArtPosToNodePos(params[0].pos));
+        if (params.length <= 1) {
+            if (endCbk)
+                endCbk();
+            return;
+        }
+        var actArray = [];
+        for (var i = 1; i < params.length - 1; i++) {
+            var duration = (params[i].time - params[i - 1].time) * 0.001;
+            actArray.push(cc.moveTo(duration, transArtPosToNodePos(params[i].pos)));
+        }
+        if (endCbk) {
+            actArray.push(cc.callFunc(endCbk));
+        }
+        node.runAction(cc.sequence(actArray));
+    };
+    /**获取当前时间戳，毫秒 */
+    Tools.getNowTimeMS = function () {
+        return (new Date()).getTime();
+    };
+    /**获取当前时间戳，秒 */
+    Tools.getNowTimeS = function () {
+        return Math.floor((new Date()).getTime() * 0.001);
+    };
+    /**
+     * 格式化时间， eg: 100 ->  '01:40'
+     * @param time 时长，秒
+     */
+    Tools.getFormatTime = function (time) {
+        var min = Math.floor(time / 60);
+        if (min < 10) {
+            min = '0' + min;
+        }
+        var sec = time % 60;
+        if (sec < 10) {
+            sec = '0' + sec;
+        }
+        return min + ':' + sec;
     };
     Tools = __decorate([
         ccclass

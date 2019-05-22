@@ -1,6 +1,4 @@
 
-import { NetWork } from "../Http/NetWork";
-
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -14,7 +12,6 @@ export class GameMain extends cc.Component {
     }
 
     start() {
-        NetWork.getInstance().GetRequest();
     }
 
     update(dt) {

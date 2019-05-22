@@ -16,9 +16,9 @@ var AdaptiveScreen = /** @class */ (function (_super) {
         */
         _this.bgNode = null;
         /**舞台设计宽度 */
-        _this.viewWidth = 960; //640
+        _this.viewWidth = 640;
         /**舞台设计高度 */
-        _this.viewHeight = 1994; //1136
+        _this.viewHeight = 1136;
         return _this;
         // update (dt) {}
     }

@@ -39,6 +39,22 @@ export class NetWork {
      * @param params 
      */
     httpRequest(url, openType, contentType, callback = null, params = "") {
+        if (ConstValue.IS_TEACHER && !NetWork.title_id) {//教师端没有titleId的情况
+            UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
+                (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
+                    "URL参数错误,请联系技术人员！",
+                    "", "", "确定");
+            });
+            return;
+        } else if (!ConstValue.IS_TEACHER && (!NetWork.courseware_id || !NetWork.user_id)) {//学生端没有userid或coursewareId的情况
+            UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
+                (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
+                    "异常编号为001,请联系客服！",
+                    "", "", "确定");
+            });
+            return;
+        }
+
         var xhr = new XMLHttpRequest();
         xhr.open(openType, url);
         xhr.timeout = 10000;
@@ -54,7 +70,7 @@ export class NetWork {
                     callback(false, response);
                 } else {
                     if (ConstValue.IS_EDITIONS) {
-                        UIManager.getInstance().showUI(ErrorPanel, () => {
+                        UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
                             (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(response.errmsg + ",请联系客服！", "", "", "确定", () => {
                                 NetWork.getInstance().httpRequest(url, openType, contentType, callback, params);
                             }, false);
@@ -67,7 +83,7 @@ export class NetWork {
         //超时回调
         xhr.ontimeout = function (event) {
             if (ConstValue.IS_EDITIONS) {
-                UIManager.getInstance().showUI(ErrorPanel, () => {
+                UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
                     (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel("网络不佳，请稍后重试", "", "若重新连接无效，请联系客服", "重新连接", () => {
                         NetWork.getInstance().httpRequest(url, openType, contentType, callback, params);
                     }, true);
@@ -80,7 +96,7 @@ export class NetWork {
         //出错
         xhr.onerror = function (error) {
             if (ConstValue.IS_EDITIONS) {
-                UIManager.getInstance().showUI(ErrorPanel, () => {
+                UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
                     (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel("网络出错，请稍后重试", "若重新连接无效，请联系客服", "", "重新连接", () => {
                         NetWork.getInstance().httpRequest(url, openType, contentType, callback, params);
                     }, true);
@@ -122,24 +138,6 @@ export class NetWork {
                 "&event=" + "CoursewareLogEvent" +
                 "&identity=1" +
                 "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue.CoursewareKey, empty: theRequest["empty"] });
-        }
-        if (ConstValue.IS_TEACHER && !NetWork.title_id) {//教师端没有titleId的情况
-            UIManager.getInstance().showUI(ErrorPanel, () => {
-                (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
-                    "URL参数错误,请联系技术人员！\nid=" +
-                    NetWork.courseware_id +
-                    "  title_id=" + NetWork.title_id +
-                    "  user_id=" + NetWork.user_id,
-                    "", "", "确定");
-            });
-        } else if (!ConstValue.IS_TEACHER && (!NetWork.courseware_id || !NetWork.user_id)) {//学生端没有userid或coursewareId的情况
-            UIManager.getInstance().showUI(ErrorPanel, () => {
-                (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
-                    "异常编号为001,请重新加载！",
-                    "", "", "重新加载", () => {
-                        //此地需向课堂端发起重新加载的事件；
-                    }, true);
-            });
         }
     }
 }

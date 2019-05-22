@@ -39,8 +39,11 @@ export default class TeacherPanel extends BaseUI {
     }
 
     initData() {
-        this.checkpointsEditBox.string = String(DaAnData.getInstance().checkpointsNum);
-        this.checkpointEditingEnd(null);
+        if(DaAnData.getInstance().checkpointsNum) {
+            this.checkpointsEditBox.string = String(DaAnData.getInstance().checkpointsNum);
+            this.checkpointEditingEnd(null);
+        }
+       
         cc.log('checkpointsnum is =',DaAnData.getInstance().checkpointsNum);
     }
 
@@ -88,6 +91,8 @@ export default class TeacherPanel extends BaseUI {
         for(let i = 0; i < this.editboxArr.length; i++) {
             this.editboxArr[i].destroy();
         }
+        this.editboxArr = [];
+        cc.log('=========numberarr is ', DaAnData.getInstance().numberArr);
         for(let i = 0; i < parseInt(this.checkpointsEditBox.string); i++) {
             let editbox = cc.instantiate(this.editbox2);
             editbox.x = 0;
@@ -95,8 +100,14 @@ export default class TeacherPanel extends BaseUI {
             editbox.parent = this.editBoxNode;
             editbox.getChildByName('label').getComponent(cc.Label).string = (i + 1).toString();
             editbox.on('editing-did-ended', function(sender){
-                DaAnData.getInstance().numberArr[i] = parseInt(editbox.getComponent(cc.EditBox).string);
-                cc.log(DaAnData.getInstance().numberArr);
+                if(parseInt(editbox.getComponent(cc.EditBox).string) > 200 || parseInt(editbox.getComponent(cc.EditBox).string) <= 1) {
+                    editbox.getComponent(cc.EditBox).string = '';
+                    editbox.getChildByName('PLACEHOLDER_LABEL').active = true;
+                    cc.log(editbox.getChildByName('PLACEHOLDER_LABEL'));
+                }else {
+                    DaAnData.getInstance().numberArr[i] = parseInt(editbox.getComponent(cc.EditBox).string);
+                    cc.log(DaAnData.getInstance().numberArr);
+                }
             }.bind(this));
             if(DaAnData.getInstance().numberArr[i]) {
                 editbox.getComponent(cc.EditBox).string = DaAnData.getInstance().numberArr[i].toString();
@@ -105,6 +116,17 @@ export default class TeacherPanel extends BaseUI {
     }
 
     errorChecking():boolean {
+        var repeatNum = 0;
+        for(let i = 0; i < parseInt(this.checkpointsEditBox.string); i++) {
+            if(this.editboxArr[i].getComponent(cc.EditBox).string == '') {
+                cc.log('edit box is null');
+                repeatNum ++;
+            }
+        }
+        if(repeatNum > 0) {
+            this.ShowTips('还没有输入数字啦～');
+            return false;
+        }
         if(DaAnData.getInstance().checkpointsNum == 0) {
             this.ShowTips("关卡数不能为空，请输入关卡数。");
             return false;
@@ -120,19 +142,37 @@ export default class TeacherPanel extends BaseUI {
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
-                let response_data = JSON.parse(response);
-                cc.log('response_data is ',response_data);
-                if (response_data.data.courseware_content == null) {
-                } else {
-                   let data = JSON.parse(response_data.data.courseware_content);
-                   DaAnData.getInstance().numberArr = data.numberArr;
-                   DaAnData.getInstance().checkpointsNum = data.checkpointsNum;
-                   cc.log('data is ',data);
-                   cc.log("---------number is", DaAnData.getInstance().numberArr);
-                   cc.log("---------checkpointsNum is ", DaAnData.getInstance().checkpointsNum);
-                   this.initData();
+                let response_data = response;
+                if (Array.isArray(response_data.data)) {
+                
+                    return;
                 }
-            } 
+                cc.log('response_data is ',response_data);
+                if(response_data.data.courseware_content == null) {
+
+                }else {
+                    let content = JSON.parse(response_data.data.courseware_content);
+                    if (NetWork.empty) {//如果URL里面带了empty参数 并且为true  就立刻清除数据
+                        this.ClearNet();
+                    } else {
+                        if (content != null) {
+                            
+                            if(content.numberArr) {
+                                DaAnData.getInstance().numberArr = content.numberArr;
+                           }
+                           if(content.checkpointsNum) {
+                                DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
+                           }
+                           cc.log('data is ',content);
+                           cc.log("---------number is", DaAnData.getInstance().numberArr);
+                           cc.log("---------checkpointsNum is ", DaAnData.getInstance().checkpointsNum);
+                           this.initData();
+                        } else {
+                           
+                        }
+                    }
+                } 
+            }      
         }.bind(this), null);
     }
 }
