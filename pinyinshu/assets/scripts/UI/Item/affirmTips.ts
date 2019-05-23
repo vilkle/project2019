@@ -6,7 +6,7 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export  class AffirmTips extends BaseUI {
 
-    protected static className = "AffirmTips";
+    protected static className = "affirmTips";
     
     @property(cc.Node)
     private NodeDes: cc.Node = null; //描述节点
@@ -24,24 +24,25 @@ export  class AffirmTips extends BaseUI {
     @property(sp.Skeleton)
     private sp_lightAnimator: sp.Skeleton= null; // 光动画
 
-    private callback = null;
+    private callback1 = null;
+    private callback2 = null;
     private type:number;
     start () {
 
     }
 
     //type 成功 1 失败 2
-    init(type:number,des:string,callback:any) {
+    init(type:number,des:string,callback1:any,callback2:any) {
         this.title.node.active = false;
         this.des.node.active = true;
 
         this.type = type;
-        this.callback = callback;
+        //this.callback = callback;
         //console.log("到了初始化");
         //Tools.playSpine(this.sp_BgAnimator, "fault", false);
         this.des.string =des;
-        this.callback = callback;
-       
+        this.callback1 = callback1;
+        this.callback2 = callback2;
 
     }
 
@@ -70,13 +71,19 @@ export  class AffirmTips extends BaseUI {
     OnClickOk(){
         console.log("确认");
         UIManager.getInstance().closeUI(AffirmTips);
-        this.callback(1);
+        if(this.callback1) {
+            this.callback1();
+        }
+        
     }
 
     OnClickCancel(){
         console.log("取消");
         UIManager.getInstance().closeUI(AffirmTips);
-        this.callback(0);
+        if(this.callback2) {
+            this.callback2();
+        }
+        
     }
 
     // update (dt) {}

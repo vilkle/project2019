@@ -68,6 +68,7 @@ export default class GamePanel extends BaseUI {
     answerArr : Array<cc.Node> = Array<cc.Node>();
     labelArr : Array<cc.Node> = Array<cc.Node>();
     progressArr : Array<cc.Node> = Array<cc.Node>(); 
+    placementBallArr : Array<cc.Node> = Array<cc.Node>();
     li : Array<number> = Array<number>();   //质因数
     an : Array<number> = Array<number>();   //约数
     pl : Array<number> = Array<number>();   //玩家答案
@@ -80,7 +81,8 @@ export default class GamePanel extends BaseUI {
     checkpointsNum : number = null;
     checkpoint : number = null;
     cueNum : number = 0;
-
+    isReadyShoot : boolean = false;
+    isDoubleOver : boolean = true;
      onLoad () {
         //测试用
         // DaAnData.getInstance().checkpointsNum = 3;
@@ -162,6 +164,10 @@ export default class GamePanel extends BaseUI {
         this.updateNode.push(this.bubble_1);
         this.updateNode.push(this.bubble_2);
         this.updateNode.push(this.gunNode.getChildByName('ballNode'));
+        this.placementBallArr.push(this.gunNode.getChildByName('ballNode'));
+        this.placementBallArr.push(this.bubble_1);
+        this.placementBallArr.push(this.bubble_2);
+        this.addListenerOnPlacement();
         this.mask.on(cc.Node.EventType.TOUCH_START, function(e) {
             e.stopPropagation();
         }.bind(this));
@@ -226,6 +232,7 @@ export default class GamePanel extends BaseUI {
         this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
         this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
             if(trackEntry.animation.name == 'ball_in') {
+            this.isReadyShoot = true;
                this.shoot();
             }
         });
@@ -236,6 +243,9 @@ export default class GamePanel extends BaseUI {
        
         var ballNode = cc.instantiate(this.ballNodeP);
         ballNode.getChildByName('label').getComponent(cc.Label).string = String(num);
+        if(num.toString().length == 3) {
+            ballNode.getChildByName('label').getComponent(cc.Label).fontSize = 30;
+        }
         var ball = ballNode.getChildByName('spine').getComponent(sp.Skeleton);
         ball.setAnimation(0, 'idle', true);
         ballNode.parent = parent;
@@ -372,7 +382,7 @@ export default class GamePanel extends BaseUI {
         var x = this.numberStr.node.getContentSize().width + 100;
         cc.log('numberstr width is ', this.numberStr.node.getContentSize().width);
         var y = 0;
-        var space = 150;
+        var space = 100;
         for(let i = 0; i < this.li.length; i++) {
             cc.log(this.li[i]);
             var ballx = 0;
@@ -394,6 +404,114 @@ export default class GamePanel extends BaseUI {
         }
     }
 
+    addListenerOnPlacement(){
+        var bubble_none = null;
+        for(let i = 0; i < this.placementBallArr.length; i++) {
+            this.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_START, function(e){
+                this.placementBallArr[i].opacity = 0;
+                this.bubble.opacity = 255;
+                if(this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
+                    this.bubble_none1.node.opacity = 255;
+                    bubble_none = 1;
+                }else if(this.bubble_none2.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
+                    this.bubble_none2.node.opacity = 255; 
+                    bubble_none = 2;
+                }else{ 
+                    bubble_none = null;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);  
+                this.bubble.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
+                this.bubble.getChildByName('label').getComponent(cc.Label).getComponent(cc.Label).string = num.toString();
+                this.bubble.setPosition(this.node.convertToNodeSpaceAR(e.currentTouch._point));
+                if(this.miya.getComponent(sp.Skeleton).animation != 'kan') {
+                    this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
+                }
+                if(this.miya.getComponent(sp.Skeleton).animation != 'kan_idle') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'kan_idle', true);
+                }
+            }.bind(this));
+            this.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_MOVE, function(e){
+                var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
+                if(location.x > this.node.width /2 - this.bubble.width / 2) {
+                    this.bubble.x = this.node.width /2 - this.bubble.width / 2;
+                }else if(location.x < - this.node.width / 2 + this.bubble.width / 2){
+                    this.bubble.x = - this.node.width / 2 + this.bubble.width / 2;
+                }else {
+                    this.bubble.x = location.x;
+                }
+                if(location.y >= this.node.height / 2 - this.bubble.height / 2) {
+                    this.bubble.y = this.node.height / 2 - this.bubble.height / 2;
+                }else if (location.y <= - this.node.height / 2 + this.bubble.height / 2){
+                    this.bubble.y = - this.node.height / 2 + this.bubble.height / 2;
+                }else {
+                    this.bubble.y = location.y;
+                }
+                var touchPos = this.node.convertToNodeSpaceAR(e.currentTouch._point)
+                var distant = Math.sqrt(Math.pow((touchPos.x - this.miya.getPosition().x),2) + Math.pow((touchPos.y - this.miya.getPosition().y),2));
+                if(distant < 400 && distant > 150) {
+                    if(this.miya.getComponent(sp.Skeleton).animation == 'idle' && this.miya.getComponent(sp.Skeleton).animation != 'in_jump') {
+                        this.miya.getComponent(sp.Skeleton).setAnimation(0, 'in_jump', false);
+                    }
+                    if(this.miya.getComponent(sp.Skeleton).animation != 'jump') {
+                        this.miya.getComponent(sp.Skeleton).setAnimation(0, 'jump', true);
+                    }  
+                }else if(distant < 150) {
+                    if(this.miya.getComponent(sp.Skeleton).animation != 'jump_xuangz') {
+                        this.miya.getComponent(sp.Skeleton).setAnimation(0, 'jump_xuangz', true);
+                    }   
+                }else if(distant > 400) {
+                    if(this.miya.getComponent(sp.Skeleton).animation == 'jump' && this.miya.getComponent(sp.Skeleton).animation != 'kan') {
+                        this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
+                    }
+                    if(this.miya.getComponent(sp.Skeleton).animation != 'kan_idle') {
+                        this.miya.getComponent(sp.Skeleton).addAnimation(0, 'kan_idle', true);
+                    }
+                }
+            }.bind(this));
+            this.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_END, function(e){
+                if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
+                  
+                    this.bubble.opacity = 0;
+                }else {
+                    this.bubble.opacity = 0;
+                    this.placementBallArr[i].opacity = 255;
+                    if(bubble_none == 1) {
+                        this.bubble_none1.node.opacity = 0;
+                    }else if(bubble_none == 2) {
+                        this.bubble_none2.node.opacity = 0;
+                    }
+                }
+                this.miya.getComponent(sp.Skeleton).setAnimation(0, 'in_idle', false);
+                if(this.miya.getComponent(sp.Skeleton).animation != 'idle') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'idle', true);
+                }
+            }.bind(this));
+            this.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_CANCEL, function(e){
+                if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
+                  
+                    this.bubble.opacity = 0;
+                }else {
+                    this.bubble.opacity = 0;
+                    this.placementBallArr[i].opacity = 255;
+                    if(bubble_none == 1) {
+                        this.bubble_none1.node.opacity = 0;
+                    }else if(bubble_none == 2) {
+                        this.bubble_none2.node.opacity = 0;
+                    }else {
+                        this.bubble_none1.node.opacity = 255;
+                        this.bubble_none2.node.opacity = 255;
+                    }
+                }
+                this.miya.getComponent(sp.Skeleton).setAnimation(0, 'in_idle', false);
+                if(this.miya.getComponent(sp.Skeleton).animation != 'idle') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'idle', true);
+                }
+            }.bind(this));
+        }
+    }
+
     addListenerOnDecomposeBall(ballNode : cc.Node) {
         cc.log(ballNode);
         var ball = ballNode.getChildByName('spine');
@@ -410,9 +528,20 @@ export default class GamePanel extends BaseUI {
 
         ball.on(cc.Node.EventType.TOUCH_MOVE, function(e){
             var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
-            this.bubble.x = location.x;
-            this.bubble.y = location.y;
-    
+            if(location.x > this.node.width /2 - ball.width / 2) {
+                this.bubble.x = this.node.width /2 - ball.width / 2;
+            }else if(location.x < - this.node.width / 2 + ball.width / 2){
+                this.bubble.x = - this.node.width / 2 + ball.width / 2;
+            }else {
+                this.bubble.x = location.x;
+            }
+            if(location.y >= this.node.height / 2 - ball.height / 2) {
+                this.bubble.y = this.node.height / 2 - ball.height / 2;
+            }else if (location.y <= - this.node.height / 2 + ball.height / 2){
+                this.bubble.y = - this.node.height / 2 + ball.height / 2;
+            }else {
+                this.bubble.y = location.y;
+            }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_END, function(){
             if(this.bubble.opacity == 255) {
@@ -430,9 +559,16 @@ export default class GamePanel extends BaseUI {
             var skinStr = this.skinString(num);
             if(this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if(this.gunNode.getChildByName('ballNode').opacity) {
+                    this.isReadyShoot = false;
+                    this.isDoubleOver = false;
                     let gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string); 
                     this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(gunballNum));
                     this.bubble_2.getChildByName('label').getComponent(cc.Label).string = gunballNum.toString();
+                    if(gunballNum.toString().length >= 3) {
+                        this.bubble_2.getChildByName('label').getComponent(cc.Label).fontSize = 30;
+                    }else {
+                        this.bubble_2.getChildByName('label').getComponent(cc.Label).fontSize = 40;
+                    }
                     this.bubble_2.opacity = 255;
                     this.bubble_none2.node.opacity = 0;
                     this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
@@ -445,11 +581,14 @@ export default class GamePanel extends BaseUI {
                     });
                 }
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setSkin(skinStr); 
+                this.bubble_1.getChildByName('label').getComponent(cc.Label).fontSize = 40;
                 this.bubble_1.getChildByName('label').getComponent(cc.Label).string = this.bubble.getChildByName('label').getComponent(cc.Label).string;
                 this.bubble_1.opacity = 255;
                 this.bubble_none1.node.opacity = 0;
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                 if(this.bubble_1.opacity && this.bubble_2.opacity) {
+                    this.isReadyShoot = false;
+                    this.isDoubleOver = false;
                     this.signNode.runAction(cc.sequence(cc.fadeIn(0.1),cc.fadeOut(0.2),cc.fadeIn(0.1),cc.fadeOut(0.2)));
                 }
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
@@ -473,10 +612,17 @@ export default class GamePanel extends BaseUI {
             
             }else if(this.bubble_none2.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if(this.gunNode.getChildByName('ballNode').opacity) {
+                    this.isReadyShoot = false;
+                    this.isDoubleOver = false;
                     let gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string); 
                     let gunBall = this.gunNode.getChildByName('ballNode');
                     this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(gunballNum));
                     this.bubble_1.getChildByName('label').getComponent(cc.Label).string = gunballNum.toString();
+                    if(gunballNum.toString().length >= 3) {
+                        this.bubble_1.getChildByName('label').getComponent(cc.Label).fontSize = 30;
+                    }else {
+                        this.bubble_1.getChildByName('label').getComponent(cc.Label).fontSize = 40;
+                    }
                     this.bubble_1.opacity = 255;
                     this.bubble_none1.node.opacity = 0;
                     this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
@@ -488,11 +634,14 @@ export default class GamePanel extends BaseUI {
                     });
                 }
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setSkin(skinStr); 
+                this.bubble_2.getChildByName('label').getComponent(cc.Label).fontSize = 40;
                 this.bubble_2.getChildByName('label').getComponent(cc.Label).string = this.bubble.getChildByName('label').getComponent(cc.Label).string;
                 this.bubble_2.opacity = 255;
                 this.bubble_none2.node.opacity = 0;
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                 if(this.bubble_1.opacity && this.bubble_2.opacity) {
+                    this.isReadyShoot = false;
+                    this.isDoubleOver = false;
                     this.signNode.runAction(cc.sequence(cc.fadeIn(0.1),cc.fadeOut(0.2),cc.fadeIn(0.1),cc.fadeOut(0.2)));
                 }
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
@@ -526,23 +675,31 @@ export default class GamePanel extends BaseUI {
         let num1 = parseInt(this.bubble_1.getChildByName('label').getComponent(cc.Label).string);
         let num2 = parseInt(this.bubble_2.getChildByName('label').getComponent(cc.Label).string);
         let num = num1 * num2;  
-        if(num > this.decoposeNum) {
-            num = this.decoposeNum;
+        if(num > 999) {
+            num = 999;
+        }
+        if(num.toString().length >= 3) {
+            gunBall.getChildByName('label').getComponent(cc.Label).fontSize = 30;
+        }else {
+            gunBall.getChildByName('label').getComponent(cc.Label).fontSize = 40;
         }
         gunBall.getChildByName('label').getComponent(cc.Label).string = num.toString();
         gunBall.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
-        //gunBall.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
         this.gunNode.getChildByName('gun').getComponent(sp.Skeleton).setAnimation(0, 'in', false);
         if(gunBall.opacity) {
             gunBall.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
+            gunBall.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
+                if(trackEntry.animation.name == 'ball_in') {
+                   this.isReadyShoot = true;
+                   this.isDoubleOver = true;
+                }
+            });
         }
     }
 
     addListenerOnAnswerBall(ballNode : cc.Node) {
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function(e){
-            cc.log('miy pos is ',this.miya.getPosition());
-            cc.log('current pos is ', this.node.convertToNodeSpaceAR(e.currentTouch._point));
             if(this.miya.getComponent(sp.Skeleton).animation != 'kan') {
                 this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
             }
@@ -551,7 +708,22 @@ export default class GamePanel extends BaseUI {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_MOVE, function(e){
-            ballNode.setPosition(ballNode.parent.convertToNodeSpaceAR(e.currentTouch._point));
+            var location = ballNode.parent.convertToNodeSpaceAR(e.currentTouch._point);
+            if(location.x >= this.node.width /2 - ball.width/2 - ballNode.parent.x) {
+                ballNode.x = this.node.width /2 - ball.width/2 - ballNode.parent.x;
+            }else if(location.x <= - this.node.width / 2 + ball.width/2 - ballNode.parent.x){
+                ballNode.x = - this.node.width / 2 + ball.width/2 - ballNode.parent.x;
+            }else {
+                ballNode.x = location.x;
+            }
+            if(location.y >= this.node.height / 2 - ball.height / 2 - ballNode.parent.y) {
+                ballNode.y = this.node.height / 2 - ball.height / 2 - ballNode.parent.y;
+            }else if (location.y <= - this.node.height / 2 + ball.height / 2 - ballNode.parent.y){
+                ballNode.y = - this.node.height / 2 + ball.height / 2 - ballNode.parent.y;
+            }else {
+                ballNode.y = location.y;
+            }
+            //ballNode.setPosition(ballNode.parent.convertToNodeSpaceAR(e.currentTouch._point));
             var touchPos = this.node.convertToNodeSpaceAR(e.currentTouch._point)
             var distant = Math.sqrt(Math.pow((touchPos.x - this.miya.getPosition().x),2) + Math.pow((touchPos.y - this.miya.getPosition().y),2));
             if(distant < 400 && distant > 150) {
@@ -573,9 +745,6 @@ export default class GamePanel extends BaseUI {
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'kan_idle', true);
                 }
             }
-
-
-
             // if(this.miya.getChildByName('layout').getBoundingBox().contains(this.miya.convertToNodeSpaceAR(e.currentTouch._point))) {
             //     this.miya.getComponent(sp.Skeleton).setAnimation(0, 'jump_xuangz', true);
             // }else {
@@ -587,14 +756,23 @@ export default class GamePanel extends BaseUI {
         ball.on(cc.Node.EventType.TOUCH_END, function(e){
             if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
-                let index = this.answerArr.indexOf(ballNode);
-                this.answerArr.splice(index, 1);
-                this.pl.splice(index, 1);
-                let updateIndex = this.updateNode.indexOf(ballNode);
-                this.updateNode.splice(updateIndex, 1); 
-                //this.answerArr.filter(item => item !== ballNode);
-                this.updatePos();
-                ballNode.destroy();
+                let num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
+                if(num == 1) {
+                    UIHelp.showAffirmTips(1, '质数1不能删除', function(){
+                        ballNode.setPosition(cc.v2(0, 0));
+                    }.bind(this),function(){
+                        ballNode.setPosition(cc.v2(0, 0));
+                    }.bind(this));
+                }else {
+                    let index = this.answerArr.indexOf(ballNode);
+                    this.answerArr.splice(index, 1);
+                    this.pl.splice(index, 1);
+                    let updateIndex = this.updateNode.indexOf(ballNode);
+                    this.updateNode.splice(updateIndex, 1); 
+                    //this.answerArr.filter(item => item !== ballNode);
+                    this.updatePos();
+                    ballNode.destroy();
+                }
             }else {
                 ballNode.setPosition(cc.v2(0, 0));
             }
@@ -619,8 +797,9 @@ export default class GamePanel extends BaseUI {
     shoot() { 
         if(this.gunNode.rotation != 0) {
             return;
-        }
-        if(this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_1.opacity) {
+        }  
+        
+        if(this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_1.opacity && this.isDoubleOver) {
             let num = parseInt(this.bubble_1.getChildByName('label').getComponent(cc.Label).string);
             let ballNode =  this.gunNode.getChildByName('ballNode');
             ballNode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
@@ -638,7 +817,7 @@ export default class GamePanel extends BaseUI {
             });
             this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).clearTracks();
             this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false);
-        }else if(this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_2.opacity) {
+        }else if(this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_2.opacity && this.isDoubleOver) {
             let num = parseInt(this.bubble_2.getChildByName('label').getComponent(cc.Label).string);
             let ballNode =  this.gunNode.getChildByName('ballNode');
             ballNode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
@@ -657,9 +836,7 @@ export default class GamePanel extends BaseUI {
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).clearTracks();
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false); 
         }
-        if(this.bubble_none1.node.opacity == 0 || this.bubble_none2.node.opacity == 0) {
-            return;
-        }
+       
         if(this.gunNode.getChildByName('ballNode').opacity == 255 && this.answerArr.length < 25) {
             var gunBall = this.gunNode.getChildByName('ballNode');
             var num = gunBall.getChildByName('label').getComponent(cc.Label).string;
@@ -711,6 +888,7 @@ export default class GamePanel extends BaseUI {
             }.bind(this), this);
             this.gunNode.runAction(cc.sequence(cc.rotateBy(0.5, angle), shootStart));
         }
+        this.isReadyShoot = false;
     }
 
     getAngle(dirpos : cc.Vec2, oriPos : cc.Vec2) : number {
@@ -854,6 +1032,7 @@ export default class GamePanel extends BaseUI {
                this.chongzhi.interactable = false;
                 UIHelp.showOverTips(1, this.timer, '恭喜全部通关', function(){
                     UIManager.getInstance().closeUI(OverTips);
+                    this.checkpoint --;
                     this.reset();
                 }.bind(this), function(){
                     UIManager.getInstance().closeUI(OverTips);
@@ -866,6 +1045,7 @@ export default class GamePanel extends BaseUI {
             this.closeClock();
             UIHelp.showOverTips(2, this.timer, '挑战成功', function(){
                 UIManager.getInstance().closeUI(OverTips);
+                this.checkpoint --;
                 this.reset();
             }.bind(this), function(){
                 UIManager.getInstance().closeUI(OverTips);
@@ -878,6 +1058,14 @@ export default class GamePanel extends BaseUI {
             this.closeClock();
            UIHelp.showOverTips(3, this.timer, '挑战失败！点击重置后再次挑战',this.cueAnswer.bind(this));
         }
+    }
+
+    chongzhiCallback() {
+        UIHelp.showAffirmTips(1,'确认要重置本关，重新开始游戏吗？',this.reset.bind(this));
+    }
+
+    tijiaoCallback() {
+        UIHelp.showAffirmTips(1,'确认提交答案吗？',this.isRight.bind(this));
     }
 
     openClock() {
@@ -915,3 +1103,4 @@ export default class GamePanel extends BaseUI {
     submitButton(){
         UIManager.getInstance().openUI(SubmissionPanel);
     }
+}

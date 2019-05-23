@@ -45,6 +45,7 @@ var GamePanel = /** @class */ (function (_super) {
         _this.answerArr = Array();
         _this.labelArr = Array();
         _this.progressArr = Array();
+        _this.placementBallArr = Array();
         _this.li = Array(); //质因数
         _this.an = Array(); //约数
         _this.pl = Array(); //玩家答案
@@ -57,6 +58,8 @@ var GamePanel = /** @class */ (function (_super) {
         _this.checkpointsNum = null;
         _this.checkpoint = null;
         _this.cueNum = 0;
+        _this.isReadyShoot = false;
+        _this.isDoubleOver = true;
         return _this;
     }
     GamePanel_1 = GamePanel;
@@ -134,6 +137,10 @@ var GamePanel = /** @class */ (function (_super) {
         this.updateNode.push(this.bubble_1);
         this.updateNode.push(this.bubble_2);
         this.updateNode.push(this.gunNode.getChildByName('ballNode'));
+        this.placementBallArr.push(this.gunNode.getChildByName('ballNode'));
+        this.placementBallArr.push(this.bubble_1);
+        this.placementBallArr.push(this.bubble_2);
+        this.addListenerOnPlacement();
         this.mask.on(cc.Node.EventType.TOUCH_START, function (e) {
             e.stopPropagation();
         }.bind(this));
@@ -196,6 +203,7 @@ var GamePanel = /** @class */ (function (_super) {
         this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
         this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
             if (trackEntry.animation.name == 'ball_in') {
+                _this.isReadyShoot = true;
                 _this.shoot();
             }
         });
@@ -203,6 +211,9 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.createBall = function (num, x, y, parent, isAnswer) {
         var ballNode = cc.instantiate(this.ballNodeP);
         ballNode.getChildByName('label').getComponent(cc.Label).string = String(num);
+        if (num.toString().length == 3) {
+            ballNode.getChildByName('label').getComponent(cc.Label).fontSize = 30;
+        }
         var ball = ballNode.getChildByName('spine').getComponent(sp.Skeleton);
         ball.setAnimation(0, 'idle', true);
         ballNode.parent = parent;
@@ -338,7 +349,7 @@ var GamePanel = /** @class */ (function (_super) {
         var x = this.numberStr.node.getContentSize().width + 100;
         cc.log('numberstr width is ', this.numberStr.node.getContentSize().width);
         var y = 0;
-        var space = 150;
+        var space = 100;
         for (var i = 0; i < this.li.length; i++) {
             cc.log(this.li[i]);
             var ballx = 0;
@@ -360,6 +371,128 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
     };
+    GamePanel.prototype.addListenerOnPlacement = function () {
+        var bubble_none = null;
+        var _loop_1 = function (i) {
+            this_1.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_START, function (e) {
+                this.placementBallArr[i].opacity = 0;
+                this.bubble.opacity = 255;
+                if (this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
+                    this.bubble_none1.node.opacity = 255;
+                    bubble_none = 1;
+                }
+                else if (this.bubble_none2.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
+                    this.bubble_none2.node.opacity = 255;
+                    bubble_none = 2;
+                }
+                else {
+                    bubble_none = null;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);
+                this.bubble.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
+                this.bubble.getChildByName('label').getComponent(cc.Label).getComponent(cc.Label).string = num.toString();
+                this.bubble.setPosition(this.node.convertToNodeSpaceAR(e.currentTouch._point));
+                if (this.miya.getComponent(sp.Skeleton).animation != 'kan') {
+                    this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
+                }
+                if (this.miya.getComponent(sp.Skeleton).animation != 'kan_idle') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'kan_idle', true);
+                }
+            }.bind(this_1));
+            this_1.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_MOVE, function (e) {
+                var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
+                if (location.x > this.node.width / 2 - this.bubble.width / 2) {
+                    this.bubble.x = this.node.width / 2 - this.bubble.width / 2;
+                }
+                else if (location.x < -this.node.width / 2 + this.bubble.width / 2) {
+                    this.bubble.x = -this.node.width / 2 + this.bubble.width / 2;
+                }
+                else {
+                    this.bubble.x = location.x;
+                }
+                if (location.y >= this.node.height / 2 - this.bubble.height / 2) {
+                    this.bubble.y = this.node.height / 2 - this.bubble.height / 2;
+                }
+                else if (location.y <= -this.node.height / 2 + this.bubble.height / 2) {
+                    this.bubble.y = -this.node.height / 2 + this.bubble.height / 2;
+                }
+                else {
+                    this.bubble.y = location.y;
+                }
+                var touchPos = this.node.convertToNodeSpaceAR(e.currentTouch._point);
+                var distant = Math.sqrt(Math.pow((touchPos.x - this.miya.getPosition().x), 2) + Math.pow((touchPos.y - this.miya.getPosition().y), 2));
+                if (distant < 400 && distant > 150) {
+                    if (this.miya.getComponent(sp.Skeleton).animation == 'idle' && this.miya.getComponent(sp.Skeleton).animation != 'in_jump') {
+                        this.miya.getComponent(sp.Skeleton).setAnimation(0, 'in_jump', false);
+                    }
+                    if (this.miya.getComponent(sp.Skeleton).animation != 'jump') {
+                        this.miya.getComponent(sp.Skeleton).setAnimation(0, 'jump', true);
+                    }
+                }
+                else if (distant < 150) {
+                    if (this.miya.getComponent(sp.Skeleton).animation != 'jump_xuangz') {
+                        this.miya.getComponent(sp.Skeleton).setAnimation(0, 'jump_xuangz', true);
+                    }
+                }
+                else if (distant > 400) {
+                    if (this.miya.getComponent(sp.Skeleton).animation == 'jump' && this.miya.getComponent(sp.Skeleton).animation != 'kan') {
+                        this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
+                    }
+                    if (this.miya.getComponent(sp.Skeleton).animation != 'kan_idle') {
+                        this.miya.getComponent(sp.Skeleton).addAnimation(0, 'kan_idle', true);
+                    }
+                }
+            }.bind(this_1));
+            this_1.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_END, function (e) {
+                if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
+                    this.bubble.opacity = 0;
+                }
+                else {
+                    this.bubble.opacity = 0;
+                    this.placementBallArr[i].opacity = 255;
+                    if (bubble_none == 1) {
+                        this.bubble_none1.node.opacity = 0;
+                    }
+                    else if (bubble_none == 2) {
+                        this.bubble_none2.node.opacity = 0;
+                    }
+                }
+                this.miya.getComponent(sp.Skeleton).setAnimation(0, 'in_idle', false);
+                if (this.miya.getComponent(sp.Skeleton).animation != 'idle') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'idle', true);
+                }
+            }.bind(this_1));
+            this_1.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
+                if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
+                    this.bubble.opacity = 0;
+                }
+                else {
+                    this.bubble.opacity = 0;
+                    this.placementBallArr[i].opacity = 255;
+                    if (bubble_none == 1) {
+                        this.bubble_none1.node.opacity = 0;
+                    }
+                    else if (bubble_none == 2) {
+                        this.bubble_none2.node.opacity = 0;
+                    }
+                    else {
+                        this.bubble_none1.node.opacity = 255;
+                        this.bubble_none2.node.opacity = 255;
+                    }
+                }
+                this.miya.getComponent(sp.Skeleton).setAnimation(0, 'in_idle', false);
+                if (this.miya.getComponent(sp.Skeleton).animation != 'idle') {
+                    this.miya.getComponent(sp.Skeleton).addAnimation(0, 'idle', true);
+                }
+            }.bind(this_1));
+        };
+        var this_1 = this;
+        for (var i = 0; i < this.placementBallArr.length; i++) {
+            _loop_1(i);
+        }
+    };
     GamePanel.prototype.addListenerOnDecomposeBall = function (ballNode) {
         cc.log(ballNode);
         var ball = ballNode.getChildByName('spine');
@@ -375,8 +508,24 @@ var GamePanel = /** @class */ (function (_super) {
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_MOVE, function (e) {
             var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
-            this.bubble.x = location.x;
-            this.bubble.y = location.y;
+            if (location.x > this.node.width / 2 - ball.width / 2) {
+                this.bubble.x = this.node.width / 2 - ball.width / 2;
+            }
+            else if (location.x < -this.node.width / 2 + ball.width / 2) {
+                this.bubble.x = -this.node.width / 2 + ball.width / 2;
+            }
+            else {
+                this.bubble.x = location.x;
+            }
+            if (location.y >= this.node.height / 2 - ball.height / 2) {
+                this.bubble.y = this.node.height / 2 - ball.height / 2;
+            }
+            else if (location.y <= -this.node.height / 2 + ball.height / 2) {
+                this.bubble.y = -this.node.height / 2 + ball.height / 2;
+            }
+            else {
+                this.bubble.y = location.y;
+            }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_END, function () {
             if (this.bubble.opacity == 255) {
@@ -395,9 +544,17 @@ var GamePanel = /** @class */ (function (_super) {
             var skinStr = this.skinString(num);
             if (this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if (this.gunNode.getChildByName('ballNode').opacity) {
+                    this.isReadyShoot = false;
+                    this.isDoubleOver = false;
                     var gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string);
                     this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(gunballNum));
                     this.bubble_2.getChildByName('label').getComponent(cc.Label).string = gunballNum.toString();
+                    if (gunballNum.toString().length >= 3) {
+                        this.bubble_2.getChildByName('label').getComponent(cc.Label).fontSize = 30;
+                    }
+                    else {
+                        this.bubble_2.getChildByName('label').getComponent(cc.Label).fontSize = 40;
+                    }
                     this.bubble_2.opacity = 255;
                     this.bubble_none2.node.opacity = 0;
                     this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
@@ -410,11 +567,14 @@ var GamePanel = /** @class */ (function (_super) {
                     });
                 }
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setSkin(skinStr);
+                this.bubble_1.getChildByName('label').getComponent(cc.Label).fontSize = 40;
                 this.bubble_1.getChildByName('label').getComponent(cc.Label).string = this.bubble.getChildByName('label').getComponent(cc.Label).string;
                 this.bubble_1.opacity = 255;
                 this.bubble_none1.node.opacity = 0;
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                 if (this.bubble_1.opacity && this.bubble_2.opacity) {
+                    this.isReadyShoot = false;
+                    this.isDoubleOver = false;
                     this.signNode.runAction(cc.sequence(cc.fadeIn(0.1), cc.fadeOut(0.2), cc.fadeIn(0.1), cc.fadeOut(0.2)));
                 }
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
@@ -439,10 +599,18 @@ var GamePanel = /** @class */ (function (_super) {
             }
             else if (this.bubble_none2.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if (this.gunNode.getChildByName('ballNode').opacity) {
+                    this.isReadyShoot = false;
+                    this.isDoubleOver = false;
                     var gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string);
                     var gunBall_2 = this.gunNode.getChildByName('ballNode');
                     this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(gunballNum));
                     this.bubble_1.getChildByName('label').getComponent(cc.Label).string = gunballNum.toString();
+                    if (gunballNum.toString().length >= 3) {
+                        this.bubble_1.getChildByName('label').getComponent(cc.Label).fontSize = 30;
+                    }
+                    else {
+                        this.bubble_1.getChildByName('label').getComponent(cc.Label).fontSize = 40;
+                    }
                     this.bubble_1.opacity = 255;
                     this.bubble_none1.node.opacity = 0;
                     this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
@@ -454,11 +622,14 @@ var GamePanel = /** @class */ (function (_super) {
                     });
                 }
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setSkin(skinStr);
+                this.bubble_2.getChildByName('label').getComponent(cc.Label).fontSize = 40;
                 this.bubble_2.getChildByName('label').getComponent(cc.Label).string = this.bubble.getChildByName('label').getComponent(cc.Label).string;
                 this.bubble_2.opacity = 255;
                 this.bubble_none2.node.opacity = 0;
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                 if (this.bubble_1.opacity && this.bubble_2.opacity) {
+                    this.isReadyShoot = false;
+                    this.isDoubleOver = false;
                     this.signNode.runAction(cc.sequence(cc.fadeIn(0.1), cc.fadeOut(0.2), cc.fadeIn(0.1), cc.fadeOut(0.2)));
                 }
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
@@ -487,27 +658,37 @@ var GamePanel = /** @class */ (function (_super) {
         }.bind(this), this);
     };
     GamePanel.prototype.gunballIn = function () {
+        var _this = this;
         var gunBall = this.gunNode.getChildByName('ballNode');
         gunBall.opacity = 255;
         var num1 = parseInt(this.bubble_1.getChildByName('label').getComponent(cc.Label).string);
         var num2 = parseInt(this.bubble_2.getChildByName('label').getComponent(cc.Label).string);
         var num = num1 * num2;
-        if (num > this.decoposeNum) {
-            num = this.decoposeNum;
+        if (num > 999) {
+            num = 999;
+        }
+        if (num.toString().length >= 3) {
+            gunBall.getChildByName('label').getComponent(cc.Label).fontSize = 30;
+        }
+        else {
+            gunBall.getChildByName('label').getComponent(cc.Label).fontSize = 40;
         }
         gunBall.getChildByName('label').getComponent(cc.Label).string = num.toString();
         gunBall.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
-        //gunBall.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
         this.gunNode.getChildByName('gun').getComponent(sp.Skeleton).setAnimation(0, 'in', false);
         if (gunBall.opacity) {
             gunBall.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
+            gunBall.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
+                if (trackEntry.animation.name == 'ball_in') {
+                    _this.isReadyShoot = true;
+                    _this.isDoubleOver = true;
+                }
+            });
         }
     };
     GamePanel.prototype.addListenerOnAnswerBall = function (ballNode) {
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function (e) {
-            cc.log('miy pos is ', this.miya.getPosition());
-            cc.log('current pos is ', this.node.convertToNodeSpaceAR(e.currentTouch._point));
             if (this.miya.getComponent(sp.Skeleton).animation != 'kan') {
                 this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
             }
@@ -516,7 +697,26 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_MOVE, function (e) {
-            ballNode.setPosition(ballNode.parent.convertToNodeSpaceAR(e.currentTouch._point));
+            var location = ballNode.parent.convertToNodeSpaceAR(e.currentTouch._point);
+            if (location.x >= this.node.width / 2 - ball.width / 2 - ballNode.parent.x) {
+                ballNode.x = this.node.width / 2 - ball.width / 2 - ballNode.parent.x;
+            }
+            else if (location.x <= -this.node.width / 2 + ball.width / 2 - ballNode.parent.x) {
+                ballNode.x = -this.node.width / 2 + ball.width / 2 - ballNode.parent.x;
+            }
+            else {
+                ballNode.x = location.x;
+            }
+            if (location.y >= this.node.height / 2 - ball.height / 2 - ballNode.parent.y) {
+                ballNode.y = this.node.height / 2 - ball.height / 2 - ballNode.parent.y;
+            }
+            else if (location.y <= -this.node.height / 2 + ball.height / 2 - ballNode.parent.y) {
+                ballNode.y = -this.node.height / 2 + ball.height / 2 - ballNode.parent.y;
+            }
+            else {
+                ballNode.y = location.y;
+            }
+            //ballNode.setPosition(ballNode.parent.convertToNodeSpaceAR(e.currentTouch._point));
             var touchPos = this.node.convertToNodeSpaceAR(e.currentTouch._point);
             var distant = Math.sqrt(Math.pow((touchPos.x - this.miya.getPosition().x), 2) + Math.pow((touchPos.y - this.miya.getPosition().y), 2));
             if (distant < 400 && distant > 150) {
@@ -551,14 +751,24 @@ var GamePanel = /** @class */ (function (_super) {
         ball.on(cc.Node.EventType.TOUCH_END, function (e) {
             if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
-                var index = this.answerArr.indexOf(ballNode);
-                this.answerArr.splice(index, 1);
-                this.pl.splice(index, 1);
-                var updateIndex = this.updateNode.indexOf(ballNode);
-                this.updateNode.splice(updateIndex, 1);
-                //this.answerArr.filter(item => item !== ballNode);
-                this.updatePos();
-                ballNode.destroy();
+                var num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
+                if (num == 1) {
+                    UIHelp_1.UIHelp.showAffirmTips(1, '质数1不能删除', function () {
+                        ballNode.setPosition(cc.v2(0, 0));
+                    }.bind(this), function () {
+                        ballNode.setPosition(cc.v2(0, 0));
+                    }.bind(this));
+                }
+                else {
+                    var index = this.answerArr.indexOf(ballNode);
+                    this.answerArr.splice(index, 1);
+                    this.pl.splice(index, 1);
+                    var updateIndex = this.updateNode.indexOf(ballNode);
+                    this.updateNode.splice(updateIndex, 1);
+                    //this.answerArr.filter(item => item !== ballNode);
+                    this.updatePos();
+                    ballNode.destroy();
+                }
             }
             else {
                 ballNode.setPosition(cc.v2(0, 0));
@@ -583,7 +793,7 @@ var GamePanel = /** @class */ (function (_super) {
         if (this.gunNode.rotation != 0) {
             return;
         }
-        if (this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_1.opacity) {
+        if (this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_1.opacity && this.isDoubleOver) {
             var num_1 = parseInt(this.bubble_1.getChildByName('label').getComponent(cc.Label).string);
             var ballNode_1 = this.gunNode.getChildByName('ballNode');
             ballNode_1.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num_1));
@@ -602,7 +812,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).clearTracks();
             this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false);
         }
-        else if (this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_2.opacity) {
+        else if (this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_2.opacity && this.isDoubleOver) {
             var num_2 = parseInt(this.bubble_2.getChildByName('label').getComponent(cc.Label).string);
             var ballNode_2 = this.gunNode.getChildByName('ballNode');
             ballNode_2.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num_2));
@@ -620,9 +830,6 @@ var GamePanel = /** @class */ (function (_super) {
             });
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).clearTracks();
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false);
-        }
-        if (this.bubble_none1.node.opacity == 0 || this.bubble_none2.node.opacity == 0) {
-            return;
         }
         if (this.gunNode.getChildByName('ballNode').opacity == 255 && this.answerArr.length < 25) {
             var gunBall = this.gunNode.getChildByName('ballNode');
@@ -674,6 +881,7 @@ var GamePanel = /** @class */ (function (_super) {
             }.bind(this), this);
             this.gunNode.runAction(cc.sequence(cc.rotateBy(0.5, angle), shootStart));
         }
+        this.isReadyShoot = false;
     };
     GamePanel.prototype.getAngle = function (dirpos, oriPos) {
         var x = Math.abs(dirpos.x - oriPos.x);
@@ -814,6 +1022,7 @@ var GamePanel = /** @class */ (function (_super) {
                 this.chongzhi.interactable = false;
                 UIHelp_1.UIHelp.showOverTips(1, this.timer, '恭喜全部通关', function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
+                    this.checkpoint--;
                     this.reset();
                 }.bind(this), function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
@@ -827,6 +1036,7 @@ var GamePanel = /** @class */ (function (_super) {
                 this.closeClock();
                 UIHelp_1.UIHelp.showOverTips(2, this.timer, '挑战成功', function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
+                    this.checkpoint--;
                     this.reset();
                 }.bind(this), function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
@@ -840,6 +1050,12 @@ var GamePanel = /** @class */ (function (_super) {
             this.closeClock();
             UIHelp_1.UIHelp.showOverTips(3, this.timer, '挑战失败！点击重置后再次挑战', this.cueAnswer.bind(this));
         }
+    };
+    GamePanel.prototype.chongzhiCallback = function () {
+        UIHelp_1.UIHelp.showAffirmTips(1, '确认要重置本关，重新开始游戏吗？', this.reset.bind(this));
+    };
+    GamePanel.prototype.tijiaoCallback = function () {
+        UIHelp_1.UIHelp.showAffirmTips(1, '确认提交答案吗？', this.isRight.bind(this));
     };
     GamePanel.prototype.openClock = function () {
         this.intervalIndex = setInterval(function () {

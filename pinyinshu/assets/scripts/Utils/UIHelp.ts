@@ -1,7 +1,7 @@
 import { UIManager } from "../Manager/UIManager";
 import { TipUI } from "../UI/panel/TipUI";
 import { OverTips } from "../UI/Item/OverTips";
-
+import { AffirmTips } from "../UI/Item/AffirmTips";
 export class UIHelp
 {
     public static showTip(message: string)
@@ -33,7 +33,20 @@ export class UIHelp
            overTips.init(type, time, str, callback1,callback2);
         }
     }
-
+    public static showAffirmTips(type:number,des:string,callback1?:any,callback2?:any)
+    {
+        let affirmTips = UIManager.getInstance().getUI(AffirmTips) as AffirmTips;
+        if(!affirmTips)
+        {
+            UIManager.getInstance().openUI(AffirmTips, 200, ()=>{
+                UIHelp.showAffirmTips(type,des,callback1,callback2);
+            });
+        }
+        else
+        {
+            affirmTips.init(type, des, callback1,callback2);
+        }
+    }
 
     
 }

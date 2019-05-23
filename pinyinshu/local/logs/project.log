@@ -1,79 +1,138 @@
-2019-05-22T02:38:28.514Z - normal: Load ~/.CocosCreator/settings.json
-2019-05-22T02:38:28.586Z - normal: Initializing Asset Database
-2019-05-22T02:38:28.589Z - normal: checking language setting...
-2019-05-22T02:38:28.590Z - normal: Language: zh
-2019-05-22T02:38:29.420Z - success: preview server running at http://localhost:7456
-2019-05-22T02:38:29.433Z - success: protocol editor-framework registered
-2019-05-22T02:38:29.433Z - success: protocol app registered
-2019-05-22T02:38:29.433Z - success: protocol theme registered
-2019-05-22T02:38:29.433Z - success: protocol packages registered
-2019-05-22T02:38:29.434Z - success: protocol uuid registerred
-2019-05-22T02:38:29.434Z - success: protocol db registerred
-2019-05-22T02:38:29.434Z - success: protocol thumbnail registerred
-2019-05-22T02:38:29.434Z - success: protocol unpack registerred
-2019-05-22T02:38:29.434Z - success: protocol disable-commonjs registerred
-2019-05-22T02:38:29.524Z - normal: connected!
-2019-05-22T02:38:29.526Z - normal: Check project /Users/xes/Desktop/hub/pinyinshu
-2019-05-22T02:38:29.527Z - normal: Initializing project /Users/xes/Desktop/hub/pinyinshu
-2019-05-22T02:38:29.905Z - normal: Initializing Cocos2d
-2019-05-22T02:38:30.709Z - normal: Initializing engine extends
-2019-05-22T02:38:30.730Z - success: asset-db-debugger loaded
-2019-05-22T02:38:30.731Z - success: baidu-adapter loaded
-2019-05-22T02:38:30.733Z - success: color-picker loaded
-2019-05-22T02:38:30.841Z - success: fb-audience-network loaded
-2019-05-22T02:38:30.890Z - success: fb-live-stream loaded
-2019-05-22T02:38:30.893Z - success: google-play-instant loaded
-2019-05-22T02:38:30.899Z - success: huawei-runtime loaded
-2019-05-22T02:38:30.900Z - success: jsb-adapter loaded
-2019-05-22T02:38:30.906Z - success: oppo-runtime loaded
-2019-05-22T02:38:30.911Z - success: package-manager loaded
-2019-05-22T02:38:31.076Z - success: qqplay-adapter loaded
-2019-05-22T02:38:31.078Z - success: runtime-dev-tools loaded
-2019-05-22T02:38:31.084Z - success: sdkbox loaded
-2019-05-22T02:38:31.089Z - success: tester loaded
-2019-05-22T02:38:31.094Z - success: ui-grid loaded
-2019-05-22T02:38:31.098Z - success: ui-kit-preview-extra loaded
-2019-05-22T02:38:31.102Z - success: ui-kit-preview loaded
-2019-05-22T02:38:31.106Z - success: ui-kit loaded
-2019-05-22T02:38:31.110Z - success: ui-tree loaded
-2019-05-22T02:38:31.119Z - success: vivo-runtime loaded
-2019-05-22T02:38:31.120Z - success: weapp-adapter loaded
-2019-05-22T02:38:31.161Z - success: assets loaded
-2019-05-22T02:38:31.165Z - success: builder loaded
-2019-05-22T02:38:31.421Z - success: cocos-services loaded
-2019-05-22T02:38:31.426Z - success: console loaded
-2019-05-22T02:38:31.461Z - success: fb-instant-games loaded
-2019-05-22T02:38:31.465Z - success: google-instant-games loaded
-2019-05-22T02:38:31.470Z - success: hierarchy loaded
-2019-05-22T02:38:31.475Z - success: inspector loaded
-2019-05-22T02:38:31.477Z - success: keystore loaded
-2019-05-22T02:38:31.485Z - success: node-library loaded
-2019-05-22T02:38:31.487Z - success: package-asset loaded
-2019-05-22T02:38:31.488Z - success: preferences loaded
-2019-05-22T02:38:31.492Z - success: project-exporter loaded
-2019-05-22T02:38:31.497Z - success: project-importer loaded
-2019-05-22T02:38:31.500Z - success: project-settings loaded
-2019-05-22T02:38:31.506Z - success: scene loaded
-2019-05-22T02:38:31.508Z - success: simulator-debugger loaded
-2019-05-22T02:38:31.511Z - success: sprite-editor loaded
-2019-05-22T02:38:31.515Z - success: store loaded
-2019-05-22T02:38:31.520Z - success: timeline loaded
-2019-05-22T02:38:32.874Z - info: Cocos Services load base data!
-2019-05-22T02:38:33.886Z - normal: Loading packages
-2019-05-22T02:38:33.891Z - normal: Watching packages
-2019-05-22T02:38:33.996Z - normal: Run Application
-2019-05-22T05:02:01.823Z - warn: The Asset used by component "cc.Sprite" in prefab "ErrorPanel.prefab" is missing. Detailed information:
-Node path: "ErrorPanel/New Node/New Node"
-Asset url: "db://assets/resources/prefab/ui/panel/ErrorPanel.prefab"
-Missing uuid: "71944752-4d20-4e2b-b71d-45f874e6c6d7"
+2019-05-23T01:59:30.337Z - normal: Load ~/.CocosCreator/settings.json
+2019-05-23T01:59:30.401Z - normal: Initializing Asset Database
+2019-05-23T01:59:30.405Z - normal: checking language setting...
+2019-05-23T01:59:30.405Z - normal: Language: zh
+2019-05-23T01:59:31.223Z - success: preview server running at http://localhost:7456
+2019-05-23T01:59:31.269Z - success: protocol editor-framework registered
+2019-05-23T01:59:31.269Z - success: protocol app registered
+2019-05-23T01:59:31.269Z - success: protocol theme registered
+2019-05-23T01:59:31.269Z - success: protocol packages registered
+2019-05-23T01:59:31.270Z - success: protocol uuid registerred
+2019-05-23T01:59:31.270Z - success: protocol db registerred
+2019-05-23T01:59:31.270Z - success: protocol thumbnail registerred
+2019-05-23T01:59:31.270Z - success: protocol unpack registerred
+2019-05-23T01:59:31.270Z - success: protocol disable-commonjs registerred
+2019-05-23T01:59:31.355Z - normal: connected!
+2019-05-23T01:59:31.357Z - normal: Check project /Users/xes/Desktop/hub/pinyinshu
+2019-05-23T01:59:31.358Z - normal: Initializing project /Users/xes/Desktop/hub/pinyinshu
+2019-05-23T01:59:31.795Z - normal: Initializing Cocos2d
+2019-05-23T01:59:32.604Z - normal: Initializing engine extends
+2019-05-23T01:59:32.660Z - success: asset-db-debugger loaded
+2019-05-23T01:59:32.671Z - success: baidu-adapter loaded
+2019-05-23T01:59:32.672Z - success: color-picker loaded
+2019-05-23T01:59:32.781Z - success: fb-audience-network loaded
+2019-05-23T01:59:32.838Z - success: fb-live-stream loaded
+2019-05-23T01:59:32.842Z - success: google-play-instant loaded
+2019-05-23T01:59:32.848Z - success: huawei-runtime loaded
+2019-05-23T01:59:32.849Z - success: jsb-adapter loaded
+2019-05-23T01:59:32.854Z - success: oppo-runtime loaded
+2019-05-23T01:59:32.870Z - success: package-manager loaded
+2019-05-23T01:59:33.020Z - success: qqplay-adapter loaded
+2019-05-23T01:59:33.022Z - success: runtime-dev-tools loaded
+2019-05-23T01:59:33.040Z - success: sdkbox loaded
+2019-05-23T01:59:33.060Z - success: tester loaded
+2019-05-23T01:59:33.079Z - success: ui-grid loaded
+2019-05-23T01:59:33.096Z - success: ui-kit-preview-extra loaded
+2019-05-23T01:59:33.117Z - success: ui-kit-preview loaded
+2019-05-23T01:59:33.134Z - success: ui-kit loaded
+2019-05-23T01:59:33.152Z - success: ui-tree loaded
+2019-05-23T01:59:33.156Z - success: vivo-runtime loaded
+2019-05-23T01:59:33.157Z - success: weapp-adapter loaded
+2019-05-23T01:59:33.212Z - success: assets loaded
+2019-05-23T01:59:33.229Z - success: builder loaded
+2019-05-23T01:59:33.542Z - success: cocos-services loaded
+2019-05-23T01:59:33.563Z - success: console loaded
+2019-05-23T01:59:33.601Z - success: fb-instant-games loaded
+2019-05-23T01:59:33.605Z - success: google-instant-games loaded
+2019-05-23T01:59:33.624Z - success: hierarchy loaded
+2019-05-23T01:59:33.643Z - success: inspector loaded
+2019-05-23T01:59:33.645Z - success: keystore loaded
+2019-05-23T01:59:33.663Z - success: node-library loaded
+2019-05-23T01:59:33.665Z - success: package-asset loaded
+2019-05-23T01:59:33.701Z - success: preferences loaded
+2019-05-23T01:59:33.718Z - success: project-exporter loaded
+2019-05-23T01:59:33.737Z - success: project-importer loaded
+2019-05-23T01:59:33.754Z - success: project-settings loaded
+2019-05-23T01:59:33.778Z - success: scene loaded
+2019-05-23T01:59:33.780Z - success: simulator-debugger loaded
+2019-05-23T01:59:33.784Z - success: sprite-editor loaded
+2019-05-23T01:59:33.803Z - success: store loaded
+2019-05-23T01:59:33.822Z - success: timeline loaded
+2019-05-23T01:59:34.714Z - info: Cocos Services load base data!
+2019-05-23T01:59:36.156Z - normal: Loading packages
+2019-05-23T01:59:36.165Z - normal: Watching packages
+2019-05-23T01:59:36.268Z - normal: Run Application
+2019-05-23T02:29:28.352Z - warn: Script attached to "affirmTips" in prefab "affirmTips.prefab" is missing or invalid. Detailed information:
+Node path: "affirmTips"
+Asset url: "db://assets/resources/prefab/ui/panel/affirmTips.prefab"
+Script UUID: "67e25580-1a84-400e-ad73-929c6aab0745"
+Class ID: "67e25WAGoRADq1zkpxqqwdF"
 
-2019-05-22T05:02:01.826Z - warn: The Asset used by component "cc.Sprite" in prefab "ErrorPanel.prefab" is missing. Detailed information:
-Node path: "ErrorPanel/New Node"
-Asset url: "db://assets/resources/prefab/ui/panel/ErrorPanel.prefab"
-Missing uuid: "9be27a7b-b122-4c1c-b381-66ce18a3b703"
+2019-05-23T02:40:05.867Z - warn: Script attached to "affirmTips" in prefab "affirmTips.prefab" is missing or invalid. Detailed information:
+Node path: "affirmTips"
+Asset url: "db://assets/resources/prefab/ui/panel/affirmTips.prefab"
+Script UUID: "67e25580-1a84-400e-ad73-929c6aab0745"
+Class ID: "67e25WAGoRADq1zkpxqqwdF"
 
-2019-05-22T05:02:01.827Z - warn: The Asset used by component "cc.Sprite" in prefab "ErrorPanel.prefab" is missing. Detailed information:
-Node path: "ErrorPanel/btn"
-Asset url: "db://assets/resources/prefab/ui/panel/ErrorPanel.prefab"
-Missing uuid: "31772398-84ae-431f-ac6d-2b57b0d66762"
+2019-05-23T02:41:26.559Z - warn: Script attached to "affirmTips" in prefab "affirmTips.prefab" is missing or invalid. Detailed information:
+Node path: "affirmTips"
+Asset url: "db://assets/resources/prefab/ui/panel/affirmTips.prefab"
+Script UUID: "67e25580-1a84-400e-ad73-929c6aab0745"
+Class ID: "67e25WAGoRADq1zkpxqqwdF"
+
+2019-05-23T02:41:28.202Z - warn: Script attached to "affirmTips" in prefab "affirmTips.prefab" is missing or invalid. Detailed information:
+Node path: "affirmTips"
+Asset url: "db://assets/resources/prefab/ui/panel/affirmTips.prefab"
+Script UUID: "67e25580-1a84-400e-ad73-929c6aab0745"
+Class ID: "67e25WAGoRADq1zkpxqqwdF"
+
+2019-05-23T02:43:33.537Z - warn: Script attached to "affirmTips" in prefab "affirmTips.prefab" is missing or invalid. Detailed information:
+Node path: "affirmTips"
+Asset url: "db://assets/resources/prefab/ui/panel/affirmTips.prefab"
+Script UUID: "67e25580-1a84-400e-ad73-929c6aab0745"
+Class ID: "67e25WAGoRADq1zkpxqqwdF"
+
+2019-05-23T02:45:01.949Z - warn: Script attached to "affirmTips" in prefab "affirmTips.prefab" is missing or invalid. Detailed information:
+Node path: "affirmTips"
+Asset url: "db://assets/resources/prefab/ui/panel/affirmTips.prefab"
+Script UUID: "67e25580-1a84-400e-ad73-929c6aab0745"
+Class ID: "67e25WAGoRADq1zkpxqqwdF"
+
+2019-05-23T02:45:18.925Z - warn: Script attached to "affirmTips" in prefab "affirmTips.prefab" is missing or invalid. Detailed information:
+Node path: "affirmTips"
+Asset url: "db://assets/resources/prefab/ui/panel/affirmTips.prefab"
+Script UUID: "67e25580-1a84-400e-ad73-929c6aab0745"
+Class ID: "67e25WAGoRADq1zkpxqqwdF"
+
+2019-05-23T02:47:36.490Z - warn: Script attached to "affirmTips" in prefab "affirmTips.prefab" is missing or invalid. Detailed information:
+Node path: "affirmTips"
+Asset url: "db://assets/resources/prefab/ui/panel/affirmTips.prefab"
+Script UUID: "67e25580-1a84-400e-ad73-929c6aab0745"
+Class ID: "67e25WAGoRADq1zkpxqqwdF"
+
+2019-05-23T02:48:06.866Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:17615
+2019-05-23T07:13:33.781Z - warn: The Asset used by component "GamePanel" in prefab "GamePanel.prefab" is missing. Detailed information:
+Node path: "GamePanel"
+Asset url: "db://assets/resources/prefab/ui/panel/GamePanel.prefab"
+Missing uuid: "6297f2c9-2e7a-43a5-887e-f32286765dfe"
+
+2019-05-23T07:13:33.827Z - warn: The Asset used by component "GamePanel" is missing. Detailed information:
+Node path: "GamePanel"
+Missing uuid: "6297f2c9-2e7a-43a5-887e-f32286765dfe"
+
+2019-05-23T07:23:51.536Z - warn: The Asset used by node "spine" is missing. Detailed information:
+Node path: "ballNode/spine"
+Missing uuid: "3a56d0e3-11fe-4216-9678-639daf8330bb"
+
+2019-05-23T07:23:51.539Z - warn: The Asset used by node "err" is missing. Detailed information:
+Node path: "ballNode/err"
+Missing uuid: "3a56d0e3-11fe-4216-9678-639daf8330bb"
+
+2019-05-23T07:23:51.540Z - warn: The Asset used by node "label" is missing. Detailed information:
+Node path: "ballNode/label"
+Missing uuid: "3a56d0e3-11fe-4216-9678-639daf8330bb"
+
+2019-05-23T07:23:51.540Z - warn: The Asset used by node "ballNode" is missing. Detailed information:
+Node path: "ballNode"
+Missing uuid: "3a56d0e3-11fe-4216-9678-639daf8330bb"
 

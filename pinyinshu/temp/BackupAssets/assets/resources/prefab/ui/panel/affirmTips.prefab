@@ -422,7 +422,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 300,
-      "height": 120
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -574,15 +574,15 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 63,
-      "g": 97,
-      "b": 114,
+      "r": 69,
+      "g": 108,
+      "b": 127,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 120
+      "width": 800,
+      "height": 100
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -626,17 +626,17 @@
     "_useOriginalSize": true,
     "_string": "",
     "_N$string": "",
-    "_fontSize": 100,
-    "_lineHeight": 120,
+    "_fontSize": 80,
+    "_lineHeight": 100,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
     "_batchAsBitmap": false,
-    "_N$horizontalAlign": 0,
-    "_N$verticalAlign": 0,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 3,
     "_N$cacheMode": 0,
     "_id": ""
   },
@@ -662,7 +662,7 @@
     "_layoutSize": {
       "__type__": "cc.Size",
       "width": 300,
-      "height": 120
+      "height": 100
     },
     "_resize": 1,
     "_N$layoutType": 2,
@@ -901,8 +901,8 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_string": "取消",
-    "_N$string": "取消",
+    "_string": "",
+    "_N$string": "",
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -1080,7 +1080,7 @@
       "__id__": 1
     },
     "component": "",
-    "_componentId": "67e25WAGoRADq1zkpxqqwdF",
+    "_componentId": "24dd1nJj21KVJAhop019p7z",
     "handler": "OnClickCancel",
     "customEventData": ""
   },
@@ -1301,8 +1301,8 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_string": "取消",
-    "_N$string": "取消",
+    "_string": "\n",
+    "_N$string": "\n",
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -1480,7 +1480,7 @@
       "__id__": 1
     },
     "component": "",
-    "_componentId": "67e25WAGoRADq1zkpxqqwdF",
+    "_componentId": "24dd1nJj21KVJAhop019p7z",
     "handler": "OnClickOk",
     "customEventData": ""
   },
@@ -1496,7 +1496,7 @@
     "sync": false
   },
   {
-    "__type__": "67e25WAGoRADq1zkpxqqwdF",
+    "__type__": "24dd1nJj21KVJAhop019p7z",
     "_name": "",
     "_objFlags": 0,
     "node": {
