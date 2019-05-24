@@ -21,26 +21,26 @@ var UIHelp = /** @class */ (function () {
             tipUI.showTip(message);
         }
     };
-    UIHelp.showOverTips = function (type, time, str, callback1, callback2) {
+    UIHelp.showOverTips = function (type, str) {
         var overTips = UIManager_1.UIManager.getInstance().getUI(OverTips_1.OverTips);
         if (!overTips) {
             UIManager_1.UIManager.getInstance().openUI(OverTips_1.OverTips, 200, function () {
-                UIHelp.showOverTips(type, time, str, callback1, callback2);
+                UIHelp.showOverTips(type, str);
             });
         }
         else {
-            overTips.init(type, time, str, callback1, callback2);
+            overTips.init(type, str);
         }
     };
-    UIHelp.showAffirmTips = function (type, des, callback1, callback2) {
+    UIHelp.showAffirmTips = function (type, des, time, btnCloselDes, btnOkDes, callbackClose, callbackOk) {
         var affirmTips = UIManager_1.UIManager.getInstance().getUI(AffirmTips_1.AffirmTips);
         if (!affirmTips) {
             UIManager_1.UIManager.getInstance().openUI(AffirmTips_1.AffirmTips, 200, function () {
-                UIHelp.showAffirmTips(type, des, callback1, callback2);
+                UIHelp.showAffirmTips(type, des, time, btnCloselDes, btnOkDes, callbackClose, callbackOk);
             });
         }
         else {
-            affirmTips.init(type, des, callback1, callback2);
+            affirmTips.init(type, des, time, btnCloselDes, btnOkDes, callbackClose, callbackOk);
         }
     };
     return UIHelp;

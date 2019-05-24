@@ -6489,7 +6489,7 @@
     "_prefab": {
       "__id__": 183
     },
-    "_opacity": 0,
+    "_opacity": 33,
     "_color": {
       "__type__": "cc.Color",
       "r": 255,
@@ -6499,7 +6499,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1994,
+      "width": 1600,
       "height": 960
     },
     "_anchorPoint": {
@@ -6509,7 +6509,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -197,
       "y": 0,
       "z": 0
     },
@@ -6571,7 +6571,7 @@
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
-      "width": 1994,
+      "width": 1600,
       "height": 960
     },
     "_resize": 0,

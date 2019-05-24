@@ -491,15 +491,19 @@ export default class GamePanel extends BaseUI {
     }
 
     cueAnswer() {
-        for(let i = 0; i < this.answerPosNumArr.length; i++) {
-            this.itemArr[this.answerPosNumArr[i]].zIndex = 100;
-            let rightBox = this.itemArr[this.answerPosNumArr[i]].getChildByName('right');
-            rightBox.runAction(cc.repeatForever(cc.sequence(cc.fadeIn(0.2), cc.fadeOut(0.3))));
-        }
-        for(let i = 0; i < this.itemArr.length; i++) {
-            if(this.answerPosNumArr.indexOf(i) == -1 && this.itemArr[i].getChildByName('box').active == false) {
-                this.itemArr[i].getChildByName('mask').opacity = 255;
+      
+         for(let j = 0; j < this.itemArr.length; j++) {
+            if(this.answerPosNumArr.indexOf(j) == -1 && this.itemArr[j].getChildByName('box').active == false) {
+                this.itemArr[j].getChildByName('mask').opacity = 255;
             }
+        }
+        for(let i = 0; i < this.answerPosNumArr.length; i++) {
+            //this.itemArr[this.answerPosNumArr[i]].zIndex = 100;
+            let rightBox = this.itemArr[this.answerPosNumArr[i]].getChildByName('right');
+            cc.log(this.answerPosNumArr[i]);
+            cc.log(this.itemArr[this.answerPosNumArr[i]].getChildByName('right'));
+            rightBox.opacity = 255;
+            //rightBox.runAction(cc.repeatForever(cc.sequence(cc.fadeIn(0.2), cc.fadeOut(0.3))));
         }
     }
 
@@ -556,6 +560,7 @@ export default class GamePanel extends BaseUI {
     }
 
     submisson() {
+        
         if(this.playerItemArr.length == 0) {
             return;
         }
@@ -567,15 +572,23 @@ export default class GamePanel extends BaseUI {
         }
         if(rightNum == this.rightNum && this.playerItemArr.length == this.rightNum) {
             this.checkpoints++;
+            cc.log('---------------checkpointsNum', this.checkpointsNum);
             if(this.checkpoints < this.checkpointsNum || this.checkpointsNum == 1) {
                 if(this.cueNum >= 3) {
                     
-                    UIHelp.showOverTips(1, '你真棒~', function(){
+                    UIHelp.showOverTips(1, '你真棒~',function(){
                         AudioManager.getInstance().stopAll();
                         AudioManager.getInstance().playSound("point1", false);
                     }.bind(this),
                     function(){
-                        this.nextCheckPoints();
+                        if(this.checkpointsNum == 1) {
+                            if(ConstValue.IS_TEACHER) {
+                                this.submit.node.active = true;
+                            }   
+                            this.addMask();
+                        }else {
+                            this.nextCheckPoints();
+                        }
                     }.bind(this));
                 }else {
                     UIHelp.showOverTips(1, '答对啦！你真棒~',function(){
@@ -583,11 +596,18 @@ export default class GamePanel extends BaseUI {
                         AudioManager.getInstance().playSound("point2", false);
                     }.bind(this), 
                     function(){
-                        this.nextCheckPoints();
+                        if(this.checkpointsNum == 1) {
+                            if(ConstValue.IS_TEACHER) {
+                                this.submit.node.active = true;
+                            }   
+                            this.addMask();
+                        }else {
+                            this.nextCheckPoints();
+                        }
                     }.bind(this));
                 }
             }else {
-                UIHelp.showOverTips(1, '太棒啦，闯关结束！', function(){
+                UIHelp.showOverTips(2, '太棒啦，闯关结束！', function(){
                     AudioManager.getInstance().stopAll();
                     AudioManager.getInstance().playSound("point3", false);
                 }.bind(this),
@@ -601,7 +621,7 @@ export default class GamePanel extends BaseUI {
         }else {
             this.cueNum++;
             if(this.cueNum >= 3) {   
-                UIHelp.showOverTips(2, '啊哦，再试一试吧。', function(){
+                UIHelp.showOverTips(0, '啊哦，再试一试吧。',function(){
                     AudioManager.getInstance().stopAll();
                     AudioManager.getInstance().playSound("point4", false);
                 }.bind(this),
@@ -610,7 +630,7 @@ export default class GamePanel extends BaseUI {
                     this.cueAnswer();
                 }.bind(this));
             }else {
-                UIHelp.showOverTips(2, '啊哦，再试一试吧。', function(){
+                UIHelp.showOverTips(0, '啊哦，再试一试吧。', function(){
                     AudioManager.getInstance().stopAll();
                     AudioManager.getInstance().playSound("point4", false);
                 }.bind(this),

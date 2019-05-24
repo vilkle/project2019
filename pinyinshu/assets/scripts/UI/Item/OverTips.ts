@@ -1,131 +1,76 @@
-
 import { BaseUI } from "../BaseUI";
 import { Tools } from "../../UIComm/Tools";
 import { UIManager } from "../../Manager/UIManager";
-import { GameMain } from "../../Main/GameMain";
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 @ccclass
-export  class OverTips extends BaseUI {
+export class OverTips extends BaseUI {
 
     protected static className = "OverTips";
-    
-    @property(cc.Node)
-    private NodeDes: cc.Node = null; //描述节点
-    @property(cc.Label)
-    private des: cc.Label= null;
-    @property(cc.Label)
-    private time: cc.Label= null;
-    @property(cc.Button)
-    private close: cc.Button= null;
-    @property(sp.Skeleton)
-    private sp_BgAnimator: sp.Skeleton= null; // 背景动画
-    @property(sp.Skeleton)
-    private sp_lightAnimator: sp.Skeleton= null; // 光动画
-    @property(cc.Button)
-    private rightButton: cc.Button= null;
-    @property(cc.Button)
-    private leftButton: cc.Button= null;
-    @property(cc.Button)
-    private closeButton: cc.Button= null;
-    @property(cc.Layout)
-    private layout: cc.Layout= null;
 
-    private callback1 = null;
-    private callback2 = null;
-    private type:number;
-    start () {
+    @property (cc.Label)
+    private label_tip:cc.Label = null;
 
+    @property (sp.Skeleton)
+    private spine_false:sp.Skeleton = null;
+    @property (sp.Skeleton)
+    private spine_true:sp.Skeleton = null;
+    @property (sp.Skeleton)
+    private spine_complete:sp.Skeleton = null;
+
+    @property (cc.Node)
+    private node_close:cc.Node = null;
+
+    constructor() {
+        super();
     }
 
-    //type 通关1 成功 2 失败 3
-    init(type:number, time : number, str:string, callback1?:any, callback2?:any) {
-        this.type = type;
-        //this.callback = callback;
-        Tools.playSpine(this.sp_BgAnimator, "fault", false);
-        let minutes = time / 60 >> 0;
-        let second = time % 60;
-        var timestr = '用时 ' + minutes.toString() + ':'+ second.toString();
-        this.time.string = timestr;
-        this.NodeDes.setScale(0.001, 0.001);
-        //this.callback = callback;
-        this.layout.node.on(cc.Node.EventType.TOUCH_START, function(e){
-            e.stopPropagation();
-        });
-        this.leftButton.node.active = false;
-        this.closeButton.node.active = false;
-        this.rightButton.node.active = false;
-        if (type == 1) {
-            this.Successful(str,1);
-            this.close.node.active = false;
-            this.callback1 = callback1;
-            this.callback2 = callback2;
-        } else if (type == 2) {
-            this.Successful(str,2);
-           this.close.node.active = false; 
-           this.callback1 = callback1;
-           this.callback2 = callback2;
-        }else if(type == 3) {
-            this.failure(str);
-            this.time.node.active = false;
-            this.time.node.active = false;
-            this.callback1 = callback1;
-            this.close.node.active = true;
+    start() {
+        this.node_close.on(cc.Node.EventType.TOUCH_END, this.onClickClose, this);
+    }
+
+    onDisable() {
+        this.node_close.off(cc.Node.EventType.TOUCH_END, this.onClickClose, this);
+    }
+
+    /**
+     设置显示内容
+     @param {number} type          0: 错误  1：答对了  2：闯关成功(一直显示不会关闭)
+     @param {string} str           提示内容
+     */
+    init(type:number, str:string=""):void {
+        this.spine_false.node.active = type == 0;
+        this.spine_true.node.active = type == 1;
+        this.spine_complete.node.active = type == 2;
+        this.label_tip.string = str;
+        this.label_tip.node.active = type != 2;
+        switch (type) {
+            case 0:
+                Tools.playSpine(this.spine_false, "false", false, this.delayClose.bind(this));
+            break;
+            case 1:
+                Tools.playSpine(this.spine_true, "true", false, this.delayClose.bind(this));
+            break;
+            case 2:
+                Tools.playSpine(this.spine_complete, "in", false, function(){
+                    Tools.playSpine(this.spine_complete, "stand", true, this.delayClose.bind(this));
+                }.bind(this));
+            break;
         }
-        this.TipsAnimatorScale(this.NodeDes);
-
+        let endPos = this.label_tip.node.position;
+        let framePos_1 = cc.v2(endPos.x, endPos.y - 72.8);
+        let framePos_2 = cc.v2(endPos.x, endPos.y + 12);
+        let framePos_3 = cc.v2(endPos.x, endPos.y - 8);
+        let framePos_4 = cc.v2(endPos.x, endPos.y + 7.3);
+        this.label_tip.node.position = framePos_1;
+        this.label_tip.node.runAction(cc.sequence(cc.moveTo(0.08, framePos_2), cc.moveTo(0.08, framePos_3), cc.moveTo(0.08, framePos_4),cc.moveTo(0.06, endPos)));
     }
 
-     //成功
-     Successful(str:string, type:number) {
-        this.des.node.active = true;
-        this.sp_lightAnimator.node.active = true;
-        Tools.playSpine(this.sp_BgAnimator, "fault", false);
-        Tools.playSpine(this.sp_BgAnimator, "right_1", false, function () {
-           if(type == 1) {
-                this.leftButton.node.active = true;
-                this.closeButton.node.active = true;
-                this.leftButton.node.on('click', this.callback1, this);
-                this.closeButton.node.on('click', this.callback2, this);
-           }else if(type == 2) {
-                this.leftButton.node.active = true;
-                this.rightButton.node.active = true;
-                this.leftButton.node.on('click', this.callback1, this);
-                this.rightButton.node.on('click', this.callback2, this);
-           }
-        }.bind(this));
-        Tools.playSpine(this.sp_lightAnimator, "light", false, function () {
-        }.bind(this));
-        this.des.string = str;
-        this.des.node.color = new cc.Color(39, 178, 187);
+    delayClose():void {
+        this.scheduleOnce(function () {this.onClickClose()}.bind(this), 0);
     }
 
-    //失败
-    failure(str:string) {
-        this.des.node.active = true;
-        this.sp_lightAnimator.node.active = false;
-        Tools.playSpine(this.sp_BgAnimator, "fault", false);
-        this.des.string = str;
-        // this.des.node.color = new cc.Color(39, 178, 187);
-    }
-
-    OnClickClose() {
-        this.callback1();
+    onClickClose():void {
         UIManager.getInstance().closeUI(OverTips);
-    
     }
-
-     //通用动画
-     TipsAnimatorScale(nodeObj:cc.Node){
-        nodeObj.stopAllActions();
-        var seq = cc.sequence(
-            cc.delayTime(1),
-            cc.scaleTo(0.2, 1, 1),
-            );
-           nodeObj.runAction(seq);
-         // nodeObj.runAction(cc.scaleTo(0.2, 1, 1));
-
-    }
-
-    // update (dt) {}
 }
