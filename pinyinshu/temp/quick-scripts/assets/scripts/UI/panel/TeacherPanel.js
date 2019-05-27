@@ -90,8 +90,12 @@ var TeacherPanel = /** @class */ (function (_super) {
             editbox.on('editing-did-ended', function (sender) {
                 if (parseInt(editbox.getComponent(cc.EditBox).string) > 200 || parseInt(editbox.getComponent(cc.EditBox).string) <= 1) {
                     editbox.getComponent(cc.EditBox).string = '';
+                    this.ShowTips('请输入正确的数字喔！');
                     editbox.getChildByName('PLACEHOLDER_LABEL').active = true;
                     cc.log(editbox.getChildByName('PLACEHOLDER_LABEL'));
+                }
+                else if (editbox.getComponent(cc.EditBox).string == '') {
+                    this.ShowTips('还没有输入数字啦～');
                 }
                 else {
                     DaAnData_1.DaAnData.getInstance().numberArr[i] = parseInt(editbox.getComponent(cc.EditBox).string);

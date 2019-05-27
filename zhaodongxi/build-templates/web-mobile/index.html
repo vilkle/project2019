@@ -38,7 +38,7 @@
     <!--<link rel="apple-touch-icon" href=".png" />-->
     <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
 
-    <link rel="stylesheet" type="text/css" href="style-mobile.da1e2.css" />
+    <link rel="stylesheet" type="text/css" href="style-mobile.css" />
 
     <style type="text/css">
         #loading-canvas {
@@ -56,7 +56,7 @@
         @font-face {
             /* font-properties */
             font-family: huawawa;
-            src:url('./huawawa.bdd26.ttf');
+            src:url('./huawawa.ttf');
         }
 
         .loading-texts {
@@ -238,9 +238,9 @@
 			</div>
 		</div>
     </div>
-    <script src="src/settings.f3b43.js" charset="utf-8"></script>
+    <script src="src/settings.js" charset="utf-8"></script>
     <%=webDebugger%>
-    <script src="main.9cd92.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
 
     <script>
         var isOnlineEnv = /\/\/static\.haibian\.com/.test(window['location'].href)
@@ -256,7 +256,7 @@
 
             var cocos2d = document.createElement('script');
             cocos2d.async = true;
-            cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.e2205.js';
+            cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.js';
 
             var engineLoaded = function () {
                 document.body.removeChild(cocos2d);

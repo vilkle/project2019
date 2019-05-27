@@ -498,12 +498,11 @@ export default class GamePanel extends BaseUI {
             }
         }
         for(let i = 0; i < this.answerPosNumArr.length; i++) {
-            //this.itemArr[this.answerPosNumArr[i]].zIndex = 100;
-            let rightBox = this.itemArr[this.answerPosNumArr[i]].getChildByName('right');
-            cc.log(this.answerPosNumArr[i]);
-            cc.log(this.itemArr[this.answerPosNumArr[i]].getChildByName('right'));
+            this.itemArr[this.answerPosNumArr[i]].zIndex = 100;
+            let rightBox = this.itemArr[this.answerPosNumArr[i]].children[4];
             rightBox.opacity = 255;
-            //rightBox.runAction(cc.repeatForever(cc.sequence(cc.fadeIn(0.2), cc.fadeOut(0.3))));
+            rightBox.stopAllActions();
+            rightBox.runAction(cc.repeatForever(cc.sequence(cc.fadeOut(0.2), cc.fadeIn(0.3))));
         }
     }
 
@@ -621,14 +620,16 @@ export default class GamePanel extends BaseUI {
         }else {
             this.cueNum++;
             if(this.cueNum >= 3) {   
-                UIHelp.showOverTips(0, '啊哦，再试一试吧。',function(){
-                    AudioManager.getInstance().stopAll();
-                    AudioManager.getInstance().playSound("point4", false);
-                }.bind(this),
-                function(){
-                    this.sure.interactable = false;
-                    this.cueAnswer();
-                }.bind(this));
+                this.sure.interactable = false;
+                this.cueAnswer();
+                // UIHelp.showOverTips(0, '啊哦，再试一试吧。',function(){
+                //     AudioManager.getInstance().stopAll();
+                //     AudioManager.getInstance().playSound("point4", false);
+                // }.bind(this),
+                // function(){
+                //     this.sure.interactable = false;
+                //     this.cueAnswer();
+                // }.bind(this));
             }else {
                 UIHelp.showOverTips(0, '啊哦，再试一试吧。', function(){
                     AudioManager.getInstance().stopAll();
