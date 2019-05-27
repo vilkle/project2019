@@ -25,6 +25,7 @@ export enum scopeRange {
 }
 
 export class DaAnData {
+    public submitEnable : boolean = false;
     private static instance: DaAnData;
     public types = 1;//单个1 组合2
     public checkpointsNum = 0; //关卡数目

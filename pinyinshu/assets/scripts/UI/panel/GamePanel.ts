@@ -9,6 +9,7 @@ import SubmissionPanel from "./SubmissionPanel";
 import {OverTips} from "../../UI/Item/OverTips"
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
+import UploadAndReturnPanel from "../panel/UploadAndReturnPanel"
 
 const { ccclass, property } = cc._decorator;
 
@@ -17,11 +18,6 @@ export default class GamePanel extends BaseUI {
 
     protected static className = "GamePanel";
 
-  
-    @property(cc.Button)
-    back : cc.Button = null;
-    @property(cc.Button)
-    submit : cc.Button = null;
     @property(cc.Button)
     queren : cc.Button = null;
     @property(cc.Button)
@@ -84,6 +80,7 @@ export default class GamePanel extends BaseUI {
     isReadyShoot : boolean = false;
     isDoubleOver : boolean = true;
     isSingleOver : boolean = true;
+    alreadyCourseware : boolean = false;
      onLoad () {
         //测试用
         // DaAnData.getInstance().checkpointsNum = 3;
@@ -144,18 +141,24 @@ export default class GamePanel extends BaseUI {
 
     isTecher() {
         if(ConstValue.IS_TEACHER) {
-            this.submit.node.active = false;
-            this.back.node.active = true;
+            var bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
+            bottomNode.active = true;
+            bottomNode.getChildByName('New Node').getChildByName('fanHui').on('click', function() {
+                this.closeClock();
+                UIManager.getInstance().closeUI(GamePanel);
+                UIManager.getInstance().closeUI(UploadAndReturnPanel);
+                DaAnData.getInstance().submitEnable = false;
+            }.bind(this));
+
             this.initData();
         }else {
-            this.submit.node.active = false;
-            this.back.node.active = false;
+            var bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
+            bottomNode.active = false;
             this.getNet();
         }
     }
 
     initData() {
-        cc.log('---------------------initdata');
         this.timer = 0;
         this.checkpoint = 1;
         this.decoposeNum = DaAnData.getInstance().numberArr[this.checkpoint - 1];
@@ -178,6 +181,10 @@ export default class GamePanel extends BaseUI {
         this.decompose(this.decoposeNum);
         this.answer(this.decoposeNum);
         this.createDecomposeBall();
+        if (ConstValue.IS_EDITIONS) {
+            courseware.page.sendToParent('clickSubmit', 2);
+            courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 2 });
+        }
     }
     
     initProgress(checkpointsNum : number) {
@@ -292,7 +299,6 @@ export default class GamePanel extends BaseUI {
                     if(content.checkpointsNum) {
                          DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
                     }
-                    cc.log('---------------------initdata');
                     this.initData();
                 }
             } else {
@@ -785,7 +791,7 @@ export default class GamePanel extends BaseUI {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                 let num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
                 if(num == 1) {
-                    UIHelp.showAffirmTips(1, '质数1不能删除', function(){
+                    UIHelp.showAffirmTips(1, '质数1不能删除', -1,'取消','确认',function(){
                         ballNode.setPosition(cc.v2(0, 0));
                     }.bind(this),function(){
                         ballNode.setPosition(cc.v2(0, 0));
@@ -808,7 +814,7 @@ export default class GamePanel extends BaseUI {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_CANCEL, function(e){
-
+            ballNode.setPosition(cc.v2(0 ,0));
         }.bind(this), this);
     }
 
@@ -1078,6 +1084,11 @@ export default class GamePanel extends BaseUI {
                this.closeClock();
                this.tijiao.interactable = false;
                this.chongzhi.interactable = false;
+               if (ConstValue.IS_EDITIONS && !this.alreadyCourseware) {
+                    this.alreadyCourseware = true;
+                    courseware.page.sendToParent('clickSubmit', 1);
+                    courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
+                }
                 UIHelp.showAffirmTips(1, '恭喜全部通关',this.timer, '再次挑战','关闭',function(){
                     UIManager.getInstance().closeUI(OverTips);
                     this.checkpoint --;
@@ -1087,7 +1098,7 @@ export default class GamePanel extends BaseUI {
                     UIManager.getInstance().closeUI(OverTips);
                     this.mask.active = true;
                     if(ConstValue.IS_TEACHER) {
-                        this.submit.node.active = true;
+                        DaAnData.getInstance().submitEnable = true;
                     }
                 }.bind(this));
            }else {
@@ -1154,14 +1165,5 @@ export default class GamePanel extends BaseUI {
 
     closeClock() {
         clearInterval(this.intervalIndex);
-    }
-
-    backButton(){
-        this.closeClock();
-        UIManager.getInstance().closeUI(GamePanel);
-        ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0}); 
-    }
-    submitButton(){
-        UIManager.getInstance().openUI(SubmissionPanel);
     }
 }

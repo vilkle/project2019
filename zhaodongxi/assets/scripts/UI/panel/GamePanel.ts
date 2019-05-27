@@ -21,10 +21,6 @@ export default class GamePanel extends BaseUI {
     label1 : cc.Label;
     @property(cc.Label)
     label2 : cc.Label;
-    @property(cc.Button)
-    back : cc.Button;
-    @property(cc.Button)
-    submit : cc.Button;
     @property(cc.Node)
     bg : cc.Node;
     @property(cc.Node)
@@ -78,14 +74,14 @@ export default class GamePanel extends BaseUI {
 
     isTecher() {
         if(ConstValue.IS_TEACHER) {
-            this.back.node.active = true;
-            this.submit.node.active = false
+            let bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
+            bottomNode.active = true;
             this.initData();
             this.loadSourcePFArr(); 
         }else {
             this.getNet();
-            this.back.node.active = false;
-            this.submit.node.active = false;
+            let bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
+            bottomNode.active = false;
         }
     }
 
@@ -161,6 +157,10 @@ export default class GamePanel extends BaseUI {
         this.checkpointsNum = DaAnData.getInstance().checkpointsNum;
         this.label1.string = String(1);
         this.label2.string = String(this.checkpointsNum);
+        if (ConstValue.IS_EDITIONS) {
+            courseware.page.sendToParent('clickSubmit', 2);
+            courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 2 });
+        }
     }
 
     loadSourcePFArr() {
@@ -606,15 +606,20 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                 }
             }else {
+                if (ConstValue.IS_EDITIONS) {
+                    courseware.page.sendToParent('clickSubmit', 1);
+                    courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
+                }
                 UIHelp.showOverTips(2, '太棒啦，闯关结束！', function(){
                     AudioManager.getInstance().stopAll();
                     AudioManager.getInstance().playSound("point3", false);
                 }.bind(this),
                 function(){
                     if(ConstValue.IS_TEACHER) {
-                        this.submit.node.active = true;
+                       DaAnData.getInstance().submitEnable = true;
                     }   
                     this.addMask();
+                    DaAnData.getInstance().submitEnable = true;
                 }.bind(this));
             }
         }else {

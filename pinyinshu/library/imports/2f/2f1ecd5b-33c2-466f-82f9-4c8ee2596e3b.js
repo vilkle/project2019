@@ -17,6 +17,7 @@ var skinStrEnum;
 })(skinStrEnum = exports.skinStrEnum || (exports.skinStrEnum = {}));
 var DaAnData = /** @class */ (function () {
     function DaAnData() {
+        this.submitEnable = false;
         this.checkpointsNum = 0; //关卡数目
         this.numberArr = new Array(); //被分解质因数
     }

@@ -9,17 +9,13 @@ var UIHelp_1 = require("../../Utils/UIHelp");
 var NetWork_1 = require("../../Http/NetWork");
 var ConstValue_1 = require("../../Data/ConstValue");
 var UIManager_1 = require("../../Manager/UIManager");
-var SubmissionPanel_1 = require("./SubmissionPanel");
 var OverTips_1 = require("../../UI/Item/OverTips");
-var ListenerManager_1 = require("../../Manager/ListenerManager");
-var ListenerType_1 = require("../../Data/ListenerType");
+var UploadAndReturnPanel_1 = require("../panel/UploadAndReturnPanel");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GamePanel = /** @class */ (function (_super) {
     __extends(GamePanel, _super);
     function GamePanel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.back = null;
-        _this.submit = null;
         _this.queren = null;
         _this.chongzhi = null;
         _this.tijiao = null;
@@ -61,6 +57,7 @@ var GamePanel = /** @class */ (function (_super) {
         _this.isReadyShoot = false;
         _this.isDoubleOver = true;
         _this.isSingleOver = true;
+        _this.alreadyCourseware = false;
         return _this;
     }
     GamePanel_1 = GamePanel;
@@ -117,18 +114,23 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.isTecher = function () {
         if (ConstValue_1.ConstValue.IS_TEACHER) {
-            this.submit.node.active = false;
-            this.back.node.active = true;
+            var bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
+            bottomNode.active = true;
+            bottomNode.getChildByName('New Node').getChildByName('fanHui').on('click', function () {
+                this.closeClock();
+                UIManager_1.UIManager.getInstance().closeUI(GamePanel_1);
+                UIManager_1.UIManager.getInstance().closeUI(UploadAndReturnPanel_1.default);
+                DaAnData_1.DaAnData.getInstance().submitEnable = false;
+            }.bind(this));
             this.initData();
         }
         else {
-            this.submit.node.active = false;
-            this.back.node.active = false;
+            var bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
+            bottomNode.active = false;
             this.getNet();
         }
     };
     GamePanel.prototype.initData = function () {
-        cc.log('---------------------initdata');
         this.timer = 0;
         this.checkpoint = 1;
         this.decoposeNum = DaAnData_1.DaAnData.getInstance().numberArr[this.checkpoint - 1];
@@ -151,6 +153,10 @@ var GamePanel = /** @class */ (function (_super) {
         this.decompose(this.decoposeNum);
         this.answer(this.decoposeNum);
         this.createDecomposeBall();
+        if (ConstValue_1.ConstValue.IS_EDITIONS) {
+            courseware.page.sendToParent('clickSubmit', 2);
+            courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 2 });
+        }
     };
     GamePanel.prototype.initProgress = function (checkpointsNum) {
         var long = 200;
@@ -259,7 +265,6 @@ var GamePanel = /** @class */ (function (_super) {
                     if (content.checkpointsNum) {
                         DaAnData_1.DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
                     }
-                    cc.log('---------------------initdata');
                     this.initData();
                 }
             }
@@ -778,7 +783,7 @@ var GamePanel = /** @class */ (function (_super) {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                 var num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
                 if (num == 1) {
-                    UIHelp_1.UIHelp.showAffirmTips(1, '质数1不能删除', function () {
+                    UIHelp_1.UIHelp.showAffirmTips(1, '质数1不能删除', -1, '取消', '确认', function () {
                         ballNode.setPosition(cc.v2(0, 0));
                     }.bind(this), function () {
                         ballNode.setPosition(cc.v2(0, 0));
@@ -803,6 +808,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
+            ballNode.setPosition(cc.v2(0, 0));
         }.bind(this), this);
     };
     GamePanel.prototype.updatePos = function () {
@@ -1069,6 +1075,11 @@ var GamePanel = /** @class */ (function (_super) {
                 this.closeClock();
                 this.tijiao.interactable = false;
                 this.chongzhi.interactable = false;
+                if (ConstValue_1.ConstValue.IS_EDITIONS && !this.alreadyCourseware) {
+                    this.alreadyCourseware = true;
+                    courseware.page.sendToParent('clickSubmit', 1);
+                    courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
+                }
                 UIHelp_1.UIHelp.showAffirmTips(1, '恭喜全部通关', this.timer, '再次挑战', '关闭', function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
                     this.checkpoint--;
@@ -1078,7 +1089,7 @@ var GamePanel = /** @class */ (function (_super) {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
                     this.mask.active = true;
                     if (ConstValue_1.ConstValue.IS_TEACHER) {
-                        this.submit.node.active = true;
+                        DaAnData_1.DaAnData.getInstance().submitEnable = true;
                     }
                 }.bind(this));
             }
@@ -1143,22 +1154,8 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.closeClock = function () {
         clearInterval(this.intervalIndex);
     };
-    GamePanel.prototype.backButton = function () {
-        this.closeClock();
-        UIManager_1.UIManager.getInstance().closeUI(GamePanel_1);
-        ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 0 });
-    };
-    GamePanel.prototype.submitButton = function () {
-        UIManager_1.UIManager.getInstance().openUI(SubmissionPanel_1.default);
-    };
     var GamePanel_1;
     GamePanel.className = "GamePanel";
-    __decorate([
-        property(cc.Button)
-    ], GamePanel.prototype, "back", void 0);
-    __decorate([
-        property(cc.Button)
-    ], GamePanel.prototype, "submit", void 0);
     __decorate([
         property(cc.Button)
     ], GamePanel.prototype, "queren", void 0);
