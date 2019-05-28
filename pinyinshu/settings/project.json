@@ -8,10 +8,10 @@
   "design-resolution-height": 640,
   "design-resolution-width": 960,
   "excluded-modules": [
-    "Canvas Renderer",
-    "Renderer Texture",
     "Dynamic Atlas",
     "LabelOutline",
+    "Mask",
+    "Graphics",
     "ParticleSystem",
     "TiledMap",
     "DragonBones",

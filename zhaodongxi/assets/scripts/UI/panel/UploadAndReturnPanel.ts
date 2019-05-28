@@ -4,6 +4,8 @@ import GamePanel from "./GamePanel";
 import SubmissionPanel from "./SubmissionPanel";
 import { DaAnData } from "../../Data/DaAnData";
 import { UIHelp } from "../../Utils/UIHelp";
+import {ListenerManager} from "../../Manager/ListenerManager"
+import {ListenerType} from "../../Data/ListenerType"
 
 
 const { ccclass, property } = cc._decorator;
@@ -21,11 +23,12 @@ export default class UploadAndReturnPanel extends BaseUI {
         DaAnData.getInstance().submitEnable = false;
         UIManager.getInstance().closeUI(GamePanel);
         UIManager.getInstance().closeUI(UploadAndReturnPanel);
+        ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0})
     }
 
     onTiJiao() {
         if(DaAnData.getInstance().submitEnable) {
-            UIManager.getInstance().showUI(SubmissionPanel);
+            UIManager.getInstance().openUI(SubmissionPanel,201);
         }else {
             UIHelp.showTip('请通关后进行保存');
         }

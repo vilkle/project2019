@@ -10,6 +10,8 @@ var NetWork_1 = require("../../Http/NetWork");
 var ConstValue_1 = require("../../Data/ConstValue");
 var UIManager_1 = require("../../Manager/UIManager");
 var OverTips_1 = require("../../UI/Item/OverTips");
+var ListenerManager_1 = require("../../Manager/ListenerManager");
+var ListenerType_1 = require("../../Data/ListenerType");
 var UploadAndReturnPanel_1 = require("../panel/UploadAndReturnPanel");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GamePanel = /** @class */ (function (_super) {
@@ -121,6 +123,7 @@ var GamePanel = /** @class */ (function (_super) {
                 UIManager_1.UIManager.getInstance().closeUI(GamePanel_1);
                 UIManager_1.UIManager.getInstance().closeUI(UploadAndReturnPanel_1.default);
                 DaAnData_1.DaAnData.getInstance().submitEnable = false;
+                ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 0 });
             }.bind(this));
             this.initData();
         }

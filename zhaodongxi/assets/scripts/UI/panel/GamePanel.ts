@@ -9,6 +9,7 @@ import { UIManager } from "../../Manager/UIManager";
 import SubmissionPanel from "./SubmissionPanel";
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
+import UploadAndReturnPanel from "../panel/UploadAndReturnPanel";
 
 const { ccclass, property } = cc._decorator;
 
@@ -74,14 +75,15 @@ export default class GamePanel extends BaseUI {
 
     isTecher() {
         if(ConstValue.IS_TEACHER) {
-            let bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
-            bottomNode.active = true;
+            UIManager.getInstance().openUI(UploadAndReturnPanel);
+            // let bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
+            // bottomNode.active = true;
             this.initData();
             this.loadSourcePFArr(); 
         }else {
             this.getNet();
-            let bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
-            bottomNode.active = false;
+            // let bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
+            // bottomNode.active = false;
         }
     }
 
@@ -571,34 +573,40 @@ export default class GamePanel extends BaseUI {
         }
         if(rightNum == this.rightNum && this.playerItemArr.length == this.rightNum) {
             this.checkpoints++;
-            cc.log('---------------checkpointsNum', this.checkpointsNum);
             if(this.checkpoints < this.checkpointsNum || this.checkpointsNum == 1) {
                 if(this.cueNum >= 3) {
-                    
+                    if (ConstValue.IS_EDITIONS&&this.checkpointsNum == 1) {
+                        courseware.page.sendToParent('clickSubmit', 1);
+                        courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
+                    }
+                    if(ConstValue.IS_TEACHER&&this.checkpointsNum == 1) {
+                        DaAnData.getInstance().submitEnable = true;
+                     }   
                     UIHelp.showOverTips(1, '你真棒~',function(){
                         AudioManager.getInstance().stopAll();
                         AudioManager.getInstance().playSound("point1", false);
                     }.bind(this),
                     function(){
                         if(this.checkpointsNum == 1) {
-                            if(ConstValue.IS_TEACHER) {
-                                this.submit.node.active = true;
-                            }   
                             this.addMask();
                         }else {
                             this.nextCheckPoints();
                         }
                     }.bind(this));
                 }else {
+                    if (ConstValue.IS_EDITIONS&&this.checkpointsNum == 1) {
+                        courseware.page.sendToParent('clickSubmit', 1);
+                        courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
+                    }
+                    if(ConstValue.IS_TEACHER&&this.checkpointsNum == 1) {
+                        DaAnData.getInstance().submitEnable = true;
+                     }   
                     UIHelp.showOverTips(1, '答对啦！你真棒~',function(){
                         AudioManager.getInstance().stopAll();
                         AudioManager.getInstance().playSound("point2", false);
                     }.bind(this), 
                     function(){
                         if(this.checkpointsNum == 1) {
-                            if(ConstValue.IS_TEACHER) {
-                                this.submit.node.active = true;
-                            }   
                             this.addMask();
                         }else {
                             this.nextCheckPoints();
@@ -610,16 +618,15 @@ export default class GamePanel extends BaseUI {
                     courseware.page.sendToParent('clickSubmit', 1);
                     courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
                 }
+                if(ConstValue.IS_TEACHER) {
+                    DaAnData.getInstance().submitEnable = true;
+                 }   
                 UIHelp.showOverTips(2, '太棒啦，闯关结束！', function(){
                     AudioManager.getInstance().stopAll();
                     AudioManager.getInstance().playSound("point3", false);
                 }.bind(this),
                 function(){
-                    if(ConstValue.IS_TEACHER) {
-                       DaAnData.getInstance().submitEnable = true;
-                    }   
                     this.addMask();
-                    DaAnData.getInstance().submitEnable = true;
                 }.bind(this));
             }
         }else {
@@ -693,7 +700,7 @@ export default class GamePanel extends BaseUI {
         ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0}); 
     }
     submitButton(){
-        UIManager.getInstance().openUI(SubmissionPanel);
+        UIManager.getInstance().openUI(SubmissionPanel,201);
     }
 
 }

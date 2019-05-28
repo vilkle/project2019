@@ -31,7 +31,6 @@ export class TipUI extends BaseUI {
         let TipNode = cc.instantiate(this.tipPrefab);
         TipNode.parent = this.node;
         let tip = TipNode.getComponent(Tip);
-        TipNode.zIndex = 1000;
         this.tipPool.push(tip);
         tip.playTip(message);
     }

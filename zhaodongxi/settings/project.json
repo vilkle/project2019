@@ -7,7 +7,26 @@
   ],
   "design-resolution-height": 640,
   "design-resolution-width": 960,
-  "excluded-modules": [],
+  "excluded-modules": [
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "ScrollView",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket"
+  ],
   "facebook": {
     "appID": "",
     "audience": {
@@ -29,7 +48,6 @@
     "height": 640,
     "width": 960
   },
-  "start-scene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
   "use-customize-simulator": true,
   "use-project-simulator-setting": false
 }

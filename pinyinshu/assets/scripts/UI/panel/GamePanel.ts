@@ -148,6 +148,7 @@ export default class GamePanel extends BaseUI {
                 UIManager.getInstance().closeUI(GamePanel);
                 UIManager.getInstance().closeUI(UploadAndReturnPanel);
                 DaAnData.getInstance().submitEnable = false;
+                ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0})
             }.bind(this));
 
             this.initData();
