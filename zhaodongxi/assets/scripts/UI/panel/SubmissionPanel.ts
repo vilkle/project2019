@@ -32,7 +32,7 @@ export default class SubmissionPanel extends BaseUI {
             });
             return;
         }
-        let data = JSON.stringify({ CoursewareKey: ConstValue.CoursewareKey, types: DaAnData.getInstance().types, checkpointsNum: DaAnData.getInstance().checkpointsNum, picArr: DaAnData.getInstance().picArr, range : DaAnData.getInstance().range});
+        let data = JSON.stringify({ CoursewareKey: ConstValue.CoursewareKey, types: DaAnData.getInstance().types, checkpointsNum: DaAnData.getInstance().checkpointsNum, picArr: DaAnData.getInstance().picArr, range : DaAnData.getInstance().range, dirSFArr : DaAnData.getInstance().dirSFArr, answerSFArr : DaAnData.getInstance().answerSFArr, answerPosArr : DaAnData.getInstance().answerPosArr});
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 if (response.data.courseware_content == null || response.data.courseware_content == "") {

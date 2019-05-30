@@ -179,6 +179,7 @@ export default class GamePanel extends BaseUI {
                             if(num == DaAnData.getInstance().picArr.length)
                             {
                                 this.loadDirSFArr(); 
+                                cc.log(this.sourceSFArr);
                             }
                         }
                     }.bind(this));
@@ -192,6 +193,7 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
+                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -204,6 +206,7 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
+                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -216,6 +219,7 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
+                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -228,6 +232,7 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
+                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -240,6 +245,7 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
+                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -252,6 +258,7 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
+                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -264,6 +271,7 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
+                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -284,72 +292,103 @@ export default class GamePanel extends BaseUI {
     }
 
     loadDirSFArr() {
-        var totalNum = this.horizonNum * this.verticalNum;
-        for(let i = 0; i < totalNum; i ++) {
-            let randomNum = this.getRandomNum(0, this.sourceSFArr.length - 1);
-            if(DaAnData.getInstance().picArr.length >= 2) {
-                while(this.repeatNum(randomNum) >= 3) {
-                    randomNum = this.getRandomNum(0, this.sourceSFArr.length - 1);
+        if(ConstValue.IS_TEACHER) {
+            var totalNum = this.horizonNum * this.verticalNum;
+            for(let i = 0; i < totalNum; i ++) {
+                let randomNum = this.getRandomNum(0, this.sourceSFArr.length - 1);
+                if(DaAnData.getInstance().picArr.length >= 2) {
+                    while(this.repeatNum(randomNum) >= 3) {
+                        randomNum = this.getRandomNum(0, this.sourceSFArr.length - 1);
+                    }
                 }
+                this.dirSFNumArr[i] = randomNum;
+                DaAnData.getInstance().dirSFArr.push(randomNum);
             }
-            this.dirSFNumArr[i] = randomNum;
-        }
-        if(this.answerNum == 1) {
-            var num = this.getRandomNum(0, totalNum - 1);
-            var randomNum = this.dirSFNumArr[num];
-            for(let i = 0; i < this.dirSFNumArr.length; i++) {
-                if(this.dirSFNumArr[i] == randomNum) {
-                    var sfNum = this.dirSFNumArr[i];
-                    this.answerPosNumArr.push(i);
-                    this.answerSFNumArr.push(sfNum);
+            if(this.answerNum == 1) {
+                var num = this.getRandomNum(0, totalNum - 1);
+                var randomNum = this.dirSFNumArr[num];
+                for(let i = 0; i < this.dirSFNumArr.length; i++) {
+                    if(this.dirSFNumArr[i] == randomNum) {
+                        var sfNum = this.dirSFNumArr[i];
+                        this.answerPosNumArr.push(i);
+                        this.answerSFNumArr.push(sfNum);
+                        DaAnData.getInstance().answerSFArr.push(sfNum);
+                        DaAnData.getInstance().answerPosArr.push(i);
+                    }
                 }
-            }
-            this.rightNum = this.answerPosNumArr.length;
-        }else {
-            var num = this.getRandomNum(0, totalNum - 1);
-            var num1 = 0;
-            var num2 = 0;
-            var num3 = 0;
-            if(num + this.horizonNum <= totalNum - 1) {
-                num1 = num + this.horizonNum;
-                if(num + 1 <= Math.ceil((num + 1) / this.horizonNum) * this.horizonNum - 1) {
-                    num2 = num + this.horizonNum + 1;
-                    num3 = num + 1;
-                    this.answerPosNumArr[0] = num;
-                    this.answerPosNumArr[1] = num3;
-                    this.answerPosNumArr[2] = num1;
-                    this.answerPosNumArr[3] = num2;
-                }else {
-                    num2 = num + this.horizonNum - 1;
-                    num3 = num - 1;
-                    this.answerPosNumArr[0] = num3;
-                    this.answerPosNumArr[1] = num;
-                    this.answerPosNumArr[2] = num2;
-                    this.answerPosNumArr[3] = num1;
-                }
+                this.rightNum = this.answerPosNumArr.length;
             }else {
-                num1 = num - this.horizonNum;
-                if(num + 1 <= Math.ceil((num + 1) / this.horizonNum) * this.horizonNum - 1) {
-                    num2 = num - this.horizonNum + 1;
-                    num3 = num + 1;
-                    this.answerPosNumArr[0] = num1;
-                    this.answerPosNumArr[1] = num2;
-                    this.answerPosNumArr[2] = num;
-                    this.answerPosNumArr[3] = num3;
+                var num = this.getRandomNum(0, totalNum - 1);
+                var num1 = 0;
+                var num2 = 0;
+                var num3 = 0;
+                if(num + this.horizonNum <= totalNum - 1) {
+                    num1 = num + this.horizonNum;
+                    if(num + 1 <= Math.ceil((num + 1) / this.horizonNum) * this.horizonNum - 1) {
+                        num2 = num + this.horizonNum + 1;
+                        num3 = num + 1;
+                        this.answerPosNumArr[0] = num;
+                        this.answerPosNumArr[1] = num3;
+                        this.answerPosNumArr[2] = num1;
+                        this.answerPosNumArr[3] = num2;
+                    }else {
+                        num2 = num + this.horizonNum - 1;
+                        num3 = num - 1;
+                        this.answerPosNumArr[0] = num3;
+                        this.answerPosNumArr[1] = num;
+                        this.answerPosNumArr[2] = num2;
+                        this.answerPosNumArr[3] = num1;
+                    }
                 }else {
-                    num2 = num - this.horizonNum - 1;
-                    num3 = num - 1;
-                    this.answerPosNumArr[0] = num2;
-                    this.answerPosNumArr[1] = num1;
-                    this.answerPosNumArr[2] = num3;
-                    this.answerPosNumArr[3] = num;
+                    num1 = num - this.horizonNum;
+                    if(num + 1 <= Math.ceil((num + 1) / this.horizonNum) * this.horizonNum - 1) {
+                        num2 = num - this.horizonNum + 1;
+                        num3 = num + 1;
+                        this.answerPosNumArr[0] = num1;
+                        this.answerPosNumArr[1] = num2;
+                        this.answerPosNumArr[2] = num;
+                        this.answerPosNumArr[3] = num3;
+                    }else {
+                        num2 = num - this.horizonNum - 1;
+                        num3 = num - 1;
+                        this.answerPosNumArr[0] = num2;
+                        this.answerPosNumArr[1] = num1;
+                        this.answerPosNumArr[2] = num3;
+                        this.answerPosNumArr[3] = num;
+                    }
+                }
+                this.answerSFNumArr[0] = this.dirSFNumArr[this.answerPosNumArr[0]];
+                this.answerSFNumArr[1] = this.dirSFNumArr[this.answerPosNumArr[1]];
+                this.answerSFNumArr[2] = this.dirSFNumArr[this.answerPosNumArr[2]];
+                this.answerSFNumArr[3] = this.dirSFNumArr[this.answerPosNumArr[3]];
+                DaAnData.getInstance().answerSFArr.push(this.answerSFNumArr[0]);
+                DaAnData.getInstance().answerSFArr.push(this.answerSFNumArr[1]);
+                DaAnData.getInstance().answerSFArr.push(this.answerSFNumArr[2]);
+                DaAnData.getInstance().answerSFArr.push(this.answerSFNumArr[3]);
+                DaAnData.getInstance().answerPosArr.push(this.answerPosNumArr[0]);
+                DaAnData.getInstance().answerPosArr.push(this.answerPosNumArr[1]);
+                DaAnData.getInstance().answerPosArr.push(this.answerPosNumArr[2]);
+                DaAnData.getInstance().answerPosArr.push(this.answerPosNumArr[3]);
+            }
+        }else {
+            var totalNum = this.horizonNum * this.verticalNum;
+            cc.log('-------------',this.checkpoints);
+            for(let i = 0; i < totalNum; i ++) {
+                this.dirSFNumArr[i] = DaAnData.getInstance().dirSFArr[(this.checkpoints) * totalNum + i];
+            }
+            if(this.answerNum == 1) {
+                this.answerSFNumArr.push(DaAnData.getInstance().answerSFArr[this.checkpoints]);
+                this.answerPosNumArr.push(DaAnData.getInstance().answerPosArr[this.checkpoints]);
+            }else {
+                for(let i = 0; i < 4; i++) {
+                    this.answerSFNumArr[i] = DaAnData.getInstance().answerSFArr[(this.checkpoints) * 4 + i];
+                    this.answerPosNumArr[i] = DaAnData.getInstance().answerPosArr[(this.checkpoints) * 4 + i];
                 }
             }
-            this.answerSFNumArr[0] = this.dirSFNumArr[this.answerPosNumArr[0]];
-            this.answerSFNumArr[1] = this.dirSFNumArr[this.answerPosNumArr[1]];
-            this.answerSFNumArr[2] = this.dirSFNumArr[this.answerPosNumArr[2]];
-            this.answerSFNumArr[3] = this.dirSFNumArr[this.answerPosNumArr[3]];
         }
+        cc.log(this.dirSFNumArr);
+        cc.log(this.answerSFNumArr);
+        cc.log(this.answerPosNumArr);
         this.creatAnswerBoard();
         this.creatPicBoard();
     }
@@ -684,6 +723,15 @@ export default class GamePanel extends BaseUI {
                     }
                     if(content.picArr) {
                         DaAnData.getInstance().picArr = content.picArr;
+                    }
+                    if(content.dirSFArr) {
+                        DaAnData.getInstance().dirSFArr = content.dirSFArr;
+                    }
+                    if(content.answerSFArr) {
+                        DaAnData.getInstance().answerSFArr = content.answerSFArr;
+                    }
+                    if(content.answerPosArr) {
+                        DaAnData.getInstance().answerPosArr = content.answerPosArr;
                     }
                     this.initData();
                     this.loadSourcePFArr(); 

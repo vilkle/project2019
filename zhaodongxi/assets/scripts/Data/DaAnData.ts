@@ -30,6 +30,9 @@ export class DaAnData {
     public types = 1;//单个1 组合2
     public checkpointsNum = 0; //关卡数目
     public picArr: Array<picType> = new Array<picType>(); //图片种类
+    public dirSFArr: Array<number> = new Array<number>();
+    public answerSFArr: Array<number> = new Array<number>();
+    public answerPosArr : Array<number> = new Array<number>();
     public range = 0;//选择区范围
    
     static getInstance() {

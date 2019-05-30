@@ -41,7 +41,7 @@ export default class TeacherPanel extends BaseUI {
     submissionButton : cc.Button;
     @property(cc.Node)
     tipNode : cc.Node;
-    
+    private sourceSFLenth : number = 0;  
   
     onLoad () {
     }
@@ -63,20 +63,28 @@ export default class TeacherPanel extends BaseUI {
         for(let i = 0; i < DaAnData.getInstance().picArr.length; i++) {
             if(DaAnData.getInstance().picArr[i] == picType.animal) {
                  this.animalToggle.isChecked = true;
+                 this.sourceSFLenth += 8;
             }else if(DaAnData.getInstance().picArr[i] == picType.clothes) {
                 this.clothesToggle.isChecked = true;
+                this.sourceSFLenth += 8;
             }else if(DaAnData.getInstance().picArr[i] == picType.food) {
                 this.foodToggle.isChecked = true;
+                this.sourceSFLenth += 8;
             }else if(DaAnData.getInstance().picArr[i] == picType.dailyuse) {
                 this.dailyuseToggle.isChecked = true;
+                this.sourceSFLenth += 8;
             }else if(DaAnData.getInstance().picArr[i] == picType.figure) {
                 this.figureToggle.isChecked = true;
+                this.sourceSFLenth += 8;
             }else if(DaAnData.getInstance().picArr[i] == picType.letter) {
                 this.letterToggle.isChecked = true;
+                this.sourceSFLenth += 26;
             }else if(DaAnData.getInstance().picArr[i] == picType.number) {
                 this.numberToggle.isChecked = true;
+                this.sourceSFLenth += 10;
             }else if(DaAnData.getInstance().picArr[i] == picType.stationery) {
                 this.stationeryToggle.isChecked = true;
+                this.sourceSFLenth += 8;
             }
         }
         if(DaAnData.getInstance().range) {
@@ -85,7 +93,7 @@ export default class TeacherPanel extends BaseUI {
        
     }
     
-    
+   
 
     //上传课件按钮
     onBtnSaveClicked() {
@@ -217,11 +225,13 @@ export default class TeacherPanel extends BaseUI {
         if(toggle.isChecked) {
             if(DaAnData.getInstance().picArr.indexOf(picType.animal) == -1) {
                 DaAnData.getInstance().picArr.push(picType.animal);
+                this.sourceSFLenth += 8;
             }  
         }
         else{
             if(DaAnData.getInstance().picArr.indexOf(picType.animal) != -1) {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.animal);
+                this.sourceSFLenth -= 8;
             }  
         }
     }
@@ -229,11 +239,13 @@ export default class TeacherPanel extends BaseUI {
         if(toggle.isChecked) {
             if(DaAnData.getInstance().picArr.indexOf(picType.food) == -1) {
                 DaAnData.getInstance().picArr.push(picType.food);
+                this.sourceSFLenth += 8;
             }  
         }
         else{
             if(DaAnData.getInstance().picArr.indexOf(picType.food) != -1) {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.food);
+                this.sourceSFLenth -= 8;
             }  
         }
     }
@@ -242,11 +254,13 @@ export default class TeacherPanel extends BaseUI {
         if(toggle.isChecked) {
             if(DaAnData.getInstance().picArr.indexOf(picType.figure) == -1) {
                 DaAnData.getInstance().picArr.push(picType.figure);
+                this.sourceSFLenth += 8;
             }  
         }
         else{
             if(DaAnData.getInstance().picArr.indexOf(picType.figure) != -1) {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.figure);
+                this.sourceSFLenth -= 8;
             }  
         }
     }
@@ -254,11 +268,13 @@ export default class TeacherPanel extends BaseUI {
         if(toggle.isChecked) {
             if(DaAnData.getInstance().picArr.indexOf(picType.dailyuse) == -1) {
                 DaAnData.getInstance().picArr.push(picType.dailyuse);
+                this.sourceSFLenth += 8;
             }  
         }
         else{
             if(DaAnData.getInstance().picArr.indexOf(picType.dailyuse) != -1) {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.dailyuse);
+                this.sourceSFLenth -= 8;
             }  
         }
     }
@@ -266,11 +282,13 @@ export default class TeacherPanel extends BaseUI {
         if(toggle.isChecked) {
             if(DaAnData.getInstance().picArr.indexOf(picType.number) == -1) {
                 DaAnData.getInstance().picArr.push(picType.number);
+                this.sourceSFLenth += 10;
             }  
         }
         else{
             if(DaAnData.getInstance().picArr.indexOf(picType.number) != -1) {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.number);
+                this.sourceSFLenth -= 10;
             }  
         }
     }
@@ -278,11 +296,13 @@ export default class TeacherPanel extends BaseUI {
         if(toggle.isChecked) {
             if(DaAnData.getInstance().picArr.indexOf(picType.stationery) == -1) {
                 DaAnData.getInstance().picArr.push(picType.stationery);
+                this.sourceSFLenth += 8;
             }  
         }
         else{
             if(DaAnData.getInstance().picArr.indexOf(picType.stationery) != -1) {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.stationery);
+                this.sourceSFLenth -= 8;
             }  
         }
     }
@@ -290,11 +310,13 @@ export default class TeacherPanel extends BaseUI {
         if(toggle.isChecked) {
             if(DaAnData.getInstance().picArr.indexOf(picType.clothes) == -1) {
                 DaAnData.getInstance().picArr.push(picType.clothes);
+                this.sourceSFLenth += 8;
             }  
         }
         else{
             if(DaAnData.getInstance().picArr.indexOf(picType.clothes) != -1) {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.clothes);
+                this.sourceSFLenth -= 8;
             }  
         }
     }
@@ -302,11 +324,13 @@ export default class TeacherPanel extends BaseUI {
         if(toggle.isChecked) {
             if(DaAnData.getInstance().picArr.indexOf(picType.letter) == -1) {
                 DaAnData.getInstance().picArr.push(picType.letter);
+                this.sourceSFLenth += 26;
             }  
         }
         else{
             if(DaAnData.getInstance().picArr.indexOf(picType.letter) != -1) {
                 DaAnData.getInstance().picArr = DaAnData.getInstance().picArr.filter(item => item !== picType.letter);
+                this.sourceSFLenth -= 26;
             }  
         }
     }
