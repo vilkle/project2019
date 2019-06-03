@@ -124,6 +124,7 @@ var GamePanel = /** @class */ (function (_super) {
                 UIManager_1.UIManager.getInstance().closeUI(UploadAndReturnPanel_1.default);
                 DaAnData_1.DaAnData.getInstance().submitEnable = false;
                 ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 0 });
+                bottomNode.active = false;
             }.bind(this));
             this.initData();
         }

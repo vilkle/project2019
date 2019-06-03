@@ -10,8 +10,6 @@
   "excluded-modules": [
     "Dynamic Atlas",
     "LabelOutline",
-    "Mask",
-    "Graphics",
     "ParticleSystem",
     "TiledMap",
     "DragonBones",
@@ -53,7 +51,6 @@
     "height": 640,
     "width": 960
   },
-  "start-scene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
   "use-customize-simulator": true,
   "use-project-simulator-setting": false
 }
