@@ -8,6 +8,7 @@ import { ConstValue } from "../../Data/ConstValue";
 import GamePanel from "./GamePanel";
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
+import { UIHelp } from "../../Utils/UIHelp";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -92,7 +93,6 @@ export default class TeacherPanel extends BaseUI {
             this.editboxArr[i].destroy();
         }
         this.editboxArr = [];
-        cc.log('=========numberarr is ', DaAnData.getInstance().numberArr);
         for(let i = 0; i < parseInt(this.checkpointsEditBox.string); i++) {
             let editbox = cc.instantiate(this.editbox2);
             editbox.x = 0;
@@ -166,9 +166,6 @@ export default class TeacherPanel extends BaseUI {
                            if(content.checkpointsNum) {
                                 DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
                            }
-                           cc.log('data is ',content);
-                           cc.log("---------number is", DaAnData.getInstance().numberArr);
-                           cc.log("---------checkpointsNum is ", DaAnData.getInstance().checkpointsNum);
                            this.initData();
                         } else {
                            
@@ -177,5 +174,15 @@ export default class TeacherPanel extends BaseUI {
                 } 
             }      
         }.bind(this), null);
+    }
+
+      //删除课件数据  一般为脏数据清理
+      ClearNet() {
+        let jsonData = { courseware_id: NetWork.courseware_id };
+        NetWork.getInstance().httpRequest(NetWork.CLEAR, "POST", "application/json;charset=utf-8", function (err, response) {
+            if (!err) {
+                UIHelp.showTip("答案删除成功");
+            }
+        }.bind(this), JSON.stringify(jsonData));
     }
 }

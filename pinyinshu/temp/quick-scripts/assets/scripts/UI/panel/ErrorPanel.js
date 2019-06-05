@@ -5,6 +5,7 @@ cc._RF.push(module, '78373xfPadEJ5IFn4sizh3z', 'ErrorPanel', __filename);
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var UIManager_1 = require("../../Manager/UIManager");
+var AudioManager_1 = require("../../Manager/AudioManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var ErrorPanel = /** @class */ (function (_super) {
     __extends(ErrorPanel, _super);
@@ -35,6 +36,7 @@ var ErrorPanel = /** @class */ (function (_super) {
      */
     ErrorPanel.prototype.setPanel = function (shuoMing, biaoTi, tiShi, btnLab, callBack, isClose) {
         if (isClose === void 0) { isClose = false; }
+        AudioManager_1.AudioManager.getInstance().playSound("sfx_erro", false, 1);
         this.shuoMing.string = shuoMing;
         this.isClose = isClose;
         this.callback = callBack;
@@ -44,6 +46,7 @@ var ErrorPanel = /** @class */ (function (_super) {
         this.btn.interactable = this.isClose;
     };
     ErrorPanel.prototype.onBtnClick = function () {
+        AudioManager_1.AudioManager.getInstance().playSound("sfx_buttn", false, 1);
         if (this.callback) {
             this.callback();
         }

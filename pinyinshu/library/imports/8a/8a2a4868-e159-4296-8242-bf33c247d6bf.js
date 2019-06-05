@@ -5,22 +5,26 @@ cc._RF.push(module, '8a2a4ho4VlCloJCvzPCR9a/', 'UploadAndReturnPanel');
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var UIManager_1 = require("../../Manager/UIManager");
+var GamePanel_1 = require("./GamePanel");
 var SubmissionPanel_1 = require("./SubmissionPanel");
 var DaAnData_1 = require("../../Data/DaAnData");
 var UIHelp_1 = require("../../Utils/UIHelp");
+var ListenerManager_1 = require("../../Manager/ListenerManager");
+var ListenerType_1 = require("../../Data/ListenerType");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var UploadAndReturnPanel = /** @class */ (function (_super) {
     __extends(UploadAndReturnPanel, _super);
     function UploadAndReturnPanel() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    UploadAndReturnPanel_1 = UploadAndReturnPanel;
     UploadAndReturnPanel.prototype.start = function () {
     };
     UploadAndReturnPanel.prototype.onFanHui = function () {
-        // UIManager.getInstance().closeUI(GamePanel);
-        // UIManager.getInstance().closeUI(UploadAndReturnPanel);
-        // DaAnData.getInstance().submitEnable = false;
-        // cc.log('22222222222222222');
+        UIManager_1.UIManager.getInstance().closeUI(GamePanel_1.default);
+        UIManager_1.UIManager.getInstance().closeUI(UploadAndReturnPanel_1);
+        DaAnData_1.DaAnData.getInstance().submitEnable = false;
+        ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 0 });
     };
     UploadAndReturnPanel.prototype.onTiJiao = function () {
         if (DaAnData_1.DaAnData.getInstance().submitEnable) {
@@ -30,8 +34,9 @@ var UploadAndReturnPanel = /** @class */ (function (_super) {
             UIHelp_1.UIHelp.showTip('请通关后进行保存。');
         }
     };
+    var UploadAndReturnPanel_1;
     UploadAndReturnPanel.className = "UploadAndReturnPanel";
-    UploadAndReturnPanel = __decorate([
+    UploadAndReturnPanel = UploadAndReturnPanel_1 = __decorate([
         ccclass
     ], UploadAndReturnPanel);
     return UploadAndReturnPanel;

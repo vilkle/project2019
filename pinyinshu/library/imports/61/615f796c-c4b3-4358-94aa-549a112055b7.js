@@ -3,7 +3,8 @@ cc._RF.push(module, '615f7lsxLNDWJSqVJoRIFW3', 'LogWrap');
 // scripts/Utils/LogWrap.ts
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var OPENLOGFLAG = true;
+var ConstValue_1 = require("../Data/ConstValue");
+// let OPENLOGFLAG = true;
 var LogWrap = /** @class */ (function () {
     function LogWrap() {
     }
@@ -56,7 +57,7 @@ var LogWrap = /** @class */ (function () {
             args[_i] = arguments[_i];
         }
         var backLog = console.log || cc.log; // || log;
-        if (OPENLOGFLAG) {
+        if (!ConstValue_1.ConstValue.IS_EDITIONS) {
             backLog.call(this, "%s%s:" + cc.js.formatStr.apply(cc, arguments), LogWrap.stack(2), LogWrap.getDateString());
         }
     };
@@ -66,7 +67,7 @@ var LogWrap = /** @class */ (function () {
             args[_i] = arguments[_i];
         }
         var backLog = console.log || cc.log; // || log;
-        if (OPENLOGFLAG) {
+        if (!ConstValue_1.ConstValue.IS_EDITIONS) {
             backLog.call(this, "%c%s%s:" + cc.js.formatStr.apply(cc, arguments), "color:#00CD00;", LogWrap.stack(2), LogWrap.getDateString());
         }
     };
@@ -76,7 +77,7 @@ var LogWrap = /** @class */ (function () {
             args[_i] = arguments[_i];
         }
         var backLog = console.log || cc.log; // || log;
-        if (OPENLOGFLAG) {
+        if (!ConstValue_1.ConstValue.IS_EDITIONS) {
             backLog.call(this, "%c%s%s:" + cc.js.formatStr.apply(cc, arguments), "color:#ee7700;", LogWrap.stack(2), LogWrap.getDateString());
             //cc.warn
         }
@@ -87,7 +88,7 @@ var LogWrap = /** @class */ (function () {
             args[_i] = arguments[_i];
         }
         var backLog = console.log || cc.log; // || log;
-        if (OPENLOGFLAG) {
+        if (!ConstValue_1.ConstValue.IS_EDITIONS) {
             backLog.call(this, "%c%s%s:" + cc.js.formatStr.apply(cc, arguments), "color:red", LogWrap.stack(2), LogWrap.getDateString());
         }
     };

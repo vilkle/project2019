@@ -16,31 +16,31 @@ export default class TeacherPanel extends BaseUI {
     protected static className = "TeacherPanel";
 
     @property([cc.Toggle])
-    toggleContainer : cc.Toggle[] = [];
+    private toggleContainer : cc.Toggle[] = [];
     @property(cc.EditBox)
-    checkpointEditbox : cc.EditBox;
+    private checkpointEditbox : cc.EditBox = null;
     @property(cc.Toggle)
-    animalToggle : cc.Toggle;
+    private animalToggle : cc.Toggle = null;
     @property(cc.Toggle)
-    foodToggle : cc.Toggle;
+    private foodToggle : cc.Toggle = null;
     @property(cc.Toggle)
-    figureToggle : cc.Toggle;
+    private figureToggle : cc.Toggle = null;
     @property(cc.Toggle)
-    dailyuseToggle : cc.Toggle;
+    private dailyuseToggle : cc.Toggle = null;
     @property(cc.Toggle)
-    numberToggle : cc.Toggle;
+    private numberToggle : cc.Toggle = null;
     @property(cc.Toggle)
-    stationeryToggle : cc.Toggle;
+    private stationeryToggle : cc.Toggle = null;
     @property(cc.Toggle)
-    clothesToggle : cc.Toggle;
+    private clothesToggle : cc.Toggle = null;
     @property(cc.Toggle)
-    letterToggle : cc.Toggle;
+    private letterToggle : cc.Toggle = null;
     @property(cc.Button)
-    choicescopeButton : cc.Button;
+    private choicescopeButton : cc.Button = null;
     @property(cc.Button)
-    submissionButton : cc.Button;
+    private submissionButton : cc.Button = null;
     @property(cc.Node)
-    tipNode : cc.Node;
+    private tipNode : cc.Node = null;
     private sourceSFLenth : number = 0;  
   
     onLoad () {

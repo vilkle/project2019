@@ -10,7 +10,7 @@ import {OverTips} from "../../UI/Item/OverTips"
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
 import UploadAndReturnPanel from "../panel/UploadAndReturnPanel"
-
+import DataReporting from "../../Data/DataReporting";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -81,12 +81,20 @@ export default class GamePanel extends BaseUI {
     isDoubleOver : boolean = true;
     isSingleOver : boolean = true;
     alreadyCourseware : boolean = false;
+    private eventvalue = {
+        isResult: 1,
+        isLevel: 1,
+        levelData: [
+
+        ],
+        result: 2
+    }
+
      onLoad () {
         //测试用
         // DaAnData.getInstance().checkpointsNum = 3;
         // DaAnData.getInstance().numberArr = [24, 2, 26];
         this.isTecher();
-       
     }
 
     start() {
@@ -95,7 +103,7 @@ export default class GamePanel extends BaseUI {
    
 
     onDestroy() {
-       
+        this.closeClock();
     }
 
     update (dt) {
@@ -141,21 +149,9 @@ export default class GamePanel extends BaseUI {
 
     isTecher() {
         if(ConstValue.IS_TEACHER) {
-            var bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
-            bottomNode.active = true;
-            bottomNode.getChildByName('New Node').getChildByName('fanHui').on('click', function() {
-                this.closeClock();
-                UIManager.getInstance().closeUI(GamePanel);
-                UIManager.getInstance().closeUI(UploadAndReturnPanel);
-                DaAnData.getInstance().submitEnable = false;
-                ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0})
-                bottomNode.active = false;
-            }.bind(this));
-
+            UIManager.getInstance().openUI(UploadAndReturnPanel);
             this.initData();
         }else {
-            var bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
-            bottomNode.active = false;
             this.getNet();
         }
     }
@@ -178,15 +174,36 @@ export default class GamePanel extends BaseUI {
             e.stopPropagation();
         }.bind(this));
         this.mask.active = false;
-        //开始游戏
-        this.openClock();
-        this.decompose(this.decoposeNum);
-        this.answer(this.decoposeNum);
-        this.createDecomposeBall();
-        if (ConstValue.IS_EDITIONS) {
-            courseware.page.sendToParent('clickSubmit', 2);
-            courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 2 });
+      
+        cc.log('checkpointsNum is ', this.checkpointsNum);
+        cc.log(this.eventvalue);
+        for(let i = 0; i< this.checkpointsNum; i++) {
+            this.eventvalue.levelData.push({
+                subject: null,
+                answer: null,
+                result: 4
+            });
         }
+        cc.log(this.eventvalue);
+          //开始游戏
+          this.openClock();
+          this.decompose(this.decoposeNum);
+          this.answer(this.decoposeNum);
+          this.createDecomposeBall();
+          DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
+    }
+
+    onEndGame() {
+        //如果已经上报过数据 则不再上报数据
+        if (DataReporting.isRepeatReport) {
+            DataReporting.getInstance().dispatchEvent('addLog', {
+                eventType: 'clickSubmit',
+                eventValue: JSON.stringify(this.eventvalue)
+            });
+            DataReporting.isRepeatReport = false;
+        }
+        //eventValue  0为未答题   1为答对了    2为答错了或未完成
+        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
     }
     
     initProgress(checkpointsNum : number) {
@@ -315,6 +332,8 @@ export default class GamePanel extends BaseUI {
                 this.an.push(i);
             }
         }
+        this.eventvalue.levelData[this.checkpoint - 1].answer = this.an;
+        cc.log('checkpoint is :',this.checkpoint);
         cc.log(this.an);
     }
 
@@ -801,6 +820,7 @@ export default class GamePanel extends BaseUI {
                 }else {
                     let index = this.answerArr.indexOf(ballNode);
                     this.answerArr.splice(index, 1);
+                    this.eventvalue.levelData[this.checkpoint-1].subject = this.pl;
                     this.pl.splice(index, 1);
                     let updateIndex = this.updateNode.indexOf(ballNode);
                     this.updateNode.splice(updateIndex, 1); 
@@ -898,6 +918,7 @@ export default class GamePanel extends BaseUI {
         var oriPos = this.getRotationPos(pos1, pos3, angle);
         var answerNum = parseInt(gunBall.getChildByName('label').getComponent(cc.Label).string);
         this.pl.push(answerNum);
+        this.eventvalue.levelData[this.checkpoint-1].subject = this.pl;
         this.bullet.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(answerNum));
         this.bullet.getChildByName('label').getComponent(cc.Label).string = gunBall.getChildByName('label').getComponent(cc.Label).string;
         var shootStart = cc.callFunc(function(){
@@ -1086,11 +1107,13 @@ export default class GamePanel extends BaseUI {
                this.closeClock();
                this.tijiao.interactable = false;
                this.chongzhi.interactable = false;
-               if (ConstValue.IS_EDITIONS && !this.alreadyCourseware) {
-                    this.alreadyCourseware = true;
-                    courseware.page.sendToParent('clickSubmit', 1);
-                    courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
-                }
+               this.eventvalue.levelData[this.checkpoint - 2].result = 1;
+               this.eventvalue.result = 1;
+               DataReporting.getInstance().dispatchEvent('addLog', {
+                eventType: 'clickSubmit',
+                eventValue: JSON.stringify(this.eventvalue)
+            });
+            cc.log(this.eventvalue);
                 UIHelp.showAffirmTips(1, '恭喜全部通关',this.timer, '再次挑战','关闭',function(){
                     UIManager.getInstance().closeUI(OverTips);
                     this.checkpoint --;
@@ -1105,6 +1128,7 @@ export default class GamePanel extends BaseUI {
                 }.bind(this));
            }else {
             this.closeClock();
+            this.eventvalue.levelData[this.checkpoint - 2].result = 1;
             UIHelp.showAffirmTips(1, '挑战成功',this.timer, '再次挑战','下一关',function(){
                 UIManager.getInstance().closeUI(OverTips);
                 this.checkpoint --;

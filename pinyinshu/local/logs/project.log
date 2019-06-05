@@ -1,68 +1,68 @@
-2019-06-03T02:08:14.518Z - normal: Load ~/.CocosCreator/settings.json
-2019-06-03T02:08:14.584Z - normal: Initializing Asset Database
-2019-06-03T02:08:14.587Z - normal: checking language setting...
-2019-06-03T02:08:14.587Z - normal: Language: zh
-2019-06-03T02:08:15.410Z - success: preview server running at http://localhost:7456
-2019-06-03T02:08:15.461Z - success: protocol editor-framework registered
-2019-06-03T02:08:15.461Z - success: protocol app registered
-2019-06-03T02:08:15.462Z - success: protocol theme registered
-2019-06-03T02:08:15.462Z - success: protocol packages registered
-2019-06-03T02:08:15.462Z - success: protocol uuid registerred
-2019-06-03T02:08:15.462Z - success: protocol db registerred
-2019-06-03T02:08:15.462Z - success: protocol thumbnail registerred
-2019-06-03T02:08:15.462Z - success: protocol unpack registerred
-2019-06-03T02:08:15.463Z - success: protocol disable-commonjs registerred
-2019-06-03T02:08:15.555Z - normal: connected!
-2019-06-03T02:08:15.557Z - normal: Check project /Users/xes/Desktop/hub/pinyinshu
-2019-06-03T02:08:15.558Z - normal: Initializing project /Users/xes/Desktop/hub/pinyinshu
-2019-06-03T02:08:15.964Z - normal: Initializing Cocos2d
-2019-06-03T02:08:16.768Z - normal: Initializing engine extends
-2019-06-03T02:08:16.817Z - success: asset-db-debugger loaded
-2019-06-03T02:08:16.818Z - success: baidu-adapter loaded
-2019-06-03T02:08:16.819Z - success: color-picker loaded
-2019-06-03T02:08:16.921Z - success: fb-audience-network loaded
-2019-06-03T02:08:16.980Z - success: fb-live-stream loaded
-2019-06-03T02:08:16.983Z - success: google-play-instant loaded
-2019-06-03T02:08:16.989Z - success: huawei-runtime loaded
-2019-06-03T02:08:16.989Z - success: jsb-adapter loaded
-2019-06-03T02:08:16.995Z - success: oppo-runtime loaded
-2019-06-03T02:08:17.012Z - success: package-manager loaded
-2019-06-03T02:08:17.162Z - success: qqplay-adapter loaded
-2019-06-03T02:08:17.164Z - success: runtime-dev-tools loaded
-2019-06-03T02:08:17.182Z - success: sdkbox loaded
-2019-06-03T02:08:17.201Z - success: tester loaded
-2019-06-03T02:08:17.220Z - success: ui-grid loaded
-2019-06-03T02:08:17.237Z - success: ui-kit-preview-extra loaded
-2019-06-03T02:08:17.254Z - success: ui-kit-preview loaded
-2019-06-03T02:08:17.272Z - success: ui-kit loaded
-2019-06-03T02:08:17.288Z - success: ui-tree loaded
-2019-06-03T02:08:17.297Z - success: vivo-runtime loaded
-2019-06-03T02:08:17.299Z - success: weapp-adapter loaded
-2019-06-03T02:08:17.352Z - success: assets loaded
-2019-06-03T02:08:17.371Z - success: builder loaded
-2019-06-03T02:08:17.683Z - success: cocos-services loaded
-2019-06-03T02:08:17.712Z - success: console loaded
-2019-06-03T02:08:17.758Z - success: fb-instant-games loaded
-2019-06-03T02:08:17.762Z - success: google-instant-games loaded
-2019-06-03T02:08:17.783Z - success: hierarchy loaded
-2019-06-03T02:08:17.803Z - success: inspector loaded
-2019-06-03T02:08:17.805Z - success: keystore loaded
-2019-06-03T02:08:17.827Z - success: node-library loaded
-2019-06-03T02:08:17.864Z - success: package-asset loaded
-2019-06-03T02:08:17.866Z - success: preferences loaded
-2019-06-03T02:08:17.884Z - success: project-exporter loaded
-2019-06-03T02:08:17.903Z - success: project-importer loaded
-2019-06-03T02:08:17.921Z - success: project-settings loaded
-2019-06-03T02:08:17.946Z - success: scene loaded
-2019-06-03T02:08:17.948Z - success: simulator-debugger loaded
-2019-06-03T02:08:17.950Z - success: sprite-editor loaded
-2019-06-03T02:08:17.969Z - success: store loaded
-2019-06-03T02:08:17.988Z - success: timeline loaded
-2019-06-03T02:08:18.890Z - info: Cocos Services load base data!
-2019-06-03T02:08:20.909Z - normal: Loading packages
-2019-06-03T02:08:20.937Z - normal: Watching packages
-2019-06-03T02:08:21.042Z - normal: Run Application
-2019-06-03T02:08:27.240Z - error: A Class already exists with the same __classname__ : "affirmTips".
+2019-06-04T11:02:02.264Z - normal: Load ~/.CocosCreator/settings.json
+2019-06-04T11:02:02.331Z - normal: Initializing Asset Database
+2019-06-04T11:02:02.335Z - normal: checking language setting...
+2019-06-04T11:02:02.335Z - normal: Language: zh
+2019-06-04T11:02:03.125Z - success: preview server running at http://localhost:7456
+2019-06-04T11:02:03.138Z - success: protocol editor-framework registered
+2019-06-04T11:02:03.138Z - success: protocol app registered
+2019-06-04T11:02:03.138Z - success: protocol theme registered
+2019-06-04T11:02:03.138Z - success: protocol packages registered
+2019-06-04T11:02:03.139Z - success: protocol uuid registerred
+2019-06-04T11:02:03.139Z - success: protocol db registerred
+2019-06-04T11:02:03.139Z - success: protocol thumbnail registerred
+2019-06-04T11:02:03.139Z - success: protocol unpack registerred
+2019-06-04T11:02:03.139Z - success: protocol disable-commonjs registerred
+2019-06-04T11:02:03.220Z - normal: connected!
+2019-06-04T11:02:03.221Z - normal: Check project /Users/xes/Desktop/hub/pinyinshu
+2019-06-04T11:02:03.223Z - normal: Initializing project /Users/xes/Desktop/hub/pinyinshu
+2019-06-04T11:02:03.630Z - normal: Initializing Cocos2d
+2019-06-04T11:02:04.446Z - normal: Initializing engine extends
+2019-06-04T11:02:04.466Z - success: asset-db-debugger loaded
+2019-06-04T11:02:04.468Z - success: baidu-adapter loaded
+2019-06-04T11:02:04.469Z - success: color-picker loaded
+2019-06-04T11:02:04.567Z - success: fb-audience-network loaded
+2019-06-04T11:02:04.619Z - success: fb-live-stream loaded
+2019-06-04T11:02:04.622Z - success: google-play-instant loaded
+2019-06-04T11:02:04.628Z - success: huawei-runtime loaded
+2019-06-04T11:02:04.629Z - success: jsb-adapter loaded
+2019-06-04T11:02:04.634Z - success: oppo-runtime loaded
+2019-06-04T11:02:04.640Z - success: package-manager loaded
+2019-06-04T11:02:04.791Z - success: qqplay-adapter loaded
+2019-06-04T11:02:04.793Z - success: runtime-dev-tools loaded
+2019-06-04T11:02:04.799Z - success: sdkbox loaded
+2019-06-04T11:02:04.804Z - success: tester loaded
+2019-06-04T11:02:04.809Z - success: ui-grid loaded
+2019-06-04T11:02:04.813Z - success: ui-kit-preview-extra loaded
+2019-06-04T11:02:04.817Z - success: ui-kit-preview loaded
+2019-06-04T11:02:04.821Z - success: ui-kit loaded
+2019-06-04T11:02:04.825Z - success: ui-tree loaded
+2019-06-04T11:02:04.830Z - success: vivo-runtime loaded
+2019-06-04T11:02:04.831Z - success: weapp-adapter loaded
+2019-06-04T11:02:04.872Z - success: assets loaded
+2019-06-04T11:02:04.876Z - success: builder loaded
+2019-06-04T11:02:05.149Z - success: cocos-services loaded
+2019-06-04T11:02:05.155Z - success: console loaded
+2019-06-04T11:02:05.189Z - success: fb-instant-games loaded
+2019-06-04T11:02:05.192Z - success: google-instant-games loaded
+2019-06-04T11:02:05.199Z - success: hierarchy loaded
+2019-06-04T11:02:05.203Z - success: inspector loaded
+2019-06-04T11:02:05.204Z - success: keystore loaded
+2019-06-04T11:02:05.213Z - success: node-library loaded
+2019-06-04T11:02:05.215Z - success: package-asset loaded
+2019-06-04T11:02:05.217Z - success: preferences loaded
+2019-06-04T11:02:05.220Z - success: project-exporter loaded
+2019-06-04T11:02:05.226Z - success: project-importer loaded
+2019-06-04T11:02:05.229Z - success: project-settings loaded
+2019-06-04T11:02:05.234Z - success: scene loaded
+2019-06-04T11:02:05.237Z - success: simulator-debugger loaded
+2019-06-04T11:02:05.239Z - success: sprite-editor loaded
+2019-06-04T11:02:05.243Z - success: store loaded
+2019-06-04T11:02:05.249Z - success: timeline loaded
+2019-06-04T11:02:06.779Z - info: Cocos Services load base data!
+2019-06-04T11:02:08.581Z - normal: Loading packages
+2019-06-04T11:02:08.607Z - normal: Watching packages
+2019-06-04T11:02:08.724Z - normal: Run Application
+2019-06-04T11:02:14.799Z - error: A Class already exists with the same __classname__ : "affirmTips".
     at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32
     at Object.js.setClassName (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:266:17)
     at doDefine (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:279:16)
@@ -72,7 +72,7 @@
     at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
     at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-2019-06-03T02:08:27.241Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
+2019-06-04T11:02:14.800Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
     at Object._setClassId (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32)
     at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:300:28)
     at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
@@ -82,7 +82,17 @@
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
     at __define (/Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:138:2)
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:144:13
-2019-06-03T02:19:47.398Z - normal: Start building with options : {
+2019-06-04T12:08:20.440Z - error: Failed to apply "UploadAndReturnPanel" because the prefab asset is missing, please save the prefab to a new asset by dragging and drop the node from Node Tree into Assets.
+    at Object.applyPrefab (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/scene-utils/index.js:1:5787)
+    at Object.save (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/scene-utils/edit-mode/modes/prefab.js:1:2317)
+    at Object.run (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/scene-utils/edit-mode/index.js:1:2078)
+    at _queue.s.queue (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/scene-utils/lib/tasks.js:1:539)
+    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:987:13
+    at Immediate.process (/Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:953:21)
+    at runCallback (timers.js:672:20)
+    at tryOnImmediate (timers.js:645:5)
+    at processImmediate [as _immediateCallback] (timers.js:617:5)
+2019-06-04T12:59:47.417Z - normal: Start building with options : {
   "actualPlatform": "web-mobile",
   "android-instant": {
     "REMOTE_SERVER_ROOT": "",
@@ -176,14 +186,14 @@
   "projectName": "pinyinshu",
   "debugBuildWorker": false
 }
-2019-06-03T02:19:47.407Z - normal: Building /Users/xes/Desktop/hub/pinyinshu
-2019-06-03T02:19:47.407Z - normal: Destination /Users/xes/Desktop/hub/pinyinshu/build/web-mobile
-2019-06-03T02:19:47.604Z - normal: Delete /Users/xes/Desktop/hub/pinyinshu/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/pinyinshu/build/web-mobile/**/*
-2019-06-03T02:20:31.532Z - normal: Start building assets
-2019-06-03T02:20:31.533Z - normal: Start spawn build-worker
-2019-06-03T02:20:32.330Z - normal: Finish spawn build-worker
-2019-06-03T02:20:32.330Z - normal: Start init build-worker
-2019-06-03T02:20:35.581Z - error: A Class already exists with the same __classname__ : "affirmTips".
+2019-06-04T12:59:47.423Z - normal: Building /Users/xes/Desktop/hub/pinyinshu
+2019-06-04T12:59:47.423Z - normal: Destination /Users/xes/Desktop/hub/pinyinshu/build/web-mobile
+2019-06-04T12:59:47.575Z - normal: Delete /Users/xes/Desktop/hub/pinyinshu/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/pinyinshu/build/web-mobile/**/*
+2019-06-04T13:00:23.887Z - normal: Start building assets
+2019-06-04T13:00:23.888Z - normal: Start spawn build-worker
+2019-06-04T13:00:24.717Z - normal: Finish spawn build-worker
+2019-06-04T13:00:24.718Z - normal: Start init build-worker
+2019-06-04T13:00:28.112Z - error: A Class already exists with the same __classname__ : "affirmTips".
     at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32
     at Object.js.setClassName (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:266:17)
     at doDefine (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:279:16)
@@ -193,7 +203,7 @@
     at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
     at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-2019-06-03T02:20:35.582Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
+2019-06-04T13:00:28.113Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
     at Object._setClassId (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32)
     at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:300:28)
     at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
@@ -203,148 +213,17 @@
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
     at __define (/Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:138:2)
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:144:13
-2019-06-03T02:20:35.638Z - normal: Finish init build-worker
-2019-06-03T02:20:35.638Z - normal: Start build-assets in worker
-2019-06-03T02:20:45.202Z - warn: 原图 db://assets/resources/images/gameUI/bg.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/gameUI/bg.png/bg 直接使用，因此原图仍然会保留一份。
-2019-06-03T02:20:45.204Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas, please check it.
-2019-06-03T02:20:45.711Z - normal: Finish build-assets in worker
-2019-06-03T02:20:45.716Z - normal: Finish building assets
-2019-06-03T02:20:45.739Z - normal: Start building plugin scripts
-2019-06-03T02:20:45.780Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
-2019-06-03T02:20:45.803Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-06-03T02:20:46.062Z - normal: Built to "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile" successfully
-2019-06-03T02:21:38.829Z - normal: Start building with options : {
-  "actualPlatform": "web-mobile",
-  "android-instant": {
-    "REMOTE_SERVER_ROOT": "",
-    "host": "",
-    "pathPattern": "",
-    "recordPath": "",
-    "scheme": "https",
-    "skipRecord": false
-  },
-  "apiLevel": "",
-  "appABIs": [],
-  "appBundle": false,
-  "baidugame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "testappid",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "buildPath": "/Users/xes/Desktop/hub/pinyinshu/build",
-  "debug": false,
-  "dest": "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile",
-  "embedWebDebugger": false,
-  "encryptJs": true,
-  "excludeScenes": [
-    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
-  ],
-  "excludedModules": [
-    "Dynamic Atlas",
-    "LabelOutline",
-    "ParticleSystem",
-    "TiledMap",
-    "DragonBones",
-    "RichText",
-    "MotionStreak",
-    "ScrollBar",
-    "ScrollView",
-    "PageView",
-    "PageViewIndicator",
-    "Slider",
-    "VideoPlayer",
-    "WebView",
-    "Animation",
-    "Collider",
-    "Physics",
-    "NodePool",
-    "StudioComponent",
-    "Intersection",
-    "Native Socket"
-  ],
-  "fb-instant-games": {},
-  "includeSDKBox": false,
-  "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
-  "md5Cache": true,
-  "mergeStartScene": false,
-  "optimizeHotUpdate": false,
-  "orientation": {
-    "landscapeLeft": true,
-    "landscapeRight": true,
-    "portrait": false,
-    "upsideDown": false
-  },
-  "packageName": "org.cocos2d.gameFrame",
-  "platform": "web-mobile",
-  "previewHeight": "720",
-  "previewWidth": "1280",
-  "qqplay": {
-    "REMOTE_SERVER_ROOT": "",
-    "orientation": "portrait",
-    "zip": false
-  },
-  "scenes": [
-    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
-  ],
-  "sourceMaps": false,
-  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
-  "template": "link",
-  "title": "pinyinshu",
-  "useDebugKeystore": true,
-  "vsVersion": "auto",
-  "webOrientation": "auto",
-  "wechatgame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "wx6ac3f5090a6b99c5",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "xxteaKey": "ce558dd3-8f51-47",
-  "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/hub/pinyinshu",
-  "projectName": "pinyinshu",
-  "debugBuildWorker": false
-}
-2019-06-03T02:21:38.833Z - normal: Building /Users/xes/Desktop/hub/pinyinshu
-2019-06-03T02:21:38.833Z - normal: Destination /Users/xes/Desktop/hub/pinyinshu/build/web-mobile
-2019-06-03T02:21:38.835Z - normal: Delete /Users/xes/Desktop/hub/pinyinshu/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/pinyinshu/build/web-mobile/**/*
-2019-06-03T02:21:44.097Z - normal: Start building assets
-2019-06-03T02:21:44.097Z - normal: Start spawn build-worker
-2019-06-03T02:21:44.881Z - normal: Finish spawn build-worker
-2019-06-03T02:21:44.881Z - normal: Start init build-worker
-2019-06-03T02:21:48.445Z - error: A Class already exists with the same __classname__ : "affirmTips".
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32
-    at Object.js.setClassName (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:266:17)
-    at doDefine (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:279:16)
-    at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:295:23)
-    at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:183:26
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
-    at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-2019-06-03T02:21:48.446Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
-    at Object._setClassId (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32)
-    at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:300:28)
-    at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:183:26
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
-    at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-    at __define (/Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:138:2)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:144:13
-2019-06-03T02:21:48.470Z - normal: Finish init build-worker
-2019-06-03T02:21:48.470Z - normal: Start build-assets in worker
-2019-06-03T02:21:59.674Z - warn: 原图 db://assets/resources/images/gameUI/bg.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/gameUI/bg.png/bg 直接使用，因此原图仍然会保留一份。
-2019-06-03T02:21:59.681Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas, please check it.
-2019-06-03T02:22:00.840Z - normal: Finish build-assets in worker
-2019-06-03T02:22:00.850Z - normal: Finish building assets
-2019-06-03T02:22:00.873Z - normal: Start building plugin scripts
-2019-06-03T02:22:00.921Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
-2019-06-03T02:22:00.927Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-06-03T02:22:01.128Z - normal: Built to "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile" successfully
-2019-06-03T02:22:06.508Z - normal: Start building with options : {
+2019-06-04T13:00:28.145Z - normal: Finish init build-worker
+2019-06-04T13:00:28.145Z - normal: Start build-assets in worker
+2019-06-04T13:00:38.323Z - warn: 原图 db://assets/resources/images/gameUI/bg.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/gameUI/bg.png/bg 直接使用，因此原图仍然会保留一份。
+2019-06-04T13:00:38.326Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas, please check it.
+2019-06-04T13:00:39.059Z - normal: Finish build-assets in worker
+2019-06-04T13:00:39.069Z - normal: Finish building assets
+2019-06-04T13:00:39.102Z - normal: Start building plugin scripts
+2019-06-04T13:00:39.177Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-06-04T13:00:39.202Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-06-04T13:00:39.576Z - normal: Built to "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile" successfully
+2019-06-04T13:01:26.835Z - normal: Start building with options : {
   "actualPlatform": "web-mobile",
   "android-instant": {
     "REMOTE_SERVER_ROOT": "",
@@ -438,14 +317,14 @@
   "projectName": "pinyinshu",
   "debugBuildWorker": false
 }
-2019-06-03T02:22:06.508Z - normal: Building /Users/xes/Desktop/hub/pinyinshu
-2019-06-03T02:22:06.508Z - normal: Destination /Users/xes/Desktop/hub/pinyinshu/build/web-mobile
-2019-06-03T02:22:06.509Z - normal: Delete /Users/xes/Desktop/hub/pinyinshu/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/pinyinshu/build/web-mobile/**/*
-2019-06-03T02:22:10.379Z - normal: Start building assets
-2019-06-03T02:22:10.379Z - normal: Start spawn build-worker
-2019-06-03T02:22:11.256Z - normal: Finish spawn build-worker
-2019-06-03T02:22:11.258Z - normal: Start init build-worker
-2019-06-03T02:22:14.463Z - error: A Class already exists with the same __classname__ : "affirmTips".
+2019-06-04T13:01:26.840Z - normal: Building /Users/xes/Desktop/hub/pinyinshu
+2019-06-04T13:01:26.840Z - normal: Destination /Users/xes/Desktop/hub/pinyinshu/build/web-mobile
+2019-06-04T13:01:26.841Z - normal: Delete /Users/xes/Desktop/hub/pinyinshu/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/pinyinshu/build/web-mobile/**/*
+2019-06-04T13:01:31.358Z - normal: Start building assets
+2019-06-04T13:01:31.359Z - normal: Start spawn build-worker
+2019-06-04T13:01:32.171Z - normal: Finish spawn build-worker
+2019-06-04T13:01:32.171Z - normal: Start init build-worker
+2019-06-04T13:01:35.552Z - error: A Class already exists with the same __classname__ : "affirmTips".
     at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32
     at Object.js.setClassName (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:266:17)
     at doDefine (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:279:16)
@@ -455,7 +334,7 @@
     at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
     at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-2019-06-03T02:22:14.464Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
+2019-06-04T13:01:35.553Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
     at Object._setClassId (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32)
     at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:300:28)
     at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
@@ -465,275 +344,13 @@
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
     at __define (/Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:138:2)
     at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:144:13
-2019-06-03T02:22:14.489Z - normal: Finish init build-worker
-2019-06-03T02:22:14.489Z - normal: Start build-assets in worker
-2019-06-03T02:22:23.574Z - warn: 原图 db://assets/resources/images/gameUI/bg.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/gameUI/bg.png/bg 直接使用，因此原图仍然会保留一份。
-2019-06-03T02:22:23.576Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas, please check it.
-2019-06-03T02:22:23.991Z - normal: Finish build-assets in worker
-2019-06-03T02:22:23.995Z - normal: Finish building assets
-2019-06-03T02:22:24.018Z - normal: Start building plugin scripts
-2019-06-03T02:22:24.047Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
-2019-06-03T02:22:24.053Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-06-03T02:22:24.284Z - normal: Built to "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile" successfully
-2019-06-03T02:23:04.085Z - normal: Start building with options : {
-  "actualPlatform": "web-mobile",
-  "android-instant": {
-    "REMOTE_SERVER_ROOT": "",
-    "host": "",
-    "pathPattern": "",
-    "recordPath": "",
-    "scheme": "https",
-    "skipRecord": false
-  },
-  "apiLevel": "",
-  "appABIs": [],
-  "appBundle": false,
-  "baidugame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "testappid",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "buildPath": "/Users/xes/Desktop/hub/pinyinshu/build",
-  "debug": false,
-  "dest": "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile",
-  "embedWebDebugger": false,
-  "encryptJs": true,
-  "excludeScenes": [
-    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
-  ],
-  "excludedModules": [
-    "Dynamic Atlas",
-    "LabelOutline",
-    "ParticleSystem",
-    "TiledMap",
-    "DragonBones",
-    "RichText",
-    "MotionStreak",
-    "ScrollBar",
-    "ScrollView",
-    "PageView",
-    "PageViewIndicator",
-    "Slider",
-    "VideoPlayer",
-    "WebView",
-    "Animation",
-    "Collider",
-    "Physics",
-    "NodePool",
-    "StudioComponent",
-    "Intersection",
-    "Native Socket"
-  ],
-  "fb-instant-games": {},
-  "includeSDKBox": false,
-  "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
-  "md5Cache": true,
-  "mergeStartScene": false,
-  "optimizeHotUpdate": false,
-  "orientation": {
-    "landscapeLeft": true,
-    "landscapeRight": true,
-    "portrait": false,
-    "upsideDown": false
-  },
-  "packageName": "org.cocos2d.gameFrame",
-  "platform": "web-mobile",
-  "previewHeight": "720",
-  "previewWidth": "1280",
-  "qqplay": {
-    "REMOTE_SERVER_ROOT": "",
-    "orientation": "portrait",
-    "zip": false
-  },
-  "scenes": [
-    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
-  ],
-  "sourceMaps": false,
-  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
-  "template": "link",
-  "title": "pinyinshu",
-  "useDebugKeystore": true,
-  "vsVersion": "auto",
-  "webOrientation": "auto",
-  "wechatgame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "wx6ac3f5090a6b99c5",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "xxteaKey": "ce558dd3-8f51-47",
-  "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/hub/pinyinshu",
-  "projectName": "pinyinshu",
-  "debugBuildWorker": false
-}
-2019-06-03T02:23:04.086Z - normal: Building /Users/xes/Desktop/hub/pinyinshu
-2019-06-03T02:23:04.086Z - normal: Destination /Users/xes/Desktop/hub/pinyinshu/build/web-mobile
-2019-06-03T02:23:04.087Z - normal: Delete /Users/xes/Desktop/hub/pinyinshu/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/pinyinshu/build/web-mobile/**/*
-2019-06-03T02:23:08.235Z - normal: Start building assets
-2019-06-03T02:23:08.236Z - normal: Start spawn build-worker
-2019-06-03T02:23:09.093Z - normal: Finish spawn build-worker
-2019-06-03T02:23:09.093Z - normal: Start init build-worker
-2019-06-03T02:23:13.291Z - error: A Class already exists with the same __classname__ : "affirmTips".
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32
-    at Object.js.setClassName (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:266:17)
-    at doDefine (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:279:16)
-    at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:295:23)
-    at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:183:26
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
-    at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-2019-06-03T02:23:13.292Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
-    at Object._setClassId (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32)
-    at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:300:28)
-    at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:183:26
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
-    at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-    at __define (/Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:138:2)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:144:13
-2019-06-03T02:23:13.411Z - normal: Finish init build-worker
-2019-06-03T02:23:13.411Z - normal: Start build-assets in worker
-2019-06-03T02:23:23.792Z - warn: 原图 db://assets/resources/images/gameUI/bg.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/gameUI/bg.png/bg 直接使用，因此原图仍然会保留一份。
-2019-06-03T02:23:23.796Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas, please check it.
-2019-06-03T02:23:24.229Z - normal: Finish build-assets in worker
-2019-06-03T02:23:24.233Z - normal: Finish building assets
-2019-06-03T02:23:24.255Z - normal: Start building plugin scripts
-2019-06-03T02:23:24.291Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
-2019-06-03T02:23:24.297Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-06-03T02:23:24.498Z - normal: Built to "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile" successfully
-2019-06-03T02:23:54.029Z - normal: Start building with options : {
-  "actualPlatform": "web-mobile",
-  "android-instant": {
-    "REMOTE_SERVER_ROOT": "",
-    "host": "",
-    "pathPattern": "",
-    "recordPath": "",
-    "scheme": "https",
-    "skipRecord": false
-  },
-  "apiLevel": "",
-  "appABIs": [],
-  "appBundle": false,
-  "baidugame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "testappid",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "buildPath": "/Users/xes/Desktop/hub/pinyinshu/build",
-  "debug": false,
-  "dest": "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile",
-  "embedWebDebugger": false,
-  "encryptJs": true,
-  "excludeScenes": [
-    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
-  ],
-  "excludedModules": [
-    "Dynamic Atlas",
-    "LabelOutline",
-    "ParticleSystem",
-    "TiledMap",
-    "DragonBones",
-    "RichText",
-    "MotionStreak",
-    "ScrollBar",
-    "ScrollView",
-    "PageView",
-    "PageViewIndicator",
-    "Slider",
-    "VideoPlayer",
-    "WebView",
-    "Animation",
-    "Collider",
-    "Physics",
-    "NodePool",
-    "StudioComponent",
-    "Intersection",
-    "Native Socket"
-  ],
-  "fb-instant-games": {},
-  "includeSDKBox": false,
-  "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
-  "md5Cache": true,
-  "mergeStartScene": false,
-  "optimizeHotUpdate": false,
-  "orientation": {
-    "landscapeLeft": true,
-    "landscapeRight": true,
-    "portrait": false,
-    "upsideDown": false
-  },
-  "packageName": "org.cocos2d.gameFrame",
-  "platform": "web-mobile",
-  "previewHeight": "720",
-  "previewWidth": "1280",
-  "qqplay": {
-    "REMOTE_SERVER_ROOT": "",
-    "orientation": "portrait",
-    "zip": false
-  },
-  "scenes": [
-    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
-  ],
-  "sourceMaps": false,
-  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
-  "template": "link",
-  "title": "pinyinshu",
-  "useDebugKeystore": true,
-  "vsVersion": "auto",
-  "webOrientation": "auto",
-  "wechatgame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "wx6ac3f5090a6b99c5",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "xxteaKey": "ce558dd3-8f51-47",
-  "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/hub/pinyinshu",
-  "projectName": "pinyinshu",
-  "debugBuildWorker": false
-}
-2019-06-03T02:23:54.030Z - normal: Building /Users/xes/Desktop/hub/pinyinshu
-2019-06-03T02:23:54.030Z - normal: Destination /Users/xes/Desktop/hub/pinyinshu/build/web-mobile
-2019-06-03T02:23:54.030Z - normal: Delete /Users/xes/Desktop/hub/pinyinshu/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/pinyinshu/build/web-mobile/**/*
-2019-06-03T02:23:58.058Z - normal: Start building assets
-2019-06-03T02:23:58.059Z - normal: Start spawn build-worker
-2019-06-03T02:23:58.808Z - normal: Finish spawn build-worker
-2019-06-03T02:23:58.808Z - normal: Start init build-worker
-2019-06-03T02:24:01.952Z - error: A Class already exists with the same __classname__ : "affirmTips".
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32
-    at Object.js.setClassName (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:266:17)
-    at doDefine (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:279:16)
-    at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:295:23)
-    at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:183:26
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
-    at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-2019-06-03T02:24:01.954Z - error: A Class already exists with the same __cid__ : "67e25WAGoRADq1zkpxqqwdF".
-    at Object._setClassId (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/js.js:256:32)
-    at define (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:300:28)
-    at Object.CCClass [as Class] (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClass.js:662:23)
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:183:26
-    at /Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/cocos2d/core/platform/CCClassDecorator.js:34:28
-    at window.__decorate (/Applications/CocosCreator.app/Contents/Resources/engine/bin/.cache/dev/polyfill/typescript.js:65:38)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:134:33
-    at __define (/Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:138:2)
-    at /Users/xes/Desktop/hub/pinyinshu/temp/quick-scripts/assets/scripts/UI/Item/AffirmTips.js:144:13
-2019-06-03T02:24:01.976Z - normal: Finish init build-worker
-2019-06-03T02:24:01.976Z - normal: Start build-assets in worker
-2019-06-03T02:24:10.717Z - warn: 原图 db://assets/resources/images/gameUI/bg.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/gameUI/bg.png/bg 直接使用，因此原图仍然会保留一份。
-2019-06-03T02:24:10.719Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas, please check it.
-2019-06-03T02:24:11.143Z - normal: Finish build-assets in worker
-2019-06-03T02:24:11.147Z - normal: Finish building assets
-2019-06-03T02:24:11.172Z - normal: Start building plugin scripts
-2019-06-03T02:24:11.199Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
-2019-06-03T02:24:11.203Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-06-03T02:24:11.375Z - normal: Built to "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile" successfully
+2019-06-04T13:01:35.584Z - normal: Finish init build-worker
+2019-06-04T13:01:35.584Z - normal: Start build-assets in worker
+2019-06-04T13:01:44.820Z - warn: 原图 db://assets/resources/images/gameUI/bg.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/gameUI/bg.png/bg 直接使用，因此原图仍然会保留一份。
+2019-06-04T13:01:44.823Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas, please check it.
+2019-06-04T13:01:45.348Z - normal: Finish build-assets in worker
+2019-06-04T13:01:45.357Z - normal: Finish building assets
+2019-06-04T13:01:45.383Z - normal: Start building plugin scripts
+2019-06-04T13:01:45.434Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-06-04T13:01:45.455Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-06-04T13:01:45.708Z - normal: Built to "/Users/xes/Desktop/hub/pinyinshu/build/web-mobile" successfully

@@ -10,6 +10,7 @@ var DaAnData_1 = require("../../Data/DaAnData");
 var GamePanel_1 = require("./GamePanel");
 var ListenerManager_1 = require("../../Manager/ListenerManager");
 var ListenerType_1 = require("../../Data/ListenerType");
+var UIHelp_1 = require("../../Utils/UIHelp");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var TeacherPanel = /** @class */ (function (_super) {
     __extends(TeacherPanel, _super);
@@ -80,7 +81,6 @@ var TeacherPanel = /** @class */ (function (_super) {
             this.editboxArr[i].destroy();
         }
         this.editboxArr = [];
-        cc.log('=========numberarr is ', DaAnData_1.DaAnData.getInstance().numberArr);
         var _loop_1 = function (i) {
             var editbox = cc.instantiate(this_1.editbox2);
             editbox.x = 0;
@@ -158,9 +158,6 @@ var TeacherPanel = /** @class */ (function (_super) {
                             if (content.checkpointsNum) {
                                 DaAnData_1.DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
                             }
-                            cc.log('data is ', content);
-                            cc.log("---------number is", DaAnData_1.DaAnData.getInstance().numberArr);
-                            cc.log("---------checkpointsNum is ", DaAnData_1.DaAnData.getInstance().checkpointsNum);
                             this.initData();
                         }
                         else {
@@ -169,6 +166,15 @@ var TeacherPanel = /** @class */ (function (_super) {
                 }
             }
         }.bind(this), null);
+    };
+    //删除课件数据  一般为脏数据清理
+    TeacherPanel.prototype.ClearNet = function () {
+        var jsonData = { courseware_id: NetWork_1.NetWork.courseware_id };
+        NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.CLEAR, "POST", "application/json;charset=utf-8", function (err, response) {
+            if (!err) {
+                UIHelp_1.UIHelp.showTip("答案删除成功");
+            }
+        }.bind(this), JSON.stringify(jsonData));
     };
     TeacherPanel.className = "TeacherPanel";
     __decorate([

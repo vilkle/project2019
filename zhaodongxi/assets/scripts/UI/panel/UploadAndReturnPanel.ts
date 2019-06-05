@@ -6,6 +6,7 @@ import { DaAnData } from "../../Data/DaAnData";
 import { UIHelp } from "../../Utils/UIHelp";
 import {ListenerManager} from "../../Manager/ListenerManager"
 import {ListenerType} from "../../Data/ListenerType"
+import { AudioManager } from "../../Manager/AudioManager";
 
 
 const { ccclass, property } = cc._decorator;
@@ -23,6 +24,7 @@ export default class UploadAndReturnPanel extends BaseUI {
         DaAnData.getInstance().submitEnable = false;
         UIManager.getInstance().closeUI(GamePanel);
         UIManager.getInstance().closeUI(UploadAndReturnPanel);
+        AudioManager.getInstance().stopAll();
         ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0})
     }
 

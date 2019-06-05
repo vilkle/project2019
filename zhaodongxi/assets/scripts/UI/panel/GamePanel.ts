@@ -10,6 +10,7 @@ import SubmissionPanel from "./SubmissionPanel";
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
 import UploadAndReturnPanel from "../panel/UploadAndReturnPanel";
+import DataReporting from "../../Data/DataReporting";
 
 const { ccclass, property } = cc._decorator;
 
@@ -19,19 +20,19 @@ export default class GamePanel extends BaseUI {
     protected static className = "GamePanel";
 
     @property(cc.Label)
-    label1 : cc.Label;
+    label1 : cc.Label = null;
     @property(cc.Label)
-    label2 : cc.Label;
+    label2 : cc.Label = null;
     @property(cc.Node)
-    bg : cc.Node;
+    bg : cc.Node = null;
     @property(cc.Node)
-    picBoard : cc.Node;
+    picBoard : cc.Node = null;
     @property(cc.Node)
-    answerBoard : cc.Node;
+    answerBoard : cc.Node = null;
     @property(cc.Node)
-    board : cc.Node;
+    board : cc.Node = null;
     @property(cc.Button)
-    sure : cc.Button;
+    sure : cc.Button = null;
     @property([cc.SpriteFrame])
     sourceSFArr : cc.SpriteFrame[] = [];
     @property([cc.Node])
@@ -39,7 +40,11 @@ export default class GamePanel extends BaseUI {
     @property([cc.Node])
     answerItemArr : cc.Node[] = [];
     @property(cc.Layout)
-    layout : cc.Layout;
+    layout : cc.Layout = null;
+    @property(cc.Node)
+    labaBoundingBox : cc.Node = null;
+    @property(sp.Skeleton)
+    laba : sp.Skeleton = null;
 
     dirSFNumArr : Array<number> = new Array<number>();
     answerSFNumArr : Array<number> = new Array<number>();
@@ -47,23 +52,63 @@ export default class GamePanel extends BaseUI {
     playerItemArr : Array<number> = new Array<number>();
     playerItemSFArr : Array<number> = new Array<number>();
     playerErroArr : Array<number> = new Array<number>();//位选中的正确答案
-    answerNum : number;
-    checkpointsNum : number;
-    checkpoints : number;
-    horizonNum : number;
-    verticalNum : number;
-    cueNum : number;
-    creatItemNum : number;
-    rightNum : number;
+    SoundArr : Array<number> = new Array<number>();
+    answerNum : number = null;
+    checkpointsNum : number = null;
+    checkpoints : number = null;
+    horizonNum : number = null;
+    verticalNum : number = null;
+    cueNum : number = null;
+    creatItemNum : number = null;
+    rightNum : number = null;
+
+    private eventvalue = {
+        isResult: 1,
+        isLevel: 1,
+        levelData: [
+
+        ],
+        result: 2
+    }
+
 
      onLoad () {
         this.isTecher();
-        //this.sure.interactable = false;
+        
     }
 
     start() {
+        DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
+        this.labaBoundingBox.on(cc.Node.EventType.TOUCH_START, function(e){
+            if(this.labaBoundingBox.getBoundingBox().contains(this.board.convertToNodeSpaceAR(e.currentTouch._point))) {
+                this.laba.addAnimation(0, 'animation', false);
+                this.stopAll();
+                AudioManager.getInstance().playSound('找一找目标图形',false ,1,function(id){this.SoundArr.push(id)}.bind(this), function(id){this.SoundArr.filter(item => item !== id)}.bind(this));
+            }
+
+        }.bind(this));
     }
+
+    onEndGame() {
+        //如果已经上报过数据 则不再上报数据
+        if (DataReporting.isRepeatReport) {
+            DataReporting.getInstance().dispatchEvent('addLog', {
+                eventType: 'clickSubmit',
+                eventValue: JSON.stringify(this.eventvalue)
+            });
+            DataReporting.isRepeatReport = false;
+        }
+        //eventValue  0为未答题   1为答对了    2为答错了或未完成
+        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
+    }
+
    
+    stopAll() {
+        for(let i = 0; i < this.SoundArr.length; i++) {
+            AudioManager.getInstance().stopAudio(this.SoundArr[i]);
+        }
+        this.SoundArr = [];
+    }
 
     onDestroy() {
        
@@ -93,7 +138,7 @@ export default class GamePanel extends BaseUI {
             this.board.runAction(cc.moveTo(1, cc.v2(0, 0)));
             this.sure.node.runAction(cc.moveTo(1, cc.v2(720, -310)));
             AudioManager.getInstance().stopAll();
-            AudioManager.getInstance().playSound("begin", false);
+            AudioManager.getInstance().playSound("begin", false,1,function(){}, function(){AudioManager.getInstance().playSound('找一找目标图形',false ,1,function(id){this.SoundArr.push(id)}.bind(this), function(id){this.SoundArr.filter(item => item !== id)}.bind(this));}.bind(this));
         }
     }
 
@@ -159,9 +204,12 @@ export default class GamePanel extends BaseUI {
         this.checkpointsNum = DaAnData.getInstance().checkpointsNum;
         this.label1.string = String(1);
         this.label2.string = String(this.checkpointsNum);
-        if (ConstValue.IS_EDITIONS) {
-            courseware.page.sendToParent('clickSubmit', 2);
-            courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 2 });
+        for(let i = 0; i < this.checkpointsNum; i++) {
+            this.eventvalue.levelData.push({
+                subject: null,
+                answer: null,
+                result: 4
+            });
         }
     }
 
@@ -179,7 +227,6 @@ export default class GamePanel extends BaseUI {
                             if(num == DaAnData.getInstance().picArr.length)
                             {
                                 this.loadDirSFArr(); 
-                                cc.log(this.sourceSFArr);
                             }
                         }
                     }.bind(this));
@@ -193,7 +240,6 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
-                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -206,7 +252,6 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
-                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -219,7 +264,6 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
-                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -232,7 +276,6 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
-                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -245,7 +288,6 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
-                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -258,7 +300,6 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
-                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -271,7 +312,6 @@ export default class GamePanel extends BaseUI {
                         if(num == DaAnData.getInstance().picArr.length)
                         {
                             this.loadDirSFArr();
-                            cc.log(this.sourceSFArr);
                         }
                     }.bind(this));
                     break;
@@ -372,7 +412,6 @@ export default class GamePanel extends BaseUI {
             }
         }else {
             var totalNum = this.horizonNum * this.verticalNum;
-            cc.log('-------------',this.checkpoints);
             for(let i = 0; i < totalNum; i ++) {
                 this.dirSFNumArr[i] = DaAnData.getInstance().dirSFArr[(this.checkpoints) * totalNum + i];
             }
@@ -386,9 +425,6 @@ export default class GamePanel extends BaseUI {
                 }
             }
         }
-        cc.log(this.dirSFNumArr);
-        cc.log(this.answerSFNumArr);
-        cc.log(this.answerPosNumArr);
         this.creatAnswerBoard();
         this.creatPicBoard();
     }
@@ -487,8 +523,15 @@ export default class GamePanel extends BaseUI {
                                 if(this.sure.interactable == false && this.cueNum < 3) {
                                     this.sure.interactable = true;
                                 }
+                                let rn = this.getRandomNum(1, 3);
                                 AudioManager.getInstance().stopAll();
-                                AudioManager.getInstance().playSound("click", false);
+                                if(rn == 1) {
+                                    AudioManager.getInstance().playSound("sfx_tchopt1", false);
+                                }else if(rn == 2) {
+                                    AudioManager.getInstance().playSound("sfx_tchopt2", false);
+                                }else if(rn == 3) {
+                                    AudioManager.getInstance().playSound("sfx_tchopt3", false);
+                                }
                                 item.getChildByName("box").active = true;
                                 item.zIndex = 10;
                                 this.playerItemArr.push(num);
@@ -505,7 +548,7 @@ export default class GamePanel extends BaseUI {
                                     return;
                                 }
                                 AudioManager.getInstance().stopAll();
-                                AudioManager.getInstance().playSound("click", false);
+                                AudioManager.getInstance().playSound("sfx_cancel", false);
                                 item.getChildByName("box").active = false;
                                 item.zIndex = 0;
                                 this.playerItemArr = this.playerItemArr.filter(item => item !== num);
@@ -614,9 +657,15 @@ export default class GamePanel extends BaseUI {
             this.checkpoints++;
             if(this.checkpoints < this.checkpointsNum || this.checkpointsNum == 1) {
                 if(this.cueNum >= 3) {
-                    if (ConstValue.IS_EDITIONS&&this.checkpointsNum == 1) {
-                        courseware.page.sendToParent('clickSubmit', 1);
-                        courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
+                    this.eventvalue.levelData[this.checkpoints-1].answer = this.playerItemArr;
+                    this.eventvalue.levelData[this.checkpoints-1].subject = this.answerPosNumArr;
+                    this.eventvalue.levelData[this.checkpoints-1].result = 1;
+                    if(this.checkpointsNum == 1) {
+                        this.eventvalue.result = 1;
+                        DataReporting.getInstance().dispatchEvent('addLog', {
+                            eventType: 'clickSubmit',
+                            eventValue: JSON.stringify(this.eventvalue)
+                        });
                     }
                     if(ConstValue.IS_TEACHER&&this.checkpointsNum == 1) {
                         DaAnData.getInstance().submitEnable = true;
@@ -633,9 +682,15 @@ export default class GamePanel extends BaseUI {
                         }
                     }.bind(this));
                 }else {
-                    if (ConstValue.IS_EDITIONS&&this.checkpointsNum == 1) {
-                        courseware.page.sendToParent('clickSubmit', 1);
-                        courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
+                    this.eventvalue.levelData[this.checkpoints-1].answer = this.playerItemArr;
+                    this.eventvalue.levelData[this.checkpoints-1].subject = this.answerPosNumArr;
+                    this.eventvalue.levelData[this.checkpoints-1].result = 1;
+                    if(this.checkpointsNum == 1) {
+                        this.eventvalue.result = 1;
+                        DataReporting.getInstance().dispatchEvent('addLog', {
+                            eventType: 'clickSubmit',
+                            eventValue: JSON.stringify(this.eventvalue)
+                        });
                     }
                     if(ConstValue.IS_TEACHER&&this.checkpointsNum == 1) {
                         DaAnData.getInstance().submitEnable = true;
@@ -653,10 +708,14 @@ export default class GamePanel extends BaseUI {
                     }.bind(this));
                 }
             }else {
-                if (ConstValue.IS_EDITIONS) {
-                    courseware.page.sendToParent('clickSubmit', 1);
-                    courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
-                }
+                this.eventvalue.levelData[this.checkpoints-1].answer = this.playerItemArr;
+                this.eventvalue.levelData[this.checkpoints-1].subject = this.answerPosNumArr;
+                this.eventvalue.levelData[this.checkpoints-1].result = 1;
+                this.eventvalue.result = 1;
+                DataReporting.getInstance().dispatchEvent('addLog', {
+                    eventType: 'clickSubmit',
+                    eventValue: JSON.stringify(this.eventvalue)
+                });
                 if(ConstValue.IS_TEACHER) {
                     DaAnData.getInstance().submitEnable = true;
                  }   
@@ -682,6 +741,10 @@ export default class GamePanel extends BaseUI {
                 //     this.cueAnswer();
                 // }.bind(this));
             }else {
+                this.eventvalue.levelData[this.checkpoints].answer = this.playerItemArr;
+                this.eventvalue.levelData[this.checkpoints].subject = this.answerPosNumArr;
+                this.eventvalue.levelData[this.checkpoints].result = 2;
+                this.eventvalue.result = 2;
                 UIHelp.showOverTips(0, '啊哦，再试一试吧。', function(){
                     AudioManager.getInstance().stopAll();
                     AudioManager.getInstance().playSound("point4", false);

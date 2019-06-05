@@ -9,6 +9,7 @@ var TeacherPanel_1 = require("./TeacherPanel");
 var GamePanel_1 = require("./GamePanel");
 var UIManager_1 = require("../../Manager/UIManager");
 var NetWork_1 = require("../../Http/NetWork");
+var DataReporting_1 = require("../../Data/DataReporting");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var LoadingUI = /** @class */ (function (_super) {
     __extends(LoadingUI, _super);
@@ -25,22 +26,26 @@ var LoadingUI = /** @class */ (function (_super) {
         var onProgress = function (completedCount, totalCount, item) {
             _this.progressBar.progress = completedCount / totalCount;
             var value = Math.round(completedCount / totalCount * 100);
-            if (ConstValue_1.ConstValue.IS_EDITIONS) {
-                courseware.page.sendToParent('loading', value);
-            }
+            // if (ConstValue.IS_EDITIONS) {
+            //     courseware.page.sendToParent('loading', value);
+            // }
+            DataReporting_1.default.getInstance().dispatchEvent('loading', value);
             _this.progressLabel.string = value.toString() + '%';
             var posX = completedCount / totalCount * 609 - 304;
             _this.dragonNode.x = posX;
         };
-        if (ConstValue_1.ConstValue.IS_EDITIONS) {
-            courseware.page.sendToParent('load start');
-        }
+        // if (ConstValue.IS_EDITIONS) {
+        // courseware.page.sendToParent('load start');
+        DataReporting_1.default.getInstance().dispatchEvent('load start');
+        // }
         var openPanel = ConstValue_1.ConstValue.IS_TEACHER ? TeacherPanel_1.default : GamePanel_1.default;
         UIManager_1.UIManager.getInstance().openUI(openPanel, 0, function () {
-            if (ConstValue_1.ConstValue.IS_EDITIONS) {
-                courseware.page.sendToParent('load end');
-                courseware.page.sendToParent('start');
-            }
+            // if (ConstValue.IS_EDITIONS) {
+            // courseware.page.sendToParent('load end');
+            // courseware.page.sendToParent('start');
+            DataReporting_1.default.getInstance().dispatchEvent('load end');
+            DataReporting_1.default.getInstance().dispatchEvent('start');
+            // }
             _this.node.active = false;
         }, onProgress);
     };

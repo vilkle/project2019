@@ -4,7 +4,8 @@ import GamePanel from "./GamePanel";
 import SubmissionPanel from "./SubmissionPanel";
 import { DaAnData } from "../../Data/DaAnData";
 import { UIHelp } from "../../Utils/UIHelp";
-
+import {ListenerManager} from "../../Manager/ListenerManager";
+import {ListenerType} from "../../Data/ListenerType";
 
 const { ccclass, property } = cc._decorator;
 
@@ -18,10 +19,10 @@ export default class UploadAndReturnPanel extends BaseUI {
     }
 
     onFanHui() {
-        // UIManager.getInstance().closeUI(GamePanel);
-        // UIManager.getInstance().closeUI(UploadAndReturnPanel);
-        // DaAnData.getInstance().submitEnable = false;
-        // cc.log('22222222222222222');
+        UIManager.getInstance().closeUI(GamePanel);
+        UIManager.getInstance().closeUI(UploadAndReturnPanel);
+        DaAnData.getInstance().submitEnable = false;
+        ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0});
     }
 
     onTiJiao() {

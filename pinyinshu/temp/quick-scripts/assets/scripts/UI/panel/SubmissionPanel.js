@@ -58,7 +58,7 @@ var SubmissionPanel = /** @class */ (function (_super) {
     };
     //添加答案信息
     SubmissionPanel.prototype.AddNet = function (gameDataJson) {
-        var data = { title_id: NetWork_1.NetWork.title_id, courseware_content: gameDataJson };
+        var data = { title_id: NetWork_1.NetWork.title_id, courseware_content: gameDataJson, is_result: 1, is_lavel: 1 };
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.ADD, "POST", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 UIHelp_1.UIHelp.showTip("答案提交成功");
@@ -68,7 +68,7 @@ var SubmissionPanel = /** @class */ (function (_super) {
     };
     //修改课件
     SubmissionPanel.prototype.ModifyNet = function (gameDataJson) {
-        var jsonData = { courseware_id: NetWork_1.NetWork.courseware_id, courseware_content: gameDataJson };
+        var jsonData = { courseware_id: NetWork_1.NetWork.courseware_id, courseware_content: gameDataJson, is_result: 1, is_lavel: 1 };
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.MODIFY, "POST", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 UIHelp_1.UIHelp.showTip("答案修改成功");

@@ -1,41 +1,42 @@
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export class Tip extends cc.Component {
+
+    @property(cc.Node)
+    private neiRongNode: cc.Node = null;
+
     @property(cc.Label)
     private tipLabel: cc.Label = null;
     private ready: boolean = true;
 
-    public playTip(message: string)
-    {
+    public playTip(message: string) {
+        this.neiRongNode.active = true;
         this.node.stopAllActions();
         this.ready = false;
         this.tipLabel.string = message;
         this.reset();
         let action0 = cc.moveTo(0.5, 0, 128);
         let action1 = cc.fadeIn(0.5);
-        let action2 = cc.spawn(action0, action1);
-        let action3 = cc.delayTime(1);
         let action4 = cc.fadeOut(0.5);
+        let action2 = cc.spawn(action0, action4);
+        let action3 = cc.delayTime(1);
         let callback = cc.callFunc(
-            function()
-            {
+            function () {
                 this.ready = true;
             }
-            ,this
+            , this
         );
-        
-        let action = cc.sequence(action2, action3, action4, callback);
+
+        let action = cc.sequence(action3, action2, callback);
         this.node.runAction(action);
     }
 
-    public isReady(): boolean
-    {
+    public isReady(): boolean {
         return this.ready;
     }
 
-    private reset()
-    {
+    public reset() {
         this.node.setPosition(0, 0);
         this.node.opacity = 255;
     }
