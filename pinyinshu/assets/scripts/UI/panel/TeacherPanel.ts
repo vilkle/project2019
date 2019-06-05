@@ -155,6 +155,7 @@ export default class TeacherPanel extends BaseUI {
 
                 }else {
                     let content = JSON.parse(response_data.data.courseware_content);
+                    NetWork.courseware_id = response_data.data.courseware_id;
                     if (NetWork.empty) {//如果URL里面带了empty参数 并且为true  就立刻清除数据
                         this.ClearNet();
                     } else {

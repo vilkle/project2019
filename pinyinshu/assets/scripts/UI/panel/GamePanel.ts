@@ -98,7 +98,7 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
-      
+        AudioManager.getInstance().playSound('sfx_pysopn');
     }
    
 
@@ -439,6 +439,7 @@ export default class GamePanel extends BaseUI {
                 if(this.placementBallArr[i].opacity == 0) {
                     return;
                 }
+                AudioManager.getInstance().playSound('sfx_touchball');
                 this.placementBallArr[i].opacity = 0;
                 this.bubble.opacity = 255;
                 if(this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
@@ -506,6 +507,7 @@ export default class GamePanel extends BaseUI {
                 if(this.bubble.opacity == 0) {
                     return;
                 }
+                AudioManager.getInstance().playSound('sfx_releaseball');
                 if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                   
@@ -528,6 +530,7 @@ export default class GamePanel extends BaseUI {
                 if(this.bubble.opacity == 0) {
                     return;
                 }
+                AudioManager.getInstance().playSound('sfx_releaseball');
                 if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                   
@@ -556,6 +559,7 @@ export default class GamePanel extends BaseUI {
         cc.log(ballNode);
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function(e){
+            AudioManager.getInstance().playSound('sfx_touchball');
             var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
             this.bubble.x = location.x;
             this.bubble.y = location.y;
@@ -584,11 +588,13 @@ export default class GamePanel extends BaseUI {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_END, function(){
+            AudioManager.getInstance().playSound('sfx_releaseball');
             if(this.bubble.opacity == 255) {
                 this.bubble.opacity = 0;
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_CANCEL, function(e){
+            AudioManager.getInstance().playSound('sfx_releaseball');
             if(this.gunNode.rotation != 0) {
                 if(this.bubble.opacity == 255) {
                     this.bubble.opacity = 0;
@@ -642,6 +648,7 @@ export default class GamePanel extends BaseUI {
                 if(this.bubble_1.opacity && this.bubble_2.opacity) {
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
+                    AudioManager.getInstance().playSound('sfx_composing');
                     this.signNode.runAction(cc.sequence(cc.fadeIn(0.2),cc.fadeOut(0.3),cc.fadeIn(0.2),cc.fadeOut(0.3)));
                 }
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
@@ -703,6 +710,7 @@ export default class GamePanel extends BaseUI {
                 if(this.bubble_1.opacity && this.bubble_2.opacity) {
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
+                    AudioManager.getInstance().playSound('sfx_composing');
                     this.signNode.runAction(cc.sequence(cc.fadeIn(0.2),cc.fadeOut(0.3),cc.fadeIn(0.2),cc.fadeOut(0.3)));
                 }
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 
@@ -746,6 +754,7 @@ export default class GamePanel extends BaseUI {
         }
         gunBall.getChildByName('label').getComponent(cc.Label).string = num.toString();
         gunBall.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
+        AudioManager.getInstance().playSound('sfx_compgood');
         this.gunNode.getChildByName('gun').getComponent(sp.Skeleton).setAnimation(0, 'in', false);
         if(gunBall.opacity) {
             gunBall.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
@@ -761,6 +770,7 @@ export default class GamePanel extends BaseUI {
     addListenerOnAnswerBall(ballNode : cc.Node) {
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function(e){
+            AudioManager.getInstance().playSound('sfx_touchball');
             if(this.miya.getComponent(sp.Skeleton).animation != 'kan') {
                 this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
             }
@@ -808,6 +818,7 @@ export default class GamePanel extends BaseUI {
           
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_END, function(e){
+            AudioManager.getInstance().playSound('sfx_releaseball');
             if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                 let num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
@@ -836,6 +847,7 @@ export default class GamePanel extends BaseUI {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_CANCEL, function(e){
+            AudioManager.getInstance().playSound('sfx_releaseball');
             ballNode.setPosition(cc.v2(0 ,0));
         }.bind(this), this);
     }
@@ -865,6 +877,7 @@ export default class GamePanel extends BaseUI {
                 if(trackEntry.animation.name == 'ball_out') {
                    this.bubble_1.opacity = 0; 
                    ballNode.getChildByName('gun_bg').opacity = 255;
+                   AudioManager.getInstance().playSound('sfx_moveball');
                    ballNode.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                    ballNode.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => {
                     if(trackEntry.animation.name == 'ball_in'){
@@ -887,6 +900,7 @@ export default class GamePanel extends BaseUI {
                 if(trackEntry.animation.name == 'ball_out') {
                    this.bubble_2.opacity = 0; 
                    ballNode.getChildByName('gun_bg').opacity = 255;
+                   AudioManager.getInstance().playSound('sfx_moveball');
                    ballNode.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                    ballNode.getChildByName('spine').getComponent(sp.Skeleton).setCompleteListener(trackEntry => {
                        if(trackEntry.animation.name == 'ball_in'){
@@ -898,7 +912,7 @@ export default class GamePanel extends BaseUI {
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).clearTracks();
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false); 
         }else if(this.gunNode.getChildByName('ballNode').opacity == 255 && this.answerArr.length < 25) {
-           this.bulletOut();
+            this.bulletOut();
         }
         this.isReadyShoot = false;
     }
@@ -922,6 +936,7 @@ export default class GamePanel extends BaseUI {
         this.bullet.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(answerNum));
         this.bullet.getChildByName('label').getComponent(cc.Label).string = gunBall.getChildByName('label').getComponent(cc.Label).string;
         var shootStart = cc.callFunc(function(){
+            AudioManager.getInstance().playSound('sfx_shoot');
             this.gunNode.getChildByName('gun').getComponent(sp.Skeleton).setAnimation(0, 'ready', false);
             // this.gunNode.getChildByName('gun').getComponent(sp.Skeleton).setAnimation(0, 'go', false);
             this.gunNode.getChildByName('gun').getComponent(sp.Skeleton).setCompleteListener(trackEntry => { 

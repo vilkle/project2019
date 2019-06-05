@@ -5,7 +5,6 @@ cc._RF.push(module, 'c44e6cLg85JzaIFNvBdsH7x', 'UIHelp', __filename);
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIManager_1 = require("../Manager/UIManager");
 var TipUI_1 = require("../UI/panel/TipUI");
-var OverTips_1 = require("../UI/Item/OverTips");
 var AffirmTips_1 = require("../UI/Item/AffirmTips");
 var UIHelp = /** @class */ (function () {
     function UIHelp() {
@@ -21,17 +20,20 @@ var UIHelp = /** @class */ (function () {
             tipUI.showTip(message);
         }
     };
-    UIHelp.showOverTips = function (type, str) {
-        var overTips = UIManager_1.UIManager.getInstance().getUI(OverTips_1.OverTips);
-        if (!overTips) {
-            UIManager_1.UIManager.getInstance().openUI(OverTips_1.OverTips, 200, function () {
-                UIHelp.showOverTips(type, str);
-            });
-        }
-        else {
-            overTips.init(type, str);
-        }
-    };
+    // public static showOverTips(type:number,str:string)
+    // {
+    //     let overTips = UIManager.getInstance().getUI(OverTips) as OverTips;
+    //     if(!overTips)
+    //     {
+    //         UIManager.getInstance().openUI(OverTips, 200, ()=>{
+    //             UIHelp.showOverTips(type,str);
+    //         });
+    //     }
+    //     else
+    //     {
+    //        overTips.init(type, str);
+    //     }
+    // }
     UIHelp.showAffirmTips = function (type, des, time, btnCloselDes, btnOkDes, callbackClose, callbackOk) {
         var affirmTips = UIManager_1.UIManager.getInstance().getUI(AffirmTips_1.AffirmTips);
         if (!affirmTips) {

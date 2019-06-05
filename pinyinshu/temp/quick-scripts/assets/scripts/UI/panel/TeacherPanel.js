@@ -147,6 +147,7 @@ var TeacherPanel = /** @class */ (function (_super) {
                 }
                 else {
                     var content = JSON.parse(response_data.data.courseware_content);
+                    NetWork_1.NetWork.courseware_id = response_data.data.courseware_id;
                     if (NetWork_1.NetWork.empty) { //如果URL里面带了empty参数 并且为true  就立刻清除数据
                         this.ClearNet();
                     }
