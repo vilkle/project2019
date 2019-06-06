@@ -439,7 +439,8 @@ export default class GamePanel extends BaseUI {
                 if(this.placementBallArr[i].opacity == 0) {
                     return;
                 }
-                AudioManager.getInstance().playSound('sfx_touchball');
+                AudioManager.getInstance().stopAll();
+                AudioManager.getInstance().playSound('sfx_wining');
                 this.placementBallArr[i].opacity = 0;
                 this.bubble.opacity = 255;
                 if(this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
@@ -507,12 +508,12 @@ export default class GamePanel extends BaseUI {
                 if(this.bubble.opacity == 0) {
                     return;
                 }
-                AudioManager.getInstance().playSound('sfx_releaseball');
                 if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
-                  
+                    AudioManager.getInstance().playSound('sfx_deleted');
                     this.bubble.opacity = 0;
                 }else {
+                    AudioManager.getInstance().playSound('sfx_releaseball');
                     this.bubble.opacity = 0;
                     this.placementBallArr[i].opacity = 255;
                     if(bubble_none == 1) {
@@ -530,12 +531,14 @@ export default class GamePanel extends BaseUI {
                 if(this.bubble.opacity == 0) {
                     return;
                 }
-                AudioManager.getInstance().playSound('sfx_releaseball');
+                
                 if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
+                    AudioManager.getInstance().playSound('sfx_deleted')
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                   
                     this.bubble.opacity = 0;
                 }else {
+                    AudioManager.getInstance().playSound('sfx_releaseball');
                     this.bubble.opacity = 0;
                     this.placementBallArr[i].opacity = 255;
                     if(bubble_none == 1) {
@@ -770,7 +773,8 @@ export default class GamePanel extends BaseUI {
     addListenerOnAnswerBall(ballNode : cc.Node) {
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function(e){
-            AudioManager.getInstance().playSound('sfx_touchball');
+            AudioManager.getInstance().stopAll();
+            AudioManager.getInstance().playSound('sfx_wining');
             if(this.miya.getComponent(sp.Skeleton).animation != 'kan') {
                 this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
             }
@@ -818,17 +822,19 @@ export default class GamePanel extends BaseUI {
           
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_END, function(e){
-            AudioManager.getInstance().playSound('sfx_releaseball');
+          
             if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                 let num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
                 if(num == 1) {
+                    AudioManager.getInstance().playSound('sfx_releaseball');
                     UIHelp.showAffirmTips(1, '质数1不能删除', -1,'取消','确认',function(){
                         ballNode.setPosition(cc.v2(0, 0));
                     }.bind(this),function(){
                         ballNode.setPosition(cc.v2(0, 0));
                     }.bind(this));
                 }else {
+                    AudioManager.getInstance().playSound('sfx_deleted');
                     let index = this.answerArr.indexOf(ballNode);
                     this.answerArr.splice(index, 1);
                     this.eventvalue.levelData[this.checkpoint-1].subject = this.pl;
@@ -839,6 +845,7 @@ export default class GamePanel extends BaseUI {
                     ballNode.destroy();
                 }
             }else {
+                AudioManager.getInstance().playSound('sfx_releaseball');
                 ballNode.setPosition(cc.v2(0, 0));
             }
             this.miya.getComponent(sp.Skeleton).setAnimation(0, 'in_idle', false);

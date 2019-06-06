@@ -18,7 +18,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 487,
+                "height": 486.109375,
                 "type": "panel",
                 "width": 306
               },
@@ -27,12 +27,12 @@
                 "children": [
                   "assets"
                 ],
-                "height": 486,
+                "height": 485.109375,
                 "type": "panel",
                 "width": 306
               }
             ],
-            "height": 975,
+            "height": 973.21875,
             "type": "dock-v",
             "width": 306
           },
@@ -45,7 +45,7 @@
                     "children": [
                       "scene"
                     ],
-                    "height": 568.15625,
+                    "height": 567.125,
                     "type": "panel",
                     "width": 754.984375
                   },
@@ -54,12 +54,12 @@
                     "children": [
                       "node-library"
                     ],
-                    "height": 568.15625,
+                    "height": 567.125,
                     "type": "panel",
                     "width": 397
                   }
                 ],
-                "height": 568.15625,
+                "height": 567.125,
                 "type": "dock-h",
                 "width": 1154
               },
@@ -69,12 +69,12 @@
                   "console",
                   "timeline"
                 ],
-                "height": 404.828125,
+                "height": 404.078125,
                 "type": "panel",
                 "width": 1154
               }
             ],
-            "height": 975,
+            "height": 973.21875,
             "type": "dock-v",
             "width": 1154
           },
@@ -84,7 +84,7 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 975,
+            "height": 973.21875,
             "type": "panel",
             "width": 456
           }
@@ -111,8 +111,8 @@
       "height": 548
     },
     "builder": {
-      "x": -1218,
-      "y": -71,
+      "x": -847,
+      "y": 26,
       "width": 654,
       "height": 708
     }

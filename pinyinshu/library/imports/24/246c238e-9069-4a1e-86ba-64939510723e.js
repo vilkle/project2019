@@ -405,7 +405,8 @@ var GamePanel = /** @class */ (function (_super) {
                 if (this.placementBallArr[i].opacity == 0) {
                     return;
                 }
-                AudioManager_1.AudioManager.getInstance().playSound('sfx_touchball');
+                AudioManager_1.AudioManager.getInstance().stopAll();
+                AudioManager_1.AudioManager.getInstance().playSound('sfx_wining');
                 this.placementBallArr[i].opacity = 0;
                 this.bubble.opacity = 255;
                 if (this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
@@ -481,12 +482,13 @@ var GamePanel = /** @class */ (function (_super) {
                 if (this.bubble.opacity == 0) {
                     return;
                 }
-                AudioManager_1.AudioManager.getInstance().playSound('sfx_releaseball');
                 if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
+                    AudioManager_1.AudioManager.getInstance().playSound('sfx_deleted');
                     this.bubble.opacity = 0;
                 }
                 else {
+                    AudioManager_1.AudioManager.getInstance().playSound('sfx_releaseball');
                     this.bubble.opacity = 0;
                     this.placementBallArr[i].opacity = 255;
                     if (bubble_none == 1) {
@@ -505,12 +507,13 @@ var GamePanel = /** @class */ (function (_super) {
                 if (this.bubble.opacity == 0) {
                     return;
                 }
-                AudioManager_1.AudioManager.getInstance().playSound('sfx_releaseball');
                 if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
+                    AudioManager_1.AudioManager.getInstance().playSound('sfx_deleted');
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                     this.bubble.opacity = 0;
                 }
                 else {
+                    AudioManager_1.AudioManager.getInstance().playSound('sfx_releaseball');
                     this.bubble.opacity = 0;
                     this.placementBallArr[i].opacity = 255;
                     if (bubble_none == 1) {
@@ -757,7 +760,8 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.addListenerOnAnswerBall = function (ballNode) {
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function (e) {
-            AudioManager_1.AudioManager.getInstance().playSound('sfx_touchball');
+            AudioManager_1.AudioManager.getInstance().stopAll();
+            AudioManager_1.AudioManager.getInstance().playSound('sfx_wining');
             if (this.miya.getComponent(sp.Skeleton).animation != 'kan') {
                 this.miya.getComponent(sp.Skeleton).setAnimation(0, 'kan', false);
             }
@@ -810,11 +814,11 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_END, function (e) {
-            AudioManager_1.AudioManager.getInstance().playSound('sfx_releaseball');
             if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                 var num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
                 if (num == 1) {
+                    AudioManager_1.AudioManager.getInstance().playSound('sfx_releaseball');
                     UIHelp_1.UIHelp.showAffirmTips(1, '质数1不能删除', -1, '取消', '确认', function () {
                         ballNode.setPosition(cc.v2(0, 0));
                     }.bind(this), function () {
@@ -822,6 +826,7 @@ var GamePanel = /** @class */ (function (_super) {
                     }.bind(this));
                 }
                 else {
+                    AudioManager_1.AudioManager.getInstance().playSound('sfx_deleted');
                     var index = this.answerArr.indexOf(ballNode);
                     this.answerArr.splice(index, 1);
                     this.eventvalue.levelData[this.checkpoint - 1].subject = this.pl;
@@ -833,6 +838,7 @@ var GamePanel = /** @class */ (function (_super) {
                 }
             }
             else {
+                AudioManager_1.AudioManager.getInstance().playSound('sfx_releaseball');
                 ballNode.setPosition(cc.v2(0, 0));
             }
             this.miya.getComponent(sp.Skeleton).setAnimation(0, 'in_idle', false);
