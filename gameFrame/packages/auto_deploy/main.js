@@ -1,9 +1,11 @@
 'use strict';
 var fs = require('fs')
 var childProcess = require('child_process')
+var process = require('process');
 
 //courseware中对应该课件的目录
 var CoursewarePath = ''
+var GitLog = 'CC plugin auto_deploy commit automatically.'
 
 module.exports = {
   load() {
@@ -20,10 +22,23 @@ module.exports = {
       // open entry panel registered in package.json
       Editor.Panel.open('auto_deploy');
     },
+    //panel界面准备完毕
+    'ready'() {
+      Editor.Ipc.sendToPanel('auto_deploy', 'defaultDistPath', CoursewarePath);
+    },
     //设置发布路径
     'distPath'(arg1, arg2){
-      //Editor.log('收到消息', arg2)
-      CoursewarePath = arg2
+      // Editor.log('收到消息', arg2)
+      CoursewarePath = arg2;
+      let scriptPath =  __dirname + "/main.js";
+      let script = fs.readFileSync(scriptPath, 'utf8');
+      script = script.replace("var CoursewarePath = ''", "var CoursewarePath = " + "'" + arg2 + "'");
+      fs.writeFileSync(scriptPath, script);
+    },
+    //git 日志
+    'gitLog'(arg1, arg2){
+       // Editor.log('收到消息', arg2)
+       GitLog = arg2;
     },
     //构建发布
     'clicked'() {
@@ -210,7 +225,7 @@ function gitAdd(){
 function gitCommit(){
   Editor.log('git commit...')
   //git commit -m 'msg' -a
-  childProcess.exec("git commit -m 'CC plugin auto_deploy commit automatically.'", {
+  childProcess.exec("git commit -m " + GitLog, {
     cwd: CoursewarePath
   }, (err, stdout, stderr)=>{
     if(err){

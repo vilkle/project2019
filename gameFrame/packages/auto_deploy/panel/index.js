@@ -10,7 +10,10 @@ Editor.Panel.extend({
   template: `
     <h2>auto_deploy</h2>
     <ui-button  id="listBtn" style="width:120px">选择目录</ui-button >
+    <br/>
     <span id="lab"></span>
+    <br/><br/>
+    <ui-input id="editBox" placeholder="提交日志"></ui-input>
     <br/>
     <ui-button id="btn">构建发布</ui-button>
     <input type="file" id="file_input" style="display:none;" webkitdirectory directory />
@@ -21,11 +24,15 @@ Editor.Panel.extend({
     btn: '#btn',
     file_input:"#file_input",
     listBtn:'#listBtn',
+    editBox:'#editBox',
     lab:'#lab'
   },
 
   // method executed when template and styles are successfully loaded and initialized
   ready () {
+
+    Editor.Ipc.sendToMain('auto_deploy:ready');
+    
     this.$btn.addEventListener('confirm', () => {
       Editor.Ipc.sendToMain('auto_deploy:clicked');
     });
@@ -36,17 +43,20 @@ Editor.Panel.extend({
       this.$lab.innerHTML = path;
     });
 
+    this.$editBox.addEventListener('confirm', (e) => {
+      Editor.Ipc.sendToMain('auto_deploy:gitLog', this.$editBox.value);
+    });
+
     this.$listBtn.addEventListener('click', (e) => {
       this.$file_input.click();
     });
-
-
   },
 
   // register your ipc messages here
   messages: {
-    // 'auto_deploy:hello' (event) {
-    //   this.$label.innerText = 'Hello!';
-    // }
+    'defaultDistPath' (arg1, arg2) {
+      // Editor.log('收到消息', arg2)
+      this.$lab.innerHTML = arg2;
+    },
   }
 });
