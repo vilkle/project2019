@@ -33,6 +33,7 @@ export class DaAnData {
     public dirSFArr: Array<number> = new Array<number>();
     public answerSFArr: Array<number> = new Array<number>();
     public answerPosArr : Array<number> = new Array<number>();
+    public answerOneNum : Array<number> = new Array<number>();
     public range = 0;//选择区范围
    
     static getInstance() {

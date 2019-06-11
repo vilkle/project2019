@@ -61,6 +61,7 @@ export default class GamePanel extends BaseUI {
     cueNum : number = null;
     creatItemNum : number = null;
     rightNum : number = null;
+    isOver : number = 0;
 
     private eventvalue = {
         isResult: 1,
@@ -68,7 +69,7 @@ export default class GamePanel extends BaseUI {
         levelData: [
 
         ],
-        result: 2
+        result: 4
     }
 
 
@@ -81,7 +82,7 @@ export default class GamePanel extends BaseUI {
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
         this.labaBoundingBox.on(cc.Node.EventType.TOUCH_START, function(e){
             if(this.labaBoundingBox.getBoundingBox().contains(this.board.convertToNodeSpaceAR(e.currentTouch._point))) {
-                this.laba.addAnimation(0, 'animation', false);
+                this.laba.setAnimation(0, 'animation', false);
                 this.stopAll();
                 AudioManager.getInstance().playSound('找一找目标图形',false ,1,function(id){this.SoundArr.push(id)}.bind(this), function(id){this.SoundArr.filter(item => item !== id)}.bind(this));
             }
@@ -99,7 +100,15 @@ export default class GamePanel extends BaseUI {
             DataReporting.isRepeatReport = false;
         }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
+        if (this.eventvalue.isResult == 1) {
+            this.isOver = 1;
+        }else{
+            if(this.eventvalue.levelData.length == 0) {
+                this.isOver = 0
+            }
+        }
+
+        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
     }
 
    
@@ -121,14 +130,10 @@ export default class GamePanel extends BaseUI {
     isTecher() {
         if(ConstValue.IS_TEACHER) {
             UIManager.getInstance().openUI(UploadAndReturnPanel);
-            // let bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
-            // bottomNode.active = true;
             this.initData();
             this.loadSourcePFArr(); 
         }else {
             this.getNet();
-            // let bottomNode = cc.director.getScene().getChildByName('Canvas').getChildByName('UploadAndReturnPanel');
-            // bottomNode.active = false;
         }
     }
 
@@ -138,7 +143,7 @@ export default class GamePanel extends BaseUI {
             this.board.runAction(cc.moveTo(1, cc.v2(0, 0)));
             this.sure.node.runAction(cc.moveTo(1, cc.v2(720, -310)));
             AudioManager.getInstance().stopAll();
-            AudioManager.getInstance().playSound("begin", false,1,function(){}, function(){AudioManager.getInstance().playSound('找一找目标图形',false ,1,function(id){this.SoundArr.push(id)}.bind(this), function(id){this.SoundArr.filter(item => item !== id)}.bind(this));}.bind(this));
+            AudioManager.getInstance().playSound("begin", false,1,function(){}, function(){AudioManager.getInstance().stopAll(); AudioManager.getInstance().playSound('找一找目标图形',false ,1,function(id){this.SoundArr.push(id)}.bind(this), function(id){this.SoundArr.filter(item => item !== id)}.bind(this));}.bind(this));
         }
     }
 
@@ -352,12 +357,15 @@ export default class GamePanel extends BaseUI {
                         var sfNum = this.dirSFNumArr[i];
                         this.answerPosNumArr.push(i);
                         this.answerSFNumArr.push(sfNum);
+                        
                         DaAnData.getInstance().answerSFArr.push(sfNum);
                         DaAnData.getInstance().answerPosArr.push(i);
                     }
                 }
+                DaAnData.getInstance().answerOneNum.push(this.answerPosNumArr.length);
                 this.rightNum = this.answerPosNumArr.length;
             }else {
+                DaAnData.getInstance().answerOneNum = [];
                 var num = this.getRandomNum(0, totalNum - 1);
                 var num1 = 0;
                 var num2 = 0;
@@ -416,8 +424,26 @@ export default class GamePanel extends BaseUI {
                 this.dirSFNumArr[i] = DaAnData.getInstance().dirSFArr[(this.checkpoints) * totalNum + i];
             }
             if(this.answerNum == 1) {
-                this.answerSFNumArr.push(DaAnData.getInstance().answerSFArr[this.checkpoints]);
-                this.answerPosNumArr.push(DaAnData.getInstance().answerPosArr[this.checkpoints]);
+                let startIndx = 0;
+                let endIndex = 0;
+                for(let i = 0; i < DaAnData.getInstance().answerOneNum.length; i++) {
+                    if(i < this.checkpoints) {
+                        startIndx = startIndx + DaAnData.getInstance().answerOneNum[i];
+                    }
+                    if(i <= this.checkpoints) {
+                        endIndex = endIndex + DaAnData.getInstance().answerOneNum[i];
+                    }
+                }
+                for(let i = 0; i < DaAnData.getInstance().answerPosArr.length; i++) {
+                    if(i >= startIndx && i <= endIndex - 1) {
+                        this.answerPosNumArr.push(DaAnData.getInstance().answerPosArr[i]);
+                    }
+                }
+                for(let i = 0; i < DaAnData.getInstance().answerSFArr.length; i++) {
+                    if(i >= startIndx && i <= endIndex - 1) {
+                        this.answerSFNumArr.push(DaAnData.getInstance().answerSFArr[i]);
+                    }
+                }
             }else {
                 for(let i = 0; i < 4; i++) {
                     this.answerSFNumArr[i] = DaAnData.getInstance().answerSFArr[(this.checkpoints) * 4 + i];
@@ -512,7 +538,7 @@ export default class GamePanel extends BaseUI {
                     this.answerItemArr[num] = item;
                     this.creatItemNum++;
                     this.action(this.creatItemNum);
-                    item.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = this.sourceSFArr[this.answerSFNumArr[num]];
+                    item.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = this.sourceSFArr[this.answerSFNumArr[0]];
                 }else{
                     this.itemArr[num] = item;
                     this.creatItemNum++;
@@ -653,6 +679,9 @@ export default class GamePanel extends BaseUI {
                 rightNum++;
             }
         }
+        if(this.answerNum == 1) {
+           this.rightNum = DaAnData.getInstance().answerOneNum[this.checkpoints];
+        }
         if(rightNum == this.rightNum && this.playerItemArr.length == this.rightNum) {
             this.checkpoints++;
             if(this.checkpoints < this.checkpointsNum || this.checkpointsNum == 1) {
@@ -660,8 +689,11 @@ export default class GamePanel extends BaseUI {
                     this.eventvalue.levelData[this.checkpoints-1].answer = this.playerItemArr;
                     this.eventvalue.levelData[this.checkpoints-1].subject = this.answerPosNumArr;
                     this.eventvalue.levelData[this.checkpoints-1].result = 1;
+                    this.isOver = 2;
+                    this.eventvalue.result = 2;
                     if(this.checkpointsNum == 1) {
-                        this.eventvalue.result = 1;
+                        this.eventvalue.result = 1; 
+                        this.isOver = 1; 
                         DataReporting.getInstance().dispatchEvent('addLog', {
                             eventType: 'clickSubmit',
                             eventValue: JSON.stringify(this.eventvalue)
@@ -685,8 +717,11 @@ export default class GamePanel extends BaseUI {
                     this.eventvalue.levelData[this.checkpoints-1].answer = this.playerItemArr;
                     this.eventvalue.levelData[this.checkpoints-1].subject = this.answerPosNumArr;
                     this.eventvalue.levelData[this.checkpoints-1].result = 1;
+                    this.isOver = 2;
+                    this.eventvalue.result = 2;
                     if(this.checkpointsNum == 1) {
                         this.eventvalue.result = 1;
+                        this.isOver = 1;
                         DataReporting.getInstance().dispatchEvent('addLog', {
                             eventType: 'clickSubmit',
                             eventValue: JSON.stringify(this.eventvalue)
@@ -712,6 +747,7 @@ export default class GamePanel extends BaseUI {
                 this.eventvalue.levelData[this.checkpoints-1].subject = this.answerPosNumArr;
                 this.eventvalue.levelData[this.checkpoints-1].result = 1;
                 this.eventvalue.result = 1;
+                this.isOver = 1;
                 DataReporting.getInstance().dispatchEvent('addLog', {
                     eventType: 'clickSubmit',
                     eventValue: JSON.stringify(this.eventvalue)
@@ -745,6 +781,7 @@ export default class GamePanel extends BaseUI {
                 this.eventvalue.levelData[this.checkpoints].subject = this.answerPosNumArr;
                 this.eventvalue.levelData[this.checkpoints].result = 2;
                 this.eventvalue.result = 2;
+                this.isOver = 2;
                 UIHelp.showOverTips(0, '啊哦，再试一试吧。', function(){
                     AudioManager.getInstance().stopAll();
                     AudioManager.getInstance().playSound("point4", false);
@@ -795,6 +832,9 @@ export default class GamePanel extends BaseUI {
                     }
                     if(content.answerPosArr) {
                         DaAnData.getInstance().answerPosArr = content.answerPosArr;
+                    }
+                    if(content.answerOneNum) {
+                        DaAnData.getInstance().answerOneNum = content.answerOneNum;
                     }
                     this.initData();
                     this.loadSourcePFArr(); 

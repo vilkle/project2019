@@ -48,6 +48,7 @@ export default class TeacherPanel extends BaseUI {
 
     start() {
         this.getNet();
+        cc.log('------picArr', DaAnData.getInstance().picArr);
     }
 
     initData() {
@@ -103,6 +104,7 @@ export default class TeacherPanel extends BaseUI {
         // if(this.errorChecking()){
         //     UIManager.getInstance().showUI(SubmissionPanel); 
         // }
+        cc.log('------picArr', DaAnData.getInstance().picArr);
         if(this.errorChecking()) {
                 UIManager.getInstance().showUI(GamePanel, () => {
                     ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 

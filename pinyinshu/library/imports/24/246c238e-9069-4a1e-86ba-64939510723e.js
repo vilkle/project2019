@@ -60,11 +60,12 @@ var GamePanel = /** @class */ (function (_super) {
         _this.isDoubleOver = true;
         _this.isSingleOver = true;
         _this.alreadyCourseware = false;
+        _this.isOver = 0;
         _this.eventvalue = {
             isResult: 1,
             isLevel: 1,
             levelData: [],
-            result: 2
+            result: 4
         };
         return _this;
     }
@@ -148,8 +149,6 @@ var GamePanel = /** @class */ (function (_super) {
             e.stopPropagation();
         }.bind(this));
         this.mask.active = false;
-        cc.log('checkpointsNum is ', this.checkpointsNum);
-        cc.log(this.eventvalue);
         for (var i = 0; i < this.checkpointsNum; i++) {
             this.eventvalue.levelData.push({
                 subject: null,
@@ -157,7 +156,6 @@ var GamePanel = /** @class */ (function (_super) {
                 result: 4
             });
         }
-        cc.log(this.eventvalue);
         //开始游戏
         this.openClock();
         this.decompose(this.decoposeNum);
@@ -175,7 +173,7 @@ var GamePanel = /** @class */ (function (_super) {
             DataReporting_1.default.isRepeatReport = false;
         }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting_1.default.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
+        DataReporting_1.default.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
     };
     GamePanel.prototype.initProgress = function (checkpointsNum) {
         var long = 200;
@@ -249,7 +247,6 @@ var GamePanel = /** @class */ (function (_super) {
             ballNode.y = y;
             ballNode.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
             this.answerArr.push(ballNode);
-            cc.log('push a answer ball', ballNode);
             this.updateNode.push(ballNode);
             this.addListenerOnAnswerBall(ballNode);
         }
@@ -298,8 +295,6 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
         this.eventvalue.levelData[this.checkpoint - 1].answer = this.an;
-        cc.log('checkpoint is :', this.checkpoint);
-        cc.log(this.an);
     };
     GamePanel.prototype.decompose = function (num) {
         var num1 = num;
@@ -369,19 +364,14 @@ var GamePanel = /** @class */ (function (_super) {
                 }
             }
         }
-        cc.log('li is ', this.li);
-        cc.log('numberStr is :', this.numberStr.getComponent(cc.Label).string);
     };
     GamePanel.prototype.createDecomposeBall = function () {
         var x = this.numberStr.node.getContentSize().width + 100;
-        cc.log('numberstr width is ', this.numberStr.node.getContentSize().width);
         var y = 0;
         var space = 100;
         for (var i = 0; i < this.li.length; i++) {
-            cc.log(this.li[i]);
             var ballx = 0;
             ballx = 0; // x + 200 * i;
-            cc.log(x);
             this.createBall(this.li[i], i, y, this.numberNode, false);
         }
     };
@@ -539,7 +529,6 @@ var GamePanel = /** @class */ (function (_super) {
         }
     };
     GamePanel.prototype.addListenerOnDecomposeBall = function (ballNode) {
-        cc.log(ballNode);
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function (e) {
             AudioManager_1.AudioManager.getInstance().playSound('sfx_touchball');
@@ -949,7 +938,6 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     });
                     _this.bullet.setPosition(oriPos);
-                    cc.log(oriPos);
                     _this.bullet.opacity = 255;
                     _this.bullet.setScale(0.5);
                     var time = 0.2;
@@ -963,7 +951,6 @@ var GamePanel = /** @class */ (function (_super) {
         var shootEnd = cc.callFunc(function () {
             this.bullet.opacity = 0;
             this.createBall(parseInt(num), 0, 0, parent, true);
-            cc.log('create a answer ball', this.answerArr);
             this.gunNode.runAction(cc.rotateTo(0.5, 0));
         }.bind(this), this);
         this.gunNode.runAction(cc.sequence(cc.rotateBy(0.5, angle), shootStart));
@@ -1034,8 +1021,6 @@ var GamePanel = /** @class */ (function (_super) {
         this.bullet.opacity = 0;
         //初始化游戏
         this.decoposeNum = DaAnData_1.DaAnData.getInstance().numberArr[checkpoint - 1];
-        cc.log('next point is ', checkpoint);
-        cc.log('checkpointsnum is ', this.checkpointsNum);
         this.decompose(this.decoposeNum);
         this.answer(this.decoposeNum);
         this.createDecomposeBall();
@@ -1045,6 +1030,7 @@ var GamePanel = /** @class */ (function (_super) {
         this.updateNode.push(this.bubble_2);
         this.updateNode.push(this.gunNode.getChildByName('ballNode'));
         this.cueNum = 0;
+        this.eventvalue.levelData[this.checkpoint - 1].answer = this.an;
     };
     GamePanel.prototype.reset = function () {
         if (this.gunNode.rotation != 0) {
@@ -1113,7 +1099,10 @@ var GamePanel = /** @class */ (function (_super) {
                 rightNum++;
             }
         }
+        this.eventvalue.levelData[this.checkpoint - 1].subject = this.pl;
         if (rightNum == this.an.length && this.pl.length == this.an.length) {
+            this.isOver = 2;
+            this.eventvalue.result = 2;
             this.checkpoint++;
             if (this.checkpoint >= this.checkpointsNum + 1) {
                 this.closeClock();
@@ -1121,11 +1110,11 @@ var GamePanel = /** @class */ (function (_super) {
                 this.chongzhi.interactable = false;
                 this.eventvalue.levelData[this.checkpoint - 2].result = 1;
                 this.eventvalue.result = 1;
+                this.isOver = 1;
                 DataReporting_1.default.getInstance().dispatchEvent('addLog', {
                     eventType: 'clickSubmit',
                     eventValue: JSON.stringify(this.eventvalue)
                 });
-                cc.log(this.eventvalue);
                 UIHelp_1.UIHelp.showAffirmTips(1, '恭喜全部通关', this.timer, '再次挑战', '关闭', function () {
                     UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
                     this.checkpoint--;
@@ -1155,6 +1144,9 @@ var GamePanel = /** @class */ (function (_super) {
         }
         else {
             this.cueNum++;
+            this.isOver = 2;
+            this.eventvalue.result = 2;
+            this.eventvalue.levelData[this.checkpoint - 2].result = 2;
             this.mask.active = true;
             this.closeClock();
             this.cueAnswer();
