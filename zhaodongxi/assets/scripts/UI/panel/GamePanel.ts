@@ -683,7 +683,7 @@ export default class GamePanel extends BaseUI {
                 rightNum++;
             }
         }
-        if(this.answerNum == 1 && ConstValue.IS_TEACHER) {
+        if(this.answerNum == 1 && !ConstValue.IS_TEACHER) {
            this.rightNum = DaAnData.getInstance().answerOneNum[this.checkpoints];
         }
         if(rightNum == this.rightNum && this.playerItemArr.length == this.rightNum) {
