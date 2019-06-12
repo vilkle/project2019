@@ -538,7 +538,11 @@ export default class GamePanel extends BaseUI {
                     this.answerItemArr[num] = item;
                     this.creatItemNum++;
                     this.action(this.creatItemNum);
-                    item.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = this.sourceSFArr[this.answerSFNumArr[0]];
+                    if(this.answerNum == 1) {
+                        item.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = this.sourceSFArr[this.answerSFNumArr[0]];
+                    }else {
+                        item.getChildByName("pic").getComponent(cc.Sprite).spriteFrame = this.sourceSFArr[this.answerSFNumArr[num]];
+                    }
                 }else{
                     this.itemArr[num] = item;
                     this.creatItemNum++;
@@ -679,7 +683,7 @@ export default class GamePanel extends BaseUI {
                 rightNum++;
             }
         }
-        if(this.answerNum == 1) {
+        if(this.answerNum == 1 && ConstValue.IS_TEACHER) {
            this.rightNum = DaAnData.getInstance().answerOneNum[this.checkpoints];
         }
         if(rightNum == this.rightNum && this.playerItemArr.length == this.rightNum) {

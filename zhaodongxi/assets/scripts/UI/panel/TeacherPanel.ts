@@ -98,13 +98,6 @@ export default class TeacherPanel extends BaseUI {
 
     //上传课件按钮
     onBtnSaveClicked() {
-        // let openPanel: UIClass<BaseUI> = GamePanel;
-        // UIManager.getInstance().openUI(openPanel);
-
-        // if(this.errorChecking()){
-        //     UIManager.getInstance().showUI(SubmissionPanel); 
-        // }
-        cc.log('------picArr', DaAnData.getInstance().picArr);
         if(this.errorChecking()) {
                 UIManager.getInstance().showUI(GamePanel, () => {
                     ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
