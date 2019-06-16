@@ -39,7 +39,6 @@ export class LoadingUI extends BaseUI {
         // }
         let openPanel: UIClass<BaseUI> = ConstValue.IS_TEACHER ? TeacherPanel : GamePanel;
         UIManager.getInstance().openUI(openPanel, 0, () => {
-
             // if (ConstValue.IS_EDITIONS) {
             // courseware.page.sendToParent('load end');
             // courseware.page.sendToParent('start');

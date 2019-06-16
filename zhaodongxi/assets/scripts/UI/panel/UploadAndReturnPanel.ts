@@ -7,6 +7,7 @@ import { UIHelp } from "../../Utils/UIHelp";
 import {ListenerManager} from "../../Manager/ListenerManager"
 import {ListenerType} from "../../Data/ListenerType"
 import { AudioManager } from "../../Manager/AudioManager";
+import { OverTips } from "../Item/OverTips";
 
 
 const { ccclass, property } = cc._decorator;
@@ -22,6 +23,11 @@ export default class UploadAndReturnPanel extends BaseUI {
 
     onFanHui() {
         DaAnData.getInstance().submitEnable = false;
+        DaAnData.getInstance().answerOneNum = [];
+        DaAnData.getInstance().answerPosArr = [];
+        DaAnData.getInstance().answerSFArr = [];
+        DaAnData.getInstance().dirSFArr = [];
+        UIManager.getInstance().closeUI(OverTips);
         UIManager.getInstance().closeUI(GamePanel);
         UIManager.getInstance().closeUI(UploadAndReturnPanel);
         AudioManager.getInstance().stopAll();

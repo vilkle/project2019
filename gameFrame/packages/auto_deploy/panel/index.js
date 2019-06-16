@@ -33,6 +33,8 @@ Editor.Panel.extend({
 
     Editor.Ipc.sendToMain('auto_deploy:ready');
     
+    Editor.Ipc.sendToMain('auto_deploy:enginePath');
+    
     this.$btn.addEventListener('confirm', () => {
       Editor.Ipc.sendToMain('auto_deploy:clicked');
     });
