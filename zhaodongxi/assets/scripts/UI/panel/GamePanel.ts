@@ -79,6 +79,14 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
+        this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            if(this.isOver != 1) {
+                this.isOver = 2;
+                this.eventvalue.result = 2;
+                this.eventvalue.levelData[this.checkpoints].result = 2;
+            }
+        });
+
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
         this.labaBoundingBox.on(cc.Node.EventType.TOUCH_START, function(e){
             if(this.labaBoundingBox.getBoundingBox().contains(this.board.convertToNodeSpaceAR(e.currentTouch._point))) {
@@ -92,7 +100,7 @@ export default class GamePanel extends BaseUI {
 
     onEndGame() {
         //如果已经上报过数据 则不再上报数据
-        if (DataReporting.isRepeatReport) {
+        if (DataReporting.isRepeatReport && this.eventvalue.result != 1) {
             DataReporting.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
                 eventValue: JSON.stringify(this.eventvalue)
@@ -548,6 +556,11 @@ export default class GamePanel extends BaseUI {
                     this.creatItemNum++;
                     this.action(this.creatItemNum);
                     item.getChildByName("bg").on(cc.Node.EventType.TOUCH_START, function(t){
+                        if(this.eventvalue.result != 1) {
+                            this.eventvalue.result = 2;
+                            this.isOver = 2;
+                            this.eventvalue.levelData[this.checkpoints].result = 2;
+                        }
                         if (item.getChildByName("box").active == false) {
                             if(item.getChildByName("mask").opacity == 0) {
                                 if(this.sure.interactable == false && this.cueNum < 3) {

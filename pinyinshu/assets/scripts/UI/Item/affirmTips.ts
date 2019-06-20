@@ -1,4 +1,3 @@
-
 import { BaseUI } from "../BaseUI";
 import { UIManager } from "../../Manager/UIManager";
 

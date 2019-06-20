@@ -56,6 +56,8 @@ export default class GamePanel extends BaseUI {
     numberNode : cc.Node = null;
     @property(cc.Node)
     signNode : cc.Node = null;
+    @property(cc.Node)
+    bg : cc.Node = null;
     @property(cc.BitmapFont)
     font : cc.BitmapFont = null;
     @property(cc.Prefab)
@@ -81,6 +83,8 @@ export default class GamePanel extends BaseUI {
     isDoubleOver : boolean = true;
     isSingleOver : boolean = true;
     alreadyCourseware : boolean = false;
+    shooting : boolean = false;
+    multiply : boolean = false;
     isOver : number = 0;
     private eventvalue = {
         isResult: 1,
@@ -100,6 +104,14 @@ export default class GamePanel extends BaseUI {
 
     start() {
         AudioManager.getInstance().playSound('sfx_pysopn');
+        this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            if(this.isOver != 1) {
+                this.isOver = 2;
+                this.eventvalue.result = 2;
+                this.eventvalue.levelData[this.checkpoint - 1].result = 2;
+            }
+        });
+
     }
    
 
@@ -192,7 +204,7 @@ export default class GamePanel extends BaseUI {
 
     onEndGame() {
         //如果已经上报过数据 则不再上报数据
-        if (DataReporting.isRepeatReport) {
+        if (DataReporting.isRepeatReport && this.eventvalue.result != 1) {
             DataReporting.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
                 eventValue: JSON.stringify(this.eventvalue)
@@ -428,6 +440,16 @@ export default class GamePanel extends BaseUI {
                 if(this.placementBallArr[i].opacity == 0) {
                     return;
                 }
+                if(this.shooting) {
+                    return;
+                }
+                if(this.multiply) {
+                    return;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);  
+                if(num == 1) {
+                    return;
+                }
                 AudioManager.getInstance().stopAll();
                 AudioManager.getInstance().playSound('sfx_wining');
                 this.placementBallArr[i].opacity = 0;
@@ -441,7 +463,6 @@ export default class GamePanel extends BaseUI {
                 }else{ 
                     bubble_none = null;
                 }
-                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);  
                 this.bubble.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
                 this.bubble.getChildByName('label').getComponent(cc.Label).getComponent(cc.Label).string = num.toString();
                 this.bubble.setPosition(this.node.convertToNodeSpaceAR(e.currentTouch._point));
@@ -454,6 +475,16 @@ export default class GamePanel extends BaseUI {
             }.bind(this));
             this.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_MOVE, function(e){
                 if(this.bubble.opacity == 0) {
+                    return;
+                }
+                if(this.shooting) {
+                    return;
+                }
+                if(this.multiply) {
+                    return;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);  
+                if(num == 1) {
                     return;
                 }
                 var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
@@ -497,6 +528,16 @@ export default class GamePanel extends BaseUI {
                 if(this.bubble.opacity == 0) {
                     return;
                 }
+                if(this.shooting) {
+                    return;
+                }
+                if(this.multiply) {
+                    return;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);  
+                if(num == 1) {
+                    return;
+                }
                 if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                     AudioManager.getInstance().playSound('sfx_deleted');
@@ -520,7 +561,16 @@ export default class GamePanel extends BaseUI {
                 if(this.bubble.opacity == 0) {
                     return;
                 }
-                
+                if(this.shooting) {
+                    return;
+                }
+                if(this.multiply) {
+                    return;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);  
+                if(num == 1) {
+                    return;
+                }
                 if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                     AudioManager.getInstance().playSound('sfx_deleted')
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
@@ -550,6 +600,11 @@ export default class GamePanel extends BaseUI {
     addListenerOnDecomposeBall(ballNode : cc.Node) {
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function(e){
+            if(this.isOver != 1) {
+                this.isOver = 2;
+                this.eventvalue.result = 2;
+                this.eventvalue.levelData[this.checkpoint - 1].result = 2
+            }
             AudioManager.getInstance().playSound('sfx_touchball');
             var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
             this.bubble.x = location.x;
@@ -600,6 +655,7 @@ export default class GamePanel extends BaseUI {
             var skinStr = this.skinString(num);
             if(this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if(this.gunNode.getChildByName('ballNode').opacity) {
+                    this.multiply = true;
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
                     let gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string); 
@@ -637,6 +693,7 @@ export default class GamePanel extends BaseUI {
                 this.bubble_none1.node.opacity = 0;
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                 if(this.bubble_1.opacity && this.bubble_2.opacity) {
+                    this.multiply = true;
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
                     AudioManager.getInstance().playSound('sfx_composing');
@@ -663,6 +720,7 @@ export default class GamePanel extends BaseUI {
             
             }else if(this.bubble_none2.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if(this.gunNode.getChildByName('ballNode').opacity) {
+                    this.multiply = true;
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
                     let gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string); 
@@ -699,6 +757,7 @@ export default class GamePanel extends BaseUI {
                 this.bubble_none2.node.opacity = 0;
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                 if(this.bubble_1.opacity && this.bubble_2.opacity) {
+                    this.multiply = true;
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
                     AudioManager.getInstance().playSound('sfx_composing');
@@ -753,6 +812,7 @@ export default class GamePanel extends BaseUI {
                 if(trackEntry.animation.name == 'ball_in') {
                    this.isReadyShoot = true;
                    this.isDoubleOver = true;
+                   this.multiply = false;
                 }
             });
         }
@@ -811,7 +871,7 @@ export default class GamePanel extends BaseUI {
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_END, function(e){
           
-            if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
+            if(this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz' && !this.shooting) {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                 let num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
                 if(num == 1) {
@@ -859,8 +919,11 @@ export default class GamePanel extends BaseUI {
         if(this.gunNode.rotation != 0) {
             return;
         }  
-        
+        if(this.shooting) {
+            return;
+        }
         if(this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_1.opacity && this.isDoubleOver) {
+            this.shooting = true;
             let num = parseInt(this.bubble_1.getChildByName('label').getComponent(cc.Label).string);
             let ballNode =  this.gunNode.getChildByName('ballNode');
             ballNode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
@@ -884,6 +947,7 @@ export default class GamePanel extends BaseUI {
             this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).clearTracks();
             this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false);
         }else if(this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_2.opacity && this.isDoubleOver) {
+            this.shooting = true;
             let num = parseInt(this.bubble_2.getChildByName('label').getComponent(cc.Label).string);
             let ballNode =  this.gunNode.getChildByName('ballNode');
             ballNode.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
@@ -907,6 +971,7 @@ export default class GamePanel extends BaseUI {
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).clearTracks();
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false); 
         }else if(this.gunNode.getChildByName('ballNode').opacity == 255 && this.answerArr.length < 25) {
+            this.shooting = true;
             this.bulletOut();
         }
         this.isReadyShoot = false;
@@ -959,7 +1024,7 @@ export default class GamePanel extends BaseUI {
         var shootEnd = cc.callFunc(function(){
             this.bullet.opacity = 0;
             this.createBall(parseInt(num), 0, 0, parent, true);
-            this.gunNode.runAction(cc.rotateTo(0.5, 0));
+            this.gunNode.runAction(cc.sequence(  cc.rotateTo(0.5, 0),cc.callFunc(()=>{this.shooting = false;})));
         }.bind(this), this);
         this.gunNode.runAction(cc.sequence(cc.rotateBy(0.5, angle), shootStart));
     }
@@ -1151,7 +1216,7 @@ export default class GamePanel extends BaseUI {
             this.cueNum ++;
             this.isOver = 2;
             this.eventvalue.result = 2;
-            this.eventvalue.levelData[this.checkpoint - 2].result = 2;
+            this.eventvalue.levelData[this.checkpoint - 1].result = 2;
             this.mask.active = true;
             this.closeClock();
             this.cueAnswer();

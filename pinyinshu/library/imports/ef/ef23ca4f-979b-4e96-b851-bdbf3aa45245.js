@@ -1,5 +1,5 @@
 "use strict";
-cc._RF.push(module, '67e25WAGoRADq1zkpxqqwdF', 'affirmTips');
+cc._RF.push(module, 'ef23cpPl5tOlrhRvb86pFJF', 'affirmTips');
 // scripts/UI/Item/affirmTips.ts
 
 Object.defineProperty(exports, "__esModule", { value: true });

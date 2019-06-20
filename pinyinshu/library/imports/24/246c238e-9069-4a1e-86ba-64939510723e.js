@@ -37,6 +37,7 @@ var GamePanel = /** @class */ (function (_super) {
         _this.mask = null;
         _this.numberNode = null;
         _this.signNode = null;
+        _this.bg = null;
         _this.font = null;
         _this.ballNodeP = null;
         _this.decomposeArr = Array();
@@ -60,6 +61,8 @@ var GamePanel = /** @class */ (function (_super) {
         _this.isDoubleOver = true;
         _this.isSingleOver = true;
         _this.alreadyCourseware = false;
+        _this.shooting = false;
+        _this.multiply = false;
         _this.isOver = 0;
         _this.eventvalue = {
             isResult: 1,
@@ -76,7 +79,15 @@ var GamePanel = /** @class */ (function (_super) {
         this.isTecher();
     };
     GamePanel.prototype.start = function () {
+        var _this = this;
         AudioManager_1.AudioManager.getInstance().playSound('sfx_pysopn');
+        this.bg.on(cc.Node.EventType.TOUCH_START, function (e) {
+            if (_this.isOver != 1) {
+                _this.isOver = 2;
+                _this.eventvalue.result = 2;
+                _this.eventvalue.levelData[_this.checkpoint - 1].result = 2;
+            }
+        });
     };
     GamePanel.prototype.onDestroy = function () {
         this.closeClock();
@@ -165,7 +176,7 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.onEndGame = function () {
         //如果已经上报过数据 则不再上报数据
-        if (DataReporting_1.default.isRepeatReport) {
+        if (DataReporting_1.default.isRepeatReport && this.eventvalue.result != 1) {
             DataReporting_1.default.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
                 eventValue: JSON.stringify(this.eventvalue)
@@ -395,6 +406,16 @@ var GamePanel = /** @class */ (function (_super) {
                 if (this.placementBallArr[i].opacity == 0) {
                     return;
                 }
+                if (this.shooting) {
+                    return;
+                }
+                if (this.multiply) {
+                    return;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);
+                if (num == 1) {
+                    return;
+                }
                 AudioManager_1.AudioManager.getInstance().stopAll();
                 AudioManager_1.AudioManager.getInstance().playSound('sfx_wining');
                 this.placementBallArr[i].opacity = 0;
@@ -410,7 +431,6 @@ var GamePanel = /** @class */ (function (_super) {
                 else {
                     bubble_none = null;
                 }
-                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);
                 this.bubble.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
                 this.bubble.getChildByName('label').getComponent(cc.Label).getComponent(cc.Label).string = num.toString();
                 this.bubble.setPosition(this.node.convertToNodeSpaceAR(e.currentTouch._point));
@@ -423,6 +443,16 @@ var GamePanel = /** @class */ (function (_super) {
             }.bind(this_1));
             this_1.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_MOVE, function (e) {
                 if (this.bubble.opacity == 0) {
+                    return;
+                }
+                if (this.shooting) {
+                    return;
+                }
+                if (this.multiply) {
+                    return;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);
+                if (num == 1) {
                     return;
                 }
                 var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
@@ -472,6 +502,16 @@ var GamePanel = /** @class */ (function (_super) {
                 if (this.bubble.opacity == 0) {
                     return;
                 }
+                if (this.shooting) {
+                    return;
+                }
+                if (this.multiply) {
+                    return;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);
+                if (num == 1) {
+                    return;
+                }
                 if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
                     this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                     AudioManager_1.AudioManager.getInstance().playSound('sfx_deleted');
@@ -495,6 +535,16 @@ var GamePanel = /** @class */ (function (_super) {
             }.bind(this_1));
             this_1.placementBallArr[i].getChildByName('spine').on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
                 if (this.bubble.opacity == 0) {
+                    return;
+                }
+                if (this.shooting) {
+                    return;
+                }
+                if (this.multiply) {
+                    return;
+                }
+                var num = parseInt(this.placementBallArr[i].getChildByName('label').getComponent(cc.Label).string);
+                if (num == 1) {
                     return;
                 }
                 if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
@@ -531,6 +581,11 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.addListenerOnDecomposeBall = function (ballNode) {
         var ball = ballNode.getChildByName('spine');
         ball.on(cc.Node.EventType.TOUCH_START, function (e) {
+            if (this.isOver != 1) {
+                this.isOver = 2;
+                this.eventvalue.result = 2;
+                this.eventvalue.levelData[this.checkpoint - 1].result = 2;
+            }
             AudioManager_1.AudioManager.getInstance().playSound('sfx_touchball');
             var location = this.node.convertToNodeSpaceAR(e.currentTouch._point);
             this.bubble.x = location.x;
@@ -585,6 +640,7 @@ var GamePanel = /** @class */ (function (_super) {
             var skinStr = this.skinString(num);
             if (this.bubble_none1.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if (this.gunNode.getChildByName('ballNode').opacity) {
+                    this.multiply = true;
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
                     var gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string);
@@ -622,6 +678,7 @@ var GamePanel = /** @class */ (function (_super) {
                 this.bubble_none1.node.opacity = 0;
                 this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                 if (this.bubble_1.opacity && this.bubble_2.opacity) {
+                    this.multiply = true;
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
                     AudioManager_1.AudioManager.getInstance().playSound('sfx_composing');
@@ -649,6 +706,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
             else if (this.bubble_none2.node.getBoundingBox().contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 if (this.gunNode.getChildByName('ballNode').opacity) {
+                    this.multiply = true;
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
                     var gunballNum = parseInt(this.gunNode.getChildByName('ballNode').getChildByName("label").getComponent(cc.Label).string);
@@ -686,6 +744,7 @@ var GamePanel = /** @class */ (function (_super) {
                 this.bubble_none2.node.opacity = 0;
                 this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_in', false);
                 if (this.bubble_1.opacity && this.bubble_2.opacity) {
+                    this.multiply = true;
                     this.isReadyShoot = false;
                     this.isDoubleOver = false;
                     AudioManager_1.AudioManager.getInstance().playSound('sfx_composing');
@@ -742,6 +801,7 @@ var GamePanel = /** @class */ (function (_super) {
                 if (trackEntry.animation.name == 'ball_in') {
                     _this.isReadyShoot = true;
                     _this.isDoubleOver = true;
+                    _this.multiply = false;
                 }
             });
         }
@@ -803,7 +863,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }.bind(this), this);
         ball.on(cc.Node.EventType.TOUCH_END, function (e) {
-            if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz') {
+            if (this.miya.getComponent(sp.Skeleton).animation == 'jump_xuangz' && !this.shooting) {
                 this.miya.getComponent(sp.Skeleton).addAnimation(0, 'in_idle', false);
                 var num = parseInt(ballNode.getChildByName('label').getComponent(cc.Label).string);
                 if (num == 1) {
@@ -852,7 +912,11 @@ var GamePanel = /** @class */ (function (_super) {
         if (this.gunNode.rotation != 0) {
             return;
         }
+        if (this.shooting) {
+            return;
+        }
         if (this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_1.opacity && this.isDoubleOver) {
+            this.shooting = true;
             var num = parseInt(this.bubble_1.getChildByName('label').getComponent(cc.Label).string);
             var ballNode_1 = this.gunNode.getChildByName('ballNode');
             ballNode_1.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
@@ -877,6 +941,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.bubble_1.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false);
         }
         else if (this.gunNode.getChildByName('ballNode').opacity == 0 && this.bubble_2.opacity && this.isDoubleOver) {
+            this.shooting = true;
             var num = parseInt(this.bubble_2.getChildByName('label').getComponent(cc.Label).string);
             var ballNode_2 = this.gunNode.getChildByName('ballNode');
             ballNode_2.getChildByName('spine').getComponent(sp.Skeleton).setSkin(this.skinString(num));
@@ -901,6 +966,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.bubble_2.getChildByName('spine').getComponent(sp.Skeleton).setAnimation(0, 'ball_out', false);
         }
         else if (this.gunNode.getChildByName('ballNode').opacity == 255 && this.answerArr.length < 25) {
+            this.shooting = true;
             this.bulletOut();
         }
         this.isReadyShoot = false;
@@ -949,9 +1015,10 @@ var GamePanel = /** @class */ (function (_super) {
             });
         }.bind(this), this);
         var shootEnd = cc.callFunc(function () {
+            var _this = this;
             this.bullet.opacity = 0;
             this.createBall(parseInt(num), 0, 0, parent, true);
-            this.gunNode.runAction(cc.rotateTo(0.5, 0));
+            this.gunNode.runAction(cc.sequence(cc.rotateTo(0.5, 0), cc.callFunc(function () { _this.shooting = false; })));
         }.bind(this), this);
         this.gunNode.runAction(cc.sequence(cc.rotateBy(0.5, angle), shootStart));
     };
@@ -1146,7 +1213,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.cueNum++;
             this.isOver = 2;
             this.eventvalue.result = 2;
-            this.eventvalue.levelData[this.checkpoint - 2].result = 2;
+            this.eventvalue.levelData[this.checkpoint - 1].result = 2;
             this.mask.active = true;
             this.closeClock();
             this.cueAnswer();
@@ -1251,6 +1318,9 @@ var GamePanel = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], GamePanel.prototype, "signNode", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GamePanel.prototype, "bg", void 0);
     __decorate([
         property(cc.BitmapFont)
     ], GamePanel.prototype, "font", void 0);
