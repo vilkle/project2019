@@ -686,7 +686,7 @@ export default class GamePanel extends BaseUI {
     }
 
     submisson() {
-        
+        this.sure.interactable = false;
         if(this.playerItemArr.length == 0) {
             return;
         }
@@ -727,6 +727,7 @@ export default class GamePanel extends BaseUI {
                         if(this.checkpointsNum == 1) {
                             this.addMask();
                         }else {
+                            this.sure.interactable = true;
                             this.nextCheckPoints();
                         }
                     }.bind(this));
@@ -755,6 +756,7 @@ export default class GamePanel extends BaseUI {
                         if(this.checkpointsNum == 1) {
                             this.addMask();
                         }else {
+                            this.sure.interactable = true;
                             this.nextCheckPoints();
                         }
                     }.bind(this));
@@ -803,7 +805,7 @@ export default class GamePanel extends BaseUI {
                     AudioManager.getInstance().stopAll();
                     AudioManager.getInstance().playSound("point4", false);
                 }.bind(this),
-                function(){}.bind(this));
+                function(){this.sure.interactable = true; }.bind(this));
             }
         }
     }
