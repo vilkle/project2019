@@ -261,13 +261,49 @@
     <script src="main.js" charset="utf-8"></script>
 
     <script>
-        var isOnlineEnv = /\/\/static\.haibian\.com/.test(window['location'].href)
-        var src = isOnlineEnv ? '//static.haibian.com/courseware/static/sdk/courseware-v1.0.0-alpha.js' : '//ceshi-static.haibian.com/courseware/static/sdk/courseware-v1.0.0-alpha.js'
+		var domainName = location.host.indexOf('localhost') < 0 ? location.host : 'ceshi-static.haibian.com';
+        var src = '//'+ domainName +'/courseware/static/sdk/courseware-v1.0.0-alpha.js';
         document.write('<script src="' + src + '"><\/script>')
     </script>
 
     <script type="text/javascript">
             (function () {
+                //错误上报
+                var url = location.search; //获取url中"?"符后的字串
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    var strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                    }
+                }
+
+                window.addEventListener('error', event => {
+                    console.log(event.error, '       addEventListener');
+                    errorLog(event.error.stack.split("\n"));
+                }, true)
+
+                var consoleError = window.console.error;
+                window.console.error = function () {
+                    // alert(JSON.stringify(arguments)); // 自定义处理
+                    console.log(JSON.stringify(arguments), '      window.console.error')
+                    consoleError && consoleError.apply(window, arguments);
+                    errorLog(JSON.stringify(arguments));
+                }
+
+                var errorLog = function (data) {
+                    console.log(data, '             errorLog')
+                    var img = new Image();
+                    img.src = (location.host.indexOf('ceshi-') < 0 ? 'https://logserver.haibian.com/statistical/?type=7&' : 'https://ceshi-statistical.haibian.com/?type=7&') +
+                        'course_id=' + theRequest["id"] +
+                        "&chapter_id=" + theRequest["chapter_id"] +
+                        "&user_id=" + theRequest["user_id"] +
+                        "&subject=" + theRequest["subject"] +
+                        "&event=" + "CoursewareErrorLogEvent" +
+                        "&identity=1" +
+                        "&extra=" + JSON.stringify({ ErrorLog: data, CoursewareName: "视算听算", url: location })
+                }
 
                 var splash = document.getElementById('splash');
                 splash.style.display = 'block';

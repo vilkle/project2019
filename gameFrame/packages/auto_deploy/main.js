@@ -5,7 +5,7 @@ var process = require('process');
 
 //courseware中对应该课件的目录
 var CoursewarePath = ''
-var GitLog = 'CC plugin auto_deploy commit automatically.'
+var GitLog = "CC plugin auto_deploy commit automatically."
 var EnginePath = ''
 
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
     //git 日志
     'gitLog'(arg1, arg2) {
       // Editor.log('收到消息', arg2)
-      GitLog = arg2;
+      GitLog = "\"" + arg2 + "\"";
     },
     //构建发布
     'clicked'() {
