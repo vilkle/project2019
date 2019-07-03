@@ -1,11 +1,12 @@
 (function() {"use strict";var __module = CC_EDITOR ? module : {exports:{}};var __filename = 'preview-scripts/assets/scripts/UI/panel/ErrorPanel.js';var __require = CC_EDITOR ? function (request) {return cc.require(request, require);} : function (request) {return cc.require(request, __filename);};function __define (exports, require, module) {"use strict";
-cc._RF.push(module, '78373xfPadEJ5IFn4sizh3z', 'ErrorPanel', __filename);
+cc._RF.push(module, '62396fj6HpA2bDKqeipYSpa', 'ErrorPanel', __filename);
 // scripts/UI/panel/ErrorPanel.ts
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var UIManager_1 = require("../../Manager/UIManager");
 var AudioManager_1 = require("../../Manager/AudioManager");
+var NetWork_1 = require("../../Http/NetWork");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var ErrorPanel = /** @class */ (function (_super) {
     __extends(ErrorPanel, _super);
@@ -36,6 +37,12 @@ var ErrorPanel = /** @class */ (function (_super) {
      */
     ErrorPanel.prototype.setPanel = function (shuoMing, biaoTi, tiShi, btnLab, callBack, isClose) {
         if (isClose === void 0) { isClose = false; }
+        var data = {
+            shuoMing: shuoMing,
+            biaoTi: biaoTi,
+            tiShi: tiShi
+        };
+        NetWork_1.NetWork.getInstance().LogJournalReport('ErrorPanelLog', data);
         AudioManager_1.AudioManager.getInstance().playSound("sfx_erro", false, 1);
         this.shuoMing.string = shuoMing;
         this.isClose = isClose;

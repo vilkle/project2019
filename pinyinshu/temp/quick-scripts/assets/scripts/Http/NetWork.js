@@ -1,5 +1,5 @@
 (function() {"use strict";var __module = CC_EDITOR ? module : {exports:{}};var __filename = 'preview-scripts/assets/scripts/Http/NetWork.js';var __require = CC_EDITOR ? function (request) {return cc.require(request, require);} : function (request) {return cc.require(request, __filename);};function __define (exports, require, module) {"use strict";
-cc._RF.push(module, '9cd01aQNbFMUY4sUMN0yYH5', 'NetWork', __filename);
+cc._RF.push(module, '1bddecyiw5PUJNJLNQLHfy1', 'NetWork', __filename);
 // scripts/Http/NetWork.ts
 
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -8,6 +8,7 @@ var UIManager_1 = require("../Manager/UIManager");
 var ErrorPanel_1 = require("../UI/panel/ErrorPanel");
 var NetWork = /** @class */ (function () {
     function NetWork() {
+        this.theRequest = null;
     }
     NetWork.getInstance = function () {
         if (this.instance == null) {
@@ -92,30 +93,37 @@ var NetWork = /** @class */ (function () {
      * 获取url参数
      */
     NetWork.prototype.GetRequest = function () {
+        if (this.theRequest != null) {
+            return this.theRequest;
+        }
+        this.theRequest = new Object();
         var url = location.search; //获取url中"?"符后的字串
-        var theRequest = new Object();
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);
             var strs = str.split("&");
             for (var i = 0; i < strs.length; i++) {
-                theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                this.theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
             }
         }
-        NetWork.courseware_id = theRequest["id"];
-        NetWork.title_id = theRequest["title_id"];
-        NetWork.user_id = theRequest["user_id"];
-        NetWork.empty = theRequest["empty"];
-        // LogWrap.log(typeof(theRequest["empty"]), "   ", NetWork.empty);
+        NetWork.courseware_id = this.theRequest["id"];
+        NetWork.title_id = this.theRequest["title_id"];
+        NetWork.user_id = this.theRequest["user_id"];
+        NetWork.empty = this.theRequest["empty"];
+        NetWork.isLive = this.theRequest['isLive'];
+        this.LogJournalReport('CoursewareLogEvent', '');
+        return this.theRequest;
+    };
+    NetWork.prototype.LogJournalReport = function (errorType, data) {
         if (ConstValue_1.ConstValue.IS_EDITIONS) {
             var img = new Image();
             img.src = (NetWork.isOnlineEnv ? 'https://logserver.haibian.com/statistical/?type=7&' : 'https://ceshi-statistical.haibian.com/?type=7&') +
-                'course_id=' + theRequest["id"] +
-                "&chapter_id=" + theRequest["chapter_id"] +
-                "&user_id=" + theRequest["user_id"] +
-                "&subject=" + theRequest["subject"] +
-                "&event=" + "CoursewareLogEvent" +
+                'course_id=' + this.GetRequest()["id"] +
+                "&chapter_id=" + this.GetRequest()["chapter_id"] +
+                "&user_id=" + this.GetRequest()["user_id"] +
+                "&subject=" + this.GetRequest()["subject"] +
+                "&event=" + errorType +
                 "&identity=1" +
-                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue_1.ConstValue.CoursewareKey, empty: theRequest["empty"] });
+                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue_1.ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: 'pinyinshu', data: data });
         }
     };
     NetWork.isOnlineEnv = location.host.indexOf('ceshi-') < 0 && location.host.indexOf('localhost') < 0;
@@ -132,6 +140,10 @@ var NetWork = /** @class */ (function () {
     NetWork.title_id = null;
     NetWork.user_id = null;
     NetWork.empty = false; //清理脏数据的开关，在URL里面拼此参数 = true；
+    NetWork.chapter_id = null;
+    NetWork.subject = null;
+    /*isLive参数已添加，直播课参数传YES，回放传NO  */
+    NetWork.isLive = null;
     return NetWork;
 }());
 exports.NetWork = NetWork;
