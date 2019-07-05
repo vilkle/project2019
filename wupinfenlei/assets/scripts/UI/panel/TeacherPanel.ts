@@ -15,7 +15,9 @@ export default class TeacherPanel extends BaseUI {
     @property(cc.Prefab)
     private autoOptionNode : cc.Prefab = null;
     @property(cc.Prefab)
-    private manualOptionNode : cc.Prefab = null;
+    private cookieOptionNode : cc.Prefab = null;
+    @property(cc.Prefab)
+    private figureOptionNode : cc.Prefab = null;
     @property(cc.Node)
     private content : cc.Node = null;
     @property(cc.Node)
@@ -33,12 +35,10 @@ export default class TeacherPanel extends BaseUI {
     @property(cc.Label)
     private tipLabel : cc.Label = null;
     @property(cc.Node)
-    private imageBoardNode : cc.Node = null;
     private tipNode : cc.Node = null;
     private typeArr : cc.Node[] = [];
     private typeDataArr : boolean[] = [];
     private toggleArr : cc.Toggle[] = [];
-    private spriteArr : cc.Sprite[] = [];
     // onLoad () {}
 
     start() {
@@ -135,32 +135,6 @@ export default class TeacherPanel extends BaseUI {
         });
     }
 
-    addImageBoard() {
-        this.imageBoardNode = cc.instantiate(this.imageBoard);
-        this.imageBoardNode.getChildByName('button').on('click', ()=>{
-            this.removeImageBoard();
-        });
-        let imageArr = [...this.imageBoardNode.getChildByName('ScrollView').getChildByName('view').getChildByName('content').getChildByName('layout').children]
-        let imageLenth = imageArr.length;
-        for(let i = 0; i < imageLenth; i++) {
-            imageArr[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
-                if(imageArr[i].scale == 1) {
-                    imageArr
-                }
-            });
-        }
-
-
-        cc.director.getScene().getChildByName('Canvas').getChildByName('TeacherPanel').addChild(this.imageBoardNode);
-        cc.log(cc.director.getScene());
-        
-    }
-
-    removeImageBoard() {
-        this.imageBoardNode.removeFromParent();
-        this.imageBoardNode.destroy();
-    }
-
     updateTypes() {
         for(let i = 0; i < this.typeArr.length; i++) {
             this.typeArr[i].destroy();
@@ -187,23 +161,23 @@ export default class TeacherPanel extends BaseUI {
             this.addToggleCallBack();
         }else if(DaAnData.getInstance().types == 2) {
             for(let i = 0; i < typeNum; i++) {
-                let optionNode = cc.instantiate(this.manualOptionNode);
+                let optionNode;
+                if(DaAnData.getInstance().typetype == 1) {
+                    optionNode = cc.instantiate(this.cookieOptionNode);
+                }else if(DaAnData.getInstance().typetype == 2) {
+                    optionNode = cc.instantiate(this.figureOptionNode);
+                }
                 optionNode.getChildByName('title').getComponent(cc.Label).string = this.titleChange(i + 1);
-                optionNode.getChildByName('button').getComponent(cc.Button).node.on('click', ()=>{
-                    cc.log(i);
-                    this.addImageBoard();
-                });
                 this.content.addChild(optionNode);
                 this.typeArr.push(optionNode);
             }
             //获取所有的sprite
-            this.spriteArr = [];
+            this.toggleArr = [];
             for(let i = 0; i < typeNum; i ++) {
-                for(let j = 0;  j < 10; j++) {
-                    this.spriteArr[i * 10 + j] = this.typeArr[i].children[j].getComponent(cc.Sprite);
+                for(let j = 0;  j < 27; j++) {
+                    this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').children[j].getComponent(cc.Toggle);
                 }
             }
-            cc.log('---------spriteArr', this.spriteArr);
         }
         this.buttonNode.zIndex = 100;
     }
@@ -229,14 +203,23 @@ export default class TeacherPanel extends BaseUI {
 
     updateTypesData() {
         this.typeDataArr = [];
-        for(let i = 0 ; i < this.typeArr.length; i++) {
-            for(let j = 0; j < 5; j++) {
-                this.typeDataArr[i * 20 + j] = this.typeArr[i].getChildByName('label1').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked;
-                this.typeDataArr[i * 20 + 5 + j] = this.typeArr[i].getChildByName('label2').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked;
-                this.typeDataArr[i * 20 + 10 + j] = this.typeArr[i].getChildByName('label3').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked;
-                this.typeDataArr[i * 20 + 15 + j] = this.typeArr[i].getChildByName('label4').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked;
+        if(DaAnData.getInstance().types == 1) {
+            for(let i = 0 ; i < this.typeArr.length; i++) {
+                for(let j = 0; j < 5; j++) {
+                    this.typeDataArr[i * 20 + j] = this.typeArr[i].getChildByName('label1').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked;
+                    this.typeDataArr[i * 20 + 5 + j] = this.typeArr[i].getChildByName('label2').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked;
+                    this.typeDataArr[i * 20 + 10 + j] = this.typeArr[i].getChildByName('label3').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked;
+                    this.typeDataArr[i * 20 + 15 + j] = this.typeArr[i].getChildByName('label4').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked;
+                }
+            }
+        }else if(DaAnData.getInstance().types == 2) {
+            for(let i = 0; i < this.typeArr.length; i++) {
+                for(let j = 0; j < 27; j++) {
+                    this.typeDataArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').children[j].getChildByName('toggle').getComponent(cc.Toggle).isChecked;
+                }
             }
         }
+        cc.log('-----typeDataArr', this.typeDataArr);
         DaAnData.getInstance().typeDataArr = [...this.typeDataArr];
     }
 
@@ -289,30 +272,44 @@ export default class TeacherPanel extends BaseUI {
             return false;
         }
         let alreadyCheck = 0;
-        let typeNum = 0;
-        let typeSet = new Set();
-        for(let i = 0; i < DaAnData.getInstance().checkpointsNum; i ++) {
-            for(let j = 20 * i; j < 20 * (i + 1); j ++) {
-                if(this.toggleArr[j].isChecked) {
-                    alreadyCheck++;
-                    typeSet.add(Math.floor(j/5));
+        if(DaAnData.getInstance().types == 1) {
+            let typeSet = new Set();
+            for(let i = 0; i < DaAnData.getInstance().checkpointsNum; i ++) {
+                for(let j = 20 * i; j < 20 * (i + 1); j ++) {
+                    if(this.toggleArr[j].isChecked) {
+                        alreadyCheck++;
+                        typeSet.add(Math.floor(j/5));
+                    }
                 }
+                cc.log('type num is ', typeSet.size());
+                if(alreadyCheck < 4) {
+                    this.tipLabel.string = this.titleChange(i + 1) + '选择物品不足四个，每关选择物品数至少四个，请继续选择物品。';
+                    this.tip();
+                    return false;
+                }
+                if(typeSet.size() <2) {
+                    this.tipLabel.string = this.titleChange(i + 1) + '选择物品种类不足两个，每关选择物品种类至少两个，请继续选择物品。';
+                    this.tip();
+                    return false;
+                }
+                alreadyCheck = 0;
+                typeSet.clear();
             }
-            cc.log('type num is ', typeSet.size());
-            if(alreadyCheck < 4) {
-                this.tipLabel.string = this.titleChange(i + 1) + '选择物品不足四个，每关选择物品数至少四个，请继续选择物品。';
-                this.tip();
-                return false;
+        }else if(DaAnData.getInstance().types == 2) {
+            for(let i = 0; i < DaAnData.getInstance().checkpointsNum; i++) {
+                for(let j = 0; j < 27; j ++) {
+                    if(this.toggleArr[j].isChecked) {
+                        alreadyCheck++;
+                    }
+                }
+                if(alreadyCheck < 4) {
+                    this.tipLabel.string = this.titleChange(i + 1) + '选择物品不足四个，每关选择物品数至少四个，请继续选择物品。';
+                    this.tip();
+                    return false;
+                }
+                alreadyCheck = 0;
             }
-            if(typeSet.size() <2) {
-                this.tipLabel.string = this.titleChange(i + 1) + '选择物品种类不足两个，每关选择物品种类至少两个，请继续选择物品。';
-                this.tip();
-                return false;
-            }
-            alreadyCheck = 0;
-            typeSet.clear();
         }
-      
         return true;
     }
 
