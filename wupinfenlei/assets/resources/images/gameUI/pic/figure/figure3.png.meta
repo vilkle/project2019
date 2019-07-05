@@ -8,7 +8,7 @@
   "subMetas": {
     "figure3": {
       "ver": "1.0.3",
-      "uuid": "90a0018c-f160-4bf0-9b2a-9c9ccca77f8e",
+      "uuid": "7a359a49-a0f3-4c95-9bee-8d62c7621087",
       "rawTextureUuid": "51523326-c2fb-4258-b730-9ec3a274302e",
       "trimType": "auto",
       "trimThreshold": 1,
@@ -17,10 +17,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 133,
-      "height": 133,
-      "rawWidth": 133,
-      "rawHeight": 133,
+      "width": 132,
+      "height": 132,
+      "rawWidth": 132,
+      "rawHeight": 132,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,
