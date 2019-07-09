@@ -4,6 +4,7 @@ import { NetWork } from "../../Http/NetWork";
 import { UIHelp } from "../../Utils/UIHelp";
 import { ConstValue } from "../../Data/ConstValue";
 import ErrorPanel from "./ErrorPanel";
+import { DaAnData } from "../../Data/DaAnData";
 
 const { ccclass, property } = cc._decorator;
 
@@ -31,7 +32,12 @@ export default class SubmissionPanel extends BaseUI {
             });
             return;
         }
-        let data = JSON.stringify({ CoursewareKey: ConstValue.CoursewareKey });
+        let data = JSON.stringify({ CoursewareKey: ConstValue.CoursewareKey,
+        types : DaAnData.getInstance().types,
+        typetype : DaAnData.getInstance().typetype,
+        checkpointsNum : DaAnData.getInstance().checkpointsNum,
+        typeDataArr : DaAnData.getInstance().typeDataArr
+    });
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 if (response.data.courseware_content == null || response.data.courseware_content == "") {

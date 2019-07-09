@@ -3,8 +3,11 @@ import { UIManager } from "../../Manager/UIManager";
 import SubmissionPanel from "./SubmissionPanel";
 import { NetWork } from "../../Http/NetWork";
 import { UIHelp } from "../../Utils/UIHelp";
-import { DaAnData} from "../../Data/DaAnData"
+import { DaAnData} from "../../Data/DaAnData";
 import Set from "../../collections/Set";
+import GamePanel from "./GamePanel";
+import {ListenerManager} from "../../Manager/ListenerManager";
+import {ListenerType} from "../../Data/ListenerType";
 
 const { ccclass, property } = cc._decorator;
 
@@ -15,35 +18,33 @@ export default class TeacherPanel extends BaseUI {
     @property(cc.Prefab)
     private autoOptionNode : cc.Prefab = null;
     @property(cc.Prefab)
-    private cookieOptionNode : cc.Prefab = null;
+    private manualOptionNode : cc.Prefab = null;
     @property(cc.Prefab)
-    private figureOptionNode : cc.Prefab = null;
+    private cookieNode : cc.Prefab = null;
+    @property(cc.Prefab)
+    private figureNode : cc.Prefab = null;
     @property(cc.Node)
     private content : cc.Node = null;
     @property(cc.Node)
     private buttonNode : cc.Node = null;
     @property(cc.Node)
     private pullNode : cc.Node = null;
-    @property(cc.Node)
-    private typeNode : cc.Node = null;
     @property(cc.Button)
     private checkpointButton : cc.Button = null;
     @property([cc.Toggle])
     private toggleContainer : cc.Toggle[] = [];
-    @property([cc.Toggle])
-    private typeToggleContainer : cc.Toggle[] = [];
     @property(cc.Label)
     private tipLabel : cc.Label = null;
     @property(cc.Node)
     private tipNode : cc.Node = null;
     private typeArr : cc.Node[] = [];
     private typeDataArr : boolean[] = [];
+    private typetype : number[] = [];
     private toggleArr : cc.Toggle[] = [];
     // onLoad () {}
 
     start() {
         this.getNet();
-     
     }
     
     onToggleContainer(toggle) {
@@ -51,12 +52,10 @@ export default class TeacherPanel extends BaseUI {
         switch(index) {
             case 0:
                 DaAnData.getInstance().types = 1;
-                this.typeNode.active = false;
                 this.updateTypes();
                 break;
             case 1:
                 DaAnData.getInstance().types = 2;
-                this.typeNode.active = true;
                 this.updateTypes();
                 break;
             default:
@@ -64,25 +63,42 @@ export default class TeacherPanel extends BaseUI {
         }
     }
 
-    onTypeToggleContainer(toggle) {
-        var index = this.typeToggleContainer.indexOf(toggle);
-        switch(index) {
-            case 0:
-                DaAnData.getInstance().typetype = 1;
-                this.updateTypes();
-                break;
-            case 1:
-                DaAnData.getInstance().typetype = 2;
-                this.updateTypes();
-                break;
-            default:
-                break;
+    onToggleCallBack(e) {
+        let toggle = e;
+        cc.log(this.typetype);
+        let index = this.typeArr.indexOf(toggle.node.parent.parent);
+        let typeNum = DaAnData.getInstance().checkpointsNum;
+        if(toggle.node.parent.children[0].getComponent(cc.Toggle).isChecked) {
+            if(this.typetype[index] == 2) {
+                this.typetype[index] = 1;
+                this.typeArr[index].getChildByName('imageNode').getChildByName('Node').destroy();
+                this.typeArr[index].getChildByName('imageNode').removeAllChildren();
+                let optionNode = cc.instantiate(this.cookieNode);
+                this.typeArr[index].getChildByName('imageNode').addChild(optionNode);  
+            } 
+        }else if(toggle.node.parent.children[1].getComponent(cc.Toggle).isChecked) {
+            if(this.typetype[index] == 1) {
+                this.typetype[index] = 2;
+                this.typeArr[index].getChildByName('imageNode').getChildByName('Node').destroy();
+                this.typeArr[index].getChildByName('imageNode').removeAllChildren();
+                let optionNode = cc.instantiate(this.figureNode);
+                this.typeArr[index].getChildByName('imageNode').addChild(optionNode);
+            } 
         }
+        DaAnData.getInstance().typetype = this.typetype;
+        this.toggleArr = [];
+        for(let i = 0; i < typeNum; i ++) {
+            for(let j = 0;  j < 27; j++) {
+                this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
+            }
+        }
+        
     }
-    
 
     one() {
         DaAnData.getInstance().checkpointsNum = 1;
+        this.typetype = [1];
+        DaAnData.getInstance().typetype = this.typetype;
         this.checkpointButton.node.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = '1   关';
         this.pullUp();
         this.updateTypes();
@@ -90,6 +106,8 @@ export default class TeacherPanel extends BaseUI {
 
     two() {
         DaAnData.getInstance().checkpointsNum = 2;
+        this.typetype = [1,1];
+        DaAnData.getInstance().typetype = this.typetype;
         this.checkpointButton.node.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = '2   关';
         this.pullUp();
         this.updateTypes();
@@ -97,6 +115,8 @@ export default class TeacherPanel extends BaseUI {
 
     three() {
         DaAnData.getInstance().checkpointsNum = 3;
+        this.typetype = [1,1,1];
+        DaAnData.getInstance().typetype = this.typetype;
         this.checkpointButton.node.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = '3   关';
         this.pullUp();
         this.updateTypes();
@@ -104,6 +124,8 @@ export default class TeacherPanel extends BaseUI {
 
     four() {
         DaAnData.getInstance().checkpointsNum = 4;
+        this.typetype = [1,1,1,1];
+        DaAnData.getInstance().typetype = this.typetype;
         this.checkpointButton.node.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = '4   关';
         this.pullUp();
         this.updateTypes();
@@ -111,6 +133,8 @@ export default class TeacherPanel extends BaseUI {
 
     five() {
         DaAnData.getInstance().checkpointsNum = 5;
+        this.typetype = [1,1,1,1,1];
+        DaAnData.getInstance().typetype = this.typetype;
         this.checkpointButton.node.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = '5   关';
         this.pullUp();
         this.updateTypes();
@@ -161,12 +185,11 @@ export default class TeacherPanel extends BaseUI {
             this.addToggleCallBack();
         }else if(DaAnData.getInstance().types == 2) {
             for(let i = 0; i < typeNum; i++) {
-                let optionNode;
-                if(DaAnData.getInstance().typetype == 1) {
-                    optionNode = cc.instantiate(this.cookieOptionNode);
-                }else if(DaAnData.getInstance().typetype == 2) {
-                    optionNode = cc.instantiate(this.figureOptionNode);
-                }
+                let optionNode = cc.instantiate(this.manualOptionNode);
+                let cookieNode = cc.instantiate(this.cookieNode);
+                optionNode.getChildByName('imageNode').addChild(cookieNode);
+                optionNode.getChildByName('Types').getChildByName('toggle1').on('toggle', this.onToggleCallBack, this);
+                optionNode.getChildByName('Types').getChildByName('toggle2').on('toggle', this.onToggleCallBack, this);
                 optionNode.getChildByName('title').getComponent(cc.Label).string = this.titleChange(i + 1);
                 this.content.addChild(optionNode);
                 this.typeArr.push(optionNode);
@@ -175,7 +198,7 @@ export default class TeacherPanel extends BaseUI {
             this.toggleArr = [];
             for(let i = 0; i < typeNum; i ++) {
                 for(let j = 0;  j < 27; j++) {
-                    this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').children[j].getComponent(cc.Toggle);
+                    this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
                 }
             }
         }
@@ -215,39 +238,76 @@ export default class TeacherPanel extends BaseUI {
         }else if(DaAnData.getInstance().types == 2) {
             for(let i = 0; i < this.typeArr.length; i++) {
                 for(let j = 0; j < 27; j++) {
-                    this.typeDataArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').children[j].getChildByName('toggle').getComponent(cc.Toggle).isChecked;
+                    this.typeDataArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle).isChecked;
                 }
             }
         }
-        cc.log('-----typeDataArr', this.typeDataArr);
         DaAnData.getInstance().typeDataArr = [...this.typeDataArr];
+        cc.log('------typedataarr', this.typeDataArr);
     }
 
     titleChange(index:number): string {
         let str : string;
         if(index == 1) {
-            str = '第一关';
+            str = '第一关：';
         }else if(index == 2) {
-            str = '第二关';
+            str = '第二关：';
         }else if(index == 3) {
-            str = '第三关';
+            str = '第三关：';
         }else if(index == 4) {
-            str = '第四关';
+            str = '第四关：';
         }else if(index == 5) {
-            str = '第五关';
+            str = '第五关：';
         }
         return str;
     }
 
     setPanel() {//设置教师端界面
-
+        this.updateTypes();
+        if(DaAnData.getInstance().types == 1) {
+            this.toggleContainer[0].isChecked = true;
+            this.typeDataArr = [...DaAnData.getInstance().typeDataArr]
+            for(let i = 0; i < this.typeArr.length; i++) {
+                for(let j = 0; j < 5; j ++) {
+                    for(let j = 0; j < 5; j++) {
+                        this.typeArr[i].getChildByName('label1').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked = this.typeDataArr[i * 20 + j];
+                        this.typeArr[i].getChildByName('label2').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked = this.typeDataArr[i * 20 + 5 + j];
+                        this.typeArr[i].getChildByName('label3').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked = this.typeDataArr[i * 20 + 10 + j];
+                        this.typeArr[i].getChildByName('label4').children[j].getChildByName('New Toggle').getComponent(cc.Toggle).isChecked = this.typeDataArr[i * 20 + 15 + j];
+                    }
+                }
+            }
+        }else if(DaAnData.getInstance().types == 2){
+            this.toggleContainer[1].isChecked = true;
+            this.typetype = DaAnData.getInstance().typetype;
+            cc.log(this.typetype);
+            for(let i = 0; i < this.typeArr.length; i++) {
+                if(this.typetype[i] == 1) {
+                    this.typeArr[i].getChildByName('Types').getChildByName('toggle1').getComponent(cc.Toggle).isChecked = true;
+                }else if(this.typetype[i] == 2) {
+                    this.typeArr[i].getChildByName('Types').getChildByName('toggle2').getComponent(cc.Toggle).isChecked = true;
+                }
+            }
+            this.typeDataArr = [...DaAnData.getInstance().typeDataArr]
+            for(let i = 0; i < this.typeArr.length; i++) {
+                for(let j = 0; j < 27; j++) {
+                    this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle).isChecked = this.typeDataArr[i * 27 + j];
+                }
+            }
+        }
+        if(DaAnData.getInstance().checkpointsNum != 0) {
+            this.checkpointButton.node.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = DaAnData.getInstance().checkpointsNum.toString() +'   关';
+        }
     }
 
     //上传课件按钮
     onBtnSaveClicked() {
         this.updateTypesData();
-        this.errorChecking();
-        //UIManager.getInstance().showUI(SubmissionPanel);
+        if(this.errorChecking()) {
+            UIManager.getInstance().showUI(GamePanel, () => {
+                ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
+            });
+        }
     }
 
     tipButtonCallBack() {
@@ -296,14 +356,23 @@ export default class TeacherPanel extends BaseUI {
                 typeSet.clear();
             }
         }else if(DaAnData.getInstance().types == 2) {
+            cc.log('=======toggleArr', this.toggleArr);
+            cc.log('=======typeArr', this.typeArr);
             for(let i = 0; i < DaAnData.getInstance().checkpointsNum; i++) {
-                for(let j = 0; j < 27; j ++) {
+                for(let j = 27 * i; j < 27 * (i + 1); j ++) {
                     if(this.toggleArr[j].isChecked) {
                         alreadyCheck++;
                     }
                 }
+                cc.log('------', alreadyCheck);
                 if(alreadyCheck < 4) {
                     this.tipLabel.string = this.titleChange(i + 1) + '选择物品不足四个，每关选择物品数至少四个，请继续选择物品。';
+                    this.tip();
+                    return false;
+                }
+                if(alreadyCheck > 10) {
+                    let num = alreadyCheck - 10;
+                    this.tipLabel.string = this.titleChange(i + 1) + `选择${alreadyCheck}个物品超过十个，每关选择物品数最多十个，请删除${num}个物品。`;
                     this.tip();
                     return false;
                 }
@@ -327,10 +396,35 @@ export default class TeacherPanel extends BaseUI {
                 if (NetWork.empty) {//如果URL里面带了empty参数 并且为true  就立刻清除数据
                     this.ClearNet();
                 } else {
-                    if (content != null) {
+                    if(content != null) {
+                        cc.log('-------content',content);
+                        if(content.types) {
+                            DaAnData.getInstance().types = content.types;
+                            cc.log(content.types);
+                        }else{
+                            console.log('getNet中返回的types的值为空');
+                        }
+                        if(content.typetype) {
+                            DaAnData.getInstance().typetype = content.typetype;
+                            cc.log(DaAnData.getInstance().typetype);
+                        }else{
+                            console.log('getNet中返回的typetype的值为空');
+                        }
+                        if(content.checkpointsNum){
+                            DaAnData.getInstance().checkpointsNum = content.checkpointsNum;
+                            cc.log(content.checkpointsNum);
+                        }else{
+                            console.log('getNet中返回的checkpointsNum的值为空');
+                        }
+                        if(content.typeDataArr) {
+                            DaAnData.getInstance().typeDataArr = content.typeDataArr;
+                            cc.log(content.typeDataArr);
+                        }else{
+                            console.log('getNet中返回的typeDataArr的值为空');
+                        }
                         this.setPanel();
-                    } else {
-                        this.setPanel();
+                    }else {
+                        console.log('getNet中返回的content是null');
                     }
                 }
             }
