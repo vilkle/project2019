@@ -92,7 +92,7 @@ export default class TeacherPanel extends BaseUI {
                 this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
             }
         }
-        
+        this.addToggleCallBack();
     }
 
     one() {
@@ -201,19 +201,40 @@ export default class TeacherPanel extends BaseUI {
                     this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
                 }
             }
+            this.addToggleCallBack();
         }
         this.buttonNode.zIndex = 100;
     }
 
     addToggleCallBack() {
         for(let i = 0; i < this.toggleArr.length; i++) {
-            this.toggleArr[i].node.on('toggle', ()=>{
-                let checkPointNum = Math.floor(i/20);
-                cc.log('checkpointN is ', checkPointNum);
+            this.toggleArr[i].node.off('toggle');
+        }
+        for(let i = 0; i < this.toggleArr.length; i++) {
+            cc.log('id is ', i);
+            cc.log('toggle is ', this.toggleArr[i]);
+            this.toggleArr[i].node.on('toggle', (e)=>{
+                var checkPointNum :number = 0;
+                cc.log(i,' types is ',DaAnData.getInstance().types);
+                if(DaAnData.getInstance().types == 1) {
+                    checkPointNum = Math.floor(i/20);
+                }else if(DaAnData.getInstance().types == 2) {
+                    checkPointNum = Math.floor(i/27);
+                }
+                cc.log('checkpointnum is ', checkPointNum);
+            
                 let alreadyCheck = 0;
-                for(let j = 20 * checkPointNum; j < 20 * (checkPointNum + 1); j++){
-                    if(this.toggleArr[j].isChecked) {
-                        alreadyCheck++;
+                if(DaAnData.getInstance().types == 1) {
+                    for(let j = 20 * checkPointNum; j < 20 * (checkPointNum + 1); j++){
+                        if(this.toggleArr[j].isChecked) {
+                            alreadyCheck++;
+                        }
+                    }
+                }else if(DaAnData.getInstance().types == 2) {
+                    for(let j = 27 * checkPointNum; j < 27 * (checkPointNum + 1); j++){
+                        if(this.toggleArr[j].isChecked) {
+                            alreadyCheck++;
+                        }
                     }
                 }
                 cc.log('alreadycheck is ', alreadyCheck);
@@ -295,6 +316,7 @@ export default class TeacherPanel extends BaseUI {
                 }
             }
         }
+        this.addToggleCallBack();
         if(DaAnData.getInstance().checkpointsNum != 0) {
             this.checkpointButton.node.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = DaAnData.getInstance().checkpointsNum.toString() +'   关';
         }
