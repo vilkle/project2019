@@ -28,6 +28,10 @@ export default class GamePanel extends BaseUI {
     private backButton : cc.Button = null;
     @property(cc.Node)
     private touchNode : cc.Node = null;
+    @property(cc.Node)
+    private loudSpeaker : cc.Node = null;
+    @property(cc.Layout)
+    private loudspeakerBox : cc.Layout = null;
     private selectNode : cc.Node = null;
     private types : number = 0;
     private typetype : number[] = [];
@@ -46,6 +50,8 @@ export default class GamePanel extends BaseUI {
     private player3 : number[] = [];
     private player4 : number[] = [];
     private typeArr : any[] = [];
+    private selectArr : boolean[] = [];
+    private finishArr : boolean[] = [];
     private checkpoint : number = 1;
     private selectType : number = 0;
     private touchTarget : any = null;
@@ -64,6 +70,10 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
+        this.loudspeakerBox.node.on(cc.Node.EventType.TOUCH_START, ()=>{
+            this.loudSpeaker.getComponent(sp.Skeleton).setAnimation(0, 'animation', false);
+        }); 
+
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
         console.log(location);
         console.log(location.search);
@@ -150,8 +160,12 @@ export default class GamePanel extends BaseUI {
     }
 
     setPanel() {
+        if(this.types==1) {
+            for(let i = 0; i < this.checkpointsNum; i++) {
+                this.finishArr.push(false);
+            }
+        }
         this.initAnswerArr(1);
-       
     }
 
     initAnswerArr(checkpoint:number) {
@@ -168,16 +182,21 @@ export default class GamePanel extends BaseUI {
                 }
             }
         }
-        cc.log('------', this.answer);
+        
+        if(this.types ==1) {
+            this.answer = [];
+            for(let j = (checkpoint-1)*long; j < checkpoint*long; j++) {
+                if(this.typeDataArr[j]) {
+                    this.answer.push(j);
+                }
+            }
+        }
+        cc.log('------@@@@@@@@@@@@@@@@@@@@@', this.answer);
+        cc.log('------', this.finishArr);
         //开始初始化
         this.progressBar(checkpoint, this.checkpointsNum);
         this.createItem(checkpoint);
         this.postItem();
-        if(this.types == 1) {
-            this.createAnswerBoard(checkpoint);
-        }else if(this.types == 2) {
-            this.createSelectBoard();
-        } 
     }
 
     setTag(item : cc.Node, tagName : string, size ?:number) {
@@ -196,57 +215,140 @@ export default class GamePanel extends BaseUI {
     }
 
     createSelectBoard() {
+        this.finishArr = [false , true ,false];
         this.selectNode = cc.instantiate(this.selectPrefab);
         this.selectNode.setPosition(cc.v2(0,0));
         cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this.selectNode);
         if(this.checkColor(this.checkpoint) > 1) {
             this.selectNode.getChildByName('colorNode').active = true;
+            this.selectArr[0] = true;
+            this.finishArr[0] = false;
         }else {
             this.selectNode.getChildByName('colorNode').active = false;
+            this.selectArr[0] = false;
+            this.finishArr[0] = true;
         }
         if(this.checkFigure(this.checkpoint) > 1) {
             this.selectNode.getChildByName('figureNode').active = true;
+            this.selectArr[1] = true;
+            this.finishArr[1] = false;
         }else {
             this.selectNode.getChildByName('figureNode').active = false;
+            this.selectArr[1] = false;
+            this.finishArr[1] = true;
         }
         if(this.checkSize(this.checkpoint) > 1) {
             this.selectNode.getChildByName('sizeNode').active = true;
+            this.selectArr[2] = true;
+            this.finishArr[2] = false;
         }else {
             this.selectNode.getChildByName('sizeNode').active = false;
+            this.selectArr[2] = false;
+            this.finishArr[2] = true;
         }
         for(let i = 0; i < this.selectNode.children.length; i++) {
-            this.selectNode.children[i].getChildByName('start').on(cc.Node.EventType.TOUCH_START, (e)=>{
-                this.selectNode.children[i].getChildByName('start').setScale(0.9);
+            this.selectNode.children[i].setPosition(cc.v2(this.selectNode.children[i].x-2000, this.selectNode.children[i].y));
+            this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+
+
+            this.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
+                cc.log('==finish arr', this.finishArr);
+                if(this.finishArr[i]) {
+                    this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, true), false);
+                    this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == this.getSelectAnimationName(i, true, true)) {
+                            this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, false), true);
+                        }
+                    });
+                    if( this.selectNode.children[i].getChildByName('bubble').scale == 1) {
+                        this.selectNode.children[i].getChildByName('bubble').runAction(cc.scaleTo(0.3, 0,0));
+                    }else{
+                        this.selectNode.children[i].getChildByName('bubble').runAction(cc.scaleTo(0.3, 1,1));
+                        this.selectNode.children[i].getChildByName('fireworks').opacity = 255;
+                        this.selectNode.children[i].getChildByName('fireworks').getComponent(sp.Skeleton).setAnimation(0, 'animation', false);
+                        this.selectNode.children[i].getChildByName('fireworks').getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                            if(trackEntry.animation.name == 'animation') {
+                                this.selectNode.children[i].getChildByName('fireworks').opacity = 0;
+                            }
+                        });
+                    }
+                }else {
+                    this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], true), false);
+                    this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == this.getSelectAnimationName(i, false, true)) {
+                            this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], false), true);
+                            this.selectType = i + 1;
+                            for(let i = 0; i < this.selectNode.children.length; i ++) {
+                                setTimeout(()=>{
+                                    if(i < this.selectNode.children.length - 1) {
+                                        this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                                    }else {
+                                        this.selectNode.children[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
+                                            this.createAnswerBoard(this.checkpoint);
+                                        })) );
+                                    }
+                                }, (this.selectNode.children.length-1-i)*100);     
+                            }
+                        }
+                    });
+                }
             });
-            this.selectNode.children[i].getChildByName('start').on(cc.Node.EventType.TOUCH_END, (e)=>{
-                this.selectNode.children[i].getChildByName('start').setScale(1);
-                this.selectType = i + 1;
-                this.selectNode.active = false;
-                this.createAnswerBoard(this.checkpoint);
+            this.selectNode.children[i].on(cc.Node.EventType.TOUCH_END, (e)=>{
+               
             });
-            this.selectNode.children[i].getChildByName('start').on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
-                this.selectNode.children[i].getChildByName('start').setScale(1);
-                this.selectType = i + 1;
-                this.selectNode.active = false;
-                this.createAnswerBoard(this.checkpoint);
+            this.selectNode.children[i].on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+              
             });
         }
     }
 
-    backButtonCallBack() {
-        let len = this.AnswerBoardArr.length;
-        for(let i = 0; i < len; i++) {
-            this.AnswerBoardArr[i].removeFromParent();
-            this.AnswerBoardArr[i].destroy();
-        }
-        this.removeListenerOnItem();
-        this.player1 = [];
-        this.player2 = [];
-        this.player3 = [];
-        this.player4 = [];
-        this.AnswerBoardArr = [];
+    resetSelect() {
+        this.selectNode.getChildByName('colorNode').stopAllActions();
+        this.selectNode.getChildByName('figureNode').stopAllActions();
+        this.selectNode.getChildByName('sizeNode').stopAllActions();
+        this.selectNode.getChildByName('colorNode').setPosition(cc.v2(-2536, -300));
+        this.selectNode.getChildByName('figureNode').setPosition(cc.v2(-1943, -300));
+        this.selectNode.getChildByName('sizeNode').setPosition(cc.v2(-1341, -300));
         this.selectNode.active = true;
-        this.backButton.node.active = false;
+        for(let i = 0; i < this.selectNode.children.length; i++) {
+            if(this.finishArr[i]) {
+                this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, false), true);
+            }else {
+                this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, false, false), true);
+            }
+            setTimeout(()=>{
+                this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+            },100*(this.selectNode.children.length-1-i));
+        }
+    }
+
+    backButtonCallBack() {
+
+        for(let i = 0; i < this.AnswerBoardArr.length; i++) {
+            setTimeout(()=>{
+                if(i < this.AnswerBoardArr.length -1) {
+                    this.AnswerBoardArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                }else {
+                    this.AnswerBoardArr[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
+                        if(i == this.AnswerBoardArr.length-1) {
+                            this.resetSelect();
+                            this.removeListenerOnItem();
+                            this.player1 = [];
+                            this.player2 = [];
+                            this.player3 = [];
+                            this.player4 = [];
+                            this.AnswerBoardArr = [];
+                            this.backButton.node.active = false;
+                            let len = this.AnswerBoardArr.length;
+                            for(let i = 0; i < len; i++) {
+                                this.AnswerBoardArr[i].removeFromParent();
+                                this.AnswerBoardArr[i].destroy();
+                            } 
+                        }
+                    })));
+                }
+            }, (this.AnswerBoardArr.length-i-1)*100); 
+        }
     }
     
     removeListenerOnItem() {
@@ -294,11 +396,18 @@ export default class GamePanel extends BaseUI {
                 if(this.touchTarget != e.target) {
                     return;
                }
+               this.logAnswer();
+               cc.log('[[[',this.answer);
                if(this.AnswerBoardArr[0].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[0].convertToNodeSpaceAR(e.currentTouch._point))) {
                     if(this.answer1.indexOf(this.answer[i]) != -1) {
                         cc.log("player lenth is",this.player1.length);
                         this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
                         this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].setScale(e.target.scale);
+                        cc.log(this.selectNode);
+                        if(this.types == 2) {
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].setScale(e.target.scale/2);
+                        }
                         this.player1.push(this.answer[i]);
                         this.touchNode.active = false;
                     }else {
@@ -310,6 +419,10 @@ export default class GamePanel extends BaseUI {
                     if(this.answer2.indexOf(this.answer[i])  != -1) {
                         this.AnswerBoardArr[1].getChildByName('answerNode').children[this.player2.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
                         this.AnswerBoardArr[1].getChildByName('answerNode').children[this.player2.length].setScale(e.target.scale);
+                        if(this.types == 2) {
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer2').children[this.player2.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer2').children[this.player2.length].setScale(e.target.scale/2);
+                        }
                         this.player2.push(this.answer[i]);
                         this.touchNode.active = false;
                     }else {
@@ -321,6 +434,10 @@ export default class GamePanel extends BaseUI {
                     if(this.answer3.indexOf(this.answer[i])  != -1) {
                         this.AnswerBoardArr[2].getChildByName('answerNode').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
                         this.AnswerBoardArr[2].getChildByName('answerNode').children[this.player3.length].setScale(e.target.scale);
+                        if(this.types == 2) {
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].setScale(e.target.scale/2);
+                        }
                         this.player3.push(this.answer[i]);
                         this.touchNode.active = false;
                     }else {
@@ -328,48 +445,140 @@ export default class GamePanel extends BaseUI {
                         e.target.opacity = 255;
                     }
                     this.touchTarget = null;
-               }else {
+               }else if(this.AnswerBoardArr[3].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[3].convertToNodeSpaceAR(e.currentTouch._point))) {
+                    if(this.answer4.indexOf(this.answer[i])  != -1) {
+                        this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                        this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].setScale(e.target.scale);
+                        if(this.types == 2) {
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].setScale(e.target.scale/2);
+                        }
+                        this.player4.push(this.answer[i]);
+                        this.touchNode.active = false;
+                    }else {
+                        this.touchNode.active = false;
+                        e.target.opacity = 255;
+                    }
+                    this.touchTarget = null;
+                }else {
                     this.touchNode.active = false;
                     e.target.opacity = 255;
                     this.touchTarget = null;
-               }
+                }
                if(this.isSuccess()) {
                     cc.log('----------------success');
-                    this.next();
+                    var finishNum:number = 0;
+                    if(this.types == 1) {
+                        this.finishArr[this.checkpoint-1] = true;
+                    }else if(this.types == 2) {
+                        this.finishArr[this.selectType - 1] = true;
+                    } 
+                    for(let i = 0; i < this.finishArr.length; i++) {
+                        if(this.finishArr[i]) {
+                            finishNum++;
+                        }
+                    }
+                    if(finishNum == this.finishArr.length) {
+                        this.success();
+                    }else {
+                        this.nextCheckPoint();
+                    }
                }
             });
         }
     }
 
-    next() {
+    nextCheckPoint() {
         if(this.types == 1) {
-            
+            this.checkpoint++;
+            for(let i = 0; i < this.ItemNodeArr.length; i++) {
+                this.ItemNodeArr[i].removeFromParent();
+                this.ItemNodeArr[i].destroy();
+            }
+            this.ItemNodeArr = [];
+            for(let i = 0; i < this.AnswerBoardArr.length; i++) {
+                this.AnswerBoardArr[i].removeFromParent();
+                this.AnswerBoardArr[i].destroy();
+            }
+            this.AnswerBoardArr = [];
+            this.player1 = [];
+            this.player2 = [];
+            this.player3 = [];
+            this.player4 = [];
+            this.answer1 = [];
+            this.answer2 = [];
+            this.answer3 = [];
+            this.answer4 = [];
+            this.initAnswerArr(this.checkpoint)
         }else if(this.types == 2) {
-            
+            this.backButtonCallBack();
         }
     }
+
+    success() {
+        UIHelp.showOverTip(2,'太棒啦，闯关成功！');
+    }
+
+    getSelectAnimationName(id : number, finish:boolean, click:boolean):string {
+        var name : string;
+        if(click) {
+            if(finish) {
+                if(id == 0) {
+                    name = 'luoqi_daan_dianji';
+                }else if(id == 1) {
+                    name = 'paipai_daan_dianji';
+                }else if(id == 2) {
+                    name = 'miya_daan_dianji';
+                }
+            }else {
+                if(id == 0) {
+                    name = 'luoqi_dianji';
+                }else if(id == 1) {
+                    name = 'paipai_dianji';
+                }else if(id == 2) {
+                    name = 'miya_dianji';
+                }
+            }
+        }else {
+            if(finish) {
+                if(id == 0) {
+                    name = 'luoqi_daan_idle';
+                }else if(id == 1) {
+                    name = 'paipai_daan_idle';
+                }else if(id == 2) {
+                    name = 'miya_daan_idle';
+                }
+            }else {
+                if(id == 0) {
+                    name = 'luoqi_idle';
+                }else if(id == 1) {
+                    name = 'paipai_idle';
+                }else if(id == 2) {
+                    name = 'miya_idle';
+                }
+            }
+        }
+       
+        return name;
+    }
     
-    addTouchListenerOnSelect() {
+    addListenerOnSelect() {
         if(this.selectNode) {
             for(let i = 0; i < this.selectNode.children.length; i++) {
-                this.selectNode.children[i].getChildByName('finish').on(cc.Node.EventType.TOUCH_START, (e)=>{
-                    this.selectNode.children[i].getChildByName('finish').setScale(0,9);
+                this.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
+                    this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], true), false);
+                    this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == this.getSelectAnimationName(i, this.finishArr[i], true)) {
+                            this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], false), true);
+                        }
+                    });
                 });
-                this.selectNode.children[i].getChildByName('finish').on(cc.Node.EventType.TOUCH_END, (e)=>{
-                    this.selectNode.children[i].getChildByName('finish').setScale(1);
-                    if(this.selectNode.children[i].getChildByName('bubble').active) {
-                        this.selectNode.children[i].getChildByName('bubble').active = false;
-                    }else {
-                        this.selectNode.children[i].getChildByName('bubble').active = true;
-                    }
+        
+                this.selectNode.children[i].on(cc.Node.EventType.TOUCH_END, (e)=>{
+                    
                 });
-                this.selectNode.children[i].getChildByName('finish').on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
-                    this.selectNode.children[i].getChildByName('finish').setScale(1);
-                    if(this.selectNode.children[i].getChildByName('bubble').active) {
-                        this.selectNode.children[i].getChildByName('bubble').active = false;
-                    }else { 
-                        this.selectNode.children[i].getChildByName('bubble').active = true;
-                    }
+                this.selectNode.children[i].on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+                   
                 });
             }
         }
@@ -400,6 +609,19 @@ export default class GamePanel extends BaseUI {
                     this.setTag(this.AnswerBoardArr[i], 'clothe');
                 }
             }
+            for(let i = 0; i < this.answer.length; i++) {
+                if(this.answer[i] < (this.checkpoint - 1) * 20 + 5) {
+                    this.answer1.push(this.answer[i]);
+                }else if(this.answer[i] >= (this.checkpoint - 1) * 20 + 5 && this.answer[i] < (this.checkpoint - 1) * 20 + 10) {
+                    this.answer2.push(this.answer[i]);
+                }else if(this.answer[i] >= (this.checkpoint - 1) * 20 + 10 && this.answer[i] < (this.checkpoint - 1) * 20 + 15) {
+                    this.answer3.push(this.answer[i]);
+                }else if(this.answer[i] >= (this.checkpoint - 1) * 20 + 15 && this.answer[i] < (this.checkpoint - 1) * 20 + 20) {
+                    this.answer4.push(this.answer[i]);
+                }
+            }
+            cc.log('^^^^^^^^^^^^^^^^^^^^')
+            this.logAnswer();
          
         }else if(this.types == 2) {
             if(this.selectType) {
@@ -617,7 +839,10 @@ export default class GamePanel extends BaseUI {
         }
         for(let i = 0; i < num; i++) {
             cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this.AnswerBoardArr[i]);
-            this.AnswerBoardArr[i].setPosition(cc.v2(startX + i * space, Y));
+            this.AnswerBoardArr[i].setPosition(cc.v2(startX + i * space - 2000, Y));
+            setTimeout(()=>{
+                this.AnswerBoardArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+            }, 100 * (num -1-i));   
         }
     }
 
@@ -628,45 +853,74 @@ export default class GamePanel extends BaseUI {
         let upY = 360;
         let downY = 210;
         let space = 210;
-        let upStartX = -(upNum - 1) * space / 2;
-        let downStartX = -(downNum - 1) * space / 2
+        let upStartX = -(upNum - 1) * space / 2 - 50;
+        let downStartX = -(downNum - 1) * space / 2 - 50;
         if(upNum == downNum) {
             for(let i = 0; i < num; i++) {
+                this.ItemNodeArr[i].opacity = 0;
                 cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this.ItemNodeArr[i]);
                 if(i < upNum){
                     this.ItemNodeArr[i].setPosition(cc.v2(upStartX + i*space,upY));
                 }else {
                     this.ItemNodeArr[i].setPosition(cc.v2(downStartX + (i - upNum)*space,downY));
                 }
+                setTimeout(() => {
+                    this.ItemNodeArr[i].runAction(cc.sequence(cc.spawn(cc.moveBy(0.8, cc.v2(50,0)), cc.fadeIn(0.8)), cc.callFunc(()=>{
+                        if(i == num - 1) {
+                            if(this.types == 1) {
+                                this.createAnswerBoard(this.checkpoint);
+                            }else if(this.types == 2) { 
+                                this.createSelectBoard()
+                            }
+                        }
+                    })) );
+                }, 50*i);
             }
         }else{
             for(let i = 0; i < num; i++) {
+                this.ItemNodeArr[i].opacity = 0;
                 cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this.ItemNodeArr[i]);
                 if(i < upNum) {
                     this.ItemNodeArr[i].setPosition(cc.v2(upStartX + i*space,upY));
                 }else {
                     this.ItemNodeArr[i].setPosition(cc.v2(downStartX + (i - upNum)*space,downY));
                 }
+                setTimeout(() => {
+                    this.ItemNodeArr[i].runAction(cc.sequence(cc.spawn(cc.moveBy(0.8, cc.v2(50,0)), cc.fadeIn(0.8)), cc.callFunc(()=>{
+                        if(i == num - 1) {
+                            if(this.types == 1) {
+                                this.createAnswerBoard(this.checkpoint);
+                            }else if(this.types == 2) { 
+                                this.createSelectBoard()
+                            }
+                        }
+                    })) );
+                }, 50*i);
             }
         }
     }
 
     progressBar(index : number, totalNum : number) {
-        for(let i = 0; i < 5; i++) {
-            this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
-            this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
-            this.progressNode.children[i].getChildByName('bar3').zIndex = 3;
-            if(i < totalNum) {
-                if(i == index-1) {
-                    this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
-                    this.progressNode.children[i].getChildByName('bar2').zIndex = 3;
-                    this.progressNode.children[i].getChildByName('bar3').zIndex = 2;
-                }else{
-                    this.progressNode.children[i].getChildByName('bar1').zIndex = 3;
-                    this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
-                    this.progressNode.children[i].getChildByName('bar3').zIndex = 1;
+        if(this.types == 1) {
+            this.progressNode.active = true;
+            for(let i = 0; i < 5; i++) {
+                this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
+                this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
+                this.progressNode.children[i].getChildByName('bar3').zIndex = 3;
+                if(i < totalNum) {
+                    if(i == index-1) {
+                        this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
+                        this.progressNode.children[i].getChildByName('bar2').zIndex = 3;
+                        this.progressNode.children[i].getChildByName('bar3').zIndex = 2;
+                    }else{
+                        this.progressNode.children[i].getChildByName('bar1').zIndex = 3;
+                        this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
+                        this.progressNode.children[i].getChildByName('bar3').zIndex = 1;
+                    }
                 }
             }
+        }else if(this.types == 2) {
+            this.progressNode.active = false;
         }
     }
 

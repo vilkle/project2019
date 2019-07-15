@@ -1,0 +1,48 @@
+
+laba.png
+size: 256,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bashou
+  rotate: false
+  xy: 208, 72
+  size: 29, 52
+  orig: 29, 52
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 25
+  size: 100, 99
+  orig: 100, 99
+  offset: 0, 0
+  index: -1
+yingzi
+  rotate: false
+  xy: 2, 11
+  size: 63, 12
+  orig: 63, 12
+  offset: 0, 0
+  index: -1
+yuan_1
+  rotate: true
+  xy: 104, 52
+  size: 72, 102
+  orig: 72, 102
+  offset: 0, 0
+  index: -1
+yuan_2
+  rotate: true
+  xy: 104, 2
+  size: 48, 69
+  orig: 48, 69
+  offset: 0, 0
+  index: -1
+yuan_3
+  rotate: false
+  xy: 175, 16
+  size: 22, 34
+  orig: 22, 34
+  offset: 0, 0
+  index: -1

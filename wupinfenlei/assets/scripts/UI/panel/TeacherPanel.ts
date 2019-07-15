@@ -49,13 +49,22 @@ export default class TeacherPanel extends BaseUI {
     
     onToggleContainer(toggle) {
         var index = this.toggleContainer.indexOf(toggle);
-        switch(index) {
+        switch(index) { 
             case 0:
                 DaAnData.getInstance().types = 1;
+                DaAnData.getInstance().checkpointsNum = 0;
+                this.checkpointButton.node.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = '选择关卡数';
+                this.content.getChildByName('label1').active = true;
+                this.checkpointButton.node.active = true;
                 this.updateTypes();
                 break;
             case 1:
+                this.typetype = [1];
+                DaAnData.getInstance().typetype = this.typetype;
                 DaAnData.getInstance().types = 2;
+                DaAnData.getInstance().checkpointsNum = 1;
+                this.content.getChildByName('label1').active = false;
+                this.checkpointButton.node.active = false;
                 this.updateTypes();
                 break;
             default:

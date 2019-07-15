@@ -1,0 +1,13 @@
+
+caiqi.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+caiqi
+  rotate: false
+  xy: 2, 2
+  size: 362, 138
+  orig: 362, 138
+  offset: 0, 0
+  index: -1
