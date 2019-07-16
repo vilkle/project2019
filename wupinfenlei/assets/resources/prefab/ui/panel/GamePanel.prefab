@@ -3117,6 +3117,9 @@
       "__id__": 1
     },
     "_enabled": true,
+    "bg": {
+      "__id__": 2
+    },
     "progressNode": {
       "__id__": 5
     },

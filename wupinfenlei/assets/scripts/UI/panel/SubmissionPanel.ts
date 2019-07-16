@@ -27,7 +27,7 @@ export default class SubmissionPanel extends BaseUI {
     //提交或者修改答案
     DetectionNet() {
         if (!NetWork.title_id) {
-            UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
+            UIManager.getInstance().openUI(ErrorPanel, 1000, null, () => {
                 (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel("titleId为空,请联系技术老师解决！\ntitleId=" + NetWork.title_id, "", "", "确定");
             });
             return;
@@ -49,7 +49,7 @@ export default class SubmissionPanel extends BaseUI {
                         if (res.CoursewareKey == ConstValue.CoursewareKey) {
                             this.ModifyNet(data);
                         } else {
-                            UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
+                            UIManager.getInstance().openUI(ErrorPanel, 1000, null, () => {
                                 (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel("该titleId已被使用,请联系技术老师解决！\ntitleId=" + NetWork.title_id, "", "", "确定");
                             });
                         }
@@ -61,7 +61,7 @@ export default class SubmissionPanel extends BaseUI {
 
     //添加答案信息
     AddNet(gameDataJson) {
-        let data = { title_id: NetWork.title_id, courseware_content: gameDataJson, is_result: 1, is_lavel: 0 };
+        let data = { title_id: NetWork.title_id, courseware_content: gameDataJson, is_result: 1, is_lavel: 1 };
         NetWork.getInstance().httpRequest(NetWork.ADD, "POST", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 UIHelp.showTip("答案提交成功");

@@ -17,6 +17,8 @@ export default class GamePanel extends BaseUI {
     protected static className = "GamePanel";
 
     @property(cc.Node)
+    private bg : cc.Node = null;
+    @property(cc.Node)
     private progressNode : cc.Node = null;
     @property(cc.Prefab)
     private bigNode : cc.Prefab = null;
@@ -40,6 +42,7 @@ export default class GamePanel extends BaseUI {
     private sourceSFArr : cc.SpriteFrame[] = [];
     private ItemNodeArr : cc.Node[] = [];
     private AnswerBoardArr : cc.Node[] = [];
+    private answerArr : number[][] = [];
     private answer : number[] = [];
     private answer1 : number[] = [];
     private answer2 : number[] = [];
@@ -55,6 +58,16 @@ export default class GamePanel extends BaseUI {
     private checkpoint : number = 1;
     private selectType : number = 0;
     private touchTarget : any = null;
+    private isOver : number = 0;
+    private eventvalue = {
+        isResult: 1,
+        isLevel: 1,
+        levelData: [
+
+        ],
+        result: 4
+    }
+
 
     onLoad() {
         if(ConstValue.IS_TEACHER) {
@@ -70,13 +83,19 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
+       
+        DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
+
+        this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            if(this.isOver != 1) {
+                this.isOver = 2;
+                this.eventvalue.result = 2;
+                this.eventvalue.levelData[this.checkpoint-1].result = 2;
+            }
+        });
         this.loudspeakerBox.node.on(cc.Node.EventType.TOUCH_START, ()=>{
             this.loudSpeaker.getComponent(sp.Skeleton).setAnimation(0, 'animation', false);
         }); 
-
-        DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
-        console.log(location);
-        console.log(location.search);
     }
 
     loadSourceSFArr() {
@@ -107,7 +126,6 @@ export default class GamePanel extends BaseUI {
                     for(let i = 0; i < assets.length; i++) {
                         this.sourceSFArr.push(assets[i]);
                         if(this.sourceSFArr.length == 20) {
-                            cc.log('----------');
                             this.setPanel();
                         }
                     }
@@ -148,8 +166,15 @@ export default class GamePanel extends BaseUI {
             });
             DataReporting.isRepeatReport = false;
         }
+        if(this.eventvalue.isResult == 1) {
+            this.isOver = 1;
+        }else {
+            if(this.eventvalue.levelData.length == 0) {
+                this.isOver = 0;
+            }
+        }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
+        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
     }
 
     onDestroy() {
@@ -164,6 +189,13 @@ export default class GamePanel extends BaseUI {
             for(let i = 0; i < this.checkpointsNum; i++) {
                 this.finishArr.push(false);
             }
+        }
+        for(let i = 0; i < this.checkpointsNum; i++) {
+            this.eventvalue.levelData.push({
+                subject: [],
+                answer: [],
+                result: 4
+            });
         }
         this.initAnswerArr(1);
     }
@@ -191,8 +223,6 @@ export default class GamePanel extends BaseUI {
                 }
             }
         }
-        cc.log('------@@@@@@@@@@@@@@@@@@@@@', this.answer);
-        cc.log('------', this.finishArr);
         //开始初始化
         this.progressBar(checkpoint, this.checkpointsNum);
         this.createItem(checkpoint);
@@ -252,7 +282,6 @@ export default class GamePanel extends BaseUI {
 
 
             this.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
-                cc.log('==finish arr', this.finishArr);
                 if(this.finishArr[i]) {
                     this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, true), false);
                     this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
@@ -337,6 +366,7 @@ export default class GamePanel extends BaseUI {
                             this.player2 = [];
                             this.player3 = [];
                             this.player4 = [];
+                            this.answerArr = [];
                             this.AnswerBoardArr = [];
                             this.backButton.node.active = false;
                             let len = this.AnswerBoardArr.length;
@@ -384,7 +414,6 @@ export default class GamePanel extends BaseUI {
                this.touchNode.setPosition(point);
             });
             this.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_END, (e)=>{
-                cc.log(this.touchTarget, e.target);
                 if(this.touchTarget != e.target) {
                     return;
                }
@@ -395,28 +424,35 @@ export default class GamePanel extends BaseUI {
             this.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
                 if(this.touchTarget != e.target) {
                     return;
-               }
-               this.logAnswer();
-               cc.log('[[[',this.answer);
-               if(this.AnswerBoardArr[0].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[0].convertToNodeSpaceAR(e.currentTouch._point))) {
-                    if(this.answer1.indexOf(this.answer[i]) != -1) {
-                        cc.log("player lenth is",this.player1.length);
-                        this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                        this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].setScale(e.target.scale);
-                        cc.log(this.selectNode);
-                        if(this.types == 2) {
-                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].setScale(e.target.scale/2);
+                }
+                let rightNum = 0;
+               if(this.AnswerBoardArr[0]) {
+                    if(this.AnswerBoardArr[0].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[0].convertToNodeSpaceAR(e.currentTouch._point))) {
+                        if(this.answerArr[0].indexOf(this.answer[i]) != -1) {
+                            this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                            this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].setScale(e.target.scale);
+                            if(this.types == 2) {
+                                this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                                this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].setScale(e.target.scale/2);
+                            }
+                            this.player1.push(this.answer[i]);
+                            this.touchNode.active = false;
+                        }else {
+                            this.touchNode.active = false;
+                            e.target.opacity = 255;
                         }
-                        this.player1.push(this.answer[i]);
-                        this.touchNode.active = false;
-                    }else {
-                        this.touchNode.active = false;
-                        e.target.opacity = 255;
+                        this.touchTarget = null;
+                        cc.log(this.eventvalue);
+                        this.eventvalue.levelData[this.checkpoint-1].answer[0] = this.answerArr[0];
+                        this.eventvalue.levelData[this.checkpoint-1].subject[0] = this.player1;
+                        this.eventvalue.levelData[this.checkpoint-1].result = 2;
+                        this.eventvalue.result = 2;
+                        rightNum ++;
                     }
-                    this.touchTarget = null;
-               }else if(this.AnswerBoardArr[1].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[1].convertToNodeSpaceAR(e.currentTouch._point))) {
-                    if(this.answer2.indexOf(this.answer[i])  != -1) {
+               }
+               if(this.AnswerBoardArr[1]) {
+                   if(this.AnswerBoardArr[1].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[1].convertToNodeSpaceAR(e.currentTouch._point))) {
+                    if(this.answerArr[1].indexOf(this.answer[i])  != -1) {
                         this.AnswerBoardArr[1].getChildByName('answerNode').children[this.player2.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
                         this.AnswerBoardArr[1].getChildByName('answerNode').children[this.player2.length].setScale(e.target.scale);
                         if(this.types == 2) {
@@ -430,8 +466,16 @@ export default class GamePanel extends BaseUI {
                         e.target.opacity = 255;
                     }
                     this.touchTarget = null;
-               }else if(this.AnswerBoardArr[2].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[2].convertToNodeSpaceAR(e.currentTouch._point))) {
-                    if(this.answer3.indexOf(this.answer[i])  != -1) {
+                    this.eventvalue.levelData[this.checkpoint-1].answer[1] = this.answerArr[1];
+                    this.eventvalue.levelData[this.checkpoint-1].subject[1] = this.player2;
+                    this.eventvalue.levelData[this.checkpoint-1].result = 2;
+                    this.eventvalue.result = 2;
+                    rightNum ++;
+                   }
+               }
+               if(this.AnswerBoardArr[2]) {
+                   if(this.AnswerBoardArr[2].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[2].convertToNodeSpaceAR(e.currentTouch._point))) {
+                    if(this.answerArr[2].indexOf(this.answer[i])  != -1) {
                         this.AnswerBoardArr[2].getChildByName('answerNode').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
                         this.AnswerBoardArr[2].getChildByName('answerNode').children[this.player3.length].setScale(e.target.scale);
                         if(this.types == 2) {
@@ -445,28 +489,42 @@ export default class GamePanel extends BaseUI {
                         e.target.opacity = 255;
                     }
                     this.touchTarget = null;
-               }else if(this.AnswerBoardArr[3].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[3].convertToNodeSpaceAR(e.currentTouch._point))) {
-                    if(this.answer4.indexOf(this.answer[i])  != -1) {
-                        this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                        this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].setScale(e.target.scale);
-                        if(this.types == 2) {
-                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].setScale(e.target.scale/2);
+                    this.eventvalue.levelData[this.checkpoint-1].answer[2] = this.answerArr[2];
+                    this.eventvalue.levelData[this.checkpoint-1].subject[2] = this.player3;
+                    this.eventvalue.levelData[this.checkpoint-1].result = 2;
+                    this.eventvalue.result = 2;
+                    rightNum ++;
+                   }
+               }
+               if(this.AnswerBoardArr[3]) {
+                    if(this.AnswerBoardArr[3].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[3].convertToNodeSpaceAR(e.currentTouch._point))) {
+                        if(this.answerArr[3].indexOf(this.answer[i])  != -1) {
+                            this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                            this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].setScale(e.target.scale);
+                            if(this.types == 2) {
+                                this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
+                                this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].setScale(e.target.scale/2);
+                            }
+                            this.player4.push(this.answer[i]);
+                            this.touchNode.active = false;
+                        }else {
+                            this.touchNode.active = false;
+                            e.target.opacity = 255;
                         }
-                        this.player4.push(this.answer[i]);
-                        this.touchNode.active = false;
-                    }else {
-                        this.touchNode.active = false;
-                        e.target.opacity = 255;
+                        this.touchTarget = null;
+                        this.eventvalue.levelData[this.checkpoint-1].answer[3] = this.answerArr[3];
+                        this.eventvalue.levelData[this.checkpoint-1].subject[3] = this.player4;
+                        this.eventvalue.levelData[this.checkpoint-1].result = 2;
+                        this.eventvalue.result = 2;
+                        rightNum ++;
                     }
-                    this.touchTarget = null;
-                }else {
+                }
+                if(rightNum == 0){
                     this.touchNode.active = false;
                     e.target.opacity = 255;
                     this.touchTarget = null;
                 }
                if(this.isSuccess()) {
-                    cc.log('----------------success');
                     var finishNum:number = 0;
                     if(this.types == 1) {
                         this.finishArr[this.checkpoint-1] = true;
@@ -479,8 +537,12 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                     if(finishNum == this.finishArr.length) {
+                        this.eventvalue.levelData[this.checkpoint-1].result = 1;
+                        this.eventvalue.result = 1;
+                        this.isOver = 1;
                         this.success();
                     }else {
+                        this.eventvalue.levelData[this.checkpoint-1].result = 1;
                         this.nextCheckPoint();
                     }
                }
@@ -490,33 +552,69 @@ export default class GamePanel extends BaseUI {
 
     nextCheckPoint() {
         if(this.types == 1) {
-            this.checkpoint++;
-            for(let i = 0; i < this.ItemNodeArr.length; i++) {
-                this.ItemNodeArr[i].removeFromParent();
-                this.ItemNodeArr[i].destroy();
-            }
-            this.ItemNodeArr = [];
-            for(let i = 0; i < this.AnswerBoardArr.length; i++) {
-                this.AnswerBoardArr[i].removeFromParent();
-                this.AnswerBoardArr[i].destroy();
-            }
-            this.AnswerBoardArr = [];
-            this.player1 = [];
-            this.player2 = [];
-            this.player3 = [];
-            this.player4 = [];
-            this.answer1 = [];
-            this.answer2 = [];
-            this.answer3 = [];
-            this.answer4 = [];
-            this.initAnswerArr(this.checkpoint)
+            UIHelp.AffirmTip(1,'答对啦！你真棒～',()=>{
+
+            },()=>{
+                this.checkpoint++;
+                for(let i = 0; i < this.ItemNodeArr.length; i++) {
+                    this.ItemNodeArr[i].removeFromParent();
+                    this.ItemNodeArr[i].destroy();
+                }
+                this.ItemNodeArr = [];
+                for(let i = 0; i < this.AnswerBoardArr.length; i++) {
+                    this.AnswerBoardArr[i].removeFromParent();
+                    this.AnswerBoardArr[i].destroy();
+                }
+                this.AnswerBoardArr = [];
+                this.player1 = [];
+                this.player2 = [];
+                this.player3 = [];
+                this.player4 = [];
+                this.answer1 = [];
+                this.answer2 = [];
+                this.answer3 = [];
+                this.answer4 = [];
+                this.answerArr = [];
+                this.initAnswerArr(this.checkpoint)
+            },'关闭','下一关',1);
+            
         }else if(this.types == 2) {
-            this.backButtonCallBack();
+            UIHelp.showOverTip(1,'答对啦！你真棒！试试其他办法吧～', this.backButtonCallBack.bind(this));
         }
     }
 
     success() {
-        UIHelp.showOverTip(2,'太棒啦，闯关成功！');
+        DaAnData.getInstance().submitEnable = true;
+        if(this.types == 1) {
+            UIHelp.AffirmTip(1,'闯关成功，你真棒～',()=>{
+            },()=>{
+                this.checkpoint = 1;
+                for(let i = 0; i < this.ItemNodeArr.length; i++) {
+                    this.ItemNodeArr[i].removeFromParent();
+                    this.ItemNodeArr[i].destroy();
+                }
+                this.ItemNodeArr = [];
+                for(let i = 0; i < this.AnswerBoardArr.length; i++) {
+                    this.AnswerBoardArr[i].removeFromParent();
+                    this.AnswerBoardArr[i].destroy();
+                }
+                this.AnswerBoardArr = [];
+                this.player1 = [];
+                this.player2 = [];
+                this.player3 = [];
+                this.player4 = [];
+                this.answer1 = [];
+                this.answer2 = [];
+                this.answer3 = [];
+                this.answer4 = [];
+                this.answerArr = [];
+                this.finishArr = [];
+                this.setPanel();
+            },'关闭','重玩一次',2);
+        }else if(this.types == 2) {
+            UIHelp.showOverTip(2,'闯关成功，你真棒～');
+        }
+        
     }
 
     getSelectAnimationName(id : number, finish:boolean, click:boolean):string {
@@ -620,15 +718,23 @@ export default class GamePanel extends BaseUI {
                     this.answer4.push(this.answer[i]);
                 }
             }
-            cc.log('^^^^^^^^^^^^^^^^^^^^')
-            this.logAnswer();
-         
+            if(this.answer1.length) {
+                this.answerArr.push(this.answer1);
+            }
+            if(this.answer2.length) {
+                this.answerArr.push(this.answer2);
+            }
+            if(this.answer3.length) {
+                this.answerArr.push(this.answer3);
+            }
+            if(this.answer4.length) {
+                this.answerArr.push(this.answer4);
+            }
         }else if(this.types == 2) {
             if(this.selectType) {
                switch(this.selectType) {
                     case 1: {
                         this.checkColor(this.checkpoint);
-                        this.logAnswer();
                         if(this.answer1.length){
                             let node  = cc.instantiate(this.bigNode);
                             this.setTag(node, 'blue');
@@ -648,7 +754,6 @@ export default class GamePanel extends BaseUI {
                     }
                     case 2: {
                         this.checkFigure(this.checkpoint);
-                        this.logAnswer();
                         if(this.answer1.length) {
                             let node = cc.instantiate(this.bigNode);
                             if(this.typetype[this.checkpoint - 1] == 1) {
@@ -680,7 +785,6 @@ export default class GamePanel extends BaseUI {
                     }
                     case 3: {
                         this.checkSize(this.checkpoint);
-                        this.logAnswer();
                         if(this.answer1.length) {
                             let node = cc.instantiate(this.bigNode);
                             this.setTag(node ,'figureSquare', 1);
@@ -703,18 +807,19 @@ export default class GamePanel extends BaseUI {
                     }
                }
             }
+            if(this.answer1.length) {
+                this.answerArr.push(this.answer1);
+            }
+            if(this.answer2.length) {
+                this.answerArr.push(this.answer2);
+            }
+            if(this.answer3.length) {
+                this.answerArr.push(this.answer3);
+            }
             this.backButton.node.active = true;
         }
         this.postAnswerBoard();
         this.addListenerOnItem();
-    }
-
-    logAnswer() {
-        cc.log(this.answer1);
-        cc.log(this.answer2);
-        cc.log(this.answer3);
-        cc.log(this.answer4);
-
     }
 
     checkColor(checkpoint:number) : number {
@@ -747,7 +852,7 @@ export default class GamePanel extends BaseUI {
         this.answer1 = [];
         this.answer2 = [];
         this.answer3 = [];
-        let standard1 = [0,1,2,9,10,11,17,18,19];
+        let standard1 = [0,1,2,9,10,11,18,19,20];
         let standard2 = [3,4,5,12,13,14,21,22,23];
         let standard3 = [6,7,8,15,16,17,24,25,26];
         var typeNum = 0;
@@ -925,21 +1030,24 @@ export default class GamePanel extends BaseUI {
     }
 
     isSuccess():boolean {
-        this.answer1.sort();
-        this.answer2.sort();
-        this.answer3.sort();
-        this.answer4.sort();
+        for(let i = 0; i < 4; i++) {
+            if(!this.answerArr[i]) {
+                this.answerArr.push([]);
+            }
+        }
+        this.answerArr[0].sort();
+        this.answerArr[1].sort();
+        this.answerArr[2].sort();
+        this.answerArr[3].sort();
         this.player1.sort();
         this.player2.sort();
         this.player3.sort();
         this.player4.sort();
    
-        let result1 = this.isEqual(this.answer1, this.player1);
-        let result2 = this.isEqual(this.answer2, this.player2);
-        let result3 = this.isEqual(this.answer3, this.player3);
-        let result4 = this.isEqual(this.answer4, this.player4);
-        cc.log(this.answer1, this.player1, this.answer2, this.player2, this.answer3, this.player3, this.answer4,this.player4);
-        cc.log(result1, result2, result3, result4);
+        let result1 = this.isEqual(this.answerArr[0], this.player1);
+        let result2 = this.isEqual(this.answerArr[1], this.player2);
+        let result3 = this.isEqual(this.answerArr[2], this.player3);
+        let result4 = this.isEqual(this.answerArr[3], this.player4);
         if(result1&&result2&&result3&&result4) {
             return true;
         }else {
@@ -971,28 +1079,23 @@ export default class GamePanel extends BaseUI {
                 }
                 let content = JSON.parse(response_data.data.courseware_content);
                 if (content != null) {
-                    cc.log('-------content',content);
                     if(content.types) {
                         this.types = content.types;
-                        cc.log(content.types);
                     }else{
                         console.log('getNet中返回的types的值为空');
                     }
                     if(content.typetype) {
                        this.typetype = content.typetype;
-                        cc.log(content.typetype);
                     }else{
                         console.log('getNet中返回的typetype的值为空');
                     }
                     if(content.checkpointsNum){
                         this.checkpointsNum = content.checkpointsNum;
-                        cc.log(content.checkpointsNum);
                     }else{
                         console.log('getNet中返回的checkpointsNum的值为空');
                     }
                     if(content.typeDataArr) {
                         this.typeDataArr = content.typeDataArr;
-                        cc.log(content.typeDataArr);
                     }else{
                         console.log('getNet中返回的typeDataArr的值为空');
                     }

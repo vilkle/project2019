@@ -280,16 +280,23 @@
                     }
                 }
 
-                window.addEventListener('error', event => {
-                    // console.log(event.error, '       addEventListener');
+                window.addEventListener('error', function (event) {
+                    console.log(event.error, '       addEventListener');
                     errorLog(event.error.stack.split("\n"));
                 }, true)
 
                 var consoleError = window.console.error;
                 window.console.error = function () {
-                    // console.log(JSON.stringify(arguments), '      window.console.error')
+                    if (typeof (arguments[0]) == "object") {
+                        var alt = {};
+                        Object.getOwnPropertyNames(arguments[0]).forEach(function (key) {
+                            alt[key] = this[key];
+                        }, arguments[0]);
+                        errorLog(JSON.stringify(alt));
+                    } else {
+                        errorLog(JSON.stringify(arguments[0]));
+                    }
                     consoleError && consoleError.apply(window, arguments);
-                    errorLog(JSON.stringify(arguments));
                 }
 
                 var errorLog = function (data) {

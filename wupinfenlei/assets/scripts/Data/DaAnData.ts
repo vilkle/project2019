@@ -4,7 +4,7 @@ export class DaAnData {
     public typetype : number[] = [];//饼干1图形2
     public checkpointsNum = 0; //关卡数目
     public typeDataArr : boolean[] = [];
-
+    public submitEnable = false;
    
     static getInstance() {
         if (this.instance == null) {

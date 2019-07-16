@@ -12,7 +12,7 @@ export class UIHelp {
     public static showTip(message: string) {
         let tipUI = UIManager.getInstance().getUI(TipUI) as TipUI;
         if (!tipUI) {
-            UIManager.getInstance().openUI(TipUI, 200, () => {
+            UIManager.getInstance().openUI(TipUI, 200, null,() => {
                 UIHelp.showTip(message);
             });
         }
@@ -29,7 +29,7 @@ export class UIHelp {
     public static showOverTip(type:number, str:string="",callback:Function =null) {
         let overTips = UIManager.getInstance().getUI(OverTips) as OverTips;
         if (!overTips) {
-            UIManager.getInstance().openUI(OverTips, 210, () => {
+            UIManager.getInstance().openUI(OverTips, 210, null,() => {
                 UIHelp.showOverTip(type, str,callback);
             });
         }
@@ -43,15 +43,15 @@ export class UIHelp {
      * @param message tips文字内容
      * @param type tips类型  0:内容tips   1:系统tips
      */
-    public static AffirmTip(type: number, des: string, callback: any, btnCloselDes?: string, btnOkDes?: string) {
+    public static AffirmTip(type: number, des: string, callbackClose: any, callbackOk: any,btnCloselDes?: string, btnOkDes?: string, num ?: number) {
         let overTips = UIManager.getInstance().getUI(AffirmTips) as AffirmTips;
         if (!overTips) {
-            UIManager.getInstance().openUI(AffirmTips, 210, () => {
-                UIHelp.AffirmTip(type, des,callback,btnCloselDes,btnOkDes);
+            UIManager.getInstance().openUI(AffirmTips, 210, null,() => {
+                UIHelp.AffirmTip(type, des,callbackClose, callbackOk,btnCloselDes,btnOkDes, num);
             });
         }
         else {
-            overTips.init(type, des,callback,btnCloselDes,btnOkDes);
+            overTips.init(type, des,callbackClose, callbackOk, btnCloselDes,btnOkDes,num);
         }
     }
 

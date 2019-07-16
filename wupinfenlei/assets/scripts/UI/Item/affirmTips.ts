@@ -26,25 +26,25 @@ export class AffirmTips extends BaseUI {
     private win: cc.Node = null; //描述节点
     @property(cc.Node)
     private fail: cc.Node = null; //描述节点
-
-    private callback = null;
+    private callbackOk = null;
+    private callbackClose = null;
     private type: number;
     start() {
 
     }
 
     //type 成功 1 失败 2
-    init(type: number, des: string, callback: any, btnCloselDes?: string, btnOkDes?: string) {
+    init(type: number, des: string, callbackClose: any, callbackOk: any,btnCloselDes?: string, btnOkDes?: string, num?: number) {
         this.title.node.active = false;
         this.des.node.active = true;
         this.win.active = type == 1;
         this.fail.active = type == 2;
         this.type = type;
-        this.callback = callback;
+        this.callbackOk = callbackOk;
         //console.log("到了初始化");
         //Tools.playSpine(this.sp_BgAnimator, "fault", false);
         this.des.string = des;
-        this.callback = callback;
+        this.callbackClose = callbackClose;
         if (btnCloselDes) {
             btnCloselDes == "" ? "取消" : btnCloselDes;
             this.btnCloseLabel.string = btnCloselDes;
@@ -52,6 +52,9 @@ export class AffirmTips extends BaseUI {
         if (btnOkDes) {
             btnOkDes == "" ? "确定" : btnOkDes;
             this.btnOkLabel.string = btnOkDes;
+        }
+        if(num == 1) {
+            this.close.interactable = false;
         }
 
     }
@@ -90,13 +93,13 @@ export class AffirmTips extends BaseUI {
     OnClickOk() {
         console.log("确认");
         UIManager.getInstance().closeUI(AffirmTips);
-        this.callback(1);
+        this.callbackOk();
     }
 
     OnClickCancel() {
         console.log("取消");
         UIManager.getInstance().closeUI(AffirmTips);
-        this.callback(0);
+        this.callbackClose();
     }
 
     // update (dt) {}
