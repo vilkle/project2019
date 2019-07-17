@@ -1,0 +1,195 @@
+
+luoqi.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+luoqi_body
+  rotate: true
+  xy: 1235, 374
+  size: 136, 330
+  orig: 136, 330
+  offset: 0, 0
+  index: -1
+luoqi_body_r
+  rotate: true
+  xy: 894, 378
+  size: 132, 339
+  orig: 132, 339
+  offset: 0, 0
+  index: -1
+luoqi_eye1
+  rotate: false
+  xy: 2008, 400
+  size: 23, 33
+  orig: 23, 33
+  offset: 0, 0
+  index: -1
+luoqi_eye2
+  rotate: false
+  xy: 1198, 343
+  size: 21, 33
+  orig: 21, 33
+  offset: 0, 0
+  index: -1
+luoqi_eye_r
+  rotate: true
+  xy: 2008, 435
+  size: 75, 33
+  orig: 75, 33
+  offset: 0, 0
+  index: -1
+luoqi_gebo1
+  rotate: true
+  xy: 876, 299
+  size: 77, 142
+  orig: 77, 142
+  offset: 0, 0
+  index: -1
+luoqi_gebo1_r
+  rotate: true
+  xy: 1020, 299
+  size: 77, 142
+  orig: 77, 142
+  offset: 0, 0
+  index: -1
+luoqi_gebo2
+  rotate: true
+  xy: 238, 17
+  size: 58, 141
+  orig: 58, 141
+  offset: 0, 0
+  index: -1
+luoqi_gebo2_r
+  rotate: true
+  xy: 772, 213
+  size: 76, 140
+  orig: 76, 140
+  offset: 0, 0
+  index: -1
+luoqi_lian
+  rotate: false
+  xy: 1027, 217
+  size: 86, 80
+  orig: 86, 80
+  offset: 0, 0
+  index: -1
+luoqi_shou1_r
+  rotate: false
+  xy: 381, 36
+  size: 32, 39
+  orig: 32, 39
+  offset: 0, 0
+  index: -1
+luoqi_shou2
+  rotate: false
+  xy: 1164, 333
+  size: 32, 43
+  orig: 32, 43
+  offset: 0, 0
+  index: -1
+luoqi_shou2_r
+  rotate: true
+  xy: 381, 2
+  size: 32, 39
+  orig: 32, 39
+  offset: 0, 0
+  index: -1
+luoqi_toushi
+  rotate: false
+  xy: 1115, 268
+  size: 37, 29
+  orig: 37, 29
+  offset: 0, 0
+  index: -1
+luoqi_ying
+  rotate: true
+  xy: 461, 212
+  size: 204, 309
+  orig: 204, 309
+  offset: 0, 0
+  index: -1
+luoqi_ying2
+  rotate: true
+  xy: 1567, 322
+  size: 188, 309
+  orig: 188, 309
+  offset: 0, 0
+  index: -1
+luoqi_zui
+  rotate: true
+  xy: 454, 182
+  size: 14, 5
+  orig: 14, 5
+  offset: 0, 0
+  index: -1
+luoqi_zui_r
+  rotate: false
+  xy: 461, 199
+  size: 18, 11
+  orig: 18, 11
+  offset: 0, 0
+  index: -1
+yanse
+  rotate: false
+  xy: 2, 77
+  size: 450, 119
+  orig: 450, 119
+  offset: 0, 0
+  index: -1
+zi_houceng
+  rotate: false
+  xy: 2, 198
+  size: 457, 312
+  orig: 457, 312
+  offset: 0, 0
+  index: -1
+zi_ying
+  rotate: false
+  xy: 461, 418
+  size: 431, 92
+  orig: 431, 92
+  offset: 0, 0
+  index: -1
+zi_yuansu1
+  rotate: false
+  xy: 1878, 415
+  size: 128, 95
+  orig: 128, 95
+  offset: 0, 0
+  index: -1
+zi_yuansu1_ying
+  rotate: false
+  xy: 1878, 319
+  size: 128, 94
+  orig: 128, 94
+  offset: 0, 0
+  index: -1
+zi_yuansu2
+  rotate: true
+  xy: 772, 291
+  size: 125, 102
+  orig: 125, 102
+  offset: 0, 0
+  index: -1
+zi_yuansu2_ying
+  rotate: false
+  xy: 2, 2
+  size: 122, 73
+  orig: 122, 73
+  offset: 0, 0
+  index: -1
+zi_yuansu3
+  rotate: false
+  xy: 126, 2
+  size: 110, 73
+  orig: 110, 73
+  offset: 0, 0
+  index: -1
+zi_yuansu3_ying
+  rotate: false
+  xy: 914, 225
+  size: 111, 72
+  orig: 111, 72
+  offset: 0, 0
+  index: -1

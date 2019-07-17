@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "animal2",
+    "texture": "33328678-88c9-4e17-8cd2-69225cf1a59b",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      99,
+      130
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      99,
+      130
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

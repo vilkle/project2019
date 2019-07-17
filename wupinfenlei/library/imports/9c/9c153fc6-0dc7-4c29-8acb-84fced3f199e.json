@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "luoqi",
+    "texture": "cec3062a-f4f5-4d39-9ae2-c89ce17b0f58",
+    "atlas": "",
+    "rect": [
+      2,
+      2,
+      2039,
+      508
+    ],
+    "offset": [
+      -2.5,
+      0
+    ],
+    "originalSize": [
+      2048,
+      512
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "answer_bubble",
+    "texture": "c9c45d0b-ec6a-42e4-b67f-81ff2b95216b",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      799,
+      416
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      799,
+      416
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

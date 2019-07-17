@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "stationery2",
+    "texture": "c1d06fab-f395-4a11-bba3-7529195738f2",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      122,
+      121
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      122,
+      121
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
