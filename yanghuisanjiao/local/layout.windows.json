@@ -1,0 +1,97 @@
+{
+  "version": "1.1.1",
+  "windows": {
+    "main": {
+      "main": true,
+      "url": "app://editor/index.html",
+      "windowType": "dockable",
+      "x": -1920,
+      "y": -169,
+      "width": 1920,
+      "height": 1057,
+      "layout": {
+        "children": [
+          {
+            "children": [
+              {
+                "active": 0,
+                "children": [
+                  "hierarchy"
+                ],
+                "height": 460.9375,
+                "type": "panel",
+                "width": 306
+              },
+              {
+                "active": 0,
+                "children": [
+                  "assets"
+                ],
+                "height": 512.046875,
+                "type": "panel",
+                "width": 306
+              }
+            ],
+            "height": 975,
+            "type": "dock-v",
+            "width": 306
+          },
+          {
+            "children": [
+              {
+                "active": 0,
+                "children": [
+                  "scene"
+                ],
+                "height": 706.453125,
+                "type": "panel",
+                "width": 1306
+              },
+              {
+                "active": 0,
+                "children": [
+                  "console",
+                  "timeline"
+                ],
+                "height": 266.546875,
+                "type": "panel",
+                "width": 1306
+              }
+            ],
+            "height": 975,
+            "type": "dock-v",
+            "width": 1306
+          },
+          {
+            "active": 0,
+            "children": [
+              "inspector",
+              "cocos-services"
+            ],
+            "height": 975,
+            "type": "panel",
+            "width": 304
+          }
+        ],
+        "type": "dock-h"
+      },
+      "panels": [
+        "hierarchy",
+        "assets",
+        "console",
+        "timeline",
+        "inspector",
+        "cocos-services",
+        "scene"
+      ]
+    }
+  },
+  "panels": {
+    "sprite-editor": {
+      "x": -1699,
+      "y": 134,
+      "width": 500,
+      "height": 522
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "81a7fb4c-11d1-4d6c-aaa4-01652398ef80",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "img_haidan2": {
+      "ver": "1.0.3",
+      "uuid": "04d932e5-9967-444b-8b2d-d9bdb3fd3364",
+      "rawTextureUuid": "81a7fb4c-11d1-4d6c-aaa4-01652398ef80",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 104,
+      "height": 102,
+      "rawWidth": 104,
+      "rawHeight": 102,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

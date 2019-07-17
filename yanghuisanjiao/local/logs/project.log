@@ -1,0 +1,72 @@
+2019-07-17T02:20:04.100Z - normal: Load ~/.CocosCreator/settings.json
+2019-07-17T02:20:04.167Z - normal: Initializing Asset Database
+2019-07-17T02:20:04.171Z - normal: checking language setting...
+2019-07-17T02:20:04.171Z - normal: Language: zh
+2019-07-17T02:20:04.976Z - success: preview server running at http://localhost:7456
+2019-07-17T02:20:04.989Z - success: protocol editor-framework registered
+2019-07-17T02:20:04.989Z - success: protocol app registered
+2019-07-17T02:20:04.989Z - success: protocol theme registered
+2019-07-17T02:20:04.989Z - success: protocol packages registered
+2019-07-17T02:20:04.990Z - success: protocol uuid registerred
+2019-07-17T02:20:04.990Z - success: protocol db registerred
+2019-07-17T02:20:04.990Z - success: protocol thumbnail registerred
+2019-07-17T02:20:04.990Z - success: protocol unpack registerred
+2019-07-17T02:20:04.990Z - success: protocol disable-commonjs registerred
+2019-07-17T02:20:05.075Z - normal: connected!
+2019-07-17T02:20:05.077Z - normal: Check project /Users/xes/Desktop/hub/yanghuisanjiao
+2019-07-17T02:20:05.079Z - normal: Initializing project /Users/xes/Desktop/hub/yanghuisanjiao
+2019-07-17T02:20:05.467Z - normal: Initializing Cocos2d
+2019-07-17T02:20:06.273Z - normal: Initializing engine extends
+2019-07-17T02:20:06.293Z - success: asset-db-debugger loaded
+2019-07-17T02:20:06.294Z - success: baidu-adapter loaded
+2019-07-17T02:20:06.295Z - success: color-picker loaded
+2019-07-17T02:20:06.392Z - success: fb-audience-network loaded
+2019-07-17T02:20:06.439Z - success: fb-live-stream loaded
+2019-07-17T02:20:06.443Z - success: google-play-instant loaded
+2019-07-17T02:20:06.447Z - success: huawei-runtime loaded
+2019-07-17T02:20:06.448Z - success: jsb-adapter loaded
+2019-07-17T02:20:06.454Z - success: oppo-runtime loaded
+2019-07-17T02:20:06.459Z - success: package-manager loaded
+2019-07-17T02:20:06.606Z - success: qqplay-adapter loaded
+2019-07-17T02:20:06.608Z - success: runtime-dev-tools loaded
+2019-07-17T02:20:06.613Z - success: sdkbox loaded
+2019-07-17T02:20:06.618Z - success: tester loaded
+2019-07-17T02:20:06.623Z - success: ui-grid loaded
+2019-07-17T02:20:06.627Z - success: ui-kit-preview-extra loaded
+2019-07-17T02:20:06.630Z - success: ui-kit-preview loaded
+2019-07-17T02:20:06.634Z - success: ui-kit loaded
+2019-07-17T02:20:06.637Z - success: ui-tree loaded
+2019-07-17T02:20:06.646Z - success: vivo-runtime loaded
+2019-07-17T02:20:06.647Z - success: weapp-adapter loaded
+2019-07-17T02:20:06.688Z - success: assets loaded
+2019-07-17T02:20:06.692Z - success: builder loaded
+2019-07-17T02:20:06.947Z - success: cocos-services loaded
+2019-07-17T02:20:06.952Z - success: console loaded
+2019-07-17T02:20:06.987Z - success: fb-instant-games loaded
+2019-07-17T02:20:06.991Z - success: google-instant-games loaded
+2019-07-17T02:20:06.996Z - success: hierarchy loaded
+2019-07-17T02:20:07.001Z - success: inspector loaded
+2019-07-17T02:20:07.003Z - success: keystore loaded
+2019-07-17T02:20:07.010Z - success: node-library loaded
+2019-07-17T02:20:07.013Z - success: package-asset loaded
+2019-07-17T02:20:07.014Z - success: preferences loaded
+2019-07-17T02:20:07.018Z - success: project-exporter loaded
+2019-07-17T02:20:07.023Z - success: project-importer loaded
+2019-07-17T02:20:07.028Z - success: project-settings loaded
+2019-07-17T02:20:07.033Z - success: scene loaded
+2019-07-17T02:20:07.035Z - success: simulator-debugger loaded
+2019-07-17T02:20:07.038Z - success: sprite-editor loaded
+2019-07-17T02:20:07.043Z - success: store loaded
+2019-07-17T02:20:07.048Z - success: timeline loaded
+2019-07-17T02:20:07.054Z - success: auto_deploy loaded
+2019-07-17T02:20:09.042Z - info: Cocos Services load base data!
+2019-07-17T02:20:10.141Z - normal: Loading packages
+2019-07-17T02:20:10.223Z - normal: Watching packages
+2019-07-17T02:20:10.378Z - normal: Run Application
+2019-07-17T02:48:32.979Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:14903
+2019-07-17T02:48:52.455Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:15065
+2019-07-17T03:15:36.401Z - warn: [db-task][sync-changes] Backup unused meta file: db://assets/resources/atlas.meta
+2019-07-17T06:26:35.529Z - warn: Error: ipc timeout. message: scene:query-node, session: scene@renderer:233602
+2019-07-17T08:54:21.281Z - warn: [db-task][sync-changes] Backup unused meta file: db://assets/atlas/gameAtlas/fish.atlas.meta
+2019-07-17T08:54:21.412Z - warn: [db-task][sync-changes] Backup unused meta file: db://assets/atlas/gameAtlas/fish.json.meta
+2019-07-17T08:54:21.430Z - warn: [db-task][sync-changes] Backup unused meta file: db://assets/atlas/gameAtlas/fish.png.meta

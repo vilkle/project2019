@@ -1,0 +1,1713 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "qipao",
+  "_objFlags": 0,
+  "_native": "raw-skeleton.json",
+  "_skeletonJson": {
+    "skeleton": {
+      "hash": "l2stAO2ObVvne6R6rY8fKwfeLzM",
+      "spine": "3.7.92",
+      "width": 1920.47,
+      "height": 487.09,
+      "images": "./images/",
+      "audio": "./images/"
+    },
+    "bones": [
+      {
+        "name": "root"
+      },
+      {
+        "name": "qipao_1",
+        "parent": "root",
+        "x": -40.66,
+        "y": -431.92,
+        "scaleX": 0.504,
+        "scaleY": 0.504
+      },
+      {
+        "name": "qipao_2",
+        "parent": "root",
+        "x": -937.85,
+        "y": -33.3,
+        "scaleX": 1.024,
+        "scaleY": 1.024
+      },
+      {
+        "name": "qipao_3",
+        "parent": "root",
+        "x": 348.5,
+        "y": -338.78
+      },
+      {
+        "name": "qipao_4",
+        "parent": "root",
+        "x": 267.27,
+        "y": -252.14,
+        "scaleX": 0.87,
+        "scaleY": 0.87
+      },
+      {
+        "name": "qipao_5",
+        "parent": "root",
+        "x": 45.98,
+        "y": -362.25,
+        "scaleX": 0.504,
+        "scaleY": 0.504
+      },
+      {
+        "name": "qipao_6",
+        "parent": "root",
+        "x": 880.85,
+        "y": -164.8,
+        "scaleX": 0.541,
+        "scaleY": 0.541
+      },
+      {
+        "name": "qipao_7",
+        "parent": "root",
+        "x": 424.67,
+        "y": -256.84,
+        "scaleX": 0.504,
+        "scaleY": 0.504
+      },
+      {
+        "name": "qipao_8",
+        "parent": "root",
+        "x": 448.85,
+        "y": -183.55,
+        "scaleX": 0.411,
+        "scaleY": 0.411
+      },
+      {
+        "name": "qipao_9",
+        "parent": "root",
+        "x": 895.08,
+        "y": -496.21,
+        "scaleX": 0.466,
+        "scaleY": 0.466
+      },
+      {
+        "name": "qipao_10",
+        "parent": "root",
+        "x": 860.75,
+        "y": -229.79,
+        "scaleX": 0.466,
+        "scaleY": 0.466
+      },
+      {
+        "name": "qipao_11",
+        "parent": "root",
+        "x": -836.48,
+        "y": 220.01
+      },
+      {
+        "name": "qipao_12",
+        "parent": "root",
+        "x": -982.85,
+        "y": 132.38,
+        "scaleX": 0.942,
+        "scaleY": 0.942
+      },
+      {
+        "name": "qipao_13",
+        "parent": "root",
+        "x": -782.52,
+        "y": 104.63,
+        "scaleX": 0.843,
+        "scaleY": 0.843
+      },
+      {
+        "name": "qipao_14",
+        "parent": "root",
+        "x": -902.93,
+        "y": 26.67,
+        "scaleX": 1.191,
+        "scaleY": 1.191
+      },
+      {
+        "name": "qipao_15",
+        "parent": "root",
+        "x": 448.85,
+        "y": -183.55,
+        "scaleX": 0.411,
+        "scaleY": 0.411
+      }
+    ],
+    "slots": [
+      {
+        "name": "qipao_1",
+        "bone": "qipao_1",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_6",
+        "bone": "qipao_6",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_10",
+        "bone": "qipao_10",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_9",
+        "bone": "qipao_9",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_8",
+        "bone": "qipao_8",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_15",
+        "bone": "qipao_15",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_7",
+        "bone": "qipao_7",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_5",
+        "bone": "qipao_5",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_4",
+        "bone": "qipao_4",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_3",
+        "bone": "qipao_3",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_2",
+        "bone": "qipao_2",
+        "attachment": "qipao_02"
+      },
+      {
+        "name": "qipao_14",
+        "bone": "qipao_14",
+        "attachment": "qipao_02"
+      },
+      {
+        "name": "qipao_13",
+        "bone": "qipao_13",
+        "attachment": "qipao_02"
+      },
+      {
+        "name": "qipao_12",
+        "bone": "qipao_12",
+        "attachment": "qipao_02"
+      },
+      {
+        "name": "qipao_11",
+        "bone": "qipao_11",
+        "attachment": "qipao_02"
+      },
+      {
+        "name": "qipao_09",
+        "bone": "root",
+        "attachment": "qipao_09"
+      },
+      {
+        "name": "qiapao_010",
+        "bone": "root",
+        "attachment": "qiapao_010"
+      },
+      {
+        "name": "qipao_08",
+        "bone": "root",
+        "attachment": "qipao_08"
+      },
+      {
+        "name": "qiapao_07",
+        "bone": "root",
+        "attachment": "qiapao_07"
+      },
+      {
+        "name": "qipao_03",
+        "bone": "root",
+        "attachment": "qipao_03"
+      },
+      {
+        "name": "qipao_011",
+        "bone": "root",
+        "attachment": "qipao_011"
+      },
+      {
+        "name": "qiapao_014",
+        "bone": "root",
+        "attachment": "qiapao_014"
+      },
+      {
+        "name": "qipao_05",
+        "bone": "root",
+        "attachment": "qipao_05"
+      },
+      {
+        "name": "qipao_01",
+        "bone": "root",
+        "attachment": "qipao_01"
+      },
+      {
+        "name": "qipao_015",
+        "bone": "root",
+        "attachment": "qipao_015"
+      },
+      {
+        "name": "qipao_013",
+        "bone": "root",
+        "attachment": "qipao_013"
+      }
+    ],
+    "path": [
+      {
+        "name": "qiapao_04_pathControl",
+        "order": 10,
+        "bones": [
+          "qipao_4"
+        ],
+        "target": "qiapao_07"
+      },
+      {
+        "name": "qiapao_07_pathControl",
+        "order": 3,
+        "bones": [
+          "qipao_7"
+        ],
+        "target": "qiapao_07"
+      },
+      {
+        "name": "qiapao_014_pathControl",
+        "order": 5,
+        "bones": [
+          "qipao_14"
+        ],
+        "target": "qiapao_014",
+        "position": 0.3597,
+        "rotateMix": 0
+      },
+      {
+        "name": "qiapo_03_pathControl",
+        "order": 6,
+        "bones": [
+          "qipao_3"
+        ],
+        "target": "qipao_03",
+        "rotateMix": 0
+      },
+      {
+        "name": "qipao_01_pathControl",
+        "order": 8,
+        "bones": [
+          "qipao_1"
+        ],
+        "target": "qipao_01"
+      },
+      {
+        "name": "qipao_02_pathControl",
+        "order": 11,
+        "bones": [
+          "qipao_2"
+        ],
+        "target": "qipao_011"
+      },
+      {
+        "name": "qipao_05_pathControl",
+        "order": 7,
+        "bones": [
+          "qipao_5"
+        ],
+        "target": "qipao_05"
+      },
+      {
+        "name": "qipao_06_pathControl",
+        "order": 12,
+        "bones": [
+          "qipao_6"
+        ],
+        "target": "qipao_08"
+      },
+      {
+        "name": "qipao_08_pathControl",
+        "order": 2,
+        "bones": [
+          "qipao_8"
+        ],
+        "target": "qipao_08"
+      },
+      {
+        "name": "qipao_09_pathControl",
+        "order": 0,
+        "bones": [
+          "qipao_9"
+        ],
+        "target": "qipao_09",
+        "position": 0.3518
+      },
+      {
+        "name": "qipao_10_pathControl",
+        "order": 1,
+        "bones": [
+          "qipao_10"
+        ],
+        "target": "qiapao_010",
+        "position": 0.5336
+      },
+      {
+        "name": "qipao_011_pathControl",
+        "order": 4,
+        "bones": [
+          "qipao_11"
+        ],
+        "target": "qipao_011"
+      },
+      {
+        "name": "qipao_012_pathControl",
+        "order": 14,
+        "bones": [
+          "qipao_12"
+        ],
+        "target": "qipao_011"
+      },
+      {
+        "name": "qipao_013_pathControl",
+        "order": 13,
+        "bones": [
+          "qipao_13"
+        ],
+        "target": "qipao_013"
+      },
+      {
+        "name": "qipao_015_pathControl",
+        "order": 9,
+        "bones": [
+          "qipao_15"
+        ],
+        "target": "qipao_015"
+      }
+    ],
+    "skins": {
+      "default": {
+        "qiapao_010": {
+          "qiapao_010": {
+            "type": "path",
+            "lengths": [
+              383.96,
+              711.23,
+              1124.95,
+              2272.69
+            ],
+            "vertexCount": 12,
+            "vertices": [
+              725.23,
+              -591.91,
+              763.25,
+              -499.69,
+              824.25,
+              -351.79,
+              649.16,
+              -287.68,
+              766.45,
+              -131.29,
+              815.31,
+              -66.14,
+              848.9,
+              63.15,
+              759.32,
+              174.11,
+              671.55,
+              282.82,
+              699.4,
+              487.68,
+              802.53,
+              549.11,
+              883.24,
+              597.18
+            ]
+          }
+        },
+        "qiapao_014": {
+          "qiapao_014": {
+            "type": "path",
+            "lengths": [
+              370.83,
+              638.21,
+              826.89,
+              1030.13,
+              1224.81,
+              2496.58
+            ],
+            "vertexCount": 18,
+            "vertices": [
+              -871.12,
+              -636.86,
+              -934.49,
+              -539.21,
+              -1017.43,
+              -411.4,
+              -1021.03,
+              -281.35,
+              -1003.55,
+              -183.45,
+              -993.33,
+              -126.26,
+              -921.49,
+              9.28,
+              -944.1,
+              74.56,
+              -959.33,
+              118.51,
+              -995.56,
+              189.16,
+              -985.28,
+              256.65,
+              -975,
+              324.13,
+              -922.98,
+              381.06,
+              -920.93,
+              448.5,
+              -918.87,
+              515.95,
+              -961.88,
+              601.05,
+              -985.53,
+              629.18,
+              -1020.36,
+              670.59
+            ]
+          }
+        },
+        "qiapao_07": {
+          "qiapao_07": {
+            "type": "path",
+            "lengths": [
+              363.31,
+              579.3,
+              810.21,
+              1008.99,
+              1256.29,
+              2317.85
+            ],
+            "vertexCount": 18,
+            "vertices": [
+              295.24,
+              -449.09,
+              333.42,
+              -535.71,
+              334.06,
+              -537.15,
+              415.66,
+              -284.05,
+              372.89,
+              -178.78,
+              345.78,
+              -112.06,
+              296.27,
+              -53.42,
+              299.1,
+              21.99,
+              301.93,
+              97.4,
+              358.96,
+              170.69,
+              388.33,
+              233.06,
+              393.85,
+              244.78,
+              451.79,
+              350.79,
+              405.49,
+              423.54,
+              364.39,
+              488.12,
+              244.85,
+              612.32,
+              242.47,
+              608.87,
+              184.3,
+              524.44
+            ]
+          }
+        },
+        "qipao_01": {
+          "qipao_01": {
+            "type": "path",
+            "lengths": [
+              457.37,
+              801.5,
+              1094.94,
+              1347.82,
+              2722.39
+            ],
+            "vertexCount": 15,
+            "vertices": [
+              138.42,
+              -630.89,
+              81.52,
+              -541.56,
+              -21.41,
+              -379.95,
+              97.51,
+              -189.46,
+              107.25,
+              -98.89,
+              123.66,
+              53.71,
+              123.07,
+              128.02,
+              47.1,
+              229.72,
+              -20.77,
+              320.58,
+              -66.33,
+              390.1,
+              -118.67,
+              471.78,
+              -162.02,
+              539.42,
+              -187.33,
+              644.29,
+              -145.08,
+              712.36,
+              -103.08,
+              780.02
+            ]
+          }
+        },
+        "qipao_011": {
+          "qipao_011": {
+            "type": "path",
+            "lengths": [
+              243.3,
+              555.45,
+              771.25,
+              999.27,
+              1249.01,
+              2416.13
+            ],
+            "vertexCount": 18,
+            "vertices": [
+              -878.37,
+              -538.1,
+              -878.37,
+              -538.1,
+              -878.37,
+              -538.1,
+              -782.29,
+              -422.38,
+              -790.73,
+              -315.87,
+              -800.11,
+              -197.4,
+              -885.25,
+              -122.01,
+              -872.85,
+              -17.17,
+              -869.04,
+              15.07,
+              -800.04,
+              114.06,
+              -805.56,
+              186.28,
+              -811.07,
+              258.5,
+              -881.74,
+              328.61,
+              -883.81,
+              399.12,
+              -886.2,
+              480.62,
+              -847.03,
+              572.99,
+              -791.47,
+              624.48,
+              -743.82,
+              668.65
+            ]
+          }
+        },
+        "qipao_013": {
+          "qipao_013": {
+            "type": "path",
+            "lengths": [
+              424.82,
+              721.77,
+              1052.16,
+              1299.68,
+              2618.75
+            ],
+            "vertexCount": 15,
+            "vertices": [
+              -719.37,
+              -635.34,
+              -735.19,
+              -547.3,
+              -775.37,
+              -323.75,
+              -703.42,
+              -235.1,
+              -719.74,
+              -124.92,
+              -736.06,
+              -14.74,
+              -807.57,
+              33.07,
+              -824.48,
+              151.52,
+              -838.34,
+              248.65,
+              -727,
+              350.33,
+              -716.31,
+              460.58,
+              -709.21,
+              533.72,
+              -773.83,
+              642.75,
+              -819.33,
+              678.64,
+              -869.7,
+              718.37
+            ]
+          }
+        },
+        "qipao_015": {
+          "qipao_015": {
+            "type": "path",
+            "lengths": [
+              313.76,
+              719.65,
+              1045.06,
+              1264.12,
+              2559.41
+            ],
+            "vertexCount": 15,
+            "vertices": [
+              501.97,
+              -645.97,
+              468.99,
+              -560.16,
+              423.79,
+              -442.57,
+              508.67,
+              -343.86,
+              527.88,
+              -259.44,
+              568.25,
+              -82.01,
+              482.62,
+              21.93,
+              450.19,
+              131.5,
+              424.17,
+              219.41,
+              531.16,
+              370.47,
+              538.24,
+              441.23,
+              545.31,
+              512,
+              501.43,
+              613.98,
+              477.89,
+              648.91,
+              459.29,
+              676.5
+            ]
+          }
+        },
+        "qipao_03": {
+          "qipao_03": {
+            "type": "path",
+            "lengths": [
+              356.72,
+              717.15,
+              1018.26,
+              1232.7,
+              2338.25
+            ],
+            "vertexCount": 15,
+            "vertices": [
+              515.42,
+              -509.14,
+              419.66,
+              -546.2,
+              409.2,
+              -550.25,
+              273.99,
+              -428.29,
+              296.11,
+              -227.03,
+              309.7,
+              -103.37,
+              418.38,
+              13.54,
+              408.92,
+              112.94,
+              399.47,
+              212.34,
+              298.48,
+              295.38,
+              299.1,
+              390.93,
+              299.71,
+              486.49,
+              346.97,
+              543.49,
+              379.75,
+              584.84,
+              437.14,
+              657.26
+            ]
+          }
+        },
+        "qipao_05": {
+          "qipao_05": {
+            "type": "path",
+            "lengths": [
+              534.6,
+              918.15,
+              1397.01,
+              2706.8
+            ],
+            "vertexCount": 12,
+            "vertices": [
+              -7.91,
+              -611.23,
+              -105.96,
+              -534.93,
+              -173.56,
+              -482.33,
+              118.61,
+              -216.43,
+              -33.96,
+              -28.93,
+              -59.73,
+              2.74,
+              -225.66,
+              140.09,
+              -239.96,
+              287.07,
+              -259.13,
+              484,
+              -94.96,
+              607.27,
+              -17.96,
+              693.07,
+              72.92,
+              794.34
+            ]
+          }
+        },
+        "qipao_08": {
+          "qipao_08": {
+            "type": "path",
+            "lengths": [
+              422.93,
+              760.82,
+              1127.49,
+              2273.22
+            ],
+            "vertexCount": 12,
+            "vertices": [
+              794.05,
+              -606.48,
+              814.86,
+              -526.53,
+              851.29,
+              -386.62,
+              835.76,
+              -271.09,
+              743.14,
+              -122.89,
+              691.27,
+              -33.97,
+              757.96,
+              20.37,
+              812.3,
+              196.97,
+              860.46,
+              422.98,
+              791.3,
+              508.19,
+              741.9,
+              535.36,
+              676.45,
+              552.65
+            ]
+          }
+        },
+        "qipao_09": {
+          "qipao_09": {
+            "type": "path",
+            "lengths": [
+              420.86,
+              695.77,
+              947.01,
+              1148.02,
+              2291.68
+            ],
+            "vertexCount": 15,
+            "vertices": [
+              724.14,
+              634.87,
+              792,
+              591.24,
+              859.87,
+              547.61,
+              921.25,
+              321.8,
+              854.98,
+              195.75,
+              788.72,
+              69.71,
+              866.99,
+              -40.59,
+              879.22,
+              -66.04,
+              917.47,
+              -145.6,
+              850.79,
+              -250.93,
+              838.82,
+              -308.44,
+              818.15,
+              -407.83,
+              900.25,
+              -417.25,
+              895.38,
+              -495.9,
+              895.38,
+              -495.9
+            ]
+          }
+        },
+        "qipao_1": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_10": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_11": {
+          "qipao_02": {
+            "width": 74,
+            "height": 73
+          }
+        },
+        "qipao_12": {
+          "qipao_02": {
+            "scaleX": 0.497,
+            "scaleY": 0.497,
+            "width": 74,
+            "height": 73
+          }
+        },
+        "qipao_13": {
+          "qipao_02": {
+            "scaleX": 0.497,
+            "scaleY": 0.497,
+            "width": 74,
+            "height": 73
+          }
+        },
+        "qipao_14": {
+          "qipao_02": {
+            "scaleX": 0.497,
+            "scaleY": 0.497,
+            "width": 74,
+            "height": 73
+          }
+        },
+        "qipao_15": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_2": {
+          "qipao_02": {
+            "scaleX": 0.497,
+            "scaleY": 0.497,
+            "width": 74,
+            "height": 73
+          }
+        },
+        "qipao_3": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_4": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_5": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_6": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_7": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_8": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        },
+        "qipao_9": {
+          "qipao_01": {
+            "x": 0.02,
+            "width": 84,
+            "height": 83
+          }
+        }
+      }
+    },
+    "animations": {
+      "qipao": {
+        "slots": {
+          "qipao_1": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_2": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_02"
+              }
+            ]
+          },
+          "qipao_3": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_4": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_5": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_6": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_7": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_8": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_9": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_10": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          },
+          "qipao_11": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_02"
+              }
+            ]
+          },
+          "qipao_12": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_02"
+              }
+            ]
+          },
+          "qipao_13": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_02"
+              }
+            ]
+          },
+          "qipao_14": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_02"
+              }
+            ]
+          },
+          "qipao_15": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "qipao_01"
+              }
+            ]
+          }
+        },
+        "bones": {
+          "qipao_1": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 2.6667,
+                "x": 1,
+                "y": 1,
+                "curve": "stepped"
+              },
+              {
+                "time": 5,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 9.3333,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 12.6667,
+                "x": 0.992,
+                "y": 0.992
+              }
+            ]
+          },
+          "qipao_2": {
+            "translate": [
+              {
+                "time": 0,
+                "x": -45.68,
+                "y": 165.17
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 0.923,
+                "y": 0.923
+              }
+            ]
+          },
+          "qipao_3": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 3.3333,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 6.6333,
+                "x": 1.5,
+                "y": 1.5
+              },
+              {
+                "time": 13.3333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "qipao_4": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 0.258,
+                "y": 0.258
+              },
+              {
+                "time": 3.3333,
+                "x": 1.406,
+                "y": 1.406
+              },
+              {
+                "time": 10.9667,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 13.5333,
+                "x": 1.15,
+                "y": 1.15
+              }
+            ]
+          },
+          "qipao_5": {
+            "translate": [
+              {
+                "time": 0,
+                "x": -0.3,
+                "y": 0.41
+              }
+            ]
+          },
+          "qipao_6": {
+            "translate": [
+              {
+                "time": 0,
+                "x": 1.56,
+                "y": 0.15
+              }
+            ]
+          },
+          "qipao_7": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 3.3333,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 11.6333,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 15.6667,
+                "x": 0.992,
+                "y": 0.992
+              }
+            ]
+          },
+          "qipao_8": {
+            "translate": [
+              {
+                "time": 0,
+                "x": -543.27,
+                "y": 289.42
+              }
+            ]
+          },
+          "qipao_9": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 4.6333,
+                "x": 2.147,
+                "y": 2.147,
+                "curve": "stepped"
+              },
+              {
+                "time": 6.3333,
+                "x": 2.147,
+                "y": 2.147
+              },
+              {
+                "time": 10.3333,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "qipao_10": {
+            "translate": [
+              {
+                "time": 0,
+                "x": 0.62,
+                "y": 0.12
+              }
+            ]
+          },
+          "qipao_11": {
+            "scale": [
+              {
+                "time": 0,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 3.3333,
+                "x": 0.5,
+                "y": 0.5
+              },
+              {
+                "time": 6.6667,
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "qipao_12": {
+            "translate": [
+              {
+                "time": 0,
+                "x": 44.84,
+                "y": -165.55
+              }
+            ],
+            "scale": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 2.3333,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 4.3333,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 4.3667,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 6.7,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 8.7,
+                "x": 0,
+                "y": 0,
+                "curve": "stepped"
+              },
+              {
+                "time": 8.7333,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 11.0667,
+                "x": 1,
+                "y": 1
+              },
+              {
+                "time": 13.0667,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "qipao_13": {
+            "translate": [
+              {
+                "time": 0,
+                "x": -0.48,
+                "y": -0.01
+              }
+            ]
+          },
+          "qipao_14": {
+            "translate": [
+              {
+                "time": 0,
+                "x": 0.34,
+                "y": -0.09
+              }
+            ]
+          },
+          "qipao_15": {
+            "translate": [
+              {
+                "time": 0,
+                "x": 0.22,
+                "y": -0.12
+              }
+            ]
+          }
+        },
+        "paths": {
+          "qiapao_014_pathControl": {
+            "position": [
+              {
+                "time": 0,
+                "position": 0.3597
+              },
+              {
+                "time": 6.5,
+                "position": 0.8837,
+                "curve": "stepped"
+              },
+              {
+                "time": 6.5333,
+                "position": 0.3597
+              },
+              {
+                "time": 15.6667,
+                "position": 0.8837
+              }
+            ]
+          },
+          "qiapao_04_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 9.7,
+                "position": 0.938,
+                "curve": "stepped"
+              },
+              {
+                "time": 9.7333
+              },
+              {
+                "time": 15.6667,
+                "position": 0.938
+              }
+            ]
+          },
+          "qiapao_07_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 5.7,
+                "position": 0.8992,
+                "curve": "stepped"
+              },
+              {
+                "time": 5.7333
+              },
+              {
+                "time": 15.6667,
+                "position": 0.8992
+              }
+            ]
+          },
+          "qiapo_03_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 10.2,
+                "position": 0.969,
+                "curve": "stepped"
+              },
+              {
+                "time": 10.2333
+              },
+              {
+                "time": 15.6667,
+                "position": 0.969
+              }
+            ]
+          },
+          "qipao_011_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 12.2333,
+                "position": 0.9225,
+                "curve": "stepped"
+              },
+              {
+                "time": 12.2667
+              },
+              {
+                "time": 15.6667,
+                "position": 0.9225
+              }
+            ]
+          },
+          "qipao_012_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 8.5,
+                "position": 1,
+                "curve": "stepped"
+              },
+              {
+                "time": 8.5333
+              },
+              {
+                "time": 15.6667,
+                "position": 1
+              }
+            ]
+          },
+          "qipao_013_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 12.1667,
+                "position": 0.907,
+                "curve": "stepped"
+              },
+              {
+                "time": 12.2
+              },
+              {
+                "time": 15.6667,
+                "position": 0.907
+              }
+            ]
+          },
+          "qipao_015_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 10.4667,
+                "position": 0.8915,
+                "curve": "stepped"
+              },
+              {
+                "time": 10.5
+              },
+              {
+                "time": 15.6667,
+                "position": 0.8915
+              }
+            ]
+          },
+          "qipao_01_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 8.6333,
+                "position": 0.8992,
+                "curve": "stepped"
+              },
+              {
+                "time": 8.6667
+              },
+              {
+                "time": 14.5667,
+                "position": 0.8992
+              }
+            ]
+          },
+          "qipao_02_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 13.5,
+                "position": 0.907,
+                "curve": "stepped"
+              },
+              {
+                "time": 13.5333
+              },
+              {
+                "time": 15.6667,
+                "position": 0.907
+              }
+            ]
+          },
+          "qipao_05_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 12.2333,
+                "position": 0.845,
+                "curve": "stepped"
+              },
+              {
+                "time": 12.2667
+              },
+              {
+                "time": 15.6667,
+                "position": 0.845
+              }
+            ]
+          },
+          "qipao_06_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 10.9,
+                "position": 1,
+                "curve": "stepped"
+              },
+              {
+                "time": 10.9333
+              },
+              {
+                "time": 15.6667,
+                "position": 1
+              }
+            ]
+          },
+          "qipao_08_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 10.8,
+                "position": 1,
+                "curve": "stepped"
+              },
+              {
+                "time": 10.8333
+              },
+              {
+                "time": 15.6667,
+                "position": 1
+              }
+            ]
+          },
+          "qipao_09_pathControl": {
+            "position": [
+              {
+                "time": 0,
+                "position": 1
+              },
+              {
+                "time": 10.7333,
+                "curve": "stepped"
+              },
+              {
+                "time": 10.7667,
+                "position": 1
+              },
+              {
+                "time": 15.6667
+              }
+            ]
+          },
+          "qipao_10_pathControl": {
+            "position": [
+              {
+                "time": 0
+              },
+              {
+                "time": 8.3,
+                "position": 1,
+                "curve": "stepped"
+              },
+              {
+                "time": 8.3333
+              },
+              {
+                "time": 15.6667,
+                "position": 1
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\nqipao.png\nsize: 164,87\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nqipao_01\n  rotate: false\n  xy: 2, 2\n  size: 84, 83\n  orig: 84, 83\n  offset: 0, 0\n  index: -1\nqipao_02\n  rotate: false\n  xy: 88, 12\n  size: 74, 73\n  orig: 74, 73\n  offset: 0, 0\n  index: -1\n",
+  "textures": [
+    {
+      "__uuid__": "586f5296-1cbe-4d3f-9566-a281274a8097"
+    }
+  ],
+  "textureNames": [
+    "qipao.png"
+  ],
+  "scale": 1
+}

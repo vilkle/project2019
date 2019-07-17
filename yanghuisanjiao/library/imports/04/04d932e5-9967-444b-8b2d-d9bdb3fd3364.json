@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "img_haidan2",
+    "texture": "81a7fb4c-11d1-4d6c-aaa4-01652398ef80",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      104,
+      102
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      104,
+      102
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

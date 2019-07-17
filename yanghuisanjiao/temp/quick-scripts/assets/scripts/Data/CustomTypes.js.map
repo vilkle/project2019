@@ -1,0 +1,1 @@
+{"version":3,"sources":["CustomTypes.ts"],"names":[],"mappings":";;;;;AAAA;IAAA;IAEA,CAAC;IAAD,iBAAC;AAAD,CAFA,AAEC,IAAA;AAFY,gCAAU","file":"","sourceRoot":"../../../../../assets/scripts/Data","sourcesContent":["export class AnswerData{\n\n}"]}
