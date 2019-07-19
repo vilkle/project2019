@@ -65,7 +65,7 @@ var OverTips = /** @class */ (function (_super) {
         this.label_tip.node.runAction(cc.sequence(cc.moveTo(0.08, framePos_2), cc.moveTo(0.08, framePos_3), cc.moveTo(0.08, framePos_4), cc.moveTo(0.06, endPos)));
     };
     OverTips.prototype.delayClose = function () {
-        this.scheduleOnce(function () { this.onClickClose(); }.bind(this), 0);
+        //this.scheduleOnce(function () { this.onClickClose() }.bind(this), 0);
     };
     OverTips.prototype.onClickClose = function (event, customEventData) {
         if (event)

@@ -42,6 +42,8 @@ export default class GamePanel extends BaseUI {
     private sourceSFArr : cc.SpriteFrame[] = [];
     private ItemNodeArr : cc.Node[] = [];
     private AnswerBoardArr : cc.Node[] = [];
+    private selectNodeArr : cc.Node[] = [];
+    private selectPosArr : cc.Vec2[] = [];
     private answerArr : number[][] = [];
     private answer : number[] = [];
     private answer1 : number[] = [];
@@ -103,12 +105,42 @@ export default class GamePanel extends BaseUI {
             cc.loader.loadResDir("images/gameUI/pic/animal", cc.SpriteFrame, (err, assets, urls)=>{
                 if(!err) {
                     for(let i = 0; i < assets.length; i++) {
+                        for(let j = 0; j < assets.length-1-i; j++) {
+                            let len1 = assets[j].name.length;
+                            let str1 = assets[j].name.substring(len1-1, len1);
+                            let num1 = parseInt(str1);
+                            let len2 = assets[j+1].name.length;
+                            let str2 = assets[j+1].name.substring(len2-1, len2);
+                            let num2 = parseInt(str2);
+                            if(num1 > num2) {
+                                let temp = assets[j+1];
+                                assets[j+1] = assets[j];
+                                assets[j] = temp;
+                            }
+                        }
+                    }
+                    for(let i = 0; i < assets.length; i++) {
                         this.sourceSFArr.push(assets[i]);
                     }
                 }
             });
             cc.loader.loadResDir("images/gameUI/pic/food", cc.SpriteFrame, (err, assets, urls)=>{
                 if(!err) {
+                    for(let i = 0; i < assets.length; i++) {
+                        for(let j = 0; j < assets.length-1-i; j++) {
+                            let len1 = assets[j].name.length;
+                            let str1 = assets[j].name.substring(len1-1, len1);
+                            let num1 = parseInt(str1);
+                            let len2 = assets[j+1].name.length;
+                            let str2 = assets[j+1].name.substring(len2-1, len2);
+                            let num2 = parseInt(str2);
+                            if(num1 > num2) {
+                                let temp = assets[j+1];
+                                assets[j+1] = assets[j];
+                                assets[j] = temp;
+                            }
+                        }
+                    }
                     for(let i = 0; i < assets.length; i++) {
                         this.sourceSFArr.push(assets[i]);
                     }
@@ -117,12 +149,42 @@ export default class GamePanel extends BaseUI {
             cc.loader.loadResDir("images/gameUI/pic/stationery", cc.SpriteFrame, (err, assets, urls)=>{
                 if(!err) {
                     for(let i = 0; i < assets.length; i++) {
+                        for(let j = 0; j < assets.length-1-i; j++) {
+                            let len1 = assets[j].name.length;
+                            let str1 = assets[j].name.substring(len1-1, len1);
+                            let num1 = parseInt(str1);
+                            let len2 = assets[j+1].name.length;
+                            let str2 = assets[j+1].name.substring(len2-1, len2);
+                            let num2 = parseInt(str2);
+                            if(num1 > num2) {
+                                let temp = assets[j+1];
+                                assets[j+1] = assets[j];
+                                assets[j] = temp;
+                            }
+                        }
+                    }
+                    for(let i = 0; i < assets.length; i++) {
                         this.sourceSFArr.push(assets[i]);
                     }
                 }
             });
             cc.loader.loadResDir("images/gameUI/pic/clothes", cc.SpriteFrame, (err, assets, urls)=>{
                 if(!err) {
+                    for(let i = 0; i < assets.length; i++) {
+                        for(let j = 0; j < assets.length-1-i; j++) {
+                            let len1 = assets[j].name.length;
+                            let str1 = assets[j].name.substring(len1-1, len1);
+                            let num1 = parseInt(str1);
+                            let len2 = assets[j+1].name.length;
+                            let str2 = assets[j+1].name.substring(len2-1, len2);
+                            let num2 = parseInt(str2);
+                            if(num1 > num2) {
+                                let temp = assets[j+1];
+                                assets[j+1] = assets[j];
+                                assets[j] = temp;
+                            }
+                        }
+                    }
                     for(let i = 0; i < assets.length; i++) {
                         this.sourceSFArr.push(assets[i]);
                         if(this.sourceSFArr.length == 20) {
@@ -133,8 +195,24 @@ export default class GamePanel extends BaseUI {
             });
             
         }else if(this.types == 2) {
-            cc.loader.loadResDir("images/gameUI/pic/cookies", cc.SpriteFrame, (err, assets, urls)=>{
+            if(this.typetype[0] == 1) {
+                cc.loader.loadResDir("images/gameUI/pic/cookies", cc.SpriteFrame, (err, assets, urls)=>{
                     if(!err) {
+                        for(let i = 0; i < assets.length; i++) {
+                            for(let j = 0; j < assets.length-1-i; j++) {
+                                let len1 = assets[j].name.length;
+                                let str1 = assets[j].name.substring(len1-1, len1);
+                                let num1 = parseInt(str1);
+                                let len2 = assets[j+1].name.length;
+                                let str2 = assets[j+1].name.substring(len2-1, len2);
+                                let num2 = parseInt(str2);
+                                if(num1 > num2) {
+                                    let temp = assets[j+1];
+                                    assets[j+1] = assets[j];
+                                    assets[j] = temp;
+                                }
+                            }
+                        }
                         for(let i = 0; i < assets.length; i++) {
                             this.sourceSFArr.push(assets[i]);
                             if(this.sourceSFArr.length == 9) { 
@@ -143,18 +221,35 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                 });
-            cc.loader.loadResDir("images/gameUI/pic/figure", cc.SpriteFrame, (err, assets, urls)=>{
-                if(!err) {
-                    for(let i = 0; i < assets.length; i++) {
-                        this.sourceSFArr.push(assets[i]);
-                        if(this.sourceSFArr.length== 9) {
-                           this.setPanel();
+            }else if(this.typetype[0] == 2) {
+                cc.loader.loadResDir("images/gameUI/pic/figure", cc.SpriteFrame, (err, assets, urls)=>{
+                    if(!err) {
+                        for(let i = 0; i < assets.length; i++) {
+                            for(let j = 0; j < assets.length-1-i; j++) {
+                                let len1 = assets[j].name.length;
+                                let str1 = assets[j].name.substring(len1-1, len1);
+                                let num1 = parseInt(str1);
+                                let len2 = assets[j+1].name.length;
+                                let str2 = assets[j+1].name.substring(len2-1, len2);
+                                let num2 = parseInt(str2);
+                                if(num1 > num2) {
+                                    let temp = assets[j+1];
+                                    assets[j+1] = assets[j];
+                                    assets[j] = temp;
+                                }
+                            }
+                        }
+                        for(let i = 0; i < assets.length; i++) {
+                            this.sourceSFArr.push(assets[i]);
+                            if(this.sourceSFArr.length== 9) {
+                               this.setPanel();
+                            }
                         }
                     }
-                }
-            });
-           
+                });
+            }
         }
+       
     }
 
     onEndGame() {
@@ -244,15 +339,31 @@ export default class GamePanel extends BaseUI {
         }
     }
 
+    centerSelectNode() {
+        let num = this.selectNodeArr.length;
+        let space = 600;
+        let long = (num - 1)*space;
+        let starX =  - long/2;
+        for(let i = 0; i < num; i++) {
+            this.selectNodeArr[i].setPosition(cc.v2(starX + i * long - 2000, -300));
+            this.selectPosArr[i] = cc.v2(starX + i * long - 2000, -300);
+            setTimeout(() => {
+                this.selectNodeArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+            }, 100* (num-1-i));
+        }
+    }
+
     createSelectBoard() {
         this.finishArr = [false , true ,false];
         this.selectNode = cc.instantiate(this.selectPrefab);
         this.selectNode.setPosition(cc.v2(0,0));
         cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this.selectNode);
+        this.selectNodeArr = [];
         if(this.checkColor(this.checkpoint) > 1) {
             this.selectNode.getChildByName('colorNode').active = true;
             this.selectArr[0] = true;
             this.finishArr[0] = false;
+            this.selectNodeArr.push(this.selectNode.getChildByName('colorNode'));
         }else {
             this.selectNode.getChildByName('colorNode').active = false;
             this.selectArr[0] = false;
@@ -262,6 +373,7 @@ export default class GamePanel extends BaseUI {
             this.selectNode.getChildByName('figureNode').active = true;
             this.selectArr[1] = true;
             this.finishArr[1] = false;
+            this.selectNodeArr.push( this.selectNode.getChildByName('figureNode'));
         }else {
             this.selectNode.getChildByName('figureNode').active = false;
             this.selectArr[1] = false;
@@ -271,16 +383,14 @@ export default class GamePanel extends BaseUI {
             this.selectNode.getChildByName('sizeNode').active = true;
             this.selectArr[2] = true;
             this.finishArr[2] = false;
+            this.selectNodeArr.push(this.selectNode.getChildByName('sizeNode'));
         }else {
             this.selectNode.getChildByName('sizeNode').active = false;
             this.selectArr[2] = false;
             this.finishArr[2] = true;
         }
+        this.centerSelectNode();
         for(let i = 0; i < this.selectNode.children.length; i++) {
-            this.selectNode.children[i].setPosition(cc.v2(this.selectNode.children[i].x-2000, this.selectNode.children[i].y));
-            this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
-
-
             this.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
                 if(this.finishArr[i]) {
                     this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, true), false);
@@ -335,18 +445,25 @@ export default class GamePanel extends BaseUI {
         this.selectNode.getChildByName('colorNode').stopAllActions();
         this.selectNode.getChildByName('figureNode').stopAllActions();
         this.selectNode.getChildByName('sizeNode').stopAllActions();
-        this.selectNode.getChildByName('colorNode').setPosition(cc.v2(-2536, -300));
-        this.selectNode.getChildByName('figureNode').setPosition(cc.v2(-1943, -300));
-        this.selectNode.getChildByName('sizeNode').setPosition(cc.v2(-1341, -300));
+        for(let i = 0; i < this.selectNodeArr.length; i++) {
+            this.selectNodeArr[i].setPosition(cc.v2(this.selectPosArr[i].x, -300));
+        }
+
         this.selectNode.active = true;
         for(let i = 0; i < this.selectNode.children.length; i++) {
             if(this.finishArr[i]) {
-                this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, false), true);
+                if(this.selectNode.children[i].active) {
+                    this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, false), true);
+                } 
             }else {
-                this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, false, false), true);
+                if(this.selectNode.children[i].active) {
+                    this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, false, false), true);
+                }  
             }
             setTimeout(()=>{
-                this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                if(this.selectNode.children[i].active) {
+                    this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                }
             },100*(this.selectNode.children.length-1-i));
         }
     }
@@ -585,6 +702,10 @@ export default class GamePanel extends BaseUI {
 
     success() {
         DaAnData.getInstance().submitEnable = true;
+         DataReporting.getInstance().dispatchEvent('addLog', {
+            eventType: 'clickSubmit',
+            eventValue: JSON.stringify(this.eventvalue)
+        });
         if(this.types == 1) {
             UIHelp.AffirmTip(1,'闯关成功，你真棒～',()=>{
             },()=>{
@@ -921,6 +1042,7 @@ export default class GamePanel extends BaseUI {
                     let sprite = node.addComponent(cc.Sprite);
                     let index = i % 27 + 1;
                     sprite.spriteFrame = this.sourceSFArr[Math.ceil(index/3) - 1];
+                    console.log('------id is ', Math.ceil(index/3) - 1);
                     let size = index % 3;
                     if(size == 2) {
                         node.scale = 0.8;

@@ -8,7 +8,7 @@
       "x": -1920,
       "y": -169,
       "width": 1920,
-      "height": 1057,
+      "height": 1001,
       "layout": {
         "children": [
           {
@@ -92,6 +92,18 @@
       "y": 134,
       "width": 500,
       "height": 522
+    },
+    "project-settings": {
+      "x": -1319,
+      "y": -35,
+      "width": 584,
+      "height": 548
+    },
+    "builder": {
+      "x": -1298,
+      "y": -147,
+      "width": 654,
+      "height": 722
     }
   }
 }

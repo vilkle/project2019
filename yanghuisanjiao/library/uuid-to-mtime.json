@@ -245,7 +245,7 @@
     "relativePath": "prefab/webview.prefab"
   },
   "5286b2e2-ca63-478d-aa0b-df19178f1921": {
-    "asset": 1563257753046,
+    "asset": 1563333375112,
     "meta": 1563257753041,
     "relativePath": "atlas"
   },
@@ -335,7 +335,7 @@
     "relativePath": "atlas/overTips/false/false.png"
   },
   "46266a0e-071b-456a-946e-33372125d0e1": {
-    "asset": 1563267907119,
+    "asset": 1563333336400,
     "meta": 1563257753067,
     "relativePath": "resources"
   },
@@ -353,26 +353,6 @@
     "asset": 1563257753098,
     "meta": 1563257753094,
     "relativePath": "resources/audio"
-  },
-  "348a19ff-6bb6-4dbf-9f1d-4655840def38": {
-    "asset": 1563257753094,
-    "meta": 1563259510510,
-    "relativePath": "resources/audio/sfx_buttn.mp3"
-  },
-  "20a8023e-0c04-4770-afea-4d098b28ff61": {
-    "asset": 1563257753095,
-    "meta": 1563259510514,
-    "relativePath": "resources/audio/sfx_erro.mp3"
-  },
-  "2f802513-3487-442b-98eb-aebdd2c80484": {
-    "asset": 1563257753096,
-    "meta": 1563259510517,
-    "relativePath": "resources/audio/sfx_genneg.mp3"
-  },
-  "828feb16-3a4f-4d01-a9ae-21cbbd3b1f02": {
-    "asset": 1563257753097,
-    "meta": 1563259510521,
-    "relativePath": "resources/audio/sfx_genpos.mp3"
   },
   "39c9aeab-df8f-42bf-9a91-bbb835fdfeb5": {
     "asset": 1563267922871,
@@ -493,11 +473,6 @@
     "asset": 1563257753111,
     "meta": 1563259510661,
     "relativePath": "resources/prefab/ui/panel/LoadingUI.prefab"
-  },
-  "6c6fad8f-9d09-42a7-bc19-1eafe97b12cc": {
-    "asset": 1563257753111,
-    "meta": 1563259510663,
-    "relativePath": "resources/prefab/ui/panel/OverTips.prefab"
   },
   "bab47f07-34b1-4abd-ab6d-ea13fd86cda6": {
     "asset": 1563257753112,
@@ -684,11 +659,6 @@
     "meta": 1563259511990,
     "relativePath": "scripts/UI/Item/affirmTips.ts"
   },
-  "d402bb72-7a93-4939-b703-49490b51072b": {
-    "asset": 1563257753126,
-    "meta": 1563259512003,
-    "relativePath": "scripts/UI/Item/OverTips.ts"
-  },
   "49e666fd-416e-4b31-8b41-c976fc0b0de9": {
     "asset": 1563257753133,
     "meta": 1563257753128,
@@ -774,11 +744,6 @@
     "meta": 1563259512323,
     "relativePath": "scripts/Utils/StringExtension.ts"
   },
-  "c44e670b-83ce-49cd-a205-36f05db07ef1": {
-    "asset": 1563257753137,
-    "meta": 1563259512324,
-    "relativePath": "scripts/Utils/UIHelp.ts"
-  },
   "7e420378-2366-452e-b03b-19dbc010d505": {
     "asset": 1563267922879,
     "meta": 1563267922872,
@@ -850,7 +815,7 @@
     "relativePath": "scripts/Http/NetWork.ts"
   },
   "841e0918-ede3-4998-bc80-6590087fa76d": {
-    "asset": 1563333375168,
+    "asset": 1563354094378,
     "meta": 1563333375112,
     "relativePath": "atlas/gameAtlas"
   },
@@ -928,16 +893,6 @@
     "asset": 1563332855000,
     "meta": 1563333378465,
     "relativePath": "atlas/gameAtlas/shadow_fish.json"
-  },
-  "66b51a1b-71dd-4c8b-875c-6e87377f022c": {
-    "asset": 1563333870707,
-    "meta": 1563333871357,
-    "relativePath": "scripts/Data/ConstValue.ts"
-  },
-  "32f855fb-ac45-4a70-9924-652cc84cf88d": {
-    "asset": 1563357327804,
-    "meta": 1563357327820,
-    "relativePath": "resources/prefab/ui/panel/GamePanel.prefab"
   },
   "20a4f3e3-e52c-44ac-bddc-032d6e17aa19": {
     "asset": 1563353952000,
@@ -1074,9 +1029,69 @@
     "meta": 1563354110508,
     "relativePath": "atlas/gameAtlas/fish_20.json"
   },
+  "d402bb72-7a93-4939-b703-49490b51072b": {
+    "asset": 1563430879875,
+    "meta": 1563430881414,
+    "relativePath": "scripts/UI/Item/OverTips.ts"
+  },
+  "c44e670b-83ce-49cd-a205-36f05db07ef1": {
+    "asset": 1563431089433,
+    "meta": 1563431090703,
+    "relativePath": "scripts/Utils/UIHelp.ts"
+  },
+  "6c6fad8f-9d09-42a7-bc19-1eafe97b12cc": {
+    "asset": 1563431194975,
+    "meta": 1563431387287,
+    "relativePath": "resources/prefab/ui/panel/OverTips.prefab"
+  },
+  "a5d1be32-eb7f-42d6-b863-4041307f791e": {
+    "asset": 1563367643000,
+    "meta": 1563438632244,
+    "relativePath": "resources/audio/sfx_yhrght.mp3"
+  },
+  "a95426cc-f6f8-4095-b63f-d89c5077d763": {
+    "asset": 1563367686000,
+    "meta": 1563438632268,
+    "relativePath": "resources/audio/sfx_yhwrng.mp3"
+  },
+  "dc0026c0-409e-4131-9f8b-b5eec8b36793": {
+    "asset": 1563367290000,
+    "meta": 1563438632270,
+    "relativePath": "resources/audio/bgm_underwater.mp3"
+  },
+  "348a19ff-6bb6-4dbf-9f1d-4655840def38": {
+    "asset": 1563364804955,
+    "meta": 1563441267626,
+    "relativePath": "resources/audio/sfx_buttn.mp3"
+  },
+  "20a8023e-0c04-4770-afea-4d098b28ff61": {
+    "asset": 1563364804956,
+    "meta": 1563441267636,
+    "relativePath": "resources/audio/sfx_erro.mp3"
+  },
+  "2f802513-3487-442b-98eb-aebdd2c80484": {
+    "asset": 1563364804959,
+    "meta": 1563441267645,
+    "relativePath": "resources/audio/sfx_genneg.mp3"
+  },
+  "828feb16-3a4f-4d01-a9ae-21cbbd3b1f02": {
+    "asset": 1563364804961,
+    "meta": 1563441267652,
+    "relativePath": "resources/audio/sfx_genpos.mp3"
+  },
   "246c238e-9069-4a1e-86ba-64939510723e": {
-    "asset": 1563357323437,
-    "meta": 1563357324587,
+    "asset": 1563442410806,
+    "meta": 1563442412212,
     "relativePath": "scripts/UI/panel/GamePanel.ts"
+  },
+  "66b51a1b-71dd-4c8b-875c-6e87377f022c": {
+    "asset": 1563442576732,
+    "meta": 1563442577183,
+    "relativePath": "scripts/Data/ConstValue.ts"
+  },
+  "32f855fb-ac45-4a70-9924-652cc84cf88d": {
+    "asset": 1563442583460,
+    "meta": 1563442616221,
+    "relativePath": "resources/prefab/ui/panel/GamePanel.prefab"
   }
 }

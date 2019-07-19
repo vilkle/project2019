@@ -220,18 +220,14 @@ export default class TeacherPanel extends BaseUI {
             this.toggleArr[i].node.off('toggle');
         }
         for(let i = 0; i < this.toggleArr.length; i++) {
-            cc.log('id is ', i);
-            cc.log('toggle is ', this.toggleArr[i]);
+           
             this.toggleArr[i].node.on('toggle', (e)=>{
                 var checkPointNum :number = 0;
-                cc.log(i,' types is ',DaAnData.getInstance().types);
                 if(DaAnData.getInstance().types == 1) {
                     checkPointNum = Math.floor(i/20);
                 }else if(DaAnData.getInstance().types == 2) {
                     checkPointNum = Math.floor(i/27);
                 }
-                cc.log('checkpointnum is ', checkPointNum);
-            
                 let alreadyCheck = 0;
                 if(DaAnData.getInstance().types == 1) {
                     for(let j = 20 * checkPointNum; j < 20 * (checkPointNum + 1); j++){
@@ -246,7 +242,6 @@ export default class TeacherPanel extends BaseUI {
                         }
                     }
                 }
-                cc.log('alreadycheck is ', alreadyCheck);
                 if(alreadyCheck > 10) {
                     this.toggleArr[i].isChecked = false;
                 }
@@ -273,7 +268,6 @@ export default class TeacherPanel extends BaseUI {
             }
         }
         DaAnData.getInstance().typeDataArr = [...this.typeDataArr];
-        cc.log('------typedataarr', this.typeDataArr);
     }
 
     titleChange(index:number): string {
@@ -310,7 +304,6 @@ export default class TeacherPanel extends BaseUI {
         }else if(DaAnData.getInstance().types == 2){
             this.toggleContainer[1].isChecked = true;
             this.typetype = DaAnData.getInstance().typetype;
-            cc.log(this.typetype);
             for(let i = 0; i < this.typeArr.length; i++) {
                 if(this.typetype[i] == 1) {
                     this.typeArr[i].getChildByName('Types').getChildByName('toggle1').getComponent(cc.Toggle).isChecked = true;
@@ -372,7 +365,6 @@ export default class TeacherPanel extends BaseUI {
                         typeSet.add(Math.floor(j/5));
                     }
                 }
-                cc.log('type num is ', typeSet.size());
                 if(alreadyCheck < 4) {
                     this.tipLabel.string = this.titleChange(i + 1) + '选择物品不足四个，每关选择物品数至少四个，请继续选择物品。';
                     this.tip();
@@ -387,15 +379,12 @@ export default class TeacherPanel extends BaseUI {
                 typeSet.clear();
             }
         }else if(DaAnData.getInstance().types == 2) {
-            cc.log('=======toggleArr', this.toggleArr);
-            cc.log('=======typeArr', this.typeArr);
             for(let i = 0; i < DaAnData.getInstance().checkpointsNum; i++) {
                 for(let j = 27 * i; j < 27 * (i + 1); j ++) {
                     if(this.toggleArr[j].isChecked) {
                         alreadyCheck++;
                     }
                 }
-                cc.log('------', alreadyCheck);
                 if(alreadyCheck < 4) {
                     this.tipLabel.string = this.titleChange(i + 1) + '选择物品不足四个，每关选择物品数至少四个，请继续选择物品。';
                     this.tip();
@@ -428,10 +417,8 @@ export default class TeacherPanel extends BaseUI {
                     this.ClearNet();
                 } else {
                     if(content != null) {
-                        cc.log('-------content',content);
                         if(content.types) {
                             DaAnData.getInstance().types = content.types;
-                            cc.log(content.types);
                         }else{
                             console.log('getNet中返回的types的值为空');
                         }
@@ -449,7 +436,6 @@ export default class TeacherPanel extends BaseUI {
                         }
                         if(content.typeDataArr) {
                             DaAnData.getInstance().typeDataArr = content.typeDataArr;
-                            cc.log(content.typeDataArr);
                         }else{
                             console.log('getNet中返回的typeDataArr的值为空');
                         }

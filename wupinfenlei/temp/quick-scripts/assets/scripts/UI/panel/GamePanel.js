@@ -34,6 +34,8 @@ var GamePanel = /** @class */ (function (_super) {
         _this.sourceSFArr = [];
         _this.ItemNodeArr = [];
         _this.AnswerBoardArr = [];
+        _this.selectNodeArr = [];
+        _this.selectPosArr = [];
         _this.answerArr = [];
         _this.answer = [];
         _this.answer1 = [];
@@ -92,12 +94,42 @@ var GamePanel = /** @class */ (function (_super) {
             cc.loader.loadResDir("images/gameUI/pic/animal", cc.SpriteFrame, function (err, assets, urls) {
                 if (!err) {
                     for (var i = 0; i < assets.length; i++) {
+                        for (var j = 0; j < assets.length - 1 - i; j++) {
+                            var len1 = assets[j].name.length;
+                            var str1 = assets[j].name.substring(len1 - 1, len1);
+                            var num1 = parseInt(str1);
+                            var len2 = assets[j + 1].name.length;
+                            var str2 = assets[j + 1].name.substring(len2 - 1, len2);
+                            var num2 = parseInt(str2);
+                            if (num1 > num2) {
+                                var temp = assets[j + 1];
+                                assets[j + 1] = assets[j];
+                                assets[j] = temp;
+                            }
+                        }
+                    }
+                    for (var i = 0; i < assets.length; i++) {
                         _this.sourceSFArr.push(assets[i]);
                     }
                 }
             });
             cc.loader.loadResDir("images/gameUI/pic/food", cc.SpriteFrame, function (err, assets, urls) {
                 if (!err) {
+                    for (var i = 0; i < assets.length; i++) {
+                        for (var j = 0; j < assets.length - 1 - i; j++) {
+                            var len1 = assets[j].name.length;
+                            var str1 = assets[j].name.substring(len1 - 1, len1);
+                            var num1 = parseInt(str1);
+                            var len2 = assets[j + 1].name.length;
+                            var str2 = assets[j + 1].name.substring(len2 - 1, len2);
+                            var num2 = parseInt(str2);
+                            if (num1 > num2) {
+                                var temp = assets[j + 1];
+                                assets[j + 1] = assets[j];
+                                assets[j] = temp;
+                            }
+                        }
+                    }
                     for (var i = 0; i < assets.length; i++) {
                         _this.sourceSFArr.push(assets[i]);
                     }
@@ -106,12 +138,42 @@ var GamePanel = /** @class */ (function (_super) {
             cc.loader.loadResDir("images/gameUI/pic/stationery", cc.SpriteFrame, function (err, assets, urls) {
                 if (!err) {
                     for (var i = 0; i < assets.length; i++) {
+                        for (var j = 0; j < assets.length - 1 - i; j++) {
+                            var len1 = assets[j].name.length;
+                            var str1 = assets[j].name.substring(len1 - 1, len1);
+                            var num1 = parseInt(str1);
+                            var len2 = assets[j + 1].name.length;
+                            var str2 = assets[j + 1].name.substring(len2 - 1, len2);
+                            var num2 = parseInt(str2);
+                            if (num1 > num2) {
+                                var temp = assets[j + 1];
+                                assets[j + 1] = assets[j];
+                                assets[j] = temp;
+                            }
+                        }
+                    }
+                    for (var i = 0; i < assets.length; i++) {
                         _this.sourceSFArr.push(assets[i]);
                     }
                 }
             });
             cc.loader.loadResDir("images/gameUI/pic/clothes", cc.SpriteFrame, function (err, assets, urls) {
                 if (!err) {
+                    for (var i = 0; i < assets.length; i++) {
+                        for (var j = 0; j < assets.length - 1 - i; j++) {
+                            var len1 = assets[j].name.length;
+                            var str1 = assets[j].name.substring(len1 - 1, len1);
+                            var num1 = parseInt(str1);
+                            var len2 = assets[j + 1].name.length;
+                            var str2 = assets[j + 1].name.substring(len2 - 1, len2);
+                            var num2 = parseInt(str2);
+                            if (num1 > num2) {
+                                var temp = assets[j + 1];
+                                assets[j + 1] = assets[j];
+                                assets[j] = temp;
+                            }
+                        }
+                    }
                     for (var i = 0; i < assets.length; i++) {
                         _this.sourceSFArr.push(assets[i]);
                         if (_this.sourceSFArr.length == 20) {
@@ -122,26 +184,60 @@ var GamePanel = /** @class */ (function (_super) {
             });
         }
         else if (this.types == 2) {
-            cc.loader.loadResDir("images/gameUI/pic/cookies", cc.SpriteFrame, function (err, assets, urls) {
-                if (!err) {
-                    for (var i = 0; i < assets.length; i++) {
-                        _this.sourceSFArr.push(assets[i]);
-                        if (_this.sourceSFArr.length == 9) {
-                            _this.setPanel();
+            if (this.typetype[0] == 1) {
+                cc.loader.loadResDir("images/gameUI/pic/cookies", cc.SpriteFrame, function (err, assets, urls) {
+                    if (!err) {
+                        for (var i = 0; i < assets.length; i++) {
+                            for (var j = 0; j < assets.length - 1 - i; j++) {
+                                var len1 = assets[j].name.length;
+                                var str1 = assets[j].name.substring(len1 - 1, len1);
+                                var num1 = parseInt(str1);
+                                var len2 = assets[j + 1].name.length;
+                                var str2 = assets[j + 1].name.substring(len2 - 1, len2);
+                                var num2 = parseInt(str2);
+                                if (num1 > num2) {
+                                    var temp = assets[j + 1];
+                                    assets[j + 1] = assets[j];
+                                    assets[j] = temp;
+                                }
+                            }
+                        }
+                        for (var i = 0; i < assets.length; i++) {
+                            _this.sourceSFArr.push(assets[i]);
+                            if (_this.sourceSFArr.length == 9) {
+                                _this.setPanel();
+                            }
                         }
                     }
-                }
-            });
-            cc.loader.loadResDir("images/gameUI/pic/figure", cc.SpriteFrame, function (err, assets, urls) {
-                if (!err) {
-                    for (var i = 0; i < assets.length; i++) {
-                        _this.sourceSFArr.push(assets[i]);
-                        if (_this.sourceSFArr.length == 9) {
-                            _this.setPanel();
+                });
+            }
+            else if (this.typetype[0] == 2) {
+                cc.loader.loadResDir("images/gameUI/pic/figure", cc.SpriteFrame, function (err, assets, urls) {
+                    if (!err) {
+                        for (var i = 0; i < assets.length; i++) {
+                            for (var j = 0; j < assets.length - 1 - i; j++) {
+                                var len1 = assets[j].name.length;
+                                var str1 = assets[j].name.substring(len1 - 1, len1);
+                                var num1 = parseInt(str1);
+                                var len2 = assets[j + 1].name.length;
+                                var str2 = assets[j + 1].name.substring(len2 - 1, len2);
+                                var num2 = parseInt(str2);
+                                if (num1 > num2) {
+                                    var temp = assets[j + 1];
+                                    assets[j + 1] = assets[j];
+                                    assets[j] = temp;
+                                }
+                            }
+                        }
+                        for (var i = 0; i < assets.length; i++) {
+                            _this.sourceSFArr.push(assets[i]);
+                            if (_this.sourceSFArr.length == 9) {
+                                _this.setPanel();
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
     };
     GamePanel.prototype.onEndGame = function () {
@@ -225,16 +321,36 @@ var GamePanel = /** @class */ (function (_super) {
             small.active = true;
         }
     };
+    GamePanel.prototype.centerSelectNode = function () {
+        var _this = this;
+        var num = this.selectNodeArr.length;
+        var space = 600;
+        var long = (num - 1) * space;
+        var starX = -long / 2;
+        var _loop_1 = function (i) {
+            this_1.selectNodeArr[i].setPosition(cc.v2(starX + i * long - 2000, -300));
+            this_1.selectPosArr[i] = cc.v2(starX + i * long - 2000, -300);
+            setTimeout(function () {
+                _this.selectNodeArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+            }, 100 * (num - 1 - i));
+        };
+        var this_1 = this;
+        for (var i = 0; i < num; i++) {
+            _loop_1(i);
+        }
+    };
     GamePanel.prototype.createSelectBoard = function () {
         var _this = this;
         this.finishArr = [false, true, false];
         this.selectNode = cc.instantiate(this.selectPrefab);
         this.selectNode.setPosition(cc.v2(0, 0));
         cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this.selectNode);
+        this.selectNodeArr = [];
         if (this.checkColor(this.checkpoint) > 1) {
             this.selectNode.getChildByName('colorNode').active = true;
             this.selectArr[0] = true;
             this.finishArr[0] = false;
+            this.selectNodeArr.push(this.selectNode.getChildByName('colorNode'));
         }
         else {
             this.selectNode.getChildByName('colorNode').active = false;
@@ -245,6 +361,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.selectNode.getChildByName('figureNode').active = true;
             this.selectArr[1] = true;
             this.finishArr[1] = false;
+            this.selectNodeArr.push(this.selectNode.getChildByName('figureNode'));
         }
         else {
             this.selectNode.getChildByName('figureNode').active = false;
@@ -255,16 +372,16 @@ var GamePanel = /** @class */ (function (_super) {
             this.selectNode.getChildByName('sizeNode').active = true;
             this.selectArr[2] = true;
             this.finishArr[2] = false;
+            this.selectNodeArr.push(this.selectNode.getChildByName('sizeNode'));
         }
         else {
             this.selectNode.getChildByName('sizeNode').active = false;
             this.selectArr[2] = false;
             this.finishArr[2] = true;
         }
-        var _loop_1 = function (i) {
-            this_1.selectNode.children[i].setPosition(cc.v2(this_1.selectNode.children[i].x - 2000, this_1.selectNode.children[i].y));
-            this_1.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
-            this_1.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, function (e) {
+        this.centerSelectNode();
+        var _loop_2 = function (i) {
+            this_2.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, function (e) {
                 if (_this.finishArr[i]) {
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i, true, true), false);
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
@@ -292,7 +409,7 @@ var GamePanel = /** @class */ (function (_super) {
                         if (trackEntry.animation.name == _this.getSelectAnimationName(i, false, true)) {
                             _this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i, _this.finishArr[i], false), true);
                             _this.selectType = i + 1;
-                            var _loop_2 = function (i_1) {
+                            var _loop_3 = function (i_1) {
                                 setTimeout(function () {
                                     if (i_1 < _this.selectNode.children.length - 1) {
                                         _this.selectNode.children[i_1].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
@@ -305,20 +422,20 @@ var GamePanel = /** @class */ (function (_super) {
                                 }, (_this.selectNode.children.length - 1 - i_1) * 100);
                             };
                             for (var i_1 = 0; i_1 < _this.selectNode.children.length; i_1++) {
-                                _loop_2(i_1);
+                                _loop_3(i_1);
                             }
                         }
                     });
                 }
             });
-            this_1.selectNode.children[i].on(cc.Node.EventType.TOUCH_END, function (e) {
+            this_2.selectNode.children[i].on(cc.Node.EventType.TOUCH_END, function (e) {
             });
-            this_1.selectNode.children[i].on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
+            this_2.selectNode.children[i].on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
             });
         };
-        var this_1 = this;
+        var this_2 = this;
         for (var i = 0; i < this.selectNode.children.length; i++) {
-            _loop_1(i);
+            _loop_2(i);
         }
     };
     GamePanel.prototype.resetSelect = function () {
@@ -326,29 +443,35 @@ var GamePanel = /** @class */ (function (_super) {
         this.selectNode.getChildByName('colorNode').stopAllActions();
         this.selectNode.getChildByName('figureNode').stopAllActions();
         this.selectNode.getChildByName('sizeNode').stopAllActions();
-        this.selectNode.getChildByName('colorNode').setPosition(cc.v2(-2536, -300));
-        this.selectNode.getChildByName('figureNode').setPosition(cc.v2(-1943, -300));
-        this.selectNode.getChildByName('sizeNode').setPosition(cc.v2(-1341, -300));
+        for (var i = 0; i < this.selectNodeArr.length; i++) {
+            this.selectNodeArr[i].setPosition(cc.v2(this.selectPosArr[i].x, -300));
+        }
         this.selectNode.active = true;
-        var _loop_3 = function (i) {
-            if (this_2.finishArr[i]) {
-                this_2.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this_2.getSelectAnimationName(i, true, false), true);
+        var _loop_4 = function (i) {
+            if (this_3.finishArr[i]) {
+                if (this_3.selectNode.children[i].active) {
+                    this_3.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this_3.getSelectAnimationName(i, true, false), true);
+                }
             }
             else {
-                this_2.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this_2.getSelectAnimationName(i, false, false), true);
+                if (this_3.selectNode.children[i].active) {
+                    this_3.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this_3.getSelectAnimationName(i, false, false), true);
+                }
             }
             setTimeout(function () {
-                _this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
-            }, 100 * (this_2.selectNode.children.length - 1 - i));
+                if (_this.selectNode.children[i].active) {
+                    _this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                }
+            }, 100 * (this_3.selectNode.children.length - 1 - i));
         };
-        var this_2 = this;
+        var this_3 = this;
         for (var i = 0; i < this.selectNode.children.length; i++) {
-            _loop_3(i);
+            _loop_4(i);
         }
     };
     GamePanel.prototype.backButtonCallBack = function () {
         var _this = this;
-        var _loop_4 = function (i) {
+        var _loop_5 = function (i) {
             setTimeout(function () {
                 if (i < _this.AnswerBoardArr.length - 1) {
                     _this.AnswerBoardArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
@@ -373,11 +496,11 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     })));
                 }
-            }, (this_3.AnswerBoardArr.length - i - 1) * 100);
+            }, (this_4.AnswerBoardArr.length - i - 1) * 100);
         };
-        var this_3 = this;
+        var this_4 = this;
         for (var i = 0; i < this.AnswerBoardArr.length; i++) {
-            _loop_4(i);
+            _loop_5(i);
         }
     };
     GamePanel.prototype.removeListenerOnItem = function () {
@@ -391,8 +514,8 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.addListenerOnItem = function () {
         var _this = this;
-        var _loop_5 = function (i) {
-            this_4.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_START, function (e) {
+        var _loop_6 = function (i) {
+            this_5.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_START, function (e) {
                 if (_this.touchTarget) {
                     return;
                 }
@@ -405,14 +528,14 @@ var GamePanel = /** @class */ (function (_super) {
                 _this.touchNode.setScale(e.target.scale + 0.1);
                 _this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame;
             });
-            this_4.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_MOVE, function (e) {
+            this_5.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_MOVE, function (e) {
                 if (_this.touchTarget != e.target) {
                     return;
                 }
                 var point = _this.node.convertToNodeSpaceAR(e.currentTouch._point);
                 _this.touchNode.setPosition(point);
             });
-            this_4.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_END, function (e) {
+            this_5.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_END, function (e) {
                 if (_this.touchTarget != e.target) {
                     return;
                 }
@@ -420,7 +543,7 @@ var GamePanel = /** @class */ (function (_super) {
                 e.target.opacity = 255;
                 _this.touchTarget = null;
             });
-            this_4.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
+            this_5.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
                 if (_this.touchTarget != e.target) {
                     return;
                 }
@@ -553,9 +676,9 @@ var GamePanel = /** @class */ (function (_super) {
                 }
             });
         };
-        var this_4 = this;
+        var this_5 = this;
         for (var i = 0; i < this.ItemNodeArr.length; i++) {
-            _loop_5(i);
+            _loop_6(i);
         }
     };
     GamePanel.prototype.nextCheckPoint = function () {
@@ -593,6 +716,10 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.success = function () {
         var _this = this;
         DaAnData_1.DaAnData.getInstance().submitEnable = true;
+        DataReporting_1.default.getInstance().dispatchEvent('addLog', {
+            eventType: 'clickSubmit',
+            eventValue: JSON.stringify(this.eventvalue)
+        });
         if (this.types == 1) {
             UIHelp_1.UIHelp.AffirmTip(1, '闯关成功，你真棒～', function () {
             }, function () {
@@ -679,8 +806,8 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.addListenerOnSelect = function () {
         var _this = this;
         if (this.selectNode) {
-            var _loop_6 = function (i) {
-                this_5.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, function (e) {
+            var _loop_7 = function (i) {
+                this_6.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, function (e) {
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i, _this.finishArr[i], true), false);
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
                         if (trackEntry.animation.name == _this.getSelectAnimationName(i, _this.finishArr[i], true)) {
@@ -688,14 +815,14 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     });
                 });
-                this_5.selectNode.children[i].on(cc.Node.EventType.TOUCH_END, function (e) {
+                this_6.selectNode.children[i].on(cc.Node.EventType.TOUCH_END, function (e) {
                 });
-                this_5.selectNode.children[i].on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
+                this_6.selectNode.children[i].on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
                 });
             };
-            var this_5 = this;
+            var this_6 = this;
             for (var i = 0; i < this.selectNode.children.length; i++) {
-                _loop_6(i);
+                _loop_7(i);
             }
         }
     };
@@ -951,6 +1078,7 @@ var GamePanel = /** @class */ (function (_super) {
                     var sprite = node.addComponent(cc.Sprite);
                     var index = i % 27 + 1;
                     sprite.spriteFrame = this.sourceSFArr[Math.ceil(index / 3) - 1];
+                    console.log('------id is ', Math.ceil(index / 3) - 1);
                     var size = index % 3;
                     if (size == 2) {
                         node.scale = 0.8;
@@ -973,16 +1101,16 @@ var GamePanel = /** @class */ (function (_super) {
             space = 610;
             startX = -(num - 1) * space / 2 + 140;
         }
-        var _loop_7 = function (i) {
-            cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this_6.AnswerBoardArr[i]);
-            this_6.AnswerBoardArr[i].setPosition(cc.v2(startX + i * space - 2000, Y));
+        var _loop_8 = function (i) {
+            cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this_7.AnswerBoardArr[i]);
+            this_7.AnswerBoardArr[i].setPosition(cc.v2(startX + i * space - 2000, Y));
             setTimeout(function () {
                 _this.AnswerBoardArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
             }, 100 * (num - 1 - i));
         };
-        var this_6 = this;
+        var this_7 = this;
         for (var i = 0; i < num; i++) {
-            _loop_7(i);
+            _loop_8(i);
         }
     };
     GamePanel.prototype.postItem = function () {
@@ -996,34 +1124,6 @@ var GamePanel = /** @class */ (function (_super) {
         var upStartX = -(upNum - 1) * space / 2 - 50;
         var downStartX = -(downNum - 1) * space / 2 - 50;
         if (upNum == downNum) {
-            var _loop_8 = function (i) {
-                this_7.ItemNodeArr[i].opacity = 0;
-                cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this_7.ItemNodeArr[i]);
-                if (i < upNum) {
-                    this_7.ItemNodeArr[i].setPosition(cc.v2(upStartX + i * space, upY));
-                }
-                else {
-                    this_7.ItemNodeArr[i].setPosition(cc.v2(downStartX + (i - upNum) * space, downY));
-                }
-                setTimeout(function () {
-                    _this.ItemNodeArr[i].runAction(cc.sequence(cc.spawn(cc.moveBy(0.8, cc.v2(50, 0)), cc.fadeIn(0.8)), cc.callFunc(function () {
-                        if (i == num - 1) {
-                            if (_this.types == 1) {
-                                _this.createAnswerBoard(_this.checkpoint);
-                            }
-                            else if (_this.types == 2) {
-                                _this.createSelectBoard();
-                            }
-                        }
-                    })));
-                }, 50 * i);
-            };
-            var this_7 = this;
-            for (var i = 0; i < num; i++) {
-                _loop_8(i);
-            }
-        }
-        else {
             var _loop_9 = function (i) {
                 this_8.ItemNodeArr[i].opacity = 0;
                 cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this_8.ItemNodeArr[i]);
@@ -1049,6 +1149,34 @@ var GamePanel = /** @class */ (function (_super) {
             var this_8 = this;
             for (var i = 0; i < num; i++) {
                 _loop_9(i);
+            }
+        }
+        else {
+            var _loop_10 = function (i) {
+                this_9.ItemNodeArr[i].opacity = 0;
+                cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this_9.ItemNodeArr[i]);
+                if (i < upNum) {
+                    this_9.ItemNodeArr[i].setPosition(cc.v2(upStartX + i * space, upY));
+                }
+                else {
+                    this_9.ItemNodeArr[i].setPosition(cc.v2(downStartX + (i - upNum) * space, downY));
+                }
+                setTimeout(function () {
+                    _this.ItemNodeArr[i].runAction(cc.sequence(cc.spawn(cc.moveBy(0.8, cc.v2(50, 0)), cc.fadeIn(0.8)), cc.callFunc(function () {
+                        if (i == num - 1) {
+                            if (_this.types == 1) {
+                                _this.createAnswerBoard(_this.checkpoint);
+                            }
+                            else if (_this.types == 2) {
+                                _this.createSelectBoard();
+                            }
+                        }
+                    })));
+                }, 50 * i);
+            };
+            var this_9 = this;
+            for (var i = 0; i < num; i++) {
+                _loop_10(i);
             }
         }
     };
