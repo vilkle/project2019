@@ -64,7 +64,6 @@ var TeacherPanel = /** @class */ (function (_super) {
     };
     TeacherPanel.prototype.onToggleCallBack = function (e) {
         var toggle = e;
-        cc.log(this.typetype);
         var index = this.typeArr.indexOf(toggle.node.parent.parent);
         var typeNum = DaAnData_1.DaAnData.getInstance().checkpointsNum;
         if (toggle.node.parent.children[0].getComponent(cc.Toggle).isChecked) {

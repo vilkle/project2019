@@ -39,6 +39,10 @@ var AffirmTips = /** @class */ (function (_super) {
         //Tools.playSpine(this.sp_BgAnimator, "fault", false);
         this.des.string = des;
         this.callbackClose = callbackClose;
+        if (btnCloselDes == '') {
+            this.close.node.active = false;
+            this.ok.node.x = 0;
+        }
         if (btnCloselDes) {
             btnCloselDes == "" ? "取消" : btnCloselDes;
             this.btnCloseLabel.string = btnCloselDes;

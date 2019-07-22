@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ConstValue = /** @class */ (function () {
     function ConstValue() {
     }
-    ConstValue.IS_EDITIONS = false; //是否为发布版本，用于数据上报 及 log输出控制
+    ConstValue.IS_EDITIONS = true; //是否为发布版本，用于数据上报 及 log输出控制
     ConstValue.IS_TEACHER = true; //是否为教师端版本
     ConstValue.CONFIG_FILE_DIR = "config/";
     ConstValue.PREFAB_UI_DIR = "prefab/ui/panel/";

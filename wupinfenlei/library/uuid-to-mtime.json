@@ -1359,11 +1359,6 @@
     "meta": 1563158673879,
     "relativePath": "atlas/gameAtlas/paipai.json"
   },
-  "62af3dd2-526f-4df6-81ef-c3b28cf4a879": {
-    "asset": 1563259482960,
-    "meta": 1563259482976,
-    "relativePath": "resources/prefab/ui/panel/TeacherPanel.prefab"
-  },
   "08672816-d4df-4fd0-a7de-5dce77f5cdba": {
     "asset": 1563188207079,
     "meta": 1563188228434,
@@ -1379,14 +1374,9 @@
     "meta": 1563194581744,
     "relativePath": "resources/prefab/ui/Item/BigNode.prefab"
   },
-  "67e25580-1a84-400e-ad73-929c6aab0745": {
-    "asset": 1563244922750,
-    "meta": 1563248417380,
-    "relativePath": "scripts/UI/Item/affirmTips.ts"
-  },
   "32a27146-d674-48a9-a96a-531ca6aaadfe": {
-    "asset": 1563253669298,
-    "meta": 1563253669308,
+    "asset": 1563763605141,
+    "meta": 1563763605152,
     "relativePath": "resources/prefab/ui/panel/AffirmTips.prefab"
   },
   "d402bb72-7a93-4939-b703-49490b51072b": {
@@ -1460,23 +1450,33 @@
     "relativePath": "scripts/Data/DaAnData.ts"
   },
   "70c27101-9967-4f25-8b60-310f5dc8f652": {
-    "asset": 1563516386912,
-    "meta": 1563516389087,
+    "asset": 1563540191468,
+    "meta": 1563761871942,
     "relativePath": "scripts/UI/panel/TeacherPanel.ts"
   },
   "32f855fb-ac45-4a70-9924-652cc84cf88d": {
-    "asset": 1563527514468,
-    "meta": 1563527514650,
+    "asset": 1563533071397,
+    "meta": 1563533071498,
     "relativePath": "resources/prefab/ui/panel/GamePanel.prefab"
   },
-  "66b51a1b-71dd-4c8b-875c-6e87377f022c": {
-    "asset": 1563525668664,
-    "meta": 1563525688759,
-    "relativePath": "scripts/Data/ConstValue.ts"
+  "67e25580-1a84-400e-ad73-929c6aab0745": {
+    "asset": 1563762899448,
+    "meta": 1563763599002,
+    "relativePath": "scripts/UI/Item/affirmTips.ts"
+  },
+  "62af3dd2-526f-4df6-81ef-c3b28cf4a879": {
+    "asset": 1563776591028,
+    "meta": 1563776591050,
+    "relativePath": "resources/prefab/ui/panel/TeacherPanel.prefab"
   },
   "246c238e-9069-4a1e-86ba-64939510723e": {
-    "asset": 1563527510224,
-    "meta": 1563527513047,
+    "asset": 1563776369852,
+    "meta": 1563776432302,
     "relativePath": "scripts/UI/panel/GamePanel.ts"
+  },
+  "66b51a1b-71dd-4c8b-875c-6e87377f022c": {
+    "asset": 1563776583344,
+    "meta": 1563776584336,
+    "relativePath": "scripts/Data/ConstValue.ts"
   }
 }

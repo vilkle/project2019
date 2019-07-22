@@ -32,6 +32,10 @@ var GamePanel = /** @class */ (function (_super) {
         _this.checkpointsNum = 0;
         _this.typeDataArr = [];
         _this.sourceSFArr = [];
+        _this.animalSFArr = [];
+        _this.foodSFArr = [];
+        _this.stationerySFArr = [];
+        _this.clothesSFArr = [];
         _this.ItemNodeArr = [];
         _this.AnswerBoardArr = [];
         _this.selectNodeArr = [];
@@ -90,6 +94,7 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.loadSourceSFArr = function () {
         var _this = this;
+        console.log('enter the loadSourceSFArr!');
         if (this.types == 1) {
             cc.loader.loadResDir("images/gameUI/pic/animal", cc.SpriteFrame, function (err, assets, urls) {
                 if (!err) {
@@ -109,7 +114,11 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     for (var i = 0; i < assets.length; i++) {
-                        _this.sourceSFArr.push(assets[i]);
+                        console.log('1111');
+                        _this.animalSFArr.push(assets[i]);
+                        if (_this.animalSFArr.length + _this.foodSFArr.length + _this.stationerySFArr.length + _this.clothesSFArr.length == 20) {
+                            _this.setPanel();
+                        }
                     }
                 }
             });
@@ -131,7 +140,11 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     for (var i = 0; i < assets.length; i++) {
-                        _this.sourceSFArr.push(assets[i]);
+                        console.log('2222');
+                        _this.foodSFArr.push(assets[i]);
+                        if (_this.animalSFArr.length + _this.foodSFArr.length + _this.stationerySFArr.length + _this.clothesSFArr.length == 20) {
+                            _this.setPanel();
+                        }
                     }
                 }
             });
@@ -153,7 +166,11 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     for (var i = 0; i < assets.length; i++) {
-                        _this.sourceSFArr.push(assets[i]);
+                        console.log('3333');
+                        _this.stationerySFArr.push(assets[i]);
+                        if (_this.animalSFArr.length + _this.foodSFArr.length + _this.stationerySFArr.length + _this.clothesSFArr.length == 20) {
+                            _this.setPanel();
+                        }
                     }
                 }
             });
@@ -175,8 +192,9 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     for (var i = 0; i < assets.length; i++) {
-                        _this.sourceSFArr.push(assets[i]);
-                        if (_this.sourceSFArr.length == 20) {
+                        console.log('4444');
+                        _this.clothesSFArr.push(assets[i]);
+                        if (_this.animalSFArr.length + _this.foodSFArr.length + _this.stationerySFArr.length + _this.clothesSFArr.length == 20) {
                             _this.setPanel();
                         }
                     }
@@ -266,6 +284,12 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.setPanel = function () {
         if (this.types == 1) {
+            for (var i = 0; i < 5; i++) {
+                this.sourceSFArr[i] = this.animalSFArr[i];
+                this.sourceSFArr[5 + i] = this.foodSFArr[i];
+                this.sourceSFArr[10 + i] = this.stationerySFArr[i];
+                this.sourceSFArr[15 + i] = this.clothesSFArr[i];
+            }
             for (var i = 0; i < this.checkpointsNum; i++) {
                 this.finishArr.push(false);
             }
@@ -327,8 +351,10 @@ var GamePanel = /** @class */ (function (_super) {
         var space = 600;
         var long = (num - 1) * space;
         var starX = -long / 2;
+        console.log('------startX', starX);
         var _loop_1 = function (i) {
             this_1.selectNodeArr[i].setPosition(cc.v2(starX + i * long - 2000, -300));
+            console.log('------x', starX + i * long);
             this_1.selectPosArr[i] = cc.v2(starX + i * long - 2000, -300);
             setTimeout(function () {
                 _this.selectNodeArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
@@ -338,6 +364,8 @@ var GamePanel = /** @class */ (function (_super) {
         for (var i = 0; i < num; i++) {
             _loop_1(i);
         }
+        console.log(this.selectNodeArr);
+        console.log(this.selectPosArr);
     };
     GamePanel.prototype.createSelectBoard = function () {
         var _this = this;
@@ -350,7 +378,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.selectNode.getChildByName('colorNode').active = true;
             this.selectArr[0] = true;
             this.finishArr[0] = false;
-            this.selectNodeArr.push(this.selectNode.getChildByName('colorNode'));
+            this.selectNodeArr[0] = this.selectNode.getChildByName('colorNode');
         }
         else {
             this.selectNode.getChildByName('colorNode').active = false;
@@ -361,7 +389,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.selectNode.getChildByName('figureNode').active = true;
             this.selectArr[1] = true;
             this.finishArr[1] = false;
-            this.selectNodeArr.push(this.selectNode.getChildByName('figureNode'));
+            this.selectNodeArr[1] = this.selectNode.getChildByName('figureNode');
         }
         else {
             this.selectNode.getChildByName('figureNode').active = false;
@@ -372,7 +400,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.selectNode.getChildByName('sizeNode').active = true;
             this.selectArr[2] = true;
             this.finishArr[2] = false;
-            this.selectNodeArr.push(this.selectNode.getChildByName('sizeNode'));
+            this.selectNodeArr[2] = this.selectNode.getChildByName('sizeNode');
         }
         else {
             this.selectNode.getChildByName('sizeNode').active = false;
@@ -527,6 +555,7 @@ var GamePanel = /** @class */ (function (_super) {
                 _this.touchNode.setPosition(point);
                 _this.touchNode.setScale(e.target.scale + 0.1);
                 _this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame;
+                _this.touchNode.scale = e.target.scale - 0.1;
             });
             this_5.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_MOVE, function (e) {
                 if (_this.touchTarget != e.target) {
@@ -707,7 +736,7 @@ var GamePanel = /** @class */ (function (_super) {
                 _this.answer4 = [];
                 _this.answerArr = [];
                 _this.initAnswerArr(_this.checkpoint);
-            }, '关闭', '下一关', 1);
+            }, '', '下一关', 1);
         }
         else if (this.types == 2) {
             UIHelp_1.UIHelp.showOverTip(1, '答对啦！你真棒！试试其他办法吧～', this.backButtonCallBack.bind(this));
@@ -828,11 +857,14 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.createAnswerBoard = function (checkpoint) {
         var typeSet = new Set_1.default();
+        typeSet.clear();
         if (this.types == 1) {
             for (var j = 20 * (checkpoint - 1); j < 20 * checkpoint; j++) {
                 if (this.typeDataArr[j]) {
                     var index = j - 20 * (checkpoint - 1);
                     typeSet.add(Math.floor(index / 5));
+                    console.log();
+                    console.log('setNum is ', Math.floor(index / 5));
                 }
             }
             for (var i = 0; i < typeSet.size(); i++) {
@@ -1282,7 +1314,7 @@ var GamePanel = /** @class */ (function (_super) {
                 }
             }
             else {
-                this.setPanel();
+                //this.setPanel();
             }
         }.bind(this), null);
     };

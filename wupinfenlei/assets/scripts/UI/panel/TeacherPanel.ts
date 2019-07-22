@@ -74,7 +74,6 @@ export default class TeacherPanel extends BaseUI {
 
     onToggleCallBack(e) {
         let toggle = e;
-        cc.log(this.typetype);
         let index = this.typeArr.indexOf(toggle.node.parent.parent);
         let typeNum = DaAnData.getInstance().checkpointsNum;
         if(toggle.node.parent.children[0].getComponent(cc.Toggle).isChecked) {

@@ -235,6 +235,7 @@ export default class GamePanel extends BaseUI {
                     if(!err){
                         for(var i = 0; i < assets.length; i++){
                                 this.sourceSFArr.push(assets[i]);
+                                console.log('1111');
                             }
                             num ++;
                             if(num == DaAnData.getInstance().picArr.length)
@@ -248,6 +249,7 @@ export default class GamePanel extends BaseUI {
                     cc.loader.loadResDir("images/gameUI/pic/food", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
+                            console.log('2222');
                         }
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
@@ -260,6 +262,7 @@ export default class GamePanel extends BaseUI {
                     cc.loader.loadResDir("images/gameUI/pic/figure", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
+                            console.log('3333');
                         }
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
@@ -272,6 +275,7 @@ export default class GamePanel extends BaseUI {
                     cc.loader.loadResDir("images/gameUI/pic/dailyuse", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
+                            console.log('4444');
                         }
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
@@ -284,6 +288,7 @@ export default class GamePanel extends BaseUI {
                     cc.loader.loadResDir("images/gameUI/pic/number", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
+                            console.log('55555');
                         }
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
@@ -296,6 +301,7 @@ export default class GamePanel extends BaseUI {
                     cc.loader.loadResDir("images/gameUI/pic/stationery", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
+                            console.log('6666');
                         }
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
@@ -308,6 +314,7 @@ export default class GamePanel extends BaseUI {
                     cc.loader.loadResDir("images/gameUI/pic/clothes", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
+                            console.log('7777');
                         }
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
@@ -320,6 +327,7 @@ export default class GamePanel extends BaseUI {
                     cc.loader.loadResDir("images/gameUI/pic/letter", cc.SpriteFrame, function (err, assets, urls) {
                         for(var i = 0; i < assets.length; i++){
                             this.sourceSFArr.push(assets[i]);
+                            console.log('8888');
                         }
                         num ++;
                         if(num == DaAnData.getInstance().picArr.length)
