@@ -5,7 +5,7 @@
       "main": true,
       "url": "app://editor/index.html",
       "windowType": "dockable",
-      "x": -1892,
+      "x": -1920,
       "y": -167,
       "width": 1920,
       "height": 986,
@@ -45,23 +45,23 @@
                     "children": [
                       "scene"
                     ],
-                    "height": 522.125,
+                    "height": 634.15625,
                     "type": "panel",
-                    "width": 790
+                    "width": 1040
                   },
                   {
                     "active": 0,
                     "children": [
                       "node-library"
                     ],
-                    "height": 522.125,
+                    "height": 634.15625,
                     "type": "panel",
                     "width": 264
                   }
                 ],
-                "height": 522.125,
+                "height": 634.15625,
                 "type": "dock-h",
-                "width": 1056
+                "width": 1306
               },
               {
                 "active": 0,
@@ -69,14 +69,14 @@
                   "console",
                   "timeline"
                 ],
-                "height": 378.078125,
+                "height": 266.0625,
                 "type": "panel",
-                "width": 1056
+                "width": 1306
               }
             ],
             "height": 902.21875,
             "type": "dock-v",
-            "width": 1056
+            "width": 1306
           },
           {
             "active": 0,
@@ -86,7 +86,7 @@
             ],
             "height": 902.21875,
             "type": "panel",
-            "width": 554
+            "width": 304
           }
         ],
         "type": "dock-h"
@@ -101,7 +101,9 @@
         "cocos-services",
         "scene"
       ]
-    }
+    },
+    "window-1563954032647": {},
+    "worker": {}
   },
   "panels": {
     "sprite-editor": {

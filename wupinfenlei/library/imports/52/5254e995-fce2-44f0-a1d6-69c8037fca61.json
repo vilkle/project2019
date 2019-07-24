@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "img—kuan—xifu",
+    "texture": "da55fdb6-56bd-42a8-b044-1f15c4760dd5",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      533,
+      428
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      533,
+      428
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

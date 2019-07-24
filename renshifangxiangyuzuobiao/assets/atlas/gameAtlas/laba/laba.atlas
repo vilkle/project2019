@@ -1,0 +1,48 @@
+
+laba.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+icon_megaphone
+  rotate: false
+  xy: 137, 3
+  size: 133, 115
+  orig: 133, 115
+  offset: 0, 0
+  index: -1
+icon_sound2
+  rotate: false
+  xy: 366, 94
+  size: 64, 24
+  orig: 64, 24
+  offset: 0, 0
+  index: -1
+icon_sound_1
+  rotate: false
+  xy: 272, 67
+  size: 41, 51
+  orig: 41, 51
+  offset: 0, 0
+  index: -1
+icon_sound_3
+  rotate: false
+  xy: 315, 75
+  size: 49, 43
+  orig: 49, 43
+  offset: 0, 0
+  index: -1
+laba02
+  rotate: false
+  xy: 2, 2
+  size: 133, 116
+  orig: 133, 116
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 366, 75
+  size: 63, 17
+  orig: 63, 17
+  offset: 0, 0
+  index: -1

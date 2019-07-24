@@ -8,7 +8,7 @@
       "x": -1920,
       "y": -169,
       "width": 1920,
-      "height": 1001,
+      "height": 1057,
       "layout": {
         "children": [
           {
@@ -18,7 +18,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 460.9375,
+                "height": 434.46875,
                 "type": "panel",
                 "width": 306
               },
@@ -27,12 +27,12 @@
                 "children": [
                   "assets"
                 ],
-                "height": 512.046875,
+                "height": 482.53125,
                 "type": "panel",
                 "width": 306
               }
             ],
-            "height": 975,
+            "height": 919,
             "type": "dock-v",
             "width": 306
           },
@@ -43,7 +43,7 @@
                 "children": [
                   "scene"
                 ],
-                "height": 706.453125,
+                "height": 651,
                 "type": "panel",
                 "width": 1306
               },
@@ -53,12 +53,12 @@
                   "console",
                   "timeline"
                 ],
-                "height": 266.546875,
+                "height": 266,
                 "type": "panel",
                 "width": 1306
               }
             ],
-            "height": 975,
+            "height": 919,
             "type": "dock-v",
             "width": 1306
           },
@@ -68,7 +68,7 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 975,
+            "height": 919,
             "type": "panel",
             "width": 304
           }
@@ -84,7 +84,8 @@
         "cocos-services",
         "scene"
       ]
-    }
+    },
+    "window-1563871502312": {}
   },
   "panels": {
     "sprite-editor": {

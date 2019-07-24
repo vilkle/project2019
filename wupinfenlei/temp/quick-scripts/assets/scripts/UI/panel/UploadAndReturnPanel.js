@@ -11,6 +11,7 @@ var ListenerManager_1 = require("../../Manager/ListenerManager");
 var ListenerType_1 = require("../../Data/ListenerType");
 var DaAnData_1 = require("../../Data/DaAnData");
 var UIHelp_1 = require("../../Utils/UIHelp");
+var OverTips_1 = require("../Item/OverTips");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var UploadAndReturnPanel = /** @class */ (function (_super) {
     __extends(UploadAndReturnPanel, _super);
@@ -24,6 +25,7 @@ var UploadAndReturnPanel = /** @class */ (function (_super) {
         ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 0 });
         UIManager_1.UIManager.getInstance().closeUI(GamePanel_1.default);
         UIManager_1.UIManager.getInstance().closeUI(UploadAndReturnPanel_1);
+        UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
     };
     UploadAndReturnPanel.prototype.onTiJiao = function () {
         if (DaAnData_1.DaAnData.getInstance().submitEnable) {

@@ -165,6 +165,11 @@ var GamePanel = /** @class */ (function (_super) {
                 this.triangleNode.children[i].children[j].getComponent(sp.Skeleton).setAnimation(0, 'yellow', true);
             }
         }
+        for (var i = 0; i < this.bottomNode.children.length; i++) {
+            for (var j = 0; j < this.bottomNode.children[i].children.length; j++) {
+                this.bottomNode.children[i].children[j].getComponent(cc.Sprite).spriteFrame = this.yellowDotFrame;
+            }
+        }
         this.startAction();
     };
     GamePanel.prototype.question2 = function () {
@@ -327,9 +332,11 @@ var GamePanel = /** @class */ (function (_super) {
                 if (j == 0 || j == this.triangleNode.children[i].children.length - 1) {
                     this.triangleNode.children[i].children[j].getComponent(sp.Skeleton).setAnimation(0, 'green', true);
                 }
-                if (i == this.triangleNode.children.length - 1) {
-                    this.triangleNode.children[i].children[j].getComponent(sp.Skeleton).setAnimation(0, 'green', true);
-                }
+            }
+        }
+        for (var i = 0; i < this.bottomNode.children.length; i++) {
+            for (var j = 0; j < this.bottomNode.children[i].children.length; j++) {
+                this.bottomNode.children[i].children[j].getComponent(cc.Sprite).spriteFrame = this.greenDotFrame;
             }
         }
         setTimeout(function () {
@@ -352,9 +359,11 @@ var GamePanel = /** @class */ (function (_super) {
                 if (j == 0 || j == this.triangleNode.children[i].children.length - 1) {
                     this.triangleNode.children[i].children[j].getComponent(sp.Skeleton).setAnimation(0, 'red', true);
                 }
-                if (i == this.triangleNode.children.length - 1) {
-                    this.triangleNode.children[i].children[j].getComponent(sp.Skeleton).setAnimation(0, 'red', true);
-                }
+            }
+        }
+        for (var i = 0; i < this.bottomNode.children.length; i++) {
+            for (var j = 0; j < this.bottomNode.children[i].children.length; j++) {
+                this.bottomNode.children[i].children[j].getComponent(cc.Sprite).spriteFrame = this.redDotFrame;
             }
         }
         setTimeout(function () {

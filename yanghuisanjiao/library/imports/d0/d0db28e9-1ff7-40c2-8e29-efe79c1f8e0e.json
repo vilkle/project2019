@@ -5,12 +5,12 @@
   "_native": "raw-skeleton.json",
   "_skeletonJson": {
     "skeleton": {
-      "hash": "UuPvmrJCK6vkQ+6zXTsQFJeZDEU",
-      "spine": "3.7.93",
+      "hash": "qTgN6WXxJHJFx6eoQfKSBJSViWw",
+      "spine": "3.7.94",
       "width": 2850.15,
       "height": 719.71,
       "images": "../闯关成功/spine/images/",
-      "audio": "/Users/app/Desktop/动效工程文件/对错提示/闯关成功/spine"
+      "audio": ""
     },
     "bones": [
       {
@@ -2205,26 +2205,6 @@
         "name": "box_gai4",
         "bone": "box_gai4",
         "attachment": "box_gai"
-      },
-      {
-        "name": "zi_cheng",
-        "bone": "mimiya",
-        "attachment": "zi_cheng"
-      },
-      {
-        "name": "zi_gong",
-        "bone": "doudou",
-        "attachment": "zi_gong"
-      },
-      {
-        "name": "zi_guan",
-        "bone": "xiaoU",
-        "attachment": "zi_guan"
-      },
-      {
-        "name": "zi_chuang",
-        "bone": "paipai",
-        "attachment": "zi_chuang"
       },
       {
         "name": "paper_01",
@@ -5018,192 +4998,192 @@
               0.75233
             ],
             "triangles": [
-              7,
-              33,
-              6,
-              7,
-              8,
-              33,
-              8,
-              28,
-              33,
-              8,
-              9,
-              28,
-              9,
-              10,
-              28,
+              12,
+              13,
+              41,
               42,
-              10,
-              11,
+              12,
+              41,
               42,
-              28,
-              10,
-              6,
-              32,
-              5,
-              6,
-              33,
-              32,
-              33,
+              41,
               27,
-              32,
-              33,
               28,
+              42,
               27,
               11,
               12,
               42,
+              33,
               28,
-              42,
               27,
-              42,
-              41,
+              33,
               27,
-              42,
-              12,
-              41,
-              12,
-              13,
-              41,
               32,
-              31,
+              6,
+              33,
+              32,
+              6,
+              32,
               5,
-              5,
-              31,
-              4,
-              27,
-              26,
-              32,
-              32,
-              26,
-              31,
-              31,
-              30,
-              4,
-              4,
-              30,
-              3,
-              41,
-              40,
-              27,
-              27,
-              40,
-              26,
-              26,
+              42,
+              28,
+              10,
+              42,
+              10,
+              11,
+              9,
+              10,
+              28,
+              8,
+              9,
+              28,
+              8,
+              28,
+              33,
+              7,
+              8,
+              33,
+              7,
+              33,
+              6,
               25,
-              31,
-              31,
-              25,
+              24,
               30,
-              41,
-              13,
-              40,
-              30,
-              29,
-              3,
-              40,
-              39,
-              26,
-              26,
-              39,
-              25,
               13,
               14,
               40,
+              26,
+              39,
               25,
-              24,
+              40,
+              39,
+              26,
+              30,
+              29,
+              3,
+              41,
+              13,
+              40,
+              31,
+              25,
+              30,
+              26,
+              25,
+              31,
+              27,
+              40,
+              26,
+              41,
+              40,
+              27,
+              4,
               30,
               3,
-              29,
-              2,
+              31,
               30,
-              24,
-              29,
+              4,
+              32,
+              26,
+              31,
+              27,
+              26,
+              32,
+              5,
+              31,
+              4,
+              32,
+              31,
+              5,
+              38,
+              16,
+              17,
+              38,
+              17,
+              37,
               39,
-              40,
               15,
-              29,
-              34,
-              2,
-              2,
-              34,
-              1,
-              25,
-              38,
+              16,
               24,
-              25,
-              39,
               38,
+              37,
+              24,
+              37,
+              23,
+              38,
+              39,
+              16,
+              29,
+              23,
+              34,
+              24,
+              23,
+              29,
               40,
               14,
               15,
+              25,
+              39,
+              38,
+              25,
+              38,
               24,
-              23,
-              29,
-              29,
-              23,
+              2,
               34,
-              38,
+              1,
+              29,
+              34,
+              2,
               39,
-              16,
-              24,
-              37,
-              23,
-              24,
-              38,
-              37,
-              39,
+              40,
               15,
-              16,
-              38,
-              17,
-              37,
-              38,
-              16,
-              17,
-              34,
-              35,
-              1,
-              1,
-              35,
-              0,
-              23,
-              22,
-              34,
-              34,
-              22,
-              35,
-              37,
+              30,
+              24,
+              29,
+              3,
+              29,
+              2,
               36,
-              23,
-              23,
-              36,
-              22,
-              35,
-              21,
-              0,
-              35,
-              20,
-              21,
-              35,
-              22,
-              20,
-              17,
               18,
-              37,
-              37,
-              18,
-              36,
-              36,
               19,
-              22,
               22,
               19,
               20,
               36,
+              19,
+              22,
+              37,
               18,
-              19
+              36,
+              17,
+              18,
+              37,
+              35,
+              22,
+              20,
+              35,
+              20,
+              21,
+              35,
+              21,
+              0,
+              23,
+              36,
+              22,
+              37,
+              36,
+              23,
+              34,
+              22,
+              35,
+              23,
+              22,
+              34,
+              1,
+              35,
+              0,
+              34,
+              35,
+              1
             ],
             "vertices": [
               3,
@@ -11405,38 +11385,6 @@
               368.82,
               96.13
             ]
-          }
-        },
-        "zi_cheng": {
-          "zi_cheng": {
-            "x": -1.07,
-            "y": -19.31,
-            "width": 61,
-            "height": 80
-          }
-        },
-        "zi_chuang": {
-          "zi_chuang": {
-            "x": 1.9,
-            "y": -20.25,
-            "width": 63,
-            "height": 78
-          }
-        },
-        "zi_gong": {
-          "zi_gong": {
-            "x": -0.47,
-            "y": -18.01,
-            "width": 64,
-            "height": 79
-          }
-        },
-        "zi_guan": {
-          "zi_guan": {
-            "x": 0.16,
-            "y": -18.82,
-            "width": 65,
-            "height": 81
           }
         }
       }
@@ -35743,7 +35691,7 @@
             "offsets": [
               {
                 "slot": "pai_hand2",
-                "offset": 292
+                "offset": 288
               }
             ]
           },
@@ -35752,15 +35700,15 @@
             "offsets": [
               {
                 "slot": "u_hand1",
-                "offset": 310
+                "offset": 306
               },
               {
                 "slot": "u_hand2",
-                "offset": 310
+                "offset": 306
               },
               {
                 "slot": "pai_hand2",
-                "offset": 290
+                "offset": 286
               }
             ]
           },
@@ -35769,19 +35717,19 @@
             "offsets": [
               {
                 "slot": "u_hand1",
-                "offset": 310
+                "offset": 306
               },
               {
                 "slot": "u_hand2",
-                "offset": 310
+                "offset": 306
               },
               {
                 "slot": "pai_hand1",
-                "offset": 291
+                "offset": 287
               },
               {
                 "slot": "pai_hand2",
-                "offset": 289
+                "offset": 285
               }
             ]
           },
@@ -35790,27 +35738,27 @@
             "offsets": [
               {
                 "slot": "miya_hand2",
-                "offset": 321
+                "offset": 317
               },
               {
                 "slot": "miya_hand1",
-                "offset": 321
+                "offset": 317
               },
               {
                 "slot": "u_hand1",
-                "offset": 310
+                "offset": 306
               },
               {
                 "slot": "u_hand2",
-                "offset": 310
+                "offset": 306
               },
               {
                 "slot": "pai_hand1",
-                "offset": 289
+                "offset": 285
               },
               {
                 "slot": "pai_hand2",
-                "offset": 287
+                "offset": 283
               }
             ]
           },
@@ -71245,7 +71193,7 @@
       }
     }
   },
-  "_atlasText": "\nrongchi.png\nsize: 2048,256\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nbox\n  rotate: false\n  xy: 2, 73\n  size: 220, 181\n  orig: 220, 181\n  offset: 0, 0\n  index: -1\nbox_gai\n  rotate: false\n  xy: 224, 208\n  size: 264, 46\n  orig: 264, 46\n  offset: 0, 0\n  index: -1\nbox_gai_shadow\n  rotate: false\n  xy: 2, 19\n  size: 219, 52\n  orig: 219, 52\n  offset: 0, 0\n  index: -1\ndou_eyes_L\n  rotate: false\n  xy: 1569, 160\n  size: 21, 28\n  orig: 21, 28\n  offset: 0, 0\n  index: -1\ndou_eyes_R\n  rotate: false\n  xy: 918, 169\n  size: 21, 28\n  orig: 21, 28\n  offset: 0, 0\n  index: -1\ndou_naodai\n  rotate: false\n  xy: 645, 169\n  size: 113, 85\n  orig: 113, 85\n  offset: 0, 0\n  index: -1\ndou_yanbai_L\n  rotate: true\n  xy: 1446, 154\n  size: 37, 45\n  orig: 37, 45\n  offset: 0, 0\n  index: -1\ndou_yanbai_R\n  rotate: true\n  xy: 1493, 155\n  size: 36, 44\n  orig: 36, 44\n  offset: 0, 0\n  index: -1\ndou_yiba\n  rotate: false\n  xy: 1759, 185\n  size: 26, 31\n  orig: 26, 31\n  offset: 0, 0\n  index: -1\ndou_zui\n  rotate: false\n  xy: 2, 2\n  size: 23, 15\n  orig: 23, 15\n  offset: 0, 0\n  index: -1\nmiya_ear1\n  rotate: true\n  xy: 1992, 202\n  size: 52, 54\n  orig: 52, 54\n  offset: 0, 0\n  index: -1\nmiya_ear2\n  rotate: true\n  xy: 1992, 149\n  size: 51, 54\n  orig: 51, 54\n  offset: 0, 0\n  index: -1\nmiya_eye1\n  rotate: false\n  xy: 891, 168\n  size: 25, 29\n  orig: 25, 29\n  offset: 0, 0\n  index: -1\nmiya_face\n  rotate: false\n  xy: 760, 168\n  size: 99, 86\n  orig: 99, 86\n  offset: 0, 0\n  index: -1\nmiya_hair1\n  rotate: true\n  xy: 813, 114\n  size: 52, 49\n  orig: 52, 49\n  offset: 0, 0\n  index: -1\nmiya_hair2\n  rotate: false\n  xy: 1350, 151\n  size: 47, 45\n  orig: 47, 45\n  offset: 0, 0\n  index: -1\nmiya_hair3\n  rotate: false\n  xy: 224, 2\n  size: 67, 98\n  orig: 67, 98\n  offset: 0, 0\n  index: -1\nmiya_hand1\n  rotate: false\n  xy: 1044, 165\n  size: 50, 44\n  orig: 50, 44\n  offset: 0, 0\n  index: -1\nmiya_hand2\n  rotate: false\n  xy: 1399, 156\n  size: 45, 40\n  orig: 45, 40\n  offset: 0, 0\n  index: -1\nmiya_happymouth\n  rotate: false\n  xy: 902, 141\n  size: 17, 25\n  orig: 17, 25\n  offset: 0, 0\n  index: -1\nmiya_happystar\n  rotate: false\n  xy: 882, 136\n  size: 18, 30\n  orig: 18, 30\n  offset: 0, 0\n  index: -1\nmiya_head\n  rotate: false\n  xy: 395, 97\n  size: 124, 109\n  orig: 124, 109\n  offset: 0, 0\n  index: -1\nmiya_s2\n  rotate: true\n  xy: 631, 105\n  size: 26, 11\n  orig: 26, 11\n  offset: 0, 0\n  index: -1\nmiya_unhappy_eye\n  rotate: false\n  xy: 490, 212\n  size: 20, 11\n  orig: 20, 11\n  offset: 0, 0\n  index: -1\nmiya_zui\n  rotate: false\n  xy: 512, 216\n  size: 7, 7\n  orig: 7, 7\n  offset: 0, 0\n  index: -1\nmouth_da\n  rotate: false\n  xy: 451, 5\n  size: 48, 31\n  orig: 48, 31\n  offset: 0, 0\n  index: -1\npai_body\n  rotate: false\n  xy: 224, 102\n  size: 169, 104\n  orig: 169, 104\n  offset: 0, 0\n  index: -1\npai_ear_l\n  rotate: false\n  xy: 1153, 162\n  size: 31, 45\n  orig: 31, 45\n  offset: 0, 0\n  index: -1\npai_eye1\n  rotate: false\n  xy: 1592, 160\n  size: 18, 28\n  orig: 18, 28\n  offset: 0, 0\n  index: -1\npai_eyebg1\n  rotate: false\n  xy: 521, 101\n  size: 108, 30\n  orig: 108, 30\n  offset: 0, 0\n  index: -1\npai_eyebg2\n  rotate: false\n  xy: 986, 211\n  size: 109, 43\n  orig: 109, 43\n  offset: 0, 0\n  index: -1\npai_hair\n  rotate: false\n  xy: 861, 199\n  size: 123, 55\n  orig: 123, 55\n  offset: 0, 0\n  index: -1\npai_hand1\n  rotate: false\n  xy: 1096, 167\n  size: 55, 40\n  orig: 55, 40\n  offset: 0, 0\n  index: -1\npai_hand2\n  rotate: false\n  xy: 759, 115\n  size: 52, 51\n  orig: 52, 51\n  offset: 0, 0\n  index: -1\npai_happyeye\n  rotate: false\n  xy: 27, 3\n  size: 14, 14\n  orig: 14, 14\n  offset: 0, 0\n  index: -1\npai_mouth\n  rotate: false\n  xy: 360, 2\n  size: 36, 27\n  orig: 36, 27\n  offset: 0, 0\n  index: -1\npai_mouth_nei\n  rotate: false\n  xy: 1833, 192\n  size: 19, 17\n  orig: 19, 17\n  offset: 0, 0\n  index: -1\npai_unhappy_eye\n  rotate: false\n  xy: 293, 6\n  size: 20, 11\n  orig: 20, 11\n  offset: 0, 0\n  index: -1\npaper_01\n  rotate: true\n  xy: 360, 31\n  size: 69, 33\n  orig: 69, 33\n  offset: 0, 0\n  index: -1\npaper_02\n  rotate: false\n  xy: 1791, 211\n  size: 69, 43\n  orig: 69, 43\n  offset: 0, 0\n  index: -1\npaper_03\n  rotate: false\n  xy: 1862, 211\n  size: 69, 43\n  orig: 69, 43\n  offset: 0, 0\n  index: -1\npaper_04\n  rotate: true\n  xy: 1933, 199\n  size: 55, 57\n  orig: 55, 57\n  offset: 0, 0\n  index: -1\npaper_05\n  rotate: false\n  xy: 395, 38\n  size: 56, 57\n  orig: 56, 57\n  offset: 0, 0\n  index: -1\npaper_06\n  rotate: true\n  xy: 645, 114\n  size: 53, 57\n  orig: 53, 57\n  offset: 0, 0\n  index: -1\npaper_07\n  rotate: false\n  xy: 453, 38\n  size: 56, 57\n  orig: 56, 57\n  offset: 0, 0\n  index: -1\npaper_08\n  rotate: false\n  xy: 704, 112\n  size: 53, 55\n  orig: 53, 55\n  offset: 0, 0\n  index: -1\npaper_09\n  rotate: true\n  xy: 1279, 208\n  size: 46, 87\n  orig: 46, 87\n  offset: 0, 0\n  index: -1\npaper_10\n  rotate: false\n  xy: 986, 171\n  size: 56, 38\n  orig: 56, 38\n  offset: 0, 0\n  index: -1\npaper_11\n  rotate: false\n  xy: 1700, 179\n  size: 57, 37\n  orig: 57, 37\n  offset: 0, 0\n  index: -1\npaper_12\n  rotate: true\n  xy: 1700, 218\n  size: 36, 89\n  orig: 36, 89\n  offset: 0, 0\n  index: -1\npaper_13\n  rotate: true\n  xy: 1189, 208\n  size: 46, 88\n  orig: 46, 88\n  offset: 0, 0\n  index: -1\npaper_14\n  rotate: true\n  xy: 1097, 209\n  size: 45, 90\n  orig: 45, 90\n  offset: 0, 0\n  index: -1\nstar_01\n  rotate: false\n  xy: 1787, 188\n  size: 21, 21\n  orig: 21, 21\n  offset: 0, 0\n  index: -1\nstar_02\n  rotate: false\n  xy: 1810, 188\n  size: 21, 21\n  orig: 21, 21\n  offset: 0, 0\n  index: -1\nstar_03\n  rotate: false\n  xy: 490, 225\n  size: 29, 29\n  orig: 29, 29\n  offset: 0, 0\n  index: -1\nstar_04\n  rotate: false\n  xy: 1854, 192\n  size: 17, 17\n  orig: 17, 17\n  offset: 0, 0\n  index: -1\nu_e1\n  rotate: true\n  xy: 398, 5\n  size: 31, 51\n  orig: 31, 51\n  offset: 0, 0\n  index: -1\nu_eye1\n  rotate: false\n  xy: 864, 130\n  size: 16, 36\n  orig: 16, 36\n  offset: 0, 0\n  index: -1\nu_hand1\n  rotate: false\n  xy: 1186, 168\n  size: 55, 38\n  orig: 55, 38\n  offset: 0, 0\n  index: -1\nu_hand2\n  rotate: false\n  xy: 1243, 168\n  size: 55, 38\n  orig: 55, 38\n  offset: 0, 0\n  index: -1\nu_head\n  rotate: false\n  xy: 521, 133\n  size: 122, 121\n  orig: 122, 121\n  offset: 0, 0\n  index: -1\nu_heart\n  rotate: false\n  xy: 1300, 158\n  size: 48, 48\n  orig: 48, 48\n  offset: 0, 0\n  index: -1\nu_heart_nei\n  rotate: false\n  xy: 941, 177\n  size: 26, 20\n  orig: 26, 20\n  offset: 0, 0\n  index: -1\nu_j1\n  rotate: false\n  xy: 1539, 160\n  size: 28, 28\n  orig: 28, 28\n  offset: 0, 0\n  index: -1\nu_j2\n  rotate: false\n  xy: 861, 168\n  size: 28, 29\n  orig: 28, 29\n  offset: 0, 0\n  index: -1\nu_time\n  rotate: false\n  xy: 511, 77\n  size: 5, 18\n  orig: 5, 18\n  offset: 0, 0\n  index: -1\nu_zui\n  rotate: false\n  xy: 1368, 198\n  size: 87, 56\n  orig: 87, 56\n  offset: 0, 0\n  index: -1\nzi_cheng\n  rotate: true\n  xy: 1457, 193\n  size: 61, 80\n  orig: 61, 80\n  offset: 0, 0\n  index: -1\nzi_chuang\n  rotate: true\n  xy: 1620, 191\n  size: 63, 78\n  orig: 63, 78\n  offset: 0, 0\n  index: -1\nzi_gong\n  rotate: true\n  xy: 1539, 190\n  size: 64, 79\n  orig: 64, 79\n  offset: 0, 0\n  index: -1\nzi_guan\n  rotate: false\n  xy: 293, 19\n  size: 65, 81\n  orig: 65, 81\n  offset: 0, 0\n  index: -1\n",
+  "_atlasText": "\nrongchi.png\nsize: 2048,256\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nbox\n  rotate: false\n  xy: 2, 73\n  size: 220, 181\n  orig: 220, 181\n  offset: 0, 0\n  index: -1\nbox_gai\n  rotate: false\n  xy: 224, 208\n  size: 264, 46\n  orig: 264, 46\n  offset: 0, 0\n  index: -1\nbox_gai_shadow\n  rotate: false\n  xy: 2, 19\n  size: 219, 52\n  orig: 219, 52\n  offset: 0, 0\n  index: -1\ndou_eyes_L\n  rotate: true\n  xy: 618, 78\n  size: 21, 28\n  orig: 21, 28\n  offset: 0, 0\n  index: -1\ndou_eyes_R\n  rotate: false\n  xy: 651, 104\n  size: 21, 28\n  orig: 21, 28\n  offset: 0, 0\n  index: -1\ndou_naodai\n  rotate: false\n  xy: 645, 169\n  size: 113, 85\n  orig: 113, 85\n  offset: 0, 0\n  index: -1\ndou_yanbai_L\n  rotate: true\n  xy: 860, 121\n  size: 37, 45\n  orig: 37, 45\n  offset: 0, 0\n  index: -1\ndou_yanbai_R\n  rotate: true\n  xy: 803, 81\n  size: 36, 44\n  orig: 36, 44\n  offset: 0, 0\n  index: -1\ndou_yiba\n  rotate: false\n  xy: 960, 126\n  size: 26, 31\n  orig: 26, 31\n  offset: 0, 0\n  index: -1\ndou_zui\n  rotate: false\n  xy: 2, 2\n  size: 23, 15\n  orig: 23, 15\n  offset: 0, 0\n  index: -1\nmiya_ear1\n  rotate: true\n  xy: 1823, 202\n  size: 52, 54\n  orig: 52, 54\n  offset: 0, 0\n  index: -1\nmiya_ear2\n  rotate: true\n  xy: 382, 44\n  size: 51, 54\n  orig: 51, 54\n  offset: 0, 0\n  index: -1\nmiya_eye1\n  rotate: true\n  xy: 587, 74\n  size: 25, 29\n  orig: 25, 29\n  offset: 0, 0\n  index: -1\nmiya_face\n  rotate: false\n  xy: 760, 168\n  size: 99, 86\n  orig: 99, 86\n  offset: 0, 0\n  index: -1\nmiya_hair1\n  rotate: false\n  xy: 1933, 205\n  size: 52, 49\n  orig: 52, 49\n  offset: 0, 0\n  index: -1\nmiya_hair2\n  rotate: true\n  xy: 813, 119\n  size: 47, 45\n  orig: 47, 45\n  offset: 0, 0\n  index: -1\nmiya_hair3\n  rotate: false\n  xy: 224, 2\n  size: 67, 98\n  orig: 67, 98\n  offset: 0, 0\n  index: -1\nmiya_hand1\n  rotate: false\n  xy: 1987, 210\n  size: 50, 44\n  orig: 50, 44\n  offset: 0, 0\n  index: -1\nmiya_hand2\n  rotate: false\n  xy: 350, 2\n  size: 45, 40\n  orig: 45, 40\n  offset: 0, 0\n  index: -1\nmiya_happymouth\n  rotate: true\n  xy: 986, 192\n  size: 17, 25\n  orig: 17, 25\n  offset: 0, 0\n  index: -1\nmiya_happystar\n  rotate: false\n  xy: 631, 101\n  size: 18, 30\n  orig: 18, 30\n  offset: 0, 0\n  index: -1\nmiya_head\n  rotate: false\n  xy: 395, 97\n  size: 124, 109\n  orig: 124, 109\n  offset: 0, 0\n  index: -1\nmiya_s2\n  rotate: false\n  xy: 397, 2\n  size: 26, 11\n  orig: 26, 11\n  offset: 0, 0\n  index: -1\nmiya_unhappy_eye\n  rotate: false\n  xy: 490, 212\n  size: 20, 11\n  orig: 20, 11\n  offset: 0, 0\n  index: -1\nmiya_zui\n  rotate: false\n  xy: 2039, 247\n  size: 7, 7\n  orig: 7, 7\n  offset: 0, 0\n  index: -1\nmouth_da\n  rotate: true\n  xy: 488, 2\n  size: 48, 31\n  orig: 48, 31\n  offset: 0, 0\n  index: -1\npai_body\n  rotate: false\n  xy: 224, 102\n  size: 169, 104\n  orig: 169, 104\n  offset: 0, 0\n  index: -1\npai_ear_l\n  rotate: true\n  xy: 756, 95\n  size: 31, 45\n  orig: 31, 45\n  offset: 0, 0\n  index: -1\npai_eye1\n  rotate: false\n  xy: 674, 104\n  size: 18, 28\n  orig: 18, 28\n  offset: 0, 0\n  index: -1\npai_eyebg1\n  rotate: false\n  xy: 521, 101\n  size: 108, 30\n  orig: 108, 30\n  offset: 0, 0\n  index: -1\npai_eyebg2\n  rotate: false\n  xy: 986, 211\n  size: 109, 43\n  orig: 109, 43\n  offset: 0, 0\n  index: -1\npai_hair\n  rotate: false\n  xy: 861, 199\n  size: 123, 55\n  orig: 123, 55\n  offset: 0, 0\n  index: -1\npai_hand1\n  rotate: false\n  xy: 293, 2\n  size: 55, 40\n  orig: 55, 40\n  offset: 0, 0\n  index: -1\npai_hand2\n  rotate: false\n  xy: 1879, 203\n  size: 52, 51\n  orig: 52, 51\n  offset: 0, 0\n  index: -1\npai_happyeye\n  rotate: false\n  xy: 1080, 195\n  size: 14, 14\n  orig: 14, 14\n  offset: 0, 0\n  index: -1\npai_mouth\n  rotate: false\n  xy: 397, 15\n  size: 36, 27\n  orig: 36, 27\n  offset: 0, 0\n  index: -1\npai_mouth_nei\n  rotate: false\n  xy: 1059, 192\n  size: 19, 17\n  orig: 19, 17\n  offset: 0, 0\n  index: -1\npai_unhappy_eye\n  rotate: false\n  xy: 27, 6\n  size: 20, 11\n  orig: 20, 11\n  offset: 0, 0\n  index: -1\npaper_01\n  rotate: false\n  xy: 645, 134\n  size: 69, 33\n  orig: 69, 33\n  offset: 0, 0\n  index: -1\npaper_02\n  rotate: false\n  xy: 438, 52\n  size: 69, 43\n  orig: 69, 43\n  offset: 0, 0\n  index: -1\npaper_03\n  rotate: false\n  xy: 1459, 211\n  size: 69, 43\n  orig: 69, 43\n  offset: 0, 0\n  index: -1\npaper_04\n  rotate: true\n  xy: 1530, 199\n  size: 55, 57\n  orig: 55, 57\n  offset: 0, 0\n  index: -1\npaper_05\n  rotate: true\n  xy: 1589, 198\n  size: 56, 57\n  orig: 56, 57\n  offset: 0, 0\n  index: -1\npaper_06\n  rotate: true\n  xy: 1707, 201\n  size: 53, 57\n  orig: 53, 57\n  offset: 0, 0\n  index: -1\npaper_07\n  rotate: true\n  xy: 1648, 198\n  size: 56, 57\n  orig: 56, 57\n  offset: 0, 0\n  index: -1\npaper_08\n  rotate: true\n  xy: 1766, 201\n  size: 53, 55\n  orig: 53, 55\n  offset: 0, 0\n  index: -1\npaper_09\n  rotate: true\n  xy: 1279, 208\n  size: 46, 87\n  orig: 46, 87\n  offset: 0, 0\n  index: -1\npaper_10\n  rotate: false\n  xy: 920, 159\n  size: 56, 38\n  orig: 56, 38\n  offset: 0, 0\n  index: -1\npaper_11\n  rotate: false\n  xy: 861, 160\n  size: 57, 37\n  orig: 57, 37\n  offset: 0, 0\n  index: -1\npaper_12\n  rotate: true\n  xy: 1368, 218\n  size: 36, 89\n  orig: 36, 89\n  offset: 0, 0\n  index: -1\npaper_13\n  rotate: true\n  xy: 1189, 208\n  size: 46, 88\n  orig: 46, 88\n  offset: 0, 0\n  index: -1\npaper_14\n  rotate: true\n  xy: 1097, 209\n  size: 45, 90\n  orig: 45, 90\n  offset: 0, 0\n  index: -1\nstar_01\n  rotate: false\n  xy: 1013, 188\n  size: 21, 21\n  orig: 21, 21\n  offset: 0, 0\n  index: -1\nstar_02\n  rotate: false\n  xy: 1036, 188\n  size: 21, 21\n  orig: 21, 21\n  offset: 0, 0\n  index: -1\nstar_03\n  rotate: false\n  xy: 490, 225\n  size: 29, 29\n  orig: 29, 29\n  offset: 0, 0\n  index: -1\nstar_04\n  rotate: false\n  xy: 1096, 190\n  size: 17, 17\n  orig: 17, 17\n  offset: 0, 0\n  index: -1\nu_e1\n  rotate: true\n  xy: 907, 126\n  size: 31, 51\n  orig: 31, 51\n  offset: 0, 0\n  index: -1\nu_eye1\n  rotate: false\n  xy: 509, 59\n  size: 16, 36\n  orig: 16, 36\n  offset: 0, 0\n  index: -1\nu_hand1\n  rotate: true\n  xy: 716, 112\n  size: 55, 38\n  orig: 55, 38\n  offset: 0, 0\n  index: -1\nu_hand2\n  rotate: false\n  xy: 756, 128\n  size: 55, 38\n  orig: 55, 38\n  offset: 0, 0\n  index: -1\nu_head\n  rotate: false\n  xy: 521, 133\n  size: 122, 121\n  orig: 122, 121\n  offset: 0, 0\n  index: -1\nu_heart\n  rotate: false\n  xy: 438, 2\n  size: 48, 48\n  orig: 48, 48\n  offset: 0, 0\n  index: -1\nu_heart_nei\n  rotate: true\n  xy: 694, 106\n  size: 26, 20\n  orig: 26, 20\n  offset: 0, 0\n  index: -1\nu_j1\n  rotate: false\n  xy: 557, 71\n  size: 28, 28\n  orig: 28, 28\n  offset: 0, 0\n  index: -1\nu_j2\n  rotate: false\n  xy: 527, 70\n  size: 28, 29\n  orig: 28, 29\n  offset: 0, 0\n  index: -1\nu_time\n  rotate: true\n  xy: 509, 52\n  size: 5, 18\n  orig: 5, 18\n  offset: 0, 0\n  index: -1\nu_zui\n  rotate: false\n  xy: 293, 44\n  size: 87, 56\n  orig: 87, 56\n  offset: 0, 0\n  index: -1\n",
   "textures": [
     {
       "__uuid__": "6194b28e-72d8-47de-b6fb-b5340942f0e1"

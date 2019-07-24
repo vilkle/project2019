@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "img_guan",
+    "texture": "2a1dcded-f34a-4b00-91e2-4a521f2ce529",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      65,
+      81
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      65,
+      81
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

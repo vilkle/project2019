@@ -47,6 +47,7 @@ export default class GamePanel extends BaseUI {
     private ItemNodeArr : cc.Node[] = [];
     private AnswerBoardArr : cc.Node[] = [];
     private selectNodeArr : cc.Node[] = [];
+    private selectNodeCenterArr : cc.Node[] = [];
     private selectPosArr : cc.Vec2[] = [];
     private answerArr : number[][] = [];
     private answer : number[] = [];
@@ -65,6 +66,8 @@ export default class GamePanel extends BaseUI {
     private selectType : number = 0;
     private touchTarget : any = null;
     private isOver : number = 0;
+    private selectMove : boolean = false;
+    private overNum : number = 0;
     private eventvalue = {
         isResult: 1,
         isLevel: 1,
@@ -105,7 +108,6 @@ export default class GamePanel extends BaseUI {
     }
 
     loadSourceSFArr() {
-        console.log('enter the loadSourceSFArr!');
         if(this.types == 1) {
             cc.loader.loadResDir("images/gameUI/pic/animal", cc.SpriteFrame, (err, assets, urls)=>{
                 if(!err) {
@@ -125,7 +127,6 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                     for(let i = 0; i < assets.length; i++) {
-                        console.log('1111');
                         this.animalSFArr.push(assets[i]);
                         if(this.animalSFArr.length+this.foodSFArr.length+this.stationerySFArr.length+this.clothesSFArr.length == 20) {
                             this.setPanel();
@@ -151,7 +152,6 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                     for(let i = 0; i < assets.length; i++) {
-                        console.log('2222');
                         this.foodSFArr.push(assets[i]);
                         if(this.animalSFArr.length+this.foodSFArr.length+this.stationerySFArr.length+this.clothesSFArr.length == 20) {
                             this.setPanel();
@@ -177,7 +177,6 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                     for(let i = 0; i < assets.length; i++) {
-                        console.log('3333');
                         this.stationerySFArr.push(assets[i]);
                         if(this.animalSFArr.length+this.foodSFArr.length+this.stationerySFArr.length+this.clothesSFArr.length == 20) {
                             this.setPanel();
@@ -203,7 +202,6 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                     for(let i = 0; i < assets.length; i++) {
-                        console.log('4444');
                         this.clothesSFArr.push(assets[i]);
                         if(this.animalSFArr.length+this.foodSFArr.length+this.stationerySFArr.length+this.clothesSFArr.length == 20) {
                             this.setPanel();
@@ -364,23 +362,24 @@ export default class GamePanel extends BaseUI {
     }
 
     centerSelectNode() {
-        let num = this.selectNodeArr.length;
+        for(let i = 0; i < 3; i++) {
+            if(this.selectNodeArr[i]) {
+                this.selectNodeCenterArr.push(this.selectNodeArr[i]);
+            }
+        }
+        let num = this.selectNodeCenterArr.length;
         let space = 600;
         let long = (num - 1)*space;
         let starX =  - long/2;
-        console.log('------startX', starX);
         for(let i = 0; i < num; i++) {
-            this.selectNodeArr[i].setPosition(cc.v2(starX + i * long - 2000, -300));
-            console.log('------x',starX + i * long);
-            this.selectPosArr[i] = cc.v2(starX + i * long - 2000, -300);
+            this.selectNodeCenterArr[i].setPosition(cc.v2(starX + i * space - 2000, -300));
+            this.selectPosArr[i] = cc.v2(starX + i * space - 2000, -300);
             setTimeout(() => {
-                this.selectNodeArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                this.selectNodeCenterArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
             }, 100* (num-1-i));
         }
-        console.log(this.selectNodeArr)
-        console.log(this.selectPosArr);
     }
-
+s
     createSelectBoard() {
         this.finishArr = [false , true ,false];
         this.selectNode = cc.instantiate(this.selectPrefab);
@@ -389,6 +388,7 @@ export default class GamePanel extends BaseUI {
         this.selectNodeArr = [];
         if(this.checkColor(this.checkpoint) > 1) {
             this.selectNode.getChildByName('colorNode').active = true;
+            this.selectNode.getChildByName('colorNode').getChildByName('bubble').scaleX = 0;
             this.selectArr[0] = true;
             this.finishArr[0] = false;
             this.selectNodeArr[0] = this.selectNode.getChildByName('colorNode');
@@ -399,6 +399,7 @@ export default class GamePanel extends BaseUI {
         }
         if(this.checkFigure(this.checkpoint) > 1) {
             this.selectNode.getChildByName('figureNode').active = true;
+            this.selectNode.getChildByName('figureNode').getChildByName('bubble').scaleX = 0;
             this.selectArr[1] = true;
             this.finishArr[1] = false;
             this.selectNodeArr[1] = this.selectNode.getChildByName('figureNode');
@@ -409,6 +410,7 @@ export default class GamePanel extends BaseUI {
         }
         if(this.checkSize(this.checkpoint) > 1) {
             this.selectNode.getChildByName('sizeNode').active = true;
+            this.selectNode.getChildByName('sizeNode').getChildByName('bubble').scaleX = 0;
             this.selectArr[2] = true;
             this.finishArr[2] = false;
             this.selectNodeArr[2] = this.selectNode.getChildByName('sizeNode');
@@ -420,6 +422,9 @@ export default class GamePanel extends BaseUI {
         this.centerSelectNode();
         for(let i = 0; i < this.selectNode.children.length; i++) {
             this.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
+                if(this.selectMove) {
+                    return;
+                }
                 if(this.finishArr[i]) {
                     this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, true), false);
                     this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
@@ -440,6 +445,7 @@ export default class GamePanel extends BaseUI {
                         });
                     }
                 }else {
+                    this.selectMove = true;
                     this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], true), false);
                     this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
                         if(trackEntry.animation.name == this.getSelectAnimationName(i, false, true)) {
@@ -451,6 +457,7 @@ export default class GamePanel extends BaseUI {
                                         this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
                                     }else {
                                         this.selectNode.children[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
+                                            this.selectMove = false;
                                             this.createAnswerBoard(this.checkpoint);
                                         })) );
                                     }
@@ -470,11 +477,12 @@ export default class GamePanel extends BaseUI {
     }
 
     resetSelect() {
+        this.selectMove = true;
         this.selectNode.getChildByName('colorNode').stopAllActions();
         this.selectNode.getChildByName('figureNode').stopAllActions();
         this.selectNode.getChildByName('sizeNode').stopAllActions();
-        for(let i = 0; i < this.selectNodeArr.length; i++) {
-            this.selectNodeArr[i].setPosition(cc.v2(this.selectPosArr[i].x, -300));
+        for(let i = 0; i < this.selectNodeCenterArr.length; i++) {
+            this.selectNodeCenterArr[i].setPosition(cc.v2(this.selectPosArr[i].x, -300));
         }
 
         this.selectNode.active = true;
@@ -490,7 +498,9 @@ export default class GamePanel extends BaseUI {
             }
             setTimeout(()=>{
                 if(this.selectNode.children[i].active) {
-                    this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                    this.selectNode.children[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
+                        this.selectMove = false;
+                    })));
                 }
             },100*(this.selectNode.children.length-1-i));
         }
@@ -558,6 +568,27 @@ export default class GamePanel extends BaseUI {
                }
                var point = this.node.convertToNodeSpaceAR(e.currentTouch._point);
                this.touchNode.setPosition(point);
+               for(let i = 0; i < this.AnswerBoardArr.length; i++) {
+                    if(this.AnswerBoardArr[i].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[i].convertToNodeSpaceAR(e.currentTouch._point))) {
+                        this.AnswerBoardArr[i].getChildByName('box').active = true;
+                        for(let j = 0; j < this.AnswerBoardArr.length; j++) {
+                            if(j != i) {
+                                this.AnswerBoardArr[j].getChildByName('box').active = false;
+                            }
+                        }
+                    }else {
+                        this.overNum++;
+                    }
+                    if(i == this.AnswerBoardArr.length-1) {
+                        if(this.overNum == this.AnswerBoardArr.length) {
+                            for(let k = 0; k < this.AnswerBoardArr.length; k++) {
+                                this.AnswerBoardArr[k].getChildByName('box').active = false;
+                            }
+                        }
+                        this.overNum = 0;
+                    }
+               }
+
             });
             this.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_END, (e)=>{
                 if(this.touchTarget != e.target) {
@@ -588,7 +619,6 @@ export default class GamePanel extends BaseUI {
                             e.target.opacity = 255;
                         }
                         this.touchTarget = null;
-                        cc.log(this.eventvalue);
                         this.eventvalue.levelData[this.checkpoint-1].answer[0] = this.answerArr[0];
                         this.eventvalue.levelData[this.checkpoint-1].subject[0] = this.player1;
                         this.eventvalue.levelData[this.checkpoint-1].result = 2;
@@ -692,6 +722,9 @@ export default class GamePanel extends BaseUI {
                         this.nextCheckPoint();
                     }
                }
+               for(let k = 0; k < this.AnswerBoardArr.length; k++) {
+                this.AnswerBoardArr[k].getChildByName('box').active = false;
+                }
             });
         }
     }
@@ -736,6 +769,7 @@ export default class GamePanel extends BaseUI {
             eventValue: JSON.stringify(this.eventvalue)
         });
         if(this.types == 1) {
+            this.progressBar(5,4);
             UIHelp.AffirmTip(1,'闯关成功，你真棒～',()=>{
             },()=>{
                 this.checkpoint = 1;
@@ -840,8 +874,6 @@ export default class GamePanel extends BaseUI {
                 if(this.typeDataArr[j]) {
                     let index = j - 20 * (checkpoint - 1);
                     typeSet.add(Math.floor(index/5));
-                    console.log()
-                    console.log('setNum is ', Math.floor(index/5));
                 }
             }
             for(let i = 0; i < typeSet.size(); i++) {
@@ -1074,7 +1106,6 @@ export default class GamePanel extends BaseUI {
                     let sprite = node.addComponent(cc.Sprite);
                     let index = i % 27 + 1;
                     sprite.spriteFrame = this.sourceSFArr[Math.ceil(index/3) - 1];
-                    console.log('------id is ', Math.ceil(index/3) - 1);
                     let size = index % 3;
                     if(size == 2) {
                         node.scale = 0.8;
@@ -1166,15 +1197,19 @@ export default class GamePanel extends BaseUI {
                 this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
                 this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
                 this.progressNode.children[i].getChildByName('bar3').zIndex = 3;
-                if(i < totalNum) {
-                    if(i == index-1) {
-                        this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
-                        this.progressNode.children[i].getChildByName('bar2').zIndex = 3;
-                        this.progressNode.children[i].getChildByName('bar3').zIndex = 2;
-                    }else{
+                if(i > totalNum - 1) {
+                    this.progressNode.children[i].active = false;
+                }else {
+                    if(i > index-1) {
+
+                    }else if(i < index-1) {
                         this.progressNode.children[i].getChildByName('bar1').zIndex = 3;
                         this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
                         this.progressNode.children[i].getChildByName('bar3').zIndex = 1;
+                    }else if(i == index-1) {
+                        this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
+                        this.progressNode.children[i].getChildByName('bar2').zIndex = 3;
+                        this.progressNode.children[i].getChildByName('bar3').zIndex = 2;
                     }
                 }
             }

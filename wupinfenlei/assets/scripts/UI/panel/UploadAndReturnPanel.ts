@@ -6,6 +6,7 @@ import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
 import { DaAnData } from "../../Data/DaAnData";
 import { UIHelp } from "../../Utils/UIHelp";
+import { OverTips } from "../Item/OverTips";
 
 const { ccclass, property } = cc._decorator;
 
@@ -22,6 +23,7 @@ export default class UploadAndReturnPanel extends BaseUI {
         ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 0}); 
         UIManager.getInstance().closeUI(GamePanel);
         UIManager.getInstance().closeUI(UploadAndReturnPanel);
+        UIManager.getInstance().closeUI(OverTips);
     }
 
     onTiJiao() {

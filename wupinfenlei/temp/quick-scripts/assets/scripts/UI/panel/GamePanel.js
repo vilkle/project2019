@@ -39,6 +39,7 @@ var GamePanel = /** @class */ (function (_super) {
         _this.ItemNodeArr = [];
         _this.AnswerBoardArr = [];
         _this.selectNodeArr = [];
+        _this.selectNodeCenterArr = [];
         _this.selectPosArr = [];
         _this.answerArr = [];
         _this.answer = [];
@@ -57,6 +58,8 @@ var GamePanel = /** @class */ (function (_super) {
         _this.selectType = 0;
         _this.touchTarget = null;
         _this.isOver = 0;
+        _this.selectMove = false;
+        _this.overNum = 0;
         _this.eventvalue = {
             isResult: 1,
             isLevel: 1,
@@ -94,7 +97,6 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.loadSourceSFArr = function () {
         var _this = this;
-        console.log('enter the loadSourceSFArr!');
         if (this.types == 1) {
             cc.loader.loadResDir("images/gameUI/pic/animal", cc.SpriteFrame, function (err, assets, urls) {
                 if (!err) {
@@ -114,7 +116,6 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     for (var i = 0; i < assets.length; i++) {
-                        console.log('1111');
                         _this.animalSFArr.push(assets[i]);
                         if (_this.animalSFArr.length + _this.foodSFArr.length + _this.stationerySFArr.length + _this.clothesSFArr.length == 20) {
                             _this.setPanel();
@@ -140,7 +141,6 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     for (var i = 0; i < assets.length; i++) {
-                        console.log('2222');
                         _this.foodSFArr.push(assets[i]);
                         if (_this.animalSFArr.length + _this.foodSFArr.length + _this.stationerySFArr.length + _this.clothesSFArr.length == 20) {
                             _this.setPanel();
@@ -166,7 +166,6 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     for (var i = 0; i < assets.length; i++) {
-                        console.log('3333');
                         _this.stationerySFArr.push(assets[i]);
                         if (_this.animalSFArr.length + _this.foodSFArr.length + _this.stationerySFArr.length + _this.clothesSFArr.length == 20) {
                             _this.setPanel();
@@ -192,7 +191,6 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     for (var i = 0; i < assets.length; i++) {
-                        console.log('4444');
                         _this.clothesSFArr.push(assets[i]);
                         if (_this.animalSFArr.length + _this.foodSFArr.length + _this.stationerySFArr.length + _this.clothesSFArr.length == 20) {
                             _this.setPanel();
@@ -347,25 +345,26 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.centerSelectNode = function () {
         var _this = this;
-        var num = this.selectNodeArr.length;
+        for (var i = 0; i < 3; i++) {
+            if (this.selectNodeArr[i]) {
+                this.selectNodeCenterArr.push(this.selectNodeArr[i]);
+            }
+        }
+        var num = this.selectNodeCenterArr.length;
         var space = 600;
         var long = (num - 1) * space;
         var starX = -long / 2;
-        console.log('------startX', starX);
         var _loop_1 = function (i) {
-            this_1.selectNodeArr[i].setPosition(cc.v2(starX + i * long - 2000, -300));
-            console.log('------x', starX + i * long);
-            this_1.selectPosArr[i] = cc.v2(starX + i * long - 2000, -300);
+            this_1.selectNodeCenterArr[i].setPosition(cc.v2(starX + i * space - 2000, -300));
+            this_1.selectPosArr[i] = cc.v2(starX + i * space - 2000, -300);
             setTimeout(function () {
-                _this.selectNodeArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                _this.selectNodeCenterArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
             }, 100 * (num - 1 - i));
         };
         var this_1 = this;
         for (var i = 0; i < num; i++) {
             _loop_1(i);
         }
-        console.log(this.selectNodeArr);
-        console.log(this.selectPosArr);
     };
     GamePanel.prototype.createSelectBoard = function () {
         var _this = this;
@@ -376,6 +375,7 @@ var GamePanel = /** @class */ (function (_super) {
         this.selectNodeArr = [];
         if (this.checkColor(this.checkpoint) > 1) {
             this.selectNode.getChildByName('colorNode').active = true;
+            this.selectNode.getChildByName('colorNode').getChildByName('bubble').scaleX = 0;
             this.selectArr[0] = true;
             this.finishArr[0] = false;
             this.selectNodeArr[0] = this.selectNode.getChildByName('colorNode');
@@ -387,6 +387,7 @@ var GamePanel = /** @class */ (function (_super) {
         }
         if (this.checkFigure(this.checkpoint) > 1) {
             this.selectNode.getChildByName('figureNode').active = true;
+            this.selectNode.getChildByName('figureNode').getChildByName('bubble').scaleX = 0;
             this.selectArr[1] = true;
             this.finishArr[1] = false;
             this.selectNodeArr[1] = this.selectNode.getChildByName('figureNode');
@@ -398,6 +399,7 @@ var GamePanel = /** @class */ (function (_super) {
         }
         if (this.checkSize(this.checkpoint) > 1) {
             this.selectNode.getChildByName('sizeNode').active = true;
+            this.selectNode.getChildByName('sizeNode').getChildByName('bubble').scaleX = 0;
             this.selectArr[2] = true;
             this.finishArr[2] = false;
             this.selectNodeArr[2] = this.selectNode.getChildByName('sizeNode');
@@ -410,6 +412,9 @@ var GamePanel = /** @class */ (function (_super) {
         this.centerSelectNode();
         var _loop_2 = function (i) {
             this_2.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, function (e) {
+                if (_this.selectMove) {
+                    return;
+                }
                 if (_this.finishArr[i]) {
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i, true, true), false);
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
@@ -432,6 +437,7 @@ var GamePanel = /** @class */ (function (_super) {
                     }
                 }
                 else {
+                    _this.selectMove = true;
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i, _this.finishArr[i], true), false);
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
                         if (trackEntry.animation.name == _this.getSelectAnimationName(i, false, true)) {
@@ -444,6 +450,7 @@ var GamePanel = /** @class */ (function (_super) {
                                     }
                                     else {
                                         _this.selectNode.children[i_1].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(function () {
+                                            _this.selectMove = false;
                                             _this.createAnswerBoard(_this.checkpoint);
                                         })));
                                     }
@@ -468,11 +475,12 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.resetSelect = function () {
         var _this = this;
+        this.selectMove = true;
         this.selectNode.getChildByName('colorNode').stopAllActions();
         this.selectNode.getChildByName('figureNode').stopAllActions();
         this.selectNode.getChildByName('sizeNode').stopAllActions();
-        for (var i = 0; i < this.selectNodeArr.length; i++) {
-            this.selectNodeArr[i].setPosition(cc.v2(this.selectPosArr[i].x, -300));
+        for (var i = 0; i < this.selectNodeCenterArr.length; i++) {
+            this.selectNodeCenterArr[i].setPosition(cc.v2(this.selectPosArr[i].x, -300));
         }
         this.selectNode.active = true;
         var _loop_4 = function (i) {
@@ -488,7 +496,9 @@ var GamePanel = /** @class */ (function (_super) {
             }
             setTimeout(function () {
                 if (_this.selectNode.children[i].active) {
-                    _this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                    _this.selectNode.children[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(function () {
+                        _this.selectMove = false;
+                    })));
                 }
             }, 100 * (this_3.selectNode.children.length - 1 - i));
         };
@@ -563,6 +573,27 @@ var GamePanel = /** @class */ (function (_super) {
                 }
                 var point = _this.node.convertToNodeSpaceAR(e.currentTouch._point);
                 _this.touchNode.setPosition(point);
+                for (var i_3 = 0; i_3 < _this.AnswerBoardArr.length; i_3++) {
+                    if (_this.AnswerBoardArr[i_3].getChildByName('bigTag').getBoundingBox().contains(_this.AnswerBoardArr[i_3].convertToNodeSpaceAR(e.currentTouch._point))) {
+                        _this.AnswerBoardArr[i_3].getChildByName('box').active = true;
+                        for (var j = 0; j < _this.AnswerBoardArr.length; j++) {
+                            if (j != i_3) {
+                                _this.AnswerBoardArr[j].getChildByName('box').active = false;
+                            }
+                        }
+                    }
+                    else {
+                        _this.overNum++;
+                    }
+                    if (i_3 == _this.AnswerBoardArr.length - 1) {
+                        if (_this.overNum == _this.AnswerBoardArr.length) {
+                            for (var k = 0; k < _this.AnswerBoardArr.length; k++) {
+                                _this.AnswerBoardArr[k].getChildByName('box').active = false;
+                            }
+                        }
+                        _this.overNum = 0;
+                    }
+                }
             });
             this_5.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_END, function (e) {
                 if (_this.touchTarget != e.target) {
@@ -594,7 +625,6 @@ var GamePanel = /** @class */ (function (_super) {
                             e.target.opacity = 255;
                         }
                         _this.touchTarget = null;
-                        cc.log(_this.eventvalue);
                         _this.eventvalue.levelData[_this.checkpoint - 1].answer[0] = _this.answerArr[0];
                         _this.eventvalue.levelData[_this.checkpoint - 1].subject[0] = _this.player1;
                         _this.eventvalue.levelData[_this.checkpoint - 1].result = 2;
@@ -687,8 +717,8 @@ var GamePanel = /** @class */ (function (_super) {
                     else if (_this.types == 2) {
                         _this.finishArr[_this.selectType - 1] = true;
                     }
-                    for (var i_3 = 0; i_3 < _this.finishArr.length; i_3++) {
-                        if (_this.finishArr[i_3]) {
+                    for (var i_4 = 0; i_4 < _this.finishArr.length; i_4++) {
+                        if (_this.finishArr[i_4]) {
                             finishNum++;
                         }
                     }
@@ -702,6 +732,9 @@ var GamePanel = /** @class */ (function (_super) {
                         _this.eventvalue.levelData[_this.checkpoint - 1].result = 1;
                         _this.nextCheckPoint();
                     }
+                }
+                for (var k = 0; k < _this.AnswerBoardArr.length; k++) {
+                    _this.AnswerBoardArr[k].getChildByName('box').active = false;
                 }
             });
         };
@@ -750,6 +783,7 @@ var GamePanel = /** @class */ (function (_super) {
             eventValue: JSON.stringify(this.eventvalue)
         });
         if (this.types == 1) {
+            this.progressBar(5, 4);
             UIHelp_1.UIHelp.AffirmTip(1, '闯关成功，你真棒～', function () {
             }, function () {
                 _this.checkpoint = 1;
@@ -863,8 +897,6 @@ var GamePanel = /** @class */ (function (_super) {
                 if (this.typeDataArr[j]) {
                     var index = j - 20 * (checkpoint - 1);
                     typeSet.add(Math.floor(index / 5));
-                    console.log();
-                    console.log('setNum is ', Math.floor(index / 5));
                 }
             }
             for (var i = 0; i < typeSet.size(); i++) {
@@ -1110,7 +1142,6 @@ var GamePanel = /** @class */ (function (_super) {
                     var sprite = node.addComponent(cc.Sprite);
                     var index = i % 27 + 1;
                     sprite.spriteFrame = this.sourceSFArr[Math.ceil(index / 3) - 1];
-                    console.log('------id is ', Math.ceil(index / 3) - 1);
                     var size = index % 3;
                     if (size == 2) {
                         node.scale = 0.8;
@@ -1219,16 +1250,21 @@ var GamePanel = /** @class */ (function (_super) {
                 this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
                 this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
                 this.progressNode.children[i].getChildByName('bar3').zIndex = 3;
-                if (i < totalNum) {
-                    if (i == index - 1) {
-                        this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
-                        this.progressNode.children[i].getChildByName('bar2').zIndex = 3;
-                        this.progressNode.children[i].getChildByName('bar3').zIndex = 2;
+                if (i > totalNum - 1) {
+                    this.progressNode.children[i].active = false;
+                }
+                else {
+                    if (i > index - 1) {
                     }
-                    else {
+                    else if (i < index - 1) {
                         this.progressNode.children[i].getChildByName('bar1').zIndex = 3;
                         this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
                         this.progressNode.children[i].getChildByName('bar3').zIndex = 1;
+                    }
+                    else if (i == index - 1) {
+                        this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
+                        this.progressNode.children[i].getChildByName('bar2').zIndex = 3;
+                        this.progressNode.children[i].getChildByName('bar3').zIndex = 2;
                     }
                 }
             }
