@@ -1,6 +1,6 @@
 export class DaAnData {
     private static instance: DaAnData;
-    public types = 1;//水果1 蔬菜2 方向3
+    public types = 0;//水果1 蔬菜2 方向3
     public submitEnable = false;
    
     static getInstance() {

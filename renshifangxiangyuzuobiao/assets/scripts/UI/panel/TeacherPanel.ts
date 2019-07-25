@@ -23,6 +23,7 @@ export default class TeacherPanel extends BaseUI {
 
     start() {
         this.getNet();
+        DaAnData.getInstance().types = 1;
     }
 
     onToggleContainer(toggle) {
