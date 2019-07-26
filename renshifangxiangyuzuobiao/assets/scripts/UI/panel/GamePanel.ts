@@ -3,6 +3,7 @@ import { NetWork } from "../../Http/NetWork";
 import DataReporting from "../../Data/DataReporting";
 import {ConstValue} from "../../Data/ConstValue"
 import { DaAnData } from "../../Data/DaAnData";
+import {UIHelp} from "../../Utils/UIHelp";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -31,7 +32,7 @@ export default class GamePanel extends BaseUI {
     private touchTarget : any = null;
     private touchRight : boolean = false;
     private overNum : number = 0;
-
+    private rightNum : number = 0;
 
     start() {
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
@@ -61,16 +62,14 @@ export default class GamePanel extends BaseUI {
             this.touchNode = this.touchSpine;
             this.answerArr = [6,6,1,5,6,4,6,6,2,0,3,6,6,6,6,6];
         }
-
-        cc.log('----------', this.types)
         if(this.parentNode) {
             if(this.types == 1) {
                 this.gridNode = this.parentNode.getChildByName('carNode').getChildByName('gridNode');
                 this.tuopanNode = this.parentNode.getChildByName('tuopanNode');
-                cc.log('=====',this.parentNode, this.tuopanNode);
                 this.initFruit();
             }else if(this.types == 2) {
-
+                this.gridNode = this.parentNode.getChildByName('carNode').getChildByName('gridNode');
+                this.tuopanNode = this.parentNode.getChildByName('tuopanNode');
                 this.initVegetable();
             }else if(this.types == 3) {
                 this.gridNode = this.parentNode.getChildByName('leftNode').getChildByName('gridNode');
@@ -78,13 +77,9 @@ export default class GamePanel extends BaseUI {
                 this.initDirection();
             }
         }
-
-        cc.log('------gridNode', this.gridNode);
-        //cc.log('---tuopanNode', this.tuopanNode.children);
         this.addListenerOnItem();
-        cc.log('------gridNode', this.gridNode.children);
-        cc.log('------tuopanNode', this.tuopanNode.children);
     }
+
 
     initFruit() {
         let car = this.fruitNode.getChildByName('carNode');
@@ -93,20 +88,131 @@ export default class GamePanel extends BaseUI {
         }
         car.setPosition(cc.v2(-1250, 0));
         car.runAction(cc.moveBy(0.8, cc.v2(1250, 0)));
-        cc.log(this.tuopanNode.children);
+        let bubble = this.fruitNode.getChildByName('bubbleNode');
+        bubble.setRotation(80);
+        bubble.scale = 0;
         for(let i = 0; i < this.answerArr.length; i++) {
             cc.log(this.answerArr[i])
-            let seq = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1));
+            let seq = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1), cc.callFunc(()=>{this.bubbleAction(this.rightNum)}));
+            let seq1 = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1));
             if(this.answerArr[i] != 8) {
                 setTimeout(() => {
-                    this.tuopanNode.children[this.answerArr[i]].runAction(seq);
+                    if(i == this.answerArr.length-1) {
+                        this.tuopanNode.children[this.answerArr[i]].runAction(seq);
+                    }else {
+                        this.tuopanNode.children[this.answerArr[i]].runAction(seq1);
+                    }
                 }, 40* i);
             }
         }
     }
 
-    initVegetable() {
+    bubbleAction(rightNum :number) {
+        let bubble = this.parentNode.getChildByName('bubbleNode');
+        var str = '';
+        if(this.types == 1) {
+            switch(rightNum) {
+                case 0:
+                    str = '橘子在香蕉上方';
+                    break;
+                case 1:
+                    str = '梨在香蕉的右上方';
+                    break;
+                case 2:
+                    str = '桃子在香蕉的左面，苹果的上面';
+                    break;
+                case 4:
+                    str = '桃子在西瓜的左上方';
+                    break;
+                case 5:
+                    str = '葡萄和梨不相邻';
+                    break;
+                case 6:
+                    str = '橘子在草莓的后面';
+                    break;
+                case 7:
+                    str = '最后一个水果放在哪里？';
+                    break;
+                default:
+                    return;
+                    break;
+            }
+        }else if(this.types == 2) {
+            switch(rightNum) {
+                case 0:
+                    str = '土豆在最中央的位置';
+                    break;
+                case 1:
+                    str = '黄瓜在土豆的左面';
+                    break;
+                case 2:
+                    str = '西红柿在黄瓜的右下方';
+                    break;
+                case 3:
+                    str = '西兰花在西红柿的右面，南瓜的下面';
+                    break;
+                case 5:
+                    str = '菠菜在土豆的上方，白菜的右面';
+                    break;
+                case 7:
+                    str = '大蒜和菠菜不相邻';
+                    break;
+                case 8:
+                    str = '最后一个蔬菜放在哪里？';
+                    break;
+                default:
+                    return;
+                    break;
+            }
+        }
+       
+        bubble.getChildByName('label').getComponent(cc.Label).string = str;
+        bubble.setRotation(80);
+        bubble.scale = 0;
+        let spaw1 = cc.spawn(cc.rotateTo(0.16, -13), cc.scaleTo(0.16, 1.2, 1.2));
+        let spaw2 = cc.spawn(cc.rotateTo(0.12, 6), cc.scaleTo(0.12, 0.9, 0.9));
+        let spaw3 = cc.spawn(cc.rotateTo(0.12, -6), cc.scaleTo(0.12, 1.1, 1.1));
+        let spaw4 = cc.spawn(cc.rotateTo(0.28, 0), cc.scaleTo(0.12, 1, 1));
+        let delay =cc.delayTime(5);
+        let spaw5 = cc.spawn(cc.rotateTo(0.28, 78), cc.scaleTo(0.28, 0, 0));
+        let seq = cc.sequence(spaw1, spaw2, spaw3, spaw4, delay, spaw5);
+        bubble.stopAllActions();
+        bubble.runAction(seq);
+    }
 
+    initVegetable() {
+        let car = this.vegetableNode.getChildByName('carNode');
+        for(let i = 0; i < this.tuopanNode.children.length; i++) {
+            this.tuopanNode.children[i].scale = 0;
+        }
+        car.setPosition(cc.v2(-1250, 0));
+        car.runAction(cc.moveBy(0.8, cc.v2(1250, 0)));
+        let bubble = this.vegetableNode.getChildByName('bubbleNode');
+        bubble.setRotation(80);
+        bubble.scale = 0;                            
+        for(let i = 0; i < this.answerArr.length; i++) {
+            let seq = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1), cc.callFunc(()=>{this.bubbleAction(this.rightNum)}));
+            let seq1 = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1));
+            if(this.types == 1) {
+                if(this.answerArr[i] != 8) {
+                    setTimeout(() => {
+                        if(i == this.answerArr.length-1) {
+                            this.tuopanNode.children[this.answerArr[i]].runAction(seq);
+                        }else {
+                            this.tuopanNode.children[this.answerArr[i]].runAction(seq1);
+                        }
+                    }, 40* i);
+                }
+            }else if(this.types == 2) {
+                setTimeout(() => {
+                    if(i == this.answerArr.length-1) {
+                        this.tuopanNode.children[this.answerArr[i]].runAction(seq);
+                    }else {
+                        this.tuopanNode.children[this.answerArr[i]].runAction(seq1);
+                    }
+                }, 40* i);
+            }           
+        }
     }
 
     initDirection() {
@@ -217,6 +323,11 @@ export default class GamePanel extends BaseUI {
                         if(i == this.answerArr[j]) {
                            this.gridNode.children[j].getChildByName('sprite').active = true; 
                            this.touchRight = true;
+                           this.rightNum++;
+                           if(this.types != 3) {
+                                this.bubbleAction(this.rightNum);
+                           }
+                           this.isRight();
                         }
                     }
                 }
@@ -279,11 +390,21 @@ export default class GamePanel extends BaseUI {
         DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
     }
 
-    onDestroy() {
-
-    }
-
-    onShow() {
+    isRight() {
+        if(this.types == 1) {
+            if(this.rightNum == 8) {
+                UIHelp.showOverTip(2);
+            }
+        }else if(this.types == 2) {
+            if(this.rightNum == 9) {
+                UIHelp.showOverTip(2);
+            }
+        }else if(this.types == 3) {
+            if(this.rightNum == 6) {
+                UIHelp.showOverTip(2);
+            }
+        }
+    
     }
 
     setPanel() {
