@@ -78,8 +78,12 @@ export default class GamePanel extends BaseUI {
                 this.initDirection();
             }
         }
+
+        cc.log('------gridNode', this.gridNode);
         //cc.log('---tuopanNode', this.tuopanNode.children);
-        //this.addListenerOnItem();
+        this.addListenerOnItem();
+        cc.log('------gridNode', this.gridNode.children);
+        cc.log('------tuopanNode', this.tuopanNode.children);
     }
 
     initFruit() {
@@ -209,7 +213,7 @@ export default class GamePanel extends BaseUI {
                 }
                 for(let j = 0; j < this.gridNode.children.length; j++) {
                     if(this.gridNode.children[j].getBoundingBox().contains(this.gridNode.convertToNodeSpaceAR(e.currentTouch._point))) {
-                        console.log('------i answerArr[j]', i, this.answerArr[j]);
+                        console.log('------i j answerArr[j]', i, j, this.answerArr[j]);
                         if(i == this.answerArr[j]) {
                            this.gridNode.children[j].getChildByName('sprite').active = true; 
                            this.touchRight = true;
