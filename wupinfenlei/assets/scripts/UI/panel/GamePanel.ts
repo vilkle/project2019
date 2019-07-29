@@ -769,7 +769,7 @@ s
             eventValue: JSON.stringify(this.eventvalue)
         });
         if(this.types == 1) {
-            this.progressBar(5,4);
+            this.progressBar(this.checkpointsNum, this.checkpointsNum);
             UIHelp.AffirmTip(1,'闯关成功，你真棒～',()=>{
             },()=>{
                 this.checkpoint = 1;
@@ -1192,6 +1192,15 @@ s
 
     progressBar(index : number, totalNum : number) {
         if(this.types == 1) {
+            if(totalNum == 2) {
+                this.progressNode.getChildByName('progress2').active = true;
+            }else if(totalNum == 3) {
+                this.progressNode.getChildByName('progress3').active = true;
+            }else if(totalNum == 4) {
+                this.progressNode.getChildByName('progress4').active = true;
+            }else if(totalNum == 5) {
+                this.progressNode.getChildByName('progress5').active = true;
+            }
             this.progressNode.active = true;
             for(let i = 0; i < 5; i++) {
                 this.progressNode.children[i].getChildByName('bar1').zIndex = 1;

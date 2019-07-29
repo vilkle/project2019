@@ -32,6 +32,7 @@ var TeacherPanel = /** @class */ (function (_super) {
         _this.typeDataArr = [];
         _this.typetype = [];
         _this.toggleArr = [];
+        _this.imageArr = [];
         return _this;
     }
     // onLoad () {}
@@ -86,6 +87,7 @@ var TeacherPanel = /** @class */ (function (_super) {
         }
         DaAnData_1.DaAnData.getInstance().typetype = this.typetype;
         this.toggleArr = [];
+        this.imageArr = [];
         for (var i = 0; i < typeNum; i++) {
             for (var j = 0; j < 27; j++) {
                 this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
@@ -172,6 +174,10 @@ var TeacherPanel = /** @class */ (function (_super) {
                     this.toggleArr[i * 20 + 5 + j] = this.typeArr[i].getChildByName('label2').children[j].getChildByName('New Toggle').getComponent(cc.Toggle);
                     this.toggleArr[i * 20 + 10 + j] = this.typeArr[i].getChildByName('label3').children[j].getChildByName('New Toggle').getComponent(cc.Toggle);
                     this.toggleArr[i * 20 + 15 + j] = this.typeArr[i].getChildByName('label4').children[j].getChildByName('New Toggle').getComponent(cc.Toggle);
+                    this.imageArr[i * 20 + j] = this.typeArr[i].getChildByName('label1').children[j].getComponent(cc.Sprite);
+                    this.imageArr[i * 20 + 5 + j] = this.typeArr[i].getChildByName('label2').children[j].getComponent(cc.Sprite);
+                    this.imageArr[i * 20 + 10 + j] = this.typeArr[i].getChildByName('label3').children[j].getComponent(cc.Sprite);
+                    this.imageArr[i * 20 + 15 + j] = this.typeArr[i].getChildByName('label4').children[j].getComponent(cc.Sprite);
                 }
             }
             this.addToggleCallBack();
@@ -192,6 +198,7 @@ var TeacherPanel = /** @class */ (function (_super) {
             for (var i = 0; i < typeNum; i++) {
                 for (var j = 0; j < 27; j++) {
                     this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
+                    this.imageArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getComponent(cc.Sprite);
                 }
             }
             this.addToggleCallBack();
@@ -213,12 +220,14 @@ var TeacherPanel = /** @class */ (function (_super) {
                     checkPointNum = Math.floor(i / 27);
                 }
                 var alreadyCheck = 0;
+                var typeNum = 0;
                 if (DaAnData_1.DaAnData.getInstance().types == 1) {
                     for (var j = 20 * checkPointNum; j < 20 * (checkPointNum + 1); j++) {
                         if (_this.toggleArr[j].isChecked) {
                             alreadyCheck++;
                         }
                     }
+                    typeNum = 20;
                 }
                 else if (DaAnData_1.DaAnData.getInstance().types == 2) {
                     for (var j = 27 * checkPointNum; j < 27 * (checkPointNum + 1); j++) {
@@ -226,9 +235,20 @@ var TeacherPanel = /** @class */ (function (_super) {
                             alreadyCheck++;
                         }
                     }
+                    typeNum = 27;
                 }
                 if (alreadyCheck > 10) {
                     _this.toggleArr[i].isChecked = false;
+                    for (var i_1 = typeNum * checkPointNum; i_1 < typeNum * (checkPointNum + 1); i_1++) {
+                        if (_this.toggleArr[i_1].isChecked == false) {
+                            _this.imageArr[i_1].setState(1);
+                        }
+                    }
+                }
+                else {
+                    for (var i_2 = typeNum * checkPointNum; i_2 < typeNum * (checkPointNum + 1); i_2++) {
+                        _this.imageArr[i_2].setState(0);
+                    }
                 }
             });
         };

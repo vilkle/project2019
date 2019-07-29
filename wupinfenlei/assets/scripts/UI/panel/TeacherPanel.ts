@@ -41,6 +41,7 @@ export default class TeacherPanel extends BaseUI {
     private typeDataArr : boolean[] = [];
     private typetype : number[] = [];
     private toggleArr : cc.Toggle[] = [];
+    private imageArr : cc.Sprite[] = [];
     // onLoad () {}
 
     start() {
@@ -95,9 +96,11 @@ export default class TeacherPanel extends BaseUI {
         }
         DaAnData.getInstance().typetype = this.typetype;
         this.toggleArr = [];
+        this.imageArr = [];
         for(let i = 0; i < typeNum; i ++) {
             for(let j = 0;  j < 27; j++) {
                 this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
+                
             }
         }
         this.addToggleCallBack();
@@ -188,6 +191,10 @@ export default class TeacherPanel extends BaseUI {
                     this.toggleArr[i * 20 + 5 + j] = this.typeArr[i].getChildByName('label2').children[j].getChildByName('New Toggle').getComponent(cc.Toggle);
                     this.toggleArr[i * 20 + 10 + j] = this.typeArr[i].getChildByName('label3').children[j].getChildByName('New Toggle').getComponent(cc.Toggle);
                     this.toggleArr[i * 20 + 15 + j] = this.typeArr[i].getChildByName('label4').children[j].getChildByName('New Toggle').getComponent(cc.Toggle);
+                    this.imageArr[i * 20 + j] = this.typeArr[i].getChildByName('label1').children[j].getComponent(cc.Sprite);
+                    this.imageArr[i * 20 + 5 + j] = this.typeArr[i].getChildByName('label2').children[j].getComponent(cc.Sprite);
+                    this.imageArr[i * 20 + 10 + j] = this.typeArr[i].getChildByName('label3').children[j].getComponent(cc.Sprite);
+                    this.imageArr[i * 20 + 15 + j] = this.typeArr[i].getChildByName('label4').children[j].getComponent(cc.Sprite);
                 }
             }
             this.addToggleCallBack();
@@ -207,6 +214,7 @@ export default class TeacherPanel extends BaseUI {
             for(let i = 0; i < typeNum; i ++) {
                 for(let j = 0;  j < 27; j++) {
                     this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
+                    this.imageArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getComponent(cc.Sprite);
                 }
             }
             this.addToggleCallBack();
@@ -228,21 +236,33 @@ export default class TeacherPanel extends BaseUI {
                     checkPointNum = Math.floor(i/27);
                 }
                 let alreadyCheck = 0;
+                let typeNum = 0;
                 if(DaAnData.getInstance().types == 1) {
                     for(let j = 20 * checkPointNum; j < 20 * (checkPointNum + 1); j++){
                         if(this.toggleArr[j].isChecked) {
                             alreadyCheck++;
                         }
                     }
+                    typeNum = 20;
                 }else if(DaAnData.getInstance().types == 2) {
                     for(let j = 27 * checkPointNum; j < 27 * (checkPointNum + 1); j++){
                         if(this.toggleArr[j].isChecked) {
                             alreadyCheck++;
                         }
                     }
+                    typeNum = 27;
                 }
                 if(alreadyCheck > 10) {
                     this.toggleArr[i].isChecked = false;
+                    for(let i = typeNum * checkPointNum; i < typeNum * (checkPointNum + 1); i++) {
+                        if(this.toggleArr[i].isChecked == false) {
+                            this.imageArr[i].setState(1);
+                        }
+                    }
+                }else {
+                    for(let i = typeNum * checkPointNum; i < typeNum * (checkPointNum + 1); i++) {
+                        this.imageArr[i].setState(0);
+                    }
                 }
             });
         }
