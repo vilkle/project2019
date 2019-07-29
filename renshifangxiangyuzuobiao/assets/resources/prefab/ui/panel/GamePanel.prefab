@@ -6253,8 +6253,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 178,
-      "height": 121.5
+      "width": 181.02,
+      "height": 125.75
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -6296,8 +6296,8 @@
     },
     "_enabled": true,
     "paused": false,
-    "defaultSkin": "lanse",
-    "defaultAnimation": "null",
+    "defaultSkin": "",
+    "defaultAnimation": "",
     "_preCacheMode": 0,
     "_cacheMode": 0,
     "loop": true,
@@ -6308,7 +6308,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "null",
+    "_animationName": {
+      "0": "n",
+      "1": "u",
+      "2": "l",
+      "3": "l"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -22617,7 +22622,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "null",
+    "_animationName": {
+      "0": "n",
+      "1": "u",
+      "2": "l",
+      "3": "l"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -22726,7 +22736,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "idle",
+    "_animationName": {
+      "0": "i",
+      "1": "d",
+      "2": "l",
+      "3": "e"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -24662,7 +24677,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "idle",
+    "_animationName": {
+      "0": "i",
+      "1": "d",
+      "2": "l",
+      "3": "e"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -24771,7 +24791,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "idle",
+    "_animationName": {
+      "0": "i",
+      "1": "d",
+      "2": "l",
+      "3": "e"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -24880,7 +24905,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "idle",
+    "_animationName": {
+      "0": "i",
+      "1": "d",
+      "2": "l",
+      "3": "e"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -24989,7 +25019,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "idle",
+    "_animationName": {
+      "0": "i",
+      "1": "d",
+      "2": "l",
+      "3": "e"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -25098,7 +25133,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "idle",
+    "_animationName": {
+      "0": "i",
+      "1": "d",
+      "2": "l",
+      "3": "e"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -25207,7 +25247,12 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": "idle",
+    "_animationName": {
+      "0": "i",
+      "1": "d",
+      "2": "l",
+      "3": "e"
+    },
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -25498,6 +25543,7 @@
     "touchSpine": {
       "__id__": 723
     },
+    "bg": null,
     "_id": ""
   },
   {

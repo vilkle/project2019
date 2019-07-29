@@ -4,6 +4,8 @@ import DataReporting from "../../Data/DataReporting";
 import {ConstValue} from "../../Data/ConstValue"
 import { DaAnData } from "../../Data/DaAnData";
 import {UIHelp} from "../../Utils/UIHelp";
+import { UIManager } from "../../Manager/UIManager";
+import UploadAndReturnPanel from "./UploadAndReturnPanel";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -22,6 +24,7 @@ export default class GamePanel extends BaseUI {
     private duckNode : cc.Node = null;
     @property(cc.Node)
     private touchSpine : cc.Node = null;
+    private bg : cc.Node = null;
     private touchNode : cc.Node = null;
     private laba : cc.Node = null;
     private parentNode : cc.Node = null;
@@ -33,12 +36,28 @@ export default class GamePanel extends BaseUI {
     private touchRight : boolean = false;
     private overNum : number = 0;
     private rightNum : number = 0;
+    private isOver : number = 0;
+    private eventvalue = {
+        isResult: 1,
+        isLevel: 0,
+        levelData: [
+
+        ],
+        result: 4
+    }
+    onLoad() {
+        DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
+        this.eventvalue.levelData.push({
+            subject: [],
+            answer: [],
+            result: 4
+        });
+    }
 
     start() {
-        DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
         if(ConstValue.IS_TEACHER) {
+            UIManager.getInstance().openUI(UploadAndReturnPanel);
             this.types = DaAnData.getInstance().types;
-            cc.log('=-=-=0=0=0', DaAnData.getInstance().types);
             this.initGame();
         }else {
             this.getNet();
@@ -51,16 +70,22 @@ export default class GamePanel extends BaseUI {
             this.parentNode = this.fruitNode;
             this.touchNode = this.touchSprite;
             this.answerArr = [1,3,5,2,8,7,6,4,0];
+            this.eventvalue.levelData[0].answer = [...this.answerArr];
+            this.eventvalue.levelData[0].subject = [-1,-1,-1,-1,8,-1,-1,-1,-1];
         }else if(this.types == 2) {
             this.vegetableNode.active = true;
             this.parentNode = this.vegetableNode;
             this.touchNode = this.touchSprite;
             this.answerArr = [1,3,5,8,2,7,4,0,6];
+            this.eventvalue.levelData[0].answer = [...this.answerArr];
+            this.eventvalue.levelData[0].subject = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
         }else if(this.types == 3) {
             this.directionNode.active = true;
             this.parentNode = this.directionNode;
             this.touchNode = this.touchSpine;
             this.answerArr = [6,6,1,5,6,4,6,6,2,0,3,6,6,6,6,6];
+            this.eventvalue.levelData[0].answer = [...this.answerArr];
+            this.eventvalue.levelData[0].subject = [6,6,-1,-1,6,-1,6,6,-1,-1,-1,6,6,6,6,6];
         }
         if(this.parentNode) {
             if(this.types == 1) {
@@ -76,6 +101,14 @@ export default class GamePanel extends BaseUI {
                 this.tuopanNode = this.parentNode.getChildByName('rightNode').getChildByName('tuopanNode');
                 this.initDirection();
             }
+            this.bg = this.parentNode.getChildByName('bg');
+            this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
+                if(this.isOver != 1) {
+                    this.isOver = 2;
+                    this.eventvalue.result = 2;
+                    this.eventvalue.levelData[0].result = 2;
+                }
+            });
         }
         this.addListenerOnItem();
     }
@@ -321,6 +354,7 @@ export default class GamePanel extends BaseUI {
                     if(this.gridNode.children[j].getBoundingBox().contains(this.gridNode.convertToNodeSpaceAR(e.currentTouch._point))) {
                         console.log('------i j answerArr[j]', i, j, this.answerArr[j]);
                         if(i == this.answerArr[j]) {
+                        this.eventvalue.levelData[0].subject[j] = i;
                            this.gridNode.children[j].getChildByName('sprite').active = true; 
                            this.touchRight = true;
                            this.rightNum++;
@@ -393,14 +427,35 @@ export default class GamePanel extends BaseUI {
     isRight() {
         if(this.types == 1) {
             if(this.rightNum == 8) {
+                this.eventvalue.levelData[0].result = 1;
+                this.eventvalue.result = 1;
+                DataReporting.getInstance().dispatchEvent('addLog', {
+                    eventType: 'clickSubmit',
+                    eventValue: JSON.stringify(this.eventvalue)
+                });
+                DaAnData.getInstance().submitEnable = true;
                 UIHelp.showOverTip(2);
             }
         }else if(this.types == 2) {
             if(this.rightNum == 9) {
+                this.eventvalue.levelData[0].result = 1;
+                this.eventvalue.result = 1;
+                DataReporting.getInstance().dispatchEvent('addLog', {
+                    eventType: 'clickSubmit',
+                    eventValue: JSON.stringify(this.eventvalue)
+                });
+                DaAnData.getInstance().submitEnable = true;
                 UIHelp.showOverTip(2);
             }
         }else if(this.types == 3) {
             if(this.rightNum == 6) {
+                this.eventvalue.levelData[0].result = 1;
+                this.eventvalue.result = 1;
+                DataReporting.getInstance().dispatchEvent('addLog', {
+                    eventType: 'clickSubmit',
+                    eventValue: JSON.stringify(this.eventvalue)
+                });
+                DaAnData.getInstance().submitEnable = true;
                 UIHelp.showOverTip(2);
             }
         }
