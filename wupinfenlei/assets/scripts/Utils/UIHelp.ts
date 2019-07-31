@@ -26,15 +26,15 @@ export class UIHelp {
      * @param message tips文字内容
      * @param type tips类型  0:内容tips   1:系统tips
      */
-    public static showOverTip(type:number, str:string="",callback:Function =null) {
+    public static showOverTip(type:number, str:string="", btnStr:string="", callback:Function =null, btnCallBack:Function=null) {
         let overTips = UIManager.getInstance().getUI(OverTips) as OverTips;
         if (!overTips) {
             UIManager.getInstance().openUI(OverTips, 210, null,() => {
-                UIHelp.showOverTip(type, str,callback);
+                UIHelp.showOverTip(type, str, btnStr, callback, btnCallBack);
             });
         }
         else {
-            overTips.init(type, str,callback);
+            overTips.init(type, str, btnStr, callback, btnCallBack);
         }
     }
 

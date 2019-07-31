@@ -11,16 +11,17 @@ export class OverTips extends BaseUI {
 
     @property(cc.Label)
     private label_tip: cc.Label = null;
-
     @property(sp.Skeleton)
     private spine_false: sp.Skeleton = null;
     @property(sp.Skeleton)
     private spine_true: sp.Skeleton = null;
     @property(sp.Skeleton)
     private spine_complete: sp.Skeleton = null;
-
     @property(cc.Node)
     private node_close: cc.Node = null;
+    @property(cc.Node)
+    private button: cc.Node = null;
+
 
     private callback = null;
 
@@ -41,13 +42,20 @@ export class OverTips extends BaseUI {
      @param {number} type          0: 错误  1：答对了  2：闯关成功(一直显示不会关闭)
      @param {string} str           提示内容
      */
-    init(type:number, str:string="",callback:Function):void {
+    init(type:number, str:string="", btnStr:string='', callback:Function, btnCallback?:Function):void {
         this.callback = callback;
         this.spine_false.node.active = type == 0;
         this.spine_true.node.active = type == 1;
         this.spine_complete.node.active = type == 2;
         this.label_tip.string = str;
-        this.label_tip.node.active = type != 2;
+        //this.label_tip.node.active = type != 2;
+    
+        if(btnStr) {
+            this.button.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = btnStr;
+            this.button.on('click', btnCallback, this);
+        }else {
+            this.button.active = false;
+        }
         switch (type) {
             case 0:
                 Tools.playSpine(this.spine_false, "false", false, this.delayClose.bind(this));
@@ -76,7 +84,7 @@ export class OverTips extends BaseUI {
     delayClose(): void {
         this.scheduleOnce(()=>{}, 0);
     }
-
+    
     onClickClose(event?, customEventData?): void {
         if (event) AudioManager.getInstance().playSound("sfx_buttn", false, 1);
 	if (this.callback) this.callback();

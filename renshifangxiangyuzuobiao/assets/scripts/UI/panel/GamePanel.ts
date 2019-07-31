@@ -6,6 +6,7 @@ import { DaAnData } from "../../Data/DaAnData";
 import {UIHelp} from "../../Utils/UIHelp";
 import { UIManager } from "../../Manager/UIManager";
 import UploadAndReturnPanel from "./UploadAndReturnPanel";
+import { AudioManager } from "../../Manager/AudioManager";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -55,6 +56,7 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
+        
         if(ConstValue.IS_TEACHER) {
             UIManager.getInstance().openUI(UploadAndReturnPanel);
             this.types = DaAnData.getInstance().types;
@@ -115,6 +117,7 @@ export default class GamePanel extends BaseUI {
 
 
     initFruit() {
+        AudioManager.getInstance().playSound('sfx_kpbopn', false);
         let car = this.fruitNode.getChildByName('carNode');
         for(let i = 0; i < this.tuopanNode.children.length; i++) {
             this.tuopanNode.children[i].scale = 0;
@@ -124,6 +127,7 @@ export default class GamePanel extends BaseUI {
         let bubble = this.fruitNode.getChildByName('bubbleNode');
         bubble.setRotation(80);
         bubble.scale = 0;
+        AudioManager.getInstance().playSound('sfx_1stfrt', false);
         for(let i = 0; i < this.answerArr.length; i++) {
             cc.log(this.answerArr[i])
             let seq = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1), cc.callFunc(()=>{this.bubbleAction(this.rightNum)}));
@@ -214,6 +218,7 @@ export default class GamePanel extends BaseUI {
     }
 
     initVegetable() {
+        AudioManager.getInstance().playSound('sfx_kpbopn', false);
         let car = this.vegetableNode.getChildByName('carNode');
         for(let i = 0; i < this.tuopanNode.children.length; i++) {
             this.tuopanNode.children[i].scale = 0;
@@ -222,7 +227,8 @@ export default class GamePanel extends BaseUI {
         car.runAction(cc.moveBy(0.8, cc.v2(1250, 0)));
         let bubble = this.vegetableNode.getChildByName('bubbleNode');
         bubble.setRotation(80);
-        bubble.scale = 0;                            
+        bubble.scale = 0;  
+        AudioManager.getInstance().playSound('sfx_1stfrt', false);                          
         for(let i = 0; i < this.answerArr.length; i++) {
             let seq = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1), cc.callFunc(()=>{this.bubbleAction(this.rightNum)}));
             let seq1 = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1));
@@ -249,6 +255,7 @@ export default class GamePanel extends BaseUI {
     }
 
     initDirection() {
+        AudioManager.getInstance().playSound('sfx_txopn2',false);
         let left = this.directionNode.getChildByName('leftNode');
         let right = this.directionNode.getChildByName('rightNode');
         this.laba = right.getChildByName('laba');
@@ -285,6 +292,7 @@ export default class GamePanel extends BaseUI {
                     this.touchNode.getComponent(sp.Skeleton).skeletonData = e.target.getComponent(sp.Skeleton).skeletonData;
                     this.touchNode.getComponent(sp.Skeleton).setAnimation(0, 'drag', true);
                 }else {
+                    AudioManager.getInstance().playSound('sfx_ctchfrt', false);
                     this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.children[0].getComponent(cc.Sprite).spriteFrame;
                 }
             });
@@ -352,20 +360,28 @@ export default class GamePanel extends BaseUI {
                 }
                 for(let j = 0; j < this.gridNode.children.length; j++) {
                     if(this.gridNode.children[j].getBoundingBox().contains(this.gridNode.convertToNodeSpaceAR(e.currentTouch._point))) {
-                        console.log('------i j answerArr[j]', i, j, this.answerArr[j]);
                         if(i == this.answerArr[j]) {
-                        this.eventvalue.levelData[0].subject[j] = i;
-                           this.gridNode.children[j].getChildByName('sprite').active = true; 
-                           this.touchRight = true;
-                           this.rightNum++;
-                           if(this.types != 3) {
+                            
+                            this.eventvalue.levelData[0].subject[j] = i;
+                            this.gridNode.children[j].getChildByName('sprite').active = true; 
+                            this.touchRight = true;
+                            this.rightNum++;
+                            if(this.types != 3) {
                                 this.bubbleAction(this.rightNum);
-                           }
-                           this.isRight();
+                                AudioManager.getInstance().playSound('sfx_putfrt', false);
+                            }else {
+                                AudioManager.getInstance().playSound('sfx_kdmtched', false);
+                            }
+                            this.isRight();
                         }
                     }
                 }
                 if(!this.touchRight) {
+                    if(this.types == 3) {
+                        AudioManager.getInstance().playSound('sfx_kdclck', false);
+                    }else {
+                        AudioManager.getInstance().playSound('sfx_erro', false);
+                    } 
                     e.target.opacity = 255;
                     if(this.types == 3) {
                         e.target.getComponent(sp.Skeleton).setAnimation(0,'drag_end', false);

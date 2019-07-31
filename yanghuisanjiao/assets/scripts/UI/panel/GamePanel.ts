@@ -87,9 +87,9 @@ export default class GamePanel extends BaseUI {
 
     initGame() {
         this.eventvalue.levelData.push({
-            subject: [],
-                answer: null,
-                result: null
+            subject: null,
+            answer: null,
+            result: null
         });
         this.u_boat.runAction(cc.moveTo(1, cc.v2(764, -236)));
         this.triangleNode.runAction(cc.fadeIn(0.5));
@@ -106,8 +106,7 @@ export default class GamePanel extends BaseUI {
             this.DSprite.node.runAction(cc.fadeIn(0.3));
             this.touchEnable(true);
         });
-        let seq = cc.sequence(cc.scaleTo(0.5,1,1).easing(cc.easeSineOut()), callback);
-       
+        let seq = cc.sequence(cc.scaleTo(0.5,1,1).easing(cc.easeSineOut()), callback);    
         this.questionNode.runAction(seq);
     }   
     
@@ -136,10 +135,10 @@ export default class GamePanel extends BaseUI {
                     this.answerNodeArr[i].setScale(1);
                     this.eventvalue.levelData[this.checkpoint-1].answer = this.answerIndex;
                     this.isRight(this.questionIndex);
+                    console.log('--', this.eventvalue);
                 });
                 this.answerNodeArr[i].on(cc.Node.EventType.TOUCH_CANCEL, ()=>{
-                    this.answerNodeArr[i].setScale(1);
-                    
+                    this.answerNodeArr[i].setScale(1);   
                 });
             }
         }else {
@@ -344,7 +343,7 @@ export default class GamePanel extends BaseUI {
     right1() {
         this.checkpoint++;
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
                 answer: null,
                 result: null
         });
@@ -402,7 +401,7 @@ export default class GamePanel extends BaseUI {
     right2() {
         this.checkpoint++;
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
                 answer: null,
                 result: null
         });
@@ -446,7 +445,7 @@ export default class GamePanel extends BaseUI {
     right3() {
         this.checkpoint++;
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
                 answer: null,
                 result: null
         });
@@ -496,7 +495,7 @@ export default class GamePanel extends BaseUI {
     right4_1() {
         this.checkpoint++;
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
                 answer: null,
                 result: null
         });
@@ -639,12 +638,14 @@ export default class GamePanel extends BaseUI {
 
     success() {
         this.eventvalue.result = 1;
+        this.isOver = 1;
+        console.log('--', this.eventvalue);
         DataReporting.getInstance().dispatchEvent('addLog', {
             eventType: 'clickSubmit',
             eventValue: JSON.stringify(this.eventvalue)
         });
         AudioManager.getInstance().stopAll();
-        UIHelp.showOverTip(2,'闯关成功，你真棒～');
+        UIHelp.showOverTip(2,'原来这就是杨辉三角呀～');
     }
 
     isRight(questionIndex : number) {
@@ -652,20 +653,22 @@ export default class GamePanel extends BaseUI {
             this.eventvalue.levelData[this.checkpoint -1].subject = 1;
             this.eventvalue.result = 2;
             if(this.answerIndex == 1) {
-                this.right1();
                 this.eventvalue.levelData[this.checkpoint-1].result = 1;
+                this.right1();
             }else {
-                this.wrong1();
                 this.eventvalue.levelData[this.checkpoint-1].result = 2;
+                this.wrong1();
             }
         }else if(questionIndex == 2) {
             this.eventvalue.levelData[this.checkpoint -1].subject = 2;
             if(this.answerIndex == 2) {
-                this.right2();
                 this.eventvalue.levelData[this.checkpoint-1].result = 1;
+                this.right2();
+               
             }else {
-                this.wrong2();
                 this.eventvalue.levelData[this.checkpoint-1].result = 2;
+                this.wrong2();
+                
             }
         }else if(questionIndex == 3) {
             this.eventvalue.levelData[this.checkpoint -1].subject = [1,2,3];

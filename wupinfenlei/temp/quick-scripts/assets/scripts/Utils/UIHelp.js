@@ -2,6 +2,7 @@
 cc._RF.push(module, 'c44e6cLg85JzaIFNvBdsH7x', 'UIHelp', __filename);
 // scripts/Utils/UIHelp.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIManager_1 = require("../Manager/UIManager");
 var TipUI_1 = require("../UI/panel/TipUI");
@@ -31,17 +32,19 @@ var UIHelp = /** @class */ (function () {
     * @param message tips文字内容
     * @param type tips类型  0:内容tips   1:系统tips
     */
-    UIHelp.showOverTip = function (type, str, callback) {
+    UIHelp.showOverTip = function (type, str, btnStr, callback, btnCallBack) {
         if (str === void 0) { str = ""; }
+        if (btnStr === void 0) { btnStr = ""; }
         if (callback === void 0) { callback = null; }
+        if (btnCallBack === void 0) { btnCallBack = null; }
         var overTips = UIManager_1.UIManager.getInstance().getUI(OverTips_1.OverTips);
         if (!overTips) {
             UIManager_1.UIManager.getInstance().openUI(OverTips_1.OverTips, 210, null, function () {
-                UIHelp.showOverTip(type, str, callback);
+                UIHelp.showOverTip(type, str, btnStr, callback, btnCallBack);
             });
         }
         else {
-            overTips.init(type, str, callback);
+            overTips.init(type, str, btnStr, callback, btnCallBack);
         }
     };
     /**

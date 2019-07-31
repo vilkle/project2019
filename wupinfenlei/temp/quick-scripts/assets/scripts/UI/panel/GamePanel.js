@@ -2,6 +2,23 @@
 cc._RF.push(module, '246c2OOkGlKHoa6ZJOVEHI+', 'GamePanel', __filename);
 // scripts/UI/panel/GamePanel.ts
 
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var NetWork_1 = require("../../Http/NetWork");
@@ -12,6 +29,7 @@ var DaAnData_1 = require("../../Data/DaAnData");
 var UploadAndReturnPanel_1 = require("../panel/UploadAndReturnPanel");
 var DataReporting_1 = require("../../Data/DataReporting");
 var Set_1 = require("../../collections/Set");
+var OverTips_1 = require("../Item/OverTips");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GamePanel = /** @class */ (function (_super) {
     __extends(GamePanel, _super);
@@ -60,6 +78,7 @@ var GamePanel = /** @class */ (function (_super) {
         _this.isOver = 0;
         _this.selectMove = false;
         _this.overNum = 0;
+        _this.progress = null;
         _this.eventvalue = {
             isResult: 1,
             isLevel: 1,
@@ -426,6 +445,13 @@ var GamePanel = /** @class */ (function (_super) {
                         _this.selectNode.children[i].getChildByName('bubble').runAction(cc.scaleTo(0.3, 0, 0));
                     }
                     else {
+                        for (var j = 0; j < 3; j++) {
+                            if (_this.selectNodeArr[j]) {
+                                if (_this.selectNodeArr[j].getChildByName('bubble').scale == 1) {
+                                    _this.selectNodeArr[j].getChildByName('bubble').runAction(cc.scaleTo(0.3, 0, 0));
+                                }
+                            }
+                        }
                         _this.selectNode.children[i].getChildByName('bubble').runAction(cc.scaleTo(0.3, 1, 1));
                         _this.selectNode.children[i].getChildByName('fireworks').opacity = 255;
                         _this.selectNode.children[i].getChildByName('fireworks').getComponent(sp.Skeleton).setAnimation(0, 'animation', false);
@@ -746,8 +772,7 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.nextCheckPoint = function () {
         var _this = this;
         if (this.types == 1) {
-            UIHelp_1.UIHelp.AffirmTip(1, '答对啦！你真棒～', function () {
-            }, function () {
+            UIHelp_1.UIHelp.showOverTip(1, '答对啦！你真棒～', '下一关', function () { }, function () {
                 _this.checkpoint++;
                 for (var i = 0; i < _this.ItemNodeArr.length; i++) {
                     _this.ItemNodeArr[i].removeFromParent();
@@ -769,10 +794,14 @@ var GamePanel = /** @class */ (function (_super) {
                 _this.answer4 = [];
                 _this.answerArr = [];
                 _this.initAnswerArr(_this.checkpoint);
-            }, '', '下一关', 1);
+                UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
+            });
         }
         else if (this.types == 2) {
-            UIHelp_1.UIHelp.showOverTip(1, '答对啦！你真棒！试试其他办法吧～', this.backButtonCallBack.bind(this));
+            UIHelp_1.UIHelp.showOverTip(1, '答对啦！你真棒！试试其他办法吧～', '试试其他办法', function () { }, function () {
+                _this.backButtonCallBack();
+                UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
+            });
         }
     };
     GamePanel.prototype.success = function () {
@@ -784,8 +813,7 @@ var GamePanel = /** @class */ (function (_super) {
         });
         if (this.types == 1) {
             this.progressBar(this.checkpointsNum, this.checkpointsNum);
-            UIHelp_1.UIHelp.AffirmTip(1, '闯关成功，你真棒～', function () {
-            }, function () {
+            UIHelp_1.UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', function () { }, function () {
                 _this.checkpoint = 1;
                 for (var i = 0; i < _this.ItemNodeArr.length; i++) {
                     _this.ItemNodeArr[i].removeFromParent();
@@ -808,10 +836,14 @@ var GamePanel = /** @class */ (function (_super) {
                 _this.answerArr = [];
                 _this.finishArr = [];
                 _this.setPanel();
-            }, '关闭', '重玩一次', 2);
+                UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
+            });
         }
         else if (this.types == 2) {
-            UIHelp_1.UIHelp.showOverTip(2, '闯关成功，你真棒～');
+            UIHelp_1.UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧', '查看分类结果', function () { }, function () {
+                _this.backButtonCallBack();
+                UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
+            });
         }
     };
     GamePanel.prototype.getSelectAnimationName = function (id, finish, click) {
@@ -1158,7 +1190,7 @@ var GamePanel = /** @class */ (function (_super) {
         var _this = this;
         var num = this.AnswerBoardArr.length;
         var Y = -91;
-        var space = 450;
+        var space = 450 + 100 * (4 - num);
         var startX = -(num - 1) * space / 2 + 80;
         if (DaAnData_1.DaAnData.getInstance().types == 2) {
             space = 610;
@@ -1247,37 +1279,36 @@ var GamePanel = /** @class */ (function (_super) {
         if (this.types == 1) {
             if (totalNum == 2) {
                 this.progressNode.getChildByName('progress2').active = true;
+                this.progress = this.progressNode.getChildByName('progress2');
             }
             else if (totalNum == 3) {
                 this.progressNode.getChildByName('progress3').active = true;
+                this.progress = this.progressNode.getChildByName('progress3');
             }
             else if (totalNum == 4) {
                 this.progressNode.getChildByName('progress4').active = true;
+                this.progress = this.progressNode.getChildByName('progress4');
             }
             else if (totalNum == 5) {
                 this.progressNode.getChildByName('progress5').active = true;
+                this.progress = this.progressNode.getChildByName('progress5');
             }
             this.progressNode.active = true;
-            for (var i = 0; i < 5; i++) {
-                this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
-                this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
-                this.progressNode.children[i].getChildByName('bar3').zIndex = 3;
-                if (i > totalNum - 1) {
-                    this.progressNode.children[i].active = false;
+            for (var i = 0; i < totalNum; i++) {
+                this.progress.children[i].getChildByName('bar1').zIndex = 1;
+                this.progress.children[i].getChildByName('bar2').zIndex = 2;
+                this.progress.children[i].getChildByName('bar3').zIndex = 3;
+                if (i > index - 1) {
                 }
-                else {
-                    if (i > index - 1) {
-                    }
-                    else if (i < index - 1) {
-                        this.progressNode.children[i].getChildByName('bar1').zIndex = 3;
-                        this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
-                        this.progressNode.children[i].getChildByName('bar3').zIndex = 1;
-                    }
-                    else if (i == index - 1) {
-                        this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
-                        this.progressNode.children[i].getChildByName('bar2').zIndex = 3;
-                        this.progressNode.children[i].getChildByName('bar3').zIndex = 2;
-                    }
+                else if (i < index - 1) {
+                    this.progress.children[i].getChildByName('bar1').zIndex = 3;
+                    this.progress.children[i].getChildByName('bar2').zIndex = 2;
+                    this.progress.children[i].getChildByName('bar3').zIndex = 1;
+                }
+                else if (i == index - 1) {
+                    this.progress.children[i].getChildByName('bar1').zIndex = 1;
+                    this.progress.children[i].getChildByName('bar2').zIndex = 3;
+                    this.progress.children[i].getChildByName('bar3').zIndex = 2;
                 }
             }
         }

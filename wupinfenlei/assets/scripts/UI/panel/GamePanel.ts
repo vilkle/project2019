@@ -8,6 +8,7 @@ import {DaAnData} from "../../Data/DaAnData";
 import UploadAndReturnPanel from "../panel/UploadAndReturnPanel"
 import DataReporting from "../../Data/DataReporting";
 import Set from "../../collections/Set";
+import {OverTips} from '../Item/OverTips'
 
 const { ccclass, property } = cc._decorator;
 
@@ -68,6 +69,7 @@ export default class GamePanel extends BaseUI {
     private isOver : number = 0;
     private selectMove : boolean = false;
     private overNum : number = 0;
+    private progress: cc.Node = null;
     private eventvalue = {
         isResult: 1,
         isLevel: 1,
@@ -435,6 +437,13 @@ s
                     if( this.selectNode.children[i].getChildByName('bubble').scale == 1) {
                         this.selectNode.children[i].getChildByName('bubble').runAction(cc.scaleTo(0.3, 0,0));
                     }else{
+                        for(let j = 0; j < 3; j ++) {
+                            if(this.selectNodeArr[j]) {
+                                if(this.selectNodeArr[j].getChildByName('bubble').scale == 1) {
+                                    this.selectNodeArr[j].getChildByName('bubble').runAction(cc.scaleTo(0.3, 0,0));
+                                }
+                            }
+                        }
                         this.selectNode.children[i].getChildByName('bubble').runAction(cc.scaleTo(0.3, 1,1));
                         this.selectNode.children[i].getChildByName('fireworks').opacity = 255;
                         this.selectNode.children[i].getChildByName('fireworks').getComponent(sp.Skeleton).setAnimation(0, 'animation', false);
@@ -731,9 +740,7 @@ s
 
     nextCheckPoint() {
         if(this.types == 1) {
-            UIHelp.AffirmTip(1,'答对啦！你真棒～',()=>{
-
-            },()=>{
+            UIHelp.showOverTip(1,'答对啦！你真棒～', '下一关', ()=>{}, ()=>{
                 this.checkpoint++;
                 for(let i = 0; i < this.ItemNodeArr.length; i++) {
                     this.ItemNodeArr[i].removeFromParent();
@@ -754,11 +761,14 @@ s
                 this.answer3 = [];
                 this.answer4 = [];
                 this.answerArr = [];
-                this.initAnswerArr(this.checkpoint)
-            },'','下一关',1);
-            
+                this.initAnswerArr(this.checkpoint);
+                UIManager.getInstance().closeUI(OverTips);
+            });
         }else if(this.types == 2) {
-            UIHelp.showOverTip(1,'答对啦！你真棒！试试其他办法吧～', this.backButtonCallBack.bind(this));
+            UIHelp.showOverTip(1,'答对啦！你真棒！试试其他办法吧～','试试其他办法',()=>{},()=>{
+                this.backButtonCallBack();
+                UIManager.getInstance().closeUI(OverTips);
+            });
         }
     }
 
@@ -770,8 +780,7 @@ s
         });
         if(this.types == 1) {
             this.progressBar(this.checkpointsNum, this.checkpointsNum);
-            UIHelp.AffirmTip(1,'闯关成功，你真棒～',()=>{
-            },()=>{
+            UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', ()=>{}, ()=>{
                 this.checkpoint = 1;
                 for(let i = 0; i < this.ItemNodeArr.length; i++) {
                     this.ItemNodeArr[i].removeFromParent();
@@ -794,9 +803,13 @@ s
                 this.answerArr = [];
                 this.finishArr = [];
                 this.setPanel();
-            },'关闭','重玩一次',2);
+                UIManager.getInstance().closeUI(OverTips);
+            });
         }else if(this.types == 2) {
-            UIHelp.showOverTip(2,'闯关成功，你真棒～');
+            UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧','查看分类结果',()=>{},()=>{
+                this.backButtonCallBack();
+                UIManager.getInstance().closeUI(OverTips);
+            });
         }
         
     }
@@ -1121,7 +1134,7 @@ s
     postAnswerBoard() {
         let num = this.AnswerBoardArr.length;
         let Y = -91;
-        var space = 450;
+        var space = 450 + 100 * (4-num);
         var startX = -(num-1) * space / 2 + 80;
         if(DaAnData.getInstance().types == 2) {
             space = 610;
@@ -1194,32 +1207,32 @@ s
         if(this.types == 1) {
             if(totalNum == 2) {
                 this.progressNode.getChildByName('progress2').active = true;
+                this.progress = this.progressNode.getChildByName('progress2');
             }else if(totalNum == 3) {
                 this.progressNode.getChildByName('progress3').active = true;
+                this.progress = this.progressNode.getChildByName('progress3');
             }else if(totalNum == 4) {
                 this.progressNode.getChildByName('progress4').active = true;
+                this.progress = this.progressNode.getChildByName('progress4');
             }else if(totalNum == 5) {
                 this.progressNode.getChildByName('progress5').active = true;
+                this.progress = this.progressNode.getChildByName('progress5');
             }
             this.progressNode.active = true;
-            for(let i = 0; i < 5; i++) {
-                this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
-                this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
-                this.progressNode.children[i].getChildByName('bar3').zIndex = 3;
-                if(i > totalNum - 1) {
-                    this.progressNode.children[i].active = false;
-                }else {
-                    if(i > index-1) {
+            for(let i = 0; i < totalNum; i++) {
+                this.progress.children[i].getChildByName('bar1').zIndex = 1;
+                this.progress.children[i].getChildByName('bar2').zIndex = 2;
+                this.progress.children[i].getChildByName('bar3').zIndex = 3;
+                if(i > index-1) {
 
-                    }else if(i < index-1) {
-                        this.progressNode.children[i].getChildByName('bar1').zIndex = 3;
-                        this.progressNode.children[i].getChildByName('bar2').zIndex = 2;
-                        this.progressNode.children[i].getChildByName('bar3').zIndex = 1;
-                    }else if(i == index-1) {
-                        this.progressNode.children[i].getChildByName('bar1').zIndex = 1;
-                        this.progressNode.children[i].getChildByName('bar2').zIndex = 3;
-                        this.progressNode.children[i].getChildByName('bar3').zIndex = 2;
-                    }
+                }else if(i < index-1) {
+                    this.progress.children[i].getChildByName('bar1').zIndex = 3;
+                    this.progress.children[i].getChildByName('bar2').zIndex = 2;
+                    this.progress.children[i].getChildByName('bar3').zIndex = 1;
+                }else if(i == index-1) {
+                    this.progress.children[i].getChildByName('bar1').zIndex = 1;
+                    this.progress.children[i].getChildByName('bar2').zIndex = 3;
+                    this.progress.children[i].getChildByName('bar3').zIndex = 2;
                 }
             }
         }else if(this.types == 2) {

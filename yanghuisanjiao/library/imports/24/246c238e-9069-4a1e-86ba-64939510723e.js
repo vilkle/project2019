@@ -2,6 +2,23 @@
 cc._RF.push(module, '246c2OOkGlKHoa6ZJOVEHI+', 'GamePanel');
 // scripts/UI/panel/GamePanel.ts
 
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var NetWork_1 = require("../../Http/NetWork");
@@ -64,7 +81,7 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.initGame = function () {
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
             answer: null,
             result: null
         });
@@ -112,6 +129,7 @@ var GamePanel = /** @class */ (function (_super) {
                     _this.answerNodeArr[i].setScale(1);
                     _this.eventvalue.levelData[_this.checkpoint - 1].answer = _this.answerIndex;
                     _this.isRight(_this.questionIndex);
+                    console.log('--', _this.eventvalue);
                 });
                 this_1.answerNodeArr[i].on(cc.Node.EventType.TOUCH_CANCEL, function () {
                     _this.answerNodeArr[i].setScale(1);
@@ -320,7 +338,7 @@ var GamePanel = /** @class */ (function (_super) {
         var _this = this;
         this.checkpoint++;
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
             answer: null,
             result: null
         });
@@ -380,7 +398,7 @@ var GamePanel = /** @class */ (function (_super) {
         var _this = this;
         this.checkpoint++;
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
             answer: null,
             result: null
         });
@@ -426,7 +444,7 @@ var GamePanel = /** @class */ (function (_super) {
         var _this = this;
         this.checkpoint++;
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
             answer: null,
             result: null
         });
@@ -480,7 +498,7 @@ var GamePanel = /** @class */ (function (_super) {
         var _this = this;
         this.checkpoint++;
         this.eventvalue.levelData.push({
-            subject: [],
+            subject: null,
             answer: null,
             result: null
         });
@@ -628,35 +646,37 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.success = function () {
         this.eventvalue.result = 1;
+        this.isOver = 1;
+        console.log('--', this.eventvalue);
         DataReporting_1.default.getInstance().dispatchEvent('addLog', {
             eventType: 'clickSubmit',
             eventValue: JSON.stringify(this.eventvalue)
         });
         AudioManager_1.AudioManager.getInstance().stopAll();
-        UIHelp_1.UIHelp.showOverTip(2, '闯关成功，你真棒～');
+        UIHelp_1.UIHelp.showOverTip(2, '原来这就是杨辉三角呀～');
     };
     GamePanel.prototype.isRight = function (questionIndex) {
         if (questionIndex == 1) {
             this.eventvalue.levelData[this.checkpoint - 1].subject = 1;
             this.eventvalue.result = 2;
             if (this.answerIndex == 1) {
-                this.right1();
                 this.eventvalue.levelData[this.checkpoint - 1].result = 1;
+                this.right1();
             }
             else {
-                this.wrong1();
                 this.eventvalue.levelData[this.checkpoint - 1].result = 2;
+                this.wrong1();
             }
         }
         else if (questionIndex == 2) {
             this.eventvalue.levelData[this.checkpoint - 1].subject = 2;
             if (this.answerIndex == 2) {
-                this.right2();
                 this.eventvalue.levelData[this.checkpoint - 1].result = 1;
+                this.right2();
             }
             else {
-                this.wrong2();
                 this.eventvalue.levelData[this.checkpoint - 1].result = 2;
+                this.wrong2();
             }
         }
         else if (questionIndex == 3) {

@@ -2,6 +2,23 @@
 cc._RF.push(module, 'd402btyepNJObcDSUkLUQcr', 'OverTips', __filename);
 // scripts/UI/Item/OverTips.ts
 
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var Tools_1 = require("../../UIComm/Tools");
@@ -17,6 +34,7 @@ var OverTips = /** @class */ (function (_super) {
         _this.spine_true = null;
         _this.spine_complete = null;
         _this.node_close = null;
+        _this.button = null;
         _this.callback = null;
         return _this;
     }
@@ -32,14 +50,22 @@ var OverTips = /** @class */ (function (_super) {
      @param {number} type          0: 错误  1：答对了  2：闯关成功(一直显示不会关闭)
      @param {string} str           提示内容
      */
-    OverTips.prototype.init = function (type, str, callback) {
+    OverTips.prototype.init = function (type, str, btnStr, callback, btnCallback) {
         if (str === void 0) { str = ""; }
+        if (btnStr === void 0) { btnStr = ''; }
         this.callback = callback;
         this.spine_false.node.active = type == 0;
         this.spine_true.node.active = type == 1;
         this.spine_complete.node.active = type == 2;
         this.label_tip.string = str;
-        this.label_tip.node.active = type != 2;
+        //this.label_tip.node.active = type != 2;
+        if (btnStr) {
+            this.button.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = btnStr;
+            this.button.on('click', btnCallback, this);
+        }
+        else {
+            this.button.active = false;
+        }
         switch (type) {
             case 0:
                 Tools_1.Tools.playSpine(this.spine_false, "false", false, this.delayClose.bind(this));
@@ -91,6 +117,9 @@ var OverTips = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], OverTips.prototype, "node_close", void 0);
+    __decorate([
+        property(cc.Node)
+    ], OverTips.prototype, "button", void 0);
     OverTips = OverTips_1 = __decorate([
         ccclass
     ], OverTips);
