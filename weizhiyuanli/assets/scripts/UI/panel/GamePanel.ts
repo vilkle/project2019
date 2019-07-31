@@ -12,6 +12,10 @@ export default class GamePanel extends BaseUI {
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
     }
 
+    onLoad() {
+        
+    }
+
     onEndGame() {
         //如果已经上报过数据 则不再上报数据
         if (DataReporting.isRepeatReport) {
