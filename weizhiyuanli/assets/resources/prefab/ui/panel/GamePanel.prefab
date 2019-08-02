@@ -1155,7 +1155,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Sprite",
+    "_name": "bag1",
     "_objFlags": 0,
     "_parent": {
       "__id__": 31
@@ -1191,7 +1191,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -96,
+      "x": -47,
       "y": -129,
       "z": 0
     },
@@ -3698,7 +3698,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Sprite",
+    "_name": "bag2",
     "_objFlags": 0,
     "_parent": {
       "__id__": 31
@@ -3734,7 +3734,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -342,
+      "x": -293,
       "y": -127,
       "z": 0
     },
@@ -4601,6 +4601,9 @@
       "__id__": 1
     },
     "_enabled": true,
+    "bagNode": {
+      "__id__": 31
+    },
     "_id": ""
   },
   {

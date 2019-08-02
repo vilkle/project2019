@@ -6,9 +6,9 @@
       "url": "app://editor/index.html",
       "windowType": "dockable",
       "x": -1920,
-      "y": -169,
+      "y": -118,
       "width": 1920,
-      "height": 1057,
+      "height": 1006,
       "layout": {
         "children": [
           {
@@ -18,7 +18,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 427.671875,
+                "height": 461.6875,
                 "type": "panel",
                 "width": 306
               },
@@ -27,12 +27,12 @@
                 "children": [
                   "assets"
                 ],
-                "height": 474.328125,
+                "height": 511.296875,
                 "type": "panel",
                 "width": 306
               }
             ],
-            "height": 904,
+            "height": 975,
             "type": "dock-v",
             "width": 306
           },
@@ -43,7 +43,7 @@
                 "children": [
                   "scene"
                 ],
-                "height": 636,
+                "height": 686.046875,
                 "type": "panel",
                 "width": 1306
               },
@@ -53,12 +53,12 @@
                   "console",
                   "timeline"
                 ],
-                "height": 266,
+                "height": 286.9375,
                 "type": "panel",
                 "width": 1306
               }
             ],
-            "height": 904,
+            "height": 975,
             "type": "dock-v",
             "width": 1306
           },
@@ -68,7 +68,7 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 904,
+            "height": 975,
             "type": "panel",
             "width": 304
           }
@@ -84,7 +84,8 @@
         "cocos-services",
         "scene"
       ]
-    }
+    },
+    "window-1564630908071": {}
   },
   "panels": {
     "sprite-editor": {
@@ -100,8 +101,8 @@
       "height": 548
     },
     "builder": {
-      "x": -1298,
-      "y": -147,
+      "x": -658,
+      "y": 14,
       "width": 654,
       "height": 722
     }

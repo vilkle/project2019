@@ -8,8 +8,15 @@ const { ccclass, property } = cc._decorator;
 export default class GamePanel extends BaseUI {
 
     protected static className = "GamePanel";
+    @property(cc.Node)
+    private bagNode: cc.Node = null;
+
+
+
+
     start() {
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
+        this.startAction();
     }
 
     onLoad() {
@@ -27,6 +34,13 @@ export default class GamePanel extends BaseUI {
         }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
         DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
+    }
+
+    startAction() {
+        let bag1 = this.bagNode.getChildByName('bag1');
+        let bag2 = this.bagNode.getChildByName('bag2');
+        bag1.runAction(cc.moveBy(0.8, cc.v2(-500, 0)));
+        bag2.runAction(cc.moveBy(0.8, cc.v2(-500, 0)));
     }
 
     onDestroy() {

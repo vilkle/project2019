@@ -274,10 +274,16 @@ var GamePanel = /** @class */ (function (_super) {
         this.BLabel.lineHeight = 40;
         this.CLabel.lineHeight = 40;
         this.DLabel.lineHeight = 40;
+        this.ALabel.node.y = -35;
+        this.DLabel.node.y = -35;
         this.ASprite.node.height = 100;
         this.BSprite.node.height = 100;
         this.CSprite.node.height = 100;
         this.DSprite.node.height = 100;
+        this.ASprite.node.getChildByName('a').y = -55;
+        this.BSprite.node.getChildByName('b').y = -55;
+        this.CSprite.node.getChildByName('c').y = -55;
+        this.DSprite.node.getChildByName('d').y = -55;
         for (var i = 0; i < this.triangleNode.children.length; i++) {
             for (var j = 0; j < this.triangleNode.children[i].children.length; j++) {
                 this.triangleNode.children[i].children[j].getComponent(sp.Skeleton).setAnimation(0, 'yellow', true);

@@ -63,6 +63,7 @@ export default class GamePanel extends BaseUI {
     private typeArr : any[] = [];
     private selectArr : boolean[] = [];
     private finishArr : boolean[] = [];
+    private timeOutArr : any[] = [];
     private checkpoint : number = 1;
     private selectType : number = 0;
     private touchTarget : any = null;
@@ -96,16 +97,26 @@ export default class GamePanel extends BaseUI {
     start() {
        
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
-
         this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
             if(this.isOver != 1) {
                 this.isOver = 2;
                 this.eventvalue.result = 2;
                 this.eventvalue.levelData[this.checkpoint-1].result = 2;
             }
+            if(this.isOver == 1 && this.types == 2) {
+                for(let i = 0; i < this.timeOutArr.length; i++) {
+                    clearTimeout(this.timeOutArr[i]);
+                }
+                for(let i = 0; i < this.selectNodeCenterArr.length; i++) {
+                    this.selectNodeCenterArr[i].getChildByName('bubble').stopAllActions();
+                    this.selectNodeCenterArr[i].getChildByName('bubble').setScale(0);
+                }
+            }
         });
         this.loudspeakerBox.node.on(cc.Node.EventType.TOUCH_START, ()=>{
             this.loudSpeaker.getComponent(sp.Skeleton).setAnimation(0, 'animation', false);
+            AudioManager.getInstance().stopAll();
+            AudioManager.getInstance().playSound('把这些物品分类整理，并拖到对应区域内。', false);
         }); 
     }
 
@@ -373,6 +384,7 @@ export default class GamePanel extends BaseUI {
         let space = 600;
         let long = (num - 1)*space;
         let starX =  - long/2;
+        AudioManager.getInstance().playSound('sfx_casemove', false);
         for(let i = 0; i < num; i++) {
             this.selectNodeCenterArr[i].setPosition(cc.v2(starX + i * space - 2000, -300));
             this.selectPosArr[i] = cc.v2(starX + i * space - 2000, -300);
@@ -446,6 +458,7 @@ s
                         }
                         this.selectNode.children[i].getChildByName('bubble').runAction(cc.scaleTo(0.3, 1,1));
                         this.selectNode.children[i].getChildByName('fireworks').opacity = 255;
+                        AudioManager.getInstance().playSound('sfx_flowerfly', false);
                         this.selectNode.children[i].getChildByName('fireworks').getComponent(sp.Skeleton).setAnimation(0, 'animation', false);
                         this.selectNode.children[i].getChildByName('fireworks').getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
                             if(trackEntry.animation.name == 'animation') {
@@ -455,11 +468,26 @@ s
                     }
                 }else {
                     this.selectMove = true;
+                    this.selectType = i + 1;
+                    if(this.selectType == 1) {
+                        AudioManager.getInstance().playSound('sfx_selogic', false);
+                    }else if(this.selectType == 2) {
+                        AudioManager.getInstance().playSound('sfx_seneo', false);
+                    }else if(this.selectType == 3) {
+                        AudioManager.getInstance().playSound('sfx_semia', false);
+                    }
+                    for(let j = 0; j < 3; j ++) {
+                        if(this.selectNodeArr[j]) {
+                            if(this.selectNodeArr[j].getChildByName('bubble').scale == 1) {
+                                this.selectNodeArr[j].getChildByName('bubble').runAction(cc.scaleTo(0.3, 0,0));
+                            }
+                        }
+                    }
                     this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], true), false);
                     this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
                         if(trackEntry.animation.name == this.getSelectAnimationName(i, false, true)) {
                             this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], false), true);
-                            this.selectType = i + 1;
+                            AudioManager.getInstance().playSound('sfx_casemove', false);
                             for(let i = 0; i < this.selectNode.children.length; i ++) {
                                 setTimeout(()=>{
                                     if(i < this.selectNode.children.length - 1) {
@@ -485,7 +513,7 @@ s
         }
     }
 
-    resetSelect() {
+     resetSelect() {
         this.selectMove = true;
         this.selectNode.getChildByName('colorNode').stopAllActions();
         this.selectNode.getChildByName('figureNode').stopAllActions();
@@ -495,28 +523,55 @@ s
         }
 
         this.selectNode.active = true;
-        for(let i = 0; i < this.selectNode.children.length; i++) {
+        AudioManager.getInstance().playSound('sfx_casemove', false);
+        for(let i = 0; i < this.selectNodeCenterArr.length; i++) {
             if(this.finishArr[i]) {
-                if(this.selectNode.children[i].active) {
-                    this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, false), true);
+                if(this.selectNodeCenterArr[i].active) {
+                    this.selectNodeCenterArr[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, false), true);
                 } 
             }else {
-                if(this.selectNode.children[i].active) {
-                    this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, false, false), true);
+                if(this.selectNodeCenterArr[i].active) {
+                    this.selectNodeCenterArr[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, false, false), true);
                 }  
             }
             setTimeout(()=>{
-                if(this.selectNode.children[i].active) {
-                    this.selectNode.children[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
-                        this.selectMove = false;
-                    })));
+                if(this.selectNodeCenterArr[i].active) {
+                    if(i == this.selectNodeCenterArr.length-1) {
+                        this.selectNodeCenterArr[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
+                            this.selectMove = false;
+                            if(this.isOver == 1) {
+                                this.showHow();
+                            }
+                        })));
+                    }else {
+                        this.selectNodeCenterArr[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
+                            this.selectMove = false;
+                        })));
+                    }
                 }
-            },100*(this.selectNode.children.length-1-i));
+            },100*(this.selectNodeCenterArr.length-1-i));
+        }
+    }
+
+    showHow() {
+        for(let i = 0; i < this.selectNodeCenterArr.length; i++) { 
+            let index = setTimeout(() => {
+                this.selectNodeCenterArr[i].getChildByName('bubble').runAction(cc.sequence(cc.scaleTo(0.3, 1,1), cc.delayTime(1), cc.scaleTo(0.3, 0, 0)) );
+                this.selectNodeCenterArr[i].getChildByName('fireworks').opacity = 255;
+                AudioManager.getInstance().playSound('sfx_flowerfly', false);
+                this.selectNodeCenterArr[i].getChildByName('fireworks').getComponent(sp.Skeleton).setAnimation(0, 'animation', false);
+                this.selectNodeCenterArr[i].getChildByName('fireworks').getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                    if(trackEntry.animation.name == 'animation') {
+                        this.selectNode.children[i].getChildByName('fireworks').opacity = 0;
+                    }
+                });
+            }, 1600 * i);   
+            this.timeOutArr.push(index);
         }
     }
 
     backButtonCallBack() {
-
+        AudioManager.getInstance().playSound('sfx_casemove', false);
         for(let i = 0; i < this.AnswerBoardArr.length; i++) {
             setTimeout(()=>{
                 if(i < this.AnswerBoardArr.length -1) {
@@ -624,6 +679,9 @@ s
                             this.player1.push(this.answer[i]);
                             this.touchNode.active = false;
                         }else {
+                            if(this.types == 1) {
+                                AudioManager.getInstance().playSound('这好像不是动物哦~', false);
+                            }
                             this.touchNode.active = false;
                             e.target.opacity = 255;
                         }
@@ -647,6 +705,9 @@ s
                         this.player2.push(this.answer[i]);
                         this.touchNode.active = false;
                     }else {
+                        if(this.types == 1) {
+                            AudioManager.getInstance().playSound('这好像不是食物哦~', false);
+                        }
                         this.touchNode.active = false;
                         e.target.opacity = 255;
                     }
@@ -670,6 +731,9 @@ s
                         this.player3.push(this.answer[i]);
                         this.touchNode.active = false;
                     }else {
+                        if(this.types == 1) {
+                            AudioManager.getInstance().playSound('这好像不是文具哦~', false);
+                        }
                         this.touchNode.active = false;
                         e.target.opacity = 255;
                     }
@@ -693,6 +757,9 @@ s
                             this.player4.push(this.answer[i]);
                             this.touchNode.active = false;
                         }else {
+                            if(this.types == 1) {
+                                AudioManager.getInstance().playSound('这好像不是衣服哦~', false);
+                            }
                             this.touchNode.active = false;
                             e.target.opacity = 255;
                         }
@@ -740,6 +807,7 @@ s
 
     nextCheckPoint() {
         if(this.types == 1) {
+            AudioManager.getInstance().playSound('答对啦！你真棒~', false);
             UIHelp.showOverTip(1,'答对啦！你真棒～', '下一关', ()=>{}, ()=>{
                 this.checkpoint++;
                 for(let i = 0; i < this.ItemNodeArr.length; i++) {
@@ -765,7 +833,8 @@ s
                 UIManager.getInstance().closeUI(OverTips);
             });
         }else if(this.types == 2) {
-            UIHelp.showOverTip(1,'答对啦！你真棒！试试其他办法吧～','试试其他办法',()=>{},()=>{
+            AudioManager.getInstance().playSound('做对啦！你真棒！试试其他办法吧~', false);
+            UIHelp.showOverTip(1,'做对啦！你真棒！试试其他办法吧～','试试其他办法',()=>{},()=>{
                 this.backButtonCallBack();
                 UIManager.getInstance().closeUI(OverTips);
             });
@@ -779,6 +848,7 @@ s
             eventValue: JSON.stringify(this.eventvalue)
         });
         if(this.types == 1) {
+            AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             this.progressBar(this.checkpointsNum, this.checkpointsNum);
             UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', ()=>{}, ()=>{
                 this.checkpoint = 1;
@@ -806,6 +876,7 @@ s
                 UIManager.getInstance().closeUI(OverTips);
             });
         }else if(this.types == 2) {
+            AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧','查看分类结果',()=>{},()=>{
                 this.backButtonCallBack();
                 UIManager.getInstance().closeUI(OverTips);
@@ -1140,6 +1211,7 @@ s
             space = 610;
             startX = -(num-1) * space / 2 + 140;
         }
+        AudioManager.getInstance().playSound('sfx_casemove', false);
         for(let i = 0; i < num; i++) {
             cc.director.getScene().getChildByName('Canvas').getChildByName('GamePanel').addChild(this.AnswerBoardArr[i]);
             this.AnswerBoardArr[i].setPosition(cc.v2(startX + i * space - 2000, Y));
@@ -1158,6 +1230,9 @@ s
         let space = 210;
         let upStartX = -(upNum - 1) * space / 2 - 50;
         let downStartX = -(downNum - 1) * space / 2 - 50;
+        AudioManager.getInstance().playSound('sfx_ciopn', false,1,null, ()=>{
+            AudioManager.getInstance().playSound('把这些物品分类整理，并拖到对应区域内。', false);
+        });
         if(upNum == downNum) {
             for(let i = 0; i < num; i++) {
                 this.ItemNodeArr[i].opacity = 0;
@@ -1176,7 +1251,7 @@ s
                                 this.createSelectBoard()
                             }
                         }
-                    })) );
+                    })));
                 }, 50*i);
             }
         }else{
@@ -1193,7 +1268,7 @@ s
                         if(i == num - 1) {
                             if(this.types == 1) {
                                 this.createAnswerBoard(this.checkpoint);
-                            }else if(this.types == 2) { 
+                            }else if(this.types == 2) {   
                                 this.createSelectBoard()
                             }
                         }

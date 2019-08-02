@@ -205,7 +205,7 @@ export default class TeacherPanel extends BaseUI {
                 optionNode.getChildByName('imageNode').addChild(cookieNode);
                 optionNode.getChildByName('Types').getChildByName('toggle1').on('toggle', this.onToggleCallBack, this);
                 optionNode.getChildByName('Types').getChildByName('toggle2').on('toggle', this.onToggleCallBack, this);
-                optionNode.getChildByName('title').getComponent(cc.Label).string = this.titleChange(i + 1);
+                //optionNode.getChildByName('title').getComponent(cc.Label).string = this.titleChange(i + 1);
                 this.content.addChild(optionNode);
                 this.typeArr.push(optionNode);
             }
