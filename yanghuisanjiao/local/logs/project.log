@@ -1,72 +1,72 @@
-2019-08-01T02:42:59.441Z - normal: Load ~/.CocosCreator/settings.json
-2019-08-01T02:42:59.514Z - normal: Initializing Asset Database
-2019-08-01T02:42:59.518Z - normal: checking language setting...
-2019-08-01T02:42:59.519Z - normal: Language: zh
-2019-08-01T02:43:00.318Z - success: preview server running at http://localhost:7456
-2019-08-01T02:43:00.339Z - success: protocol editor-framework registered
-2019-08-01T02:43:00.340Z - success: protocol app registered
-2019-08-01T02:43:00.340Z - success: protocol theme registered
-2019-08-01T02:43:00.340Z - success: protocol packages registered
-2019-08-01T02:43:00.341Z - success: protocol uuid registerred
-2019-08-01T02:43:00.341Z - success: protocol db registerred
-2019-08-01T02:43:00.341Z - success: protocol thumbnail registerred
-2019-08-01T02:43:00.341Z - success: protocol unpack registerred
-2019-08-01T02:43:00.341Z - success: protocol disable-commonjs registerred
-2019-08-01T02:43:00.430Z - normal: connected!
-2019-08-01T02:43:00.432Z - normal: Check project /Users/xes/Desktop/hub/yanghuisanjiao
-2019-08-01T02:43:00.434Z - normal: Initializing project /Users/xes/Desktop/hub/yanghuisanjiao
-2019-08-01T02:43:00.829Z - normal: Initializing Cocos2d
-2019-08-01T02:43:01.659Z - normal: Initializing engine extends
-2019-08-01T02:43:01.681Z - success: asset-db-debugger loaded
-2019-08-01T02:43:01.682Z - success: baidu-adapter loaded
-2019-08-01T02:43:01.684Z - success: color-picker loaded
-2019-08-01T02:43:01.781Z - success: fb-audience-network loaded
-2019-08-01T02:43:01.835Z - success: fb-live-stream loaded
-2019-08-01T02:43:01.838Z - success: google-play-instant loaded
-2019-08-01T02:43:01.844Z - success: huawei-runtime loaded
-2019-08-01T02:43:02.117Z - success: cpk-publish loaded
-2019-08-01T02:43:02.119Z - success: jsb-adapter loaded
-2019-08-01T02:43:02.124Z - success: oppo-runtime loaded
-2019-08-01T02:43:02.129Z - success: package-manager loaded
-2019-08-01T02:43:02.260Z - success: qqplay-adapter loaded
-2019-08-01T02:43:02.263Z - success: runtime-dev-tools loaded
-2019-08-01T02:43:02.269Z - success: sdkbox loaded
-2019-08-01T02:43:02.274Z - success: tester loaded
-2019-08-01T02:43:02.279Z - success: ui-grid loaded
-2019-08-01T02:43:02.283Z - success: ui-kit-preview-extra loaded
-2019-08-01T02:43:02.287Z - success: ui-kit-preview loaded
-2019-08-01T02:43:02.292Z - success: ui-kit loaded
-2019-08-01T02:43:02.296Z - success: ui-tree loaded
-2019-08-01T02:43:02.301Z - success: vivo-runtime loaded
-2019-08-01T02:43:02.303Z - success: weapp-adapter loaded
-2019-08-01T02:43:02.304Z - success: xiaomi-adapter loaded
-2019-08-01T02:43:02.350Z - success: assets loaded
-2019-08-01T02:43:02.356Z - success: builder loaded
-2019-08-01T02:43:02.616Z - success: cocos-services loaded
-2019-08-01T02:43:02.624Z - success: console loaded
-2019-08-01T02:43:02.666Z - success: fb-instant-games loaded
-2019-08-01T02:43:02.668Z - success: google-instant-games loaded
-2019-08-01T02:43:02.673Z - success: hierarchy loaded
-2019-08-01T02:43:02.679Z - success: inspector loaded
-2019-08-01T02:43:02.680Z - success: keystore loaded
-2019-08-01T02:43:02.686Z - success: node-library loaded
-2019-08-01T02:43:02.691Z - success: package-asset loaded
-2019-08-01T02:43:02.692Z - success: preferences loaded
-2019-08-01T02:43:02.696Z - success: project-exporter loaded
-2019-08-01T02:43:02.701Z - success: project-importer loaded
-2019-08-01T02:43:02.705Z - success: project-settings loaded
-2019-08-01T02:43:02.712Z - success: scene loaded
-2019-08-01T02:43:02.713Z - success: simulator-debugger loaded
-2019-08-01T02:43:02.714Z - success: sprite-editor loaded
-2019-08-01T02:43:02.719Z - success: store loaded
-2019-08-01T02:43:02.725Z - success: timeline loaded
-2019-08-01T02:43:02.732Z - success: xiaomi-runtime loaded
-2019-08-01T02:43:02.737Z - success: auto_deploy loaded
-2019-08-01T02:43:04.698Z - info: Cocos Services load base data!
-2019-08-01T02:43:05.572Z - normal: Loading packages
-2019-08-01T02:43:05.668Z - normal: Watching packages
-2019-08-01T02:43:05.914Z - normal: Run Application
-2019-08-01T03:41:55.800Z - normal: Start building with options : {
+2019-08-06T08:22:11.317Z - normal: Load ~/.CocosCreator/settings.json
+2019-08-06T08:22:11.459Z - normal: Initializing Asset Database
+2019-08-06T08:22:11.480Z - normal: checking language setting...
+2019-08-06T08:22:11.480Z - normal: Language: zh
+2019-08-06T08:22:12.750Z - success: preview server running at http://localhost:7456
+2019-08-06T08:22:12.774Z - success: protocol editor-framework registered
+2019-08-06T08:22:12.774Z - success: protocol app registered
+2019-08-06T08:22:12.774Z - success: protocol theme registered
+2019-08-06T08:22:12.774Z - success: protocol packages registered
+2019-08-06T08:22:12.774Z - success: protocol uuid registerred
+2019-08-06T08:22:12.774Z - success: protocol db registerred
+2019-08-06T08:22:12.775Z - success: protocol thumbnail registerred
+2019-08-06T08:22:12.775Z - success: protocol unpack registerred
+2019-08-06T08:22:12.775Z - success: protocol disable-commonjs registerred
+2019-08-06T08:22:12.868Z - normal: connected!
+2019-08-06T08:22:12.872Z - normal: Check project /Users/xes/Desktop/hub/yanghuisanjiao
+2019-08-06T08:22:12.874Z - normal: Initializing project /Users/xes/Desktop/hub/yanghuisanjiao
+2019-08-06T08:22:13.524Z - normal: Initializing Cocos2d
+2019-08-06T08:22:14.765Z - normal: Initializing engine extends
+2019-08-06T08:22:14.805Z - success: asset-db-debugger loaded
+2019-08-06T08:22:14.806Z - success: baidu-adapter loaded
+2019-08-06T08:22:14.807Z - success: color-picker loaded
+2019-08-06T08:22:14.976Z - success: fb-audience-network loaded
+2019-08-06T08:22:15.065Z - success: fb-live-stream loaded
+2019-08-06T08:22:15.071Z - success: google-play-instant loaded
+2019-08-06T08:22:15.080Z - success: huawei-runtime loaded
+2019-08-06T08:22:15.512Z - success: cpk-publish loaded
+2019-08-06T08:22:15.512Z - success: jsb-adapter loaded
+2019-08-06T08:22:15.518Z - success: oppo-runtime loaded
+2019-08-06T08:22:15.525Z - success: package-manager loaded
+2019-08-06T08:22:15.817Z - success: qqplay-adapter loaded
+2019-08-06T08:22:15.821Z - success: runtime-dev-tools loaded
+2019-08-06T08:22:15.831Z - success: sdkbox loaded
+2019-08-06T08:22:15.838Z - success: tester loaded
+2019-08-06T08:22:15.848Z - success: ui-grid loaded
+2019-08-06T08:22:15.855Z - success: ui-kit-preview-extra loaded
+2019-08-06T08:22:15.863Z - success: ui-kit-preview loaded
+2019-08-06T08:22:15.868Z - success: ui-kit loaded
+2019-08-06T08:22:15.873Z - success: ui-tree loaded
+2019-08-06T08:22:15.881Z - success: vivo-runtime loaded
+2019-08-06T08:22:15.882Z - success: weapp-adapter loaded
+2019-08-06T08:22:15.884Z - success: xiaomi-adapter loaded
+2019-08-06T08:22:15.955Z - success: assets loaded
+2019-08-06T08:22:15.959Z - success: builder loaded
+2019-08-06T08:22:16.574Z - success: cocos-services loaded
+2019-08-06T08:22:16.617Z - success: console loaded
+2019-08-06T08:22:16.758Z - success: fb-instant-games loaded
+2019-08-06T08:22:16.761Z - success: google-instant-games loaded
+2019-08-06T08:22:16.772Z - success: hierarchy loaded
+2019-08-06T08:22:16.781Z - success: inspector loaded
+2019-08-06T08:22:16.784Z - success: keystore loaded
+2019-08-06T08:22:16.794Z - success: node-library loaded
+2019-08-06T08:22:16.799Z - success: package-asset loaded
+2019-08-06T08:22:16.802Z - success: preferences loaded
+2019-08-06T08:22:16.808Z - success: project-exporter loaded
+2019-08-06T08:22:16.818Z - success: project-importer loaded
+2019-08-06T08:22:16.826Z - success: project-settings loaded
+2019-08-06T08:22:16.835Z - success: scene loaded
+2019-08-06T08:22:16.838Z - success: simulator-debugger loaded
+2019-08-06T08:22:16.841Z - success: sprite-editor loaded
+2019-08-06T08:22:16.851Z - success: store loaded
+2019-08-06T08:22:16.863Z - success: timeline loaded
+2019-08-06T08:22:16.878Z - success: xiaomi-runtime loaded
+2019-08-06T08:22:16.886Z - success: auto_deploy loaded
+2019-08-06T08:22:21.892Z - normal: Loading packages
+2019-08-06T08:22:21.915Z - normal: Watching packages
+2019-08-06T08:22:21.969Z - info: Cocos Services load base data!
+2019-08-06T08:22:22.158Z - normal: Run Application
+2019-08-06T08:25:06.538Z - normal: Start building with options : {
   "actualPlatform": "web-mobile",
   "android-instant": {
     "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
@@ -166,418 +166,22 @@
   "projectName": "gameFrame",
   "debugBuildWorker": false
 }
-2019-08-01T03:41:55.804Z - normal: Building /Users/xes/Desktop/hub/yanghuisanjiao
-2019-08-01T03:41:55.804Z - normal: Destination /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile
-2019-08-01T03:41:55.936Z - normal: Delete /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/**/*
-2019-08-01T03:42:32.384Z - normal: Start building assets
-2019-08-01T03:42:32.386Z - normal: Start spawn build-worker
-2019-08-01T03:42:33.191Z - normal: Finish spawn build-worker
-2019-08-01T03:42:33.191Z - normal: Start init build-worker
-2019-08-01T03:42:36.615Z - normal: Finish init build-worker
-2019-08-01T03:42:36.615Z - normal: Start build-assets in worker
-2019-08-01T03:42:38.119Z - warn: The referenced asset used in "db://assets/resources/prefab/ui/panel/UploadAndReturnPanel.prefab" is not found, it may have been deleted. Detailed information:
+2019-08-06T08:25:06.547Z - normal: Building /Users/xes/Desktop/hub/yanghuisanjiao
+2019-08-06T08:25:06.547Z - normal: Destination /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile
+2019-08-06T08:25:06.790Z - normal: Delete /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/**/*
+2019-08-06T08:25:16.026Z - normal: Start building assets
+2019-08-06T08:25:16.026Z - normal: Start spawn build-worker
+2019-08-06T08:25:18.165Z - normal: Finish spawn build-worker
+2019-08-06T08:25:18.166Z - normal: Start init build-worker
+2019-08-06T08:25:25.030Z - normal: Finish init build-worker
+2019-08-06T08:25:25.031Z - normal: Start build-assets in worker
+2019-08-06T08:25:28.510Z - warn: The referenced asset used in "db://assets/resources/prefab/ui/panel/UploadAndReturnPanel.prefab" is not found, it may have been deleted. Detailed information:
 Used by "cc.PrefabInfo"
 uuid: "adea2b01-77d1-4cfa-aa46-c333f1871e12"
-2019-08-01T03:42:45.688Z - normal: Finish build-assets in worker
-2019-08-01T03:42:45.693Z - normal: Finish building assets
-2019-08-01T03:42:45.717Z - normal: Start building plugin scripts
-2019-08-01T03:42:45.802Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
-2019-08-01T03:42:45.824Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-08-01T03:42:46.062Z - normal: Built to "/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile" successfully
-2019-08-01T03:43:53.617Z - normal: Start building with options : {
-  "actualPlatform": "web-mobile",
-  "android-instant": {
-    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
-    "host": "",
-    "pathPattern": "",
-    "recordPath": "",
-    "scheme": "https",
-    "skipRecord": false
-  },
-  "apiLevel": "",
-  "appABIs": [],
-  "appBundle": false,
-  "baidugame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "testappid",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "buildPath": "/Users/xes/Desktop/hub/yanghuisanjiao/build",
-  "debug": false,
-  "dest": "/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile",
-  "embedWebDebugger": false,
-  "encryptJs": true,
-  "excludeScenes": [
-    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
-  ],
-  "excludedModules": [
-    "Canvas Renderer",
-    "Renderer Texture",
-    "Dynamic Atlas",
-    "LabelOutline",
-    "Mask",
-    "Graphics",
-    "ParticleSystem",
-    "TiledMap",
-    "DragonBones",
-    "RichText",
-    "MotionStreak",
-    "ScrollBar",
-    "ScrollView",
-    "Toggle",
-    "PageView",
-    "PageViewIndicator",
-    "Slider",
-    "EditBox",
-    "VideoPlayer",
-    "WebView",
-    "Animation",
-    "Collider",
-    "Physics",
-    "NodePool",
-    "StudioComponent",
-    "Intersection",
-    "Native Socket"
-  ],
-  "fb-instant-games": {},
-  "includeSDKBox": false,
-  "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
-  "md5Cache": true,
-  "mergeStartScene": false,
-  "optimizeHotUpdate": false,
-  "orientation": {
-    "landscapeLeft": true,
-    "landscapeRight": true,
-    "portrait": false,
-    "upsideDown": false
-  },
-  "packageName": "org.cocos2d.gameFrame",
-  "platform": "web-mobile",
-  "previewHeight": "720",
-  "previewWidth": "1280",
-  "qqplay": {
-    "REMOTE_SERVER_ROOT": "",
-    "orientation": "portrait",
-    "zip": false
-  },
-  "scenes": [
-    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
-  ],
-  "sourceMaps": false,
-  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
-  "template": "link",
-  "title": "gameFrame",
-  "useDebugKeystore": true,
-  "vsVersion": "auto",
-  "webOrientation": "auto",
-  "wechatgame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "wx6ac3f5090a6b99c5",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "xxteaKey": "ce558dd3-8f51-47",
-  "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/hub/yanghuisanjiao",
-  "projectName": "gameFrame",
-  "debugBuildWorker": false
-}
-2019-08-01T03:43:53.621Z - normal: Building /Users/xes/Desktop/hub/yanghuisanjiao
-2019-08-01T03:43:53.622Z - normal: Destination /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile
-2019-08-01T03:43:53.624Z - normal: Delete /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/**/*
-2019-08-01T03:44:09.168Z - normal: Start building assets
-2019-08-01T03:44:09.176Z - normal: Start spawn build-worker
-2019-08-01T03:44:11.575Z - normal: Finish spawn build-worker
-2019-08-01T03:44:11.575Z - normal: Start init build-worker
-2019-08-01T03:44:23.325Z - normal: Finish init build-worker
-2019-08-01T03:44:23.325Z - normal: Start build-assets in worker
-2019-08-01T03:44:28.640Z - warn: The referenced asset used in "db://assets/resources/prefab/ui/panel/UploadAndReturnPanel.prefab" is not found, it may have been deleted. Detailed information:
-Used by "cc.PrefabInfo"
-uuid: "adea2b01-77d1-4cfa-aa46-c333f1871e12"
-2019-08-01T03:44:43.497Z - normal: Finish build-assets in worker
-2019-08-01T03:44:43.513Z - normal: Finish building assets
-2019-08-01T03:44:43.550Z - normal: Start building plugin scripts
-2019-08-01T03:44:43.615Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
-2019-08-01T03:44:43.631Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-08-01T03:44:44.051Z - normal: Built to "/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile" successfully
-2019-08-01T03:47:29.919Z - normal: Start building with options : {
-  "actualPlatform": "web-mobile",
-  "android-instant": {
-    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
-    "host": "",
-    "pathPattern": "",
-    "recordPath": "",
-    "scheme": "https",
-    "skipRecord": false
-  },
-  "apiLevel": "",
-  "appABIs": [],
-  "appBundle": false,
-  "baidugame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "testappid",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "buildPath": "/Users/xes/Desktop/hub/yanghuisanjiao/build",
-  "debug": false,
-  "dest": "/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile",
-  "embedWebDebugger": false,
-  "encryptJs": true,
-  "excludeScenes": [
-    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
-  ],
-  "excludedModules": [
-    "Canvas Renderer",
-    "Renderer Texture",
-    "Dynamic Atlas",
-    "LabelOutline",
-    "Mask",
-    "Graphics",
-    "ParticleSystem",
-    "TiledMap",
-    "DragonBones",
-    "RichText",
-    "MotionStreak",
-    "ScrollBar",
-    "ScrollView",
-    "Toggle",
-    "PageView",
-    "PageViewIndicator",
-    "Slider",
-    "EditBox",
-    "VideoPlayer",
-    "WebView",
-    "Animation",
-    "Collider",
-    "Physics",
-    "NodePool",
-    "StudioComponent",
-    "Intersection",
-    "Native Socket"
-  ],
-  "fb-instant-games": {},
-  "includeSDKBox": false,
-  "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
-  "md5Cache": true,
-  "mergeStartScene": false,
-  "optimizeHotUpdate": false,
-  "orientation": {
-    "landscapeLeft": true,
-    "landscapeRight": true,
-    "portrait": false,
-    "upsideDown": false
-  },
-  "packageName": "org.cocos2d.gameFrame",
-  "platform": "web-mobile",
-  "previewHeight": "720",
-  "previewWidth": "1280",
-  "qqplay": {
-    "REMOTE_SERVER_ROOT": "",
-    "orientation": "portrait",
-    "zip": false
-  },
-  "scenes": [
-    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
-  ],
-  "sourceMaps": false,
-  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
-  "template": "link",
-  "title": "gameFrame",
-  "useDebugKeystore": true,
-  "vsVersion": "auto",
-  "webOrientation": "auto",
-  "wechatgame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "wx6ac3f5090a6b99c5",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "xxteaKey": "ce558dd3-8f51-47",
-  "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/hub/yanghuisanjiao",
-  "projectName": "gameFrame",
-  "debugBuildWorker": false
-}
-2019-08-01T03:47:29.925Z - normal: Building /Users/xes/Desktop/hub/yanghuisanjiao
-2019-08-01T03:47:29.925Z - normal: Destination /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile
-2019-08-01T03:47:29.937Z - normal: Delete /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/**/*
-2019-08-01T03:47:29.994Z - normal: Start building with options : {
-  "actualPlatform": "web-mobile",
-  "android-instant": {
-    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
-    "host": "",
-    "pathPattern": "",
-    "recordPath": "",
-    "scheme": "https",
-    "skipRecord": false
-  },
-  "apiLevel": "",
-  "appABIs": [],
-  "appBundle": false,
-  "baidugame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "testappid",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "buildPath": "/Users/xes/Desktop/hub/yanghuisanjiao/build",
-  "debug": false,
-  "dest": "/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile",
-  "embedWebDebugger": false,
-  "encryptJs": true,
-  "excludeScenes": [
-    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
-  ],
-  "excludedModules": [
-    "Canvas Renderer",
-    "Renderer Texture",
-    "Dynamic Atlas",
-    "LabelOutline",
-    "Mask",
-    "Graphics",
-    "ParticleSystem",
-    "TiledMap",
-    "DragonBones",
-    "RichText",
-    "MotionStreak",
-    "ScrollBar",
-    "ScrollView",
-    "Toggle",
-    "PageView",
-    "PageViewIndicator",
-    "Slider",
-    "EditBox",
-    "VideoPlayer",
-    "WebView",
-    "Animation",
-    "Collider",
-    "Physics",
-    "NodePool",
-    "StudioComponent",
-    "Intersection",
-    "Native Socket"
-  ],
-  "fb-instant-games": {},
-  "includeSDKBox": false,
-  "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
-  "md5Cache": true,
-  "mergeStartScene": false,
-  "optimizeHotUpdate": false,
-  "orientation": {
-    "landscapeLeft": true,
-    "landscapeRight": true,
-    "portrait": false,
-    "upsideDown": false
-  },
-  "packageName": "org.cocos2d.gameFrame",
-  "platform": "web-mobile",
-  "previewHeight": "720",
-  "previewWidth": "1280",
-  "qqplay": {
-    "REMOTE_SERVER_ROOT": "",
-    "orientation": "portrait",
-    "zip": false
-  },
-  "scenes": [
-    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
-  ],
-  "sourceMaps": false,
-  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
-  "template": "link",
-  "title": "gameFrame",
-  "useDebugKeystore": true,
-  "vsVersion": "auto",
-  "webOrientation": "auto",
-  "wechatgame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "wx6ac3f5090a6b99c5",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "xxteaKey": "ce558dd3-8f51-47",
-  "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/hub/yanghuisanjiao",
-  "projectName": "gameFrame",
-  "debugBuildWorker": false
-}
-2019-08-01T03:47:29.995Z - normal: Building /Users/xes/Desktop/hub/yanghuisanjiao
-2019-08-01T03:47:29.995Z - normal: Destination /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile
-2019-08-01T03:47:29.997Z - normal: Delete /Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/**/*
-2019-08-01T03:47:45.891Z - normal: Start building assets
-2019-08-01T03:47:45.892Z - normal: Start spawn build-worker
-2019-08-01T03:47:46.242Z - normal: Start building assets
-2019-08-01T03:47:46.242Z - normal: Start spawn build-worker
-2019-08-01T03:47:48.930Z - normal: Finish spawn build-worker
-2019-08-01T03:47:48.930Z - normal: Start init build-worker
-2019-08-01T03:47:49.159Z - normal: Finish spawn build-worker
-2019-08-01T03:47:49.159Z - normal: Start init build-worker
-2019-08-01T03:48:01.603Z - normal: Finish init build-worker
-2019-08-01T03:48:01.604Z - normal: Start build-assets in worker
-2019-08-01T03:48:01.644Z - normal: Finish init build-worker
-2019-08-01T03:48:01.645Z - normal: Start build-assets in worker
-2019-08-01T03:48:07.284Z - warn: The referenced asset used in "db://assets/resources/prefab/ui/panel/UploadAndReturnPanel.prefab" is not found, it may have been deleted. Detailed information:
-Used by "cc.PrefabInfo"
-uuid: "adea2b01-77d1-4cfa-aa46-c333f1871e12"
-2019-08-01T03:48:07.364Z - warn: The referenced asset used in "db://assets/resources/prefab/ui/panel/UploadAndReturnPanel.prefab" is not found, it may have been deleted. Detailed information:
-Used by "cc.PrefabInfo"
-uuid: "adea2b01-77d1-4cfa-aa46-c333f1871e12"
-2019-08-01T03:48:28.150Z - normal: Finish build-assets in worker
-2019-08-01T03:48:28.158Z - normal: Finish building assets
-2019-08-01T03:48:28.208Z - normal: Start building plugin scripts
-2019-08-01T03:48:28.217Z - error: Build Failed: Error: Error: ENOENT: no such file or directory, scandir '/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile/res/import/12/'
-    at Object.fs.readdirSync (fs.js:914:18)
-    at Object.fs.readdirSync (ELECTRON_ASAR.js:602:28)
-    at s (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/build/file-writer.js:1:1198)
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/globby/index.js:74:3
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:726:13
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:52:16
-    at done (/Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:246:17)
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:44:16
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:723:17
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:167:37
-    at EventEmitter.k.on.n (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor-framework/lib/main/ipc.js:1:5026)
-    at emitThree (events.js:116:13)
-    at EventEmitter.emit (events.js:197:7)
-    at WebContents.<anonymous> (/Applications/CocosCreator.app/Contents/Resources/electron.asar/browser/api/web-contents.js:247:13)
-    at emitTwo (events.js:106:13)
-    at WebContents.emit (events.js:194:7)
-	--------------------
-    at Object.fs.readdirSync (fs.js:914:18)
-    at Object.fs.readdirSync (ELECTRON_ASAR.js:602:28)
-    at s (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/build/file-writer.js:1:1198)
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/globby/index.js:74:3
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:726:13
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:52:16
-    at done (/Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:246:17)
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:44:16
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:723:17
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:167:37
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/build/build-worker.js:1:4838
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:52:16
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:1209:30
-    at s (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/build/file-writer.js:1:1253)
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/globby/index.js:74:3
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:726:13
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:52:16
-    at done (/Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:246:17)
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:44:16
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:723:17
-    at r.waterfall.r (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/lib/builder/index.js:1:3393)
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:52:16
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:696:30
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:167:37
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:1209:30
-    at Gulp.doneCallback (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/core/gulp-build.js:1:29044)
-    at Gulp.Orchestrator.stop (/Applications/CocosCreator.app/Contents/Resources/app.asar/node_modules/orchestrator/index.js:150:9)
-    at C (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/core/gulp-build.js:1:6396)
-    at /Applications/CocosCreator.app/Contents/Resources/app.asar/editor/core/gulp-build.js:1:9609
-2019-08-01T03:48:28.218Z - normal: Finish build-assets in worker
-2019-08-01T03:48:28.278Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
-2019-08-01T03:48:28.291Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-08-01T03:48:28.723Z - normal: Built to "/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile" successfully
-2019-08-01T06:03:55.522Z - info: shutdown preview server
+2019-08-06T08:25:44.525Z - normal: Finish build-assets in worker
+2019-08-06T08:25:44.536Z - normal: Finish building assets
+2019-08-06T08:25:44.577Z - normal: Start building plugin scripts
+2019-08-06T08:25:44.636Z - normal: Generating main.js from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/shares/main.js
+2019-08-06T08:25:44.657Z - normal: Generating html from /Applications/CocosCreator.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-08-06T08:25:44.980Z - normal: Built to "/Users/xes/Desktop/hub/yanghuisanjiao/build/web-mobile" successfully
+2019-08-06T08:27:47.464Z - info: shutdown preview server

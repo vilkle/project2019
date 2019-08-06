@@ -116,7 +116,7 @@
         "__id__": 181
       }
     ],
-    "_active": false,
+    "_active": true,
     "_level": 2,
     "_components": [],
     "_prefab": {
@@ -1049,12 +1049,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "n",
-      "1": "u",
-      "2": "l",
-      "3": "l"
-    },
+    "_animationName": "null",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -1371,12 +1366,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -1666,7 +1656,7 @@
       "__id__": 38
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 6,
     "_components": [
       {
@@ -1976,7 +1966,7 @@
       "__id__": 47
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 6,
     "_components": [
       {
@@ -2286,7 +2276,7 @@
       "__id__": 56
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 6,
     "_components": [
       {
@@ -2596,7 +2586,7 @@
       "__id__": 65
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 6,
     "_components": [
       {
@@ -3216,7 +3206,7 @@
       "__id__": 83
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 6,
     "_components": [
       {
@@ -3526,7 +3516,7 @@
       "__id__": 92
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 6,
     "_components": [
       {
@@ -3836,7 +3826,7 @@
       "__id__": 101
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 6,
     "_components": [
       {
@@ -4146,7 +4136,7 @@
       "__id__": 110
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_level": 6,
     "_components": [
       {
@@ -6461,12 +6451,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -7365,12 +7350,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "n",
-      "1": "u",
-      "2": "l",
-      "3": "l"
-    },
+    "_animationName": "null",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -7788,12 +7768,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -13087,12 +13062,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -24062,12 +24032,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "n",
-      "1": "u",
-      "2": "l",
-      "3": "l"
-    },
+    "_animationName": "null",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -24176,12 +24141,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -26117,12 +26077,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -26231,12 +26186,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -26345,12 +26295,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -26459,12 +26404,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -26573,12 +26513,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
@@ -26687,12 +26622,7 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "i",
-      "1": "d",
-      "2": "l",
-      "3": "e"
-    },
+    "_animationName": "idle",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,

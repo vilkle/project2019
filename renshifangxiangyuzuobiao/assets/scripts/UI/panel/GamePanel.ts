@@ -144,27 +144,123 @@ export default class GamePanel extends BaseUI {
         }
     }
 
+    touchEnable(index:number):boolean {
+        if(this.types == 1) {
+            if(this.rightNum == 0 && index == 3) {
+                return true;
+            }else if(this.rightNum == 1 && index == 5) {
+                return true;
+            }else if(this.rightNum == 2 && index == 2) {
+                return true;
+            }else if(this.rightNum == 3 && index == 6) {
+                return true;
+            }else if(this.rightNum == 4 && index == 4) {
+                return true;
+            }else if(this.rightNum == 5 && index == 0) {
+                return true;
+            }else if(this.rightNum == 6 && index == 1) {
+                return true;
+            }else if(this.rightNum == 7 && index == 7) {
+                return true;
+            }else {
+                return false;
+            }
+        }else if(this.types == 2) {
+            if(this.rightNum == 0 && index == 2) {
+                return true;
+            }else if(this.rightNum == 1 && index == 8) {
+                return true;
+            }else if(this.rightNum == 2 && index == 0) {
+                return true;
+            }else if(this.rightNum == 3 && index == 6) {
+                return true;
+            }else if(this.rightNum == 4&& index == 7) {
+                return true;
+            }else if(this.rightNum == 5&& index == 3) {
+                return true;
+            }else if(this.rightNum == 6&& index == 1) {
+                return true;
+            }else if(this.rightNum == 7&& index == 4) {
+                return true;
+            }else if(this.rightNum == 8&& index == 5) {
+                return true;
+            }else {
+                return false;
+            }
+        }else if(this.types == 3) {
+            return true;
+        }
+    }
+
+    errAudio(oriIndex: number, desIndex: number) {
+        if(this.types == 1) {
+            if(this.rightNum == 0) {
+                AudioManager.getInstance().playSound('橘子没有在香蕉的上方哦，重新放一下吧！', false);
+            }else if(this.rightNum == 1) {
+                AudioManager.getInstance().playSound('梨不是在香蕉的右上方哦，重新放一下吧！', false);
+            }else if(this.rightNum == 2) {
+                AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false);
+            }else if(this.rightNum == 3) {
+                AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false);
+            }else if(this.rightNum == 4) {
+                AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false);
+            }else if(this.rightNum == 5) {
+                AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false);
+            }else if(this.rightNum == 6) {
+                AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false);
+            }else if(this.rightNum == 7) {
+                //AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false);
+            }
+        }else if(this.types == 2) {
+            if(this.rightNum == 0) {
+                AudioManager.getInstance().playSound('土豆没有在最中央的位置哦，重新放一下吧！', false);
+            }else if(this.rightNum == 1) {
+                AudioManager.getInstance().playSound('黄瓜没有在土豆的左面哦，重新放一下吧！', false);
+            }else if(this.rightNum == 2) {
+                AudioManager.getInstance().playSound('西红柿没有在黄瓜的右下方哦，重新放一下吧！', false);
+            }else if(this.rightNum == 3) {
+                AudioManager.getInstance().playSound('西兰花没有在西红柿的右面哦，重新放一下吧！', false);
+            }else if(this.rightNum == 4) {
+                AudioManager.getInstance().playSound('西兰花没有在南瓜的下面哦，重新放一下吧！', false);
+            }else if(this.rightNum == 5) {
+                AudioManager.getInstance().playSound('菠菜没有在土豆的上方哦，重新放一下吧！', false);
+            }else if(this.rightNum == 6) {
+                AudioManager.getInstance().playSound('菠菜没有在白菜的右面哦，重新放一下吧！', false);
+            }else if(this.rightNum == 7) {
+                AudioManager.getInstance().playSound('大蒜和菠菜相邻啦，重新放一下吧！', false);
+            }else if(this.rightNum == 8) {}
+        }else if(this.types == 3) {
+
+        }
+    }
+
     bubbleAction(rightNum :number) {
         let bubble = this.parentNode.getChildByName('bubbleNode');
         var str = '';
         if(this.types == 1) {
             switch(rightNum) {
                 case 0:
+                    AudioManager.getInstance().playSound('橘子在香蕉的上方', false);
                     str = '橘子在香蕉上方';
                     break;
                 case 1:
+                    AudioManager.getInstance().playSound('梨在香蕉的右上方',false);
                     str = '梨在香蕉的右上方';
                     break;
                 case 2:
+                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false);
                     str = '桃子在香蕉的左面，苹果的上面';
                     break;
                 case 4:
+                    AudioManager.getInstance().playSound('桃子在西瓜的左上方', false);
                     str = '桃子在西瓜的左上方';
                     break;
                 case 5:
+                    AudioManager.getInstance().playSound('葡萄和梨不相邻', false);
                     str = '葡萄和梨不相邻';
                     break;
                 case 6:
+                    AudioManager.getInstance().playSound('橘子在草莓的后面', false);
                     str = '橘子在草莓的后面';
                     break;
                 case 7:
@@ -177,21 +273,27 @@ export default class GamePanel extends BaseUI {
         }else if(this.types == 2) {
             switch(rightNum) {
                 case 0:
+                    AudioManager.getInstance().playSound('土豆在最中央的位置', false);
                     str = '土豆在最中央的位置';
                     break;
                 case 1:
+                    AudioManager.getInstance().playSound('黄瓜在土豆的左面', false);
                     str = '黄瓜在土豆的左面';
                     break;
                 case 2:
+                    AudioManager.getInstance().playSound('西红柿在黄瓜的右下方', false);
                     str = '西红柿在黄瓜的右下方';
                     break;
                 case 3:
+                    AudioManager.getInstance().playSound('西兰花在西红柿的右面，南瓜的下面', false);
                     str = '西兰花在西红柿的右面，南瓜的下面';
                     break;
                 case 5:
+                    AudioManager.getInstance().playSound('菠菜在土豆的上方，白菜的右面', false);
                     str = '菠菜在土豆的上方，白菜的右面';
                     break;
                 case 7:
+                    AudioManager.getInstance().playSound('大蒜和菠菜不相邻');
                     str = '大蒜和菠菜不相邻';
                     break;
                 case 8:
@@ -210,7 +312,7 @@ export default class GamePanel extends BaseUI {
         let spaw2 = cc.spawn(cc.rotateTo(0.12, 6), cc.scaleTo(0.12, 0.9, 0.9));
         let spaw3 = cc.spawn(cc.rotateTo(0.12, -6), cc.scaleTo(0.12, 1.1, 1.1));
         let spaw4 = cc.spawn(cc.rotateTo(0.28, 0), cc.scaleTo(0.12, 1, 1));
-        let delay =cc.delayTime(5);
+        let delay =cc.delayTime(6);
         let spaw5 = cc.spawn(cc.rotateTo(0.28, 78), cc.scaleTo(0.28, 0, 0));
         let seq = cc.sequence(spaw1, spaw2, spaw3, spaw4, delay, spaw5);
         bubble.stopAllActions();
@@ -281,6 +383,10 @@ export default class GamePanel extends BaseUI {
                 if(this.touchTarget) {
                     return;
                 }
+                if(!this.touchEnable(i)) {
+                    this.tuopanNode.children[i].runAction(cc.sequence(cc.moveBy(0.1, 50),cc.moveBy(0.1, -50), cc.moveBy(0.1, 50), cc.moveBy(0.1, -50)));
+                    return;
+                }
                 this.touchTarget = e.target;
                 e.target.opacity = 0;
                 var point = this.node.convertToNodeSpaceAR(e.currentTouch._point);
@@ -295,8 +401,7 @@ export default class GamePanel extends BaseUI {
                     AudioManager.getInstance().playSound('sfx_ctchfrt', false);
                     this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.children[0].getComponent(cc.Sprite).spriteFrame;
                 }
-            });
-
+            })
 
             this.tuopanNode.children[i].on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
                 if(this.touchTarget != e.target) {

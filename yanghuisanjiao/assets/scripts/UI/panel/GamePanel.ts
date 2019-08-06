@@ -88,8 +88,8 @@ export default class GamePanel extends BaseUI {
     initGame() {
         this.eventvalue.levelData.push({
             subject: null,
-            answer: null,
-            result: null
+            answer: 1,
+            result: 4
         });
         this.u_boat.runAction(cc.moveTo(1, cc.v2(764, -236)));
         this.triangleNode.runAction(cc.fadeIn(0.5));
@@ -133,7 +133,7 @@ export default class GamePanel extends BaseUI {
                 });
                 this.answerNodeArr[i].on(cc.Node.EventType.TOUCH_END, ()=>{
                     this.answerNodeArr[i].setScale(1);
-                    this.eventvalue.levelData[this.checkpoint-1].answer = this.answerIndex;
+                    this.eventvalue.levelData[this.checkpoint-1].subject = this.answerIndex;
                     this.isRight(this.questionIndex);
                     console.log('--', this.eventvalue);
                 });
@@ -350,8 +350,8 @@ export default class GamePanel extends BaseUI {
         this.checkpoint++;
         this.eventvalue.levelData.push({
             subject: null,
-                answer: null,
-                result: null
+                answer: 2,
+                result: 4
         });
         AudioManager.getInstance().playSound('sfx_yhrght', false);
         this.touchEnable(false);
@@ -408,8 +408,8 @@ export default class GamePanel extends BaseUI {
         this.checkpoint++;
         this.eventvalue.levelData.push({
             subject: null,
-                answer: null,
-                result: null
+                answer: [1,2,3],
+                result: 4
         });
         AudioManager.getInstance().playSound('sfx_yhrght', false);
         this.touchEnable(false);
@@ -450,10 +450,16 @@ export default class GamePanel extends BaseUI {
 
     right3() {
         this.checkpoint++;
+        let answerNum = 1
+        if(this.eventvalue.levelData[2].subject == 2) {
+            answerNum = 3
+        }else {
+            answerNum = 1
+        }
         this.eventvalue.levelData.push({
             subject: null,
-                answer: null,
-                result: null
+            answer: answerNum,
+            result: 4
         });
         AudioManager.getInstance().playSound('sfx_yhrght', false);
         this.touchEnable(false);
@@ -502,8 +508,8 @@ export default class GamePanel extends BaseUI {
         this.checkpoint++;
         this.eventvalue.levelData.push({
             subject: null,
-                answer: null,
-                result: null
+                answer: 1,
+                result: 4
         });
         AudioManager.getInstance().playSound('sfx_yhrght', false);
         this.touchEnable(false);
@@ -651,12 +657,12 @@ export default class GamePanel extends BaseUI {
             eventValue: JSON.stringify(this.eventvalue)
         });
         AudioManager.getInstance().stopAll();
-        UIHelp.showOverTip(2,'原来这就是杨辉三角呀～');
+        UIHelp.showOverTip(2,'原来这就是杨辉三角呀～',null, '挑战成功');
     }
 
     isRight(questionIndex : number) {
         if(questionIndex == 1) {
-            this.eventvalue.levelData[this.checkpoint -1].subject = 1;
+            this.eventvalue.levelData[this.checkpoint -1].answer = 1;
             this.eventvalue.result = 2;
             if(this.answerIndex == 1) {
                 this.eventvalue.levelData[this.checkpoint-1].result = 1;
@@ -666,7 +672,7 @@ export default class GamePanel extends BaseUI {
                 this.wrong1();
             }
         }else if(questionIndex == 2) {
-            this.eventvalue.levelData[this.checkpoint -1].subject = 2;
+            this.eventvalue.levelData[this.checkpoint -1].answer = 2;
             if(this.answerIndex == 2) {
                 this.eventvalue.levelData[this.checkpoint-1].result = 1;
                 this.right2();
@@ -677,11 +683,11 @@ export default class GamePanel extends BaseUI {
                 
             }
         }else if(questionIndex == 3) {
-            this.eventvalue.levelData[this.checkpoint -1].subject = [1,2,3];
+            this.eventvalue.levelData[this.checkpoint -1].answer = [1,2,3];
             this.eventvalue.levelData[this.checkpoint-1].result = 1;
             this.right3();
         }else if(questionIndex == 4) {
-            this.eventvalue.levelData[this.checkpoint -1].subject = 1;
+            this.eventvalue.levelData[this.checkpoint -1].answer = 1;
             if(this.answerIndex == 1) {
                 this.eventvalue.levelData[this.checkpoint-1].result = 1;
                 this.right4_1();
@@ -690,7 +696,7 @@ export default class GamePanel extends BaseUI {
                 this.wrong4_1();
             }
         }else if(questionIndex == 5) {
-            this.eventvalue.levelData[this.checkpoint -1].subject = 3;
+            this.eventvalue.levelData[this.checkpoint -1].answer = 3;
             if(this.answerIndex == 3) {
                 this.eventvalue.levelData[this.checkpoint-1].result = 1;
                 this.right4_2();
@@ -699,7 +705,7 @@ export default class GamePanel extends BaseUI {
                 this.wrong4_2();
             }
         }else if(questionIndex == 6) {
-            this.eventvalue.levelData[this.checkpoint -1].subject = 1;
+            this.eventvalue.levelData[this.checkpoint -1].answer = 1;
             if(this.answerIndex == 1) {
                 this.eventvalue.levelData[this.checkpoint-1].result = 1;
                 this.right4_3();
@@ -708,7 +714,7 @@ export default class GamePanel extends BaseUI {
                 this.wrong4_3();
             }
         }else if(questionIndex == 7) {
-            this.eventvalue.levelData[this.checkpoint -1].subject = 1;
+            this.eventvalue.levelData[this.checkpoint -1].answer = 1;
             if(this.answerIndex == 1) {
                 this.eventvalue.levelData[this.checkpoint-1].result = 1;
                 this.right5_1();
@@ -725,7 +731,7 @@ export default class GamePanel extends BaseUI {
         if (DataReporting.isRepeatReport) {
             DataReporting.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
-                eventValue: JSON.stringify({})
+                eventValue: JSON.stringify(this.eventvalue)
             });
             DataReporting.isRepeatReport = false;
         }

@@ -278,6 +278,8 @@
       "__id__": 6
     },
     "_enabled": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
     "_spriteFrame": {
       "__uuid__": "763a51d6-31b6-42ef-9274-5d54a2ddd819"
     },
@@ -294,8 +296,6 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
     "_id": ""
   },
   {
@@ -529,7 +529,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "d0db28e9-1ff7-40c2-8e29-efe79c1f8e0e"
+      "__uuid__": "b9d00d57-8d18-4dda-8740-ad800554947e"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -644,7 +644,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "c06fb1a8-12c0-4b58-a3c2-5995fb4219aa"
+      "__uuid__": "d2fb353e-2cb2-4fdc-a4db-0bee6c47405d"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -758,7 +758,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "516fd1df-745b-4f40-8398-07fc8457b639"
+      "__uuid__": "92ec80d7-8df3-4cbc-a444-1b6886ae82c8"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,

@@ -50,6 +50,7 @@ var TeacherPanel = /** @class */ (function (_super) {
         _this.typetype = [];
         _this.toggleArr = [];
         _this.imageArr = [];
+        _this.answer = [];
         return _this;
     }
     // onLoad () {}
@@ -238,6 +239,7 @@ var TeacherPanel = /** @class */ (function (_super) {
                 }
                 var alreadyCheck = 0;
                 var typeNum = 0;
+                _this.answer = [];
                 if (DaAnData_1.DaAnData.getInstance().types == 1) {
                     for (var j = 20 * checkPointNum; j < 20 * (checkPointNum + 1); j++) {
                         if (_this.toggleArr[j].isChecked) {
@@ -250,9 +252,21 @@ var TeacherPanel = /** @class */ (function (_super) {
                     for (var j = 27 * checkPointNum; j < 27 * (checkPointNum + 1); j++) {
                         if (_this.toggleArr[j].isChecked) {
                             alreadyCheck++;
+                            _this.answer.push(j);
                         }
                     }
                     typeNum = 27;
+                }
+                if (DaAnData_1.DaAnData.getInstance().types == 2) {
+                    if (_this.checkColor(checkPointNum + 1)) {
+                        _this.toggleArr[i].isChecked = false;
+                    }
+                    if (_this.checkFigure(checkPointNum + 1)) {
+                        _this.toggleArr[i].isChecked = false;
+                    }
+                    if (_this.checkSize(checkPointNum + 1)) {
+                        _this.toggleArr[i].isChecked = false;
+                    }
                 }
                 if (alreadyCheck > 10) {
                     _this.toggleArr[i].isChecked = false;
@@ -275,6 +289,106 @@ var TeacherPanel = /** @class */ (function (_super) {
         for (var i = 0; i < this.toggleArr.length; i++) {
             _loop_1(i);
         }
+    };
+    TeacherPanel.prototype.checkColor = function (checkpoint) {
+        var answer1 = 0;
+        var answer2 = 0;
+        var answer3 = 0;
+        for (var i = 0; i < this.answer.length; i++) {
+            if (this.answer[i] < (checkpoint - 1) * 27 + 9) {
+                answer1++;
+            }
+            else if (this.answer[i] < (checkpoint - 1) * 27 + 18 && this.answer[i] >= (checkpoint - 1) * 27 + 9) {
+                answer2++;
+            }
+            else if (this.answer[i] < (checkpoint - 1) * 27 + 27 && this.answer[i] >= (checkpoint - 1) * 27 + 18) {
+                answer3++;
+            }
+        }
+        if (answer1 > 6) {
+            this.tipLabel.string = '蓝色的物品选择超过6个，每种颜色的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        else if (answer2 > 6) {
+            this.tipLabel.string = '红色的物品选择超过6个，每种颜色的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        else if (answer3 > 6) {
+            this.tipLabel.string = '黄色的物品选择超过6个，每种颜色的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        return false;
+    };
+    TeacherPanel.prototype.checkFigure = function (checkpoint) {
+        var answer1 = 0;
+        var answer2 = 0;
+        var answer3 = 0;
+        var standard1 = [0, 1, 2, 9, 10, 11, 18, 19, 20];
+        var standard2 = [3, 4, 5, 12, 13, 14, 21, 22, 23];
+        var standard3 = [6, 7, 8, 15, 16, 17, 24, 25, 26];
+        for (var i = 0; i < this.answer.length; i++) {
+            var index = this.answer[i] - (checkpoint - 1) * 27;
+            if (standard1.indexOf(index) != -1) {
+                answer1++;
+            }
+            else if (standard2.indexOf(index) != -1) {
+                answer2++;
+            }
+            else if (standard3.indexOf(index) != -1) {
+                answer3++;
+            }
+        }
+        if (answer1 > 6) {
+            this.tipLabel.string = '正方形的物品选择超过6个，每种形状的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        else if (answer2 > 6) {
+            this.tipLabel.string = '三角形的物品选择超过6个，每种形状的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        else if (answer3 > 6) {
+            this.tipLabel.string = '圆形的物品选择超过6个，每种形状的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        return false;
+    };
+    TeacherPanel.prototype.checkSize = function (checkpoint) {
+        var answer1 = 0;
+        var answer2 = 0;
+        var answer3 = 0;
+        for (var i = 0; i < this.answer.length; i++) {
+            if (this.answer[i] % 3 == 0) {
+                answer1++;
+            }
+            else if (this.answer[i] % 3 == 1) {
+                answer2++;
+            }
+            else if (this.answer[i] % 3 == 2) {
+                answer3++;
+            }
+        }
+        if (answer1 > 6) {
+            this.tipLabel.string = '大号的物品选择超过6个，每种大小的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        else if (answer2 > 6) {
+            this.tipLabel.string = '中号的物品选择超过6个，每种大小的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        else if (answer3 > 6) {
+            this.tipLabel.string = '小号的物品选择超过6个，每种大小的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        return false;
     };
     TeacherPanel.prototype.updateTypesData = function () {
         this.typeDataArr = [];

@@ -82,8 +82,8 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.initGame = function () {
         this.eventvalue.levelData.push({
             subject: null,
-            answer: null,
-            result: null
+            answer: 1,
+            result: 4
         });
         this.u_boat.runAction(cc.moveTo(1, cc.v2(764, -236)));
         this.triangleNode.runAction(cc.fadeIn(0.5));
@@ -127,7 +127,7 @@ var GamePanel = /** @class */ (function (_super) {
                 });
                 this_1.answerNodeArr[i].on(cc.Node.EventType.TOUCH_END, function () {
                     _this.answerNodeArr[i].setScale(1);
-                    _this.eventvalue.levelData[_this.checkpoint - 1].answer = _this.answerIndex;
+                    _this.eventvalue.levelData[_this.checkpoint - 1].subject = _this.answerIndex;
                     _this.isRight(_this.questionIndex);
                     console.log('--', _this.eventvalue);
                 });
@@ -345,8 +345,8 @@ var GamePanel = /** @class */ (function (_super) {
         this.checkpoint++;
         this.eventvalue.levelData.push({
             subject: null,
-            answer: null,
-            result: null
+            answer: 2,
+            result: 4
         });
         AudioManager_1.AudioManager.getInstance().playSound('sfx_yhrght', false);
         this.touchEnable(false);
@@ -405,8 +405,8 @@ var GamePanel = /** @class */ (function (_super) {
         this.checkpoint++;
         this.eventvalue.levelData.push({
             subject: null,
-            answer: null,
-            result: null
+            answer: [1, 2, 3],
+            result: 4
         });
         AudioManager_1.AudioManager.getInstance().playSound('sfx_yhrght', false);
         this.touchEnable(false);
@@ -449,10 +449,17 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.right3 = function () {
         var _this = this;
         this.checkpoint++;
+        var answerNum = 1;
+        if (this.eventvalue.levelData[2].subject == 2) {
+            answerNum = 3;
+        }
+        else {
+            answerNum = 1;
+        }
         this.eventvalue.levelData.push({
             subject: null,
-            answer: null,
-            result: null
+            answer: answerNum,
+            result: 4
         });
         AudioManager_1.AudioManager.getInstance().playSound('sfx_yhrght', false);
         this.touchEnable(false);
@@ -505,8 +512,8 @@ var GamePanel = /** @class */ (function (_super) {
         this.checkpoint++;
         this.eventvalue.levelData.push({
             subject: null,
-            answer: null,
-            result: null
+            answer: 1,
+            result: 4
         });
         AudioManager_1.AudioManager.getInstance().playSound('sfx_yhrght', false);
         this.touchEnable(false);
@@ -659,11 +666,11 @@ var GamePanel = /** @class */ (function (_super) {
             eventValue: JSON.stringify(this.eventvalue)
         });
         AudioManager_1.AudioManager.getInstance().stopAll();
-        UIHelp_1.UIHelp.showOverTip(2, '原来这就是杨辉三角呀～');
+        UIHelp_1.UIHelp.showOverTip(2, '原来这就是杨辉三角呀～', null, '挑战成功');
     };
     GamePanel.prototype.isRight = function (questionIndex) {
         if (questionIndex == 1) {
-            this.eventvalue.levelData[this.checkpoint - 1].subject = 1;
+            this.eventvalue.levelData[this.checkpoint - 1].answer = 1;
             this.eventvalue.result = 2;
             if (this.answerIndex == 1) {
                 this.eventvalue.levelData[this.checkpoint - 1].result = 1;
@@ -675,7 +682,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
         else if (questionIndex == 2) {
-            this.eventvalue.levelData[this.checkpoint - 1].subject = 2;
+            this.eventvalue.levelData[this.checkpoint - 1].answer = 2;
             if (this.answerIndex == 2) {
                 this.eventvalue.levelData[this.checkpoint - 1].result = 1;
                 this.right2();
@@ -686,12 +693,12 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
         else if (questionIndex == 3) {
-            this.eventvalue.levelData[this.checkpoint - 1].subject = [1, 2, 3];
+            this.eventvalue.levelData[this.checkpoint - 1].answer = [1, 2, 3];
             this.eventvalue.levelData[this.checkpoint - 1].result = 1;
             this.right3();
         }
         else if (questionIndex == 4) {
-            this.eventvalue.levelData[this.checkpoint - 1].subject = 1;
+            this.eventvalue.levelData[this.checkpoint - 1].answer = 1;
             if (this.answerIndex == 1) {
                 this.eventvalue.levelData[this.checkpoint - 1].result = 1;
                 this.right4_1();
@@ -702,7 +709,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
         else if (questionIndex == 5) {
-            this.eventvalue.levelData[this.checkpoint - 1].subject = 3;
+            this.eventvalue.levelData[this.checkpoint - 1].answer = 3;
             if (this.answerIndex == 3) {
                 this.eventvalue.levelData[this.checkpoint - 1].result = 1;
                 this.right4_2();
@@ -713,7 +720,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
         else if (questionIndex == 6) {
-            this.eventvalue.levelData[this.checkpoint - 1].subject = 1;
+            this.eventvalue.levelData[this.checkpoint - 1].answer = 1;
             if (this.answerIndex == 1) {
                 this.eventvalue.levelData[this.checkpoint - 1].result = 1;
                 this.right4_3();
@@ -724,7 +731,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
         else if (questionIndex == 7) {
-            this.eventvalue.levelData[this.checkpoint - 1].subject = 1;
+            this.eventvalue.levelData[this.checkpoint - 1].answer = 1;
             if (this.answerIndex == 1) {
                 this.eventvalue.levelData[this.checkpoint - 1].result = 1;
                 this.right5_1();
@@ -740,7 +747,7 @@ var GamePanel = /** @class */ (function (_super) {
         if (DataReporting_1.default.isRepeatReport) {
             DataReporting_1.default.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
-                eventValue: JSON.stringify({})
+                eventValue: JSON.stringify(this.eventvalue)
             });
             DataReporting_1.default.isRepeatReport = false;
         }

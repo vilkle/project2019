@@ -42,6 +42,7 @@ export default class TeacherPanel extends BaseUI {
     private typetype : number[] = [];
     private toggleArr : cc.Toggle[] = [];
     private imageArr : cc.Sprite[] = [];
+    private answer : number[] = [];
     // onLoad () {}
 
     start() {
@@ -226,6 +227,7 @@ export default class TeacherPanel extends BaseUI {
         for(let i = 0; i < this.toggleArr.length; i++) {
             this.toggleArr[i].node.off('toggle');
         }
+       
         for(let i = 0; i < this.toggleArr.length; i++) {
            
             this.toggleArr[i].node.on('toggle', (e)=>{
@@ -237,6 +239,7 @@ export default class TeacherPanel extends BaseUI {
                 }
                 let alreadyCheck = 0;
                 let typeNum = 0;
+                this.answer = [];
                 if(DaAnData.getInstance().types == 1) {
                     for(let j = 20 * checkPointNum; j < 20 * (checkPointNum + 1); j++){
                         if(this.toggleArr[j].isChecked) {
@@ -248,10 +251,23 @@ export default class TeacherPanel extends BaseUI {
                     for(let j = 27 * checkPointNum; j < 27 * (checkPointNum + 1); j++){
                         if(this.toggleArr[j].isChecked) {
                             alreadyCheck++;
+                            this.answer.push(j);
                         }
                     }
                     typeNum = 27;
                 }
+                if(DaAnData.getInstance().types == 2) {
+                    if(this.checkColor(checkPointNum+1)) {
+                        this.toggleArr[i].isChecked = false;
+                    }
+                    if(this.checkFigure(checkPointNum+1)) {
+                        this.toggleArr[i].isChecked = false;
+                    }
+                    if(this.checkSize(checkPointNum+1)) {
+                        this.toggleArr[i].isChecked = false;
+                    }
+                }
+
                 if(alreadyCheck > 10) {
                     this.toggleArr[i].isChecked = false;
                 }
@@ -268,6 +284,97 @@ export default class TeacherPanel extends BaseUI {
                 }
             });
         }
+    }
+
+    checkColor(checkpoint:number): boolean{
+        let answer1 = 0;
+        let answer2 = 0;
+        let answer3 = 0;
+        for(let i = 0; i < this.answer.length; i++) {
+            if(this.answer[i] < (checkpoint - 1) * 27 + 9) {
+                answer1++;
+            }else if(this.answer[i] < (checkpoint -1)* 27 + 18 && this.answer[i] >= (checkpoint - 1) * 27 + 9) {
+                answer2++;
+            }else if(this.answer[i] < (checkpoint -1)* 27 + 27 && this.answer[i] >= (checkpoint -1)* 27 + 18) {
+                answer3++;
+            }
+        }
+        if(answer1>6) {
+            this.tipLabel.string = '蓝色的物品选择超过6个，每种颜色的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }else if(answer2>6) {
+            this.tipLabel.string = '红色的物品选择超过6个，每种颜色的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }else if(answer3>6) {
+            this.tipLabel.string = '黄色的物品选择超过6个，每种颜色的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        return false;
+    }
+
+    checkFigure(checkpoint:number):boolean {
+        let answer1 = 0;
+        let answer2 = 0;
+        let answer3 = 0;
+        let standard1 = [0,1,2,9,10,11,18,19,20];
+        let standard2 = [3,4,5,12,13,14,21,22,23];
+        let standard3 = [6,7,8,15,16,17,24,25,26];
+        for(let i = 0; i < this.answer.length; i++) {
+           let index = this.answer[i] - (checkpoint - 1)*27;
+            if(standard1.indexOf(index)!=-1) {
+                answer1++;
+            }else if(standard2.indexOf(index)!=-1) {
+                answer2++;
+            }else if(standard3.indexOf(index)!=-1) {
+                answer3++;
+            }
+        }
+        if(answer1>6) {
+            this.tipLabel.string = '正方形的物品选择超过6个，每种形状的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }else if(answer2>6) {
+            this.tipLabel.string = '三角形的物品选择超过6个，每种形状的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }else if(answer3>6) {
+            this.tipLabel.string = '圆形的物品选择超过6个，每种形状的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        return false;
+    }
+
+    checkSize(checkpoint:number):boolean {
+        let answer1 = 0;
+        let answer2 = 0;
+        let answer3 = 0;
+        for(let i = 0; i < this.answer.length; i++) {
+            if(this.answer[i]%3==0) {
+                answer1++;
+            }else if(this.answer[i]%3 == 1) {
+                answer2++;
+            }else if(this.answer[i]%3 == 2) {
+                answer3++;
+            }
+        }
+        if(answer1>6) {
+            this.tipLabel.string = '大号的物品选择超过6个，每种大小的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }else if(answer2>6) {
+            this.tipLabel.string = '中号的物品选择超过6个，每种大小的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }else if(answer3>6) {
+            this.tipLabel.string = '小号的物品选择超过6个，每种大小的物品选择数量不能超过6个，请重新选择。';
+            this.tip();
+            return true;
+        }
+        return false;
     }
 
     updateTypesData() {
