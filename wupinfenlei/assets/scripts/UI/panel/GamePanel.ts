@@ -286,7 +286,7 @@ export default class GamePanel extends BaseUI {
         if (DataReporting.isRepeatReport) {
             DataReporting.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
-                eventValue: JSON.stringify({})
+                eventValue: JSON.stringify(this.eventvalue)
             });
             DataReporting.isRepeatReport = false;
         }
@@ -1207,7 +1207,7 @@ s
         let Y = -91;
         var space = 450 + 100 * (4-num);
         var startX = -(num-1) * space / 2 + 80;
-        if(DaAnData.getInstance().types == 2) {
+        if(this.types == 2) {
             space = 610;
             startX = -(num-1) * space / 2 + 140;
         }

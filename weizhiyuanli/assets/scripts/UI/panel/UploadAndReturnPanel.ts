@@ -27,7 +27,7 @@ export default class UploadAndReturnPanel extends BaseUI {
 
     onTiJiao() {
         if(DaAnData.getInstance().submitEnable) {
-            UIManager.getInstance().showUI(SubmissionPanel);
+            UIManager.getInstance().openUI(SubmissionPanel,null,211);
         }else {
             UIHelp.showTip('请通关后进行保存。');
         }  

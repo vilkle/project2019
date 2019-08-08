@@ -82,6 +82,7 @@ export class OverTips extends BaseUI {
         this.spine_complete.node.active = type == 2;
         this.label_tip.string = str;
         this.label_tip.node.active = type == 2;
+        this.label_tip.node.active = type == 1;
         if(isButton) {
             this.button.active = true;
         }else {
@@ -121,8 +122,9 @@ export class OverTips extends BaseUI {
     }
 
     onButtonCallback() {
-        UIManager.getInstance().closeUI(OverTips)
+        AudioManager.getInstance().playSound("sfx_buttn", false, 1);
         this.btnCallback();
+        UIManager.getInstance().closeUI(OverTips)
     }
 
     onClickClose(event?, customEventData?): void {

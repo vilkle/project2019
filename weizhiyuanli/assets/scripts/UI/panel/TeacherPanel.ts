@@ -126,7 +126,7 @@ export default class TeacherPanel extends BaseUI {
         for(let i = 0; i < this.itemNodeArr.length; i++) {
             let editbox = this.itemNodeArr[i].getChildByName('New EditBox')
             editbox.on('editing-did-ended', (editbox)=>{
-                const rex = /^[0-9]{1,4}$/
+                const rex = /^[0-5]{1,4}$/
                 let num = parseInt(editbox.string)
                 let sum = this.getSum(num)
                 if(rex.test(editbox.string)) {

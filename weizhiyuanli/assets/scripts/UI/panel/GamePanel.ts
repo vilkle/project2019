@@ -6,6 +6,7 @@ import { DaAnData } from "../../Data/DaAnData";
 import { UIManager } from "../../Manager/UIManager";
 import UploadAndReturnPanel from "./UploadAndReturnPanel";
 import { UIHelp } from "../../Utils/UIHelp";
+import { AudioManager } from "../../Manager/AudioManager";
 
 const { ccclass, property } = cc._decorator;
 
@@ -47,6 +48,8 @@ export default class GamePanel extends BaseUI {
     private placementArea: cc.Node = null
     @property(cc.Node)
     private bagNode: cc.Node = null
+    @property(cc.Node)
+    private bg: cc.Node = null
     private checkpointsNum: number = 0;
     private countsArr: number[] = [];
     private goodsArr: number[] = [];
@@ -56,8 +59,20 @@ export default class GamePanel extends BaseUI {
     private diamondArr: cc.Node[][] = [[],[],[],[]];
     private touchTarget: any = null;
     private overNum: number = 0;
+    private overState: number = 2;
+    private eventvalue = {
+        isResult: 1,
+        isLevel: 1,
+        levelData: [
+
+        ],
+        result: 4
+    }
 
     start() {
+        this.bg.on(cc.Node.EventType.TOUCH_START, ()=>{
+            this.overState = 2;
+        });
         if(ConstValue.IS_TEACHER) {
             UIManager.getInstance().openUI(UploadAndReturnPanel)
             this.checkpointsNum = DaAnData.getInstance().checkpointsNum
@@ -65,6 +80,7 @@ export default class GamePanel extends BaseUI {
             this.goodsArr = DaAnData.getInstance().goodsArr
             this.startAction();
             this.addSlot()
+            this.addData()
         }else {
             this.getNet();
         }
@@ -74,7 +90,16 @@ export default class GamePanel extends BaseUI {
             }
         }
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
-        DaAnData.getInstance().submitEnable = true;
+    }
+
+    addData() {
+        for(let i = 0; i < this.checkpointsNum; i++) {
+            this.eventvalue.levelData.push({
+                answer: this.countsArr[i],
+                subject: null,
+                result: 4
+            })
+        }
     }
 
     onLoad() {
@@ -86,15 +111,21 @@ export default class GamePanel extends BaseUI {
         if (DataReporting.isRepeatReport) {
             DataReporting.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
-                eventValue: JSON.stringify({})
+                eventValue: JSON.stringify(this.eventvalue)
             });
             DataReporting.isRepeatReport = false;
         }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
+        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.overState });
     }
 
     startAction() {
+        for(let i = 0; i < this.diamondNode.children.length; i++) {
+            for(let j = 0; j < this.diamondNode.children[i].children.length; j++) {
+              this.diamondNode.children[i].children[j].opacity = 0;
+              this.diamondNode.children[i].children[j].children[0].active = true
+            }
+        }
         for(let i = 0; i < this.diamondNode.children.length; i++) {
             for(let j = 0; j < this.diamondNode.children[i].children.length; j++) {
                 this.diamondNode.children[i].children[j].active = true
@@ -115,7 +146,6 @@ export default class GamePanel extends BaseUI {
                 this.diamondArr[i][j] = this.diamondNode.children[i].children[j]
             }
         }
-        console.log(this.diamondArr)
         this.addListenerOnDiamond()
         this.addListenerOnSlot()
     }
@@ -130,6 +160,7 @@ export default class GamePanel extends BaseUI {
         }else if(this.goodsArr[this.checkpointIndex-1] == 2) {
             this.goods.getComponent(cc.Sprite).spriteFrame = this.crown
         }
+        AudioManager.getInstance().playSound('sfx_eoopn', false)
         this.miya.setAnimation(0, 'boom', false)
         this.miya.setCompleteListener(trackEntry=>{
             if(trackEntry.animation.name == 'boom') {
@@ -150,12 +181,12 @@ export default class GamePanel extends BaseUI {
                     this.light1.node.active = false;     
                 }
             })
-        }, 500)
+        }, 1000)
         setTimeout(() => {
             this.goods.active = true
             this.countLabel.string = this.countsArr[this.checkpointIndex-1].toString()
             this.getDiamond()
-        }, 1000);
+        }, 1500);
     }
 
     talk(str: string){
@@ -174,15 +205,12 @@ export default class GamePanel extends BaseUI {
         var temp = this.countsArr[this.checkpointIndex-1]
         var result =  temp / 10
         var sum = temp % 10
-        console.log('======', temp, sum)
         while(result >= 1.0){
             temp = Math.floor(temp / 10) 
             result = temp / 10
             let num = temp % 10
-            console.log('======', temp, num)
             sum += num
         }
-        console.log('--5555555--', sum)
         var space = 190 
         var midX = 350
 
@@ -294,10 +322,12 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                     if(rightNum > 0) {
+                        AudioManager.getInstance().playSound('sfx_dimndst', false)
                         this.touchNode.active = false
                         e.target.zIndex = 0
                         this.isOver()
                     }else{
+                        AudioManager.getInstance().playSound('sfx_wrngdmd', false)
                         this.touchNode.active = false
                         e.target.opacity = 255
                     }
@@ -359,7 +389,7 @@ export default class GamePanel extends BaseUI {
                 if(this.placementArea.children[index].getBoundingBox().contains(this.placementArea.convertToNodeSpaceAR(e.currentTouch._point))) {
                     for(let j = 0; j < this.diamondArr[index].length; j++) {
                         if(this.diamondArr[index][j].opacity == 0) {
-                            console.log('---------=index', j);
+                            AudioManager.getInstance().playSound('sfx_dimndst', false)
                             this.diamondArr[index][j].opacity = 255
                             this.diamondArr[index][j].zIndex = j+1
                             this.touchNode.active = false
@@ -368,6 +398,7 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                 }else {
+                    AudioManager.getInstance().playSound('sfx_wrngdmd', false)
                     this.touchNode.active = false
                     this.slotArr[i].getChildByName('diamond').active = true
                 }
@@ -405,14 +436,31 @@ export default class GamePanel extends BaseUI {
                 count += 1
             }
         }
+        this.eventvalue.levelData[this.checkpointIndex-1].subject = count
+        this.eventvalue.result = 2
+        console.log('--', this.eventvalue);
         if(count == this.countsArr[this.checkpointIndex-1]) {
-           
+            this.eventvalue.levelData[this.checkpointIndex-1].result = 1
+            if(this.checkpointIndex == this.checkpointsNum) {
+                this.eventvalue.result = 1
+                this.overState = 1
+                console.log('--', this.eventvalue);
+                DataReporting.getInstance().dispatchEvent('addLog', {
+                    eventType: 'clickSubmit',
+                    eventValue: JSON.stringify(this.eventvalue)
+                });
+            }
+            this.bagNode.setPosition(cc.v2(-375, -454))
             this.goodAct.getComponent(cc.Sprite).spriteFrame = this.goods.getComponent(cc.Sprite).spriteFrame
-            this.bagNode.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(0, 200)), cc.moveBy(0.1, cc.v2(0, -50)), cc.moveBy(0.1, cc.v2(0, 50)), cc.callFunc(()=>{}) ))
+            let spawn1 = cc.spawn(cc.moveBy(0.2, cc.v2(30, 30)), cc.scaleTo(0.2,1.1, 1))
+            let spawn2 = cc.spawn(cc.moveBy(0.2, cc.v2(-60, -60)), cc.scaleTo(0.2, 0.9, 1))
+            let spawn3 = cc.spawn(cc.moveBy(0.2, cc.v2(30, 30)), cc.scaleTo(0.2, 1, 1))
+            this.bagNode.runAction(cc.sequence(cc.moveBy(0.3, cc.v2(200, 200)), spawn1, spawn2, spawn3, cc.callFunc(()=>{}) ))
             let fun = cc.callFunc(()=>{
                 this.goodAct.active = false
-                this.goodAct.setPosition(cc.v2(1329, -1399))
-                this.bagNode.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(50, 50)), cc.moveBy(0.1, cc.v2(-50, -50)), cc.moveBy(0.2, cc.v2(0, -200)), fun3 ))
+                this.goodAct.setPosition(cc.v2(669, -499))
+                this.bubble.runAction(cc.scaleTo(0.3, 0,0)) 
+                this.bagNode.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(40, 40)), cc.moveBy(0.2, cc.v2(-40, -40)), cc.moveBy(0.3, cc.v2(-200, -200)), fun3 ))
             })
             let fun1 = cc.callFunc(()=>{
                 this.light2.node.active = true
@@ -424,21 +472,23 @@ export default class GamePanel extends BaseUI {
             let fun2 = cc.callFunc(()=>{
                 this.goods.active = false
                 this.goodAct.active = true
-                this.goodAct.runAction(cc.sequence( fun1, cc.moveTo(0.5, cc.v2(-337,-142)).easing(cc.easeSineInOut()), fun ))
+                this.goodAct.runAction(cc.sequence( fun1, cc.moveTo(0.8, cc.v2(-219,22)).easing(cc.easeSineInOut()), fun ))
             })
             let fun3 = cc.callFunc(()=>{
                 if(this.checkpointIndex == this.checkpointsNum) {
                     if(this.checkpointsNum == 1) {
-                        UIHelp.showOverTip(2,'大体好快呦，请等待老师收题吧。', false,'', null, null, '挑战成功')
+                        DaAnData.getInstance().submitEnable = true
+                        UIHelp.showOverTip(2,'答题好快呦，请等待老师收题吧。', false,'', null, null, '挑战成功')
                     }else {
-                        UIHelp.showOverTip(2,'大体好快呦，请等待老师收题吧。', false,'', null, null, '闯关成功')
+                        DaAnData.getInstance().submitEnable = true
+                        UIHelp.showOverTip(2,'答题好快呦，请等待老师收题吧。', false,'', null, null, '闯关成功')
                     }
                 }else {
                     
                     UIHelp.showOverTip(1,'过关成功！', true,'下一关', null, ()=>{this.nextCheckpoint()})
                 }
             })
-            this.goods.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(0, 100)), cc.moveBy(0.1, cc.v2(0, 10)), cc.moveBy(0.1, cc.v2(0, -10)), fun2 ))
+            this.goods.runAction(cc.sequence(cc.moveBy(0.3, cc.v2(0, 80)), cc.moveBy(0.2, cc.v2(0, -10)), cc.moveBy(0.2, cc.v2(0, 10)),cc.moveBy(0.2, cc.v2(0, -10)),cc.moveBy(0.2, cc.v2(0, 10)), fun2 ))
             this.light1.node.active = true
             this.light1.setAnimation(0, 'magic_02', false)
             this.light1.setCompleteListener(trackEntry=>{
@@ -446,6 +496,7 @@ export default class GamePanel extends BaseUI {
                     this.light1.node.active = false
                 }
             })
+            AudioManager.getInstance().playSound('sfx_gtcrwn', false)
             this.miya.setAnimation(0, 'true_01', false)
             this.miya.setCompleteListener(trackEntry=>{
                 if(trackEntry.animation.name == 'true_01') {
@@ -453,6 +504,7 @@ export default class GamePanel extends BaseUI {
                 }
             })
         }else {
+            this.eventvalue.levelData[this.checkpointIndex-1].result = 2
             this.miya.setAnimation(0, 'false_01', false)
                 this.miya.setCompleteListener(trackEntry=>{
                     if(trackEntry.animation.name == 'true_01') {
@@ -476,6 +528,7 @@ export default class GamePanel extends BaseUI {
             this.slotArr[i].destroy()
         }
         this.slotArr = []
+        this.answerArr = []
         this.removeListenerOnDiamond()
         this.removeListenerOnSlot()
         this.startAction()
@@ -519,6 +572,7 @@ export default class GamePanel extends BaseUI {
                     }
                     this.startAction()
                     this.addSlot()
+                    this.addData()
                 }
             } else {
                

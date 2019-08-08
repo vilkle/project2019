@@ -293,7 +293,7 @@ var GamePanel = /** @class */ (function (_super) {
         if (DataReporting_1.default.isRepeatReport) {
             DataReporting_1.default.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
-                eventValue: JSON.stringify({})
+                eventValue: JSON.stringify(this.eventvalue)
             });
             DataReporting_1.default.isRepeatReport = false;
         }
@@ -1273,7 +1273,7 @@ var GamePanel = /** @class */ (function (_super) {
         var Y = -91;
         var space = 450 + 100 * (4 - num);
         var startX = -(num - 1) * space / 2 + 80;
-        if (DaAnData_1.DaAnData.getInstance().types == 2) {
+        if (this.types == 2) {
             space = 610;
             startX = -(num - 1) * space / 2 + 140;
         }
