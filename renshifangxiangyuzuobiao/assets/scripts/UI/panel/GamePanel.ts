@@ -25,6 +25,10 @@ export default class GamePanel extends BaseUI {
     private duckNode : cc.Node = null;
     @property(cc.Node)
     private touchSpine : cc.Node = null;
+    @property(cc.Node)
+    private fruitTrumpet: cc.Node = null;
+    @property(cc.Node)
+    private vegetableTrumpet: cc.Node = null;
     private bg : cc.Node = null;
     private touchNode : cc.Node = null;
     private laba : cc.Node = null;
@@ -37,7 +41,9 @@ export default class GamePanel extends BaseUI {
     private touchRight : boolean = false;
     private overNum : number = 0;
     private rightNum : number = 0;
-    private isOver : number = 0;
+    private isOver : number = 4;
+    private audioIdArr: number[] = [];
+    private finishing: boolean = false;
     private eventvalue = {
         isResult: 1,
         isLevel: 0,
@@ -85,9 +91,9 @@ export default class GamePanel extends BaseUI {
             this.directionNode.active = true;
             this.parentNode = this.directionNode;
             this.touchNode = this.touchSpine;
-            this.answerArr = [6,6,1,5,6,4,6,6,2,0,3,6,6,6,6,6];
+            this.answerArr = [6,6,1,5,6,4,6,6,2,0,6,6,6,6,3,6];
             this.eventvalue.levelData[0].answer = [...this.answerArr];
-            this.eventvalue.levelData[0].subject = [6,6,-1,-1,6,-1,6,6,-1,-1,-1,6,6,6,6,6];
+            this.eventvalue.levelData[0].subject = [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6];
         }
         if(this.parentNode) {
             if(this.types == 1) {
@@ -142,7 +148,89 @@ export default class GamePanel extends BaseUI {
                 }, 40* i);
             }
         }
+        this.fruitTrumpet.children[0].on(cc.Node.EventType.TOUCH_START, (e)=>{
+            if(this.finishing) {
+                return
+            }
+            this.bubbleAction(this.rightNum)
+            this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'click', false)
+            this.fruitTrumpet.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                if(trackEntry.animation.name == 'click') {
+                    this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'speak', false)
+                }
+            })
+        })
     }
+
+    initVegetable() {
+        AudioManager.getInstance().playSound('sfx_kpbopn', false);
+        let car = this.vegetableNode.getChildByName('carNode');
+        for(let i = 0; i < this.tuopanNode.children.length; i++) {
+            this.tuopanNode.children[i].scale = 0;
+        }
+        car.setPosition(cc.v2(-1250, 0));
+        car.runAction(cc.moveBy(0.8, cc.v2(1250, 0)));
+        let bubble = this.vegetableNode.getChildByName('bubbleNode');
+        bubble.setRotation(80);
+        bubble.scale = 0;  
+        AudioManager.getInstance().playSound('sfx_1stfrt', false);                          
+        for(let i = 0; i < this.answerArr.length; i++) {
+            let seq = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1), cc.callFunc(()=>{this.bubbleAction(this.rightNum)}));
+            let seq1 = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1));
+            if(this.types == 1) {
+                if(this.answerArr[i] != 8) {
+                    setTimeout(() => {
+                        if(i == this.answerArr.length-1) {
+                            this.tuopanNode.children[this.answerArr[i]].runAction(seq);
+                        }else {
+                            this.tuopanNode.children[this.answerArr[i]].runAction(seq1);
+                        }
+                    }, 40* i);
+                }
+            }else if(this.types == 2) {
+                setTimeout(() => {
+                    if(i == this.answerArr.length-1) {
+                        this.tuopanNode.children[this.answerArr[i]].runAction(seq);
+                    }else {
+                        this.tuopanNode.children[this.answerArr[i]].runAction(seq1);
+                    }
+                }, 40* i);
+            }           
+        }
+        this.vegetableTrumpet.children[0].on(cc.Node.EventType.TOUCH_START, ()=>{
+            if(this.finishing) {
+                return
+            }
+            this.bubbleAction(this.rightNum)
+            this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'click', false)
+            this.vegetableTrumpet.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                if(trackEntry.animation.name == 'click') {
+                    this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'speak', false)
+                }
+            })
+        })
+    }
+
+    initDirection() {
+        AudioManager.getInstance().playSound('sfx_txopn2',false);
+        let left = this.directionNode.getChildByName('leftNode');
+        let right = this.directionNode.getChildByName('rightNode');
+        this.laba = right.getChildByName('laba');
+        this.laba.opacity = 0;
+        left.opacity = 100;
+        right.opacity = 0;
+        left.setPosition(cc.v2(-1500, 0));
+        right.setPosition(cc.v2(1500, 0));
+        let spaw1 = cc.spawn(cc.moveBy(1.9, cc.v2(0,12)), cc.rotateBy(1.9, -5));
+        let spaw2 = cc.spawn(cc.moveBy(2.4, cc.v2(0,-12)), cc.rotateBy(2.4, 5));
+        let seq = cc.sequence(spaw1, spaw2);
+        let loop = cc.repeatForever(seq);
+        this.duckNode.runAction(loop);
+        let seq1 = cc.sequence(cc.spawn(cc.moveBy(1.5, cc.v2(-1500, 0)), cc.fadeIn(1.5)), cc.callFunc(()=>{this.laba.runAction(cc.fadeIn(0.8))}));
+        left.runAction(cc.spawn(cc.moveBy(1.5, cc.v2(1500, 0)), cc.fadeIn(1.5)));
+        right.runAction(seq1);
+    }
+
 
     touchEnable(index:number):boolean {
         if(this.types == 1) {
@@ -192,114 +280,152 @@ export default class GamePanel extends BaseUI {
         }
     }
 
-    errAudio(oriIndex: number, desIndex: number) {
+    errAudio(oriIndex?: number, finishCallback?:Function) {
+        for(let i = 0; i < this.audioIdArr.length; i++) {
+            AudioManager.getInstance().stopAudio(this.audioIdArr[i])
+        }
+        this.audioIdArr = []
         if(this.types == 1) {
+            this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
             if(this.rightNum == 0) {
-                AudioManager.getInstance().playSound('橘子没有在香蕉的上方哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('橘子没有在香蕉的上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 1) {
-                AudioManager.getInstance().playSound('梨不是在香蕉的右上方哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('梨不是在香蕉的右上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 2) {
-                AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 3) {
-                AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 4) {
-                AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 5) {
-                AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 6) {
-                AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 7) {
                 //AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false);
             }
         }else if(this.types == 2) {
+            this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
             if(this.rightNum == 0) {
-                AudioManager.getInstance().playSound('土豆没有在最中央的位置哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('土豆没有在最中央的位置哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 1) {
-                AudioManager.getInstance().playSound('黄瓜没有在土豆的左面哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('黄瓜没有在土豆的左面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 2) {
-                AudioManager.getInstance().playSound('西红柿没有在黄瓜的右下方哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('西红柿没有在黄瓜的右下方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 3) {
-                AudioManager.getInstance().playSound('西兰花没有在西红柿的右面哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('西兰花没有在西红柿的右面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 4) {
-                AudioManager.getInstance().playSound('西兰花没有在南瓜的下面哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('西兰花没有在南瓜的下面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 5) {
-                AudioManager.getInstance().playSound('菠菜没有在土豆的上方哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('菠菜没有在土豆的上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 6) {
-                AudioManager.getInstance().playSound('菠菜没有在白菜的右面哦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('菠菜没有在白菜的右面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 7) {
-                AudioManager.getInstance().playSound('大蒜和菠菜相邻啦，重新放一下吧！', false);
+                AudioManager.getInstance().playSound('大蒜和菠菜相邻啦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 8) {}
         }else if(this.types == 3) {
-
+            if(oriIndex == 0) {
+                AudioManager.getInstance().playSound('这不是我的家，我的家在B3哟', false, 1, (id)=>{this.audioIdArr.push(id)})
+            }else if(oriIndex == 1) {
+                AudioManager.getInstance().playSound('这不是我的家，我的家在C1哟', false, 1, (id)=>{this.audioIdArr.push(id)}) 
+            }else if(oriIndex == 2) {
+                AudioManager.getInstance().playSound('这不是我的家，我的家在A3哟', false, 1, (id)=>{this.audioIdArr.push(id)}) 
+            }else if(oriIndex == 3) {
+                AudioManager.getInstance().playSound('这不是我的家，我的家在C4哟', false, 1, (id)=>{this.audioIdArr.push(id)}) 
+            }else if(oriIndex == 4) {
+                AudioManager.getInstance().playSound('这不是我的家，我的家在B2哟', false, 1, (id)=>{this.audioIdArr.push(id)}) 
+            }else if(oriIndex == 5) {
+                AudioManager.getInstance().playSound('这不是我的家，我的家在D1哟', false, 1, (id)=>{this.audioIdArr.push(id)}) 
+            }
         }
     }
 
     bubbleAction(rightNum :number) {
         let bubble = this.parentNode.getChildByName('bubbleNode');
         var str = '';
+        for(let i = 0; i < this.audioIdArr.length; i++) {
+            AudioManager.getInstance().stopAudio(this.audioIdArr[i])
+        }
+        this.audioIdArr = []
         if(this.types == 1) {
             switch(rightNum) {
                 case 0:
-                    AudioManager.getInstance().playSound('橘子在香蕉的上方', false);
+                    AudioManager.getInstance().playSound('橘子在香蕉的上方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '橘子在香蕉上方';
                     break;
                 case 1:
-                    AudioManager.getInstance().playSound('梨在香蕉的右上方',false);
+                    AudioManager.getInstance().playSound('梨在香蕉的右上方',false,1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '梨在香蕉的右上方';
                     break;
                 case 2:
-                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false);
+                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
+                    str = '桃子在香蕉的左面，苹果的上面';
+                    break;
+                case 3:
+                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '桃子在香蕉的左面，苹果的上面';
                     break;
                 case 4:
-                    AudioManager.getInstance().playSound('桃子在西瓜的左上方', false);
+                    AudioManager.getInstance().playSound('桃子在西瓜的左上方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '桃子在西瓜的左上方';
                     break;
                 case 5:
-                    AudioManager.getInstance().playSound('葡萄和梨不相邻', false);
+                    AudioManager.getInstance().playSound('葡萄和梨不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '葡萄和梨不相邻';
                     break;
                 case 6:
-                    AudioManager.getInstance().playSound('橘子在草莓的后面', false);
+                    AudioManager.getInstance().playSound('橘子在草莓的后面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '橘子在草莓的后面';
                     break;
                 case 7:
                     str = '最后一个水果放在哪里？';
+                    this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
                     break;
                 default:
+                    this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
                     return;
                     break;
             }
         }else if(this.types == 2) {
             switch(rightNum) {
                 case 0:
-                    AudioManager.getInstance().playSound('土豆在最中央的位置', false);
+                    AudioManager.getInstance().playSound('土豆在最中央的位置', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '土豆在最中央的位置';
                     break;
                 case 1:
-                    AudioManager.getInstance().playSound('黄瓜在土豆的左面', false);
+                    AudioManager.getInstance().playSound('黄瓜在土豆的左面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '黄瓜在土豆的左面';
                     break;
                 case 2:
-                    AudioManager.getInstance().playSound('西红柿在黄瓜的右下方', false);
+                    AudioManager.getInstance().playSound('西红柿在黄瓜的右下方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '西红柿在黄瓜的右下方';
                     break;
                 case 3:
-                    AudioManager.getInstance().playSound('西兰花在西红柿的右面，南瓜的下面', false);
+                    AudioManager.getInstance().playSound('西兰花在西红柿的右面，南瓜的下面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '西兰花在西红柿的右面，南瓜的下面';
                     break;
+                case 4:
+                    AudioManager.getInstance().playSound('西兰花在西红柿的右面，南瓜的下面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
+                    str = '西兰花在西红柿的右面，南瓜的下面';
+                    break;    
                 case 5:
-                    AudioManager.getInstance().playSound('菠菜在土豆的上方，白菜的右面', false);
+                    AudioManager.getInstance().playSound('菠菜在土豆的上方，白菜的右面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '菠菜在土豆的上方，白菜的右面';
                     break;
+                case 6:
+                    AudioManager.getInstance().playSound('菠菜在土豆的上方，白菜的右面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
+                    str = '菠菜在土豆的上方，白菜的右面';
+                    break;    
                 case 7:
-                    AudioManager.getInstance().playSound('大蒜和菠菜不相邻');
+                    AudioManager.getInstance().playSound('大蒜和菠菜不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '大蒜和菠菜不相邻';
                     break;
                 case 8:
                     str = '最后一个蔬菜放在哪里？';
+                    this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
                     break;
                 default:
+                    this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
                     return;
                     break;
             }
@@ -319,72 +445,15 @@ export default class GamePanel extends BaseUI {
         bubble.runAction(seq);
     }
 
-    initVegetable() {
-        AudioManager.getInstance().playSound('sfx_kpbopn', false);
-        let car = this.vegetableNode.getChildByName('carNode');
-        for(let i = 0; i < this.tuopanNode.children.length; i++) {
-            this.tuopanNode.children[i].scale = 0;
-        }
-        car.setPosition(cc.v2(-1250, 0));
-        car.runAction(cc.moveBy(0.8, cc.v2(1250, 0)));
-        let bubble = this.vegetableNode.getChildByName('bubbleNode');
-        bubble.setRotation(80);
-        bubble.scale = 0;  
-        AudioManager.getInstance().playSound('sfx_1stfrt', false);                          
-        for(let i = 0; i < this.answerArr.length; i++) {
-            let seq = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1), cc.callFunc(()=>{this.bubbleAction(this.rightNum)}));
-            let seq1 = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1));
-            if(this.types == 1) {
-                if(this.answerArr[i] != 8) {
-                    setTimeout(() => {
-                        if(i == this.answerArr.length-1) {
-                            this.tuopanNode.children[this.answerArr[i]].runAction(seq);
-                        }else {
-                            this.tuopanNode.children[this.answerArr[i]].runAction(seq1);
-                        }
-                    }, 40* i);
-                }
-            }else if(this.types == 2) {
-                setTimeout(() => {
-                    if(i == this.answerArr.length-1) {
-                        this.tuopanNode.children[this.answerArr[i]].runAction(seq);
-                    }else {
-                        this.tuopanNode.children[this.answerArr[i]].runAction(seq1);
-                    }
-                }, 40* i);
-            }           
-        }
-    }
-
-    initDirection() {
-        AudioManager.getInstance().playSound('sfx_txopn2',false);
-        let left = this.directionNode.getChildByName('leftNode');
-        let right = this.directionNode.getChildByName('rightNode');
-        this.laba = right.getChildByName('laba');
-        this.laba.opacity = 0;
-        left.opacity = 100;
-        right.opacity = 0;
-        left.setPosition(cc.v2(-1500, 0));
-        right.setPosition(cc.v2(1500, 0));
-        let spaw1 = cc.spawn(cc.moveBy(1.9, cc.v2(0,12)), cc.rotateBy(1.9, -5));
-        let spaw2 = cc.spawn(cc.moveBy(2.4, cc.v2(0,-12)), cc.rotateBy(2.4, 5));
-        let seq = cc.sequence(spaw1, spaw2);
-        let loop = cc.repeatForever(seq);
-        this.duckNode.runAction(loop);
-        let seq1 = cc.sequence(cc.spawn(cc.moveBy(1.5, cc.v2(-1500, 0)), cc.fadeIn(1.5)), cc.callFunc(()=>{this.laba.runAction(cc.fadeIn(0.8))}));
-        left.runAction(cc.spawn(cc.moveBy(1.5, cc.v2(1500, 0)), cc.fadeIn(1.5)));
-        right.runAction(seq1);
-    
-    }
-
     addListenerOnItem() {
         for(let i = 0; i < this.tuopanNode.children.length; i++) {
             this.tuopanNode.children[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
-                if(this.touchTarget) {
+                this.isOver = 2
+                if(this.touchTarget||this.tuopanNode.children[i].opacity == 0) {
                     return;
                 }
                 if(!this.touchEnable(i)) {
-                    this.tuopanNode.children[i].runAction(cc.sequence(cc.moveBy(0.1, 50),cc.moveBy(0.1, -50), cc.moveBy(0.1, 50), cc.moveBy(0.1, -50)));
+                    this.tuopanNode.children[i].runAction(cc.sequence(cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0))));
                     return;
                 }
                 this.touchTarget = e.target;
@@ -399,6 +468,7 @@ export default class GamePanel extends BaseUI {
                     this.touchNode.getComponent(sp.Skeleton).setAnimation(0, 'drag', true);
                 }else {
                     AudioManager.getInstance().playSound('sfx_ctchfrt', false);
+                    this.touchNode.children[0].getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame;
                     this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.children[0].getComponent(cc.Sprite).spriteFrame;
                 }
             })
@@ -463,10 +533,11 @@ export default class GamePanel extends BaseUI {
                 if(this.touchTarget != e.target) {
                     return;
                 }
+                let index = null
                 for(let j = 0; j < this.gridNode.children.length; j++) {
                     if(this.gridNode.children[j].getBoundingBox().contains(this.gridNode.convertToNodeSpaceAR(e.currentTouch._point))) {
+                        index = j
                         if(i == this.answerArr[j]) {
-                            
                             this.eventvalue.levelData[0].subject[j] = i;
                             this.gridNode.children[j].getChildByName('sprite').active = true; 
                             this.touchRight = true;
@@ -484,10 +555,30 @@ export default class GamePanel extends BaseUI {
                 if(!this.touchRight) {
                     if(this.types == 3) {
                         AudioManager.getInstance().playSound('sfx_kdclck', false);
+                        this.errAudio(i)
+                        e.target.opacity = 255;
                     }else {
                         AudioManager.getInstance().playSound('sfx_erro', false);
+                        if(this.gridNode.children[index]) {
+                            if(!this.gridNode.children[index].getChildByName('sprite').active) {
+                                this.gridNode.children[index].getChildByName('err').active = true; 
+                                this.gridNode.children[index].getChildByName('err').getComponent(cc.Sprite).spriteFrame = this.touchNode.children[0].getComponent(cc.Sprite).spriteFrame
+                                this.finishing = true
+                                this.errAudio(i, ()=>{
+                                    this.finishing = false
+                                    this.gridNode.children[index].getChildByName('err').active = false;
+                                    e.target.opacity = 255;
+        
+                                })   
+                            }else {
+                                e.target.opacity = 255;
+                            }
+                        }else{
+                            e.target.opacity = 255;
+                        }
                     } 
-                    e.target.opacity = 255;
+                    
+
                     if(this.types == 3) {
                         e.target.getComponent(sp.Skeleton).setAnimation(0,'drag_end', false);
                         e.target.getComponent(sp.Skeleton).setCompleteListener(
@@ -537,12 +628,12 @@ export default class GamePanel extends BaseUI {
         if (DataReporting.isRepeatReport) {
             DataReporting.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
-                eventValue: JSON.stringify({})
+                eventValue: JSON.stringify(this.eventvalue)
             });
             DataReporting.isRepeatReport = false;
         }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: 0 });
+        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
     }
 
     isRight() {
@@ -555,7 +646,8 @@ export default class GamePanel extends BaseUI {
                     eventValue: JSON.stringify(this.eventvalue)
                 });
                 DaAnData.getInstance().submitEnable = true;
-                UIHelp.showOverTip(2);
+                console.log(this.eventvalue)
+                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～');
             }
         }else if(this.types == 2) {
             if(this.rightNum == 9) {
@@ -566,7 +658,8 @@ export default class GamePanel extends BaseUI {
                     eventValue: JSON.stringify(this.eventvalue)
                 });
                 DaAnData.getInstance().submitEnable = true;
-                UIHelp.showOverTip(2);
+                console.log(this.eventvalue)
+                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～');
             }
         }else if(this.types == 3) {
             if(this.rightNum == 6) {
@@ -577,7 +670,8 @@ export default class GamePanel extends BaseUI {
                     eventValue: JSON.stringify(this.eventvalue)
                 });
                 DaAnData.getInstance().submitEnable = true;
-                UIHelp.showOverTip(2);
+                console.log(this.eventvalue)
+                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～');
             }
         }
     

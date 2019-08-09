@@ -69,7 +69,7 @@ export class OverTips extends BaseUI {
                 Tools.playSpine(this.spine_complete, "in", false, function () {
                     Tools.playSpine(this.spine_complete, "stand", true, this.delayClose.bind(this));
                 }.bind(this));
-                AudioManager.getInstance().playSound("sfx_genpos", false, 1);
+                AudioManager.getInstance().playSound("sfx_geupgrd", false, 1);
                 break;
         }
         let endPos = this.label_tip.node.position;

@@ -648,6 +648,7 @@ var GamePanel = /** @class */ (function (_super) {
                 if (_this.touchTarget) {
                     return;
                 }
+                AudioManager_1.AudioManager.getInstance().playSound('sfx_buttn', false);
                 _this.touchTarget = e.target;
                 _this.touchNode.active = true;
                 _this.touchNode.zIndex = 100;
@@ -690,6 +691,7 @@ var GamePanel = /** @class */ (function (_super) {
                 if (_this.touchTarget != e.target) {
                     return;
                 }
+                AudioManager_1.AudioManager.getInstance().playSound('sfx_buttn', false);
                 _this.touchNode.active = false;
                 e.target.opacity = 255;
                 _this.touchTarget = null;
@@ -698,6 +700,7 @@ var GamePanel = /** @class */ (function (_super) {
                 if (_this.touchTarget != e.target) {
                     return;
                 }
+                AudioManager_1.AudioManager.getInstance().playSound('sfx_buttn', false);
                 var rightNum = 0;
                 if (_this.AnswerBoardArr[0]) {
                     if (_this.AnswerBoardArr[0].getChildByName('bigTag').getBoundingBox().contains(_this.AnswerBoardArr[0].convertToNodeSpaceAR(e.currentTouch._point))) {
@@ -1377,6 +1380,9 @@ var GamePanel = /** @class */ (function (_super) {
             else if (totalNum == 5) {
                 this.progressNode.getChildByName('progress5').active = true;
                 this.progress = this.progressNode.getChildByName('progress5');
+            }
+            else if (totalNum == 1) {
+                return;
             }
             this.progressNode.active = true;
             for (var i = 0; i < totalNum; i++) {

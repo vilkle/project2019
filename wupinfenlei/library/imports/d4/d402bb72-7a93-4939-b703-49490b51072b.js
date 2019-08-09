@@ -79,7 +79,7 @@ var OverTips = /** @class */ (function (_super) {
                 Tools_1.Tools.playSpine(this.spine_complete, "in", false, function () {
                     Tools_1.Tools.playSpine(this.spine_complete, "stand", true, this.delayClose.bind(this));
                 }.bind(this));
-                AudioManager_1.AudioManager.getInstance().playSound("sfx_genpos", false, 1);
+                AudioManager_1.AudioManager.getInstance().playSound("sfx_geupgrd", false, 1);
                 break;
         }
         var endPos = this.label_tip.node.position;

@@ -19,7 +19,7 @@ var UIHelp = /** @class */ (function () {
     UIHelp.showTip = function (message) {
         var tipUI = UIManager_1.UIManager.getInstance().getUI(TipUI_1.TipUI);
         if (!tipUI) {
-            UIManager_1.UIManager.getInstance().openUI(TipUI_1.TipUI, 200, null, function () {
+            UIManager_1.UIManager.getInstance().openUI(TipUI_1.TipUI, 211, null, function () {
                 UIHelp.showTip(message);
             });
         }

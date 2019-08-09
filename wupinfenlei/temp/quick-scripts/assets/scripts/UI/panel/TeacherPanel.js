@@ -271,6 +271,7 @@ var TeacherPanel = /** @class */ (function (_super) {
                 if (alreadyCheck > 10) {
                     _this.toggleArr[i].isChecked = false;
                 }
+                console.log('-------', _this.imageArr);
                 if (alreadyCheck >= 10) {
                     for (var i_1 = typeNum * checkPointNum; i_1 < typeNum * (checkPointNum + 1); i_1++) {
                         if (_this.toggleArr[i_1].isChecked == false) {

@@ -616,6 +616,7 @@ s
                 if(this.touchTarget) {
                     return;
                 }
+                AudioManager.getInstance().playSound('sfx_buttn', false)
                 this.touchTarget = e.target;
                 this.touchNode.active = true;
                 this.touchNode.zIndex = 100;
@@ -658,6 +659,7 @@ s
                 if(this.touchTarget != e.target) {
                     return;
                }
+                AudioManager.getInstance().playSound('sfx_buttn', false)
                 this.touchNode.active = false;
                 e.target.opacity = 255;
                 this.touchTarget = null;
@@ -666,6 +668,7 @@ s
                 if(this.touchTarget != e.target) {
                     return;
                 }
+                AudioManager.getInstance().playSound('sfx_buttn', false)
                 let rightNum = 0;
                if(this.AnswerBoardArr[0]) {
                     if(this.AnswerBoardArr[0].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[0].convertToNodeSpaceAR(e.currentTouch._point))) {
@@ -1292,6 +1295,8 @@ s
             }else if(totalNum == 5) {
                 this.progressNode.getChildByName('progress5').active = true;
                 this.progress = this.progressNode.getChildByName('progress5');
+            }else if(totalNum == 1) {
+                return
             }
             this.progressNode.active = true;
             for(let i = 0; i < totalNum; i++) {

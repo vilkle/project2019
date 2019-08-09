@@ -7,6 +7,7 @@ import {ListenerType} from "../../Data/ListenerType";
 import { DaAnData } from "../../Data/DaAnData";
 import { UIHelp } from "../../Utils/UIHelp";
 import { OverTips } from "../Item/OverTips";
+import { AudioManager } from "../../Manager/AudioManager";
 
 const { ccclass, property } = cc._decorator;
 
@@ -24,11 +25,14 @@ export default class UploadAndReturnPanel extends BaseUI {
         UIManager.getInstance().closeUI(GamePanel);
         UIManager.getInstance().closeUI(UploadAndReturnPanel);
         UIManager.getInstance().closeUI(OverTips);
+        UIManager.getInstance().closeUI(SubmissionPanel)
+        AudioManager.getInstance().stopAll()
+        DaAnData.getInstance().submitEnable = false
     }
 
     onTiJiao() {
         if(DaAnData.getInstance().submitEnable) {
-            UIManager.getInstance().showUI(SubmissionPanel);
+            UIManager.getInstance().openUI(SubmissionPanel);
         }else {
             UIHelp.showTip('请通关后进行保存。');
         }  

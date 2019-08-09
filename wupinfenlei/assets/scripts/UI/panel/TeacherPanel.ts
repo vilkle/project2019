@@ -271,6 +271,7 @@ export default class TeacherPanel extends BaseUI {
                 if(alreadyCheck > 10) {
                     this.toggleArr[i].isChecked = false;
                 }
+                console.log('-------', this.imageArr);
                 if(alreadyCheck >= 10) {
                     for(let i = typeNum * checkPointNum; i < typeNum * (checkPointNum + 1); i++) {
                         if(this.toggleArr[i].isChecked == false) {
