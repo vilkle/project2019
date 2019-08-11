@@ -450,6 +450,8 @@ export default class GamePanel extends BaseUI {
                     eventValue: JSON.stringify(this.eventvalue)
                 });
             }
+            this.removeListenerOnDiamond()
+            this.removeListenerOnSlot()
             this.bagNode.setPosition(cc.v2(-375, -454))
             this.goodAct.getComponent(cc.Sprite).spriteFrame = this.goods.getComponent(cc.Sprite).spriteFrame
             let spawn1 = cc.spawn(cc.moveBy(0.2, cc.v2(30, 30)), cc.scaleTo(0.2,1.1, 1))
@@ -529,8 +531,6 @@ export default class GamePanel extends BaseUI {
         }
         this.slotArr = []
         this.answerArr = []
-        this.removeListenerOnDiamond()
-        this.removeListenerOnSlot()
         this.startAction()
         this.addSlot()
     }

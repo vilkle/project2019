@@ -101,7 +101,7 @@ export default class TeacherPanel extends BaseUI {
         for(let i = 0; i < typeNum; i ++) {
             for(let j = 0;  j < 27; j++) {
                 this.toggleArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getChildByName('toggle').getComponent(cc.Toggle);
-                
+                this.imageArr[i * 27 + j] = this.typeArr[i].getChildByName('imageNode').getChildByName('Node').children[j].getComponent(cc.Sprite);
             }
         }
         this.addToggleCallBack();
@@ -259,19 +259,21 @@ export default class TeacherPanel extends BaseUI {
                 if(DaAnData.getInstance().types == 2) {
                     if(this.checkColor(checkPointNum+1)) {
                         this.toggleArr[i].isChecked = false;
+                        return
                     }
                     if(this.checkFigure(checkPointNum+1)) {
                         this.toggleArr[i].isChecked = false;
+                        return
                     }
                     if(this.checkSize(checkPointNum+1)) {
                         this.toggleArr[i].isChecked = false;
+                        return
                     }
                 }
 
                 if(alreadyCheck > 10) {
                     this.toggleArr[i].isChecked = false;
                 }
-                console.log('-------', this.imageArr);
                 if(alreadyCheck >= 10) {
                     for(let i = typeNum * checkPointNum; i < typeNum * (checkPointNum + 1); i++) {
                         if(this.toggleArr[i].isChecked == false) {

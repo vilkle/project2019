@@ -7,6 +7,7 @@ import {ListenerType} from "../../Data/ListenerType";
 import { DaAnData } from "../../Data/DaAnData";
 import { UIHelp } from "../../Utils/UIHelp";
 import { OverTips } from "../Item/OverTips";
+import { AudioManager } from "../../Manager/AudioManager";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -23,6 +24,8 @@ export default class UploadAndReturnPanel extends BaseUI {
         UIManager.getInstance().closeUI(GamePanel);
         UIManager.getInstance().closeUI(UploadAndReturnPanel);
         UIManager.getInstance().closeUI(OverTips);
+        UIManager.getInstance().closeUI(SubmissionPanel)
+        AudioManager.getInstance().stopAll()
     }
 
     onTiJiao() {

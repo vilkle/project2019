@@ -2,7 +2,6 @@
 cc._RF.push(module, 'c44e6cLg85JzaIFNvBdsH7x', 'UIHelp', __filename);
 // scripts/Utils/UIHelp.ts
 
-"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIManager_1 = require("../Manager/UIManager");
 var TipUI_1 = require("../UI/panel/TipUI");

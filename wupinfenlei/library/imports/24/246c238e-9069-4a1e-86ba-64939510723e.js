@@ -2,23 +2,6 @@
 cc._RF.push(module, '246c2OOkGlKHoa6ZJOVEHI+', 'GamePanel');
 // scripts/UI/panel/GamePanel.ts
 
-"use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var NetWork_1 = require("../../Http/NetWork");
@@ -449,6 +432,11 @@ var GamePanel = /** @class */ (function (_super) {
                     return;
                 }
                 if (_this.finishArr[i]) {
+                    if (_this.isOver == 1 && _this.types == 2) {
+                        for (var k = 0; k < _this.timeOutArr.length; k++) {
+                            clearTimeout(_this.timeOutArr[i]);
+                        }
+                    }
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i, true, true), false);
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
                         if (trackEntry.animation.name == _this.getSelectAnimationName(i, true, true)) {
@@ -461,7 +449,8 @@ var GamePanel = /** @class */ (function (_super) {
                     else {
                         for (var j = 0; j < 3; j++) {
                             if (_this.selectNodeArr[j]) {
-                                if (_this.selectNodeArr[j].getChildByName('bubble').scale == 1) {
+                                if (_this.selectNodeArr[j].getChildByName('bubble').scale != 0) {
+                                    _this.selectNodeArr[j].getChildByName('bubble').stopAllActions();
                                     _this.selectNodeArr[j].getChildByName('bubble').runAction(cc.scaleTo(0.3, 0, 0));
                                 }
                             }
@@ -475,6 +464,11 @@ var GamePanel = /** @class */ (function (_super) {
                                 _this.selectNode.children[i].getChildByName('fireworks').opacity = 0;
                             }
                         });
+                    }
+                    if (_this.isOver == 1 && _this.types == 2) {
+                        for (var k = 0; k < _this.timeOutArr.length; k++) {
+                            clearTimeout(_this.timeOutArr[i]);
+                        }
                     }
                 }
                 else {
@@ -503,18 +497,18 @@ var GamePanel = /** @class */ (function (_super) {
                             AudioManager_1.AudioManager.getInstance().playSound('sfx_casemove', false);
                             var _loop_3 = function (i_1) {
                                 setTimeout(function () {
-                                    if (i_1 < _this.selectNode.children.length - 1) {
-                                        _this.selectNode.children[i_1].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                                    if (i_1 < _this.selectNodeCenterArr.length - 1) {
+                                        _this.selectNodeCenterArr[i_1].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
                                     }
                                     else {
-                                        _this.selectNode.children[i_1].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(function () {
+                                        _this.selectNodeCenterArr[i_1].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(function () {
                                             _this.selectMove = false;
                                             _this.createAnswerBoard(_this.checkpoint);
                                         })));
                                     }
-                                }, (_this.selectNode.children.length - 1 - i_1) * 100);
+                                }, (_this.selectNodeCenterArr.length - 1 - i_1) * 100);
                             };
-                            for (var i_1 = 0; i_1 < _this.selectNode.children.length; i_1++) {
+                            for (var i_1 = 0; i_1 < _this.selectNodeCenterArr.length; i_1++) {
                                 _loop_3(i_1);
                             }
                         }
@@ -854,6 +848,7 @@ var GamePanel = /** @class */ (function (_super) {
         if (this.types == 1) {
             AudioManager_1.AudioManager.getInstance().playSound('答对啦！你真棒~', false);
             UIHelp_1.UIHelp.showOverTip(1, '答对啦！你真棒～', '下一关', function () { }, function () {
+                AudioManager_1.AudioManager.getInstance().stopAll();
                 _this.checkpoint++;
                 for (var i = 0; i < _this.ItemNodeArr.length; i++) {
                     _this.ItemNodeArr[i].removeFromParent();
@@ -894,6 +889,7 @@ var GamePanel = /** @class */ (function (_super) {
             eventValue: JSON.stringify(this.eventvalue)
         });
         if (this.types == 1) {
+            AudioManager_1.AudioManager.getInstance().stopAll();
             AudioManager_1.AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             this.progressBar(this.checkpointsNum, this.checkpointsNum);
             UIHelp_1.UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', function () { }, function () {
@@ -923,6 +919,7 @@ var GamePanel = /** @class */ (function (_super) {
             });
         }
         else if (this.types == 2) {
+            AudioManager_1.AudioManager.getInstance().stopAll();
             AudioManager_1.AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             UIHelp_1.UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧', '查看分类结果', function () { }, function () {
                 _this.backButtonCallBack();
@@ -1278,7 +1275,7 @@ var GamePanel = /** @class */ (function (_super) {
         var startX = -(num - 1) * space / 2 + 80;
         if (this.types == 2) {
             space = 610;
-            startX = -(num - 1) * space / 2 + 140;
+            startX = -(num - 1) * space / 2 + 80;
         }
         AudioManager_1.AudioManager.getInstance().playSound('sfx_casemove', false);
         var _loop_9 = function (i) {

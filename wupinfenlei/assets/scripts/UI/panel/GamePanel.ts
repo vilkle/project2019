@@ -440,6 +440,11 @@ s
                     return;
                 }
                 if(this.finishArr[i]) {
+                    if(this.isOver == 1 && this.types == 2) {
+                        for(let k = 0; k < this.timeOutArr.length; k++) {
+                            clearTimeout(this.timeOutArr[i]);
+                        }
+                    }
                     this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, true, true), false);
                     this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
                         if(trackEntry.animation.name == this.getSelectAnimationName(i, true, true)) {
@@ -451,7 +456,8 @@ s
                     }else{
                         for(let j = 0; j < 3; j ++) {
                             if(this.selectNodeArr[j]) {
-                                if(this.selectNodeArr[j].getChildByName('bubble').scale == 1) {
+                                if(this.selectNodeArr[j].getChildByName('bubble').scale != 0) {
+                                    this.selectNodeArr[j].getChildByName('bubble').stopAllActions()
                                     this.selectNodeArr[j].getChildByName('bubble').runAction(cc.scaleTo(0.3, 0,0));
                                 }
                             }
@@ -465,6 +471,11 @@ s
                                 this.selectNode.children[i].getChildByName('fireworks').opacity = 0;
                             }
                         });
+                    }
+                    if(this.isOver == 1 && this.types == 2) {
+                        for(let k = 0; k < this.timeOutArr.length; k++) {
+                            clearTimeout(this.timeOutArr[i]);
+                        }
                     }
                 }else {
                     this.selectMove = true;
@@ -488,17 +499,17 @@ s
                         if(trackEntry.animation.name == this.getSelectAnimationName(i, false, true)) {
                             this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], false), true);
                             AudioManager.getInstance().playSound('sfx_casemove', false);
-                            for(let i = 0; i < this.selectNode.children.length; i ++) {
+                            for(let i = 0; i < this.selectNodeCenterArr.length; i ++) {
                                 setTimeout(()=>{
-                                    if(i < this.selectNode.children.length - 1) {
-                                        this.selectNode.children[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                                    if(i < this.selectNodeCenterArr.length - 1) {
+                                        this.selectNodeCenterArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
                                     }else {
-                                        this.selectNode.children[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
+                                        this.selectNodeCenterArr[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
                                             this.selectMove = false;
                                             this.createAnswerBoard(this.checkpoint);
                                         })) );
                                     }
-                                }, (this.selectNode.children.length-1-i)*100);     
+                                }, (this.selectNodeCenterArr.length-1-i)*100);     
                             }
                         }
                     });
@@ -812,6 +823,7 @@ s
         if(this.types == 1) {
             AudioManager.getInstance().playSound('答对啦！你真棒~', false);
             UIHelp.showOverTip(1,'答对啦！你真棒～', '下一关', ()=>{}, ()=>{
+                AudioManager.getInstance().stopAll();
                 this.checkpoint++;
                 for(let i = 0; i < this.ItemNodeArr.length; i++) {
                     this.ItemNodeArr[i].removeFromParent();
@@ -851,6 +863,7 @@ s
             eventValue: JSON.stringify(this.eventvalue)
         });
         if(this.types == 1) {
+            AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             this.progressBar(this.checkpointsNum, this.checkpointsNum);
             UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', ()=>{}, ()=>{
@@ -879,6 +892,7 @@ s
                 UIManager.getInstance().closeUI(OverTips);
             });
         }else if(this.types == 2) {
+            AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧','查看分类结果',()=>{},()=>{
                 this.backButtonCallBack();
@@ -1212,7 +1226,7 @@ s
         var startX = -(num-1) * space / 2 + 80;
         if(this.types == 2) {
             space = 610;
-            startX = -(num-1) * space / 2 + 140;
+            startX = -(num-1) * space / 2 +80;
         }
         AudioManager.getInstance().playSound('sfx_casemove', false);
         for(let i = 0; i < num; i++) {

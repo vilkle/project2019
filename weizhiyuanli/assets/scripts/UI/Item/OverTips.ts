@@ -80,9 +80,9 @@ export class OverTips extends BaseUI {
         this.spine_false.node.active = type == 0;
         this.spine_true.node.active = type == 1;
         this.spine_complete.node.active = type == 2;
-        this.label_tip.string = str;
-        this.label_tip.node.active = type == 2;
-        this.label_tip.node.active = type == 1;
+        this.label_tip.string = str; 
+        this.label_tip.node.active = true
+       
         if(isButton) {
             this.button.active = true;
         }else {

@@ -2,8 +2,7 @@
   "__type__": "sp.SkeletonData",
   "_name": "guang",
   "_objFlags": 0,
-  "_native": "",
-  "skeletonJsonStr": "{\"skeleton\":{\"hash\":\"QgOAp10eHNfTvDfb5FnTtokeE4M\",\"spine\":\"3.7.92\",\"width\":1134.34,\"height\":905,\"images\":\"./images/\",\"audio\":\"./images/\"},\"bones\":[{\"name\":\"root\"},{\"name\":\"guang\",\"parent\":\"root\",\"x\":342.46,\"y\":659.04},{\"name\":\"guang_01\",\"parent\":\"guang\",\"length\":739.03,\"rotation\":-92.08,\"x\":116.38,\"y\":11.94},{\"name\":\"guang_02png\",\"parent\":\"guang\",\"length\":874.25,\"rotation\":-114.07,\"x\":-176.06,\"y\":-5.97}],\"slots\":[{\"name\":\"guang_01\",\"bone\":\"guang_01\",\"attachment\":\"guang_01\"},{\"name\":\"guang_02png\",\"bone\":\"guang_02png\",\"attachment\":\"guang_02png\"}],\"skins\":{\"default\":{\"guang_01\":{\"guang_01\":{\"x\":420.93,\"y\":-20.94,\"rotation\":92.08,\"width\":294,\"height\":905}},\"guang_02png\":{\"guang_02png\":{\"x\":462.99,\"y\":-80.81,\"rotation\":114.07,\"width\":937,\"height\":804}}}},\"animations\":{\"guang\":{\"slots\":{\"guang_01\":{\"attachment\":[{\"time\":0,\"name\":\"guang_01\"}]},\"guang_02png\":{\"attachment\":[{\"time\":0,\"name\":\"guang_02png\"}]}},\"bones\":{\"guang_01\":{\"rotate\":[{\"time\":0,\"angle\":0},{\"time\":2,\"angle\":4.75},{\"time\":4,\"angle\":0}],\"scale\":[{\"time\":0,\"x\":1,\"y\":1,\"curve\":[0.25,0,0.75,1]},{\"time\":2,\"x\":1.21,\"y\":1.442,\"curve\":[0.25,0,0.75,1]},{\"time\":4,\"x\":1,\"y\":1}]},\"guang_02png\":{\"rotate\":[{\"time\":0,\"angle\":0},{\"time\":2,\"angle\":-4.6},{\"time\":4,\"angle\":0}],\"scale\":[{\"time\":0,\"x\":1,\"y\":1,\"curve\":[0.25,0,0.75,1]},{\"time\":2,\"x\":1.289,\"y\":1.069,\"curve\":[0.25,0,0.75,1]},{\"time\":4,\"x\":1,\"y\":1}]}}}}}",
+  "_native": "raw-skeleton.json",
   "_skeletonJson": {
     "skeleton": {
       "hash": "QgOAp10eHNfTvDfb5FnTtokeE4M",
