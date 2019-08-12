@@ -2,6 +2,7 @@
 cc._RF.push(module, '9a06b1CbqFBYb5+vTxq7BHO', 'DaAnData', __filename);
 // scripts/Data/DaAnData.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var DaAnData = /** @class */ (function () {
     function DaAnData() {

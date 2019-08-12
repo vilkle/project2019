@@ -2,6 +2,7 @@
 cc._RF.push(module, 'b058arw+iJCUoMo5lRZ29ul', 'arrays', __filename);
 // scripts/collections/arrays.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var util = require("./util");
 /**

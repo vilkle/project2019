@@ -2,6 +2,7 @@
 cc._RF.push(module, 'd1e19w9UihLPqSppbSLUBq8', 'ShaderManager', __filename);
 // scripts/shader/ShaderManager.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ShaderLab_1 = require("./ShaderLab");
 var ShaderMaterial_1 = require("./ShaderMaterial");

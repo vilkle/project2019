@@ -821,8 +821,10 @@ s
 
     nextCheckPoint() {
         if(this.types == 1) {
-            AudioManager.getInstance().playSound('答对啦！你真棒~', false);
-            UIHelp.showOverTip(1,'答对啦！你真棒～', '下一关', ()=>{}, ()=>{
+            AudioManager.getInstance().stopAll();
+            UIHelp.showOverTip(1,'答对啦！你真棒～', '下一关', ()=>{
+                AudioManager.getInstance().playSound('答对啦！你真棒~', false);
+            }, ()=>{
                 AudioManager.getInstance().stopAll();
                 this.checkpoint++;
                 for(let i = 0; i < this.ItemNodeArr.length; i++) {
@@ -848,8 +850,10 @@ s
                 UIManager.getInstance().closeUI(OverTips);
             });
         }else if(this.types == 2) {
-            AudioManager.getInstance().playSound('做对啦！你真棒！试试其他办法吧~', false);
-            UIHelp.showOverTip(1,'做对啦！你真棒！试试其他办法吧～','试试其他办法',()=>{},()=>{
+            AudioManager.getInstance().stopAll();
+            UIHelp.showOverTip(1,'做对啦！你真棒！试试其他办法吧～','试试其他办法',()=>{
+                AudioManager.getInstance().playSound('做对啦！你真棒！试试其他办法吧~', false);
+            },()=>{
                 this.backButtonCallBack();
                 UIManager.getInstance().closeUI(OverTips);
             });
@@ -864,9 +868,10 @@ s
         });
         if(this.types == 1) {
             AudioManager.getInstance().stopAll()
-            AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             this.progressBar(this.checkpointsNum, this.checkpointsNum);
-            UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', ()=>{}, ()=>{
+            UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', ()=>{
+                AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
+            }, ()=>{
                 this.checkpoint = 1;
                 for(let i = 0; i < this.ItemNodeArr.length; i++) {
                     this.ItemNodeArr[i].removeFromParent();
@@ -893,9 +898,10 @@ s
             });
         }else if(this.types == 2) {
             AudioManager.getInstance().stopAll()
-            AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
-            UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧','查看分类结果',()=>{},()=>{
-                this.backButtonCallBack();
+            UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧','查看分类结果',()=>{ 
+                AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
+            },()=>{
+                this.backButtonCallBack(); 
                 UIManager.getInstance().closeUI(OverTips);
             });
         }

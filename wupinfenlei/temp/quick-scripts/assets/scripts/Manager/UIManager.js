@@ -2,6 +2,7 @@
 cc._RF.push(module, 'fcb706mngZPXIeAjofYaIuT', 'UIManager', __filename);
 // scripts/Manager/UIManager.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIManager = /** @class */ (function () {
     function UIManager() {

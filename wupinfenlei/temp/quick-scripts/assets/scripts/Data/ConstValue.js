@@ -2,6 +2,7 @@
 cc._RF.push(module, '66b51obcd1Mi4dcboc3fwIs', 'ConstValue', __filename);
 // scripts/Data/ConstValue.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ConstValue = /** @class */ (function () {
     function ConstValue() {

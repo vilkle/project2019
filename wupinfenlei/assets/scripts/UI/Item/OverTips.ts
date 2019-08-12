@@ -64,12 +64,18 @@ export class OverTips extends BaseUI {
             case 1:
                 Tools.playSpine(this.spine_true, "true", false, this.delayClose.bind(this));
                 AudioManager.getInstance().playSound("sfx_genpos", false, 1);
+                setTimeout(() => {
+                    this.callback();
+                }, 1500);
                 break;
             case 2:
                 Tools.playSpine(this.spine_complete, "in", false, function () {
                     Tools.playSpine(this.spine_complete, "stand", true, this.delayClose.bind(this));
                 }.bind(this));
                 AudioManager.getInstance().playSound("sfx_geupgrd", false, 1);
+                setTimeout(() => {
+                    this.callback();
+                }, 1500);
                 break;
         }
         let endPos = this.label_tip.node.position;
@@ -82,7 +88,7 @@ export class OverTips extends BaseUI {
     }
 
     delayClose(): void {
-        this.scheduleOnce(()=>{}, 0);
+        //this.scheduleOnce(()=>{this.callback()}, 0);
     }
     
     onClickClose(event?, customEventData?): void {

@@ -2,6 +2,7 @@
 cc._RF.push(module, '8ea11Tcb4BI7ojchoTKxYZm', 'ListenerType', __filename);
 // scripts/Data/ListenerType.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ListenerType = /** @class */ (function () {
     function ListenerType() {

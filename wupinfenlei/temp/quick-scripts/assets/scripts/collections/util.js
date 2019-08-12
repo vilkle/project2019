@@ -2,6 +2,7 @@
 cc._RF.push(module, 'c9cacB846tOCorK/Mt3JpJs', 'util', __filename);
 // scripts/collections/util.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var _hasOwnProperty = Object.prototype.hasOwnProperty;
 exports.has = function (obj, prop) {

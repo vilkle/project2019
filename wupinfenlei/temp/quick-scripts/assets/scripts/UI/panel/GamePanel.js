@@ -2,6 +2,23 @@
 cc._RF.push(module, '246c2OOkGlKHoa6ZJOVEHI+', 'GamePanel', __filename);
 // scripts/UI/panel/GamePanel.ts
 
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseUI_1 = require("../BaseUI");
 var NetWork_1 = require("../../Http/NetWork");
@@ -846,8 +863,10 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.nextCheckPoint = function () {
         var _this = this;
         if (this.types == 1) {
-            AudioManager_1.AudioManager.getInstance().playSound('答对啦！你真棒~', false);
-            UIHelp_1.UIHelp.showOverTip(1, '答对啦！你真棒～', '下一关', function () { }, function () {
+            AudioManager_1.AudioManager.getInstance().stopAll();
+            UIHelp_1.UIHelp.showOverTip(1, '答对啦！你真棒～', '下一关', function () {
+                AudioManager_1.AudioManager.getInstance().playSound('答对啦！你真棒~', false);
+            }, function () {
                 AudioManager_1.AudioManager.getInstance().stopAll();
                 _this.checkpoint++;
                 for (var i = 0; i < _this.ItemNodeArr.length; i++) {
@@ -874,8 +893,10 @@ var GamePanel = /** @class */ (function (_super) {
             });
         }
         else if (this.types == 2) {
-            AudioManager_1.AudioManager.getInstance().playSound('做对啦！你真棒！试试其他办法吧~', false);
-            UIHelp_1.UIHelp.showOverTip(1, '做对啦！你真棒！试试其他办法吧～', '试试其他办法', function () { }, function () {
+            AudioManager_1.AudioManager.getInstance().stopAll();
+            UIHelp_1.UIHelp.showOverTip(1, '做对啦！你真棒！试试其他办法吧～', '试试其他办法', function () {
+                AudioManager_1.AudioManager.getInstance().playSound('做对啦！你真棒！试试其他办法吧~', false);
+            }, function () {
                 _this.backButtonCallBack();
                 UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
             });
@@ -890,9 +911,10 @@ var GamePanel = /** @class */ (function (_super) {
         });
         if (this.types == 1) {
             AudioManager_1.AudioManager.getInstance().stopAll();
-            AudioManager_1.AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             this.progressBar(this.checkpointsNum, this.checkpointsNum);
-            UIHelp_1.UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', function () { }, function () {
+            UIHelp_1.UIHelp.showOverTip(2, '闯关成功，你真棒～', '重玩一次', function () {
+                AudioManager_1.AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
+            }, function () {
                 _this.checkpoint = 1;
                 for (var i = 0; i < _this.ItemNodeArr.length; i++) {
                     _this.ItemNodeArr[i].removeFromParent();
@@ -920,8 +942,9 @@ var GamePanel = /** @class */ (function (_super) {
         }
         else if (this.types == 2) {
             AudioManager_1.AudioManager.getInstance().stopAll();
-            AudioManager_1.AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
-            UIHelp_1.UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧', '查看分类结果', function () { }, function () {
+            UIHelp_1.UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧', '查看分类结果', function () {
+                AudioManager_1.AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
+            }, function () {
                 _this.backButtonCallBack();
                 UIManager_1.UIManager.getInstance().closeUI(OverTips_1.OverTips);
             });

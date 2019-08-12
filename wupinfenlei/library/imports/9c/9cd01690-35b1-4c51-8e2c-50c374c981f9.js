@@ -2,6 +2,7 @@
 cc._RF.push(module, '9cd01aQNbFMUY4sUMN0yYH5', 'NetWork');
 // scripts/Http/NetWork.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ConstValue_1 = require("../Data/ConstValue");
 var UIManager_1 = require("../Manager/UIManager");

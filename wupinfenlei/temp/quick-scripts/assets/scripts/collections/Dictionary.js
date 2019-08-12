@@ -2,6 +2,7 @@
 cc._RF.push(module, 'cc667V2/zFJtI7/GBev9gvA', 'Dictionary', __filename);
 // scripts/collections/Dictionary.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var util = require("./util");
 var Dictionary = /** @class */ (function () {
