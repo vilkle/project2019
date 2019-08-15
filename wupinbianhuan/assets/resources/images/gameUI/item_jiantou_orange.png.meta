@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "6a6ae1f0-418b-47d2-a0ed-16c0e5b58c31",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "item_jiantou_orange": {
+      "ver": "1.0.4",
+      "uuid": "dcf6ffc9-81bc-4f51-aaa8-44d9e82ebb78",
+      "rawTextureUuid": "6a6ae1f0-418b-47d2-a0ed-16c0e5b58c31",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 108,
+      "height": 56,
+      "rawWidth": 108,
+      "rawHeight": 56,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

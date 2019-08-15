@@ -151,6 +151,7 @@ export default class GamePanel extends BaseUI {
     }
 
     magic() {
+        this.bubble.scale = 0
         this.goods.active = false
         this.goods.setPosition(cc.v2(0, -101))
         if(this.goodsArr[this.checkpointIndex-1] == 0) {

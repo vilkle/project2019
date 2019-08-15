@@ -18,12 +18,12 @@ export default class TeacherPanel extends BaseUI {
     private toggleContainer : cc.Toggle[] = [];
     @property(cc.Button)
     private button : cc.Button = null;
-
+    private touchEnable: boolean = true;
     // onLoad () {}
 
     start() {
-        this.getNet();
         DaAnData.getInstance().types = 1;
+        this.getNet();
     }
 
     onToggleContainer(toggle) {
@@ -42,14 +42,14 @@ export default class TeacherPanel extends BaseUI {
     }
 
     setPanel() {//设置教师端界面
-
+        this.toggleContainer[DaAnData.getInstance().types-1].isChecked = true
     }
 
     //上传课件按钮
     onBtnSaveClicked() {
-        //UIManager.getInstance().showUI(SubmissionPanel);
-        UIManager.getInstance().showUI(GamePanel, ()=>{
-            ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1});    
+        UIManager.getInstance().showUI(GamePanel, null,() => {
+            ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
+            cc.log('------')
         });
     }
 
@@ -59,7 +59,6 @@ export default class TeacherPanel extends BaseUI {
             if (!err) {
                 let res = response;
                 if (Array.isArray(res.data)) {
-                    this.setPanel();
                     return;
                 }
                 let content = JSON.parse(res.data.courseware_content);
@@ -68,9 +67,14 @@ export default class TeacherPanel extends BaseUI {
                     this.ClearNet();
                 } else {
                     if (content != null) {
+                        if(content.types) {
+                            DaAnData.getInstance().types = content.types
+                        }else {
+                            console.error('网络请求content.types的值为空')
+                        }
                         this.setPanel();
                     } else {
-                        this.setPanel();
+                        console.error('网络请求数据出错')
                     }
                 }
             }

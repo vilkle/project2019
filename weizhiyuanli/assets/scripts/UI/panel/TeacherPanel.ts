@@ -129,18 +129,24 @@ export default class TeacherPanel extends BaseUI {
                 const rex = /^[0-5]{1,4}$/
                 let num = parseInt(editbox.string)
                 let sum = this.getSum(num)
-                if(rex.test(editbox.string)) {
+                if(rex.test(num.toString())) {
                     if(sum<=14) {
-                        DaAnData.getInstance().countsArr[i] = num
-                        let node = this.itemNodeArr[i].getChildByName('rightAnswerNode')
-                        let ge = num % 10
-                        let shi = Math.floor(num/10) % 10
-                        let bai = Math.floor(num/100) % 10
-                        let qian = Math.floor(num/1000) % 10
-                        node.getChildByName('qian').getComponent(cc.Label).string = qian.toString()
-                        node.getChildByName('bai').getComponent(cc.Label).string = bai.toString()
-                        node.getChildByName('shi').getComponent(cc.Label).string = shi.toString()
-                        node.getChildByName('ge').getComponent(cc.Label).string = ge.toString()
+                        if(sum==0) {
+                            editbox.string = ''
+                            editbox.node.getChildByName('PLACEHOLDER_LABEL').active = true
+                        }else {
+                            editbox.string = num.toString()
+                            DaAnData.getInstance().countsArr[i] = num
+                            let node = this.itemNodeArr[i].getChildByName('rightAnswerNode')
+                            let ge = num % 10
+                            let shi = Math.floor(num/10) % 10
+                            let bai = Math.floor(num/100) % 10
+                            let qian = Math.floor(num/1000) % 10
+                            node.getChildByName('qian').getComponent(cc.Label).string = qian.toString()
+                            node.getChildByName('bai').getComponent(cc.Label).string = bai.toString()
+                            node.getChildByName('shi').getComponent(cc.Label).string = shi.toString()
+                            node.getChildByName('ge').getComponent(cc.Label).string = ge.toString()
+                        }
                     }else {
                         editbox.string = ''
                         editbox.node.getChildByName('PLACEHOLDER_LABEL').active = true

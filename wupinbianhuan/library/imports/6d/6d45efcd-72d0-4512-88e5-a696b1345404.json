@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "item_liubian_highlight",
+    "texture": "a7e8a3d0-6c8e-4c86-b664-fb8a74aa2cef",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      111,
+      100
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      111,
+      100
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

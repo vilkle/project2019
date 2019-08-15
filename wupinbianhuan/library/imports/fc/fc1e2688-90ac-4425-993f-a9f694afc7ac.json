@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "item_jiantou_blank",
+    "texture": "94d7126c-43c9-461d-b933-66ad1d6957ad",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      108,
+      56
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      108,
+      56
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

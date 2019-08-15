@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "19249515-d1da-4e59-a573-ba707c5e3a47",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "item_bajiao_yellow": {
+      "ver": "1.0.4",
+      "uuid": "c98ecb90-96ff-4674-b2ca-93fd2017b08f",
+      "rawTextureUuid": "19249515-d1da-4e59-a573-ba707c5e3a47",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 110,
+      "height": 110,
+      "rawWidth": 110,
+      "rawHeight": 110,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

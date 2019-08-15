@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "item_jiantou_orange",
+    "texture": "6a6ae1f0-418b-47d2-a0ed-16c0e5b58c31",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      108,
+      56
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      108,
+      56
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

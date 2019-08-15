@@ -694,6 +694,7 @@ s
                             this.touchNode.active = false;
                         }else {
                             if(this.types == 1) {
+                                AudioManager.getInstance().stopAll()
                                 AudioManager.getInstance().playSound('这好像不是动物哦~', false);
                             }
                             this.touchNode.active = false;
@@ -720,6 +721,7 @@ s
                         this.touchNode.active = false;
                     }else {
                         if(this.types == 1) {
+                            AudioManager.getInstance().stopAll()
                             AudioManager.getInstance().playSound('这好像不是食物哦~', false);
                         }
                         this.touchNode.active = false;
@@ -746,6 +748,7 @@ s
                         this.touchNode.active = false;
                     }else {
                         if(this.types == 1) {
+                            AudioManager.getInstance().stopAll()
                             AudioManager.getInstance().playSound('这好像不是文具哦~', false);
                         }
                         this.touchNode.active = false;
@@ -772,6 +775,7 @@ s
                             this.touchNode.active = false;
                         }else {
                             if(this.types == 1) {
+                                AudioManager.getInstance().stopAll()
                                 AudioManager.getInstance().playSound('这好像不是衣服哦~', false);
                             }
                             this.touchNode.active = false;

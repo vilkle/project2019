@@ -1,0 +1,741 @@
+2019-08-14T06:04:27.261Z - normal: Load ~/.CocosCreator/settings.json
+2019-08-14T06:04:27.337Z - normal: Initializing Asset Database
+2019-08-14T06:04:27.340Z - normal: checking language setting...
+2019-08-14T06:04:27.341Z - normal: Language: zh
+2019-08-14T06:04:28.278Z - success: preview server running at http://localhost:7456
+2019-08-14T06:04:28.325Z - success: protocol editor-framework registered
+2019-08-14T06:04:28.326Z - success: protocol app registered
+2019-08-14T06:04:28.326Z - success: protocol theme registered
+2019-08-14T06:04:28.326Z - success: protocol packages registered
+2019-08-14T06:04:28.326Z - success: protocol uuid registerred
+2019-08-14T06:04:28.326Z - success: protocol db registerred
+2019-08-14T06:04:28.327Z - success: protocol thumbnail registerred
+2019-08-14T06:04:28.327Z - success: protocol unpack registerred
+2019-08-14T06:04:28.327Z - success: protocol disable-commonjs registerred
+2019-08-14T06:04:28.410Z - normal: connected!
+2019-08-14T06:04:28.412Z - normal: Check project /Users/xes/Desktop/hub/wupinbianhuan
+2019-08-14T06:04:28.414Z - normal: Initializing project /Users/xes/Desktop/hub/wupinbianhuan
+2019-08-14T06:04:28.842Z - normal: Initializing Cocos2d
+2019-08-14T06:04:29.683Z - normal: Initializing engine extends
+2019-08-14T06:04:29.773Z - success: asset-db-debugger loaded
+2019-08-14T06:04:29.775Z - success: baidu-adapter loaded
+2019-08-14T06:04:29.776Z - success: color-picker loaded
+2019-08-14T06:04:29.883Z - success: fb-audience-network loaded
+2019-08-14T06:04:29.943Z - success: fb-live-stream loaded
+2019-08-14T06:04:29.947Z - success: google-play-instant loaded
+2019-08-14T06:04:29.953Z - success: huawei-runtime loaded
+2019-08-14T06:04:30.236Z - success: cpk-publish loaded
+2019-08-14T06:04:30.237Z - success: jsb-adapter loaded
+2019-08-14T06:04:30.243Z - success: oppo-runtime loaded
+2019-08-14T06:04:30.262Z - success: package-manager loaded
+2019-08-14T06:04:30.399Z - success: qqplay-adapter loaded
+2019-08-14T06:04:30.402Z - success: runtime-dev-tools loaded
+2019-08-14T06:04:30.421Z - success: sdkbox loaded
+2019-08-14T06:04:30.442Z - success: tester loaded
+2019-08-14T06:04:30.469Z - success: ui-grid loaded
+2019-08-14T06:04:30.487Z - success: ui-kit-preview-extra loaded
+2019-08-14T06:04:30.506Z - success: ui-kit-preview loaded
+2019-08-14T06:04:30.525Z - success: ui-kit loaded
+2019-08-14T06:04:30.544Z - success: ui-tree loaded
+2019-08-14T06:04:30.549Z - success: vivo-runtime loaded
+2019-08-14T06:04:30.550Z - success: weapp-adapter loaded
+2019-08-14T06:04:30.551Z - success: xiaomi-adapter loaded
+2019-08-14T06:04:30.611Z - success: assets loaded
+2019-08-14T06:04:30.629Z - success: builder loaded
+2019-08-14T06:04:30.951Z - success: cocos-services loaded
+2019-08-14T06:04:30.972Z - success: console loaded
+2019-08-14T06:04:31.010Z - success: fb-instant-games loaded
+2019-08-14T06:04:31.012Z - success: google-instant-games loaded
+2019-08-14T06:04:31.031Z - success: hierarchy loaded
+2019-08-14T06:04:31.049Z - success: inspector loaded
+2019-08-14T06:04:31.051Z - success: keystore loaded
+2019-08-14T06:04:31.072Z - success: node-library loaded
+2019-08-14T06:04:31.074Z - success: package-asset loaded
+2019-08-14T06:04:31.075Z - success: preferences loaded
+2019-08-14T06:04:31.094Z - success: project-exporter loaded
+2019-08-14T06:04:31.146Z - success: project-importer loaded
+2019-08-14T06:04:31.163Z - success: project-settings loaded
+2019-08-14T06:04:31.186Z - success: scene loaded
+2019-08-14T06:04:31.188Z - success: simulator-debugger loaded
+2019-08-14T06:04:31.190Z - success: sprite-editor loaded
+2019-08-14T06:04:31.211Z - success: store loaded
+2019-08-14T06:04:31.240Z - success: timeline loaded
+2019-08-14T06:04:31.246Z - success: xiaomi-runtime loaded
+2019-08-14T06:04:31.268Z - success: auto_deploy loaded
+2019-08-14T06:04:32.719Z - info: Cocos Services load base data!
+2019-08-14T06:04:33.996Z - normal: Loading packages
+2019-08-14T06:04:34.057Z - normal: Watching packages
+2019-08-14T06:04:34.223Z - normal: Run Application
+2019-08-14T08:42:00.040Z - warn: The Asset used by node "blank" is missing. Detailed information:
+Node path: "materialNode/New Node/blank"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.043Z - warn: The Asset used by node "light" is missing. Detailed information:
+Node path: "materialNode/New Node/light"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.045Z - warn: The Asset used by node "sprite" is missing. Detailed information:
+Node path: "materialNode/New Node/sprite"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.045Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "materialNode/New Node"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.046Z - warn: The Asset used by node "blank" is missing. Detailed information:
+Node path: "materialNode/New Node/blank"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.047Z - warn: The Asset used by node "light" is missing. Detailed information:
+Node path: "materialNode/New Node/light"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.049Z - warn: The Asset used by node "sprite" is missing. Detailed information:
+Node path: "materialNode/New Node/sprite"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.049Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "materialNode/New Node"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.053Z - warn: The Asset used by node "blank" is missing. Detailed information:
+Node path: "materialNode/New Node/blank"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.056Z - warn: The Asset used by node "light" is missing. Detailed information:
+Node path: "materialNode/New Node/light"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.070Z - warn: The Asset used by node "sprite" is missing. Detailed information:
+Node path: "materialNode/New Node/sprite"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.072Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "materialNode/New Node"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.074Z - warn: The Asset used by node "blank" is missing. Detailed information:
+Node path: "materialNode/New Node/blank"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.075Z - warn: The Asset used by node "light" is missing. Detailed information:
+Node path: "materialNode/New Node/light"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.078Z - warn: The Asset used by node "sprite" is missing. Detailed information:
+Node path: "materialNode/New Node/sprite"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.079Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "materialNode/New Node"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T08:42:00.079Z - warn: The Asset used by node "materialNode" is missing. Detailed information:
+Node path: "materialNode"
+Missing uuid: "2cbc7fd6-11e5-4fb0-8016-c156eec69feb"
+
+2019-08-14T09:51:45.901Z - warn: The Asset used by component "TeacherPanel" in prefab "TeacherPanel.prefab" is missing. Detailed information:
+Node path: "TeacherPanel"
+Asset url: "db://assets/resources/prefab/ui/panel/TeacherPanel.prefab"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:45.918Z - warn: The Asset used by component "TeacherPanel" is missing. Detailed information:
+Node path: "TeacherPanel"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.021Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.021Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.022Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.022Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.023Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.024Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.024Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.024Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.025Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.025Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.025Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.025Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.025Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.026Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.026Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.026Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.027Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.027Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.027Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.027Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.028Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.028Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.028Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.029Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.029Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.029Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.030Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.030Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.033Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.033Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.034Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.034Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.035Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.035Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.035Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.035Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.036Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.036Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.036Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.037Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.037Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.037Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.038Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.038Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.038Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.039Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.039Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.039Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.040Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.041Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.042Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.042Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.042Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.043Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.043Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.044Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.044Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.044Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.045Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.045Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.045Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.045Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.046Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.046Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.049Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.049Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.049Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.050Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.050Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.050Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.051Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.052Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.052Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.052Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.053Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.053Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.053Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.053Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.054Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.054Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.054Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.055Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.055Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.055Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.056Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.056Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.056Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.057Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.057Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.057Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.057Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.057Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.058Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.058Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.058Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.058Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.058Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.058Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.059Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.059Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.059Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.059Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.059Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.060Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.060Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.060Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.060Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.060Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.061Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.061Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.061Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.061Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.062Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.062Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.063Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.063Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.064Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.064Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.064Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.064Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.065Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.065Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.065Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.065Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.065Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.066Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.066Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.066Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.067Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.067Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.069Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.070Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.070Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.070Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.070Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.071Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.071Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.071Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.072Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.072Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.072Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.073Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.073Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.073Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.073Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.074Z - warn: The Asset used by node "New Sprite" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node/New Sprite"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.074Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.074Z - warn: The Asset used by node "New Node" is missing. Detailed information:
+Node path: "singleTeacher/New Node"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+
+2019-08-14T09:51:46.075Z - warn: The Asset used by node "singleTeacher" is missing. Detailed information:
+Node path: "singleTeacher"
+Missing uuid: "fb3ed5c0-ee0a-4c40-be9f-eee837ecc21f"
+

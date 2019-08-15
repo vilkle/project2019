@@ -6,92 +6,92 @@
   },
   "e851e89b-faa2-4484-bea6-5c01dd9f06e2": {
     "asset": 1562594157000,
-    "meta": 1565576224979,
+    "meta": 1565762322570,
     "relativePath": "image/default_btn_normal.png"
   },
   "71561142-4c83-4933-afca-cb7a17f67053": {
     "asset": 1562594157000,
-    "meta": 1565576224977,
+    "meta": 1565762322566,
     "relativePath": "image/default_btn_disabled.png"
   },
   "edd215b9-2796-4a05-aaf5-81f96c9281ce": {
     "asset": 1562594157000,
-    "meta": 1565576224993,
+    "meta": 1565762322583,
     "relativePath": "image/default_editbox_bg.png"
   },
   "b43ff3c2-02bb-4874-81f7-f2dea6970f18": {
     "asset": 1562594157000,
-    "meta": 1565576224996,
+    "meta": 1565762322584,
     "relativePath": "image/default_btn_pressed.png"
   },
   "d81ec8ad-247c-4e62-aa3c-d35c4193c7af": {
     "asset": 1562594157000,
-    "meta": 1565576225008,
+    "meta": 1565762322595,
     "relativePath": "image/default_panel.png"
   },
   "99170b0b-d210-46f1-b213-7d9e3f23098a": {
     "asset": 1562594157000,
-    "meta": 1565576225011,
+    "meta": 1565762322594,
     "relativePath": "image/default_progressbar_bg.png"
   },
   "cfef78f1-c8df-49b7-8ed0-4c953ace2621": {
     "asset": 1562594157000,
-    "meta": 1565576225020,
+    "meta": 1565762322607,
     "relativePath": "image/default_progressbar.png"
   },
   "567dcd80-8bf4-4535-8a5a-313f1caf078a": {
     "asset": 1562594157000,
-    "meta": 1565576225023,
+    "meta": 1565762322610,
     "relativePath": "image/default_radio_button_off.png"
   },
   "9d60001f-b5f4-4726-a629-2659e3ded0b8": {
     "asset": 1562594157000,
-    "meta": 1565576225033,
+    "meta": 1565762322619,
     "relativePath": "image/default_radio_button_on.png"
   },
   "4bab67cb-18e6-4099-b840-355f0473f890": {
     "asset": 1562594157000,
-    "meta": 1565576225035,
+    "meta": 1565762322621,
     "relativePath": "image/default_scrollbar_bg.png"
   },
   "617323dd-11f4-4dd3-8eec-0caf6b3b45b9": {
     "asset": 1562594157000,
-    "meta": 1565576225055,
+    "meta": 1565762322631,
     "relativePath": "image/default_scrollbar_vertical_bg.png"
   },
   "d6d3ca85-4681-47c1-b5dd-d036a9d39ea2": {
     "asset": 1562594157000,
-    "meta": 1565576225054,
+    "meta": 1565762322634,
     "relativePath": "image/default_scrollbar_vertical.png"
   },
   "0291c134-b3da-4098-b7b5-e397edbe947f": {
     "asset": 1562594157000,
-    "meta": 1565576225065,
+    "meta": 1565762322640,
     "relativePath": "image/default_scrollbar.png"
   },
   "0275e94c-56a7-410f-bd1a-fc7483f7d14a": {
     "asset": 1562594157000,
-    "meta": 1565576225064,
+    "meta": 1565762322643,
     "relativePath": "image/default_sprite_splash.png"
   },
   "6e056173-d285-473c-b206-40a7fff5386e": {
     "asset": 1562594157000,
-    "meta": 1565576225074,
+    "meta": 1565762322652,
     "relativePath": "image/default_sprite.png"
   },
   "73a0903d-d80e-4e3c-aa67-f999543c08f5": {
     "asset": 1562594157000,
-    "meta": 1565576225076,
+    "meta": 1565762322654,
     "relativePath": "image/default_toggle_checkmark.png"
   },
   "c25b9d50-c8fc-4d27-beeb-6e7c1f2e5c0f": {
     "asset": 1562594157000,
-    "meta": 1565576225086,
+    "meta": 1565762322668,
     "relativePath": "image/default_toggle_disabled.png"
   },
   "d29077ba-1627-4a72-9579-7b56a235340c": {
     "asset": 1562594157000,
-    "meta": 1565576225085,
+    "meta": 1565762322666,
     "relativePath": "image/default_toggle_normal.png"
   },
   "fc09f9bd-2cce-4605-b630-8145ef809ed6": {
@@ -101,12 +101,12 @@
   },
   "2be36297-9abb-4fee-8049-9ed5e271da8a": {
     "asset": 1562594157000,
-    "meta": 1565576225092,
+    "meta": 1565762322677,
     "relativePath": "misc/default_video.mp4"
   },
   "b181c1e4-0a72-4a91-bfb0-ae6f36ca60bd": {
     "asset": 1562594157000,
-    "meta": 1565576225094,
+    "meta": 1565762322681,
     "relativePath": "image/default_toggle_pressed.png"
   },
   "f6e6dd15-71d1-4ffe-ace7-24fd39942c05": {
@@ -121,17 +121,17 @@
   },
   "b8223619-7e38-47c4-841f-9160c232495a": {
     "asset": 1562594157000,
-    "meta": 1565576225190,
+    "meta": 1565762322777,
     "relativePath": "obsolete/atom.plist"
   },
   "b2687ac4-099e-403c-a192-ff477686f4f5": {
     "asset": 1562594157000,
-    "meta": 1565576225190,
+    "meta": 1565762322777,
     "relativePath": "particle/atom.plist"
   },
   "8a96b965-2dc0-4e03-aa90-3b79cb93b5b4": {
     "asset": 1562594157000,
-    "meta": 1565576225106,
+    "meta": 1565762322695,
     "relativePath": "obsolete/atom.png"
   },
   "ae6c6c98-11e4-452f-8758-75f5c6a56e83": {
@@ -141,107 +141,107 @@
   },
   "d0a82d39-bede-46c4-b698-c81ff0dedfff": {
     "asset": 1562594157000,
-    "meta": 1565576225108,
+    "meta": 1565762322698,
     "relativePath": "particle/atom.png"
   },
   "972b9a4d-47ee-4c74-b5c3-61d8a69bc29f": {
     "asset": 1562594157000,
-    "meta": 1565576225115,
+    "meta": 1565762322705,
     "relativePath": "prefab/button.prefab"
   },
   "2c937608-2562-40ea-b264-7395df6f0cea": {
     "asset": 1562594157000,
-    "meta": 1565576225119,
+    "meta": 1565762322706,
     "relativePath": "prefab/canvas.prefab"
   },
   "61aeb05b-3b32-452b-8eed-2b76deeed554": {
     "asset": 1562594157000,
-    "meta": 1565576225122,
+    "meta": 1565762322713,
     "relativePath": "prefab/editbox.prefab"
   },
   "27756ebb-3d33-44b0-9b96-e858fadd4dd4": {
     "asset": 1562594157000,
-    "meta": 1565576225128,
+    "meta": 1565762322707,
     "relativePath": "prefab/label.prefab"
   },
   "ca8401fe-ad6e-41a8-bd46-8e3e4e9945be": {
     "asset": 1562594157000,
-    "meta": 1565576225132,
+    "meta": 1565762322718,
     "relativePath": "prefab/pageview.prefab"
   },
   "785a442c-3ceb-45be-a46e-7317f625f3b9": {
     "asset": 1562594157000,
-    "meta": 1565576225130,
+    "meta": 1565762322717,
     "relativePath": "prefab/layout.prefab"
   },
   "cd33edea-55f5-46c2-958d-357a01384a36": {
     "asset": 1562594157000,
-    "meta": 1565576225134,
+    "meta": 1565762322722,
     "relativePath": "prefab/particlesystem.prefab"
   },
   "5965ffac-69da-4b55-bcde-9225d0613c28": {
     "asset": 1562594157000,
-    "meta": 1565576225136,
+    "meta": 1565762322721,
     "relativePath": "prefab/progressBar.prefab"
   },
   "4a37dd57-78cd-4cec-aad4-f11a73d12b63": {
     "asset": 1562594157000,
-    "meta": 1565576225138,
+    "meta": 1565762322726,
     "relativePath": "prefab/richtext.prefab"
   },
   "32044bd2-481f-4cf1-a656-e2b2fb1594eb": {
     "asset": 1562594157000,
-    "meta": 1565576225140,
+    "meta": 1565762322727,
     "relativePath": "prefab/scrollview.prefab"
   },
   "0004d1cf-a0ad-47d8-ab17-34d3db9d35a3": {
     "asset": 1562594157000,
-    "meta": 1565576225142,
+    "meta": 1565762322730,
     "relativePath": "prefab/slider.prefab"
   },
   "1f55e3be-b89b-4b79-88de-47fd31018044": {
     "asset": 1562594157000,
-    "meta": 1565576225144,
+    "meta": 1565762322731,
     "relativePath": "prefab/sprite_splash.prefab"
   },
   "96083d03-c332-4a3f-9386-d03e2d19e8ee": {
     "asset": 1562594157000,
-    "meta": 1565576225146,
+    "meta": 1565762322736,
     "relativePath": "prefab/sprite.prefab"
   },
   "7de03a80-4457-438d-95a7-3e7cdffd6086": {
     "asset": 1562594157000,
-    "meta": 1565576225148,
+    "meta": 1565762322735,
     "relativePath": "prefab/tiledmap.prefab"
   },
   "0e42ba95-1fa1-46aa-b2cf-143cd1bcee2c": {
     "asset": 1562594157000,
-    "meta": 1565576225149,
+    "meta": 1565762322739,
     "relativePath": "prefab/tiledtile.prefab"
   },
   "0d784963-d024-4ea6-a7db-03be0ad63010": {
     "asset": 1562594157000,
-    "meta": 1565576225151,
+    "meta": 1565762322740,
     "relativePath": "prefab/toggle.prefab"
   },
   "bf0a434c-84dd-4a8e-a08a-7a36f180cc75": {
     "asset": 1562594157000,
-    "meta": 1565576225153,
+    "meta": 1565762322745,
     "relativePath": "prefab/toggleContainer.prefab"
   },
   "d1b8be49-b0a0-435c-83b7-552bed4bbe35": {
     "asset": 1562594157000,
-    "meta": 1565576225155,
+    "meta": 1565762322746,
     "relativePath": "prefab/toggleGroup.prefab"
   },
   "232d2782-c4bd-4bb4-9e01-909f03d6d3b9": {
     "asset": 1562594157000,
-    "meta": 1565576225156,
+    "meta": 1565762322749,
     "relativePath": "prefab/videoplayer.prefab"
   },
   "8c5001fd-07ee-4a4b-a8a0-63e15195e94d": {
     "asset": 1562594157000,
-    "meta": 1565576225158,
+    "meta": 1565762322749,
     "relativePath": "prefab/webview.prefab"
   },
   "5286b2e2-ca63-478d-aa0b-df19178f1921": {
@@ -370,7 +370,7 @@
     "relativePath": "resources/atlas/overTips/false/false.json"
   },
   "1babe9ab-342f-433c-9c4e-e9aa15e61eb4": {
-    "asset": 1565339125428,
+    "asset": 1565751503514,
     "meta": 1564453961185,
     "relativePath": "resources/audio"
   },
@@ -1494,35 +1494,10 @@
     "meta": 1565576227688,
     "relativePath": "resources/audio/做对啦！你真棒！试试其他办法吧~.mp3"
   },
-  "cf549c86-8b93-4e01-9625-7b26cdcbd497": {
-    "asset": 1564650386000,
-    "meta": 1565576227692,
-    "relativePath": "resources/audio/把这些物品分类整理，并拖到对应区域内。.mp3"
-  },
   "33af860f-463d-4cef-a86b-8b8fac11b093": {
     "asset": 1564650694000,
     "meta": 1565576227695,
     "relativePath": "resources/audio/答对啦！你真棒~.mp3"
-  },
-  "5bcb03e6-96bd-4566-bdda-a7e6e3c609c7": {
-    "asset": 1564650408000,
-    "meta": 1565576227699,
-    "relativePath": "resources/audio/这好像不是动物哦~.mp3"
-  },
-  "c0b3500a-6cb0-4d14-90ec-9b3d43dfba81": {
-    "asset": 1564650424000,
-    "meta": 1565576227703,
-    "relativePath": "resources/audio/这好像不是文具哦~.mp3"
-  },
-  "dd93d273-d335-4141-8d65-205c8c3e6208": {
-    "asset": 1564650446000,
-    "meta": 1565576227707,
-    "relativePath": "resources/audio/这好像不是衣服哦~.mp3"
-  },
-  "f6b76fb3-aa0c-4954-870e-d8fbb03ffeaa": {
-    "asset": 1564650434000,
-    "meta": 1565576227711,
-    "relativePath": "resources/audio/这好像不是食物哦~.mp3"
   },
   "9139c62a-f10a-4b8f-8c89-b55c08155353": {
     "asset": 1564650642000,
@@ -1584,24 +1559,49 @@
     "meta": 1565576230219,
     "relativePath": "scripts/UI/panel/TeacherPanel.ts"
   },
-  "246c238e-9069-4a1e-86ba-64939510723e": {
-    "asset": 1565577072861,
-    "meta": 1565577079810,
-    "relativePath": "scripts/UI/panel/GamePanel.ts"
-  },
   "d402bb72-7a93-4939-b703-49490b51072b": {
     "asset": 1565578059122,
     "meta": 1565578061267,
     "relativePath": "scripts/UI/Item/OverTips.ts"
   },
+  "6ef508cb-4bc8-4369-9664-41b1ea5fe8ae": {
+    "asset": 1565696631527,
+    "meta": 1565751504544,
+    "relativePath": "resources/audio/把这些物品分类整理，并拖到对应区域内。.mp3"
+  },
+  "8eebc8bd-b004-4256-9b3c-14d25a305fce": {
+    "asset": 1565696638809,
+    "meta": 1565751504549,
+    "relativePath": "resources/audio/这好像不是动物哦~.mp3"
+  },
+  "deeed504-6dd4-4cf2-8d09-9601193f5fde": {
+    "asset": 1565696649906,
+    "meta": 1565751504564,
+    "relativePath": "resources/audio/这好像不是文具哦~.mp3"
+  },
+  "4e214a26-e1b9-4833-b96a-e422078c1855": {
+    "asset": 1565696654315,
+    "meta": 1565751504569,
+    "relativePath": "resources/audio/这好像不是衣服哦~.mp3"
+  },
+  "dbd484b6-8cc2-4927-9ce6-ef7d5965a137": {
+    "asset": 1565696658539,
+    "meta": 1565751504579,
+    "relativePath": "resources/audio/这好像不是食物哦~.mp3"
+  },
+  "246c238e-9069-4a1e-86ba-64939510723e": {
+    "asset": 1565753027370,
+    "meta": 1565753032724,
+    "relativePath": "scripts/UI/panel/GamePanel.ts"
+  },
   "a75e94dc-05bd-44a5-bdab-af7a2bed76a7": {
-    "asset": 1565578404975,
-    "meta": 1565578404990,
+    "asset": 1565753585154,
+    "meta": 1565753585164,
     "relativePath": "scene/Teacher.fire"
   },
   "66b51a1b-71dd-4c8b-875c-6e87377f022c": {
-    "asset": 1565578402282,
-    "meta": 1565578403854,
+    "asset": 1565753577501,
+    "meta": 1565753578548,
     "relativePath": "scripts/Data/ConstValue.ts"
   }
 }

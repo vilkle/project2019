@@ -1,0 +1,109 @@
+{
+  "version": "1.1.1",
+  "windows": {
+    "main": {
+      "main": true,
+      "url": "app://editor/index.html",
+      "windowType": "dockable",
+      "x": -1920,
+      "y": -169,
+      "width": 1920,
+      "height": 1057,
+      "layout": {
+        "children": [
+          {
+            "children": [
+              {
+                "active": 0,
+                "children": [
+                  "hierarchy"
+                ],
+                "height": 486.984375,
+                "type": "panel",
+                "width": 330
+              },
+              {
+                "active": 0,
+                "children": [
+                  "assets"
+                ],
+                "height": 486,
+                "type": "panel",
+                "width": 330
+              }
+            ],
+            "height": 975,
+            "type": "dock-v",
+            "width": 330
+          },
+          {
+            "children": [
+              {
+                "active": 0,
+                "children": [
+                  "scene"
+                ],
+                "height": 577,
+                "type": "panel",
+                "width": 1094
+              },
+              {
+                "active": 0,
+                "children": [
+                  "console",
+                  "timeline"
+                ],
+                "height": 396,
+                "type": "panel",
+                "width": 1094
+              }
+            ],
+            "height": 975,
+            "type": "dock-v",
+            "width": 1094
+          },
+          {
+            "active": 0,
+            "children": [
+              "inspector",
+              "cocos-services"
+            ],
+            "height": 975,
+            "type": "panel",
+            "width": 492
+          }
+        ],
+        "type": "dock-h"
+      },
+      "panels": [
+        "hierarchy",
+        "assets",
+        "console",
+        "timeline",
+        "inspector",
+        "cocos-services",
+        "scene"
+      ]
+    }
+  },
+  "panels": {
+    "sprite-editor": {
+      "x": -1699,
+      "y": 134,
+      "width": 500,
+      "height": 522
+    },
+    "project-settings": {
+      "x": -1319,
+      "y": -35,
+      "width": 584,
+      "height": 548
+    },
+    "builder": {
+      "x": -772,
+      "y": 8,
+      "width": 671,
+      "height": 722
+    }
+  }
+}

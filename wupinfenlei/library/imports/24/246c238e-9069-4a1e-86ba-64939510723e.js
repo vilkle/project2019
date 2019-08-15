@@ -727,6 +727,7 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                         else {
                             if (_this.types == 1) {
+                                AudioManager_1.AudioManager.getInstance().stopAll();
                                 AudioManager_1.AudioManager.getInstance().playSound('这好像不是动物哦~', false);
                             }
                             _this.touchNode.active = false;
@@ -754,6 +755,7 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                         else {
                             if (_this.types == 1) {
+                                AudioManager_1.AudioManager.getInstance().stopAll();
                                 AudioManager_1.AudioManager.getInstance().playSound('这好像不是食物哦~', false);
                             }
                             _this.touchNode.active = false;
@@ -781,6 +783,7 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                         else {
                             if (_this.types == 1) {
+                                AudioManager_1.AudioManager.getInstance().stopAll();
                                 AudioManager_1.AudioManager.getInstance().playSound('这好像不是文具哦~', false);
                             }
                             _this.touchNode.active = false;
@@ -808,6 +811,7 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                         else {
                             if (_this.types == 1) {
+                                AudioManager_1.AudioManager.getInstance().stopAll();
                                 AudioManager_1.AudioManager.getInstance().playSound('这好像不是衣服哦~', false);
                             }
                             _this.touchNode.active = false;

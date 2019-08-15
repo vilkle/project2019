@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "item_liubian_purple",
+    "texture": "221d0401-c814-498a-ba62-0025133066a2",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      112,
+      100
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      112,
+      100
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

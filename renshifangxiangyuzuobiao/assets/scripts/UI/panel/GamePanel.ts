@@ -26,12 +26,15 @@ export default class GamePanel extends BaseUI {
     @property(cc.Node)
     private touchSpine : cc.Node = null;
     @property(cc.Node)
-    private fruitTrumpet: cc.Node = null;
+    private fruitBubble: cc.Node = null;
     @property(cc.Node)
-    private vegetableTrumpet: cc.Node = null;
+    private vegetableBubble: cc.Node = null;
+    @property(cc.Node)
+    private fruitHand: cc.Node = null;
+    @property(cc.Node)
+    private vegetableHand: cc.Node = null;
     private bg : cc.Node = null;
     private touchNode : cc.Node = null;
-    private laba : cc.Node = null;
     private parentNode : cc.Node = null;
     private tuopanNode : cc.Node = null;
     private gridNode : cc.Node = null;
@@ -62,7 +65,6 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
-        
         if(ConstValue.IS_TEACHER) {
             UIManager.getInstance().openUI(UploadAndReturnPanel);
             this.types = DaAnData.getInstance().types;
@@ -116,6 +118,19 @@ export default class GamePanel extends BaseUI {
                     this.eventvalue.result = 2;
                     this.eventvalue.levelData[0].result = 2;
                 }
+                if(this.rightNum == 0) {
+                    if(this.types == 1) {
+                        if(this.fruitHand.active) {
+                            this.cueAudio(this.rightNum)
+                            this.fruitHand.active = false
+                        }
+                    }else if(this.types == 2) {
+                        if(this.vegetableHand.active) {
+                            this.cueAudio(this.rightNum)
+                            this.vegetableHand.active = false
+                        }
+                    }
+                }
             });
         }
         this.addListenerOnItem();
@@ -135,7 +150,6 @@ export default class GamePanel extends BaseUI {
         bubble.scale = 0;
         AudioManager.getInstance().playSound('sfx_1stfrt', false);
         for(let i = 0; i < this.answerArr.length; i++) {
-            cc.log(this.answerArr[i])
             let seq = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1), cc.callFunc(()=>{this.bubbleAction(this.rightNum)}));
             let seq1 = cc.sequence(cc.scaleTo(0.56, 1.2,1.2), cc.scaleTo(0.12, 0.8, 0.8), cc.scaleTo(0.12, 1.1,1.1), cc.scaleTo(0.12, 0.9, 0.9), cc.scaleTo(0.24, 1, 1));
             if(this.answerArr[i] != 8) {
@@ -148,17 +162,15 @@ export default class GamePanel extends BaseUI {
                 }, 40* i);
             }
         }
-        this.fruitTrumpet.children[0].on(cc.Node.EventType.TOUCH_START, (e)=>{
-            if(this.finishing) {
-                return
-            }
-            this.bubbleAction(this.rightNum)
-            this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'click', false)
-            this.fruitTrumpet.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
-                if(trackEntry.animation.name == 'click') {
-                    this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'speak', false)
-                }
-            })
+        this.fruitHand.active = false
+        this.fruitHand.scale = 0
+        this.fruitBubble.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            this.fruitBubble.scale = 0.9
+            this.cueAudio(this.rightNum)
+            this.fruitHand.active = false
+        })
+        this.fruitBubble.on(cc.Node.EventType.TOUCH_END, (e)=>{
+            this.fruitBubble.scale = 1
         })
     }
 
@@ -197,17 +209,15 @@ export default class GamePanel extends BaseUI {
                 }, 40* i);
             }           
         }
-        this.vegetableTrumpet.children[0].on(cc.Node.EventType.TOUCH_START, ()=>{
-            if(this.finishing) {
-                return
-            }
-            this.bubbleAction(this.rightNum)
-            this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'click', false)
-            this.vegetableTrumpet.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
-                if(trackEntry.animation.name == 'click') {
-                    this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'speak', false)
-                }
-            })
+        this.vegetableHand.active = false
+        this.vegetableHand.scale = 0
+        this.vegetableBubble.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            this.vegetableBubble.scale = 0.9
+            this.cueAudio(this.rightNum)
+            this.vegetableHand.active = false
+        })
+        this.vegetableBubble.on(cc.Node.EventType.TOUCH_END, (e)=>{
+            this.vegetableBubble.scale = 1
         })
     }
 
@@ -215,8 +225,6 @@ export default class GamePanel extends BaseUI {
         AudioManager.getInstance().playSound('sfx_txopn2',false);
         let left = this.directionNode.getChildByName('leftNode');
         let right = this.directionNode.getChildByName('rightNode');
-        this.laba = right.getChildByName('laba');
-        this.laba.opacity = 0;
         left.opacity = 100;
         right.opacity = 0;
         left.setPosition(cc.v2(-1500, 0));
@@ -226,7 +234,7 @@ export default class GamePanel extends BaseUI {
         let seq = cc.sequence(spaw1, spaw2);
         let loop = cc.repeatForever(seq);
         this.duckNode.runAction(loop);
-        let seq1 = cc.sequence(cc.spawn(cc.moveBy(1.5, cc.v2(-1500, 0)), cc.fadeIn(1.5)), cc.callFunc(()=>{this.laba.runAction(cc.fadeIn(0.8))}));
+        let seq1 = cc.sequence(cc.spawn(cc.moveBy(1.5, cc.v2(-1500, 0)), cc.fadeIn(1.5)), cc.callFunc(()=>{}));
         left.runAction(cc.spawn(cc.moveBy(1.5, cc.v2(1500, 0)), cc.fadeIn(1.5)));
         right.runAction(seq1);
     }
@@ -286,7 +294,6 @@ export default class GamePanel extends BaseUI {
         }
         this.audioIdArr = []
         if(this.types == 1) {
-            this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
             if(this.rightNum == 0) {
                 AudioManager.getInstance().playSound('橘子没有在香蕉的上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 1) {
@@ -305,7 +312,6 @@ export default class GamePanel extends BaseUI {
                 //AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false);
             }
         }else if(this.types == 2) {
-            this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
             if(this.rightNum == 0) {
                 AudioManager.getInstance().playSound('土豆没有在最中央的位置哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 1) {
@@ -340,109 +346,175 @@ export default class GamePanel extends BaseUI {
         }
     }
 
-    bubbleAction(rightNum :number) {
-        let bubble = this.parentNode.getChildByName('bubbleNode');
-        var str = '';
+    cueAudio(rightNum: number) {
         for(let i = 0; i < this.audioIdArr.length; i++) {
             AudioManager.getInstance().stopAudio(this.audioIdArr[i])
         }
         this.audioIdArr = []
         if(this.types == 1) {
+            this.fruitHand.active = false
             switch(rightNum) {
                 case 0:
-                    AudioManager.getInstance().playSound('橘子在香蕉的上方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
+                    AudioManager.getInstance().playSound('橘子在香蕉的上方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 1:
+                    AudioManager.getInstance().playSound('梨在香蕉的右上方',false,1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 2:
+                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 3:
+                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 4:
+                    AudioManager.getInstance().playSound('桃子在西瓜的左上方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 5:
+                    AudioManager.getInstance().playSound('葡萄和梨不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 6:
+                    AudioManager.getInstance().playSound('橘子在草莓的后面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 7:
+                    break;
+                default:
+                    return;
+                    break;
+            }
+        }else if(this.types == 2) {
+            this.vegetableHand.active = false
+            switch(rightNum) {
+                case 0:
+                    AudioManager.getInstance().playSound('土豆在最中央的位置', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 1:
+                    AudioManager.getInstance().playSound('黄瓜在土豆的左面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 2:
+                    AudioManager.getInstance().playSound('西红柿在黄瓜的右下方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 3:
+                    AudioManager.getInstance().playSound('西兰花在西红柿的右面，南瓜的下面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 4:
+                    AudioManager.getInstance().playSound('西兰花在西红柿的右面，南瓜的下面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;    
+                case 5:
+                    AudioManager.getInstance().playSound('菠菜在土豆的上方，白菜的右面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 6:
+                    AudioManager.getInstance().playSound('菠菜在土豆的上方，白菜的右面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;    
+                case 7:
+                    AudioManager.getInstance().playSound('大蒜和菠菜不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    break;
+                case 8:
+                    break;
+                default:
+                    return;
+                    break;
+            }
+        }
+    }
+
+    bubbleAction(rightNum :number) {
+        let bubble = this.parentNode.getChildByName('bubbleNode');
+        var str = '';
+        if(this.types == 1) {
+            switch(rightNum) {
+                case 0:
                     str = '橘子在香蕉上方';
                     break;
                 case 1:
-                    AudioManager.getInstance().playSound('梨在香蕉的右上方',false,1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '梨在香蕉的右上方';
                     break;
                 case 2:
-                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '桃子在香蕉的左面，苹果的上面';
                     break;
                 case 3:
-                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '桃子在香蕉的左面，苹果的上面';
                     break;
                 case 4:
-                    AudioManager.getInstance().playSound('桃子在西瓜的左上方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '桃子在西瓜的左上方';
                     break;
                 case 5:
-                    AudioManager.getInstance().playSound('葡萄和梨不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '葡萄和梨不相邻';
                     break;
                 case 6:
-                    AudioManager.getInstance().playSound('橘子在草莓的后面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '橘子在草莓的后面';
                     break;
                 case 7:
                     str = '最后一个水果放在哪里？';
-                    this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
                     break;
                 default:
-                    this.fruitTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
                     return;
                     break;
             }
         }else if(this.types == 2) {
             switch(rightNum) {
                 case 0:
-                    AudioManager.getInstance().playSound('土豆在最中央的位置', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '土豆在最中央的位置';
                     break;
                 case 1:
-                    AudioManager.getInstance().playSound('黄瓜在土豆的左面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '黄瓜在土豆的左面';
                     break;
                 case 2:
-                    AudioManager.getInstance().playSound('西红柿在黄瓜的右下方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '西红柿在黄瓜的右下方';
                     break;
                 case 3:
-                    AudioManager.getInstance().playSound('西兰花在西红柿的右面，南瓜的下面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '西兰花在西红柿的右面，南瓜的下面';
                     break;
                 case 4:
-                    AudioManager.getInstance().playSound('西兰花在西红柿的右面，南瓜的下面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '西兰花在西红柿的右面，南瓜的下面';
                     break;    
                 case 5:
-                    AudioManager.getInstance().playSound('菠菜在土豆的上方，白菜的右面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '菠菜在土豆的上方，白菜的右面';
                     break;
                 case 6:
-                    AudioManager.getInstance().playSound('菠菜在土豆的上方，白菜的右面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '菠菜在土豆的上方，白菜的右面';
                     break;    
                 case 7:
-                    AudioManager.getInstance().playSound('大蒜和菠菜不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)});
                     str = '大蒜和菠菜不相邻';
                     break;
                 case 8:
                     str = '最后一个蔬菜放在哪里？';
-                    this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
                     break;
                 default:
-                    this.vegetableTrumpet.getComponent(sp.Skeleton).setAnimation(0, 'null', true)
                     return;
                     break;
             }
         }
-       
-        bubble.getChildByName('label').getComponent(cc.Label).string = str;
-        bubble.setRotation(80);
-        bubble.scale = 0;
+        let func0 = cc.callFunc(()=>{
+            bubble.getChildByName('label').getComponent(cc.Label).string = str;
+        })
+        let func1 = cc.callFunc(()=>{
+            bubble.scale = 0;
+            bubble.setRotation(80);
+            bubble.getChildByName('label').getComponent(cc.Label).string = str;
+        })
+        bubble.scale = 1;
+        bubble.setRotation(0);
         let spaw1 = cc.spawn(cc.rotateTo(0.16, -13), cc.scaleTo(0.16, 1.2, 1.2));
         let spaw2 = cc.spawn(cc.rotateTo(0.12, 6), cc.scaleTo(0.12, 0.9, 0.9));
         let spaw3 = cc.spawn(cc.rotateTo(0.12, -6), cc.scaleTo(0.12, 1.1, 1.1));
         let spaw4 = cc.spawn(cc.rotateTo(0.28, 0), cc.scaleTo(0.12, 1, 1));
-        let delay =cc.delayTime(6);
-        let spaw5 = cc.spawn(cc.rotateTo(0.28, 78), cc.scaleTo(0.28, 0, 0));
-        let seq = cc.sequence(spaw1, spaw2, spaw3, spaw4, delay, spaw5);
+        let spaw0 = cc.spawn(cc.rotateTo(0.28, 80), cc.scaleTo(0.28, 0, 0));
+        let seq = cc.sequence(spaw0, func0, spaw1, spaw2, spaw3, spaw4);
+        let seq1 = cc.sequence(func1, spaw1, spaw2, spaw3, spaw4, cc.callFunc(()=>{
+            if(this.types == 1) {
+                this.fruitHand.active = true
+                this.fruitHand.runAction(cc.scaleTo(0.2, 1,1))
+            }else if(this.types == 2) {
+                this.vegetableHand.active = true
+                this.vegetableHand.runAction(cc.scaleTo(0.2, 1,1))
+            }
+        }))
         bubble.stopAllActions();
-        bubble.runAction(seq);
+        if(this.rightNum == 0) {
+            bubble.runAction(seq1)
+        }else {
+            bubble.runAction(seq);
+        }
     }
 
     addListenerOnItem() {
@@ -470,6 +542,19 @@ export default class GamePanel extends BaseUI {
                     AudioManager.getInstance().playSound('sfx_ctchfrt', false);
                     this.touchNode.children[0].getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame;
                     this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.children[0].getComponent(cc.Sprite).spriteFrame;
+                }
+                if(this.rightNum == 0) {
+                    if(this.types == 1) {
+                        if(this.fruitHand.active) {
+                            this.cueAudio(this.rightNum)
+                            this.fruitHand.active = false
+                        }
+                    }else if(this.types == 2) {
+                        if(this.vegetableHand.active) {
+                            this.cueAudio(this.rightNum)
+                            this.vegetableHand.active = false
+                        }
+                    }
                 }
             })
 
@@ -544,6 +629,7 @@ export default class GamePanel extends BaseUI {
                             this.rightNum++;
                             if(this.types != 3) {
                                 this.bubbleAction(this.rightNum);
+                                this.cueAudio(this.rightNum)
                                 AudioManager.getInstance().playSound('sfx_putfrt', false);
                             }else {
                                 AudioManager.getInstance().playSound('sfx_kdmtched', false);

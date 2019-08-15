@@ -1,0 +1,20 @@
+
+shadow_fish.png
+size: 52,34
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fish_02
+  rotate: false
+  xy: 2, 2
+  size: 48, 13
+  orig: 48, 13
+  offset: 0, 0
+  index: -1
+shadow_fish
+  rotate: false
+  xy: 2, 17
+  size: 48, 15
+  orig: 48, 15
+  offset: 0, 0
+  index: -1

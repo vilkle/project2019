@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "item_sanjiao_highlight",
+    "texture": "65a85cc6-1ca6-4a1e-9123-0976df73eb8b",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      118,
+      108
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      118,
+      108
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

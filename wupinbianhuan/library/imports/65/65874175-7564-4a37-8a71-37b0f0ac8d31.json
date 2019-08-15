@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "item_jiantou_highlight",
+    "texture": "b3449cab-afc1-44ad-bb56-551d8857db79",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      109,
+      58
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      109,
+      58
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

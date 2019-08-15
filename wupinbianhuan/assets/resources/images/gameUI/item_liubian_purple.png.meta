@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "221d0401-c814-498a-ba62-0025133066a2",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "item_liubian_purple": {
+      "ver": "1.0.4",
+      "uuid": "8fec77fa-e984-4249-bfb7-54979b8d0665",
+      "rawTextureUuid": "221d0401-c814-498a-ba62-0025133066a2",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 112,
+      "height": 100,
+      "rawWidth": 112,
+      "rawHeight": 100,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

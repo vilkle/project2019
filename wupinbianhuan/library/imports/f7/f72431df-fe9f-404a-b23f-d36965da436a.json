@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "item_bajiao_highlight",
+    "texture": "f51ff02f-825a-49f8-a8f2-5bb1177ac26b",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      109,
+      109
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      109,
+      109
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

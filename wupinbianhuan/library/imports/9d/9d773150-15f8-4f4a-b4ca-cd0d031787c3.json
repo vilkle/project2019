@@ -1,0 +1,614 @@
+{
+  "__type__": "sp.SkeletonData",
+  "_name": "seaweed",
+  "_objFlags": 0,
+  "_native": "",
+  "skeletonJsonStr": "{\"skeleton\":{\"hash\":\"M9RrSkHKl+VsdPjBdei1BkC8OEI\",\"spine\":\"3.7.92\",\"width\":1402.91,\"height\":384.19,\"images\":\"./images/\",\"audio\":\"./images/\"},\"bones\":[{\"name\":\"root\"},{\"name\":\"seaweed_0\",\"parent\":\"root\"},{\"name\":\"seaweed_1\",\"parent\":\"seaweed_0\",\"x\":-632.59,\"y\":-16.14},{\"name\":\"seaweed_01\",\"parent\":\"seaweed_1\",\"length\":98.61,\"rotation\":79.51,\"x\":-26.97,\"y\":9.17},{\"name\":\"seaweed_02\",\"parent\":\"seaweed_1\",\"length\":97.42,\"rotation\":72.6,\"x\":-9.41,\"y\":34.31},{\"name\":\"seaweed_03\",\"parent\":\"seaweed_1\",\"length\":66.37,\"rotation\":71.78,\"x\":26.9,\"y\":8.77},{\"name\":\"seaweed_2\",\"parent\":\"seaweed_0\",\"x\":558.71,\"y\":46.92},{\"name\":\"seaweed_04\",\"parent\":\"seaweed_2\",\"length\":35.7,\"rotation\":115.62,\"x\":-84.67,\"y\":18.96},{\"name\":\"seaweed_05\",\"parent\":\"seaweed_2\",\"length\":48.23,\"rotation\":85.28,\"x\":-72.32,\"y\":18.52},{\"name\":\"seaweed_07\",\"parent\":\"seaweed_2\",\"length\":49.31,\"rotation\":116.56,\"x\":70.56,\"y\":26.02},{\"name\":\"seaweed_09\",\"parent\":\"seaweed_2\",\"length\":61.75,\"rotation\":88.77,\"x\":86.44,\"y\":35.28},{\"name\":\"seaweed_08\",\"parent\":\"seaweed_2\",\"length\":55.34,\"rotation\":95.03,\"x\":114.22,\"y\":30.43},{\"name\":\"seaweed_06\",\"parent\":\"seaweed_2\",\"length\":55.97,\"rotation\":73.99,\"x\":137.15,\"y\":25.14}],\"slots\":[{\"name\":\"seaweed_01\",\"bone\":\"seaweed_01\",\"attachment\":\"seaweed_01\"},{\"name\":\"seaweed_02\",\"bone\":\"seaweed_02\",\"attachment\":\"seaweed_02\"},{\"name\":\"seaweed_03\",\"bone\":\"seaweed_03\",\"attachment\":\"seaweed_03\"},{\"name\":\"seaweed_04\",\"bone\":\"seaweed_04\",\"attachment\":\"seaweed_04\"},{\"name\":\"seaweed_05\",\"bone\":\"seaweed_05\",\"attachment\":\"seaweed_05\"},{\"name\":\"seaweed_06\",\"bone\":\"seaweed_06\",\"attachment\":\"seaweed_06\"},{\"name\":\"seaweed_07\",\"bone\":\"seaweed_07\",\"attachment\":\"seaweed_07\"},{\"name\":\"seaweed_08\",\"bone\":\"seaweed_08\",\"attachment\":\"seaweed_08\"},{\"name\":\"seaweed_09\",\"bone\":\"seaweed_09\",\"attachment\":\"seaweed_09\"}],\"skins\":{\"default\":{\"seaweed_01\":{\"seaweed_01\":{\"x\":107.02,\"y\":7.78,\"rotation\":-79.51,\"width\":41,\"height\":215}},\"seaweed_02\":{\"seaweed_02\":{\"x\":115.62,\"y\":-30.64,\"rotation\":-72.6,\"width\":140,\"height\":206}},\"seaweed_03\":{\"seaweed_03\":{\"x\":140.64,\"y\":33.03,\"rotation\":-71.78,\"width\":43,\"height\":290}},\"seaweed_04\":{\"seaweed_04\":{\"x\":65.74,\"y\":-20.48,\"rotation\":-115.6,\"width\":74,\"height\":139}},\"seaweed_05\":{\"seaweed_05\":{\"x\":34.28,\"y\":4.17,\"rotation\":-85.28,\"width\":75,\"height\":191}},\"seaweed_06\":{\"seaweed_06\":{\"x\":27.01,\"y\":6.37,\"rotation\":-73.99,\"width\":75,\"height\":191}},\"seaweed_07\":{\"seaweed_07\":{\"x\":80.31,\"y\":-8.73,\"rotation\":-116.56,\"width\":117,\"height\":175}},\"seaweed_08\":{\"seaweed_08\":{\"x\":93.91,\"y\":-4.07,\"rotation\":-95.03,\"width\":45,\"height\":193}},\"seaweed_09\":{\"seaweed_09\":{\"x\":140.92,\"y\":6.79,\"rotation\":-88.77,\"width\":52,\"height\":305}}}},\"animations\":{\"seaweed_idle\":{\"slots\":{\"seaweed_01\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_01\"}]},\"seaweed_02\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_02\"}]},\"seaweed_03\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_03\"}]},\"seaweed_04\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_04\"}]},\"seaweed_05\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_05\"}]},\"seaweed_06\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_06\"}]},\"seaweed_07\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_07\"}]},\"seaweed_08\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_08\"}]},\"seaweed_09\":{\"attachment\":[{\"time\":0,\"name\":\"seaweed_09\"}]}},\"bones\":{\"seaweed_02\":{\"rotate\":[{\"time\":0,\"angle\":0,\"curve\":[0.25,0,0.75,1]},{\"time\":1.1,\"angle\":8.42,\"curve\":[0.25,0,0.75,1]},{\"time\":3.3333,\"angle\":0}]},\"seaweed_01\":{\"rotate\":[{\"time\":0,\"angle\":0,\"curve\":[0.25,0,0.75,1]},{\"time\":1.4667,\"angle\":-3.77,\"curve\":[0.25,0,0.75,1]},{\"time\":3.3333,\"angle\":0}]},\"seaweed_03\":{\"rotate\":[{\"time\":0,\"angle\":0,\"curve\":[0.25,0,0.75,1]},{\"time\":1.8667,\"angle\":5.61,\"curve\":[0,0.05,0.246,0.66]},{\"time\":3.3333,\"angle\":0}]},\"seaweed_04\":{\"rotate\":[{\"time\":0,\"angle\":0},{\"time\":1.4667,\"angle\":3.59},{\"time\":3.3333,\"angle\":0}],\"shear\":[{\"time\":0,\"x\":0,\"y\":0},{\"time\":1.4667,\"x\":-6.77,\"y\":18.31},{\"time\":3.3333,\"x\":0,\"y\":0}]},\"seaweed_05\":{\"rotate\":[{\"time\":0,\"angle\":0},{\"time\":1.4667,\"angle\":-2.41},{\"time\":3.3333,\"angle\":0}],\"shear\":[{\"time\":0,\"x\":0,\"y\":0},{\"time\":1.4667,\"x\":5.77,\"y\":-10.44},{\"time\":3.3333,\"x\":0,\"y\":0}]},\"seaweed_07\":{\"rotate\":[{\"time\":0,\"angle\":0},{\"time\":1.4667,\"angle\":-3.63},{\"time\":3.3333,\"angle\":0}],\"shear\":[{\"time\":0,\"x\":0,\"y\":0},{\"time\":1.4667,\"x\":6.59,\"y\":-20.39},{\"time\":3.3333,\"x\":0,\"y\":0}]},\"seaweed_09\":{\"rotate\":[{\"time\":0,\"angle\":0},{\"time\":1.4667,\"angle\":5.27},{\"time\":3.3333,\"angle\":0}],\"shear\":[{\"time\":0,\"x\":0,\"y\":0},{\"time\":1.4667,\"x\":0,\"y\":15.3},{\"time\":3.3333,\"x\":0,\"y\":0}]},\"seaweed_08\":{\"rotate\":[{\"time\":0,\"angle\":0},{\"time\":1.4667,\"angle\":-2.8},{\"time\":3.3333,\"angle\":0}],\"shear\":[{\"time\":0,\"x\":0,\"y\":0},{\"time\":1.4667,\"x\":0,\"y\":17.45},{\"time\":3.3333,\"x\":0,\"y\":0}]},\"seaweed_06\":{\"rotate\":[{\"time\":0,\"angle\":0},{\"time\":1.4667,\"angle\":10.04},{\"time\":3.3333,\"angle\":0}],\"shear\":[{\"time\":0,\"x\":0,\"y\":0},{\"time\":1.4667,\"x\":0,\"y\":-24.91},{\"time\":3.3333,\"x\":0,\"y\":0}]}}}}}",
+  "_skeletonJson": {
+    "skeleton": {
+      "hash": "M9RrSkHKl+VsdPjBdei1BkC8OEI",
+      "spine": "3.7.92",
+      "width": 1402.91,
+      "height": 384.19,
+      "images": "./images/",
+      "audio": "./images/"
+    },
+    "bones": [
+      {
+        "name": "root"
+      },
+      {
+        "name": "seaweed_0",
+        "parent": "root"
+      },
+      {
+        "name": "seaweed_1",
+        "parent": "seaweed_0",
+        "x": -632.59,
+        "y": -16.14
+      },
+      {
+        "name": "seaweed_01",
+        "parent": "seaweed_1",
+        "length": 98.61,
+        "rotation": 79.51,
+        "x": -26.97,
+        "y": 9.17
+      },
+      {
+        "name": "seaweed_02",
+        "parent": "seaweed_1",
+        "length": 97.42,
+        "rotation": 72.6,
+        "x": -9.41,
+        "y": 34.31
+      },
+      {
+        "name": "seaweed_03",
+        "parent": "seaweed_1",
+        "length": 66.37,
+        "rotation": 71.78,
+        "x": 26.9,
+        "y": 8.77
+      },
+      {
+        "name": "seaweed_2",
+        "parent": "seaweed_0",
+        "x": 558.71,
+        "y": 46.92
+      },
+      {
+        "name": "seaweed_04",
+        "parent": "seaweed_2",
+        "length": 35.7,
+        "rotation": 115.62,
+        "x": -84.67,
+        "y": 18.96
+      },
+      {
+        "name": "seaweed_05",
+        "parent": "seaweed_2",
+        "length": 48.23,
+        "rotation": 85.28,
+        "x": -72.32,
+        "y": 18.52
+      },
+      {
+        "name": "seaweed_07",
+        "parent": "seaweed_2",
+        "length": 49.31,
+        "rotation": 116.56,
+        "x": 70.56,
+        "y": 26.02
+      },
+      {
+        "name": "seaweed_09",
+        "parent": "seaweed_2",
+        "length": 61.75,
+        "rotation": 88.77,
+        "x": 86.44,
+        "y": 35.28
+      },
+      {
+        "name": "seaweed_08",
+        "parent": "seaweed_2",
+        "length": 55.34,
+        "rotation": 95.03,
+        "x": 114.22,
+        "y": 30.43
+      },
+      {
+        "name": "seaweed_06",
+        "parent": "seaweed_2",
+        "length": 55.97,
+        "rotation": 73.99,
+        "x": 137.15,
+        "y": 25.14
+      }
+    ],
+    "slots": [
+      {
+        "name": "seaweed_01",
+        "bone": "seaweed_01",
+        "attachment": "seaweed_01"
+      },
+      {
+        "name": "seaweed_02",
+        "bone": "seaweed_02",
+        "attachment": "seaweed_02"
+      },
+      {
+        "name": "seaweed_03",
+        "bone": "seaweed_03",
+        "attachment": "seaweed_03"
+      },
+      {
+        "name": "seaweed_04",
+        "bone": "seaweed_04",
+        "attachment": "seaweed_04"
+      },
+      {
+        "name": "seaweed_05",
+        "bone": "seaweed_05",
+        "attachment": "seaweed_05"
+      },
+      {
+        "name": "seaweed_06",
+        "bone": "seaweed_06",
+        "attachment": "seaweed_06"
+      },
+      {
+        "name": "seaweed_07",
+        "bone": "seaweed_07",
+        "attachment": "seaweed_07"
+      },
+      {
+        "name": "seaweed_08",
+        "bone": "seaweed_08",
+        "attachment": "seaweed_08"
+      },
+      {
+        "name": "seaweed_09",
+        "bone": "seaweed_09",
+        "attachment": "seaweed_09"
+      }
+    ],
+    "skins": {
+      "default": {
+        "seaweed_01": {
+          "seaweed_01": {
+            "x": 107.02,
+            "y": 7.78,
+            "rotation": -79.51,
+            "width": 41,
+            "height": 215
+          }
+        },
+        "seaweed_02": {
+          "seaweed_02": {
+            "x": 115.62,
+            "y": -30.64,
+            "rotation": -72.6,
+            "width": 140,
+            "height": 206
+          }
+        },
+        "seaweed_03": {
+          "seaweed_03": {
+            "x": 140.64,
+            "y": 33.03,
+            "rotation": -71.78,
+            "width": 43,
+            "height": 290
+          }
+        },
+        "seaweed_04": {
+          "seaweed_04": {
+            "x": 65.74,
+            "y": -20.48,
+            "rotation": -115.6,
+            "width": 74,
+            "height": 139
+          }
+        },
+        "seaweed_05": {
+          "seaweed_05": {
+            "x": 34.28,
+            "y": 4.17,
+            "rotation": -85.28,
+            "width": 75,
+            "height": 191
+          }
+        },
+        "seaweed_06": {
+          "seaweed_06": {
+            "x": 27.01,
+            "y": 6.37,
+            "rotation": -73.99,
+            "width": 75,
+            "height": 191
+          }
+        },
+        "seaweed_07": {
+          "seaweed_07": {
+            "x": 80.31,
+            "y": -8.73,
+            "rotation": -116.56,
+            "width": 117,
+            "height": 175
+          }
+        },
+        "seaweed_08": {
+          "seaweed_08": {
+            "x": 93.91,
+            "y": -4.07,
+            "rotation": -95.03,
+            "width": 45,
+            "height": 193
+          }
+        },
+        "seaweed_09": {
+          "seaweed_09": {
+            "x": 140.92,
+            "y": 6.79,
+            "rotation": -88.77,
+            "width": 52,
+            "height": 305
+          }
+        }
+      }
+    },
+    "animations": {
+      "seaweed_idle": {
+        "slots": {
+          "seaweed_01": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_01"
+              }
+            ]
+          },
+          "seaweed_02": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_02"
+              }
+            ]
+          },
+          "seaweed_03": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_03"
+              }
+            ]
+          },
+          "seaweed_04": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_04"
+              }
+            ]
+          },
+          "seaweed_05": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_05"
+              }
+            ]
+          },
+          "seaweed_06": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_06"
+              }
+            ]
+          },
+          "seaweed_07": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_07"
+              }
+            ]
+          },
+          "seaweed_08": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_08"
+              }
+            ]
+          },
+          "seaweed_09": {
+            "attachment": [
+              {
+                "time": 0,
+                "name": "seaweed_09"
+              }
+            ]
+          }
+        },
+        "bones": {
+          "seaweed_02": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0,
+                "curve": [
+                  0.25,
+                  0,
+                  0.75,
+                  1
+                ]
+              },
+              {
+                "time": 1.1,
+                "angle": 8.42,
+                "curve": [
+                  0.25,
+                  0,
+                  0.75,
+                  1
+                ]
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ]
+          },
+          "seaweed_01": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0,
+                "curve": [
+                  0.25,
+                  0,
+                  0.75,
+                  1
+                ]
+              },
+              {
+                "time": 1.4667,
+                "angle": -3.77,
+                "curve": [
+                  0.25,
+                  0,
+                  0.75,
+                  1
+                ]
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ]
+          },
+          "seaweed_03": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0,
+                "curve": [
+                  0.25,
+                  0,
+                  0.75,
+                  1
+                ]
+              },
+              {
+                "time": 1.8667,
+                "angle": 5.61,
+                "curve": [
+                  0,
+                  0.05,
+                  0.246,
+                  0.66
+                ]
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ]
+          },
+          "seaweed_04": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              },
+              {
+                "time": 1.4667,
+                "angle": 3.59
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 1.4667,
+                "x": -6.77,
+                "y": 18.31
+              },
+              {
+                "time": 3.3333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "seaweed_05": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              },
+              {
+                "time": 1.4667,
+                "angle": -2.41
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 1.4667,
+                "x": 5.77,
+                "y": -10.44
+              },
+              {
+                "time": 3.3333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "seaweed_07": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              },
+              {
+                "time": 1.4667,
+                "angle": -3.63
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 1.4667,
+                "x": 6.59,
+                "y": -20.39
+              },
+              {
+                "time": 3.3333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "seaweed_09": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              },
+              {
+                "time": 1.4667,
+                "angle": 5.27
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 1.4667,
+                "x": 0,
+                "y": 15.3
+              },
+              {
+                "time": 3.3333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "seaweed_08": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              },
+              {
+                "time": 1.4667,
+                "angle": -2.8
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 1.4667,
+                "x": 0,
+                "y": 17.45
+              },
+              {
+                "time": 3.3333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          },
+          "seaweed_06": {
+            "rotate": [
+              {
+                "time": 0,
+                "angle": 0
+              },
+              {
+                "time": 1.4667,
+                "angle": 10.04
+              },
+              {
+                "time": 3.3333,
+                "angle": 0
+              }
+            ],
+            "shear": [
+              {
+                "time": 0,
+                "x": 0,
+                "y": 0
+              },
+              {
+                "time": 1.4667,
+                "x": 0,
+                "y": -24.91
+              },
+              {
+                "time": 3.3333,
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "_atlasText": "\nseaweed.png\nsize: 601,251\nformat: RGBA8888\nfilter: Linear,Linear\nrepeat: none\nseaweed_01\n  rotate: true\n  xy: 2, 12\n  size: 41, 215\n  orig: 41, 215\n  offset: 0, 0\n  index: -1\nseaweed_02\n  rotate: true\n  xy: 2, 55\n  size: 140, 206\n  orig: 140, 206\n  offset: 0, 0\n  index: -1\nseaweed_03\n  rotate: true\n  xy: 309, 206\n  size: 43, 290\n  orig: 43, 290\n  offset: 0, 0\n  index: -1\nseaweed_04\n  rotate: true\n  xy: 219, 2\n  size: 74, 139\n  orig: 74, 139\n  offset: 0, 0\n  index: -1\nseaweed_05\n  rotate: true\n  xy: 387, 129\n  size: 75, 191\n  orig: 75, 191\n  offset: 0, 0\n  index: -1\nseaweed_06\n  rotate: true\n  xy: 387, 52\n  size: 75, 191\n  orig: 75, 191\n  offset: 0, 0\n  index: -1\nseaweed_07\n  rotate: true\n  xy: 210, 78\n  size: 117, 175\n  orig: 117, 175\n  offset: 0, 0\n  index: -1\nseaweed_08\n  rotate: true\n  xy: 360, 5\n  size: 45, 193\n  orig: 45, 193\n  offset: 0, 0\n  index: -1\nseaweed_09\n  rotate: true\n  xy: 2, 197\n  size: 52, 305\n  orig: 52, 305\n  offset: 0, 0\n  index: -1\n",
+  "textures": [
+    {
+      "__uuid__": "248b77a0-b760-486f-8944-9a5e45b565af"
+    }
+  ],
+  "textureNames": [
+    "seaweed.png"
+  ],
+  "scale": 1
+}

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bg_yaoqiu",
+    "texture": "b2a5a491-99c5-44c8-8d81-1403da4329b9",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      214,
+      236
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      214,
+      236
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

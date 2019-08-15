@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "img_yaoqiu_tishi",
+    "texture": "5686946d-bc19-4fbc-b177-a1e9fc9f3fc3",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      146,
+      166
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      146,
+      166
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
