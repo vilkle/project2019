@@ -28,6 +28,7 @@ var DaAnData_1 = require("../../Data/DaAnData");
 var GamePanel_1 = require("./GamePanel");
 var ListenerManager_1 = require("../../Manager/ListenerManager");
 var ListenerType_1 = require("../../Data/ListenerType");
+var ItemType_1 = require("../../Data/ItemType");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var TeacherPanel = /** @class */ (function (_super) {
     __extends(TeacherPanel, _super);
@@ -48,12 +49,18 @@ var TeacherPanel = /** @class */ (function (_super) {
         _this.octagonBlack = null;
         _this.octagonGreen = null;
         _this.octagonYellow = null;
+        _this.ruleItemArr = [];
+        _this.subjectItemArr = [];
+        _this.ruleDataArr = [];
+        _this.subjectDataArr = [];
         _this.currentType = 1;
-        _this.currentFigure = 3;
+        _this.currentFigure = 2;
         return _this;
     }
     // onLoad () {}
     TeacherPanel.prototype.start = function () {
+        DaAnData_1.DaAnData.getInstance().type = 1;
+        DaAnData_1.DaAnData.getInstance().figure = 1;
         this.getNet();
     };
     TeacherPanel.prototype.setPanel = function () {
@@ -61,12 +68,105 @@ var TeacherPanel = /** @class */ (function (_super) {
         this.figureToggleContainer[DaAnData_1.DaAnData.getInstance().figure - 1].isChecked = true;
         this.initType();
         this.initFigure();
+        this.getItem();
+    };
+    /**
+    * 获取itemtype值
+    * @param i
+    * @param j
+    * @param type 1、rule下节点 2、subject下节点
+    * @param isClick 是否被点击
+    */
+    TeacherPanel.prototype.getItemData = function (i, j, type, isClick) {
+        if (type == 1) {
+            if (DaAnData_1.DaAnData.getInstance().figure == 1) {
+                if (j % 2 == 0) {
+                    if (this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType_1.ItemType.triangle_black;
+                    }
+                }
+                else {
+                    if (this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType_1.ItemType.arrow_black;
+                    }
+                }
+            }
+            else if (DaAnData_1.DaAnData.getInstance().figure == 2) {
+                if (j % 2 == 0) {
+                    if (this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType_1.ItemType.sexangle_black;
+                    }
+                }
+                else {
+                    if (this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType_1.ItemType.arrow_black;
+                    }
+                }
+            }
+            else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
+                if (j % 2 == 0) {
+                    if (this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType_1.ItemType.octagon_black;
+                    }
+                }
+                else {
+                    if (this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType_1.ItemType.arrow_black;
+                    }
+                }
+            }
+        }
+        else if (type == 2) {
+        }
+        return this.nextType(this.ruleDataArr[i][j], isClick);
+    };
+    TeacherPanel.prototype.nextType = function (type, isClick) {
+        if (isClick) {
+            var highNum = Math.floor(type / 3) * 3 + 3;
+            var lowNum = highNum - 2;
+            var next = type + 1;
+            if (next > highNum) {
+                next = lowNum;
+            }
+            return next;
+        }
+        else {
+            return type;
+        }
+    };
+    TeacherPanel.prototype.getItem = function () {
+        this.ruleItemArr = [];
+        this.subjectItemArr = [];
+        if (this.ruleNode.children[0]) {
+            var nodeArr = this.ruleNode.children[0].children;
+            for (var i = 0; i < nodeArr.length; ++i) {
+                this.ruleItemArr[i] = [];
+                this.ruleDataArr[i] = [];
+                for (var j = 0; j < nodeArr[i].children.length; ++j) {
+                    this.ruleItemArr[i][j] = nodeArr[i].children[j];
+                    this.ruleDataArr[i][j] =
+                    ;
+                }
+            }
+        }
+        if (this.subjectNode.children[0]) {
+            var nodeArr = this.subjectNode.children[0].children;
+            for (var i = 0; i < nodeArr.length; ++i) {
+                this.subjectItemArr[i] = [];
+                this.subjectDataArr[i] = [];
+                for (var j = 0; j < nodeArr[i].children.length; ++j) {
+                    this.subjectItemArr[i][j] = nodeArr[i].children[j];
+                }
+            }
+        }
+        console.log(this.ruleItemArr);
+        console.log(this.subjectItemArr);
     };
     TeacherPanel.prototype.initType = function () {
         if (DaAnData_1.DaAnData.getInstance().type != this.currentType) {
             if (this.subjectNode.children[0]) {
                 this.subjectNode.children[0].destroy();
-                this.subjectNode.children[0].removeAllChildren();
+                this.subjectNode.removeAllChildren();
             }
             var node = null;
             if (DaAnData_1.DaAnData.getInstance().type == 1) {
@@ -78,72 +178,53 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.currentType = 2;
             }
             this.subjectNode.addChild(node);
+            this.getItem();
+            this.currentFigure = 2;
         }
     };
     TeacherPanel.prototype.initFigure = function () {
         if (this.currentFigure != DaAnData_1.DaAnData.getInstance().figure) {
             if (DaAnData_1.DaAnData.getInstance().figure == 1) {
-                if (this.ruleNode.children[0]) {
-                    var nodeArr = this.ruleNode.children[0].children;
-                    for (var i = 0; i < nodeArr.length; i++) {
-                        for (var j = 0; j < nodeArr[i].children.length; j++) {
-                            if (j % 2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack;
-                            }
-                        }
-                    }
-                }
-                if (this.subjectNode.children[0]) {
-                    var nodeArr = this.subjectNode.children[0].children;
-                    for (var i = 0; i < nodeArr.length; i++) {
-                        for (var j = 0; j < nodeArr[i].children.length; j++) {
-                            if (j % 2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack;
-                            }
-                        }
-                    }
-                }
+                this.changeFigure(this.triangleBlack);
+                this.currentFigure = 1;
             }
             else if (DaAnData_1.DaAnData.getInstance().figure == 2) {
-                if (this.ruleNode.children[0]) {
-                    var nodeArr = this.ruleNode.children[0].children;
-                    for (var i = 0; i < nodeArr.length; i++) {
-                        for (var j = 0; j < nodeArr[i].children.length; j++) {
-                            if (j % 2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack;
-                            }
-                        }
+                this.changeFigure(this.sexangleBlack);
+                this.currentFigure = 2;
+            }
+            else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
+                this.changeFigure(this.octagonBlack);
+                this.currentFigure = 3;
+            }
+        }
+    };
+    TeacherPanel.prototype.changeFigure = function (frame) {
+        if (this.ruleNode.children[0]) {
+            var nodeArr = this.ruleNode.children[0].children;
+            for (var i = 0; i < nodeArr.length; i++) {
+                for (var j = 0; j < nodeArr[i].children.length; j++) {
+                    if (j % 2 == 0) {
+                        nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = frame;
                     }
                 }
-                if (this.subjectNode.children[0]) {
-                    var nodeArr = this.subjectNode.children[0].children;
-                    for (var i = 0; i < nodeArr.length; i++) {
+            }
+        }
+        if (this.subjectNode.children[0]) {
+            var nodeArr = this.subjectNode.children[0].children;
+            if (DaAnData_1.DaAnData.getInstance().type == 1) {
+                for (var i = 0; i < nodeArr.length; i++) {
+                    if (i % 2 == 0) {
                         for (var j = 0; j < nodeArr[i].children.length; j++) {
-                            if (j % 2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack;
-                            }
+                            nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = frame;
                         }
                     }
                 }
             }
-            else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
-                if (this.ruleNode.children[0]) {
-                    var nodeArr = this.ruleNode.children[0].children;
-                    for (var i = 0; i < nodeArr.length; i++) {
-                        for (var j = 0; j < nodeArr[i].children.length; j++) {
-                            if (j % 2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack;
-                            }
-                        }
-                    }
-                }
-                if (this.subjectNode.children[0]) {
-                    var nodeArr = this.subjectNode.children[0].children;
-                    for (var i = 0; i < nodeArr.length; i++) {
-                        for (var j = 0; j < nodeArr[i].children.length; j++) {
-                            if (j % 2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack;
-                            }
+            else if (DaAnData_1.DaAnData.getInstance().type == 2) {
+                for (var i = 0; i < nodeArr.length; i++) {
+                    for (var j = 0; j < nodeArr[i].children.length; j++) {
+                        if (j % 2 == 0) {
+                            nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = frame;
                         }
                     }
                 }
@@ -156,10 +237,12 @@ var TeacherPanel = /** @class */ (function (_super) {
             case 0:
                 DaAnData_1.DaAnData.getInstance().type = 1;
                 this.initType();
+                this.initFigure();
                 break;
             case 1:
                 DaAnData_1.DaAnData.getInstance().type = 2;
                 this.initType();
+                this.initFigure();
                 break;
             default:
                 console.error("the " + index + " type toggle have error.");
@@ -213,18 +296,17 @@ var TeacherPanel = /** @class */ (function (_super) {
                         }
                         else {
                             console.error('网络请求数据content.type为空');
-                            return;
                         }
                         if (content.figure) {
                             DaAnData_1.DaAnData.getInstance().figure = content.figure;
                         }
                         else {
                             console.error('网络请求数据content.figure为空');
-                            return;
                         }
                         this.setPanel();
                     }
                     else {
+                        this.setPanel();
                         console.error('网络请求数据失败');
                     }
                 }

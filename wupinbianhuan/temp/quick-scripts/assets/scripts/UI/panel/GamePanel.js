@@ -48,6 +48,7 @@ var GamePanel = /** @class */ (function (_super) {
         if (ConstValue_1.ConstValue.IS_TEACHER) {
             this.type = DaAnData_1.DaAnData.getInstance().type;
             this.figure = DaAnData_1.DaAnData.getInstance().figure;
+            this.initGame();
             UIManager_1.UIManager.getInstance().openUI(UploadAndReturnPanel_1.default);
         }
         else {
@@ -55,6 +56,10 @@ var GamePanel = /** @class */ (function (_super) {
         }
     };
     GamePanel.prototype.initGame = function () {
+    };
+    GamePanel.prototype.initType = function () {
+    };
+    GamePanel.prototype.initFigure = function () {
     };
     GamePanel.prototype.onEndGame = function () {
         //如果已经上报过数据 则不再上报数据
@@ -71,8 +76,6 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.onDestroy = function () {
     };
     GamePanel.prototype.onShow = function () {
-    };
-    GamePanel.prototype.setPanel = function () {
     };
     GamePanel.prototype.getNet = function () {
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_QUESTION + "?courseware_id=" + NetWork_1.NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
@@ -99,7 +102,7 @@ var GamePanel = /** @class */ (function (_super) {
                         console.error('网络请求数据content.figure为空');
                         return;
                     }
-                    this.setPanel();
+                    this.initGame();
                 }
             }
             else {

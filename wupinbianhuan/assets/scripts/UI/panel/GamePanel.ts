@@ -7,6 +7,8 @@ import {UIHelp} from "../../Utils/UIHelp";
 import { UIManager } from "../../Manager/UIManager";
 import UploadAndReturnPanel from "./UploadAndReturnPanel";
 import { AudioManager } from "../../Manager/AudioManager";
+import {ItemType} from "../../Data/ItemType"
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass

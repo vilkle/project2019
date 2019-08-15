@@ -7,6 +7,7 @@ import { DaAnData } from "../../Data/DaAnData";
 import GamePanel from "./GamePanel";
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
+import {ItemType} from "../../Data/ItemType"
 
 const { ccclass, property } = cc._decorator;
 
@@ -45,12 +46,17 @@ export default class TeacherPanel extends BaseUI {
     @property(cc.SpriteFrame)
     private octagonYellow: cc.SpriteFrame = null
 
-
+    private ruleItemArr: cc.Node[][] = []
+    private subjectItemArr: cc.Node[][] = []
+    private ruleDataArr: ItemType[][] = []
+    private subjectDataArr: ItemType[][] = []
     private currentType = 1
-    private currentFigure = 3
+    private currentFigure = 2
     // onLoad () {}
 
     start() {
+        DaAnData.getInstance().type = 1
+        DaAnData.getInstance().figure = 1
         this.getNet();
     }
 
@@ -59,13 +65,102 @@ export default class TeacherPanel extends BaseUI {
         this.figureToggleContainer[DaAnData.getInstance().figure-1].isChecked = true
         this.initType()
         this.initFigure()
+        this.getItem()
+    }
+     /**
+     * 获取itemtype值 
+     * @param i 
+     * @param j
+     * @param type 1、rule下节点 2、subject下节点
+     * @param isClick 是否被点击 
+     */
+    getItemData(i: number, j :number, type: number, isClick: boolean) : ItemType { 
+        if(type == 1) {
+            if(DaAnData.getInstance().figure == 1) {
+                if(j%2==0) {
+                    if(this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType.triangle_black
+                    } 
+                }else {
+                    if(this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType.arrow_black
+                    } 
+                }
+            }else if(DaAnData.getInstance().figure == 2) {
+                if(j%2==0) {
+                    if(this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType.sexangle_black
+                    } 
+                }else {
+                    if(this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType.arrow_black
+                    } 
+                }
+            }else if(DaAnData.getInstance().figure == 3) {
+                if(j%2==0) {
+                    if(this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType.octagon_black
+                    } 
+                }else {
+                    if(this.ruleDataArr[i][j] = null) {
+                        this.ruleDataArr[i][j] = ItemType.arrow_black
+                    } 
+                }
+            }
+        }else if(type == 2) {
+
+        }
+        return this.nextType(this.ruleDataArr[i][j], isClick)
+    }
+
+    nextType(type: ItemType, isClick: boolean): ItemType {
+        
+        if(isClick) {
+            let highNum = Math.floor(type/3) * 3 + 3
+            let lowNum = highNum - 2
+            let next = type + 1
+            if(next > highNum) {
+                next = lowNum
+            }
+            return next
+        }else {
+            return type
+        }
+    }
+    
+    getItem() {
+        this.ruleItemArr = []
+        this.subjectItemArr = []
+        if(this.ruleNode.children[0]) {
+            let nodeArr = this.ruleNode.children[0].children
+            for(let i = 0; i < nodeArr.length; ++i) {
+                this.ruleItemArr[i] = []
+                this.ruleDataArr[i] = []
+                for(let j = 0; j < nodeArr[i].children.length; ++j) {
+                    this.ruleItemArr[i][j] = nodeArr[i].children[j]
+                    this.ruleDataArr[i][j] = 
+                }
+            }
+        }
+        if(this.subjectNode.children[0]) {
+            let nodeArr = this.subjectNode.children[0].children
+            for(let i = 0; i < nodeArr.length; ++i) {
+                this.subjectItemArr[i] = []
+                this.subjectDataArr[i] = []
+                for(let j = 0; j < nodeArr[i].children.length; ++j) {
+                    this.subjectItemArr[i][j] = nodeArr[i].children[j]
+                }
+            }
+        }
+        console.log(this.ruleItemArr)
+        console.log(this.subjectItemArr)
     }
 
     initType() {
         if(DaAnData.getInstance().type != this.currentType) {
             if(this.subjectNode.children[0]) {
                 this.subjectNode.children[0].destroy()
-                this.subjectNode.children[0].removeAllChildren()
+                this.subjectNode.removeAllChildren()
             }
             let node: cc.Node = null
             if(DaAnData.getInstance().type == 1) {
@@ -76,75 +171,56 @@ export default class TeacherPanel extends BaseUI {
                 this.currentType = 2
             }
             this.subjectNode.addChild(node)
+            this.getItem()
+            this.currentFigure = 2
         }
     }
 
     initFigure() {
         if(this.currentFigure != DaAnData.getInstance().figure) {
             if(DaAnData.getInstance().figure == 1) {
-                if(this.ruleNode.children[0]) {
-                    let nodeArr = this.ruleNode.children[0].children
-                    for(let i = 0; i < nodeArr.length; i++) {
-                        for(let j = 0; j < nodeArr[i].children.length; j++) {
-                            if(j%2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack
-                            }
-                        }
-                    }
-                }  
-                if(this.subjectNode.children[0]) {
-                    let nodeArr = this.subjectNode.children[0].children
-                    for(let i = 0; i < nodeArr.length; i++) {
-                        for(let j = 0; j < nodeArr[i].children.length; j++) {
-                            if(j%2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack
-                            }
-                        }
-                    }
-                }
+                this.changeFigure(this.triangleBlack)
+                this.currentFigure = 1
             }else if(DaAnData.getInstance().figure == 2) {
-                if(this.ruleNode.children[0]) {
-                    let nodeArr = this.ruleNode.children[0].children
-                    for(let i = 0; i < nodeArr.length; i++) {
-                        for(let j = 0; j < nodeArr[i].children.length; j++) {
-                            if(j%2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack
-                            }
-                        }
+                this.changeFigure(this.sexangleBlack)
+                this.currentFigure = 2
+            }else if(DaAnData.getInstance().figure == 3) {
+                this.changeFigure(this.octagonBlack)
+                this.currentFigure = 3
+            }
+        }
+    }
+    changeFigure(frame: cc.SpriteFrame) {
+        if(this.ruleNode.children[0]) {
+            let nodeArr = this.ruleNode.children[0].children
+            for(let i = 0; i < nodeArr.length; i++) {
+                for(let j = 0; j < nodeArr[i].children.length; j++) {
+                    if(j%2==0) {
+                        nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = frame
                     }
-                }  
-                if(this.subjectNode.children[0]) {
-                    let nodeArr = this.subjectNode.children[0].children
-                    for(let i = 0; i < nodeArr.length; i++) {
+                }
+            }
+        }  
+        if(this.subjectNode.children[0]) {
+            let nodeArr = this.subjectNode.children[0].children
+            if(DaAnData.getInstance().type == 1) {
+                for(let i = 0; i < nodeArr.length; i++) {
+                    if(i%2==0) {
                         for(let j = 0; j < nodeArr[i].children.length; j++) {
-                            if(j%2 == 0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack
-                            }
+                            nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = frame
                         }
                     }
                 }
-            }else if(DaAnData.getInstance().figure == 3) {
-                if(this.ruleNode.children[0]) {
-                    let nodeArr = this.ruleNode.children[0].children
-                    for(let i = 0; i < nodeArr.length; i++) {
-                        for(let j = 0; j < nodeArr[i].children.length; j++) {
-                            if(j%2==0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack
-                            }
-                        }
-                    }
-                }  
-                if(this.subjectNode.children[0]) {
-                    let nodeArr = this.subjectNode.children[0].children
-                    for(let i = 0; i < nodeArr.length; i++) {
-                        for(let j = 0; j < nodeArr[i].children.length; j++) {
-                            if(j%2==0) {
-                                nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.triangleBlack
-                            }
+            }else if(DaAnData.getInstance().type == 2) {
+                for(let i = 0; i < nodeArr.length; i++) {
+                    for(let j = 0; j < nodeArr[i].children.length; j++) {
+                        if(j%2==0) {
+                            nodeArr[i].children[j].getChildByName('blank').getComponent(cc.Sprite).spriteFrame = frame
                         }
                     }
                 }
             }
+            
         }
     }
 
@@ -156,10 +232,12 @@ export default class TeacherPanel extends BaseUI {
             case 0:
                 DaAnData.getInstance().type = 1
                 this.initType()
+                this.initFigure()
                 break
             case 1:
                 DaAnData.getInstance().type = 2
                 this.initType()
+                this.initFigure()
                 break
             default:
                 console.error(`the ${index} type toggle have error.`)
@@ -183,7 +261,7 @@ export default class TeacherPanel extends BaseUI {
                 this.initFigure()
                 break
             default:
-                    console.error(`the ${index} figure toggle have error.`)
+                console.error(`the ${index} figure toggle have error.`)
                 break
         }
     }
@@ -214,16 +292,15 @@ export default class TeacherPanel extends BaseUI {
                             DaAnData.getInstance().type = content.type
                         }else {
                             console.error('网络请求数据content.type为空')
-                            return
                         }
                         if(content.figure) {
                             DaAnData.getInstance().figure = content.figure
                         }else {
                             console.error('网络请求数据content.figure为空')
-                            return
                         }
                         this.setPanel();
                     } else {
+                        this.setPanel()
                         console.error('网络请求数据失败')
                     }
                 }
