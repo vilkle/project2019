@@ -138,7 +138,7 @@ export default class TeacherPanel extends BaseUI {
                 this.ruleDataArr[i] = []
                 for(let j = 0; j < nodeArr[i].children.length; ++j) {
                     this.ruleItemArr[i][j] = nodeArr[i].children[j]
-                    this.ruleDataArr[i][j] = 
+                    //this.ruleDataArr[i][j] = 
                 }
             }
         }

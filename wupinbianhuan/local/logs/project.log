@@ -1,68 +1,93 @@
-2019-08-15T03:15:26.686Z - normal: Load ~/.CocosCreator/settings.json
-2019-08-15T03:15:26.757Z - normal: Initializing Asset Database
-2019-08-15T03:15:26.760Z - normal: checking language setting...
-2019-08-15T03:15:26.760Z - normal: Language: zh
-2019-08-15T03:15:27.543Z - success: preview server running at http://localhost:7456
-2019-08-15T03:15:27.558Z - success: protocol editor-framework registered
-2019-08-15T03:15:27.559Z - success: protocol app registered
-2019-08-15T03:15:27.559Z - success: protocol theme registered
-2019-08-15T03:15:27.559Z - success: protocol packages registered
-2019-08-15T03:15:27.559Z - success: protocol uuid registerred
-2019-08-15T03:15:27.559Z - success: protocol db registerred
-2019-08-15T03:15:27.560Z - success: protocol thumbnail registerred
-2019-08-15T03:15:27.560Z - success: protocol unpack registerred
-2019-08-15T03:15:27.560Z - success: protocol disable-commonjs registerred
-2019-08-15T03:15:27.670Z - normal: connected!
-2019-08-15T03:15:27.672Z - normal: Check project /Users/xes/Desktop/hub/wupinbianhuan
-2019-08-15T03:15:27.673Z - normal: Initializing project /Users/xes/Desktop/hub/wupinbianhuan
-2019-08-15T03:15:28.092Z - normal: Initializing Cocos2d
-2019-08-15T03:15:28.926Z - normal: Initializing engine extends
-2019-08-15T03:15:28.947Z - success: asset-db-debugger loaded
-2019-08-15T03:15:28.949Z - success: baidu-adapter loaded
-2019-08-15T03:15:28.950Z - success: color-picker loaded
-2019-08-15T03:15:29.054Z - success: fb-audience-network loaded
-2019-08-15T03:15:29.111Z - success: fb-live-stream loaded
-2019-08-15T03:15:29.114Z - success: google-play-instant loaded
-2019-08-15T03:15:29.120Z - success: huawei-runtime loaded
-2019-08-15T03:15:29.393Z - success: cpk-publish loaded
-2019-08-15T03:15:29.394Z - success: jsb-adapter loaded
-2019-08-15T03:15:29.400Z - success: oppo-runtime loaded
-2019-08-15T03:15:29.405Z - success: package-manager loaded
-2019-08-15T03:15:29.553Z - success: qqplay-adapter loaded
-2019-08-15T03:15:29.555Z - success: runtime-dev-tools loaded
-2019-08-15T03:15:29.561Z - success: sdkbox loaded
-2019-08-15T03:15:29.568Z - success: tester loaded
-2019-08-15T03:15:29.573Z - success: ui-grid loaded
-2019-08-15T03:15:29.578Z - success: ui-kit-preview-extra loaded
-2019-08-15T03:15:29.581Z - success: ui-kit-preview loaded
-2019-08-15T03:15:29.586Z - success: ui-kit loaded
-2019-08-15T03:15:29.589Z - success: ui-tree loaded
-2019-08-15T03:15:29.595Z - success: vivo-runtime loaded
-2019-08-15T03:15:29.596Z - success: weapp-adapter loaded
-2019-08-15T03:15:29.598Z - success: xiaomi-adapter loaded
-2019-08-15T03:15:29.645Z - success: assets loaded
-2019-08-15T03:15:29.649Z - success: builder loaded
-2019-08-15T03:15:29.914Z - success: cocos-services loaded
-2019-08-15T03:15:29.921Z - success: console loaded
-2019-08-15T03:15:29.958Z - success: fb-instant-games loaded
-2019-08-15T03:15:29.959Z - success: google-instant-games loaded
-2019-08-15T03:15:29.964Z - success: hierarchy loaded
-2019-08-15T03:15:29.970Z - success: inspector loaded
-2019-08-15T03:15:29.972Z - success: keystore loaded
-2019-08-15T03:15:29.981Z - success: node-library loaded
-2019-08-15T03:15:29.983Z - success: package-asset loaded
-2019-08-15T03:15:29.985Z - success: preferences loaded
-2019-08-15T03:15:29.988Z - success: project-exporter loaded
-2019-08-15T03:15:29.994Z - success: project-importer loaded
-2019-08-15T03:15:29.997Z - success: project-settings loaded
-2019-08-15T03:15:30.004Z - success: scene loaded
-2019-08-15T03:15:30.005Z - success: simulator-debugger loaded
-2019-08-15T03:15:30.007Z - success: sprite-editor loaded
-2019-08-15T03:15:30.012Z - success: store loaded
-2019-08-15T03:15:30.018Z - success: timeline loaded
-2019-08-15T03:15:30.026Z - success: xiaomi-runtime loaded
-2019-08-15T03:15:30.033Z - success: auto_deploy loaded
-2019-08-15T03:15:31.510Z - info: Cocos Services load base data!
-2019-08-15T03:15:35.342Z - normal: Loading packages
-2019-08-15T03:15:35.357Z - normal: Watching packages
-2019-08-15T03:15:35.483Z - normal: Run Application
+2019-08-16T09:06:09.744Z - normal: Load ~/.CocosCreator/settings.json
+2019-08-16T09:06:09.807Z - normal: Initializing Asset Database
+2019-08-16T09:06:09.810Z - normal: checking language setting...
+2019-08-16T09:06:09.810Z - normal: Language: zh
+2019-08-16T09:06:10.445Z - success: preview server running at http://localhost:7456
+2019-08-16T09:06:10.492Z - success: protocol editor-framework registered
+2019-08-16T09:06:10.492Z - success: protocol app registered
+2019-08-16T09:06:10.493Z - success: protocol theme registered
+2019-08-16T09:06:10.493Z - success: protocol packages registered
+2019-08-16T09:06:10.493Z - success: protocol uuid registerred
+2019-08-16T09:06:10.493Z - success: protocol db registerred
+2019-08-16T09:06:10.493Z - success: protocol thumbnail registerred
+2019-08-16T09:06:10.493Z - success: protocol unpack registerred
+2019-08-16T09:06:10.493Z - success: protocol disable-commonjs registerred
+2019-08-16T09:06:10.598Z - normal: connected!
+2019-08-16T09:06:10.600Z - normal: Check project /Users/xes/Desktop/hub/wupinbianhuan
+2019-08-16T09:06:10.602Z - normal: Initializing project /Users/xes/Desktop/hub/wupinbianhuan
+2019-08-16T09:06:10.958Z - normal: Initializing Cocos2d
+2019-08-16T09:06:11.645Z - normal: Initializing engine extends
+2019-08-16T09:06:11.724Z - success: asset-db-debugger loaded
+2019-08-16T09:06:11.725Z - success: baidu-adapter loaded
+2019-08-16T09:06:11.726Z - success: color-picker loaded
+2019-08-16T09:06:11.809Z - success: fb-audience-network loaded
+2019-08-16T09:06:11.852Z - success: fb-live-stream loaded
+2019-08-16T09:06:11.855Z - success: google-play-instant loaded
+2019-08-16T09:06:11.859Z - success: huawei-runtime loaded
+2019-08-16T09:06:12.076Z - success: cpk-publish loaded
+2019-08-16T09:06:12.077Z - success: jsb-adapter loaded
+2019-08-16T09:06:12.081Z - success: oppo-runtime loaded
+2019-08-16T09:06:12.097Z - success: package-manager loaded
+2019-08-16T09:06:12.199Z - success: qqplay-adapter loaded
+2019-08-16T09:06:12.201Z - success: runtime-dev-tools loaded
+2019-08-16T09:06:12.219Z - success: sdkbox loaded
+2019-08-16T09:06:12.239Z - success: tester loaded
+2019-08-16T09:06:12.259Z - success: ui-grid loaded
+2019-08-16T09:06:12.277Z - success: ui-kit-preview-extra loaded
+2019-08-16T09:06:12.294Z - success: ui-kit-preview loaded
+2019-08-16T09:06:12.312Z - success: ui-kit loaded
+2019-08-16T09:06:12.329Z - success: ui-tree loaded
+2019-08-16T09:06:12.333Z - success: vivo-runtime loaded
+2019-08-16T09:06:12.334Z - success: weapp-adapter loaded
+2019-08-16T09:06:12.335Z - success: xiaomi-adapter loaded
+2019-08-16T09:06:12.395Z - success: assets loaded
+2019-08-16T09:06:12.413Z - success: builder loaded
+2019-08-16T09:06:12.673Z - success: cocos-services loaded
+2019-08-16T09:06:12.695Z - success: console loaded
+2019-08-16T09:06:12.733Z - success: fb-instant-games loaded
+2019-08-16T09:06:12.756Z - success: game-window loaded
+2019-08-16T09:06:12.757Z - success: google-instant-games loaded
+2019-08-16T09:06:12.776Z - success: hierarchy loaded
+2019-08-16T09:06:12.792Z - success: inspector loaded
+2019-08-16T09:06:12.794Z - success: keystore loaded
+2019-08-16T09:06:12.814Z - success: node-library loaded
+2019-08-16T09:06:12.815Z - success: package-asset loaded
+2019-08-16T09:06:12.816Z - success: preferences loaded
+2019-08-16T09:06:12.833Z - success: project-exporter loaded
+2019-08-16T09:06:12.888Z - success: project-importer loaded
+2019-08-16T09:06:12.907Z - success: project-settings loaded
+2019-08-16T09:06:12.926Z - success: scene loaded
+2019-08-16T09:06:12.928Z - success: simulator-debugger loaded
+2019-08-16T09:06:12.929Z - success: sprite-editor loaded
+2019-08-16T09:06:12.948Z - success: store loaded
+2019-08-16T09:06:12.970Z - success: timeline loaded
+2019-08-16T09:06:12.974Z - success: xiaomi-runtime loaded
+2019-08-16T09:06:12.993Z - success: auto_deploy loaded
+2019-08-16T09:06:15.534Z - info: Cocos Services load base data!
+2019-08-16T09:06:16.340Z - normal: Loading packages
+2019-08-16T09:06:16.353Z - normal: Watching packages
+2019-08-16T09:06:16.548Z - normal: Run Application
+2019-08-16T09:06:22.464Z - failed: load script [./ShaderMaterial] failed : TypeError: Object prototype may only be an Object or null: undefined
+    at setPrototypeOf (<anonymous>)
+    at __extends (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:11:9)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:20:5
+    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:92:2)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:98:13
+    at Object.<anonymous> (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:105:11)
+    at Object.<anonymous> (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:108:3)
+    at Module._compile (module.js:571:32)
+    at Object.Module._extensions..js (module.js:580:10)
+    at Module.load (module.js:488:32)
+2019-08-16T09:06:22.467Z - failed: load script [/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js] failed : TypeError: Object prototype may only be an Object or null: undefined
+    at setPrototypeOf (<anonymous>)
+    at __extends (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:11:9)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:20:5
+    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:92:2)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:98:13
+    at Object.<anonymous> (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:105:11)
+    at Object.<anonymous> (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderMaterial.js:108:3)
+    at Module._compile (module.js:571:32)
+    at Object.Module._extensions..js (module.js:580:10)
+    at Module.load (module.js:488:32)
+2019-08-16T09:23:59.410Z - warn: [db-task][sync-changes] Backup unused meta file: db://assets/scripts/shader/ShaderMaterial.ts.meta
+2019-08-16T11:13:27.881Z - info: shutdown preview server

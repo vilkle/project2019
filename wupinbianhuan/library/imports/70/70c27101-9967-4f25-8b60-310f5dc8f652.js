@@ -4,9 +4,12 @@ cc._RF.push(module, '70c27EBmWdPJYtgMQ9dyPZS', 'TeacherPanel');
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -144,8 +147,7 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.ruleDataArr[i] = [];
                 for (var j = 0; j < nodeArr[i].children.length; ++j) {
                     this.ruleItemArr[i][j] = nodeArr[i].children[j];
-                    this.ruleDataArr[i][j] =
-                    ;
+                    //this.ruleDataArr[i][j] = 
                 }
             }
         }
