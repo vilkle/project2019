@@ -2,6 +2,7 @@
 cc._RF.push(module, '65c35Ym/oRKD6h93ZiyEFOw', 'GameData', __filename);
 // scripts/Data/GameData.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**游戏数据类 */
 var GameData = /** @class */ (function () {

@@ -262,8 +262,25 @@
     <script src="main.js" charset="utf-8"></script>
 
     <script>
-        var domainName = location.host.indexOf('localhost') < 0 ? location.host : 'ceshi-static.haibian.com';
-        var src = '//' + domainName + '/courseware/static/sdk/courseware-v1.0.0-alpha.js';
+
+        var GetIsOnline = function () {
+            this.theRequest = new Object();
+            var url = location.search; //获取url中"?"符后的字串
+
+            if (url.indexOf("?") != -1) {
+                var str = url.substr(1);
+                var strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    this.theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                }
+            }
+            return this.theRequest["isOnline"];
+        }
+        var isOnline = GetIsOnline() == 1; //1是线上  0是测试
+        var isOwcr = location.protocol != 'owcr:' && location.protocol != 'file:';
+        var protocol = isOwcr ? '//' : 'https://';
+        var domainName = isOwcr ? (location.host.indexOf('localhost') < 0 ? location.host : 'ceshi-static.haibian.com') : (isOnline ? 'courseware-vod.haibian.com' : 'ceshi-static.haibian.com');
+        var src = protocol + domainName + '/courseware/static/sdk/courseware-v1.0.0-alpha.js';
         document.write('<script src="' + src + '"><\/script>')
     </script>
 
@@ -308,7 +325,7 @@
                         "&subject=" + theRequest["subject"] +
                         "&event=" + "CoursewareErrorLogEvent" +
                         "&identity=1" +
-                        "&extra=" + JSON.stringify({ ErrorLog: data, CoursewareName: "yanghuisanjiao", url: location })
+                        "&extra=" + JSON.stringify({ ErrorLog: data, CoursewareName: "此处需修改为自己的项目名字  拼音", url: location })
                 }
 
                 //加载时间上报
@@ -360,7 +377,7 @@
                         "&identity=1" +
                         "&extra=" + JSON.stringify({ curTime: getNowFormatDate(), curGame: gameName })
                 }
-                reportCurTime("engineLoadStart", "yanghuisanjiao");
+                reportCurTime("engineLoadStart", "此处需修改为自己的项目名字  拼音");
                 //引擎加载
                 var splash = document.getElementById('splash');
                 splash.style.display = 'block';
@@ -370,7 +387,7 @@
                 cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.js';
 
                 var engineLoaded = function () {
-                    reportCurTime("engineLoadEnd", "yanghuisanjiao");
+                    reportCurTime("engineLoadEnd", "此处需修改为自己的项目名字  拼音");
                     document.body.removeChild(cocos2d);
                     cocos2d.removeEventListener('load', engineLoaded, false);
                     window.boot();

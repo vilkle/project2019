@@ -2,6 +2,7 @@
 cc._RF.push(module, '2f1ec1bM8JGb4L5TI7iWW47', 'DaAnData', __filename);
 // scripts/Data/DaAnData.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var skinStrEnum;
 (function (skinStrEnum) {

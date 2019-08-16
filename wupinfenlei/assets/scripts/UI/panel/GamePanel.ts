@@ -88,7 +88,7 @@ export default class GamePanel extends BaseUI {
             this.checkpointsNum = DaAnData.getInstance().checkpointsNum;
             this.typeDataArr = DaAnData.getInstance().typeDataArr;
             this.loadSourceSFArr();
-            UIManager.getInstance().openUI(UploadAndReturnPanel);
+            UIManager.getInstance().openUI(UploadAndReturnPanel,null,212);
         }else {
             this.getNet();
         }

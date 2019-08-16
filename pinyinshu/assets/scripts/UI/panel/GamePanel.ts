@@ -162,7 +162,7 @@ export default class GamePanel extends BaseUI {
 
     isTecher() {
         if(ConstValue.IS_TEACHER) {
-            UIManager.getInstance().openUI(UploadAndReturnPanel);
+            UIManager.getInstance().openUI(UploadAndReturnPanel,null,211);
             this.initData();
         }else {
             this.getNet();

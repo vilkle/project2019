@@ -2,6 +2,7 @@
 cc._RF.push(module, 'a9280QRTmRIUqfgpuhZqA92', 'BaseConfigContainer', __filename);
 // scripts/Config/BaseConfigContainer.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var BaseConfigContainer = /** @class */ (function () {
     function BaseConfigContainer() {

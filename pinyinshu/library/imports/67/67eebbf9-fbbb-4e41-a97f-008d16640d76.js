@@ -2,6 +2,7 @@
 cc._RF.push(module, '67eebv5+7tOQal/AI0WZA12', 'TimeManager');
 // scripts/Manager/TimeManager.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var TimeManager = /** @class */ (function () {
     //private timeDate = null;

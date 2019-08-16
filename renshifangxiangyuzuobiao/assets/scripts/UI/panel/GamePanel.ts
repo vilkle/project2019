@@ -44,9 +44,10 @@ export default class GamePanel extends BaseUI {
     private touchRight : boolean = false;
     private overNum : number = 0;
     private rightNum : number = 0;
-    private isOver : number = 4;
+    private isOver : number = 0;
     private audioIdArr: number[] = [];
     private finishing: boolean = false;
+    private erroring: boolean = false;
     private eventvalue = {
         isResult: 1,
         isLevel: 0,
@@ -66,7 +67,7 @@ export default class GamePanel extends BaseUI {
 
     start() {
         if(ConstValue.IS_TEACHER) {
-            UIManager.getInstance().openUI(UploadAndReturnPanel);
+            UIManager.getInstance().openUI(UploadAndReturnPanel, null, 212);
             this.types = DaAnData.getInstance().types;
             this.initGame();
         }else {
@@ -295,38 +296,53 @@ export default class GamePanel extends BaseUI {
         this.audioIdArr = []
         if(this.types == 1) {
             if(this.rightNum == 0) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('橘子没有在香蕉的上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 1) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('梨不是在香蕉的右上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 2) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 3) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 4) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 5) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 6) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 7) {
                 //AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false);
             }
         }else if(this.types == 2) {
             if(this.rightNum == 0) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('土豆没有在最中央的位置哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 1) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('黄瓜没有在土豆的左面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 2) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('西红柿没有在黄瓜的右下方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 3) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('西兰花没有在西红柿的右面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 4) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('西兰花没有在南瓜的下面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 5) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('菠菜没有在土豆的上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 6) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('菠菜没有在白菜的右面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 7) {
+                this.erroring = true
                 AudioManager.getInstance().playSound('大蒜和菠菜相邻啦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 8) {}
         }else if(this.types == 3) {
@@ -351,6 +367,9 @@ export default class GamePanel extends BaseUI {
             AudioManager.getInstance().stopAudio(this.audioIdArr[i])
         }
         this.audioIdArr = []
+        if(this.erroring) {
+            return
+        }
         if(this.types == 1) {
             this.fruitHand.active = false
             switch(rightNum) {
@@ -624,6 +643,8 @@ export default class GamePanel extends BaseUI {
                         index = j
                         if(i == this.answerArr[j]) {
                             this.eventvalue.levelData[0].subject[j] = i;
+                            this.eventvalue.levelData[0].result = 2
+                            this.isOver = 2
                             this.gridNode.children[j].getChildByName('sprite').active = true; 
                             this.touchRight = true;
                             this.rightNum++;
@@ -651,6 +672,7 @@ export default class GamePanel extends BaseUI {
                                 this.gridNode.children[index].getChildByName('err').getComponent(cc.Sprite).spriteFrame = this.touchNode.children[0].getComponent(cc.Sprite).spriteFrame
                                 this.finishing = true
                                 this.errAudio(i, ()=>{
+                                    this.erroring = false
                                     this.finishing = false
                                     this.gridNode.children[index].getChildByName('err').active = false;
                                     e.target.opacity = 255;

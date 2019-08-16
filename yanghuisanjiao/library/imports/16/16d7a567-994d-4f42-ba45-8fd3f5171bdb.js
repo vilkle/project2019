@@ -2,6 +2,7 @@
 cc._RF.push(module, '16d7aVnmU1PQrpFj9P1Fxvb', 'AudioManager');
 // scripts/Manager/AudioManager.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ConstValue_1 = require("../Data/ConstValue");
 var AudioManager = /** @class */ (function () {

@@ -1,14 +1,14 @@
 (function() {"use strict";var __module = CC_EDITOR ? module : {exports:{}};var __filename = 'preview-scripts/assets/scripts/Http/NetWork.js';var __require = CC_EDITOR ? function (request) {return cc.require(request, require);} : function (request) {return cc.require(request, __filename);};function __define (exports, require, module) {"use strict";
-cc._RF.push(module, '9cd01aQNbFMUY4sUMN0yYH5', 'NetWork', __filename);
+cc._RF.push(module, 'd22fd6no05BYpK7fdZyiHuS', 'NetWork', __filename);
 // scripts/Http/NetWork.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ConstValue_1 = require("../Data/ConstValue");
 var UIManager_1 = require("../Manager/UIManager");
 var ErrorPanel_1 = require("../UI/panel/ErrorPanel");
 var NetWork = /** @class */ (function () {
     function NetWork() {
-        this.theRequest = null;
     }
     NetWork.getInstance = function () {
         if (this.instance == null) {
@@ -93,25 +93,30 @@ var NetWork = /** @class */ (function () {
      * 获取url参数
      */
     NetWork.prototype.GetRequest = function () {
-        if (this.theRequest != null) {
-            return this.theRequest;
+        if (NetWork.theRequest != null) {
+            return NetWork.theRequest;
         }
-        this.theRequest = new Object();
+        NetWork.theRequest = new Object();
         var url = location.search; //获取url中"?"符后的字串
+        // var url = location.href;
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);
             var strs = str.split("&");
             for (var i = 0; i < strs.length; i++) {
-                this.theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                NetWork.theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
             }
         }
-        NetWork.courseware_id = this.theRequest["id"];
-        NetWork.title_id = this.theRequest["title_id"];
-        NetWork.user_id = this.theRequest["user_id"];
-        NetWork.empty = this.theRequest["empty"];
-        NetWork.isLive = this.theRequest['isLive'];
+        NetWork.courseware_id = NetWork.theRequest["id"];
+        NetWork.title_id = NetWork.theRequest["title_id"];
+        NetWork.user_id = NetWork.theRequest["user_id"];
+        NetWork.empty = NetWork.theRequest["empty"];
+        NetWork.isLive = NetWork.theRequest['isLive'];
         this.LogJournalReport('CoursewareLogEvent', '');
-        return this.theRequest;
+        console.log('11111gaolei', NetWork.courseware_id, '           ', NetWork.theRequest['id'], '           ', JSON.stringify(NetWork.theRequest));
+        return NetWork.theRequest;
+    };
+    NetWork.prototype.GetIsOnline = function () {
+        return this.GetRequest()["isOnline"];
     };
     NetWork.prototype.LogJournalReport = function (errorType, data) {
         if (ConstValue_1.ConstValue.IS_EDITIONS) {
@@ -123,13 +128,17 @@ var NetWork = /** @class */ (function () {
                 "&subject=" + this.GetRequest()["subject"] +
                 "&event=" + errorType +
                 "&identity=1" +
-                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue_1.ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: 'yanghuisanjiao', data: data });
+                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue_1.ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: '此处需修改为自己的项目名字  拼音', data: data });
         }
     };
-    NetWork.isOnlineEnv = location.host.indexOf('ceshi-') < 0 && location.host.indexOf('localhost') < 0;
+    //判断是否是线上
+    NetWork.isOnlineEnv = location.host.indexOf('ceshi-') < 0 && location.host.indexOf('localhost') < 0 && NetWork.getInstance().GetIsOnline() == 1;
     NetWork.isProtocol = /http:/.test(window['location'].protocol);
+    //判断协议是否为http
     NetWork.isLocal = /localhost/.test(window['location'].href) || NetWork.isProtocol;
-    NetWork.BASE = NetWork.isOnlineEnv ? '//courseware.haibian.com' : NetWork.isLocal ? '//ceshi.courseware.haibian.com' : '//ceshi_courseware.haibian.com';
+    //判断是否是pc预加载的协议
+    NetWork.isOwcr = location.protocol == 'owcr:' || location.protocol == 'file:';
+    NetWork.BASE = NetWork.isOnlineEnv ? 'https://courseware.haibian.com' : NetWork.isLocal ? 'http://ceshi.courseware.haibian.com' : 'https://ceshi_courseware.haibian.com';
     NetWork.GET_QUESTION = NetWork.BASE + '/get';
     NetWork.GET_USER_PROGRESS = NetWork.BASE + '/get/answer';
     NetWork.GET_TITLE = NetWork.BASE + "/get/title";
@@ -144,6 +153,7 @@ var NetWork = /** @class */ (function () {
     NetWork.subject = null;
     /*isLive参数已添加，直播课参数传YES，回放传NO  */
     NetWork.isLive = null;
+    NetWork.theRequest = null;
     return NetWork;
 }());
 exports.NetWork = NetWork;

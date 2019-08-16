@@ -2,6 +2,7 @@
 cc._RF.push(module, '05dc2tRAiFMobMbxaPK4NIf', 'ListenerManager');
 // scripts/Manager/ListenerManager.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Delegate = /** @class */ (function () {
     function Delegate(listener, argArray, isOnce) {

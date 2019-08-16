@@ -96,7 +96,7 @@ var GamePanel = /** @class */ (function (_super) {
             this.checkpointsNum = DaAnData_1.DaAnData.getInstance().checkpointsNum;
             this.typeDataArr = DaAnData_1.DaAnData.getInstance().typeDataArr;
             this.loadSourceSFArr();
-            UIManager_1.UIManager.getInstance().openUI(UploadAndReturnPanel_1.default);
+            UIManager_1.UIManager.getInstance().openUI(UploadAndReturnPanel_1.default, null, 212);
         }
         else {
             this.getNet();

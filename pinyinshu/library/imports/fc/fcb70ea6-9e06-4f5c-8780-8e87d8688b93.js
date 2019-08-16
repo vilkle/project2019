@@ -2,6 +2,7 @@
 cc._RF.push(module, 'fcb706mngZPXIeAjofYaIuT', 'UIManager');
 // scripts/Manager/UIManager.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var UIManager = /** @class */ (function () {
     function UIManager() {
@@ -15,11 +16,11 @@ var UIManager = /** @class */ (function () {
         }
         return this.instance;
     };
-    UIManager.prototype.openUI = function (uiClass, zOrder, callback, onProgress) {
+    UIManager.prototype.openUI = function (uiClass, data, zOrder, callback, onProgress) {
         var _this = this;
         var args = [];
-        for (var _i = 4; _i < arguments.length; _i++) {
-            args[_i - 4] = arguments[_i];
+        for (var _i = 5; _i < arguments.length; _i++) {
+            args[_i - 5] = arguments[_i];
         }
         if (this.getUI(uiClass)) {
             return;
@@ -43,6 +44,7 @@ var UIManager = /** @class */ (function () {
                 uiNode.zIndex = zOrder;
             }
             var ui = uiNode.getComponent(uiClass);
+            ui.data = data;
             ui.tag = uiClass;
             _this.uiList.push(ui);
             if (callback) {
@@ -59,10 +61,11 @@ var UIManager = /** @class */ (function () {
             }
         }
     };
-    UIManager.prototype.showUI = function (uiClass, callback) {
+    UIManager.prototype.showUI = function (uiClass, data, callback) {
         var _this = this;
         var ui = this.getUI(uiClass);
         if (ui) {
+            ui.data = data;
             ui.node.active = true;
             ui.onShow();
             if (callback) {
@@ -70,7 +73,7 @@ var UIManager = /** @class */ (function () {
             }
         }
         else {
-            this.openUI(uiClass, 0, function () {
+            this.openUI(uiClass, data, 0, function () {
                 callback && callback();
                 var ui = _this.getUI(uiClass);
                 ui.onShow();

@@ -2,6 +2,7 @@
 cc._RF.push(module, '615f7lsxLNDWJSqVJoRIFW3', 'LogWrap');
 // scripts/Utils/LogWrap.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ConstValue_1 = require("../Data/ConstValue");
 // let OPENLOGFLAG = true;

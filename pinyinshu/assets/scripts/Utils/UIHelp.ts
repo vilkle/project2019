@@ -8,7 +8,7 @@ export class UIHelp
         let tipUI = UIManager.getInstance().getUI(TipUI) as TipUI;
         if(!tipUI)
         {
-            UIManager.getInstance().openUI(TipUI, 200, ()=>{
+            UIManager.getInstance().openUI(TipUI,null, 200, ()=>{
                 UIHelp.showTip(message);
             });
         }
@@ -37,7 +37,7 @@ export class UIHelp
         let affirmTips = UIManager.getInstance().getUI(AffirmTips) as AffirmTips;
         if(!affirmTips)
         {
-            UIManager.getInstance().openUI(AffirmTips, 200, ()=>{
+            UIManager.getInstance().openUI(AffirmTips, null,200, ()=>{
                 UIHelp.showAffirmTips(type,des,time,btnCloselDes,btnOkDes,callbackClose,callbackOk);
             });
         }

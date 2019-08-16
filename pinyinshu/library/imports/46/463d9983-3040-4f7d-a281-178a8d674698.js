@@ -2,6 +2,7 @@
 cc._RF.push(module, '463d9mDMEBPfaKBF4qNZ0aY', 'ShaderLab');
 // scripts/shader/ShaderLab.ts
 
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MVP = "\nuniform mat4 viewProj;\nattribute vec3 a_position;\nattribute vec2 a_uv0;\nvarying vec2 uv0;\nvoid main () {\n    vec4 pos = viewProj * vec4(a_position, 1);\n    gl_Position = pos;\n    uv0 = a_uv0;\n}";
 var ShaderLab = {
