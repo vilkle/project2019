@@ -8,6 +8,7 @@ import GamePanel from "./GamePanel";
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
 import {ItemType} from "../../Data/ItemType"
+import { DefalutTitle } from "../Item/OverTips";
 
 const { ccclass, property } = cc._decorator;
 
@@ -45,6 +46,12 @@ export default class TeacherPanel extends BaseUI {
     private octagonGreen: cc.SpriteFrame = null
     @property(cc.SpriteFrame)
     private octagonYellow: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private arrowBlack: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private arrowBlue: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private arrowOrange: cc.SpriteFrame = null
 
     private ruleItemArr: cc.Node[][] = []
     private subjectItemArr: cc.Node[][] = []
@@ -72,65 +79,63 @@ export default class TeacherPanel extends BaseUI {
      * @param i 
      * @param j
      * @param type 1、rule下节点 2、subject下节点
-     * @param isClick 是否被点击 
+     * @param typetype 1、tree 2、single
      */
-    getItemData(i: number, j :number, type: number, isClick: boolean) : ItemType { 
+    getItemData(i: number, j :number, type: number, typetype?: number) : ItemType { 
+        let state: number = 1
         if(type == 1) {
-            if(DaAnData.getInstance().figure == 1) {
-                if(j%2==0) {
-                    if(this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType.triangle_black
-                    } 
-                }else {
-                    if(this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType.arrow_black
-                    } 
-                }
-            }else if(DaAnData.getInstance().figure == 2) {
-                if(j%2==0) {
-                    if(this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType.sexangle_black
-                    } 
-                }else {
-                    if(this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType.arrow_black
-                    } 
-                }
-            }else if(DaAnData.getInstance().figure == 3) {
-                if(j%2==0) {
-                    if(this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType.octagon_black
-                    } 
-                }else {
-                    if(this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType.arrow_black
-                    } 
-                }
-            }
+            state = j
         }else if(type == 2) {
-
+            if(typetype == 1) {
+                state = i
+            }else if(typetype == 2) {
+                state = j
+            }
         }
-        return this.nextType(this.ruleDataArr[i][j], isClick)
+
+        if(DaAnData.getInstance().figure == 1) {
+            if(state%2==0) {
+                return ItemType.triangle_black
+            }else {
+                return ItemType.arrow_black
+            }
+        }else if(DaAnData.getInstance().figure == 2) {
+            if(state%2==0) {
+                return ItemType.sexangle_black
+            }else {
+                return ItemType.arrow_black
+            }
+        }else if(DaAnData.getInstance().figure == 3) {
+            if(state%2==0) {
+                return ItemType.octagon_black
+            }else {
+                return ItemType.arrow_black
+            }
+        }
+
     }
 
-    nextType(type: ItemType, isClick: boolean): ItemType {
-        
-        if(isClick) {
-            let highNum = Math.floor(type/3) * 3 + 3
-            let lowNum = highNum - 2
-            let next = type + 1
-            if(next > highNum) {
-                next = lowNum
-            }
-            return next
-        }else {
-            return type
+    nextType(type: ItemType): ItemType {
+        let highNum = Math.floor(type/3) * 3 + 3
+        if(type%3 == 0) {
+            highNum -= 3
         }
+        let lowNum = highNum - 2
+        let next = type + 1
+        if(next > highNum) {
+            next = lowNum
+        }
+        console.log('hight', highNum)
+        console.log('low', lowNum)
+        console.log('next', next)
+        return next
     }
     
     getItem() {
         this.ruleItemArr = []
         this.subjectItemArr = []
+        this.ruleDataArr = []
+        this.subjectDataArr = []
         if(this.ruleNode.children[0]) {
             let nodeArr = this.ruleNode.children[0].children
             for(let i = 0; i < nodeArr.length; ++i) {
@@ -138,7 +143,8 @@ export default class TeacherPanel extends BaseUI {
                 this.ruleDataArr[i] = []
                 for(let j = 0; j < nodeArr[i].children.length; ++j) {
                     this.ruleItemArr[i][j] = nodeArr[i].children[j]
-                    //this.ruleDataArr[i][j] = 
+                    this.ruleItemArr[i][j].getChildByName('sprite').active = false
+                    this.ruleDataArr[i][j] = this.getItemData(i,j,1)
                 }
             }
         }
@@ -149,11 +155,99 @@ export default class TeacherPanel extends BaseUI {
                 this.subjectDataArr[i] = []
                 for(let j = 0; j < nodeArr[i].children.length; ++j) {
                     this.subjectItemArr[i][j] = nodeArr[i].children[j]
+                    this.subjectItemArr[i][j].getChildByName('sprite').active = false
+                    this.subjectDataArr[i][j] = this.getItemData(i,j,2,DaAnData.getInstance().type)
                 }
             }
         }
+        this.addListenerOnItem()
         console.log(this.ruleItemArr)
         console.log(this.subjectItemArr)
+        console.log(this.ruleDataArr)
+        console.log(this.subjectDataArr)
+    }
+
+    setState(node: cc.Node, state: ItemType) {
+        if(state == 1||state == 4||state == 7|| state == 10) {
+            node.getChildByName('sprite').active = false
+            node.getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.getSpriteframe(state)
+        }else {
+            node.getChildByName('sprite').active = true
+            node.getChildByName('sprite').getComponent(cc.Sprite).spriteFrame = this.getSpriteframe(state)
+        }
+    }
+
+    getSpriteframe(state: ItemType): cc.SpriteFrame {
+       switch(state) {
+            case 1:
+            return this.arrowBlack
+            break
+            case 2:
+            return this.arrowBlue
+            break
+            case 3:
+            return this.arrowOrange
+            break
+            case 4:
+            return this.triangleBlack
+            break
+            case 5:
+            return this.triangleGreen
+            break
+            case 6:
+            return this.triangleYellow
+            break
+            case 7:
+            return this.sexangleBlack
+            break
+            case 8:
+            return this.sexangleOrange
+            break
+            case 9:
+            return this.sexanglePurple
+            break
+            case 10:
+            return this.octagonBlack
+            break
+            case 11:
+            return this.octagonGreen
+            break
+            case 12:
+            return this.octagonYellow
+            break
+            default:
+            console.error('get wrong spriteframe')
+            break
+       }
+    }
+
+    addListenerOnItem() {
+        for(let i = 0; i < this.ruleItemArr.length; i++) {
+            for(let j = 0; j < this.ruleItemArr[i].length; j++) {
+                this.ruleItemArr[i][j].getChildByName('blank').off(cc.Node.EventType.TOUCH_START)
+            }
+        }
+        for(let i = 0; i < this.subjectItemArr.length; i++) {
+            for(let j = 0; j < this.subjectItemArr[i].length; j++) {
+                this.subjectItemArr[i][j].getChildByName('blank').off(cc.Node.EventType.TOUCH_START)
+            }
+        }
+        for(let i = 0; i < this.ruleItemArr.length; i++) {
+            for(let j = 0; j < this.ruleItemArr[i].length; j++) {
+                this.ruleItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
+                    this.ruleDataArr[i][j] = this.nextType(this.ruleDataArr[i][j])
+                    this.setState(this.ruleItemArr[i][j], this.ruleDataArr[i][j]) 
+                })
+            }
+        }
+        for(let i = 0; i < this.subjectItemArr.length; i++) {
+            for(let j = 0; j < this.subjectItemArr[i].length; j++) {
+                this.subjectItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
+                    this.subjectDataArr[i][j] = this.nextType(this.subjectDataArr[i][j])
+                    this.setState(this.subjectItemArr[i][j], this.subjectDataArr[i][j]) 
+                })
+            }
+        }
     }
 
     initType() {
@@ -171,8 +265,8 @@ export default class TeacherPanel extends BaseUI {
                 this.currentType = 2
             }
             this.subjectNode.addChild(node)
-            this.getItem()
             this.currentFigure = 2
+            this.getItem()
         }
     }
 
@@ -189,6 +283,7 @@ export default class TeacherPanel extends BaseUI {
                 this.currentFigure = 3
             }
         }
+        this.getItem()
     }
     changeFigure(frame: cc.SpriteFrame) {
         if(this.ruleNode.children[0]) {
@@ -301,7 +396,7 @@ export default class TeacherPanel extends BaseUI {
                         this.setPanel();
                     } else {
                         this.setPanel()
-                        console.error('网络请求数据失败')
+                        console.error('网络请求数据为空')
                     }
                 }
             }

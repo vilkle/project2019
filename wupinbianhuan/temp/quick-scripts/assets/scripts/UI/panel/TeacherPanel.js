@@ -52,6 +52,9 @@ var TeacherPanel = /** @class */ (function (_super) {
         _this.octagonBlack = null;
         _this.octagonGreen = null;
         _this.octagonYellow = null;
+        _this.arrowBlack = null;
+        _this.arrowBlue = null;
+        _this.arrowOrange = null;
         _this.ruleItemArr = [];
         _this.subjectItemArr = [];
         _this.ruleDataArr = [];
@@ -78,68 +81,66 @@ var TeacherPanel = /** @class */ (function (_super) {
     * @param i
     * @param j
     * @param type 1、rule下节点 2、subject下节点
-    * @param isClick 是否被点击
+    * @param typetype 1、tree 2、single
     */
-    TeacherPanel.prototype.getItemData = function (i, j, type, isClick) {
+    TeacherPanel.prototype.getItemData = function (i, j, type, typetype) {
+        var state = 1;
         if (type == 1) {
-            if (DaAnData_1.DaAnData.getInstance().figure == 1) {
-                if (j % 2 == 0) {
-                    if (this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType_1.ItemType.triangle_black;
-                    }
-                }
-                else {
-                    if (this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType_1.ItemType.arrow_black;
-                    }
-                }
-            }
-            else if (DaAnData_1.DaAnData.getInstance().figure == 2) {
-                if (j % 2 == 0) {
-                    if (this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType_1.ItemType.sexangle_black;
-                    }
-                }
-                else {
-                    if (this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType_1.ItemType.arrow_black;
-                    }
-                }
-            }
-            else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
-                if (j % 2 == 0) {
-                    if (this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType_1.ItemType.octagon_black;
-                    }
-                }
-                else {
-                    if (this.ruleDataArr[i][j] = null) {
-                        this.ruleDataArr[i][j] = ItemType_1.ItemType.arrow_black;
-                    }
-                }
-            }
+            state = j;
         }
         else if (type == 2) {
-        }
-        return this.nextType(this.ruleDataArr[i][j], isClick);
-    };
-    TeacherPanel.prototype.nextType = function (type, isClick) {
-        if (isClick) {
-            var highNum = Math.floor(type / 3) * 3 + 3;
-            var lowNum = highNum - 2;
-            var next = type + 1;
-            if (next > highNum) {
-                next = lowNum;
+            if (typetype == 1) {
+                state = i;
             }
-            return next;
+            else if (typetype == 2) {
+                state = j;
+            }
         }
-        else {
-            return type;
+        if (DaAnData_1.DaAnData.getInstance().figure == 1) {
+            if (state % 2 == 0) {
+                return ItemType_1.ItemType.triangle_black;
+            }
+            else {
+                return ItemType_1.ItemType.arrow_black;
+            }
         }
+        else if (DaAnData_1.DaAnData.getInstance().figure == 2) {
+            if (state % 2 == 0) {
+                return ItemType_1.ItemType.sexangle_black;
+            }
+            else {
+                return ItemType_1.ItemType.arrow_black;
+            }
+        }
+        else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
+            if (state % 2 == 0) {
+                return ItemType_1.ItemType.octagon_black;
+            }
+            else {
+                return ItemType_1.ItemType.arrow_black;
+            }
+        }
+    };
+    TeacherPanel.prototype.nextType = function (type) {
+        var highNum = Math.floor(type / 3) * 3 + 3;
+        if (type % 3 == 0) {
+            highNum -= 3;
+        }
+        var lowNum = highNum - 2;
+        var next = type + 1;
+        if (next > highNum) {
+            next = lowNum;
+        }
+        console.log('hight', highNum);
+        console.log('low', lowNum);
+        console.log('next', next);
+        return next;
     };
     TeacherPanel.prototype.getItem = function () {
         this.ruleItemArr = [];
         this.subjectItemArr = [];
+        this.ruleDataArr = [];
+        this.subjectDataArr = [];
         if (this.ruleNode.children[0]) {
             var nodeArr = this.ruleNode.children[0].children;
             for (var i = 0; i < nodeArr.length; ++i) {
@@ -147,7 +148,8 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.ruleDataArr[i] = [];
                 for (var j = 0; j < nodeArr[i].children.length; ++j) {
                     this.ruleItemArr[i][j] = nodeArr[i].children[j];
-                    //this.ruleDataArr[i][j] = 
+                    this.ruleItemArr[i][j].getChildByName('sprite').active = false;
+                    this.ruleDataArr[i][j] = this.getItemData(i, j, 1);
                 }
             }
         }
@@ -158,11 +160,112 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.subjectDataArr[i] = [];
                 for (var j = 0; j < nodeArr[i].children.length; ++j) {
                     this.subjectItemArr[i][j] = nodeArr[i].children[j];
+                    this.subjectItemArr[i][j].getChildByName('sprite').active = false;
+                    this.subjectDataArr[i][j] = this.getItemData(i, j, 2, DaAnData_1.DaAnData.getInstance().type);
                 }
             }
         }
+        this.addListenerOnItem();
         console.log(this.ruleItemArr);
         console.log(this.subjectItemArr);
+        console.log(this.ruleDataArr);
+        console.log(this.subjectDataArr);
+    };
+    TeacherPanel.prototype.setState = function (node, state) {
+        if (state == 1 || state == 4 || state == 7 || state == 10) {
+            node.getChildByName('sprite').active = false;
+            node.getChildByName('blank').getComponent(cc.Sprite).spriteFrame = this.getSpriteframe(state);
+        }
+        else {
+            node.getChildByName('sprite').active = true;
+            node.getChildByName('sprite').getComponent(cc.Sprite).spriteFrame = this.getSpriteframe(state);
+        }
+    };
+    TeacherPanel.prototype.getSpriteframe = function (state) {
+        switch (state) {
+            case 1:
+                return this.arrowBlack;
+                break;
+            case 2:
+                return this.arrowBlue;
+                break;
+            case 3:
+                return this.arrowOrange;
+                break;
+            case 4:
+                return this.triangleBlack;
+                break;
+            case 5:
+                return this.triangleGreen;
+                break;
+            case 6:
+                return this.triangleYellow;
+                break;
+            case 7:
+                return this.sexangleBlack;
+                break;
+            case 8:
+                return this.sexangleOrange;
+                break;
+            case 9:
+                return this.sexanglePurple;
+                break;
+            case 10:
+                return this.octagonBlack;
+                break;
+            case 11:
+                return this.octagonGreen;
+                break;
+            case 12:
+                return this.octagonYellow;
+                break;
+            default:
+                console.error('get wrong spriteframe');
+                break;
+        }
+    };
+    TeacherPanel.prototype.addListenerOnItem = function () {
+        var _this = this;
+        for (var i = 0; i < this.ruleItemArr.length; i++) {
+            for (var j = 0; j < this.ruleItemArr[i].length; j++) {
+                this.ruleItemArr[i][j].getChildByName('blank').off(cc.Node.EventType.TOUCH_START);
+            }
+        }
+        for (var i = 0; i < this.subjectItemArr.length; i++) {
+            for (var j = 0; j < this.subjectItemArr[i].length; j++) {
+                this.subjectItemArr[i][j].getChildByName('blank').off(cc.Node.EventType.TOUCH_START);
+            }
+        }
+        var _loop_1 = function (i) {
+            var _loop_3 = function (j) {
+                this_1.ruleItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, function () {
+                    _this.ruleDataArr[i][j] = _this.nextType(_this.ruleDataArr[i][j]);
+                    _this.setState(_this.ruleItemArr[i][j], _this.ruleDataArr[i][j]);
+                });
+            };
+            for (var j = 0; j < this_1.ruleItemArr[i].length; j++) {
+                _loop_3(j);
+            }
+        };
+        var this_1 = this;
+        for (var i = 0; i < this.ruleItemArr.length; i++) {
+            _loop_1(i);
+        }
+        var _loop_2 = function (i) {
+            var _loop_4 = function (j) {
+                this_2.subjectItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, function () {
+                    _this.subjectDataArr[i][j] = _this.nextType(_this.subjectDataArr[i][j]);
+                    _this.setState(_this.subjectItemArr[i][j], _this.subjectDataArr[i][j]);
+                });
+            };
+            for (var j = 0; j < this_2.subjectItemArr[i].length; j++) {
+                _loop_4(j);
+            }
+        };
+        var this_2 = this;
+        for (var i = 0; i < this.subjectItemArr.length; i++) {
+            _loop_2(i);
+        }
     };
     TeacherPanel.prototype.initType = function () {
         if (DaAnData_1.DaAnData.getInstance().type != this.currentType) {
@@ -180,8 +283,8 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.currentType = 2;
             }
             this.subjectNode.addChild(node);
-            this.getItem();
             this.currentFigure = 2;
+            this.getItem();
         }
     };
     TeacherPanel.prototype.initFigure = function () {
@@ -199,6 +302,7 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.currentFigure = 3;
             }
         }
+        this.getItem();
     };
     TeacherPanel.prototype.changeFigure = function (frame) {
         if (this.ruleNode.children[0]) {
@@ -309,7 +413,7 @@ var TeacherPanel = /** @class */ (function (_super) {
                     }
                     else {
                         this.setPanel();
-                        console.error('网络请求数据失败');
+                        console.error('网络请求数据为空');
                     }
                 }
             }
@@ -370,6 +474,15 @@ var TeacherPanel = /** @class */ (function (_super) {
     __decorate([
         property(cc.SpriteFrame)
     ], TeacherPanel.prototype, "octagonYellow", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], TeacherPanel.prototype, "arrowBlack", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], TeacherPanel.prototype, "arrowBlue", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], TeacherPanel.prototype, "arrowOrange", void 0);
     TeacherPanel = __decorate([
         ccclass
     ], TeacherPanel);
