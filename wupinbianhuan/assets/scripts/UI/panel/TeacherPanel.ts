@@ -63,7 +63,7 @@ export default class TeacherPanel extends BaseUI {
 
     start() {
         DaAnData.getInstance().type = 1
-        DaAnData.getInstance().figure = 1
+        DaAnData.getInstance().figure = 2
         this.getNet();
     }
 
@@ -73,7 +73,99 @@ export default class TeacherPanel extends BaseUI {
         this.initType()
         this.initFigure()
         this.getItem()
+        this.defaultRule()
+        this.defaultSubject(DaAnData.getInstance().type == 1)
     }
+    defaultRule() {
+        let type1: ItemType = null
+        let type2: ItemType = null
+        if(DaAnData.getInstance().figure == 1) {
+            type1 = ItemType.triangle_green
+            type2 = ItemType.triangle_yellow
+        }else if(DaAnData.getInstance().figure == 2) {
+            type1 = ItemType.sexangle_orange
+            type2 = ItemType.sexangle_purple
+        }else if(DaAnData.getInstance().figure == 3) {
+            type1 = ItemType.octagon_green
+            type2 = ItemType.octagon_yellow
+        }
+        this.setRuleDefault(0,0, type1)
+        this.setRuleDefault(1,2, type1) 
+        this.setRuleDefault(2,0, type1)
+        this.setRuleDefault(2,2, type1)
+        this.setRuleDefault(0,2, type2)
+        this.setRuleDefault(1,0, type2) 
+        this.setRuleDefault(3,0, type2)
+        this.setRuleDefault(3,2, type2)
+        this.setRuleDefault(0,1, ItemType.arrow_blue)
+        this.setRuleDefault(1,1, ItemType.arrow_blue) 
+        this.setRuleDefault(2,1, ItemType.arrow_orange)
+        this.setRuleDefault(3,1, ItemType.arrow_orange)
+    }
+
+    defaultSubject( isTree: boolean) {
+        let type1: ItemType = null
+        let type2: ItemType = null
+        if(DaAnData.getInstance().figure == 1) {
+            type1 = ItemType.triangle_green
+            type2 = ItemType.triangle_yellow
+        }else if(DaAnData.getInstance().figure == 2) {
+            type1 = ItemType.sexangle_orange
+            type2 = ItemType.sexangle_purple
+        }else if(DaAnData.getInstance().figure == 3) {
+            type1 = ItemType.octagon_green
+            type2 = ItemType.octagon_yellow
+        }
+        if(isTree) {
+            this.setState(this.subjectItemArr[0][0], type2)
+            for(let i = 0; i < this.subjectItemArr.length; i++) {
+                for(let j = 0; j < this.subjectItemArr[i].length; j++) {
+                    if(i%2 == 1) {
+                        if(j%2 == 1) {
+                            this.setState(this.subjectItemArr[i][j], ItemType.arrow_blue)
+                            this.subjectDataArr[i][j] = ItemType.arrow_blue
+                        }else { 
+                            this.setState(this.subjectItemArr[i][j], ItemType.arrow_orange)
+                            this.subjectDataArr[i][j] = ItemType.arrow_orange
+                        }
+                    }
+                }
+            }
+        }else {
+            this.setSubjectDefault(0,0, type1)
+            this.setSubjectDefault(0,2, type1)
+            this.setSubjectDefault(1,2, type1)
+            this.setSubjectDefault(3,0, type1)
+            this.setSubjectDefault(3,8, type1)
+            this.setSubjectDefault(0,8, type2)
+            this.setSubjectDefault(1,0, type2)
+            this.setSubjectDefault(1,6, type2)
+            this.setSubjectDefault(2,2, type2)
+            this.setSubjectDefault(2,4, type2)
+            this.setSubjectDefault(0,1, ItemType.arrow_blue)
+            this.setSubjectDefault(0,3, ItemType.arrow_blue)
+            this.setSubjectDefault(2,5, ItemType.arrow_blue)
+            this.setSubjectDefault(2,7, ItemType.arrow_blue)
+            this.setSubjectDefault(3,1, ItemType.arrow_blue)
+            this.setSubjectDefault(3,5, ItemType.arrow_blue)
+            this.setSubjectDefault(0,5, ItemType.arrow_orange)
+            this.setSubjectDefault(1,3, ItemType.arrow_orange)
+            this.setSubjectDefault(1,7, ItemType.arrow_orange)
+            this.setSubjectDefault(2,1, ItemType.arrow_orange)
+            this.setSubjectDefault(3,7, ItemType.arrow_orange)
+        }
+    }
+
+    setRuleDefault(i: number, j:number, type: ItemType) {
+        this.setState(this.ruleItemArr[i][j], type) 
+        this.ruleDataArr[i][j] = type
+    }
+
+    setSubjectDefault(i: number, j:number, type: ItemType) {
+        this.setState(this.subjectItemArr[i][j], type) 
+        this.subjectDataArr[i][j] = type
+    }
+  
      /**
      * 获取itemtype值 
      * @param i 
@@ -224,7 +316,9 @@ export default class TeacherPanel extends BaseUI {
     addListenerOnItem() {
         for(let i = 0; i < this.ruleItemArr.length; i++) {
             for(let j = 0; j < this.ruleItemArr[i].length; j++) {
-                this.ruleItemArr[i][j].getChildByName('blank').off(cc.Node.EventType.TOUCH_START)
+                if(j == 1) {
+                    this.ruleItemArr[i][j].getChildByName('blank').off(cc.Node.EventType.TOUCH_START)
+                }
             }
         }
         for(let i = 0; i < this.subjectItemArr.length; i++) {
@@ -234,10 +328,12 @@ export default class TeacherPanel extends BaseUI {
         }
         for(let i = 0; i < this.ruleItemArr.length; i++) {
             for(let j = 0; j < this.ruleItemArr[i].length; j++) {
-                this.ruleItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
-                    this.ruleDataArr[i][j] = this.nextType(this.ruleDataArr[i][j])
-                    this.setState(this.ruleItemArr[i][j], this.ruleDataArr[i][j]) 
-                })
+                if(j == 1) {
+                    this.ruleItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
+                        this.ruleDataArr[i][j] = this.nextType(this.ruleDataArr[i][j])
+                        this.setState(this.ruleItemArr[i][j], this.ruleDataArr[i][j]) 
+                    })
+                }
             }
         }
         for(let i = 0; i < this.subjectItemArr.length; i++) {
@@ -267,6 +363,8 @@ export default class TeacherPanel extends BaseUI {
             this.subjectNode.addChild(node)
             this.currentFigure = 2
             this.getItem()
+            this.defaultRule()
+            this.defaultSubject(DaAnData.getInstance().type == 1)
         }
     }
 
@@ -284,6 +382,8 @@ export default class TeacherPanel extends BaseUI {
             }
         }
         this.getItem()
+        this.defaultRule()
+        this.defaultSubject(DaAnData.getInstance().type == 1)
     }
     changeFigure(frame: cc.SpriteFrame) {
         if(this.ruleNode.children[0]) {
