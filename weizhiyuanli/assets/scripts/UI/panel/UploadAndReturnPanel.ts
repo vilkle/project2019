@@ -25,6 +25,7 @@ export default class UploadAndReturnPanel extends BaseUI {
         UIManager.getInstance().closeUI(UploadAndReturnPanel);
         UIManager.getInstance().closeUI(OverTips);
         UIManager.getInstance().closeUI(SubmissionPanel)
+        DaAnData.getInstance().submitEnable = false
         AudioManager.getInstance().stopAll()
     }
 

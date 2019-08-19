@@ -1,397 +1,145 @@
-2019-08-18T16:14:03.327Z - normal: Load ~/.CocosCreator/settings.json
-2019-08-18T16:14:04.546Z - normal: Initializing Asset Database
-2019-08-18T16:14:04.546Z - normal: checking language setting...
-2019-08-18T16:14:04.546Z - normal: Language: zh
-2019-08-18T16:14:05.734Z - success: preview server running at http://localhost:7456
-2019-08-18T16:14:05.750Z - success: protocol editor-framework registered
-2019-08-18T16:14:05.750Z - success: protocol app registered
-2019-08-18T16:14:05.750Z - success: protocol theme registered
-2019-08-18T16:14:05.750Z - success: protocol packages registered
-2019-08-18T16:14:05.750Z - success: protocol uuid registerred
-2019-08-18T16:14:05.750Z - success: protocol db registerred
-2019-08-18T16:14:05.750Z - success: protocol thumbnail registerred
-2019-08-18T16:14:05.750Z - success: protocol unpack registerred
-2019-08-18T16:14:05.750Z - success: protocol disable-commonjs registerred
-2019-08-18T16:14:05.881Z - normal: connected!
-2019-08-18T16:14:05.881Z - normal: Check project C:\Users\machao\Desktop\hub\wupinbianhuan
-2019-08-18T16:14:05.881Z - normal: Initializing project C:\Users\machao\Desktop\hub\wupinbianhuan
-2019-08-18T16:14:06.483Z - normal: Initializing Cocos2d
-2019-08-18T16:14:07.855Z - normal: Initializing engine extends
-2019-08-18T16:14:07.902Z - success: asset-db-debugger loaded
-2019-08-18T16:14:07.902Z - success: baidu-adapter loaded
-2019-08-18T16:14:07.902Z - success: color-picker loaded
-2019-08-18T16:14:08.071Z - success: fb-audience-network loaded
-2019-08-18T16:14:08.187Z - success: fb-live-stream loaded
-2019-08-18T16:14:08.187Z - success: google-play-instant loaded
-2019-08-18T16:14:08.203Z - success: huawei-runtime loaded
-2019-08-18T16:14:08.635Z - success: cpk-publish loaded
-2019-08-18T16:14:08.635Z - success: jsb-adapter loaded
-2019-08-18T16:14:08.642Z - success: oppo-runtime loaded
-2019-08-18T16:14:08.642Z - success: package-manager loaded
-2019-08-18T16:14:08.889Z - success: qqplay-adapter loaded
-2019-08-18T16:14:08.889Z - success: runtime-dev-tools loaded
-2019-08-18T16:14:08.889Z - success: sdkbox loaded
-2019-08-18T16:14:08.905Z - success: tester loaded
-2019-08-18T16:14:08.905Z - success: ui-grid loaded
-2019-08-18T16:14:08.905Z - success: ui-kit-preview-extra loaded
-2019-08-18T16:14:08.905Z - success: ui-kit-preview loaded
-2019-08-18T16:14:08.905Z - success: ui-kit loaded
-2019-08-18T16:14:08.920Z - success: ui-tree loaded
-2019-08-18T16:14:08.920Z - success: vivo-runtime loaded
-2019-08-18T16:14:08.920Z - success: weapp-adapter loaded
-2019-08-18T16:14:08.920Z - success: xiaomi-adapter loaded
-2019-08-18T16:14:08.989Z - success: assets loaded
-2019-08-18T16:14:08.989Z - success: builder loaded
-2019-08-18T16:14:09.444Z - success: cocos-services loaded
-2019-08-18T16:14:09.444Z - success: console loaded
-2019-08-18T16:14:09.506Z - success: fb-instant-games loaded
-2019-08-18T16:14:09.506Z - success: game-window loaded
-2019-08-18T16:14:09.506Z - success: google-instant-games loaded
-2019-08-18T16:14:09.506Z - success: hierarchy loaded
-2019-08-18T16:14:09.522Z - success: inspector loaded
-2019-08-18T16:14:09.522Z - success: keystore loaded
-2019-08-18T16:14:09.538Z - success: node-library loaded
-2019-08-18T16:14:09.538Z - success: package-asset loaded
-2019-08-18T16:14:09.538Z - success: preferences loaded
-2019-08-18T16:14:09.544Z - success: project-exporter loaded
-2019-08-18T16:14:09.544Z - success: project-importer loaded
-2019-08-18T16:14:09.544Z - success: project-settings loaded
-2019-08-18T16:14:09.544Z - success: scene loaded
-2019-08-18T16:14:09.560Z - success: simulator-debugger loaded
-2019-08-18T16:14:09.560Z - success: sprite-editor loaded
-2019-08-18T16:14:09.560Z - success: store loaded
-2019-08-18T16:14:09.560Z - success: timeline loaded
-2019-08-18T16:14:09.575Z - success: xiaomi-runtime loaded
-2019-08-18T16:14:09.575Z - success: auto_deploy loaded
-2019-08-18T16:14:12.493Z - info: Cocos Services load base data!
-2019-08-18T16:14:34.739Z - normal: Loading packages
-2019-08-18T16:14:34.749Z - normal: Watching packages
-2019-08-18T16:14:36.040Z - normal: Run Application
-2019-08-18T16:14:49.072Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
+2019-08-19T02:16:05.807Z - normal: Load ~/.CocosCreator/settings.json
+2019-08-19T02:16:05.881Z - normal: Initializing Asset Database
+2019-08-19T02:16:05.884Z - normal: checking language setting...
+2019-08-19T02:16:05.884Z - normal: Language: zh
+2019-08-19T02:16:06.731Z - success: preview server running at http://localhost:7456
+2019-08-19T02:16:06.784Z - success: protocol editor-framework registered
+2019-08-19T02:16:06.785Z - success: protocol app registered
+2019-08-19T02:16:06.785Z - success: protocol theme registered
+2019-08-19T02:16:06.785Z - success: protocol packages registered
+2019-08-19T02:16:06.785Z - success: protocol uuid registerred
+2019-08-19T02:16:06.785Z - success: protocol db registerred
+2019-08-19T02:16:06.785Z - success: protocol thumbnail registerred
+2019-08-19T02:16:06.786Z - success: protocol unpack registerred
+2019-08-19T02:16:06.786Z - success: protocol disable-commonjs registerred
+2019-08-19T02:16:06.880Z - normal: connected!
+2019-08-19T02:16:06.882Z - normal: Check project /Users/xes/Desktop/hub/wupinbianhuan
+2019-08-19T02:16:06.884Z - normal: Initializing project /Users/xes/Desktop/hub/wupinbianhuan
+2019-08-19T02:16:07.314Z - normal: Initializing Cocos2d
+2019-08-19T02:16:08.143Z - normal: Initializing engine extends
+2019-08-19T02:16:08.199Z - success: asset-db-debugger loaded
+2019-08-19T02:16:08.200Z - success: baidu-adapter loaded
+2019-08-19T02:16:08.201Z - success: color-picker loaded
+2019-08-19T02:16:08.309Z - success: fb-audience-network loaded
+2019-08-19T02:16:08.375Z - success: fb-live-stream loaded
+2019-08-19T02:16:08.379Z - success: google-play-instant loaded
+2019-08-19T02:16:08.385Z - success: huawei-runtime loaded
+2019-08-19T02:16:08.661Z - success: cpk-publish loaded
+2019-08-19T02:16:08.663Z - success: jsb-adapter loaded
+2019-08-19T02:16:08.668Z - success: oppo-runtime loaded
+2019-08-19T02:16:08.689Z - success: package-manager loaded
+2019-08-19T02:16:08.824Z - success: qqplay-adapter loaded
+2019-08-19T02:16:08.826Z - success: runtime-dev-tools loaded
+2019-08-19T02:16:08.848Z - success: sdkbox loaded
+2019-08-19T02:16:08.869Z - success: tester loaded
+2019-08-19T02:16:08.897Z - success: ui-grid loaded
+2019-08-19T02:16:08.915Z - success: ui-kit-preview-extra loaded
+2019-08-19T02:16:08.936Z - success: ui-kit-preview loaded
+2019-08-19T02:16:08.954Z - success: ui-kit loaded
+2019-08-19T02:16:08.973Z - success: ui-tree loaded
+2019-08-19T02:16:08.979Z - success: vivo-runtime loaded
+2019-08-19T02:16:08.980Z - success: weapp-adapter loaded
+2019-08-19T02:16:08.981Z - success: xiaomi-adapter loaded
+2019-08-19T02:16:09.042Z - success: assets loaded
+2019-08-19T02:16:09.062Z - success: builder loaded
+2019-08-19T02:16:09.396Z - success: cocos-services loaded
+2019-08-19T02:16:09.420Z - success: console loaded
+2019-08-19T02:16:09.459Z - success: fb-instant-games loaded
+2019-08-19T02:16:09.479Z - success: game-window loaded
+2019-08-19T02:16:09.481Z - success: google-instant-games loaded
+2019-08-19T02:16:09.500Z - success: hierarchy loaded
+2019-08-19T02:16:09.520Z - success: inspector loaded
+2019-08-19T02:16:09.522Z - success: keystore loaded
+2019-08-19T02:16:09.575Z - success: node-library loaded
+2019-08-19T02:16:09.577Z - success: package-asset loaded
+2019-08-19T02:16:09.579Z - success: preferences loaded
+2019-08-19T02:16:09.597Z - success: project-exporter loaded
+2019-08-19T02:16:09.618Z - success: project-importer loaded
+2019-08-19T02:16:09.639Z - success: project-settings loaded
+2019-08-19T02:16:09.665Z - success: scene loaded
+2019-08-19T02:16:09.666Z - success: simulator-debugger loaded
+2019-08-19T02:16:09.669Z - success: sprite-editor loaded
+2019-08-19T02:16:09.690Z - success: store loaded
+2019-08-19T02:16:09.715Z - success: timeline loaded
+2019-08-19T02:16:09.721Z - success: xiaomi-runtime loaded
+2019-08-19T02:16:09.745Z - success: auto_deploy loaded
+2019-08-19T02:16:11.145Z - info: Cocos Services load base data!
+2019-08-19T02:16:21.473Z - normal: Loading packages
+2019-08-19T02:16:21.478Z - normal: Watching packages
+2019-08-19T02:16:21.606Z - normal: Run Application
+2019-08-19T02:16:32.374Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
     at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
+    at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
+    at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
     at Function.Module._load (module.js:418:25)
     at Module.require (module.js:498:17)
     at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:30:40.832Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
+    at Object.cc.require (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:589)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
+    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13
+2019-08-19T02:42:29.833Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
     at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
+    at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
+    at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
     at Function.Module._load (module.js:418:25)
     at Module.require (module.js:498:17)
     at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:33:26.605Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
+    at Object.cc.require (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:589)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
+    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13
+2019-08-19T03:14:58.286Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:14:58.662Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:14:59.210Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:15:00.611Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
     at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
+    at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
+    at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
     at Function.Module._load (module.js:418:25)
     at Module.require (module.js:498:17)
     at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:34:22.183Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
+    at Object.cc.require (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:589)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
+    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13
+2019-08-19T03:16:46.198Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:16:46.921Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:18:54.594Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:18:55.119Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:18:56.978Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
     at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
+    at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
+    at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
     at Function.Module._load (module.js:418:25)
     at Module.require (module.js:498:17)
     at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:37:47.096Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:37:47.829Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:37:48.457Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:37:49.799Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
+    at Object.cc.require (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:589)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
+    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13
+2019-08-19T03:19:17.704Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:19:19.988Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
     at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
+    at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
+    at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
     at Function.Module._load (module.js:418:25)
     at Module.require (module.js:498:17)
     at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:41:12.414Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:41:12.779Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:41:13.816Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
+    at Object.cc.require (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:589)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
+    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13
+2019-08-19T03:27:34.465Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:27:35.054Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-19T03:27:36.189Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
     at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
+    at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
+    at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
     at Function.Module._load (module.js:418:25)
     at Module.require (module.js:498:17)
     at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:41:17.005Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:41:17.545Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:41:18.444Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:44:04.602Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:05.130Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:05.721Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:07.235Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:44:12.295Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:12.552Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:14.971Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:15.442Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:16.588Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:44:33.821Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:44:40.530Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:40.821Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:41.123Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:45.096Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:45.369Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:45.645Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:53.128Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:53.395Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:44:53.707Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:50:34.626Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:50:34.915Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:50:35.228Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:50:36.649Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T16:50:40.572Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:50:40.908Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:53:45.669Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:53:45.955Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T16:53:47.534Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T17:13:07.873Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:14:48.948Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:14:49.721Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:14:51.020Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T17:15:13.587Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:15:13.907Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:15:14.252Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:15:14.652Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:21:38.223Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T17:25:16.409Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-18T17:25:16.776Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-18T17:25:17.382Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-18T17:25:18.650Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T17:28:11.907Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-18T17:28:16.793Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T17:31:56.179Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-18T17:31:56.772Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-18T17:31:57.193Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-18T17:31:57.817Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-18T17:31:59.100Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T17:34:53.488Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:34:53.736Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:34:54.078Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:34:55.111Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:36:43.944Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:36:48.218Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T17:38:27.188Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:38:27.480Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:38:45.080Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:38:52.972Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:38:53.281Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:39:02.993Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:39:03.278Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:40:01.397Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:40:11.820Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:40:12.077Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:40:12.353Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-18T17:53:23.317Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:53:24.319Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:53:25.001Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:53:26.561Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T17:55:09.240Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:55:09.255Z - error: Failed to apply "TeacherPanel" because the prefab asset is missing, please save the prefab to a new asset by dragging and drop the node from Node Tree into Assets.
-    at Object.applyPrefab (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\scene-utils\index.js:1:5296)
-    at Object.save (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\scene-utils\edit-mode\modes\prefab.js:1:2379)
-    at Object.run (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\scene-utils\edit-mode\index.js:1:2078)
-    at _queue.s.queue (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\scene-utils\lib\tasks.js:1:539)
-    at C:\CocosCreator_2.1.2\resources\app.asar\node_modules\async\lib\async.js:987:13
-    at Immediate.process (C:\CocosCreator_2.1.2\resources\app.asar\node_modules\async\lib\async.js:953:21)
-    at runCallback (timers.js:672:20)
-    at tryOnImmediate (timers.js:645:5)
-    at processImmediate [as _immediateCallback] (timers.js:617:5)
-2019-08-18T17:55:09.940Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T17:55:13.487Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T18:04:20.125Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:21.080Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:21.560Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:22.889Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:23.509Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:24.256Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:24.943Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:26.193Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T18:04:27.961Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:28.324Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-18T18:04:29.115Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (C:\CocosCreator_2.1.2\resources\electron.asar\common\reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\project-scripts.js:1:589)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:1:363
-    at __define (C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:8:24)
-    at C:\Users\machao\Desktop\hub\wupinbianhuan\temp\quick-scripts\assets\scripts\shader\ShaderManager.js:71:13
-2019-08-18T18:13:28.743Z - info: shutdown preview server
+    at Object.cc.require (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:589)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
+    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
+    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13

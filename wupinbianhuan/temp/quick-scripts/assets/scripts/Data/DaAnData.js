@@ -8,6 +8,8 @@ var DaAnData = /** @class */ (function () {
     function DaAnData() {
         this.type = 0; //1树形2单一型
         this.figure = 0; //1三角形2六边形3八角星
+        this.ruleDataArr = [];
+        this.subjectDataArr = [];
         this.submitEnable = true;
     }
     DaAnData.getInstance = function () {

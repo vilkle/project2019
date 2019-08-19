@@ -361,8 +361,30 @@ export default class TeacherPanel extends BaseUI {
         }
     }
 
+    checking():boolean {
+        let ruleActiveNum:number = 0
+        for(let i = 0; i < this.ruleItemArr.length; i++) {
+            for(let j = 0; j < this.ruleItemArr.length; j++) {
+                if(this.ruleItemArr[i][j].getChildByName('sprite').active) {
+                    ruleActiveNum++
+                }
+            }
+        }
+        if(ruleActiveNum < 12 ) {
+            return false
+
+        }else if(ruleActiveNum == 12) {
+
+        }
+        
+        return true
+    }
+
     //上传课件按钮
     onBtnSaveClicked() {
+        DaAnData.getInstance().ruleDataArr = this.ruleDataArr
+        DaAnData.getInstance().subjectDataArr = this.subjectDataArr
+
         UIManager.getInstance().showUI(GamePanel, ()=>{
             ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1});    
         });

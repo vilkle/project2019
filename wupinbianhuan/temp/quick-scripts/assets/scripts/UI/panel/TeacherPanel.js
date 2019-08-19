@@ -375,8 +375,26 @@ var TeacherPanel = /** @class */ (function (_super) {
                 break;
         }
     };
+    TeacherPanel.prototype.checking = function () {
+        var ruleActiveNum = 0;
+        for (var i = 0; i < this.ruleItemArr.length; i++) {
+            for (var j = 0; j < this.ruleItemArr.length; j++) {
+                if (this.ruleItemArr[i][j].getChildByName('sprite').active) {
+                    ruleActiveNum++;
+                }
+            }
+        }
+        if (ruleActiveNum < 12) {
+            return false;
+        }
+        else if (ruleActiveNum == 12) {
+        }
+        return true;
+    };
     //上传课件按钮
     TeacherPanel.prototype.onBtnSaveClicked = function () {
+        DaAnData_1.DaAnData.getInstance().ruleDataArr = this.ruleDataArr;
+        DaAnData_1.DaAnData.getInstance().subjectDataArr = this.subjectDataArr;
         UIManager_1.UIManager.getInstance().showUI(GamePanel_1.default, function () {
             ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 1 });
         });

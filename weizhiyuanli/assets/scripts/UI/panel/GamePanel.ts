@@ -74,7 +74,7 @@ export default class GamePanel extends BaseUI {
             this.overState = 2;
         });
         if(ConstValue.IS_TEACHER) {
-            UIManager.getInstance().openUI(UploadAndReturnPanel, null, 211)
+            UIManager.getInstance().openUI(UploadAndReturnPanel, null, 212)
             this.checkpointsNum = DaAnData.getInstance().checkpointsNum
             this.countsArr = DaAnData.getInstance().countsArr
             this.goodsArr = DaAnData.getInstance().goodsArr
