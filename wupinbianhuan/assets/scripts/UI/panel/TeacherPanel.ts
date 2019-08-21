@@ -52,19 +52,30 @@ export default class TeacherPanel extends BaseUI {
     private arrowBlue: cc.SpriteFrame = null
     @property(cc.SpriteFrame)
     private arrowOrange: cc.SpriteFrame = null
-
+    @property(cc.Label)
+    private tipLabel: cc.Label = null
+    @property(cc.Node)
+    private tipNode: cc.Node = null
     private ruleItemArr: cc.Node[][] = []
     private subjectItemArr: cc.Node[][] = []
     private ruleDataArr: ItemType[][] = []
     private subjectDataArr: ItemType[][] = []
-    private currentType = 1
+    private currentType = 1 //当前的题目类型
     private currentFigure = 2
+    private sameType: ItemType = null  //相同类型之间变换的规则
+    private diffType: ItemType = null
+    private type1: ItemType = null
+    private type2: ItemType = null
     // onLoad () {}
 
     start() {
+        this.sameType = ItemType.arrow_orange
+        this.diffType = ItemType.arrow_blue
+        this.type1 = ItemType.sexangle_orange
+        this.type2 = ItemType.sexangle_purple
         DaAnData.getInstance().type = 1
         DaAnData.getInstance().figure = 2
-        this.getNet();
+        this.getNet()
     }
 
     setPanel() {//设置教师端界面
@@ -315,11 +326,7 @@ export default class TeacherPanel extends BaseUI {
 
     addListenerOnItem() {
         for(let i = 0; i < this.ruleItemArr.length; i++) {
-            for(let j = 0; j < this.ruleItemArr[i].length; j++) {
-                if(j == 1) {
-                    this.ruleItemArr[i][j].getChildByName('blank').off(cc.Node.EventType.TOUCH_START)
-                }
-            }
+                this.ruleItemArr[i][1].getChildByName('blank').off(cc.Node.EventType.TOUCH_START)
         }
         for(let i = 0; i < this.subjectItemArr.length; i++) {
             for(let j = 0; j < this.subjectItemArr[i].length; j++) {
@@ -327,14 +334,27 @@ export default class TeacherPanel extends BaseUI {
             }
         }
         for(let i = 0; i < this.ruleItemArr.length; i++) {
-            for(let j = 0; j < this.ruleItemArr[i].length; j++) {
-                if(j == 1) {
-                    this.ruleItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
-                        this.ruleDataArr[i][j] = this.nextType(this.ruleDataArr[i][j])
-                        this.setState(this.ruleItemArr[i][j], this.ruleDataArr[i][j]) 
-                    })
+            this.ruleItemArr[i][1].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
+                this.ruleDataArr[i][1] = this.nextType(this.ruleDataArr[i][1])
+                this.setState(this.ruleItemArr[i][1], this.ruleDataArr[i][1])
+                if(i==0) {
+                    this.diffType = this.ruleDataArr[0][1]
+                    this.ruleDataArr[1][1] = this.ruleDataArr[0][1]
+                    this.setState(this.ruleItemArr[1][1], this.ruleDataArr[1][1])    
+                }else if(i==1) {
+                    this.diffType = this.ruleDataArr[1][1]
+                    this.ruleDataArr[0][1] = this.ruleDataArr[1][1]
+                    this.setState(this.ruleItemArr[0][1], this.ruleDataArr[0][1])
+                }else if(i==2) {
+                    this.sameType = this.ruleDataArr[2][1]
+                    this.ruleDataArr[3][1] = this.ruleDataArr[2][1]
+                    this.setState(this.ruleItemArr[3][1], this.ruleDataArr[3][1])
+                }else if(i==3) {
+                    this.sameType = this.ruleDataArr[3][1]
+                    this.ruleDataArr[2][1] = this.ruleDataArr[3][1]
+                    this.setState(this.ruleItemArr[2][1], this.ruleDataArr[2][1])
                 }
-            }
+            })
         }
         for(let i = 0; i < this.subjectItemArr.length; i++) {
             for(let j = 0; j < this.subjectItemArr[i].length; j++) {
@@ -445,14 +465,20 @@ export default class TeacherPanel extends BaseUI {
         switch(index) {
             case 0:
                 DaAnData.getInstance().figure = 1
+                this.type1 = ItemType.triangle_green
+                this.type2 = ItemType.triangle_yellow
                 this.initFigure()
                 break
             case 1:
                 DaAnData.getInstance().figure = 2
+                this.type1 = ItemType.sexangle_orange
+                this.type2 = ItemType.sexangle_purple
                 this.initFigure()
                 break
             case 2:
                 DaAnData.getInstance().figure = 3
+                this.type1 = ItemType.octagon_green
+                this.type2 = ItemType.octagon_yellow
                 this.initFigure()
                 break
             default:
@@ -462,32 +488,47 @@ export default class TeacherPanel extends BaseUI {
     }
 
     checking():boolean {
-        let ruleActiveNum:number = 0
-        for(let i = 0; i < this.ruleItemArr.length; i++) {
-            for(let j = 0; j < this.ruleItemArr.length; j++) {
-                if(this.ruleItemArr[i][j].getChildByName('sprite').active) {
-                    ruleActiveNum++
-                }
-            }
+        if(this.ruleDataArr[0][1] != this.ruleDataArr[2][1]) {
+            this.showTip('相同颜色之间变换与不同颜色相互变换规则一样，相同颜色之间变换和不同颜色相互变换之间规则不能相同。')
         }
-        if(ruleActiveNum < 12 ) {
-            return false
-
-        }else if(ruleActiveNum == 12) {
+        if(DaAnData.getInstance().type == 1) {
+            this.checkTree(this.subjectDataArr)
+        }else if(DaAnData.getInstance().type == 2) {
 
         }
-        
+
         return true
     }
+
+    checkTree(arr: ItemType[][]) {
+
+    }
+
+    checkSingle(arr: ItemType[][]) {
+
+    }
+
 
     //上传课件按钮
     onBtnSaveClicked() {
         DaAnData.getInstance().ruleDataArr = this.ruleDataArr
         DaAnData.getInstance().subjectDataArr = this.subjectDataArr
 
-        UIManager.getInstance().showUI(GamePanel, ()=>{
-            ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1});    
-        });
+        if(this.checking()) {
+            UIManager.getInstance().showUI(GamePanel, ()=>{
+                ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1});    
+            });
+        }
+        
+    }
+
+    showTip(str:string) {
+        this.tipLabel.string = str
+        this.tipNode.active = true
+    }
+
+    tipButtonCallback() {
+        this.tipNode.active = false
     }
 
     getNet() {

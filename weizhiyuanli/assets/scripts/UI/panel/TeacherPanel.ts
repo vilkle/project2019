@@ -4,7 +4,6 @@ import SubmissionPanel from "./SubmissionPanel";
 import { NetWork } from "../../Http/NetWork";
 import { UIHelp } from "../../Utils/UIHelp";
 import { DaAnData } from "../../Data/DaAnData";
-import ShaderMaterial from "../../shader/ShaderMaterial";
 import GamePanel from "./GamePanel";
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";

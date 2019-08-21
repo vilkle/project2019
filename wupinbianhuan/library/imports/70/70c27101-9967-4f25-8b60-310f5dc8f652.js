@@ -55,16 +55,26 @@ var TeacherPanel = /** @class */ (function (_super) {
         _this.arrowBlack = null;
         _this.arrowBlue = null;
         _this.arrowOrange = null;
+        _this.tipLabel = null;
+        _this.tipNode = null;
         _this.ruleItemArr = [];
         _this.subjectItemArr = [];
         _this.ruleDataArr = [];
         _this.subjectDataArr = [];
-        _this.currentType = 1;
+        _this.currentType = 1; //当前的题目类型
         _this.currentFigure = 2;
+        _this.sameType = null; //相同类型之间变换的规则
+        _this.diffType = null;
+        _this.type1 = null;
+        _this.type2 = null;
         return _this;
     }
     // onLoad () {}
     TeacherPanel.prototype.start = function () {
+        this.sameType = ItemType_1.ItemType.arrow_orange;
+        this.diffType = ItemType_1.ItemType.arrow_blue;
+        this.type1 = ItemType_1.ItemType.sexangle_orange;
+        this.type2 = ItemType_1.ItemType.sexangle_purple;
         DaAnData_1.DaAnData.getInstance().type = 1;
         DaAnData_1.DaAnData.getInstance().figure = 2;
         this.getNet();
@@ -321,11 +331,7 @@ var TeacherPanel = /** @class */ (function (_super) {
     TeacherPanel.prototype.addListenerOnItem = function () {
         var _this = this;
         for (var i = 0; i < this.ruleItemArr.length; i++) {
-            for (var j = 0; j < this.ruleItemArr[i].length; j++) {
-                if (j == 1) {
-                    this.ruleItemArr[i][j].getChildByName('blank').off(cc.Node.EventType.TOUCH_START);
-                }
-            }
+            this.ruleItemArr[i][1].getChildByName('blank').off(cc.Node.EventType.TOUCH_START);
         }
         for (var i = 0; i < this.subjectItemArr.length; i++) {
             for (var j = 0; j < this.subjectItemArr[i].length; j++) {
@@ -333,31 +339,44 @@ var TeacherPanel = /** @class */ (function (_super) {
             }
         }
         var _loop_1 = function (i) {
-            var _loop_3 = function (j) {
-                if (j == 1) {
-                    this_1.ruleItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, function () {
-                        _this.ruleDataArr[i][j] = _this.nextType(_this.ruleDataArr[i][j]);
-                        _this.setState(_this.ruleItemArr[i][j], _this.ruleDataArr[i][j]);
-                    });
+            this_1.ruleItemArr[i][1].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, function () {
+                _this.ruleDataArr[i][1] = _this.nextType(_this.ruleDataArr[i][1]);
+                _this.setState(_this.ruleItemArr[i][1], _this.ruleDataArr[i][1]);
+                if (i == 0) {
+                    _this.diffType = _this.ruleDataArr[0][1];
+                    _this.ruleDataArr[1][1] = _this.ruleDataArr[0][1];
+                    _this.setState(_this.ruleItemArr[1][1], _this.ruleDataArr[1][1]);
                 }
-            };
-            for (var j = 0; j < this_1.ruleItemArr[i].length; j++) {
-                _loop_3(j);
-            }
+                else if (i == 1) {
+                    _this.diffType = _this.ruleDataArr[1][1];
+                    _this.ruleDataArr[0][1] = _this.ruleDataArr[1][1];
+                    _this.setState(_this.ruleItemArr[0][1], _this.ruleDataArr[0][1]);
+                }
+                else if (i == 2) {
+                    _this.sameType = _this.ruleDataArr[2][1];
+                    _this.ruleDataArr[3][1] = _this.ruleDataArr[2][1];
+                    _this.setState(_this.ruleItemArr[3][1], _this.ruleDataArr[3][1]);
+                }
+                else if (i == 3) {
+                    _this.sameType = _this.ruleDataArr[3][1];
+                    _this.ruleDataArr[2][1] = _this.ruleDataArr[3][1];
+                    _this.setState(_this.ruleItemArr[2][1], _this.ruleDataArr[2][1]);
+                }
+            });
         };
         var this_1 = this;
         for (var i = 0; i < this.ruleItemArr.length; i++) {
             _loop_1(i);
         }
         var _loop_2 = function (i) {
-            var _loop_4 = function (j) {
+            var _loop_3 = function (j) {
                 this_2.subjectItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, function () {
                     _this.subjectDataArr[i][j] = _this.nextType(_this.subjectDataArr[i][j]);
                     _this.setState(_this.subjectItemArr[i][j], _this.subjectDataArr[i][j]);
                 });
             };
             for (var j = 0; j < this_2.subjectItemArr[i].length; j++) {
-                _loop_4(j);
+                _loop_3(j);
             }
         };
         var this_2 = this;
@@ -462,14 +481,20 @@ var TeacherPanel = /** @class */ (function (_super) {
         switch (index) {
             case 0:
                 DaAnData_1.DaAnData.getInstance().figure = 1;
+                this.type1 = ItemType_1.ItemType.triangle_green;
+                this.type2 = ItemType_1.ItemType.triangle_yellow;
                 this.initFigure();
                 break;
             case 1:
                 DaAnData_1.DaAnData.getInstance().figure = 2;
+                this.type1 = ItemType_1.ItemType.sexangle_orange;
+                this.type2 = ItemType_1.ItemType.sexangle_purple;
                 this.initFigure();
                 break;
             case 2:
                 DaAnData_1.DaAnData.getInstance().figure = 3;
+                this.type1 = ItemType_1.ItemType.octagon_green;
+                this.type2 = ItemType_1.ItemType.octagon_yellow;
                 this.initFigure();
                 break;
             default:
@@ -478,28 +503,36 @@ var TeacherPanel = /** @class */ (function (_super) {
         }
     };
     TeacherPanel.prototype.checking = function () {
-        var ruleActiveNum = 0;
-        for (var i = 0; i < this.ruleItemArr.length; i++) {
-            for (var j = 0; j < this.ruleItemArr.length; j++) {
-                if (this.ruleItemArr[i][j].getChildByName('sprite').active) {
-                    ruleActiveNum++;
-                }
-            }
+        if (this.ruleDataArr[0][1] != this.ruleDataArr[2][1]) {
+            this.showTip('相同颜色之间变换与不同颜色相互变换规则一样，相同颜色之间变换和不同颜色相互变换之间规则不能相同。');
         }
-        if (ruleActiveNum < 12) {
-            return false;
+        if (DaAnData_1.DaAnData.getInstance().type == 1) {
+            this.checkTree(this.subjectDataArr);
         }
-        else if (ruleActiveNum == 12) {
+        else if (DaAnData_1.DaAnData.getInstance().type == 2) {
         }
         return true;
+    };
+    TeacherPanel.prototype.checkTree = function (arr) {
+    };
+    TeacherPanel.prototype.checkSingle = function (arr) {
     };
     //上传课件按钮
     TeacherPanel.prototype.onBtnSaveClicked = function () {
         DaAnData_1.DaAnData.getInstance().ruleDataArr = this.ruleDataArr;
         DaAnData_1.DaAnData.getInstance().subjectDataArr = this.subjectDataArr;
-        UIManager_1.UIManager.getInstance().showUI(GamePanel_1.default, function () {
-            ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 1 });
-        });
+        if (this.checking()) {
+            UIManager_1.UIManager.getInstance().showUI(GamePanel_1.default, function () {
+                ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 1 });
+            });
+        }
+    };
+    TeacherPanel.prototype.showTip = function (str) {
+        this.tipLabel.string = str;
+        this.tipNode.active = true;
+    };
+    TeacherPanel.prototype.tipButtonCallback = function () {
+        this.tipNode.active = false;
     };
     TeacherPanel.prototype.getNet = function () {
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_TITLE + "?title_id=" + NetWork_1.NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
@@ -603,6 +636,12 @@ var TeacherPanel = /** @class */ (function (_super) {
     __decorate([
         property(cc.SpriteFrame)
     ], TeacherPanel.prototype, "arrowOrange", void 0);
+    __decorate([
+        property(cc.Label)
+    ], TeacherPanel.prototype, "tipLabel", void 0);
+    __decorate([
+        property(cc.Node)
+    ], TeacherPanel.prototype, "tipNode", void 0);
     TeacherPanel = __decorate([
         ccclass
     ], TeacherPanel);

@@ -4,10 +4,14 @@ import ErrorPanel from "../UI/panel/ErrorPanel";
 export class NetWork {
     private static instance: NetWork;
 
-    public static readonly isOnlineEnv = location.host.indexOf('ceshi-') < 0 && location.host.indexOf('localhost') < 0;
+    //判断是否是线上
+    public static readonly isOnlineEnv = location.host.indexOf('ceshi-') < 0 && location.host.indexOf('localhost') < 0 && NetWork.getInstance().GetIsOnline() == 1;
     public static readonly isProtocol = /http:/.test(window['location'].protocol);
+    //判断协议是否为http
     public static readonly isLocal = /localhost/.test(window['location'].href) || NetWork.isProtocol;
-    public static readonly BASE = NetWork.isOnlineEnv ? '//courseware.haibian.com' : NetWork.isLocal ? '//ceshi.courseware.haibian.com' : '//ceshi_courseware.haibian.com';
+    //判断是否是pc预加载的协议
+    public static readonly isOwcr = location.protocol == 'owcr:' || location.protocol == 'file:';
+    public static readonly BASE = NetWork.isOnlineEnv ? 'https://courseware.haibian.com' : NetWork.isLocal ? 'http://ceshi.courseware.haibian.com' : 'https://ceshi_courseware.haibian.com';
 
 
     public static readonly GET_QUESTION = NetWork.BASE + '/get';
@@ -28,7 +32,7 @@ export class NetWork {
     /*isLive参数已添加，直播课参数传YES，回放传NO  */
     public static isLive = null;
 
-    private theRequest = null;
+    private static theRequest = null;
     static getInstance() {
         if (this.instance == null) {
             this.instance = new NetWork();
@@ -119,27 +123,37 @@ export class NetWork {
      * 获取url参数
      */
     GetRequest() {
-        if (this.theRequest != null) {
-            return this.theRequest;
+        if (NetWork.theRequest != null) {
+            return NetWork.theRequest;
         }
-        this.theRequest = new Object();
+        NetWork.theRequest = new Object();
         var url = location.search; //获取url中"?"符后的字串
+        // var url = location.href;
 
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);
             var strs = str.split("&");
             for (var i = 0; i < strs.length; i++) {
-                this.theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                NetWork.theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
             }
         }
-        NetWork.courseware_id = this.theRequest["id"];
-        NetWork.title_id = this.theRequest["title_id"];
-        NetWork.user_id = this.theRequest["user_id"];
-        NetWork.empty = this.theRequest["empty"];
-        NetWork.isLive = this.theRequest['isLive'];
+        NetWork.courseware_id = NetWork.theRequest["id"];
+        NetWork.title_id = NetWork.theRequest["title_id"];
+        NetWork.user_id = NetWork.theRequest["user_id"];
+        NetWork.empty = NetWork.theRequest["empty"];
+        NetWork.isLive = NetWork.theRequest['isLive'];
         this.LogJournalReport('CoursewareLogEvent', '')
-        return this.theRequest;
+        console.log('11111gaolei', NetWork.courseware_id, '           ', NetWork.theRequest['id'], '           ', JSON.stringify(NetWork.theRequest));
+        return NetWork.theRequest;
 
+    }
+
+    GetIsOnline() {
+        let isOnline = 1;
+        if (this.GetRequest()["isOnline"]) {
+            isOnline = this.GetRequest()["isOnline"]
+        }
+        return isOnline;
     }
 
     LogJournalReport(errorType, data) {

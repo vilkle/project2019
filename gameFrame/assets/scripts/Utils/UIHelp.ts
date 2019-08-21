@@ -24,17 +24,20 @@ export class UIHelp {
     /**
     * 结束tip
     * @param message tips文字内容
-    * @param type tips类型  0:内容tips   1:系统tips
+    * @param type tips类型   0: 错误  1：答对了  2：闯关成功(一直显示不会关闭)
+    * @param {string} str           提示内容
+    * @param {Function} callback    回调函数
+    * @param {string} endTitle      end动效提示文字
     */
-    public static showOverTip(type: number, str: string = "", callback: Function = null) {
+    public static showOverTip(type: number, str: string = "", callback: Function = null, endTitle?: string) {
         let overTips = UIManager.getInstance().getUI(OverTips) as OverTips;
         if (!overTips) {
             UIManager.getInstance().openUI(OverTips, null, 210, () => {
-                UIHelp.showOverTip(type, str, callback);
+                UIHelp.showOverTip(type, str, callback, endTitle);
             });
         }
         else {
-            overTips.init(type, str, callback);
+            overTips.init(type, str, callback, endTitle);
         }
     }
 

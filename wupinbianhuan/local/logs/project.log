@@ -1,73 +1,73 @@
-2019-08-19T07:44:17.809Z - normal: Load ~/.CocosCreator/settings.json
-2019-08-19T07:44:17.879Z - normal: Initializing Asset Database
-2019-08-19T07:44:17.882Z - normal: checking language setting...
-2019-08-19T07:44:17.883Z - normal: Language: zh
-2019-08-19T07:44:18.706Z - success: preview server running at http://localhost:7456
-2019-08-19T07:44:18.755Z - success: protocol editor-framework registered
-2019-08-19T07:44:18.755Z - success: protocol app registered
-2019-08-19T07:44:18.756Z - success: protocol theme registered
-2019-08-19T07:44:18.756Z - success: protocol packages registered
-2019-08-19T07:44:18.756Z - success: protocol uuid registerred
-2019-08-19T07:44:18.756Z - success: protocol db registerred
-2019-08-19T07:44:18.756Z - success: protocol thumbnail registerred
-2019-08-19T07:44:18.757Z - success: protocol unpack registerred
-2019-08-19T07:44:18.757Z - success: protocol disable-commonjs registerred
-2019-08-19T07:44:18.852Z - normal: connected!
-2019-08-19T07:44:18.854Z - normal: Check project /Users/xes/Desktop/hub/wupinbianhuan
-2019-08-19T07:44:18.856Z - normal: Initializing project /Users/xes/Desktop/hub/wupinbianhuan
-2019-08-19T07:44:19.271Z - normal: Initializing Cocos2d
-2019-08-19T07:44:20.073Z - normal: Initializing engine extends
-2019-08-19T07:44:20.132Z - success: asset-db-debugger loaded
-2019-08-19T07:44:20.134Z - success: baidu-adapter loaded
-2019-08-19T07:44:20.135Z - success: color-picker loaded
-2019-08-19T07:44:20.235Z - success: fb-audience-network loaded
-2019-08-19T07:44:20.296Z - success: fb-live-stream loaded
-2019-08-19T07:44:20.300Z - success: google-play-instant loaded
-2019-08-19T07:44:20.306Z - success: huawei-runtime loaded
-2019-08-19T07:44:20.566Z - success: cpk-publish loaded
-2019-08-19T07:44:20.567Z - success: jsb-adapter loaded
-2019-08-19T07:44:20.572Z - success: oppo-runtime loaded
-2019-08-19T07:44:20.592Z - success: package-manager loaded
-2019-08-19T07:44:20.739Z - success: qqplay-adapter loaded
-2019-08-19T07:44:20.741Z - success: runtime-dev-tools loaded
-2019-08-19T07:44:20.759Z - success: sdkbox loaded
-2019-08-19T07:44:20.777Z - success: tester loaded
-2019-08-19T07:44:20.798Z - success: ui-grid loaded
-2019-08-19T07:44:20.817Z - success: ui-kit-preview-extra loaded
-2019-08-19T07:44:20.835Z - success: ui-kit-preview loaded
-2019-08-19T07:44:20.853Z - success: ui-kit loaded
-2019-08-19T07:44:20.874Z - success: ui-tree loaded
-2019-08-19T07:44:20.880Z - success: vivo-runtime loaded
-2019-08-19T07:44:20.881Z - success: weapp-adapter loaded
-2019-08-19T07:44:20.882Z - success: xiaomi-adapter loaded
-2019-08-19T07:44:20.944Z - success: assets loaded
-2019-08-19T07:44:20.961Z - success: builder loaded
-2019-08-19T07:44:21.276Z - success: cocos-services loaded
-2019-08-19T07:44:21.300Z - success: console loaded
-2019-08-19T07:44:21.342Z - success: fb-instant-games loaded
-2019-08-19T07:44:21.371Z - success: game-window loaded
-2019-08-19T07:44:21.372Z - success: google-instant-games loaded
-2019-08-19T07:44:21.395Z - success: hierarchy loaded
-2019-08-19T07:44:21.418Z - success: inspector loaded
-2019-08-19T07:44:21.420Z - success: keystore loaded
-2019-08-19T07:44:21.478Z - success: node-library loaded
-2019-08-19T07:44:21.480Z - success: package-asset loaded
-2019-08-19T07:44:21.482Z - success: preferences loaded
-2019-08-19T07:44:21.500Z - success: project-exporter loaded
-2019-08-19T07:44:21.521Z - success: project-importer loaded
-2019-08-19T07:44:21.540Z - success: project-settings loaded
-2019-08-19T07:44:21.561Z - success: scene loaded
-2019-08-19T07:44:21.563Z - success: simulator-debugger loaded
-2019-08-19T07:44:21.565Z - success: sprite-editor loaded
-2019-08-19T07:44:21.590Z - success: store loaded
-2019-08-19T07:44:21.613Z - success: timeline loaded
-2019-08-19T07:44:21.618Z - success: xiaomi-runtime loaded
-2019-08-19T07:44:21.636Z - success: auto_deploy loaded
-2019-08-19T07:44:23.560Z - info: Cocos Services load base data!
-2019-08-19T07:44:28.743Z - normal: Loading packages
-2019-08-19T07:44:28.748Z - normal: Watching packages
-2019-08-19T07:44:28.874Z - normal: Run Application
-2019-08-19T07:44:35.581Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
+2019-08-21T02:05:55.343Z - normal: Load ~/.CocosCreator/settings.json
+2019-08-21T02:05:55.407Z - normal: Initializing Asset Database
+2019-08-21T02:05:55.410Z - normal: checking language setting...
+2019-08-21T02:05:55.410Z - normal: Language: zh
+2019-08-21T02:05:56.255Z - success: preview server running at http://localhost:7456
+2019-08-21T02:05:56.317Z - success: protocol editor-framework registered
+2019-08-21T02:05:56.317Z - success: protocol app registered
+2019-08-21T02:05:56.317Z - success: protocol theme registered
+2019-08-21T02:05:56.317Z - success: protocol packages registered
+2019-08-21T02:05:56.318Z - success: protocol uuid registerred
+2019-08-21T02:05:56.318Z - success: protocol db registerred
+2019-08-21T02:05:56.318Z - success: protocol thumbnail registerred
+2019-08-21T02:05:56.318Z - success: protocol unpack registerred
+2019-08-21T02:05:56.318Z - success: protocol disable-commonjs registerred
+2019-08-21T02:05:56.437Z - normal: connected!
+2019-08-21T02:05:56.439Z - normal: Check project /Users/xes/Desktop/hub/wupinbianhuan
+2019-08-21T02:05:56.440Z - normal: Initializing project /Users/xes/Desktop/hub/wupinbianhuan
+2019-08-21T02:05:56.856Z - normal: Initializing Cocos2d
+2019-08-21T02:05:57.668Z - normal: Initializing engine extends
+2019-08-21T02:05:57.727Z - success: asset-db-debugger loaded
+2019-08-21T02:05:57.728Z - success: baidu-adapter loaded
+2019-08-21T02:05:57.729Z - success: color-picker loaded
+2019-08-21T02:05:57.829Z - success: fb-audience-network loaded
+2019-08-21T02:05:57.889Z - success: fb-live-stream loaded
+2019-08-21T02:05:57.892Z - success: google-play-instant loaded
+2019-08-21T02:05:57.898Z - success: huawei-runtime loaded
+2019-08-21T02:05:58.156Z - success: cpk-publish loaded
+2019-08-21T02:05:58.157Z - success: jsb-adapter loaded
+2019-08-21T02:05:58.162Z - success: oppo-runtime loaded
+2019-08-21T02:05:58.182Z - success: package-manager loaded
+2019-08-21T02:05:58.313Z - success: qqplay-adapter loaded
+2019-08-21T02:05:58.315Z - success: runtime-dev-tools loaded
+2019-08-21T02:05:58.334Z - success: sdkbox loaded
+2019-08-21T02:05:58.353Z - success: tester loaded
+2019-08-21T02:05:58.373Z - success: ui-grid loaded
+2019-08-21T02:05:58.391Z - success: ui-kit-preview-extra loaded
+2019-08-21T02:05:58.409Z - success: ui-kit-preview loaded
+2019-08-21T02:05:58.427Z - success: ui-kit loaded
+2019-08-21T02:05:58.444Z - success: ui-tree loaded
+2019-08-21T02:05:58.450Z - success: vivo-runtime loaded
+2019-08-21T02:05:58.451Z - success: weapp-adapter loaded
+2019-08-21T02:05:58.452Z - success: xiaomi-adapter loaded
+2019-08-21T02:05:58.510Z - success: assets loaded
+2019-08-21T02:05:58.528Z - success: builder loaded
+2019-08-21T02:05:58.828Z - success: cocos-services loaded
+2019-08-21T02:05:58.851Z - success: console loaded
+2019-08-21T02:05:58.897Z - success: fb-instant-games loaded
+2019-08-21T02:05:58.918Z - success: game-window loaded
+2019-08-21T02:05:58.919Z - success: google-instant-games loaded
+2019-08-21T02:05:58.940Z - success: hierarchy loaded
+2019-08-21T02:05:58.959Z - success: inspector loaded
+2019-08-21T02:05:58.960Z - success: keystore loaded
+2019-08-21T02:05:58.981Z - success: node-library loaded
+2019-08-21T02:05:58.983Z - success: package-asset loaded
+2019-08-21T02:05:58.984Z - success: preferences loaded
+2019-08-21T02:05:59.036Z - success: project-exporter loaded
+2019-08-21T02:05:59.057Z - success: project-importer loaded
+2019-08-21T02:05:59.076Z - success: project-settings loaded
+2019-08-21T02:05:59.096Z - success: scene loaded
+2019-08-21T02:05:59.098Z - success: simulator-debugger loaded
+2019-08-21T02:05:59.099Z - success: sprite-editor loaded
+2019-08-21T02:05:59.123Z - success: store loaded
+2019-08-21T02:05:59.145Z - success: timeline loaded
+2019-08-21T02:05:59.151Z - success: xiaomi-runtime loaded
+2019-08-21T02:05:59.169Z - success: auto_deploy loaded
+2019-08-21T02:06:00.360Z - info: Cocos Services load base data!
+2019-08-21T02:06:06.247Z - normal: Loading packages
+2019-08-21T02:06:06.251Z - normal: Watching packages
+2019-08-21T02:06:06.380Z - normal: Run Application
+2019-08-21T02:06:13.579Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
     at Module._resolveFilename (module.js:470:15)
     at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
     at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
@@ -78,42 +78,4 @@
     at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
     at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
     at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13
-2019-08-19T09:44:43.430Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T09:44:44.229Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T09:44:45.552Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T09:44:47.916Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:589)
-    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
-    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
-    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13
-2019-08-19T09:48:01.199Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T09:48:03.114Z - failed: load script [./ShaderMaterial] failed : Error: Cannot find module './ShaderMaterial'
-    at Module._resolveFilename (module.js:470:15)
-    at Function.Module._resolveFilename [as _resolveFilenameVendor] (/Applications/CocosCreator.app/Contents/Resources/electron.asar/common/reset-search-paths.js:35:12)
-    at Function.s._resolveFilename (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:941)
-    at Function.Module._load (module.js:418:25)
-    at Module.require (module.js:498:17)
-    at require (internal/module.js:20:19)
-    at Object.cc.require (/Applications/CocosCreator.app/Contents/Resources/app.asar/editor/page/project-scripts.js:1:589)
-    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:1:363
-    at __define (/Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:8:24)
-    at /Users/xes/Desktop/hub/wupinbianhuan/temp/quick-scripts/assets/scripts/shader/ShaderManager.js:71:13
-2019-08-19T11:45:19.398Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:20.037Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:20.410Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:20.715Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:21.082Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:21.575Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:21.908Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:22.219Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:22.666Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:23.166Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:23.734Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:24.105Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-08-19T11:45:24.645Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
+2019-08-21T02:09:32.100Z - info: shutdown preview server

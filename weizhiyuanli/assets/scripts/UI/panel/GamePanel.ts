@@ -84,11 +84,6 @@ export default class GamePanel extends BaseUI {
         }else {
             this.getNet();
         }
-        for(let i = 0; i < this.diamondNode.children.length; i++) {
-            for(let j = 0; j < this.diamondNode.children[i].children.length; j++) {
-              this.diamondNode.children[i].children[j].opacity = 0;
-            }
-        }
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
     }
 
@@ -122,13 +117,13 @@ export default class GamePanel extends BaseUI {
     startAction() {
         for(let i = 0; i < this.diamondNode.children.length; i++) {
             for(let j = 0; j < this.diamondNode.children[i].children.length; j++) {
-              this.diamondNode.children[i].children[j].opacity = 0;
-              this.diamondNode.children[i].children[j].children[0].active = true
+                this.diamondNode.children[i].children[j].active = true
+                this.diamondNode.children[i].children[j].children[0].active = true
+                this.diamondNode.children[i].children[j].opacity = 0;   
             }
         }
         for(let i = 0; i < this.diamondNode.children.length; i++) {
             for(let j = 0; j < this.diamondNode.children[i].children.length; j++) {
-                this.diamondNode.children[i].children[j].active = true
                 setTimeout(() => {
                     this.diamondNode.children[i].children[j].runAction(cc.sequence(cc.fadeIn(0.1), cc.delayTime(0.2),cc.callFunc(()=>{
                        this.diamondNode.children[i].children[j].children[0].active = false; 
@@ -396,6 +391,7 @@ export default class GamePanel extends BaseUI {
                             this.touchNode.active = false
                             j = this.diamondArr[index].length
                             this.answerArr[i] = 0
+                            this.isOver()
                         }
                     }
                 }else {
@@ -425,6 +421,7 @@ export default class GamePanel extends BaseUI {
     }
 
     isRight() {
+        this.button.interactable = false
         let count = 0
         for(let i = 0; i < this.answerArr.length; i ++) {
             if(this.answerArr[i] == 0) {
@@ -507,6 +504,7 @@ export default class GamePanel extends BaseUI {
                 }
             })
         }else {
+            this.button.interactable = true
             this.eventvalue.levelData[this.checkpointIndex-1].result = 2
             this.miya.setAnimation(0, 'false_01', false)
                 this.miya.setCompleteListener(trackEntry=>{
