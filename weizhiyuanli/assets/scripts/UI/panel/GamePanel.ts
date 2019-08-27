@@ -55,11 +55,14 @@ export default class GamePanel extends BaseUI {
     private goodsArr: number[] = [];
     private slotArr: cc.Node[] = [];
     private answerArr: number[] = [];
+    private timeoutArr: number[] = [];
     private checkpointIndex: number = 1;
     private diamondArr: cc.Node[][] = [[],[],[],[]];
     private touchTarget: any = null;
     private overNum: number = 0;
     private overState: number = 2;
+    private buttonEnable: boolean = true
+
     private eventvalue = {
         isResult: 1,
         isLevel: 1,
@@ -78,10 +81,12 @@ export default class GamePanel extends BaseUI {
             this.checkpointsNum = DaAnData.getInstance().checkpointsNum
             this.countsArr = DaAnData.getInstance().countsArr
             this.goodsArr = DaAnData.getInstance().goodsArr
+            this.getDiamond()
             this.startAction();
             this.addSlot()
             this.addData()
         }else {
+            this.getDiamond()
             this.getNet();
         }
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
@@ -98,7 +103,7 @@ export default class GamePanel extends BaseUI {
     }
 
     onLoad() {
-       
+        
     }
 
     onEndGame() {
@@ -115,20 +120,21 @@ export default class GamePanel extends BaseUI {
     }
 
     startAction() {
-        for(let i = 0; i < this.diamondNode.children.length; i++) {
-            for(let j = 0; j < this.diamondNode.children[i].children.length; j++) {
-                this.diamondNode.children[i].children[j].active = true
-                this.diamondNode.children[i].children[j].children[0].active = true
-                this.diamondNode.children[i].children[j].opacity = 0;   
+        for(let i = 0; i < this.diamondArr.length; i++) {
+            for(let j = 0; j < this.diamondArr[i].length; j++) {
+                this.diamondArr[i][j].active = true
+                this.diamondArr[i][j].children[0].active = true
+                this.diamondArr[i][j].opacity = 0 
             }
         }
-        for(let i = 0; i < this.diamondNode.children.length; i++) {
-            for(let j = 0; j < this.diamondNode.children[i].children.length; j++) {
-                setTimeout(() => {
-                    this.diamondNode.children[i].children[j].runAction(cc.sequence(cc.fadeIn(0.1), cc.delayTime(0.2),cc.callFunc(()=>{
-                       this.diamondNode.children[i].children[j].children[0].active = false; 
+        for(let i = 0; i < this.diamondArr.length; i++) {
+            for(let j = 0; j < this.diamondArr[i].length; j++) {
+                let id:number = setTimeout(() => {
+                    this.diamondArr[i][j].runAction(cc.sequence(cc.fadeIn(0.1), cc.delayTime(0.2),cc.callFunc(()=>{
+                       this.diamondArr[i][j].children[0].active = false; 
                     })))
                 }, j * 100);
+                this.timeoutArr.push(id)
             }
         }
         this.magic()
@@ -141,8 +147,6 @@ export default class GamePanel extends BaseUI {
                 this.diamondArr[i][j] = this.diamondNode.children[i].children[j]
             }
         }
-        this.addListenerOnDiamond()
-        this.addListenerOnSlot()
     }
 
     magic() {
@@ -169,7 +173,7 @@ export default class GamePanel extends BaseUI {
                 }
             }
         })
-        setTimeout(() => {
+        let id:number = setTimeout(() => {
             this.light1.node.active = true
             this.light1.setAnimation(0, 'magic_01', false)
             this.light1.setCompleteListener(trackEntry=>{
@@ -178,11 +182,14 @@ export default class GamePanel extends BaseUI {
                 }
             })
         }, 1000)
-        setTimeout(() => {
+        let id1:number = setTimeout(() => {
             this.goods.active = true
             this.countLabel.string = this.countsArr[this.checkpointIndex-1].toString()
-            this.getDiamond()
+            this.addListenerOnDiamond()
+            this.addListenerOnSlot()
         }, 1500);
+        this.timeoutArr.push(id)
+        this.timeoutArr.push(id1)
     }
 
     talk(str: string){
@@ -219,6 +226,7 @@ export default class GamePanel extends BaseUI {
                 this.slotNode.addChild(node)
                 let x = startX + i * space
                 node.setPosition(cc.v2(x, y))
+                this.answerArr[i] = null
             }
         }else {
             let yUp = 70
@@ -236,6 +244,7 @@ export default class GamePanel extends BaseUI {
                     let x = startX + (i - 7) * space
                     node.setPosition(cc.v2(x, yDown))
                 }
+                this.answerArr[i] = null
             }
         }
     }
@@ -263,6 +272,7 @@ export default class GamePanel extends BaseUI {
                     this.touchTarget = e.target
                     this.touchNode.active = true;
                     this.touchNode.zIndex = 100;
+                    e.target.zIndex = 0
                     e.target.opacity = 0
                     var point = this.node.convertToNodeSpaceAR(e.currentTouch._point);
                     this.touchNode.setPosition(point);
@@ -308,23 +318,48 @@ export default class GamePanel extends BaseUI {
                         return
                     }
                     let rightNum = 0
+                    let isSame:boolean = false
                     for(let k = 0; k < this.slotArr.length; k++) {
-                        if(!this.slotArr[k].getChildByName('diamond').active&&this.slotArr[k].getChildByName('slot').getBoundingBox().contains(this.slotArr[k].convertToNodeSpaceAR(e.currentTouch._point))) {
-                            let diamond = this.slotArr[k].getChildByName('diamond')
-                            diamond.active = true
-                            diamond.getComponent(cc.Sprite).spriteFrame = this.touchNode.getChildByName('diamond').getComponent(cc.Sprite).spriteFrame
-                            this.answerArr[k] = i
-                            rightNum++
+                        if(this.slotArr[k].getChildByName('slot').getBoundingBox().contains(this.slotArr[k].convertToNodeSpaceAR(e.currentTouch._point))) {
+                            if(this.slotArr[k].getChildByName('diamond').active) {
+                                let lastDiamonArr = this.diamondArr[this.answerArr[k]]                               
+                                for(let o = 0; o < lastDiamonArr.length; o++) {
+                                    if(lastDiamonArr[o].opacity == 0) {
+                                        AudioManager.getInstance().playSound('sfx_dimndst', false)
+                                        lastDiamonArr[o].opacity = 255
+                                        lastDiamonArr[o].zIndex = o+1
+                                        this.touchNode.active = false
+                                        o = lastDiamonArr.length
+                                        this.answerArr[k] = 0
+                                    }
+                                }
+                                let diamond = this.slotArr[k].getChildByName('diamond')
+                                diamond.getComponent(cc.Sprite).spriteFrame = this.touchNode.getChildByName('diamond').getComponent(cc.Sprite).spriteFrame
+                                this.answerArr[k] = i
+                                if(this.answerArr[k] == i) {
+                                    isSame = true
+                                }
+                                rightNum++
+                            }else {
+                                let diamond = this.slotArr[k].getChildByName('diamond')
+                                diamond.active = true
+                                diamond.getComponent(cc.Sprite).spriteFrame = this.touchNode.getChildByName('diamond').getComponent(cc.Sprite).spriteFrame
+                                this.answerArr[k] = i
+                                rightNum++
+                            }
                         }
                     }
                     if(rightNum > 0) {
                         AudioManager.getInstance().playSound('sfx_dimndst', false)
                         this.touchNode.active = false
-                        e.target.zIndex = 0
+                        if(!isSame) {
+                            e.target.zIndex = 0
+                        }
                         this.isOver()
                     }else{
                         AudioManager.getInstance().playSound('sfx_wrngdmd', false)
                         this.touchNode.active = false
+                        e.target.zIndex = j+1
                         e.target.opacity = 255
                     }
                     for(let o = 0; o < this.slotArr.length; o ++) {
@@ -367,7 +402,26 @@ export default class GamePanel extends BaseUI {
                 }
                 var point = this.node.convertToNodeSpaceAR(e.currentTouch._point)
                 this.touchNode.setPosition(point)
-
+                for(let k = 0; k < this.slotArr.length; k++) {
+                    if(this.slotArr[k].getChildByName('slot').getBoundingBox().contains(this.slotArr[k].convertToNodeSpaceAR(e.currentTouch._point))) {
+                        this.slotArr[k].getChildByName('light').active = true
+                        for(let p = 0; p < this.slotArr.length; p++) {
+                            if(p != k) {
+                                this.slotArr[p].getChildByName('light').active = false
+                            }
+                        }
+                    }else {
+                        this.overNum++
+                    }
+                    if(k == this.slotArr.length-1) {
+                        if(this.overNum == this.slotArr.length) {
+                            for(let o = 0; o < this.slotArr.length; o ++) {
+                                this.slotArr[o].getChildByName('light').active = false
+                            }
+                        }
+                        this.overNum = 0
+                    }
+                }
             })
             node.on(cc.Node.EventType.TOUCH_END, (e)=>{
                 if(this.touchTarget != e.target) {
@@ -390,16 +444,46 @@ export default class GamePanel extends BaseUI {
                             this.diamondArr[index][j].zIndex = j+1
                             this.touchNode.active = false
                             j = this.diamondArr[index].length
-                            this.answerArr[i] = 0
+                            this.answerArr[i] = null
                             this.isOver()
                         }
                     }
                 }else {
-                    AudioManager.getInstance().playSound('sfx_wrngdmd', false)
-                    this.touchNode.active = false
-                    this.slotArr[i].getChildByName('diamond').active = true
+                    let isChange = false
+                    for(let k = 0; k < this.slotArr.length; k++) {
+                        if(this.slotArr[k].getChildByName('slot').getBoundingBox().contains(this.slotArr[k].convertToNodeSpaceAR(e.currentTouch._point))) {
+                            let targetDiamond =  this.slotArr[k].getChildByName('diamond')
+                            let originDiamond = this.slotArr[i].getChildByName('diamond')
+                            if(targetDiamond.active) {
+                                originDiamond.active = true
+                                isChange = true
+                                AudioManager.getInstance().playSound('sfx_dimndst', false)
+                                let temp = this.answerArr[k]
+                                this.answerArr[k] = this.answerArr[i]
+                                this.answerArr[i] = temp
+                                let spFrame: cc.SpriteFrame = targetDiamond.getComponent(cc.Sprite).spriteFrame
+                                targetDiamond.getComponent(cc.Sprite).spriteFrame = originDiamond.getComponent(cc.Sprite).spriteFrame
+                                originDiamond.getComponent(cc.Sprite).spriteFrame = spFrame
+                            }else {
+                                isChange = true
+                                AudioManager.getInstance().playSound('sfx_dimndst', false)
+                                this.answerArr[k] = this.answerArr[i]
+                                this.answerArr[i] = null
+                                targetDiamond.getComponent(cc.Sprite).spriteFrame = originDiamond.getComponent(cc.Sprite).spriteFrame
+                                originDiamond.active = false
+                                targetDiamond.active = true
+                            }
+                        }
+                    }
+                    if(!isChange) {
+                        AudioManager.getInstance().playSound('sfx_wrngdmd', false)
+                        this.slotArr[i].getChildByName('diamond').active = true
+                    }
                 }
-
+                for(let o = 0; o < this.slotArr.length; o ++) {
+                    this.slotArr[o].getChildByName('light').active = false
+                }
+                this.touchNode.active = false
                 this.touchTarget = null
             })
         }
@@ -421,7 +505,9 @@ export default class GamePanel extends BaseUI {
     }
 
     isRight() {
-        this.button.interactable = false
+        if(!this.buttonEnable) {
+            return
+        }
         let count = 0
         for(let i = 0; i < this.answerArr.length; i ++) {
             if(this.answerArr[i] == 0) {
@@ -438,6 +524,7 @@ export default class GamePanel extends BaseUI {
         this.eventvalue.result = 2
         console.log('--', this.eventvalue);
         if(count == this.countsArr[this.checkpointIndex-1]) {
+            this.buttonEnable = false
             this.eventvalue.levelData[this.checkpointIndex-1].result = 1
             if(this.checkpointIndex == this.checkpointsNum) {
                 this.eventvalue.result = 1
@@ -504,7 +591,7 @@ export default class GamePanel extends BaseUI {
                 }
             })
         }else {
-            this.button.interactable = true
+            this.buttonEnable = true
             this.eventvalue.levelData[this.checkpointIndex-1].result = 2
             this.miya.setAnimation(0, 'false_01', false)
                 this.miya.setCompleteListener(trackEntry=>{
@@ -517,13 +604,14 @@ export default class GamePanel extends BaseUI {
     }
 
     nextCheckpoint() {
-        for(let i = 0; i < this.diamondNode.children.length; i++) {
-            for(let j = 0; j < this.diamondNode.children[i].children.length; j++) {
+        for(let i = 0; i < this.diamondArr.length; i++) {
+            for(let j = 0; j < this.diamondArr[i].length; j++) {
                 this.diamondArr[i][j].zIndex = j+1
             }
         }
         this.checkpointIndex++
         this.button.interactable = false
+        this.buttonEnable = true
         this.countLabel.string = '0'
         for(let i = 0; i < this.slotArr.length; i++) {
             this.slotArr[i].destroy()
@@ -535,10 +623,14 @@ export default class GamePanel extends BaseUI {
     }
 
     onDestroy() {
-
+        for(let i = 0; i < this.timeoutArr.length; i++) {
+            clearTimeout(this.timeoutArr[i])
+        }
+        this.timeoutArr = []
     }
 
     onShow() {
+        
     }
 
     setPanel() {

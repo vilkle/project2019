@@ -29,6 +29,10 @@ export default class TeacherPanel extends BaseUI {
     private popNode: cc.Node = null
     @property(cc.Node)
     private errorNode: cc.Node = null
+    @property(cc.Material)
+    private oriMaterial: cc.Material = null
+    @property(cc.Material)
+    private grayMaterial: cc.Material = null
 
     private checkpointEnable: boolean = true
     private itemNodeArr: cc.Node[] = []
@@ -188,13 +192,13 @@ export default class TeacherPanel extends BaseUI {
             thing.children[i].on(cc.Node.EventType.TOUCH_START, ()=>{
                 let sprite = node.getChildByName('goodsSprite').getComponent(cc.Sprite)
                 sprite.spriteFrame = thing.children[i].getComponent(cc.Sprite).spriteFrame
-                thing.children[i].getComponent(cc.Sprite).setState(0)
+                thing.children[i].getComponent(cc.Sprite).setMaterial(0, this.oriMaterial)
                 node.getChildByName('addButton').active = false
                 let index = this.itemNodeArr.indexOf(node)
                 DaAnData.getInstance().goodsArr[index] = i
                 for(let j = 0; j < thing.children.length; j ++) {
                     if(i != j) {
-                        thing.children[j].getComponent(cc.Sprite).setState(1)
+                        thing.children[j].getComponent(cc.Sprite).setMaterial(0, this.grayMaterial)
                     }
                 }   
             })
@@ -204,7 +208,7 @@ export default class TeacherPanel extends BaseUI {
     popBtnCallback() {
         let thing = this.popNode.getChildByName('thing')
         for(let i = 0; i < thing.children.length; i ++) {
-            thing.children[i].getComponent(cc.Sprite).setState(0)
+            thing.children[i].getComponent(cc.Sprite).setMaterial(0, this.oriMaterial)
             thing.children[i].off(cc.Node.EventType.TOUCH_START)
         }
         this.popNode.active = false

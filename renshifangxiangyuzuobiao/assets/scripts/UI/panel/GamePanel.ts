@@ -147,7 +147,7 @@ export default class GamePanel extends BaseUI {
         car.setPosition(cc.v2(-1250, 0));
         car.runAction(cc.moveBy(0.8, cc.v2(1250, 0)));
         let bubble = this.fruitNode.getChildByName('bubbleNode');
-        bubble.setRotation(80);
+        bubble.setRotation(80,0,0,0);
         bubble.scale = 0;
         AudioManager.getInstance().playSound('sfx_1stfrt', false);
         for(let i = 0; i < this.answerArr.length; i++) {
@@ -184,7 +184,7 @@ export default class GamePanel extends BaseUI {
         car.setPosition(cc.v2(-1250, 0));
         car.runAction(cc.moveBy(0.8, cc.v2(1250, 0)));
         let bubble = this.vegetableNode.getChildByName('bubbleNode');
-        bubble.setRotation(80);
+        bubble.setRotation(80,0,0,0);
         bubble.scale = 0;  
         AudioManager.getInstance().playSound('sfx_1stfrt', false);                          
         for(let i = 0; i < this.answerArr.length; i++) {
@@ -508,11 +508,11 @@ export default class GamePanel extends BaseUI {
         })
         let func1 = cc.callFunc(()=>{
             bubble.scale = 0;
-            bubble.setRotation(80);
+            bubble.setRotation(80,0,0,0);
             bubble.getChildByName('label').getComponent(cc.Label).string = str;
         })
         bubble.scale = 1;
-        bubble.setRotation(0);
+        bubble.setRotation(0,0,0,0);
         let spaw1 = cc.spawn(cc.rotateTo(0.16, -13), cc.scaleTo(0.16, 1.2, 1.2));
         let spaw2 = cc.spawn(cc.rotateTo(0.12, 6), cc.scaleTo(0.12, 0.9, 0.9));
         let spaw3 = cc.spawn(cc.rotateTo(0.12, -6), cc.scaleTo(0.12, 1.1, 1.1));
@@ -644,6 +644,7 @@ export default class GamePanel extends BaseUI {
                         if(i == this.answerArr[j]) {
                             this.eventvalue.levelData[0].subject[j] = i;
                             this.eventvalue.levelData[0].result = 2
+                            this.eventvalue.result = 2
                             this.isOver = 2
                             this.gridNode.children[j].getChildByName('sprite').active = true; 
                             this.touchRight = true;
@@ -749,6 +750,7 @@ export default class GamePanel extends BaseUI {
             if(this.rightNum == 8) {
                 this.eventvalue.levelData[0].result = 1;
                 this.eventvalue.result = 1;
+                this.isOver = 1
                 DataReporting.getInstance().dispatchEvent('addLog', {
                     eventType: 'clickSubmit',
                     eventValue: JSON.stringify(this.eventvalue)
@@ -761,6 +763,7 @@ export default class GamePanel extends BaseUI {
             if(this.rightNum == 9) {
                 this.eventvalue.levelData[0].result = 1;
                 this.eventvalue.result = 1;
+                this.isOver = 1
                 DataReporting.getInstance().dispatchEvent('addLog', {
                     eventType: 'clickSubmit',
                     eventValue: JSON.stringify(this.eventvalue)
@@ -773,6 +776,7 @@ export default class GamePanel extends BaseUI {
             if(this.rightNum == 6) {
                 this.eventvalue.levelData[0].result = 1;
                 this.eventvalue.result = 1;
+                this.isOver = 1
                 DataReporting.getInstance().dispatchEvent('addLog', {
                     eventType: 'clickSubmit',
                     eventValue: JSON.stringify(this.eventvalue)

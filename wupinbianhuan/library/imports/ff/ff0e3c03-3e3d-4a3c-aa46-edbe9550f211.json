@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "item_fuhao_langxian",
+    "texture": "645362a9-99cf-43f9-9318-327106499e50",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      114,
+      24
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      114,
+      24
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
