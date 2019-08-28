@@ -22284,6 +22284,21 @@
     "lineDotted": {
       "__uuid__": "c932b076-f218-4b6e-b562-a4b0a9cdc0a0"
     },
+    "squareLight": {
+      "__uuid__": "36bf0b5f-95f0-4649-8df9-49a5ba62ae05"
+    },
+    "sexangleLight": {
+      "__uuid__": "6d45efcd-72d0-4512-88e5-a696b1345404"
+    },
+    "octagonLight": {
+      "__uuid__": "f72431df-fe9f-404a-b23f-d36965da436a"
+    },
+    "lineLight": {
+      "__uuid__": "6b6ab086-603c-4367-b3e1-2100936c0030"
+    },
+    "arrowLight": {
+      "__uuid__": "65874175-7564-4a37-8a71-37b0f0ac8d31"
+    },
     "touchNode": {
       "__id__": 616
     },

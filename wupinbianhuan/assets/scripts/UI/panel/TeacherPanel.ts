@@ -78,6 +78,7 @@ export default class TeacherPanel extends BaseUI {
     private arrow1: ItemType = null
     private arrow2: ItemType = null
     private arrowNull: ItemType = null
+    private typeNull: ItemType = null
     // onLoad () {}
 
     start() {
@@ -92,9 +93,11 @@ export default class TeacherPanel extends BaseUI {
             DaAnData.getInstance().figure = 2
             this.sameType = ItemType.arrow_orange
             this.diffType = ItemType.arrow_blue
-            this.type1 = ItemType.sexangle_orange
-            this.type2 = ItemType.sexangle_purple
+        }else {
+            this.sameType = DaAnData.getInstance().ruleDataArr[2][1]
+            this.diffType = DaAnData.getInstance().ruleDataArr[0][1]
         }
+        this.initData()
         this.typeToggleContainer[DaAnData.getInstance().type-1].isChecked = true
         this.figureToggleContainer[DaAnData.getInstance().figure-1].isChecked = true
         this.initType()
@@ -112,17 +115,53 @@ export default class TeacherPanel extends BaseUI {
         }
     }
 
+    initData() {
+        switch(DaAnData.getInstance().figure) {
+            case 1:
+                this.type1 = ItemType.triangle_green
+                this.type2 = ItemType.circle_yellow
+                this.arrow1 = ItemType.line_curve
+                this.arrow2 = ItemType.line_dotted
+                this.arrowNull = ItemType.line_black
+                this.typeNull = ItemType.square_black
+                break
+            case 2:
+                this.type1 = ItemType.sexangle_orange
+                this.type2 = ItemType.sexangle_purple
+                this.arrow1 = ItemType.hand_blue
+                this.arrow2 = ItemType.hand_green
+                this.arrowNull = ItemType.hand_black
+                this.typeNull = ItemType.sexangle_black
+                break
+            case 3:
+                this.type1 = ItemType.octagon_green
+                this.type2 = ItemType.octagon_yellow
+                this.arrow1 = ItemType.arrow_blue
+                this.arrow2 = ItemType.arrow_orange
+                this.arrowNull = ItemType.arrow_black
+                this.typeNull = ItemType.octagon_black
+                break
+            default:
+                break
+        }
+    }
+
     setRule() {
+        this.ruleDataArr = []
         for(let i = 0; i < this.ruleItemArr.length; i++) {
+            this.ruleDataArr[i] = []
             for(let j = 0; j < this.ruleItemArr[i].length; j++) {
                 this.setState(this.ruleItemArr[i][j], DaAnData.getInstance().ruleDataArr[i][j])
                 this.ruleDataArr[i][j] = DaAnData.getInstance().ruleDataArr[i][j]
+               
             }
         }
     }
 
     setSubject() {
+        this.subjectDataArr = []
         for(let i = 0; i < this.subjectItemArr.length; i++) {
+            this.subjectDataArr[i] = []
             for(let j = 0; j < this.subjectItemArr[i].length; j++) {
                 this.setState(this.subjectItemArr[i][j], DaAnData.getInstance().subjectDataArr[i][j])
                 this.subjectDataArr[i][j] = DaAnData.getInstance().subjectDataArr[i][j]
@@ -131,69 +170,29 @@ export default class TeacherPanel extends BaseUI {
     }
 
     defaultRule() {
-        let type1: ItemType = null
-        let type2: ItemType = null
-        let arrow1: ItemType = null
-        let arrow2: ItemType = null
-        if(DaAnData.getInstance().figure == 1) {
-            type1 = ItemType.triangle_green
-            type2 = ItemType.circle_yellow
-            arrow1 = ItemType.line_curve
-            arrow2 = ItemType.line_dotted
-        }else if(DaAnData.getInstance().figure == 2) {
-            type1 = ItemType.sexangle_orange
-            type2 = ItemType.sexangle_purple
-            arrow1 = ItemType.hand_blue
-            arrow2 = ItemType.hand_green
-        }else if(DaAnData.getInstance().figure == 3) {
-            type1 = ItemType.octagon_green
-            type2 = ItemType.octagon_yellow
-            arrow1 = ItemType.arrow_blue
-            arrow2 = ItemType.arrow_orange
-        }
         for(let i = 0; i < this.ruleItemArr.length; i++) {
             for(let j = 0; j < this.ruleItemArr[i].length; j++) {
                 this.ruleItemArr[i][j].getChildByName('blank').opacity = 255
                 this.ruleItemArr[i][j].getChildByName('sprite').active = false
             }
         }
-        this.setRuleDefault(0,0, type1)
-        this.setRuleDefault(1,2, type1) 
-        this.setRuleDefault(2,0, type1)
-        this.setRuleDefault(2,2, type1)
-        this.setRuleDefault(0,2, type2)
-        this.setRuleDefault(1,0, type2) 
-        this.setRuleDefault(3,0, type2)
-        this.setRuleDefault(3,2, type2)
-        this.setRuleDefault(0,1, arrow1)
-        this.setRuleDefault(1,1, arrow1) 
-        this.setRuleDefault(2,1, arrow2)
-        this.setRuleDefault(3,1, arrow2)
-        this.sameType = arrow1
-        this.diffType = arrow2
+        this.setRuleDefault(0,0, this.type1)
+        this.setRuleDefault(1,2, this.type1) 
+        this.setRuleDefault(2,0, this.type1)
+        this.setRuleDefault(2,2, this.type1)
+        this.setRuleDefault(0,2, this.type2)
+        this.setRuleDefault(1,0, this.type2) 
+        this.setRuleDefault(3,0, this.type2)
+        this.setRuleDefault(3,2, this.type2)
+        this.setRuleDefault(0,1, this.arrow1)
+        this.setRuleDefault(1,1, this.arrow1) 
+        this.setRuleDefault(2,1, this.arrow2)
+        this.setRuleDefault(3,1, this.arrow2)
+        this.sameType = this.arrow2
+        this.diffType = this.arrow1
     }
 
     defaultSubject( isTree: boolean) {
-        let type1: ItemType = null
-        let type2: ItemType = null
-        let arrow1: ItemType = null
-        let arrow2: ItemType = null
-        if(DaAnData.getInstance().figure == 1) {
-            type1 = ItemType.triangle_green
-            type2 = ItemType.circle_yellow
-            arrow1 = ItemType.line_curve
-            arrow2 = ItemType.line_dotted
-        }else if(DaAnData.getInstance().figure == 2) {
-            type1 = ItemType.sexangle_orange
-            type2 = ItemType.sexangle_purple
-            arrow1 = ItemType.hand_blue
-            arrow2 = ItemType.hand_green
-        }else if(DaAnData.getInstance().figure == 3) {
-            type1 = ItemType.octagon_green
-            type2 = ItemType.octagon_yellow
-            arrow1 = ItemType.arrow_blue
-            arrow2 = ItemType.arrow_orange
-        }
         for(let i = 0; i < this.subjectItemArr.length; i++) {
             for(let j = 0; j < this.subjectItemArr[i].length; j++) {
                 this.subjectItemArr[i][j].getChildByName('blank').opacity = 255
@@ -201,46 +200,65 @@ export default class TeacherPanel extends BaseUI {
             }
         }
         if(isTree) {
-            this.setState(this.subjectItemArr[0][0], type2)
-            this.subjectDataArr[0][0] = type2
-            this.answerDataArr[0][0] = type2
+            this.subjectDataArr = []
+            for(let n = 0; n < this.subjectItemArr.length; ++n) {
+                this.subjectDataArr[n] = []
+                for(let m = 0; m< this.subjectItemArr[n].length; ++m) {
+                    if(n%2==0) {
+                        this.subjectDataArr[n][m] = this.typeNull
+                    }else if(n%2==1) {
+                        this.subjectDataArr[n][m] = this.arrowNull
+                    }
+                }
+            }
+            this.setState(this.subjectItemArr[0][0], this.type2)
+            this.subjectDataArr[0][0] = this.type2
             for(let i = 0; i < this.subjectItemArr.length; i++) {
                 for(let j = 0; j < this.subjectItemArr[i].length; j++) {
                     if(i%2 == 1) {
                         if(j%2 == 1) {
-                            this.setState(this.subjectItemArr[i][j], arrow1)
-                            this.subjectDataArr[i][j] = arrow1
-                            this.answerDataArr[i][j] = arrow1
+                            this.setState(this.subjectItemArr[i][j], this.arrow1)
+                            this.subjectDataArr[i][j] = this.arrow1
                         }else { 
-                            this.setState(this.subjectItemArr[i][j], arrow2)
-                            this.subjectDataArr[i][j] = arrow2
-                            this.answerDataArr[i][j] = arrow2
+                            this.setState(this.subjectItemArr[i][j], this.arrow2)
+                            this.subjectDataArr[i][j] = this.arrow2
                         }
                     }
                 }
             }
         }else {
-            this.setSubjectDefault(0,0, type1)
-            this.setSubjectDefault(0,2, type1)
-            this.setSubjectDefault(1,2, type1)
-            this.setSubjectDefault(3,0, type1)
-            this.setSubjectDefault(3,8, type1)
-            this.setSubjectDefault(0,8, type2)
-            this.setSubjectDefault(1,0, type2)
-            this.setSubjectDefault(1,6, type2)
-            this.setSubjectDefault(2,2, type2)
-            this.setSubjectDefault(2,4, type2)
-            this.setSubjectDefault(0,1, arrow1)
-            this.setSubjectDefault(0,3, arrow1)
-            this.setSubjectDefault(2,5, arrow1)
-            this.setSubjectDefault(2,7, arrow1)
-            this.setSubjectDefault(3,1, arrow1)
-            this.setSubjectDefault(3,5, arrow1)
-            this.setSubjectDefault(0,5, arrow2)
-            this.setSubjectDefault(1,3, arrow2)
-            this.setSubjectDefault(1,7, arrow2)
-            this.setSubjectDefault(2,1, arrow2)
-            this.setSubjectDefault(3,7, arrow2)
+            this.subjectDataArr = []
+            for(let n = 0; n < this.subjectItemArr.length; ++n) {
+                this.subjectDataArr[n] = []
+                for(let m = 0; m< this.subjectItemArr[n].length; ++m) {
+                    if(m%2==0) {
+                        this.subjectDataArr[n][m] = this.typeNull
+                    }else if(m%2==1) {
+                        this.subjectDataArr[n][m] = this.arrowNull
+                    }
+                }
+            }
+            this.setSubjectDefault(0,0, this.type1)
+            this.setSubjectDefault(0,2, this.type1)
+            this.setSubjectDefault(1,2, this.type1)
+            this.setSubjectDefault(3,0, this.type1)
+            this.setSubjectDefault(3,8, this.type1)
+            this.setSubjectDefault(0,8, this.type2)
+            this.setSubjectDefault(1,0, this.type2)
+            this.setSubjectDefault(1,6, this.type2)
+            this.setSubjectDefault(2,2, this.type2)
+            this.setSubjectDefault(2,4, this.type2)
+            this.setSubjectDefault(0,1, this.arrow2)
+            this.setSubjectDefault(0,3, this.arrow2)
+            this.setSubjectDefault(2,5, this.arrow2)
+            this.setSubjectDefault(2,7, this.arrow2)
+            this.setSubjectDefault(3,1, this.arrow2)
+            this.setSubjectDefault(3,5, this.arrow2)
+            this.setSubjectDefault(0,5, this.arrow1)
+            this.setSubjectDefault(1,3, this.arrow1)
+            this.setSubjectDefault(1,7, this.arrow1)
+            this.setSubjectDefault(2,1, this.arrow1)
+            this.setSubjectDefault(3,7, this.arrow1)
         }
     }
 
@@ -252,7 +270,6 @@ export default class TeacherPanel extends BaseUI {
     setSubjectDefault(i: number, j:number, type: ItemType) {
         this.setState(this.subjectItemArr[i][j], type) 
         this.subjectDataArr[i][j] = type
-        this.answerDataArr[i][j] = type
     }
   
      /**
@@ -314,7 +331,6 @@ export default class TeacherPanel extends BaseUI {
         this.subjectItemArr = []
         this.ruleDataArr = []
         this.subjectDataArr = []
-        this.answerDataArr = []
         if(this.ruleNode.children[0]) {
             let nodeArr = this.ruleNode.children[0].children
             for(let i = 0; i < nodeArr.length; ++i) {
@@ -331,7 +347,6 @@ export default class TeacherPanel extends BaseUI {
             for(let i = 0; i < nodeArr.length; ++i) {
                 this.subjectItemArr[i] = []
                 this.subjectDataArr[i] = []
-                this.answerDataArr[i] = []
                 for(let j = 0; j < nodeArr[i].children.length; ++j) {
                     this.subjectItemArr[i][j] = nodeArr[i].children[j]
                     this.subjectDataArr[i][j] = this.getItemData(i,j,2,DaAnData.getInstance().type)
@@ -485,13 +500,13 @@ export default class TeacherPanel extends BaseUI {
     initFigure() {
         if(this.currentFigure != DaAnData.getInstance().figure) {
             if(DaAnData.getInstance().figure == 1) {
-                this.changeFigure(this.squareBlack, this.arrowBlack)
+                this.changeFigure(this.squareBlack, this.lineBlack)
                 this.currentFigure = 1
             }else if(DaAnData.getInstance().figure == 2) {
                 this.changeFigure(this.sexangleBlack, this.arrowBlack)
                 this.currentFigure = 2
             }else if(DaAnData.getInstance().figure == 3) {
-                this.changeFigure(this.octagonBlack, this.lineBlack)
+                this.changeFigure(this.octagonBlack, this.arrowBlack)
                 this.currentFigure = 3
             }
         }
@@ -571,6 +586,7 @@ export default class TeacherPanel extends BaseUI {
                 this.arrow1 = ItemType.line_curve
                 this.arrow2 = ItemType.line_dotted
                 this.arrowNull = ItemType.line_black
+                this.typeNull = ItemType.square_black
                 this.initFigure()
                 break
             case 1:
@@ -580,6 +596,7 @@ export default class TeacherPanel extends BaseUI {
                 this.arrow1 = ItemType.hand_blue
                 this.arrow2 = ItemType.hand_green
                 this.arrowNull = ItemType.hand_black
+                this.typeNull = ItemType.sexangle_black
                 this.initFigure()
                 break
             case 2:
@@ -589,6 +606,7 @@ export default class TeacherPanel extends BaseUI {
                 this.arrow1 = ItemType.arrow_blue
                 this.arrow2 = ItemType.arrow_orange
                 this.arrowNull = ItemType.arrow_black
+                this.typeNull = ItemType.octagon_black
                 this.initFigure()
                 break
             default:
@@ -610,69 +628,270 @@ export default class TeacherPanel extends BaseUI {
             this.showTip('相同颜色之间变换与不同颜色相互变换规则一样，相同颜色之间变换和不同颜色相互变换之间规则不能相同。')
             return false
         }
+        this.getAnswer()
         if(DaAnData.getInstance().type == 1) {
-            if(!this.checkTree(this.subjectDataArr)) {
+            if(!this.checkTree()) {
                 this.showTip('题目已知条件不能导出所有答案，请重新配题。')
                 return false
             }
         }else if(DaAnData.getInstance().type == 2) {
-            if(!this.checkSingle(this.subjectDataArr)) {
+            if(!this.checkSingle()) {
                 this.showTip('题目已知条件不能导出所有答案，请重新配题。')
                 return false
             }  
+        }
+        if(!this.errorQuestion()) {
+            this.showTip('题目不符合规则，请重新配题。')
+            return false
         }
 
         return true
     }
 
-    checkTree(arr: ItemType[][]): boolean {
-        for(let i = 0; i < this.answerDataArr.length; i++) {
-            for(let j = 0; j < this.answerDataArr[i].length; j++) {
-                if(i%2 == 1) {
-                    if(this.answerDataArr[i][j]==this.sameType) {
-                        if(this.answerDataArr[i-1][Math.floor(j/2)]) {
-                            this.answerDataArr[i+1][j] = this.answerDataArr[i-1][Math.floor(j/2)]
+    getAnswer() {
+        this.answerDataArr = []
+        for(let n = 0; n < this.subjectDataArr.length; ++n) {
+            this.answerDataArr[n] = []
+            for(let m = 0; m < this.subjectDataArr[n].length; ++m) {
+                if(this.subjectDataArr[n][m] != this.typeNull && this.subjectDataArr[n][m] != this.arrowNull) {
+                    this.answerDataArr[n][m] = this.subjectDataArr[n][m]
+                }else {
+                    this.answerDataArr[n][m] = null
+                }
+            }
+        }
+        cc.log(this.subjectDataArr, this.arrowNull, this.typeNull)
+        cc.log(this.answerDataArr, this.sameType, this.diffType)
+        if(DaAnData.getInstance().type ==1) {
+            let num = 0
+            for(let i = 0; i < this.answerDataArr.length; i++) {
+                for(let j = 0; j < this.answerDataArr[i].length; j++) {
+                    if(i%2 == 1) {
+                        if(this.answerDataArr[i][j]&&this.answerDataArr[i-1][Math.floor(j/2)]&&this.answerDataArr[i+1][j]==null) {
+                            num++
+                        }else if(this.answerDataArr[i][j]&&this.answerDataArr[i-1][Math.floor(j/2)]==null&&this.answerDataArr[i+1][j]){
+                            num++
                         }
-                        if(this.answerDataArr[i+1][j]) {
-                            this.answerDataArr[i-1][Math.floor(j/2)] = this.answerDataArr[i+1][j]
+                    }
+                }
+            }
+            while(num>0) {
+                num = 0
+                for(let i = 0; i < this.answerDataArr.length; i++) {
+                    for(let j = 0; j < this.answerDataArr[i].length; j++) {
+                        if(i%2 == 1) {
+                            if(this.answerDataArr[i][j]==this.sameType) {
+                                if(this.answerDataArr[i-1][Math.floor(j/2)]) {
+                                    if(this.answerDataArr[i+1][j] == null) {
+                                        this.answerDataArr[i+1][j] = this.answerDataArr[i-1][Math.floor(j/2)]
+                                    }
+                                }
+                                if(this.answerDataArr[i+1][j]) {
+                                    if(this.answerDataArr[i-1][Math.floor(j/2)]== null) {
+                                        this.answerDataArr[i-1][Math.floor(j/2)] = this.answerDataArr[i+1][j]
+                                    }
+                                }
+                            }else if(this.answerDataArr[i][j]==this.diffType) {
+                                if(this.answerDataArr[i-1][Math.floor(j/2)] == this.type1) {
+                                    if(this.answerDataArr[i+1][j] == null) {
+                                        this.answerDataArr[i+1][j] = this.type2
+                                    }
+                                }else if(this.answerDataArr[i-1][Math.floor(j/2)] == this.type2) {
+                                    if(this.answerDataArr[i+1][j] == null) {
+                                        this.answerDataArr[i+1][j] = this.type1
+                                    }
+                                }
+                                if(this.answerDataArr[i+1][j] == this.type1) {
+                                    if(this.answerDataArr[i-1][Math.floor(j/2)] == null) {
+                                        this.answerDataArr[i-1][Math.floor(j/2)] = this.type2
+                                    }
+                                }else if(this.answerDataArr[i+1][j] == this.type2) {
+                                    if( this.answerDataArr[i-1][Math.floor(j/2)] == null) {
+                                        this.answerDataArr[i-1][Math.floor(j/2)] = this.type1
+                                    }
+                                }
+                            }
                         }
-                    }else if(this.answerDataArr[i][j]==this.diffType) {
-                        if(this.answerDataArr[i-1][Math.floor(j/2)] == this.type1) {
-                            this.answerDataArr[i+1][j] = this.type2
-                        }else if(this.answerDataArr[i-1][Math.floor(j/2)] == this.type2) {
-                            this.answerDataArr[i+1][j] = this.type1
+                    }
+                }
+
+                for(let i = 0; i < this.answerDataArr.length; i++) {
+                    for(let j = 0; j < this.answerDataArr[i].length; j++) {
+                        if(i%2 == 1) {
+                            if(this.answerDataArr[i][j]&&this.answerDataArr[i-1][Math.floor(j/2)]&&this.answerDataArr[i+1][j]==null) {
+                                num++
+                            }else if(this.answerDataArr[i][j]&&this.answerDataArr[i-1][Math.floor(j/2)]==null&&this.answerDataArr[i+1][j]){
+                                num++
+                            }
                         }
-                        if(this.answerDataArr[i+1][j] == this.type1) {
-                            this.answerDataArr[i-1][Math.floor(j/2)] = this.type2
-                        }else if(this.answerDataArr[i+1][j] == this.type2) {
-                            this.answerDataArr[i-1][Math.floor(j/2)] = this.type1
+                    }
+                }
+
+            }
+           
+            for(let i = 0; i < this.answerDataArr.length; i++) {
+                for(let j = 0; j < this.answerDataArr[i].length; j++) {
+                    if(i%2 == 0) {
+                        if(this.answerDataArr[i+2]) {
+                            if(this.answerDataArr[i][j] && this.answerDataArr[i+2][j*2]) {
+                                if(this.answerDataArr[i][j] == this.answerDataArr[i+2][j*2]) {
+                                    if(this.answerDataArr[i+1][j*2] == null) {
+                                        this.answerDataArr[i+1][j*2] = this.sameType
+                                    }
+                                }else if(this.answerDataArr[i][j] != this.answerDataArr[i+2][j*2]) {
+                                    if( this.answerDataArr[i+1][j*2] == null) {
+                                        this.answerDataArr[i+1][j*2] = this.diffType
+                                    } 
+                                }
+                            }
+                            if(this.answerDataArr[i][j] && this.answerDataArr[i+2][j*2+1]) {
+                                if(this.answerDataArr[i][j] == this.answerDataArr[i+2][j*2+1]) {
+                                    if(this.answerDataArr[i+1][j*2+1] == null) {
+                                        this.answerDataArr[i+1][j*2+1] = this.sameType
+                                    }
+                                }else if(this.answerDataArr[i][j] != this.answerDataArr[i+2][j*2+1]) {
+                                    if(this.answerDataArr[i+1][j*2+1] == null) {
+                                        this.answerDataArr[i+1][j*2+1] = this.diffType
+                                    } 
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }else if(DaAnData.getInstance().type == 2) {
+            let num = 0
+            for(let i = 0; i < this.answerDataArr.length; i++) {
+                for(let j = 0; j < this.answerDataArr[i].length; j++) {
+                    if(j%2 == 1) {
+                        if(this.answerDataArr[i][j]&&this.answerDataArr[i][j-1]&&this.answerDataArr[i][j+1]==null) {
+                            num++
+                        }else if(this.answerDataArr[i][j]&&this.answerDataArr[i][j-1]==null&&this.answerDataArr[i][j+1]){
+                            num++
+                        }
+                    }
+                }
+            }
+            while(num>0) {
+                num = 0
+                for(let i = 0; i < this.answerDataArr.length; i++) {
+                    for(let j = 0; j < this.answerDataArr[i].length; j++) {
+                        if(j%2 == 1) {
+                            if(this.answerDataArr[i][j]==this.sameType) {
+                                if(this.answerDataArr[i][j-1]) {
+                                    if(this.answerDataArr[i][j+1] == null) {
+                                        this.answerDataArr[i][j+1] = this.answerDataArr[i][j-1]
+                                    }
+                                }
+                                if(this.answerDataArr[i][j+1]) {
+                                    if( this.answerDataArr[i][j-1] == null) {
+                                        this.answerDataArr[i][j-1] = this.answerDataArr[i][j+1]
+                                    }
+                                }
+                            }else if(this.answerDataArr[i][j]==this.diffType) {
+                                if(this.answerDataArr[i][j-1] == this.type1) {
+                                    if(this.answerDataArr[i][j+1] == null) {
+                                        this.answerDataArr[i][j+1] = this.type2
+                                    }
+                                }else if(this.answerDataArr[i][j-1] == this.type2) {
+                                    if(this.answerDataArr[i][j+1] == null) {
+                                        this.answerDataArr[i][j+1] = this.type1
+                                    }
+                                }
+                                if(this.answerDataArr[i][j+1] == this.type1) {
+                                    if(this.answerDataArr[i][j-1] == null) {
+                                        this.answerDataArr[i][j-1] = this.type2
+                                    }
+                                }else if(this.answerDataArr[i][j+1] == this.type2) {
+                                    if(this.answerDataArr[i][j-1] == null) {
+                                        this.answerDataArr[i][j-1] = this.type1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                for(let i = 0; i < this.answerDataArr.length; i++) {
+                    for(let j = 0; j < this.answerDataArr[i].length; j++) {
+                        if(j%2 == 1) {
+                            if(this.answerDataArr[i][j]&&this.answerDataArr[i][j-1]&&this.answerDataArr[i][j+1]==null) {
+                                num++
+                            }else if(this.answerDataArr[i][j]&&this.answerDataArr[i][j-1]==null&&this.answerDataArr[i][j+1]){
+                                num++
+                            }
+                        }
+                    }
+                }
+
+            }
+           
+            cc.log(this.answerDataArr)
+            for(let i = 0; i < this.answerDataArr.length; i++) {
+                for(let j = 0; j < this.answerDataArr[i].length; j++) {
+                    if(j%2==0) {
+                        if(this.answerDataArr[i][j]&&this.answerDataArr[i][j+2]) {
+                            if(this.answerDataArr[i][j]==this.answerDataArr[i][j+2]) {
+                                if(this.answerDataArr[i][j+1] == null) {
+                                    this.answerDataArr[i][j+1] = this.sameType
+                                }
+                            }else {
+                                if(this.answerDataArr[i][j+1] == null) {
+                                    this.answerDataArr[i][j+1] = this.diffType
+                                } 
+                            }
                         }
                     }
                 }
             }
         }
-        for(let i = 0; i < this.answerDataArr.length; i++) {
-            for(let j = 0; j < this.answerDataArr[i].length; j++) {
-                if(i%2 == 0) {
-                    if(this.answerDataArr[i+2]) {
-                        if(this.answerDataArr[i][j] && this.answerDataArr[i+2][j*2]) {
-                            if(this.answerDataArr[i][j] == this.answerDataArr[i+2][j*2]) {
-                                this.answerDataArr[i+1][j*2] = this.sameType
-                            }else if(this.answerDataArr[i][j] != this.answerDataArr[i+2][j*2]) {
-                                this.answerDataArr[i+1][j*2] = this.diffType
-                            }
+        cc.log(this.answerDataArr)
+    }
+
+    errorQuestion():boolean {
+        if(DaAnData.getInstance().type == 1) {
+            for(let i = 0; i < this.answerDataArr.length; ++i) {
+                for(let j = 0; j < this.answerDataArr[i].length; ++j) {
+                    if(i%2 == 1) {
+                        let right:boolean = this.correct(this.answerDataArr[i-1][Math.floor(j/2)], this.answerDataArr[i+1][j], this.answerDataArr[i][j])
+                        if(!right) {
+                            return false
                         }
-                        if(this.answerDataArr[i][j] && this.answerDataArr[i+2][j*2+1]) {
-                            if(this.answerDataArr[i][j] == this.answerDataArr[i+2][j*2+1]) {
-                                this.answerDataArr[i+1][j*2+1] = this.sameType
-                            }else if(this.answerDataArr[i][j] != this.answerDataArr[i+2][j*2+1]) {
-                                this.answerDataArr[i+1][j*2+1] = this.diffType
-                            }
+                    }
+                }
+            }
+        }else if (DaAnData.getInstance().type ==2) {
+            for(let i = 0; i < this.answerDataArr.length; ++i) {
+                for(let j = 0; j < this.answerDataArr[i].length; ++j) {
+                    if(j%2 == 1) {
+                        let right:boolean = this.correct(this.answerDataArr[i][j-1], this.answerDataArr[i][j+1], this.answerDataArr[i][j])
+                        if(!right) {
+                            return false
                         }
                     }
                 }
             }
         }
+        return true
+    }
+
+    correct(type1: ItemType, type2:ItemType, arrow: ItemType): boolean {
+        if(arrow == this.sameType) {
+            if(type1 == type2) {
+                return true
+            }else {
+                return false
+            }
+        }else if(arrow == this.diffType) {
+            if(type1 != type2) {
+                return true
+            }else {
+                return false
+            }
+        }
+    }
+    
+    checkTree(): boolean {
         let answerNum: number = 0
         let totalNum: number = 0
         for(let i = 0; i < this.subjectDataArr.length; i++) {
@@ -689,45 +908,7 @@ export default class TeacherPanel extends BaseUI {
         return true
     }
 
-    checkSingle(arr: ItemType[][]):boolean {
-        for(let i = 0; i < this.answerDataArr.length; i++) {
-            for(let j = 0; j < this.answerDataArr[i].length; j++) {
-                if(j%2 == 1) {
-                    if(this.answerDataArr[i][j]==this.sameType) {
-                        if(this.answerDataArr[i][j-1]) {
-                            this.answerDataArr[i][j+1] = this.answerDataArr[i][j-1]
-                        }
-                        if(this.answerDataArr[i][j+1]) {
-                            this.answerDataArr[i][j-1] = this.answerDataArr[i][j+1]
-                        }
-                    }else if(this.answerDataArr[i][j]==this.diffType) {
-                        if(this.answerDataArr[i][j-1] == this.type1) {
-                            this.answerDataArr[i][j+1] = this.type2
-                        }else if(this.answerDataArr[i][j-1] == this.type2) {
-                            this.answerDataArr[i][j+1] = this.type1
-                        }
-                        if(this.answerDataArr[i][j+1] == this.type1) {
-                            this.answerDataArr[i][j-1] = this.type2
-                        }else if(this.answerDataArr[i][j+1] == this.type2) {
-                            this.answerDataArr[i][j-1] = this.type1
-                        }
-                    }
-                }
-            }
-        }
-        for(let i = 0; i < this.answerDataArr.length; i++) {
-            for(let j = 0; j < this.answerDataArr[i].length; j++) {
-                if(j%2==0) {
-                    if(this.answerDataArr[i][j]&&this.answerDataArr[i][j+2]) {
-                        if(this.answerDataArr[i][j]==this.answerDataArr[i][j+2]) {
-                            this.answerDataArr[i][j+1] = this.sameType
-                        }else {
-                            this.answerDataArr[i][j+1] = this.diffType
-                        }
-                    }
-                }
-            }
-        }
+    checkSingle():boolean {
         let answerNum:number = 0 
         let totalNum:number = 0
         for(let i = 0; i < this.subjectDataArr.length; i++) {

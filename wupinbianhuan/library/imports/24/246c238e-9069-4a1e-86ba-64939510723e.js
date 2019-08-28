@@ -58,6 +58,11 @@ var GamePanel = /** @class */ (function (_super) {
         _this.lineBlack = null;
         _this.lineCurve = null;
         _this.lineDotted = null;
+        _this.squareLight = null;
+        _this.sexangleLight = null;
+        _this.octagonLight = null;
+        _this.lineLight = null;
+        _this.arrowLight = null;
         _this.touchNode = null;
         _this.ruleItemArr = [];
         _this.subjectItemArr = [];
@@ -72,6 +77,8 @@ var GamePanel = /** @class */ (function (_super) {
         _this.arrow2 = null;
         _this.typeNull = null;
         _this.arrowNull = null;
+        _this.typeLight = null;
+        _this.handLight = null;
         _this.ruleDataArr = [];
         _this.subjectDataArr = [];
         _this.answerDataArr = [];
@@ -93,9 +100,8 @@ var GamePanel = /** @class */ (function (_super) {
             this.figure = DaAnData_1.DaAnData.getInstance().figure;
             this.ruleDataArr = DaAnData_1.DaAnData.getInstance().ruleDataArr;
             this.subjectDataArr = DaAnData_1.DaAnData.getInstance().subjectDataArr;
-            cc.log('-----', this.subjectDataArr);
             this.initGame();
-            UIManager_1.UIManager.getInstance().openUI(UploadAndReturnPanel_1.default);
+            UIManager_1.UIManager.getInstance().openUI(UploadAndReturnPanel_1.default, null, 212);
         }
         else {
             this.getNet();
@@ -115,6 +121,8 @@ var GamePanel = /** @class */ (function (_super) {
             this.arrow2 = ItemType_1.ItemType.line_dotted;
             this.typeNull = ItemType_1.ItemType.square_black;
             this.arrowNull = ItemType_1.ItemType.line_black;
+            this.typeLight = this.squareLight;
+            this.handLight = this.lineLight;
         }
         else if (DaAnData_1.DaAnData.getInstance().figure == 2) {
             this.type1 = ItemType_1.ItemType.sexangle_orange;
@@ -123,6 +131,8 @@ var GamePanel = /** @class */ (function (_super) {
             this.arrow2 = ItemType_1.ItemType.hand_green;
             this.typeNull = ItemType_1.ItemType.sexangle_black;
             this.arrowNull = ItemType_1.ItemType.hand_black;
+            this.typeLight = this.sexangleLight;
+            this.handLight = this.arrowLight;
         }
         else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
             this.type1 = ItemType_1.ItemType.octagon_green;
@@ -131,6 +141,8 @@ var GamePanel = /** @class */ (function (_super) {
             this.arrow2 = ItemType_1.ItemType.arrow_orange;
             this.typeNull = ItemType_1.ItemType.octagon_black;
             this.arrowNull = ItemType_1.ItemType.arrow_black;
+            this.typeLight = this.octagonLight;
+            this.handLight = this.arrowLight;
         }
         for (var i = 0; i < this.subjectDataArr.length; i++) {
             this.answerDataArr[i] = [];
@@ -158,15 +170,30 @@ var GamePanel = /** @class */ (function (_super) {
         else if (this.type == 2) {
             node = cc.instantiate(this.singlePrefab);
             node.setScale(1);
-            node.setPosition(cc.v2(-300, 0));
+            node.setPosition(cc.v2(-500, 0));
         }
         this.subjectNode.addChild(node);
-        cc.log('===', this.subjectDataArr);
         for (var i = 0; i < node.children.length; i++) {
             this.subjectItemArr[i] = [];
             for (var j = 0; j < node.children[i].children.length; j++) {
                 this.subjectItemArr[i][j] = node.children[i].children[j];
                 this.setState(this.subjectItemArr[i][j], this.subjectDataArr[i][j]);
+                if (this.type == 1) {
+                    if (i % 2 == 1) {
+                        this.subjectItemArr[i][j].getChildByName('light').getComponent(cc.Sprite).spriteFrame = this.handLight;
+                    }
+                    else if (i % 2 == 0) {
+                        this.subjectItemArr[i][j].getChildByName('light').getComponent(cc.Sprite).spriteFrame = this.typeLight;
+                    }
+                }
+                else if (this.type == 2) {
+                    if (j % 2 == 1) {
+                        this.subjectItemArr[i][j].getChildByName('light').getComponent(cc.Sprite).spriteFrame = this.handLight;
+                    }
+                    else if (j % 2 == 0) {
+                        this.subjectItemArr[i][j].getChildByName('light').getComponent(cc.Sprite).spriteFrame = this.typeLight;
+                    }
+                }
             }
         }
     };
@@ -196,8 +223,8 @@ var GamePanel = /** @class */ (function (_super) {
             this.setRuleDefault(1, 1, this.arrow2);
             this.setRuleDefault(2, 1, this.arrow1);
             this.setRuleDefault(3, 1, this.arrow1);
-            this.sameType = this.arrow1;
-            this.diffType = this.arrow2;
+            this.sameType = this.arrow2;
+            this.diffType = this.arrow1;
         }
         else {
             this.setRuleDefault(0, 0, this.type1);
@@ -220,11 +247,12 @@ var GamePanel = /** @class */ (function (_super) {
         if (this.type == 1) {
             var totalNum = 0;
             var arrowNum = 0;
-            for (var i = 0; i < this.subjectDataArr.length; i++) {
-                for (var j = 0; j < this.subjectDataArr.length; j++) {
+            cc.log(this.subjectDataArr);
+            for (var i = 0; i < this.subjectItemArr.length; i++) {
+                for (var j = 0; j < this.subjectItemArr.length; j++) {
                     if (i % 2 == 1) {
                         totalNum++;
-                        if (this.subjectDataArr[i][j]) {
+                        if (this.subjectDataArr[i][j] != this.arrowNull) {
                             arrowNum++;
                         }
                     }
@@ -233,16 +261,22 @@ var GamePanel = /** @class */ (function (_super) {
             if (totalNum == arrowNum) {
                 this.answerNode.getChildByName('arrow1').removeFromParent();
                 this.answerNode.getChildByName('arrow2').removeFromParent();
+            }
+            else {
+                this.setState(this.answerNode.getChildByName('arrow1'), this.arrow1);
+                this.setState(this.answerNode.getChildByName('arrow2'), this.arrow2);
+                this.answerItemArr[2] = this.answerNode.getChildByName('arrow1');
+                this.answerItemArr[3] = this.answerNode.getChildByName('arrow2');
             }
         }
         else if (this.type == 2) {
             var totalNum = 0;
             var arrowNum = 0;
-            for (var i = 0; i < this.subjectDataArr.length; i++) {
-                for (var j = 0; j < this.subjectDataArr.length; j++) {
+            for (var i = 0; i < this.subjectItemArr.length; i++) {
+                for (var j = 0; j < this.subjectItemArr.length; j++) {
                     if (j % 2 == 1) {
                         totalNum++;
-                        if (this.subjectDataArr[i][j]) {
+                        if (this.subjectDataArr[i][j] != this.arrowNull) {
                             arrowNum++;
                         }
                     }
@@ -252,15 +286,17 @@ var GamePanel = /** @class */ (function (_super) {
                 this.answerNode.getChildByName('arrow1').removeFromParent();
                 this.answerNode.getChildByName('arrow2').removeFromParent();
             }
+            else {
+                this.setState(this.answerNode.getChildByName('arrow1'), this.arrow1);
+                this.setState(this.answerNode.getChildByName('arrow2'), this.arrow2);
+                this.answerItemArr[2] = this.answerNode.getChildByName('arrow1');
+                this.answerItemArr[3] = this.answerNode.getChildByName('arrow2');
+            }
         }
         this.setState(this.answerNode.getChildByName('figure1'), this.type1);
         this.setState(this.answerNode.getChildByName('figure2'), this.type2);
-        this.setState(this.answerNode.getChildByName('arrow1'), this.arrow1);
-        this.setState(this.answerNode.getChildByName('arrow2'), this.arrow2);
         this.answerItemArr[0] = this.answerNode.getChildByName('figure1');
         this.answerItemArr[1] = this.answerNode.getChildByName('figure2');
-        this.answerItemArr[2] = this.answerNode.getChildByName('arrow1');
-        this.answerItemArr[3] = this.answerNode.getChildByName('arrow2');
         this.addListenerOnAnswer();
     };
     GamePanel.prototype.addListenerOnAnswer = function () {
@@ -448,9 +484,10 @@ var GamePanel = /** @class */ (function (_super) {
     };
     GamePanel.prototype.judge = function (i, j, indexOfAnswer) {
         var type = this.answerType(indexOfAnswer);
+        cc.log('-------', type);
         if (this.type == 1) {
             if (indexOfAnswer == 0 || indexOfAnswer == 1) {
-                if (i >= 2) {
+                if (i > 4) {
                     if (this.answerDataArr[i - 1][j] && this.answerDataArr[i - 2][Math.floor(j / 2)]) {
                         return this.correct(type, this.answerDataArr[i - 2][Math.floor(j / 2)], this.answerDataArr[i - 1][j]);
                     }
@@ -458,8 +495,22 @@ var GamePanel = /** @class */ (function (_super) {
                         return 3;
                     }
                 }
-                else if (i <= 4) {
+                else if (i < 2) {
                     if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2]) {
+                        return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2], this.answerDataArr[i + 1][Math.floor(j / 2) * 2]);
+                    }
+                    else if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1]) {
+                        return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1], this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1]);
+                    }
+                    else {
+                        return 3;
+                    }
+                }
+                else if (i <= 4 && i >= 2) {
+                    if (this.answerDataArr[i - 1][j] && this.answerDataArr[i - 2][Math.floor(j / 2)]) {
+                        return this.correct(type, this.answerDataArr[i - 2][Math.floor(j / 2)], this.answerDataArr[i - 1][j]);
+                    }
+                    else if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2]) {
                         return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2], this.answerDataArr[i + 1][Math.floor(j / 2) * 2]);
                     }
                     else if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1]) {
@@ -481,17 +532,28 @@ var GamePanel = /** @class */ (function (_super) {
         }
         else if (this.type == 2) {
             if (indexOfAnswer == 0 || indexOfAnswer == 1) {
-                if (j >= 2) {
-                    if (this.answerDataArr[1][j - 1] && this.answerDataArr[1][j - 2]) {
-                        return this.correct(type, this.answerDataArr[1][j - 2], this.answerDataArr[1][j - 1]);
+                if (j > 6) {
+                    if (this.answerDataArr[i][j - 1] && this.answerDataArr[i][j - 2]) {
+                        return this.correct(type, this.answerDataArr[i][j - 2], this.answerDataArr[i][j - 1]);
                     }
                     else {
                         return 3;
                     }
                 }
-                else if (j <= 6) {
+                else if (j < 2) {
                     if (this.answerDataArr[i][j + 1] && this.answerDataArr[i][j + 2]) {
                         return this.correct(type, this.answerDataArr[i][j + 2], this.answerDataArr[i][j + 1]);
+                    }
+                    else {
+                        return 3;
+                    }
+                }
+                else if (j >= 2 && j <= 6) {
+                    if (this.answerDataArr[i][j + 1] && this.answerDataArr[i][j + 2]) {
+                        return this.correct(type, this.answerDataArr[i][j + 2], this.answerDataArr[i][j + 1]);
+                    }
+                    else if (this.answerDataArr[i][j - 1] && this.answerDataArr[i][j - 2]) {
+                        return this.correct(type, this.answerDataArr[i][j - 2], this.answerDataArr[i][j - 1]);
                     }
                     else {
                         return 3;
@@ -731,6 +793,21 @@ var GamePanel = /** @class */ (function (_super) {
     __decorate([
         property(cc.SpriteFrame)
     ], GamePanel.prototype, "lineDotted", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], GamePanel.prototype, "squareLight", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], GamePanel.prototype, "sexangleLight", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], GamePanel.prototype, "octagonLight", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], GamePanel.prototype, "lineLight", void 0);
+    __decorate([
+        property(cc.SpriteFrame)
+    ], GamePanel.prototype, "arrowLight", void 0);
     __decorate([
         property(cc.Node)
     ], GamePanel.prototype, "touchNode", void 0);
