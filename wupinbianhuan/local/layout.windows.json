@@ -1,15 +1,14 @@
 {
   "version": "1.1.1",
   "windows": {
-    "worker": {},
     "main": {
       "main": true,
       "url": "app://editor/index.html",
       "windowType": "dockable",
-      "x": -1287,
-      "y": -7,
-      "width": 1294,
-      "height": 774,
+      "x": -1280,
+      "y": 0,
+      "width": 1280,
+      "height": 760,
       "layout": {
         "children": [
           {
@@ -19,23 +18,23 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 328.5,
+                "height": 321.9921875,
                 "type": "panel",
-                "width": 257.734375
+                "width": 254.2890625
               },
               {
                 "active": 0,
                 "children": [
                   "assets"
                 ],
-                "height": 327.5,
+                "height": 321.0078125,
                 "type": "panel",
-                "width": 257.734375
+                "width": 254.2890625
               }
             ],
-            "height": 658,
+            "height": 645,
             "type": "dock-v",
-            "width": 257.734375
+            "width": 254.2890625
           },
           {
             "children": [
@@ -44,9 +43,9 @@
                 "children": [
                   "scene"
                 ],
-                "height": 390,
+                "height": 377,
                 "type": "panel",
-                "width": 714.2578125
+                "width": 704.703125
               },
               {
                 "active": 0,
@@ -56,12 +55,12 @@
                 ],
                 "height": 266,
                 "type": "panel",
-                "width": 714.2578125
+                "width": 704.703125
               }
             ],
-            "height": 658,
+            "height": 645,
             "type": "dock-v",
-            "width": 714.2578125
+            "width": 704.703125
           },
           {
             "active": 0,
@@ -69,7 +68,7 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 658,
+            "height": 645,
             "type": "panel",
             "width": 304
           }

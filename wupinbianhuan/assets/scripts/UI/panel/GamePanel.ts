@@ -69,6 +69,8 @@ export default class GamePanel extends BaseUI {
     private arrowLight: cc.SpriteFrame = null
     @property(cc.Node)
     private touchNode: cc.Node = null
+    @property(cc.Node)
+    private bg: cc.Node = null
     private ruleItemArr: cc.Node[][] = []
     private subjectItemArr: cc.Node[][] = []
     private answerItemArr: cc.Node[] = []
@@ -89,17 +91,28 @@ export default class GamePanel extends BaseUI {
     private answerDataArr: ItemType[][] = []
     private touchTarget: any = null
     private overNum: number = 0
-    private overState: number = 0
+    private isOver: number = 0
     private eventvalue = {
         isResult: 1,
         isLevel: 0,
         levelData: [
-
+            {
+                subject: null,
+                answer: null,
+                result: 4
+            }
         ],
         result: 4
     }
     start() {
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
+        this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            if(this.isOver != 1) {
+                this.isOver = 2;
+                this.eventvalue.result = 2;
+                this.eventvalue.levelData[0].result = 2;
+            }
+        });
         if(ConstValue.IS_TEACHER) {
             this.type = DaAnData.getInstance().type
             this.figure = DaAnData.getInstance().figure
@@ -113,6 +126,7 @@ export default class GamePanel extends BaseUI {
     }
 
     initGame() {
+        this.eventvalue.levelData[0].answer = DaAnData.getInstance().answerDataArr
         this.initData()
         this.initType()
         this.initRule()
@@ -378,7 +392,17 @@ export default class GamePanel extends BaseUI {
                                 if(this.judge(n, m, i) == 1) {
                                     this.answerDataArr[n][m] = this.answerType(i)
                                     this.setState(node, this.answerType(i))
+                                    this.eventvalue.levelData[0].result = 2
+                                    this.isOver = 2
+                                    this.eventvalue.levelData[0].answer = this.answerDataArr
                                     if(this.success()) {
+                                        this.eventvalue.levelData[0].result = 1
+                                        this.isOver = 1
+                                        this.eventvalue.levelData[0].answer = this.answerDataArr
+                                        DataReporting.getInstance().dispatchEvent('addLog', {
+                                            eventType: 'clickSubmit',
+                                            eventValue: JSON.stringify(this.eventvalue)
+                                        });
                                         UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～', null, '挑战成功')
                                     }
                                 }else if(this.judge(n, m, i) == 2) {
@@ -649,7 +673,7 @@ export default class GamePanel extends BaseUI {
             DataReporting.isRepeatReport = false;
         }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.overState });
+        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
     }
 
     onDestroy() {
@@ -696,6 +720,12 @@ export default class GamePanel extends BaseUI {
                         this.subjectDataArr = content.subjectDataArr
                     }else {
                         console.error('网络请求数据content.subjectDataArr为空')
+                        return
+                    }
+                    if(content.answerDataArr) {
+                        DaAnData.getInstance().answerDataArr = content.answerDataArr
+                    }else {
+                        console.error('网络请求数据content.answerDataArr为空')
                         return
                     }
                     this.initGame()

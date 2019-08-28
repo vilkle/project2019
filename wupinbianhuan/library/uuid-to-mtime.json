@@ -1249,11 +1249,6 @@
     "meta": 1567008516234,
     "relativePath": "model\\primitives.fbx"
   },
-  "69321eab-8fc3-4b38-87b7-1801dab6f3c2": {
-    "asset": 1566405912135,
-    "meta": 1567008520983,
-    "relativePath": "scripts\\Data\\DaAnData.ts"
-  },
   "209697ad-3104-49f4-9c30-c9e1ec2853ed": {
     "asset": 1567005482819,
     "meta": 1567008519163,
@@ -1304,11 +1299,6 @@
     "meta": 1567008519477,
     "relativePath": "resources\\images\\gameUI\\item_yuan_yellow.png"
   },
-  "bdbea803-f652-47d6-9d72-3d005b3703ca": {
-    "asset": 1567005482885,
-    "meta": 1567008523083,
-    "relativePath": "scripts\\UI\\panel\\SubmissionPanel.ts"
-  },
   "8db88fb4-d0e3-4ca0-aa04-998dd1257bad": {
     "asset": 1567005482850,
     "meta": 1567008519697,
@@ -1335,8 +1325,8 @@
     "relativePath": "scripts\\Http\\NetWork.ts"
   },
   "a75e94dc-05bd-44a5-bdab-af7a2bed76a7": {
-    "asset": 1567010189531,
-    "meta": 1567010190089,
+    "asset": 1567023573193,
+    "meta": 1567023573229,
     "relativePath": "scene\\Teacher.fire"
   },
   "8a2a4868-e159-4296-8242-bf33c247d6bf": {
@@ -1349,24 +1339,34 @@
     "meta": 1567020201408,
     "relativePath": "resources\\prefab\\ui\\Item\\singleTeacher.prefab"
   },
-  "246c238e-9069-4a1e-86ba-64939510723e": {
-    "asset": 1567021612339,
-    "meta": 1567021749452,
-    "relativePath": "scripts\\UI\\panel\\GamePanel.ts"
-  },
-  "32f855fb-ac45-4a70-9924-652cc84cf88d": {
-    "asset": 1567021145450,
-    "meta": 1567021749490,
-    "relativePath": "resources\\prefab\\ui\\panel\\GamePanel.prefab"
-  },
-  "70c27101-9967-4f25-8b60-310f5dc8f652": {
-    "asset": 1567022053649,
-    "meta": 1567022054681,
-    "relativePath": "scripts\\UI\\panel\\TeacherPanel.ts"
-  },
   "23f132a6-0ce4-47db-b997-c83b813024b3": {
     "asset": 1567022055799,
     "meta": 1567022055824,
     "relativePath": "resources\\prefab\\ui\\Item\\treeTeacher.prefab"
+  },
+  "69321eab-8fc3-4b38-87b7-1801dab6f3c2": {
+    "asset": 1567023231972,
+    "meta": 1567023572525,
+    "relativePath": "scripts\\Data\\DaAnData.ts"
+  },
+  "bdbea803-f652-47d6-9d72-3d005b3703ca": {
+    "asset": 1567023369922,
+    "meta": 1567023573123,
+    "relativePath": "scripts\\UI\\panel\\SubmissionPanel.ts"
+  },
+  "70c27101-9967-4f25-8b60-310f5dc8f652": {
+    "asset": 1567023340093,
+    "meta": 1567023573124,
+    "relativePath": "scripts\\UI\\panel\\TeacherPanel.ts"
+  },
+  "246c238e-9069-4a1e-86ba-64939510723e": {
+    "asset": 1567023974669,
+    "meta": 1567023979627,
+    "relativePath": "scripts\\UI\\panel\\GamePanel.ts"
+  },
+  "32f855fb-ac45-4a70-9924-652cc84cf88d": {
+    "asset": 1567023980935,
+    "meta": 1567023981302,
+    "relativePath": "resources\\prefab\\ui\\panel\\GamePanel.prefab"
   }
 }

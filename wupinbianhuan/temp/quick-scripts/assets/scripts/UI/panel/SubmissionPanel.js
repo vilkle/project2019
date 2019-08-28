@@ -57,7 +57,8 @@ var SubmissionPanel = /** @class */ (function (_super) {
             type: DaAnData_1.DaAnData.getInstance().type,
             figure: DaAnData_1.DaAnData.getInstance().figure,
             ruleDataArr: DaAnData_1.DaAnData.getInstance().ruleDataArr,
-            subjectDataArr: DaAnData_1.DaAnData.getInstance().subjectDataArr
+            subjectDataArr: DaAnData_1.DaAnData.getInstance().subjectDataArr,
+            answerDataArr: DaAnData_1.DaAnData.getInstance().answerDataArr
         });
         console.log("data is " + data);
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_TITLE + "?title_id=" + NetWork_1.NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {

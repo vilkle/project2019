@@ -34,7 +34,8 @@ export default class SubmissionPanel extends BaseUI {
         type: DaAnData.getInstance().type,
         figure: DaAnData.getInstance().figure,
         ruleDataArr: DaAnData.getInstance().ruleDataArr,
-        subjectDataArr: DaAnData.getInstance().subjectDataArr
+        subjectDataArr: DaAnData.getInstance().subjectDataArr,
+        answerDataArr: DaAnData.getInstance().answerDataArr
         });
         console.log(`data is ${data}`)
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {

@@ -10,6 +10,7 @@ var DaAnData = /** @class */ (function () {
         this.figure = 0; //1三角形2六边形3八角星
         this.ruleDataArr = [];
         this.subjectDataArr = [];
+        this.answerDataArr = [];
         this.submitEnable = true;
     }
     DaAnData.getInstance = function () {

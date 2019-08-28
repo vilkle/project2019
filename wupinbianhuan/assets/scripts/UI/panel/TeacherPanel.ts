@@ -845,7 +845,7 @@ export default class TeacherPanel extends BaseUI {
                 }
             }
         }
-        cc.log(this.answerDataArr)
+        DaAnData.getInstance().answerDataArr = this.answerDataArr
     }
 
     errorQuestion():boolean {
@@ -932,7 +932,6 @@ export default class TeacherPanel extends BaseUI {
         DaAnData.getInstance().subjectDataArr = this.subjectDataArr
 
         if(this.checking()) {
-            //UIManager.getInstance().showUI(SubmissionPanel)
             UIManager.getInstance().showUI(GamePanel, ()=>{
                 ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1});    
             });

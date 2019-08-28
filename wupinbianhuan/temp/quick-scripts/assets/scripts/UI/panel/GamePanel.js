@@ -64,6 +64,7 @@ var GamePanel = /** @class */ (function (_super) {
         _this.lineLight = null;
         _this.arrowLight = null;
         _this.touchNode = null;
+        _this.bg = null;
         _this.ruleItemArr = [];
         _this.subjectItemArr = [];
         _this.answerItemArr = [];
@@ -84,17 +85,31 @@ var GamePanel = /** @class */ (function (_super) {
         _this.answerDataArr = [];
         _this.touchTarget = null;
         _this.overNum = 0;
-        _this.overState = 0;
+        _this.isOver = 0;
         _this.eventvalue = {
             isResult: 1,
             isLevel: 0,
-            levelData: [],
+            levelData: [
+                {
+                    subject: null,
+                    answer: null,
+                    result: 4
+                }
+            ],
             result: 4
         };
         return _this;
     }
     GamePanel.prototype.start = function () {
+        var _this = this;
         DataReporting_1.default.getInstance().addEvent('end_game', this.onEndGame.bind(this));
+        this.bg.on(cc.Node.EventType.TOUCH_START, function (e) {
+            if (_this.isOver != 1) {
+                _this.isOver = 2;
+                _this.eventvalue.result = 2;
+                _this.eventvalue.levelData[0].result = 2;
+            }
+        });
         if (ConstValue_1.ConstValue.IS_TEACHER) {
             this.type = DaAnData_1.DaAnData.getInstance().type;
             this.figure = DaAnData_1.DaAnData.getInstance().figure;
@@ -108,6 +123,7 @@ var GamePanel = /** @class */ (function (_super) {
         }
     };
     GamePanel.prototype.initGame = function () {
+        this.eventvalue.levelData[0].answer = DaAnData_1.DaAnData.getInstance().answerDataArr;
         this.initData();
         this.initType();
         this.initRule();
@@ -378,7 +394,17 @@ var GamePanel = /** @class */ (function (_super) {
                                 if (_this.judge(n, m, i) == 1) {
                                     _this.answerDataArr[n][m] = _this.answerType(i);
                                     _this.setState(node_2, _this.answerType(i));
+                                    _this.eventvalue.levelData[0].result = 2;
+                                    _this.isOver = 2;
+                                    _this.eventvalue.levelData[0].answer = _this.answerDataArr;
                                     if (_this.success()) {
+                                        _this.eventvalue.levelData[0].result = 1;
+                                        _this.isOver = 1;
+                                        _this.eventvalue.levelData[0].answer = _this.answerDataArr;
+                                        DataReporting_1.default.getInstance().dispatchEvent('addLog', {
+                                            eventType: 'clickSubmit',
+                                            eventValue: JSON.stringify(_this.eventvalue)
+                                        });
                                         UIHelp_1.UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧～', null, '挑战成功');
                                     }
                                 }
@@ -674,7 +700,7 @@ var GamePanel = /** @class */ (function (_super) {
             DataReporting_1.default.isRepeatReport = false;
         }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting_1.default.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.overState });
+        DataReporting_1.default.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
     };
     GamePanel.prototype.onDestroy = function () {
     };
@@ -719,6 +745,13 @@ var GamePanel = /** @class */ (function (_super) {
                     }
                     else {
                         console.error('网络请求数据content.subjectDataArr为空');
+                        return;
+                    }
+                    if (content.answerDataArr) {
+                        DaAnData_1.DaAnData.getInstance().answerDataArr = content.answerDataArr;
+                    }
+                    else {
+                        console.error('网络请求数据content.answerDataArr为空');
                         return;
                     }
                     this.initGame();
@@ -811,6 +844,9 @@ var GamePanel = /** @class */ (function (_super) {
     __decorate([
         property(cc.Node)
     ], GamePanel.prototype, "touchNode", void 0);
+    __decorate([
+        property(cc.Node)
+    ], GamePanel.prototype, "bg", void 0);
     GamePanel = __decorate([
         ccclass
     ], GamePanel);

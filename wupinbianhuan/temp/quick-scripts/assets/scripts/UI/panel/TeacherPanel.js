@@ -864,7 +864,7 @@ var TeacherPanel = /** @class */ (function (_super) {
                 }
             }
         }
-        cc.log(this.answerDataArr);
+        DaAnData_1.DaAnData.getInstance().answerDataArr = this.answerDataArr;
     };
     TeacherPanel.prototype.errorQuestion = function () {
         if (DaAnData_1.DaAnData.getInstance().type == 1) {
@@ -948,7 +948,6 @@ var TeacherPanel = /** @class */ (function (_super) {
         DaAnData_1.DaAnData.getInstance().ruleDataArr = this.ruleDataArr;
         DaAnData_1.DaAnData.getInstance().subjectDataArr = this.subjectDataArr;
         if (this.checking()) {
-            //UIManager.getInstance().showUI(SubmissionPanel)
             UIManager_1.UIManager.getInstance().showUI(GamePanel_1.default, function () {
                 ListenerManager_1.ListenerManager.getInstance().trigger(ListenerType_1.ListenerType.OnEditStateSwitching, { state: 1 });
             });

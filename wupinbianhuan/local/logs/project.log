@@ -1,166 +1,76 @@
-2019-08-28T16:08:12.389Z - normal: Load ~/.CocosCreator/settings.json
-2019-08-28T16:08:13.983Z - normal: Initializing Asset Database
-2019-08-28T16:08:13.998Z - normal: checking language setting...
-2019-08-28T16:08:13.998Z - normal: Language: zh
-2019-08-28T16:08:15.951Z - success: preview server running at http://localhost:7456
-2019-08-28T16:08:15.951Z - success: protocol editor-framework registered
-2019-08-28T16:08:15.951Z - success: protocol app registered
-2019-08-28T16:08:15.951Z - success: protocol theme registered
-2019-08-28T16:08:15.951Z - success: protocol packages registered
-2019-08-28T16:08:15.951Z - success: protocol uuid registerred
-2019-08-28T16:08:15.951Z - success: protocol db registerred
-2019-08-28T16:08:15.951Z - success: protocol thumbnail registerred
-2019-08-28T16:08:15.951Z - success: protocol unpack registerred
-2019-08-28T16:08:15.951Z - success: protocol disable-commonjs registerred
-2019-08-28T16:08:16.061Z - normal: connected!
-2019-08-28T16:08:16.061Z - normal: Check project C:\Users\machao\Desktop\hub\wupinbianhuan
-2019-08-28T16:08:16.061Z - normal: Initializing project C:\Users\machao\Desktop\hub\wupinbianhuan
-2019-08-28T16:08:17.201Z - normal: Initializing Cocos2d
-2019-08-28T16:08:19.436Z - normal: Initializing engine extends
-2019-08-28T16:08:19.498Z - success: asset-db-debugger loaded
-2019-08-28T16:08:19.514Z - success: baidu-adapter loaded
-2019-08-28T16:08:19.514Z - success: color-picker loaded
-2019-08-28T16:08:19.717Z - success: fb-audience-network loaded
-2019-08-28T16:08:19.873Z - success: fb-live-stream loaded
-2019-08-28T16:08:19.873Z - success: google-play-instant loaded
-2019-08-28T16:08:19.889Z - success: huawei-runtime loaded
-2019-08-28T16:08:20.545Z - success: cpk-publish loaded
-2019-08-28T16:08:20.545Z - success: jsb-adapter loaded
-2019-08-28T16:08:20.561Z - success: oppo-runtime loaded
-2019-08-28T16:08:20.576Z - success: package-manager loaded
-2019-08-28T16:08:20.858Z - success: qqplay-adapter loaded
-2019-08-28T16:08:20.858Z - success: runtime-dev-tools loaded
-2019-08-28T16:08:20.873Z - success: sdkbox loaded
-2019-08-28T16:08:20.889Z - success: tester loaded
-2019-08-28T16:08:20.889Z - success: ui-grid loaded
-2019-08-28T16:08:20.905Z - success: ui-kit-preview-extra loaded
-2019-08-28T16:08:20.905Z - success: ui-kit-preview loaded
-2019-08-28T16:08:20.905Z - success: ui-kit loaded
-2019-08-28T16:08:20.905Z - success: ui-tree loaded
-2019-08-28T16:08:20.920Z - success: vivo-runtime loaded
-2019-08-28T16:08:20.920Z - success: weapp-adapter loaded
-2019-08-28T16:08:20.920Z - success: xiaomi-adapter loaded
-2019-08-28T16:08:21.045Z - success: assets loaded
-2019-08-28T16:08:21.045Z - success: builder loaded
-2019-08-28T16:08:21.701Z - success: cocos-services loaded
-2019-08-28T16:08:21.717Z - success: console loaded
-2019-08-28T16:08:21.826Z - success: fb-instant-games loaded
-2019-08-28T16:08:21.842Z - success: game-window loaded
-2019-08-28T16:08:21.842Z - success: google-instant-games loaded
-2019-08-28T16:08:21.858Z - success: hierarchy loaded
-2019-08-28T16:08:21.858Z - success: inspector loaded
-2019-08-28T16:08:21.873Z - success: keystore loaded
-2019-08-28T16:08:21.873Z - success: node-library loaded
-2019-08-28T16:08:21.889Z - success: package-asset loaded
-2019-08-28T16:08:21.889Z - success: preferences loaded
-2019-08-28T16:08:21.889Z - success: project-exporter loaded
-2019-08-28T16:08:21.936Z - success: project-importer loaded
-2019-08-28T16:08:21.951Z - success: project-settings loaded
-2019-08-28T16:08:21.967Z - success: scene loaded
-2019-08-28T16:08:21.967Z - success: simulator-debugger loaded
-2019-08-28T16:08:21.983Z - success: sprite-editor loaded
-2019-08-28T16:08:21.998Z - success: store loaded
-2019-08-28T16:08:22.014Z - success: timeline loaded
-2019-08-28T16:08:22.030Z - success: xiaomi-runtime loaded
-2019-08-28T16:08:22.045Z - success: auto_deploy loaded
-2019-08-28T16:08:24.485Z - info: Cocos Services load base data!
-2019-08-28T16:08:46.183Z - normal: Loading packages
-2019-08-28T16:08:46.193Z - normal: Watching packages
-2019-08-28T16:08:47.302Z - normal: Run Application
-2019-08-28T16:57:17.017Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T16:59:15.568Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T16:59:16.568Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T16:59:17.147Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:01:15.360Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:03:05.639Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:03:06.322Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:05:45.107Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:30:11.359Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:33:53.572Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:33:54.288Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:33:54.895Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:42:03.749Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:42:04.566Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:42:04.980Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:44:46.061Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:44:47.210Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:44:47.654Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:46:38.855Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:46:39.695Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:46:40.474Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:48:15.820Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:53:21.789Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:53:22.564Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T17:54:04.059Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T17:54:04.360Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T17:54:04.777Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T17:57:28.585Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T17:59:40.610Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T17:59:41.462Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T18:04:04.325Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T18:10:34.851Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:10:35.113Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:10:35.437Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:10:35.789Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:10:36.086Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:10:36.553Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:10:36.875Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:10:37.229Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:25:14.847Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:25:15.274Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:25:15.667Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:29:06.652Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:29:06.946Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:29:07.589Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:43:35.958Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:43:35.978Z - error: Failed to apply "singleTeacher" because the prefab asset is missing, please save the prefab to a new asset by dragging and drop the node from Node Tree into Assets.
-    at Object.applyPrefab (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\scene-utils\index.js:1:5296)
-    at Object.save (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\scene-utils\edit-mode\modes\prefab.js:1:2379)
-    at Object.run (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\scene-utils\edit-mode\index.js:1:2078)
-    at _queue.s.queue (C:\CocosCreator_2.1.2\resources\app.asar\editor\page\scene-utils\lib\tasks.js:1:539)
-    at C:\CocosCreator_2.1.2\resources\app.asar\node_modules\async\lib\async.js:987:13
-    at Immediate.process (C:\CocosCreator_2.1.2\resources\app.asar\node_modules\async\lib\async.js:953:21)
-    at runCallback (timers.js:672:20)
-    at tryOnImmediate (timers.js:645:5)
-    at processImmediate [as _immediateCallback] (timers.js:617:5)
-2019-08-28T18:56:51.435Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:56:51.753Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:56:52.395Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:56:52.705Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:56:58.363Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T18:56:58.634Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:01:28.632Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:14:11.638Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:14:12.085Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:14:20.730Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:14:21.224Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:14:33.705Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:16:13.271Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:16:14.434Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:16:48.557Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:16:48.905Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:16:49.864Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:19:48.868Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:19:49.363Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:19:50.499Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:20:14.968Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:20:15.418Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:23:19.953Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:23:20.429Z - info: 只有预制节点 "singleTeacher" 及其子节点会被保存。
-2019-08-28T19:23:45.849Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T19:23:46.138Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T19:27:47.377Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T19:33:32.059Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T19:37:07.984Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T19:37:08.251Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T19:37:08.571Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T19:39:05.026Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-08-28T19:54:11.559Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T19:54:12.142Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T19:54:12.514Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T19:54:13.222Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T19:54:13.477Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T19:54:14.690Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T19:54:14.981Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T19:54:15.386Z - info: 只有预制节点 "treeTeacher" 及其子节点会被保存。
-2019-08-28T19:54:20.174Z - info: shutdown preview server
+2019-08-28T20:08:09.502Z - normal: Load ~/.CocosCreator/settings.json
+2019-08-28T20:08:10.846Z - normal: Initializing Asset Database
+2019-08-28T20:08:10.846Z - normal: checking language setting...
+2019-08-28T20:08:10.846Z - normal: Language: zh
+2019-08-28T20:08:12.717Z - success: preview server running at http://localhost:7456
+2019-08-28T20:08:12.717Z - success: protocol editor-framework registered
+2019-08-28T20:08:12.717Z - success: protocol app registered
+2019-08-28T20:08:12.717Z - success: protocol theme registered
+2019-08-28T20:08:12.717Z - success: protocol packages registered
+2019-08-28T20:08:12.717Z - success: protocol uuid registerred
+2019-08-28T20:08:12.717Z - success: protocol db registerred
+2019-08-28T20:08:12.717Z - success: protocol thumbnail registerred
+2019-08-28T20:08:12.717Z - success: protocol unpack registerred
+2019-08-28T20:08:12.717Z - success: protocol disable-commonjs registerred
+2019-08-28T20:08:12.842Z - normal: connected!
+2019-08-28T20:08:12.842Z - normal: Check project C:\Users\machao\Desktop\hub\wupinbianhuan
+2019-08-28T20:08:12.842Z - normal: Initializing project C:\Users\machao\Desktop\hub\wupinbianhuan
+2019-08-28T20:08:13.889Z - normal: Initializing Cocos2d
+2019-08-28T20:08:15.873Z - normal: Initializing engine extends
+2019-08-28T20:08:15.936Z - success: asset-db-debugger loaded
+2019-08-28T20:08:15.936Z - success: baidu-adapter loaded
+2019-08-28T20:08:15.936Z - success: color-picker loaded
+2019-08-28T20:08:16.170Z - success: fb-audience-network loaded
+2019-08-28T20:08:16.295Z - success: fb-live-stream loaded
+2019-08-28T20:08:16.311Z - success: google-play-instant loaded
+2019-08-28T20:08:16.326Z - success: huawei-runtime loaded
+2019-08-28T20:08:16.998Z - success: cpk-publish loaded
+2019-08-28T20:08:16.998Z - success: jsb-adapter loaded
+2019-08-28T20:08:17.014Z - success: oppo-runtime loaded
+2019-08-28T20:08:17.014Z - success: package-manager loaded
+2019-08-28T20:08:17.326Z - success: qqplay-adapter loaded
+2019-08-28T20:08:17.342Z - success: runtime-dev-tools loaded
+2019-08-28T20:08:17.342Z - success: sdkbox loaded
+2019-08-28T20:08:17.358Z - success: tester loaded
+2019-08-28T20:08:17.373Z - success: ui-grid loaded
+2019-08-28T20:08:17.389Z - success: ui-kit-preview-extra loaded
+2019-08-28T20:08:17.405Z - success: ui-kit-preview loaded
+2019-08-28T20:08:17.405Z - success: ui-kit loaded
+2019-08-28T20:08:17.420Z - success: ui-tree loaded
+2019-08-28T20:08:17.436Z - success: vivo-runtime loaded
+2019-08-28T20:08:17.436Z - success: weapp-adapter loaded
+2019-08-28T20:08:17.451Z - success: xiaomi-adapter loaded
+2019-08-28T20:08:17.576Z - success: assets loaded
+2019-08-28T20:08:17.592Z - success: builder loaded
+2019-08-28T20:08:18.373Z - success: cocos-services loaded
+2019-08-28T20:08:18.389Z - success: console loaded
+2019-08-28T20:08:18.467Z - success: fb-instant-games loaded
+2019-08-28T20:08:18.483Z - success: game-window loaded
+2019-08-28T20:08:18.483Z - success: google-instant-games loaded
+2019-08-28T20:08:18.498Z - success: hierarchy loaded
+2019-08-28T20:08:18.514Z - success: inspector loaded
+2019-08-28T20:08:18.514Z - success: keystore loaded
+2019-08-28T20:08:18.514Z - success: node-library loaded
+2019-08-28T20:08:18.530Z - success: package-asset loaded
+2019-08-28T20:08:18.530Z - success: preferences loaded
+2019-08-28T20:08:18.530Z - success: project-exporter loaded
+2019-08-28T20:08:18.530Z - success: project-importer loaded
+2019-08-28T20:08:18.545Z - success: project-settings loaded
+2019-08-28T20:08:18.545Z - success: scene loaded
+2019-08-28T20:08:18.545Z - success: simulator-debugger loaded
+2019-08-28T20:08:18.561Z - success: sprite-editor loaded
+2019-08-28T20:08:18.561Z - success: store loaded
+2019-08-28T20:08:18.608Z - success: timeline loaded
+2019-08-28T20:08:18.608Z - success: xiaomi-runtime loaded
+2019-08-28T20:08:18.623Z - success: auto_deploy loaded
+2019-08-28T20:08:23.343Z - info: Cocos Services load base data!
+2019-08-28T20:08:25.298Z - normal: Loading packages
+2019-08-28T20:08:25.329Z - normal: Watching packages
+2019-08-28T20:08:27.079Z - normal: Run Application
+2019-08-28T20:19:52.052Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-28T20:19:52.401Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-28T20:19:52.664Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-28T20:26:19.611Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-28T20:26:20.130Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-28T20:26:20.532Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-28T20:26:23.511Z - info: shutdown preview server

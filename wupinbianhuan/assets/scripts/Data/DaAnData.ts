@@ -5,6 +5,7 @@ export class DaAnData {
     public figure = 0; //1三角形2六边形3八角星
     public ruleDataArr: ItemType[][] = []
     public subjectDataArr: ItemType[][] = []
+    public answerDataArr: ItemType[][] = []
     public submitEnable = true;
    
     static getInstance() {
