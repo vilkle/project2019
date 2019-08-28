@@ -310,6 +310,7 @@ export default class GamePanel extends BaseUI {
                         return
                     }
                     this.touchNode.active = false
+                    e.target.zIndex = j+1
                     e.target.opacity = 255
                     this.touchTarget = null
                 });

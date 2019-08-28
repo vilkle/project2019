@@ -32,7 +32,9 @@ export default class SubmissionPanel extends BaseUI {
         }
         let data = JSON.stringify({ CoursewareKey: ConstValue.CoursewareKey,
         type: DaAnData.getInstance().type,
-        figure: DaAnData.getInstance().figure
+        figure: DaAnData.getInstance().figure,
+        ruleDataArr: DaAnData.getInstance().ruleDataArr,
+        subjectDataArr: DaAnData.getInstance().subjectDataArr
         });
         console.log(`data is ${data}`)
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
