@@ -12,7 +12,7 @@ var ConstValue = /** @class */ (function () {
     ConstValue.CONFIG_FILE_DIR = "config/";
     ConstValue.PREFAB_UI_DIR = "prefab/ui/panel/";
     ConstValue.AUDIO_DIR = "audio/";
-    ConstValue.CoursewareKey = "3tE^ZgSMbbi^S@pu#$kXTI54"; //每个课件唯一的key 24位随机字符串 可用随机密码生成器来生成。
+    ConstValue.CoursewareKey = "D#0GoXH&y!qJIfY81puGV7^U"; //每个课件唯一的key 24位随机字符串 可用随机密码生成器来生成。
     return ConstValue;
 }());
 exports.ConstValue = ConstValue;

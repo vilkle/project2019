@@ -144,6 +144,9 @@ var OverTips = /** @class */ (function (_super) {
                     Tools_1.Tools.playSpine(_this.spine_complete, "stand", true);
                     _this.endInAnimationOver = false;
                 });
+                setTimeout(function () {
+                    AudioManager_1.AudioManager.getInstance().playSound('“你真棒！等等还没做完的同学吧~', false);
+                }, 1500);
                 AudioManager_1.AudioManager.getInstance().playSound("sfx_geupgrd", false, 1);
             }
         }.bind(this));

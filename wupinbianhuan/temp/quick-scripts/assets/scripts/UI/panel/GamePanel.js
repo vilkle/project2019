@@ -31,6 +31,7 @@ var DaAnData_1 = require("../../Data/DaAnData");
 var UIHelp_1 = require("../../Utils/UIHelp");
 var UIManager_1 = require("../../Manager/UIManager");
 var UploadAndReturnPanel_1 = require("./UploadAndReturnPanel");
+var AudioManager_1 = require("../../Manager/AudioManager");
 var ItemType_1 = require("../../Data/ItemType");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GamePanel = /** @class */ (function (_super) {
@@ -83,7 +84,10 @@ var GamePanel = /** @class */ (function (_super) {
         _this.ruleDataArr = [];
         _this.subjectDataArr = [];
         _this.answerDataArr = [];
+        _this.intervalArr = [];
+        _this.audioId = null;
         _this.touchTarget = null;
+        _this.touchEnable = true;
         _this.overNum = 0;
         _this.isOver = 0;
         _this.eventvalue = {
@@ -122,9 +126,55 @@ var GamePanel = /** @class */ (function (_super) {
             this.getNet();
         }
     };
+    GamePanel.prototype.intervalPoint = function () {
+        var _this = this;
+        for (var i = 0; i < this.intervalArr.length; i++) {
+            clearTimeout(this.intervalArr[i]);
+        }
+        this.intervalArr = [];
+        var index = setTimeout(function () {
+            _this.point();
+            _this.intervalPoint();
+        }, 15000);
+        this.intervalArr.push(index);
+    };
+    GamePanel.prototype.point = function () {
+        for (var i = 0; i < this.answerDataArr.length; ++i) {
+            var _loop_1 = function (j) {
+                if (this_1.answerDataArr[i][j] == null) {
+                    var node_1 = this_1.subjectItemArr[i][j].getChildByName('light');
+                    node_1.active = true;
+                    node_1.opacity = 1;
+                    node_1.scale = 0.5;
+                    var func = cc.callFunc(function () {
+                        node_1.active = false;
+                        node_1.opacity = 255;
+                        node_1.scale = 1;
+                    });
+                    var func1 = cc.callFunc(function () {
+                        node_1.opacity = 1;
+                        node_1.scale = 0.5;
+                    });
+                    var spawn1 = cc.spawn(cc.fadeIn(0.4), cc.scaleTo(0.4, 1));
+                    var spawn2 = cc.spawn(cc.fadeOut(0.5), cc.scaleBy(0.5, 1.2));
+                    var seq = cc.sequence(spawn1, spawn2, func1, spawn1, spawn2, func);
+                    node_1.stopAllActions();
+                    node_1.runAction(seq);
+                }
+            };
+            var this_1 = this;
+            for (var j = 0; j < this.answerDataArr[i].length; ++j) {
+                _loop_1(j);
+            }
+        }
+    };
     GamePanel.prototype.initGame = function () {
+        var _this = this;
         this.eventvalue.levelData[0].answer = DaAnData_1.DaAnData.getInstance().answerDataArr;
+        AudioManager_1.AudioManager.getInstance().playSound('sfx_itchopn');
+        AudioManager_1.AudioManager.getInstance().playSound('请按规则把图形放在正确的位置上吧！', false, 1, function (id) { _this.audioId = id; }, null);
         this.initData();
+        this.intervalPoint();
         this.initType();
         this.initRule();
         this.initAnswer();
@@ -263,7 +313,6 @@ var GamePanel = /** @class */ (function (_super) {
         if (this.type == 1) {
             var totalNum = 0;
             var arrowNum = 0;
-            cc.log(this.subjectDataArr);
             for (var i = 0; i < this.subjectItemArr.length; i++) {
                 for (var j = 0; j < this.subjectItemArr.length; j++) {
                     if (i % 2 == 1) {
@@ -315,13 +364,32 @@ var GamePanel = /** @class */ (function (_super) {
         this.answerItemArr[1] = this.answerNode.getChildByName('figure2');
         this.addListenerOnAnswer();
     };
+    GamePanel.prototype.getRandomNum = function (min, max) {
+        var range = max - min;
+        var rand = Math.random();
+        return (min + Math.round(rand * range));
+    };
     GamePanel.prototype.addListenerOnAnswer = function () {
         var _this = this;
-        var _loop_1 = function (i) {
-            var node = this_1.answerItemArr[i].getChildByName('blank');
+        var _loop_2 = function (i) {
+            var node = this_2.answerItemArr[i].getChildByName('blank');
             node.on(cc.Node.EventType.TOUCH_START, function (e) {
-                if (_this.touchTarget) {
+                if (_this.touchTarget || !_this.touchEnable) {
                     return;
+                }
+                var rn = _this.getRandomNum(1, 4);
+                AudioManager_1.AudioManager.getInstance().stopAll();
+                if (rn == 1) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch1", false);
+                }
+                else if (rn == 2) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch2", false);
+                }
+                else if (rn == 3) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch3", false);
+                }
+                else if (rn == 4) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch4", false);
                 }
                 _this.touchTarget = e.target;
                 var type = _this.answerType(i);
@@ -332,7 +400,7 @@ var GamePanel = /** @class */ (function (_super) {
                 _this.touchNode.setPosition(point);
             });
             node.on(cc.Node.EventType.TOUCH_MOVE, function (e) {
-                if (_this.touchTarget != e.target) {
+                if (_this.touchTarget != e.target || !_this.touchEnable) {
                     return;
                 }
                 var point = _this.node.convertToNodeSpaceAR(e.currentTouch._point);
@@ -340,11 +408,11 @@ var GamePanel = /** @class */ (function (_super) {
                 var totalNum = 0;
                 for (var n = 0; n < _this.subjectItemArr.length; n++) {
                     for (var m = 0; m < _this.subjectItemArr[n].length; m++) {
-                        var node_1 = _this.subjectItemArr[n][m];
-                        if (!node_1.getChildByName('sprite').active) {
+                        var node_2 = _this.subjectItemArr[n][m];
+                        if (!node_2.getChildByName('sprite').active) {
                             totalNum++;
-                            if (node_1.getChildByName('blank').getBoundingBox().contains(node_1.convertToNodeSpaceAR(e.currentTouch._point))) {
-                                node_1.getChildByName('light').active = true;
+                            if (node_2.getChildByName('blank').getBoundingBox().contains(node_2.convertToNodeSpaceAR(e.currentTouch._point))) {
+                                node_2.getChildByName('light').active = true;
                                 for (var p = 0; p < _this.subjectItemArr.length; p++) {
                                     for (var q = 0; q < _this.subjectItemArr[p].length; q++) {
                                         if (p != n || q != m) {
@@ -371,8 +439,22 @@ var GamePanel = /** @class */ (function (_super) {
                 }
             });
             node.on(cc.Node.EventType.TOUCH_END, function (e) {
-                if (e.target != _this.touchTarget) {
+                if (e.target != _this.touchTarget || !_this.touchEnable) {
                     return;
+                }
+                var rn = _this.getRandomNum(1, 4);
+                AudioManager_1.AudioManager.getInstance().stopAll();
+                if (rn == 1) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch1", false);
+                }
+                else if (rn == 2) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch2", false);
+                }
+                else if (rn == 3) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch3", false);
+                }
+                else if (rn == 4) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch4", false);
                 }
                 _this.touchTarget = null;
                 _this.touchNode.active = false;
@@ -383,24 +465,41 @@ var GamePanel = /** @class */ (function (_super) {
                 }
             });
             node.on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
-                if (e.target != _this.touchTarget) {
+                if (e.target != _this.touchTarget || !_this.touchEnable) {
                     return;
                 }
-                for (var n = 0; n < _this.subjectItemArr.length; n++) {
-                    for (var m = 0; m < _this.subjectItemArr[n].length; m++) {
-                        var node_2 = _this.subjectItemArr[n][m];
-                        if (node_2.getChildByName('blank').getBoundingBox().contains(node_2.convertToNodeSpaceAR(e.currentTouch._point))) {
+                var rn = _this.getRandomNum(1, 4);
+                AudioManager_1.AudioManager.getInstance().stopAll();
+                if (rn == 1) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch1", false);
+                }
+                else if (rn == 2) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch2", false);
+                }
+                else if (rn == 3) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch3", false);
+                }
+                else if (rn == 4) {
+                    AudioManager_1.AudioManager.getInstance().playSound("sfx_tunedtch4", false);
+                }
+                var _loop_3 = function (n) {
+                    var _loop_4 = function (m) {
+                        var node_3 = _this.subjectItemArr[n][m];
+                        if (node_3.getChildByName('blank').getBoundingBox().contains(node_3.convertToNodeSpaceAR(e.currentTouch._point))) {
                             if (_this.isSame(n, m, i)) {
                                 if (_this.judge(n, m, i) == 1) {
                                     _this.answerDataArr[n][m] = _this.answerType(i);
-                                    _this.setState(node_2, _this.answerType(i));
+                                    _this.setState(node_3, _this.answerType(i));
+                                    _this.adsorbAction(node_3);
                                     _this.eventvalue.levelData[0].result = 2;
                                     _this.isOver = 2;
                                     _this.eventvalue.levelData[0].answer = _this.answerDataArr;
                                     if (_this.success()) {
+                                        DaAnData_1.DaAnData.getInstance().submitEnable = true;
                                         _this.eventvalue.levelData[0].result = 1;
                                         _this.isOver = 1;
                                         _this.eventvalue.levelData[0].answer = _this.answerDataArr;
+                                        console.log(_this.eventvalue);
                                         DataReporting_1.default.getInstance().dispatchEvent('addLog', {
                                             eventType: 'clickSubmit',
                                             eventValue: JSON.stringify(_this.eventvalue)
@@ -409,16 +508,57 @@ var GamePanel = /** @class */ (function (_super) {
                                     }
                                 }
                                 else if (_this.judge(n, m, i) == 2) {
+                                    _this.answerDataArr[n][m] = _this.answerType(i);
+                                    _this.setState(node_3, _this.answerType(i));
+                                    _this.adsorbAction(node_3);
+                                    _this.eventvalue.levelData[0].result = 2;
+                                    _this.isOver = 2;
+                                    _this.eventvalue.levelData[0].answer = _this.answerDataArr;
+                                    _this.touchEnable = false;
+                                    AudioManager_1.AudioManager.getInstance().stopAudio(_this.audioId);
+                                    AudioManager_1.AudioManager.getInstance().playSound('再仔细看看规则哦~', false, 1, null, function () {
+                                        _this.touchEnable = true;
+                                        _this.setState(node_3, _this.defaultType(i));
+                                        _this.answerDataArr[n][m] = null;
+                                    });
                                     _this.touchTarget = null;
                                     _this.touchNode.active = false;
                                 }
                                 else if (_this.judge(n, m, i) == 3) {
+                                    _this.answerDataArr[n][m] = _this.answerType(i);
+                                    _this.setState(node_3, _this.answerType(i));
+                                    _this.adsorbAction(node_3);
+                                    _this.eventvalue.levelData[0].result = 2;
+                                    _this.isOver = 2;
+                                    _this.eventvalue.levelData[0].answer = _this.answerDataArr;
+                                    _this.touchEnable = false;
+                                    AudioManager_1.AudioManager.getInstance().stopAudio(_this.audioId);
+                                    if (_this.type == 1) {
+                                        AudioManager_1.AudioManager.getInstance().playSound('请先完成前面的图形哦~', false, 1, null, function () {
+                                            _this.touchEnable = true;
+                                            _this.setState(node_3, _this.defaultType(i));
+                                            _this.answerDataArr[n][m] = null;
+                                        });
+                                    }
+                                    else if (_this.type == 2) {
+                                        AudioManager_1.AudioManager.getInstance().playSound('目前无法判断这个位置哦~', false, 1, null, function () {
+                                            _this.touchEnable = true;
+                                            _this.setState(node_3, _this.defaultType(i));
+                                            _this.answerDataArr[n][m] = null;
+                                        });
+                                    }
                                     _this.touchTarget = null;
                                     _this.touchNode.active = false;
                                 }
                             }
                         }
+                    };
+                    for (var m = 0; m < _this.subjectItemArr[n].length; m++) {
+                        _loop_4(m);
                     }
+                };
+                for (var n = 0; n < _this.subjectItemArr.length; n++) {
+                    _loop_3(n);
                 }
                 for (var p = 0; p < _this.subjectItemArr.length; p++) {
                     for (var q = 0; q < _this.subjectItemArr[p].length; q++) {
@@ -427,12 +567,18 @@ var GamePanel = /** @class */ (function (_super) {
                 }
                 _this.touchTarget = null;
                 _this.touchNode.active = false;
+                _this.intervalPoint();
             });
         };
-        var this_1 = this;
+        var this_2 = this;
         for (var i = 0; i < this.answerItemArr.length; i++) {
-            _loop_1(i);
+            _loop_2(i);
         }
+    };
+    GamePanel.prototype.adsorbAction = function (node) {
+        node = node.getChildByName('sprite');
+        var seq = cc.sequence(cc.scaleTo(0.2, 0.8), cc.scaleTo(0.1, 1));
+        node.runAction(seq);
     };
     GamePanel.prototype.success = function () {
         var rightNum = 0;
@@ -508,9 +654,26 @@ var GamePanel = /** @class */ (function (_super) {
         }
         return type;
     };
+    GamePanel.prototype.defaultType = function (index) {
+        var type = null;
+        switch (index) {
+            case 0:
+                type = this.typeNull;
+                break;
+            case 1:
+                type = this.typeNull;
+                break;
+            case 2:
+                type = this.arrowNull;
+                break;
+            case 3:
+                type = this.arrowNull;
+                break;
+        }
+        return type;
+    };
     GamePanel.prototype.judge = function (i, j, indexOfAnswer) {
         var type = this.answerType(indexOfAnswer);
-        cc.log('-------', type);
         if (this.type == 1) {
             if (indexOfAnswer == 0 || indexOfAnswer == 1) {
                 if (i > 4) {
@@ -703,6 +866,10 @@ var GamePanel = /** @class */ (function (_super) {
         DataReporting_1.default.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
     };
     GamePanel.prototype.onDestroy = function () {
+        for (var i = 0; i < this.intervalArr.length; i++) {
+            clearTimeout(this.intervalArr[i]);
+        }
+        this.intervalArr = [];
     };
     GamePanel.prototype.onShow = function () {
     };

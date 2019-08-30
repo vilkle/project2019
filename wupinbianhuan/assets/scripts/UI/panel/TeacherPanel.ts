@@ -98,17 +98,17 @@ export default class TeacherPanel extends BaseUI {
             this.diffType = DaAnData.getInstance().ruleDataArr[0][1]
         }
         this.initData()
-        this.typeToggleContainer[DaAnData.getInstance().type-1].isChecked = true
-        this.figureToggleContainer[DaAnData.getInstance().figure-1].isChecked = true
         this.initType()
         this.initFigure()
+        this.typeToggleContainer[DaAnData.getInstance().type-1].isChecked = true
+        this.figureToggleContainer[DaAnData.getInstance().figure-1].isChecked = true
         this.getItem()
-        if(DaAnData.getInstance().ruleDataArr) {
+        if(DaAnData.getInstance().ruleDataArr.length > 0) {
             this.setRule()
         }else {
             this.defaultRule()
         }
-        if(DaAnData.getInstance().subjectDataArr) {
+        if(DaAnData.getInstance().subjectDataArr.length>0) {
             this.setSubject()
         }else {
             this.defaultSubject(DaAnData.getInstance().type == 1)
@@ -617,11 +617,11 @@ export default class TeacherPanel extends BaseUI {
 
     checking():boolean {
         if(this.ruleDataArr[0][1] == this.arrowNull) {
-            this.showTip('相同颜色的变换规则不能为空，请重新选择。')
+            this.showTip('不同颜色的变换规则不能为空，请重新选择。')
             return false 
         }
         if(this.ruleDataArr[2][1] == this.arrowNull) {
-            this.showTip('不同颜色的变换规则不能为空，请重新选择。')
+            this.showTip('相同颜色的变换规则不能为空，请重新选择。')
             return false 
         }
         if(this.ruleDataArr[0][1] == this.ruleDataArr[2][1]) {

@@ -135,6 +135,9 @@ export class OverTips extends BaseUI {
                     Tools.playSpine(this.spine_complete, "stand", true);
                     this.endInAnimationOver = false;
                 });
+                setTimeout(() => {
+                    AudioManager.getInstance().playSound('“你真棒！等等还没做完的同学吧~', false)
+                }, 1500);
                 AudioManager.getInstance().playSound("sfx_geupgrd", false, 1);
             }
         }.bind(this));

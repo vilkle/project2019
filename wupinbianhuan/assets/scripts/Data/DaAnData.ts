@@ -6,7 +6,7 @@ export class DaAnData {
     public ruleDataArr: ItemType[][] = []
     public subjectDataArr: ItemType[][] = []
     public answerDataArr: ItemType[][] = []
-    public submitEnable = true;
+    public submitEnable = false;
    
     static getInstance() {
         if (this.instance == null) {

@@ -11,17 +11,11 @@
     "Canvas Renderer",
     "Renderer Texture",
     "Dynamic Atlas",
-    "LabelOutline",
-    "Mask",
-    "Graphics",
     "ParticleSystem",
     "TiledMap",
     "DragonBones",
     "RichText",
     "MotionStreak",
-    "ScrollBar",
-    "ScrollView",
-    "Toggle",
     "PageView",
     "PageViewIndicator",
     "Slider",
@@ -37,7 +31,8 @@
     "Native Socket",
     "Geom Utils",
     "3D",
-    "3D Primitive"
+    "3D Primitive",
+    "TypeScript Polyfill"
   ],
   "facebook": {
     "appID": "",
@@ -54,7 +49,7 @@
   "group-list": [
     "default"
   ],
-  "last-module-event-record-time": 1565061958442,
+  "last-module-event-record-time": 1567053857106,
   "simulator-orientation": false,
   "simulator-resolution": {
     "height": 640,

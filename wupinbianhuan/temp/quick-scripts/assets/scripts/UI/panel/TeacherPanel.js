@@ -96,18 +96,18 @@ var TeacherPanel = /** @class */ (function (_super) {
             this.diffType = DaAnData_1.DaAnData.getInstance().ruleDataArr[0][1];
         }
         this.initData();
-        this.typeToggleContainer[DaAnData_1.DaAnData.getInstance().type - 1].isChecked = true;
-        this.figureToggleContainer[DaAnData_1.DaAnData.getInstance().figure - 1].isChecked = true;
         this.initType();
         this.initFigure();
+        this.typeToggleContainer[DaAnData_1.DaAnData.getInstance().type - 1].isChecked = true;
+        this.figureToggleContainer[DaAnData_1.DaAnData.getInstance().figure - 1].isChecked = true;
         this.getItem();
-        if (DaAnData_1.DaAnData.getInstance().ruleDataArr) {
+        if (DaAnData_1.DaAnData.getInstance().ruleDataArr.length > 0) {
             this.setRule();
         }
         else {
             this.defaultRule();
         }
-        if (DaAnData_1.DaAnData.getInstance().subjectDataArr) {
+        if (DaAnData_1.DaAnData.getInstance().subjectDataArr.length > 0) {
             this.setSubject();
         }
         else {
@@ -628,11 +628,11 @@ var TeacherPanel = /** @class */ (function (_super) {
     };
     TeacherPanel.prototype.checking = function () {
         if (this.ruleDataArr[0][1] == this.arrowNull) {
-            this.showTip('相同颜色的变换规则不能为空，请重新选择。');
+            this.showTip('不同颜色的变换规则不能为空，请重新选择。');
             return false;
         }
         if (this.ruleDataArr[2][1] == this.arrowNull) {
-            this.showTip('不同颜色的变换规则不能为空，请重新选择。');
+            this.showTip('相同颜色的变换规则不能为空，请重新选择。');
             return false;
         }
         if (this.ruleDataArr[0][1] == this.ruleDataArr[2][1]) {

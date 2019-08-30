@@ -1,14 +1,15 @@
 {
   "version": "1.1.1",
   "windows": {
+    "worker": {},
     "main": {
       "main": true,
       "url": "app://editor/index.html",
       "windowType": "dockable",
-      "x": -1280,
-      "y": 0,
-      "width": 1280,
-      "height": 760,
+      "x": -1920,
+      "y": -169,
+      "width": 1920,
+      "height": 1057,
       "layout": {
         "children": [
           {
@@ -18,23 +19,23 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 321.9921875,
+                "height": 321.640625,
                 "type": "panel",
-                "width": 254.2890625
+                "width": 204
               },
               {
                 "active": 0,
                 "children": [
                   "assets"
                 ],
-                "height": 321.0078125,
+                "height": 318.359375,
                 "type": "panel",
-                "width": 254.2890625
+                "width": 204
               }
             ],
-            "height": 645,
+            "height": 642,
             "type": "dock-v",
-            "width": 254.2890625
+            "width": 204
           },
           {
             "children": [
@@ -43,9 +44,9 @@
                 "children": [
                   "scene"
                 ],
-                "height": 377,
+                "height": 374,
                 "type": "panel",
-                "width": 704.703125
+                "width": 768
               },
               {
                 "active": 0,
@@ -55,12 +56,12 @@
                 ],
                 "height": 266,
                 "type": "panel",
-                "width": 704.703125
+                "width": 768
               }
             ],
-            "height": 645,
+            "height": 642,
             "type": "dock-v",
-            "width": 704.703125
+            "width": 768
           },
           {
             "active": 0,
@@ -68,7 +69,7 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 645,
+            "height": 642,
             "type": "panel",
             "width": 304
           }
@@ -94,14 +95,14 @@
       "height": 522
     },
     "project-settings": {
-      "x": -1319,
-      "y": -35,
+      "x": -1438,
+      "y": 3,
       "width": 584,
       "height": 548
     },
     "builder": {
-      "x": -772,
-      "y": 8,
+      "x": 305,
+      "y": 23,
       "width": 671,
       "height": 722
     }

@@ -89,7 +89,10 @@ export default class GamePanel extends BaseUI {
     private ruleDataArr: ItemType[][] = []
     private subjectDataArr: ItemType[][] = []
     private answerDataArr: ItemType[][] = []
+    private intervalArr: number[] = []
+    private audioId: number = null
     private touchTarget: any = null
+    private touchEnable: boolean = true
     private overNum: number = 0
     private isOver: number = 0
     private eventvalue = {
@@ -125,9 +128,52 @@ export default class GamePanel extends BaseUI {
         }
     }
 
+    intervalPoint() {
+        for(let i = 0; i < this.intervalArr.length; i++) {
+            clearTimeout(this.intervalArr[i])
+        }
+        this.intervalArr = []
+        let index = setTimeout(() => {
+            this.point()
+            this.intervalPoint()
+        }, 15000);
+        this.intervalArr.push(index)
+       
+    }
+
+    point() {
+        for(let i = 0; i < this.answerDataArr.length; ++i) {
+            for(let j = 0; j < this.answerDataArr[i].length; ++j) {
+                if(this.answerDataArr[i][j] == null) {
+                    let node = this.subjectItemArr[i][j].getChildByName('light')
+                    node.active = true
+                    node.opacity = 1
+                    node.scale = 0.5
+                    let func = cc.callFunc(()=>{
+                        node.active = false
+                        node .opacity = 255
+                        node.scale = 1
+                    })
+                    let func1 = cc.callFunc(()=>{
+                        node.opacity = 1
+                        node.scale = 0.5
+                    })
+                    let spawn1 = cc.spawn(cc.fadeIn(0.4), cc.scaleTo(0.4, 1))
+                    let spawn2 = cc.spawn(cc.fadeOut(0.5), cc.scaleBy(0.5, 1.2))
+                    let seq = cc.sequence(spawn1, spawn2, func1, spawn1, spawn2, func)
+                    node.stopAllActions()
+                    node.runAction(seq)
+                }
+            }
+        }
+    }
+
     initGame() {
         this.eventvalue.levelData[0].answer = DaAnData.getInstance().answerDataArr
+        AudioManager.getInstance().playSound('sfx_itchopn')
+        AudioManager.getInstance().playSound('请按规则把图形放在正确的位置上吧！', false, 1, (id)=>{this.audioId = id}, null)
         this.initData()
+        this.intervalPoint()
         this.initType()
         this.initRule()
         this.initAnswer()
@@ -263,7 +309,6 @@ export default class GamePanel extends BaseUI {
         if(this.type == 1) {
             let totalNum:number = 0
             let arrowNum:number = 0
-            cc.log(this.subjectDataArr)
             for(let i = 0 ; i < this.subjectItemArr.length; i++) {
                 for(let j = 0; j < this.subjectItemArr.length; j++) {
                     if(i%2==1) {
@@ -313,12 +358,29 @@ export default class GamePanel extends BaseUI {
         this.addListenerOnAnswer()
     }
 
+    getRandomNum(min : number, max : number):number {
+        var range = max - min;
+        var rand = Math.random();
+        return(min + Math.round(rand * range));
+    }
+
     addListenerOnAnswer() {
         for(let i = 0; i < this.answerItemArr.length; i++) {
             let node = this.answerItemArr[i].getChildByName('blank')
             node.on(cc.Node.EventType.TOUCH_START, (e)=>{
-                if(this.touchTarget) {
+                if(this.touchTarget || !this.touchEnable) {
                     return
+                }
+                let rn = this.getRandomNum(1, 4);
+                AudioManager.getInstance().stopAll();
+                if(rn == 1) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch1", false);
+                }else if(rn == 2) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch2", false);
+                }else if(rn == 3) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch3", false);
+                }else if(rn == 4) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch4", false);
                 }
                 this.touchTarget = e.target
                 let type : ItemType = this.answerType(i)
@@ -329,7 +391,7 @@ export default class GamePanel extends BaseUI {
                 this.touchNode.setPosition(point)
             })
             node.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
-                if(this.touchTarget != e.target) {
+                if(this.touchTarget != e.target || !this.touchEnable) {
                     return
                 }
                 let point = this.node.convertToNodeSpaceAR(e.currentTouch._point)
@@ -368,8 +430,19 @@ export default class GamePanel extends BaseUI {
 
             })
             node.on(cc.Node.EventType.TOUCH_END, (e)=>{
-                if(e.target != this.touchTarget) {
+                if(e.target != this.touchTarget || !this.touchEnable) {
                     return
+                }
+                let rn = this.getRandomNum(1, 4);
+                AudioManager.getInstance().stopAll();
+                if(rn == 1) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch1", false);
+                }else if(rn == 2) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch2", false);
+                }else if(rn == 3) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch3", false);
+                }else if(rn == 4) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch4", false);
                 }
                 this.touchTarget = null
                 this.touchNode.active = false
@@ -380,10 +453,20 @@ export default class GamePanel extends BaseUI {
                 }
             })
             node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
-                if(e.target != this.touchTarget) {
+                if(e.target != this.touchTarget || !this.touchEnable) {
                     return
                 }
-               
+                let rn = this.getRandomNum(1, 4);
+                AudioManager.getInstance().stopAll();
+                if(rn == 1) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch1", false);
+                }else if(rn == 2) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch2", false);
+                }else if(rn == 3) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch3", false);
+                }else if(rn == 4) {
+                    AudioManager.getInstance().playSound("sfx_tunedtch4", false);
+                }
                 for(let n = 0; n < this.subjectItemArr.length; n ++) {
                     for(let m = 0; m < this.subjectItemArr[n].length; m++) {
                         let node: cc.Node = this.subjectItemArr[n][m]
@@ -392,13 +475,16 @@ export default class GamePanel extends BaseUI {
                                 if(this.judge(n, m, i) == 1) {
                                     this.answerDataArr[n][m] = this.answerType(i)
                                     this.setState(node, this.answerType(i))
+                                    this.adsorbAction(node)
                                     this.eventvalue.levelData[0].result = 2
                                     this.isOver = 2
                                     this.eventvalue.levelData[0].answer = this.answerDataArr
                                     if(this.success()) {
+                                        DaAnData.getInstance().submitEnable = true
                                         this.eventvalue.levelData[0].result = 1
                                         this.isOver = 1
                                         this.eventvalue.levelData[0].answer = this.answerDataArr
+                                        console.log(this.eventvalue)
                                         DataReporting.getInstance().dispatchEvent('addLog', {
                                             eventType: 'clickSubmit',
                                             eventValue: JSON.stringify(this.eventvalue)
@@ -406,9 +492,43 @@ export default class GamePanel extends BaseUI {
                                         UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～', null, '挑战成功')
                                     }
                                 }else if(this.judge(n, m, i) == 2) {
+                                    this.answerDataArr[n][m] = this.answerType(i)
+                                    this.setState(node, this.answerType(i))
+                                    this.adsorbAction(node)
+                                    this.eventvalue.levelData[0].result = 2
+                                    this.isOver = 2
+                                    this.eventvalue.levelData[0].answer = this.answerDataArr
+                                    this.touchEnable = false
+                                    AudioManager.getInstance().stopAudio(this.audioId)
+                                    AudioManager.getInstance().playSound('再仔细看看规则哦~',false, 1,null, ()=>{
+                                        this.touchEnable = true
+                                        this.setState(node, this.defaultType(i))
+                                        this.answerDataArr[n][m] = null
+                                    })
                                     this.touchTarget = null
                                     this.touchNode.active = false
                                 }else if(this.judge(n, m, i) == 3) { 
+                                    this.answerDataArr[n][m] = this.answerType(i)
+                                    this.setState(node, this.answerType(i))
+                                    this.adsorbAction(node)
+                                    this.eventvalue.levelData[0].result = 2
+                                    this.isOver = 2
+                                    this.eventvalue.levelData[0].answer = this.answerDataArr
+                                    this.touchEnable = false
+                                    AudioManager.getInstance().stopAudio(this.audioId)
+                                    if(this.type == 1) {
+                                        AudioManager.getInstance().playSound('请先完成前面的图形哦~', false, 1, null, ()=>{
+                                            this.touchEnable = true
+                                            this.setState(node, this.defaultType(i))
+                                            this.answerDataArr[n][m] = null
+                                        })
+                                    }else if(this.type == 2) {
+                                        AudioManager.getInstance().playSound('目前无法判断这个位置哦~', false, 1, null, ()=>{
+                                            this.touchEnable = true
+                                            this.setState(node, this.defaultType(i))
+                                            this.answerDataArr[n][m] = null
+                                        })
+                                    }
                                     this.touchTarget = null
                                     this.touchNode.active = false
                                 }
@@ -416,7 +536,6 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                 }
-
                 for(let p = 0; p < this.subjectItemArr.length; p++) {
                     for(let q = 0; q < this.subjectItemArr[p].length; q++) {
                         this.subjectItemArr[p][q].getChildByName('light').active = false
@@ -424,8 +543,15 @@ export default class GamePanel extends BaseUI {
                 }
                 this.touchTarget = null
                 this.touchNode.active = false
+                this.intervalPoint()
             })
         }
+    }
+
+    adsorbAction(node:cc.Node) {
+        node = node.getChildByName('sprite')
+        let seq = cc.sequence(cc.scaleTo(0.2, 0.8), cc.scaleTo(0.1, 1))
+        node.runAction(seq)
     }
 
     success(): boolean {
@@ -497,9 +623,27 @@ export default class GamePanel extends BaseUI {
         return type
     }
 
+    defaultType(index: number):ItemType {
+        let type:ItemType = null 
+        switch(index){
+            case 0:
+                type = this.typeNull
+                break
+            case 1:
+                type = this.typeNull
+                break
+            case 2:
+                type = this.arrowNull
+                break
+            case 3:
+                type = this.arrowNull
+                break
+        }
+        return type
+    }
+
     judge(i:number, j:number, indexOfAnswer:number):number { //1正确2错误3不能确认   
         let type:ItemType = this.answerType(indexOfAnswer) 
-        cc.log('-------',type)
         if(this.type == 1) {
             if(indexOfAnswer== 0||indexOfAnswer == 1) {
                 if(i > 4) {
@@ -677,7 +821,10 @@ export default class GamePanel extends BaseUI {
     }
 
     onDestroy() {
-
+        for(let i = 0; i < this.intervalArr.length; i++) {
+            clearTimeout(this.intervalArr[i])
+        }
+        this.intervalArr = []
     }
 
     onShow() {

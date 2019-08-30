@@ -11,7 +11,7 @@ var DaAnData = /** @class */ (function () {
         this.ruleDataArr = [];
         this.subjectDataArr = [];
         this.answerDataArr = [];
-        this.submitEnable = true;
+        this.submitEnable = false;
     }
     DaAnData.getInstance = function () {
         if (this.instance == null) {
