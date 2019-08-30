@@ -39,7 +39,7 @@
   },
   "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
   "title": "gameFrame",
-  "webOrientation": "auto",
+  "webOrientation": "landscape",
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "",
     "appid": "wx6ac3f5090a6b99c5",

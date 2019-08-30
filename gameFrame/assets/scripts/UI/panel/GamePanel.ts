@@ -7,6 +7,9 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class GamePanel extends BaseUI {
 
+    @property (cc.Node)
+    private node_test:cc.Node = null;
+
     protected static className = "GamePanel";
     start() {
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
@@ -33,7 +36,7 @@ export default class GamePanel extends BaseUI {
     }
 
     setPanel() {
-
+        
     }
 
     getNet() {
