@@ -757,7 +757,7 @@ export default class GamePanel extends BaseUI {
                 });
                 DaAnData.getInstance().submitEnable = true;
                 console.log(this.eventvalue)
-                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～');
+                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～', null, '挑战成功');
             }
         }else if(this.types == 2) {
             if(this.rightNum == 9) {
@@ -770,7 +770,7 @@ export default class GamePanel extends BaseUI {
                 });
                 DaAnData.getInstance().submitEnable = true;
                 console.log(this.eventvalue)
-                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～');
+                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～', null, '挑战成功');
             }
         }else if(this.types == 3) {
             if(this.rightNum == 6) {
@@ -783,7 +783,7 @@ export default class GamePanel extends BaseUI {
                 });
                 DaAnData.getInstance().submitEnable = true;
                 console.log(this.eventvalue)
-                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～');
+                UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧～', null, '挑战成功');
             }
         }
     
