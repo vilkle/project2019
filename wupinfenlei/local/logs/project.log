@@ -1,69 +1,69 @@
-2019-08-30T11:52:57.556Z - normal: Load ~/.CocosCreator/settings.json
-2019-08-30T11:52:57.628Z - normal: Initializing Asset Database
-2019-08-30T11:52:57.632Z - normal: checking language setting...
-2019-08-30T11:52:57.633Z - normal: Language: zh
-2019-08-30T11:52:58.356Z - success: preview server running at http://localhost:7456
-2019-08-30T11:52:58.370Z - success: protocol editor-framework registered
-2019-08-30T11:52:58.370Z - success: protocol app registered
-2019-08-30T11:52:58.370Z - success: protocol theme registered
-2019-08-30T11:52:58.370Z - success: protocol packages registered
-2019-08-30T11:52:58.370Z - success: protocol uuid registerred
-2019-08-30T11:52:58.371Z - success: protocol db registerred
-2019-08-30T11:52:58.371Z - success: protocol thumbnail registerred
-2019-08-30T11:52:58.371Z - success: protocol unpack registerred
-2019-08-30T11:52:58.371Z - success: protocol disable-commonjs registerred
-2019-08-30T11:52:58.454Z - normal: connected!
-2019-08-30T11:52:58.455Z - normal: Check project /Users/xes/Desktop/gitLab/wupinfenlei
-2019-08-30T11:52:58.459Z - normal: Initializing project /Users/xes/Desktop/gitLab/wupinfenlei
-2019-08-30T11:52:58.861Z - normal: Initializing Cocos2d
-2019-08-30T11:52:59.668Z - normal: Initializing engine extends
-2019-08-30T11:52:59.690Z - success: asset-db-debugger loaded
-2019-08-30T11:52:59.691Z - success: baidu-adapter loaded
-2019-08-30T11:52:59.692Z - success: color-picker loaded
-2019-08-30T11:52:59.778Z - success: fb-audience-network loaded
-2019-08-30T11:52:59.827Z - success: fb-live-stream loaded
-2019-08-30T11:52:59.831Z - success: google-play-instant loaded
-2019-08-30T11:52:59.837Z - success: huawei-runtime loaded
-2019-08-30T11:53:00.101Z - success: cpk-publish loaded
-2019-08-30T11:53:00.102Z - success: jsb-adapter loaded
-2019-08-30T11:53:00.107Z - success: oppo-runtime loaded
-2019-08-30T11:53:00.113Z - success: package-manager loaded
-2019-08-30T11:53:00.245Z - success: qqplay-adapter loaded
-2019-08-30T11:53:00.248Z - success: runtime-dev-tools loaded
-2019-08-30T11:53:00.253Z - success: sdkbox loaded
-2019-08-30T11:53:00.259Z - success: tester loaded
-2019-08-30T11:53:00.265Z - success: ui-grid loaded
-2019-08-30T11:53:00.268Z - success: ui-kit-preview-extra loaded
-2019-08-30T11:53:00.272Z - success: ui-kit-preview loaded
-2019-08-30T11:53:00.276Z - success: ui-kit loaded
-2019-08-30T11:53:00.280Z - success: ui-tree loaded
-2019-08-30T11:53:00.286Z - success: vivo-runtime loaded
-2019-08-30T11:53:00.287Z - success: weapp-adapter loaded
-2019-08-30T11:53:00.288Z - success: xiaomi-adapter loaded
-2019-08-30T11:53:00.334Z - success: assets loaded
-2019-08-30T11:53:00.338Z - success: builder loaded
-2019-08-30T11:53:00.598Z - success: cocos-services loaded
-2019-08-30T11:53:00.605Z - success: console loaded
-2019-08-30T11:53:00.650Z - success: fb-instant-games loaded
-2019-08-30T11:53:00.655Z - success: game-window loaded
-2019-08-30T11:53:00.657Z - success: google-instant-games loaded
-2019-08-30T11:53:00.662Z - success: hierarchy loaded
-2019-08-30T11:53:00.667Z - success: inspector loaded
-2019-08-30T11:53:00.668Z - success: keystore loaded
-2019-08-30T11:53:00.676Z - success: node-library loaded
-2019-08-30T11:53:00.678Z - success: package-asset loaded
-2019-08-30T11:53:00.679Z - success: preferences loaded
-2019-08-30T11:53:00.682Z - success: project-exporter loaded
-2019-08-30T11:53:00.687Z - success: project-importer loaded
-2019-08-30T11:53:00.691Z - success: project-settings loaded
-2019-08-30T11:53:00.699Z - success: scene loaded
-2019-08-30T11:53:00.700Z - success: simulator-debugger loaded
-2019-08-30T11:53:00.702Z - success: sprite-editor loaded
-2019-08-30T11:53:00.706Z - success: store loaded
-2019-08-30T11:53:00.714Z - success: timeline loaded
-2019-08-30T11:53:00.719Z - success: xiaomi-runtime loaded
-2019-08-30T11:53:02.118Z - info: Cocos Services load base data!
-2019-08-30T11:53:08.367Z - error: Can not find texture "true02.png" for atlas "/Users/xes/Desktop/gitLab/wupinfenlei/assets/resources/atlas/overTips/true01/true01.atlas"
+2019-08-30T12:47:19.543Z - normal: Load ~/.CocosCreator/settings.json
+2019-08-30T12:47:19.730Z - normal: Initializing Asset Database
+2019-08-30T12:47:19.744Z - normal: checking language setting...
+2019-08-30T12:47:19.744Z - normal: Language: zh
+2019-08-30T12:47:21.380Z - success: preview server running at http://localhost:7456
+2019-08-30T12:47:21.411Z - success: protocol editor-framework registered
+2019-08-30T12:47:21.412Z - success: protocol app registered
+2019-08-30T12:47:21.413Z - success: protocol theme registered
+2019-08-30T12:47:21.413Z - success: protocol packages registered
+2019-08-30T12:47:21.413Z - success: protocol uuid registerred
+2019-08-30T12:47:21.413Z - success: protocol db registerred
+2019-08-30T12:47:21.413Z - success: protocol thumbnail registerred
+2019-08-30T12:47:21.414Z - success: protocol unpack registerred
+2019-08-30T12:47:21.414Z - success: protocol disable-commonjs registerred
+2019-08-30T12:47:21.514Z - normal: connected!
+2019-08-30T12:47:21.516Z - normal: Check project /Users/xes/Desktop/gitLab/wupinfenlei
+2019-08-30T12:47:21.518Z - normal: Initializing project /Users/xes/Desktop/gitLab/wupinfenlei
+2019-08-30T12:47:22.534Z - normal: Initializing Cocos2d
+2019-08-30T12:47:24.234Z - normal: Initializing engine extends
+2019-08-30T12:47:24.285Z - success: asset-db-debugger loaded
+2019-08-30T12:47:24.301Z - success: baidu-adapter loaded
+2019-08-30T12:47:24.304Z - success: color-picker loaded
+2019-08-30T12:47:24.408Z - success: fb-audience-network loaded
+2019-08-30T12:47:24.471Z - success: fb-live-stream loaded
+2019-08-30T12:47:24.475Z - success: google-play-instant loaded
+2019-08-30T12:47:24.486Z - success: huawei-runtime loaded
+2019-08-30T12:47:24.763Z - success: cpk-publish loaded
+2019-08-30T12:47:24.764Z - success: jsb-adapter loaded
+2019-08-30T12:47:24.770Z - success: oppo-runtime loaded
+2019-08-30T12:47:24.776Z - success: package-manager loaded
+2019-08-30T12:47:24.904Z - success: qqplay-adapter loaded
+2019-08-30T12:47:24.906Z - success: runtime-dev-tools loaded
+2019-08-30T12:47:24.913Z - success: sdkbox loaded
+2019-08-30T12:47:24.918Z - success: tester loaded
+2019-08-30T12:47:24.924Z - success: ui-grid loaded
+2019-08-30T12:47:24.929Z - success: ui-kit-preview-extra loaded
+2019-08-30T12:47:24.933Z - success: ui-kit-preview loaded
+2019-08-30T12:47:24.937Z - success: ui-kit loaded
+2019-08-30T12:47:24.941Z - success: ui-tree loaded
+2019-08-30T12:47:24.947Z - success: vivo-runtime loaded
+2019-08-30T12:47:24.948Z - success: weapp-adapter loaded
+2019-08-30T12:47:24.950Z - success: xiaomi-adapter loaded
+2019-08-30T12:47:24.999Z - success: assets loaded
+2019-08-30T12:47:25.004Z - success: builder loaded
+2019-08-30T12:47:25.298Z - success: cocos-services loaded
+2019-08-30T12:47:25.308Z - success: console loaded
+2019-08-30T12:47:25.348Z - success: fb-instant-games loaded
+2019-08-30T12:47:25.353Z - success: game-window loaded
+2019-08-30T12:47:25.355Z - success: google-instant-games loaded
+2019-08-30T12:47:25.361Z - success: hierarchy loaded
+2019-08-30T12:47:25.366Z - success: inspector loaded
+2019-08-30T12:47:25.368Z - success: keystore loaded
+2019-08-30T12:47:25.377Z - success: node-library loaded
+2019-08-30T12:47:25.379Z - success: package-asset loaded
+2019-08-30T12:47:25.380Z - success: preferences loaded
+2019-08-30T12:47:25.386Z - success: project-exporter loaded
+2019-08-30T12:47:25.394Z - success: project-importer loaded
+2019-08-30T12:47:25.398Z - success: project-settings loaded
+2019-08-30T12:47:25.404Z - success: scene loaded
+2019-08-30T12:47:25.406Z - success: simulator-debugger loaded
+2019-08-30T12:47:25.407Z - success: sprite-editor loaded
+2019-08-30T12:47:25.412Z - success: store loaded
+2019-08-30T12:47:25.419Z - success: timeline loaded
+2019-08-30T12:47:25.424Z - success: xiaomi-runtime loaded
+2019-08-30T12:47:26.993Z - info: Cocos Services load base data!
+2019-08-30T12:47:32.698Z - error: Can not find texture "true02.png" for atlas "/Users/xes/Desktop/gitLab/wupinfenlei/assets/resources/atlas/overTips/true01/true01.atlas"
     at TextureParser.load (/Applications/CocosCreator2.1.2.app/Contents/Resources/engine/extensions/spine/editor/spine-meta.js:102:20)
     at TextureAtlas.load (/Applications/CocosCreator2.1.2.app/Contents/Resources/engine/extensions/spine/lib/spine.js:5218:21)
     at new TextureAtlas (/Applications/CocosCreator2.1.2.app/Contents/Resources/engine/extensions/spine/lib/spine.js:5183:9)
@@ -72,7 +72,7 @@
     at /Applications/CocosCreator2.1.2.app/Contents/Resources/app.asar/node_modules/graceful-fs/graceful-fs.js:90:16
     at tryToString (fs.js:449:3)
     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:436:12)
-2019-08-30T11:53:08.369Z - failed: [db-task][init] Failed to post import asset /Users/xes/Desktop/gitLab/wupinfenlei/assets/resources/atlas/overTips/true01/true01.json, message: Error: Failed to load atlas file: "/Users/xes/Desktop/gitLab/wupinfenlei/assets/resources/atlas/overTips/true01/true01.atlas". TypeError: Cannot read property 'setFilters' of null
+2019-08-30T12:47:32.700Z - failed: [db-task][init] Failed to post import asset /Users/xes/Desktop/gitLab/wupinfenlei/assets/resources/atlas/overTips/true01/true01.json, message: Error: Failed to load atlas file: "/Users/xes/Desktop/gitLab/wupinfenlei/assets/resources/atlas/overTips/true01/true01.atlas". TypeError: Cannot read property 'setFilters' of null
     at TextureAtlas.load (/Applications/CocosCreator2.1.2.app/Contents/Resources/engine/extensions/spine/lib/spine.js:5219:18)
     at new TextureAtlas (/Applications/CocosCreator2.1.2.app/Contents/Resources/engine/extensions/spine/lib/spine.js:5183:9)
     at loadAtlasText (/Applications/CocosCreator2.1.2.app/Contents/Resources/engine/extensions/spine/editor/spine-meta.js:193:21)
@@ -85,178 +85,41 @@
     at /Applications/CocosCreator2.1.2.app/Contents/Resources/app.asar/node_modules/graceful-fs/graceful-fs.js:90:16
     at tryToString (fs.js:449:3)
     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:436:12)
-2019-08-30T11:53:09.941Z - normal: Loading packages
-2019-08-30T11:53:09.948Z - normal: Watching packages
-2019-08-30T11:53:10.109Z - normal: Run Application
-2019-08-30T11:58:26.582Z - info: 只有预制节点 "BigNode" 及其子节点会被保存。
-2019-08-30T11:58:26.836Z - info: 只有预制节点 "BigNode" 及其子节点会被保存。
-2019-08-30T11:58:27.615Z - info: 只有预制节点 "BigNode" 及其子节点会被保存。
-2019-08-30T11:58:27.871Z - info: 只有预制节点 "BigNode" 及其子节点会被保存。
-2019-08-30T11:58:28.177Z - info: 只有预制节点 "BigNode" 及其子节点会被保存。
-2019-08-30T11:58:28.454Z - info: 只有预制节点 "BigNode" 及其子节点会被保存。
-2019-08-30T11:58:28.681Z - info: 只有预制节点 "BigNode" 及其子节点会被保存。
-2019-08-30T11:58:28.919Z - info: 只有预制节点 "BigNode" 及其子节点会被保存。
-2019-08-30T12:02:05.186Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:05.420Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:06.120Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:06.370Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:06.595Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:06.816Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:07.051Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:07.287Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:07.531Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:02:07.759Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:05:27.127Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:05:27.492Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:05:28.210Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:05:28.588Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:05:28.944Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:06:36.261Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:06:36.929Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:07:18.752Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:07:19.011Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:10:13.888Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:10:14.604Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:10:53.308Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:10:53.860Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:11:49.232Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:11:49.858Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:11:50.253Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:13:57.116Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:13:57.773Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:13:58.426Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:13:59.211Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:12.369Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:13.174Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:34.315Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:34.551Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:36.057Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:36.526Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:37.481Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:39.024Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:39.271Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:15:39.751Z - normal: Start building with options : {
-  "actualPlatform": "web-mobile",
-  "android-instant": {
-    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
-    "host": "",
-    "pathPattern": "",
-    "recordPath": "",
-    "scheme": "https",
-    "skipRecord": false
-  },
-  "apiLevel": "",
-  "appABIs": [],
-  "appBundle": false,
-  "baidugame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "testappid",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "buildPath": "/Users/xes/Desktop/gitLab/wupinfenlei/build",
-  "debug": false,
-  "dest": "/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile",
-  "embedWebDebugger": false,
-  "encryptJs": true,
-  "excludeScenes": [
-    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
-  ],
-  "excludedModules": [
-    "Canvas Renderer",
-    "Renderer Texture",
-    "Dynamic Atlas",
-    "LabelOutline",
-    "ParticleSystem",
-    "TiledMap",
-    "DragonBones",
-    "RichText",
-    "MotionStreak",
-    "PageView",
-    "PageViewIndicator",
-    "EditBox",
-    "VideoPlayer",
-    "WebView",
-    "Animation",
-    "Collider",
-    "Physics",
-    "NodePool",
-    "StudioComponent",
-    "Intersection",
-    "Native Socket",
-    "Geom Utils",
-    "3D",
-    "3D Primitive"
-  ],
-  "fb-instant-games": {},
-  "includeSDKBox": false,
-  "inlineSpriteFrames": true,
-  "inlineSpriteFrames_native": true,
-  "md5Cache": true,
-  "mergeStartScene": false,
-  "optimizeHotUpdate": false,
-  "orientation": {
-    "landscapeLeft": true,
-    "landscapeRight": true,
-    "portrait": false,
-    "upsideDown": false
-  },
-  "packageName": "org.cocos2d.gameFrame",
-  "platform": "web-mobile",
-  "previewHeight": "720",
-  "previewWidth": "1280",
-  "qqplay": {
-    "REMOTE_SERVER_ROOT": "",
-    "orientation": "portrait",
-    "zip": false
-  },
-  "scenes": [
-    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
-  ],
-  "sourceMaps": false,
-  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
-  "template": "link",
-  "title": "gameFrame",
-  "useDebugKeystore": true,
-  "vsVersion": "auto",
-  "webOrientation": "auto",
-  "wechatgame": {
-    "REMOTE_SERVER_ROOT": "",
-    "appid": "wx6ac3f5090a6b99c5",
-    "orientation": "portrait",
-    "subContext": ""
-  },
-  "xxteaKey": "ce558dd3-8f51-47",
-  "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/gitLab/wupinfenlei",
-  "projectName": "gameFrame",
-  "debugBuildWorker": false
-}
-2019-08-30T12:15:39.757Z - normal: Building /Users/xes/Desktop/gitLab/wupinfenlei
-2019-08-30T12:15:39.758Z - normal: Destination /Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile
-2019-08-30T12:15:40.051Z - normal: Delete /Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile/**/*
-2019-08-30T12:15:51.161Z - normal: Start building assets
-2019-08-30T12:15:51.161Z - normal: Start spawn build-worker
-2019-08-30T12:15:52.676Z - normal: Finish spawn build-worker
-2019-08-30T12:15:52.676Z - normal: Start init build-worker
-2019-08-30T12:15:59.146Z - normal: Finish init build-worker
-2019-08-30T12:15:59.146Z - normal: Start build-assets in worker
-2019-08-30T12:16:05.233Z - normal: Finish build-assets in worker
-2019-08-30T12:16:05.246Z - normal: Finish building assets
-2019-08-30T12:16:05.303Z - normal: Start building plugin scripts
-2019-08-30T12:16:05.365Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
-2019-08-30T12:16:05.388Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-08-30T12:16:05.991Z - normal: Built to "/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile" successfully
-2019-08-30T12:16:23.349Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:23.592Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:25.254Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:27.213Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:27.454Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:27.730Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:30.309Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:30.542Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:31.097Z - info: 只有预制节点 "SmallNode" 及其子节点会被保存。
-2019-08-30T12:16:31.301Z - normal: Start building with options : {
+2019-08-30T12:47:33.899Z - normal: Loading packages
+2019-08-30T12:47:33.904Z - normal: Watching packages
+2019-08-30T12:47:34.060Z - normal: Run Application
+2019-08-30T12:50:19.028Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:50:19.710Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:50:20.109Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:51:43.627Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:51:44.347Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:51:45.171Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:53:02.876Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:53:03.495Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:53:04.127Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:54:36.410Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:54:37.146Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:54:37.954Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:56:08.865Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:56:09.461Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:56:10.307Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:57:43.021Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:57:43.645Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:58:46.205Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:58:46.643Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T12:58:47.431Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:00:13.649Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:00:14.233Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:17.152Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:17.409Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:17.759Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:18.058Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:28.751Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:29.129Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:29.693Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:37.933Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:38.253Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:38.991Z - normal: Start building with options : {
   "actualPlatform": "web-mobile",
   "android-instant": {
     "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
@@ -353,18 +216,137 @@
   "projectName": "gameFrame",
   "debugBuildWorker": false
 }
-2019-08-30T12:16:31.311Z - normal: Building /Users/xes/Desktop/gitLab/wupinfenlei
-2019-08-30T12:16:31.312Z - normal: Destination /Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile
-2019-08-30T12:16:31.316Z - normal: Delete /Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile/**/*
-2019-08-30T12:16:42.518Z - normal: Start building assets
-2019-08-30T12:16:42.519Z - normal: Start spawn build-worker
-2019-08-30T12:16:44.420Z - normal: Finish spawn build-worker
-2019-08-30T12:16:44.420Z - normal: Start init build-worker
-2019-08-30T12:16:51.611Z - normal: Finish init build-worker
-2019-08-30T12:16:51.611Z - normal: Start build-assets in worker
-2019-08-30T12:16:57.750Z - normal: Finish build-assets in worker
-2019-08-30T12:16:57.760Z - normal: Finish building assets
-2019-08-30T12:16:57.815Z - normal: Start building plugin scripts
-2019-08-30T12:16:57.864Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
-2019-08-30T12:16:57.870Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-08-30T12:16:58.838Z - normal: Built to "/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile" successfully
+2019-08-30T13:01:39.000Z - normal: Building /Users/xes/Desktop/gitLab/wupinfenlei
+2019-08-30T13:01:39.002Z - normal: Destination /Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile
+2019-08-30T13:01:39.246Z - normal: Delete /Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile/**/*
+2019-08-30T13:01:41.477Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:01:52.008Z - normal: Start building assets
+2019-08-30T13:01:52.008Z - normal: Start spawn build-worker
+2019-08-30T13:01:53.700Z - normal: Finish spawn build-worker
+2019-08-30T13:01:53.700Z - normal: Start init build-worker
+2019-08-30T13:02:00.829Z - normal: Finish init build-worker
+2019-08-30T13:02:00.829Z - normal: Start build-assets in worker
+2019-08-30T13:02:08.582Z - normal: Finish build-assets in worker
+2019-08-30T13:02:08.610Z - normal: Finish building assets
+2019-08-30T13:02:08.674Z - normal: Start building plugin scripts
+2019-08-30T13:02:08.733Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
+2019-08-30T13:02:08.757Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-08-30T13:02:09.320Z - normal: Built to "/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile" successfully
+2019-08-30T13:02:29.371Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:02:30.170Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:02:30.932Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:02:32.411Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:02:33.236Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/gitLab/wupinfenlei/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "LabelOutline",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "PageView",
+    "PageViewIndicator",
+    "EditBox",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket",
+    "Geom Utils",
+    "3D",
+    "3D Primitive"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
+  "template": "link",
+  "title": "gameFrame",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/gitLab/wupinfenlei",
+  "projectName": "gameFrame",
+  "debugBuildWorker": false
+}
+2019-08-30T13:02:33.237Z - normal: Building /Users/xes/Desktop/gitLab/wupinfenlei
+2019-08-30T13:02:33.237Z - normal: Destination /Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile
+2019-08-30T13:02:33.239Z - normal: Delete /Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile/**/*
+2019-08-30T13:02:33.487Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:02:33.992Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
+2019-08-30T13:02:45.335Z - normal: Start building assets
+2019-08-30T13:02:45.336Z - normal: Start spawn build-worker
+2019-08-30T13:02:47.004Z - normal: Finish spawn build-worker
+2019-08-30T13:02:47.005Z - normal: Start init build-worker
+2019-08-30T13:02:54.007Z - normal: Finish init build-worker
+2019-08-30T13:02:54.008Z - normal: Start build-assets in worker
+2019-08-30T13:03:00.839Z - normal: Finish build-assets in worker
+2019-08-30T13:03:00.866Z - normal: Finish building assets
+2019-08-30T13:03:00.937Z - normal: Start building plugin scripts
+2019-08-30T13:03:00.993Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
+2019-08-30T13:03:01.005Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-08-30T13:03:01.450Z - normal: Built to "/Users/xes/Desktop/gitLab/wupinfenlei/build/web-mobile" successfully

@@ -585,6 +585,9 @@ s
 
     backButtonCallBack() {
         AudioManager.getInstance().playSound('sfx_casemove', false);
+        for(let i = 0; i < this.ItemNodeArr.length; ++i) {
+            this.ItemNodeArr[i].opacity = 255
+        }
         for(let i = 0; i < this.AnswerBoardArr.length; i++) {
             setTimeout(()=>{
                 if(i < this.AnswerBoardArr.length -1) {
@@ -606,6 +609,7 @@ s
                                 this.AnswerBoardArr[i].removeFromParent();
                                 this.AnswerBoardArr[i].destroy();
                             } 
+                           
                         }
                     })));
                 }
@@ -627,7 +631,7 @@ s
         for(let i = 0; i < this.ItemNodeArr.length; i++) {
             cc.log(this.ItemNodeArr[i])
             this.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_START, (e)=>{
-                if(this.touchTarget) {
+                if(this.touchTarget || e.target.parent.opacity == 0) {
                     return;
                 }
                 AudioManager.getInstance().playSound('sfx_buttn', false)

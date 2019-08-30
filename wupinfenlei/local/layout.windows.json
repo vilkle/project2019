@@ -9,7 +9,7 @@
       "x": -1920,
       "y": -169,
       "width": 1920,
-      "height": 1057,
+      "height": 986,
       "layout": {
         "children": [
           {
@@ -19,7 +19,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 486.984375,
+                "height": 451,
                 "type": "panel",
                 "width": 204
               },
@@ -28,12 +28,12 @@
                 "children": [
                   "assets"
                 ],
-                "height": 486,
+                "height": 451,
                 "type": "panel",
                 "width": 204
               }
             ],
-            "height": 975,
+            "height": 904,
             "type": "dock-v",
             "width": 204
           },
@@ -44,9 +44,9 @@
                 "children": [
                   "scene"
                 ],
-                "height": 626.984375,
+                "height": 597,
                 "type": "panel",
-                "width": 1407.984375
+                "width": 1351.984375
               },
               {
                 "active": 0,
@@ -54,14 +54,14 @@
                   "console",
                   "timeline"
                 ],
-                "height": 346,
+                "height": 305,
                 "type": "panel",
-                "width": 1407.984375
+                "width": 1351.984375
               }
             ],
-            "height": 975,
+            "height": 904,
             "type": "dock-v",
-            "width": 1407.984375
+            "width": 1351.984375
           },
           {
             "active": 0,
@@ -69,9 +69,9 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 975,
+            "height": 904,
             "type": "panel",
-            "width": 304
+            "width": 360
           }
         ],
         "type": "dock-h"
@@ -85,8 +85,7 @@
         "cocos-services",
         "scene"
       ]
-    },
-    "window-1567167313068": {}
+    }
   },
   "panels": {
     "sprite-editor": {

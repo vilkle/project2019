@@ -616,6 +616,9 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.backButtonCallBack = function () {
         var _this = this;
         AudioManager_1.AudioManager.getInstance().playSound('sfx_casemove', false);
+        for (var i = 0; i < this.ItemNodeArr.length; ++i) {
+            this.ItemNodeArr[i].opacity = 255;
+        }
         var _loop_6 = function (i) {
             setTimeout(function () {
                 if (i < _this.AnswerBoardArr.length - 1) {
@@ -662,7 +665,7 @@ var GamePanel = /** @class */ (function (_super) {
         var _loop_7 = function (i) {
             cc.log(this_6.ItemNodeArr[i]);
             this_6.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_START, function (e) {
-                if (_this.touchTarget) {
+                if (_this.touchTarget || e.target.parent.opacity == 0) {
                     return;
                 }
                 AudioManager_1.AudioManager.getInstance().playSound('sfx_buttn', false);
