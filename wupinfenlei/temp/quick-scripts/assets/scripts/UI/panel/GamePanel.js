@@ -515,28 +515,26 @@ var GamePanel = /** @class */ (function (_super) {
                         }
                     }
                     _this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i, _this.finishArr[i], true), false);
-                    _this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(function (trackEntry) {
-                        if (trackEntry.animation.name == _this.getSelectAnimationName(i, false, true)) {
-                            _this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i, _this.finishArr[i], false), true);
-                            AudioManager_1.AudioManager.getInstance().playSound('sfx_casemove', false);
-                            var _loop_3 = function (i_1) {
-                                setTimeout(function () {
-                                    if (i_1 < _this.selectNodeCenterArr.length - 1) {
-                                        _this.selectNodeCenterArr[i_1].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
-                                    }
-                                    else {
-                                        _this.selectNodeCenterArr[i_1].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(function () {
-                                            _this.selectMove = false;
-                                            _this.createAnswerBoard(_this.checkpoint);
-                                        })));
-                                    }
-                                }, (_this.selectNodeCenterArr.length - 1 - i_1) * 100);
-                            };
-                            for (var i_1 = 0; i_1 < _this.selectNodeCenterArr.length; i_1++) {
-                                _loop_3(i_1);
-                            }
+                    setTimeout(function () {
+                        AudioManager_1.AudioManager.getInstance().playSound('sfx_casemove', false);
+                        var _loop_3 = function (i_1) {
+                            setTimeout(function () {
+                                if (i_1 < _this.selectNodeCenterArr.length - 1) {
+                                    _this.selectNodeCenterArr[i_1].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                                }
+                                else {
+                                    _this.selectNodeCenterArr[i_1].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(function () {
+                                        _this.selectMove = false;
+                                        _this.selectNode.children[i_1].getComponent(sp.Skeleton).setAnimation(0, _this.getSelectAnimationName(i_1, _this.finishArr[i_1], false), true);
+                                        _this.createAnswerBoard(_this.checkpoint);
+                                    })));
+                                }
+                            }, (_this.selectNodeCenterArr.length - 1 - i_1) * 100);
+                        };
+                        for (var i_1 = 0; i_1 < _this.selectNodeCenterArr.length; i_1++) {
+                            _loop_3(i_1);
                         }
-                    });
+                    }, 400);
                 }
             });
             this_2.selectNode.children[i].on(cc.Node.EventType.TOUCH_END, function (e) {

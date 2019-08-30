@@ -44,7 +44,7 @@
                 "children": [
                   "scene"
                 ],
-                "height": 637,
+                "height": 626.984375,
                 "type": "panel",
                 "width": 1407.984375
               },
@@ -54,7 +54,7 @@
                   "console",
                   "timeline"
                 ],
-                "height": 336,
+                "height": 346,
                 "type": "panel",
                 "width": 1407.984375
               }
@@ -85,7 +85,8 @@
         "cocos-services",
         "scene"
       ]
-    }
+    },
+    "window-1567167313068": {}
   },
   "panels": {
     "sprite-editor": {
@@ -101,8 +102,8 @@
       "height": 551
     },
     "builder": {
-      "x": -1393,
-      "y": -4,
+      "x": -1508,
+      "y": -31,
       "width": 671,
       "height": 722
     }

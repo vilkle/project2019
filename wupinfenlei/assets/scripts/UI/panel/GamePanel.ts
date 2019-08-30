@@ -499,24 +499,22 @@ s
                         }
                     }
                     this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], true), false);
-                    this.selectNode.children[i].getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
-                        if(trackEntry.animation.name == this.getSelectAnimationName(i, false, true)) {
-                            this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], false), true);
-                            AudioManager.getInstance().playSound('sfx_casemove', false);
-                            for(let i = 0; i < this.selectNodeCenterArr.length; i ++) {
-                                setTimeout(()=>{
-                                    if(i < this.selectNodeCenterArr.length - 1) {
-                                        this.selectNodeCenterArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
-                                    }else {
-                                        this.selectNodeCenterArr[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
-                                            this.selectMove = false;
-                                            this.createAnswerBoard(this.checkpoint);
-                                        })) );
-                                    }
-                                }, (this.selectNodeCenterArr.length-1-i)*100);     
-                            }
+                    setTimeout(()=>{
+                        AudioManager.getInstance().playSound('sfx_casemove', false);
+                        for(let i = 0; i < this.selectNodeCenterArr.length; i ++) {
+                            setTimeout(()=>{
+                                if(i < this.selectNodeCenterArr.length - 1) {
+                                    this.selectNodeCenterArr[i].runAction(cc.moveBy(0.5, cc.v2(2000, 0)));
+                                }else {
+                                    this.selectNodeCenterArr[i].runAction(cc.sequence(cc.moveBy(0.5, cc.v2(2000, 0)), cc.callFunc(()=>{
+                                        this.selectMove = false;
+                                        this.selectNode.children[i].getComponent(sp.Skeleton).setAnimation(0, this.getSelectAnimationName(i, this.finishArr[i], false), true);
+                                        this.createAnswerBoard(this.checkpoint);
+                                    })) );
+                                }
+                            }, (this.selectNodeCenterArr.length-1-i)*100);     
                         }
-                    });
+                    }, 400)
                 }
             });
             this.selectNode.children[i].on(cc.Node.EventType.TOUCH_END, (e)=>{
