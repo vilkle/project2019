@@ -359,12 +359,16 @@ export default class GamePanel extends BaseUI {
         this.postItem();
     }
 
-    setTag(item : cc.Node, tagName : string, size ?:number) {
+    setTag(item : cc.Node, tagName : string, size ?:number, rotation ?: number) {
         let big = item.getChildByName('bigTag').getChildByName(tagName);
         let small = item.getChildByName('smallTag').getChildByName(tagName);
         if(size) {
             big.setScale(size);
             small.setScale(size);
+        }
+        if(rotation) {
+            big.angle = rotation
+            small.angle = rotation
         }
         if(big) {
             big.active = true;
@@ -432,7 +436,7 @@ s
             this.selectNode.getChildByName('sizeNode').active = false;
             this.selectArr[2] = false;
             this.finishArr[2] = true;
-        }
+        } 
         this.centerSelectNode();
         for(let i = 0; i < this.selectNode.children.length; i++) {
             this.selectNode.children[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
@@ -617,13 +621,14 @@ s
             this.ItemNodeArr[i].off(cc.Node.EventType.TOUCH_MOVE);
             this.ItemNodeArr[i].off(cc.Node.EventType.TOUCH_END);
             this.ItemNodeArr[i].off(cc.Node.EventType.TOUCH_CANCEL);
-            this.ItemNodeArr[i].opacity = 255;
+            this.ItemNodeArr[i].parent.opacity = 255;
         }
     }
 
     addListenerOnItem() {
         for(let i = 0; i < this.ItemNodeArr.length; i++) {
-            this.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_START, (e)=>{
+            cc.log(this.ItemNodeArr[i])
+            this.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_START, (e)=>{
                 if(this.touchTarget) {
                     return;
                 }
@@ -631,14 +636,14 @@ s
                 this.touchTarget = e.target;
                 this.touchNode.active = true;
                 this.touchNode.zIndex = 100;
-                e.target.opacity = 0;
+                e.target.parent.opacity = 0;
                 var point = this.node.convertToNodeSpaceAR(e.currentTouch._point);
                 this.touchNode.setPosition(point);
-                this.touchNode.setScale(e.target.scale + 0.1);
+                this.touchNode.setScale(e.target.parent.scale + 0.1);
                 this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame;
-                this.touchNode.scale = e.target.scale-0.1;
+                this.touchNode.scale = e.target.parent.scale-0.1;
             });
-            this.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
+            this.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
                if(this.touchTarget != e.target) {
                     return;
                }
@@ -666,16 +671,16 @@ s
                }
 
             });
-            this.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_END, (e)=>{
+            this.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_END, (e)=>{
                 if(this.touchTarget != e.target) {
                     return;
                }
                 AudioManager.getInstance().playSound('sfx_buttn', false)
                 this.touchNode.active = false;
-                e.target.opacity = 255;
+                e.target.parent.opacity = 255;
                 this.touchTarget = null;
             });
-            this.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+            this.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
                 if(this.touchTarget != e.target) {
                     return;
                 }
@@ -685,10 +690,10 @@ s
                     if(this.AnswerBoardArr[0].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[0].convertToNodeSpaceAR(e.currentTouch._point))) {
                         if(this.answerArr[0].indexOf(this.answer[i]) != -1) {
                             this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].setScale(e.target.scale);
+                            this.AnswerBoardArr[0].getChildByName('answerNode').children[this.player1.length].setScale(e.target.parent.scale);
                             if(this.types == 2) {
                                 this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                                this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].setScale(e.target.scale/2);
+                                this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer1').children[this.player1.length].setScale(e.target.parent.scale/2);
                             }
                             this.player1.push(this.answer[i]);
                             this.touchNode.active = false;
@@ -698,7 +703,7 @@ s
                                 AudioManager.getInstance().playSound('这好像不是动物哦~', false);
                             }
                             this.touchNode.active = false;
-                            e.target.opacity = 255;
+                            e.target.parent.opacity = 255;
                         }
                         this.touchTarget = null;
                         this.eventvalue.levelData[this.checkpoint-1].answer[0] = this.answerArr[0];
@@ -712,10 +717,10 @@ s
                    if(this.AnswerBoardArr[1].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[1].convertToNodeSpaceAR(e.currentTouch._point))) {
                     if(this.answerArr[1].indexOf(this.answer[i])  != -1) {
                         this.AnswerBoardArr[1].getChildByName('answerNode').children[this.player2.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                        this.AnswerBoardArr[1].getChildByName('answerNode').children[this.player2.length].setScale(e.target.scale);
+                        this.AnswerBoardArr[1].getChildByName('answerNode').children[this.player2.length].setScale(e.target.parent.scale);
                         if(this.types == 2) {
                             this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer2').children[this.player2.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer2').children[this.player2.length].setScale(e.target.scale/2);
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer2').children[this.player2.length].setScale(e.target.parent.scale/2);
                         }
                         this.player2.push(this.answer[i]);
                         this.touchNode.active = false;
@@ -725,7 +730,7 @@ s
                             AudioManager.getInstance().playSound('这好像不是食物哦~', false);
                         }
                         this.touchNode.active = false;
-                        e.target.opacity = 255;
+                        e.target.parent.opacity = 255;
                     }
                     this.touchTarget = null;
                     this.eventvalue.levelData[this.checkpoint-1].answer[1] = this.answerArr[1];
@@ -739,10 +744,10 @@ s
                    if(this.AnswerBoardArr[2].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[2].convertToNodeSpaceAR(e.currentTouch._point))) {
                     if(this.answerArr[2].indexOf(this.answer[i])  != -1) {
                         this.AnswerBoardArr[2].getChildByName('answerNode').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                        this.AnswerBoardArr[2].getChildByName('answerNode').children[this.player3.length].setScale(e.target.scale);
+                        this.AnswerBoardArr[2].getChildByName('answerNode').children[this.player3.length].setScale(e.target.parent.scale);
                         if(this.types == 2) {
                             this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].setScale(e.target.scale/2);
+                            this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].setScale(e.target.parent.scale/2);
                         }
                         this.player3.push(this.answer[i]);
                         this.touchNode.active = false;
@@ -752,7 +757,7 @@ s
                             AudioManager.getInstance().playSound('这好像不是文具哦~', false);
                         }
                         this.touchNode.active = false;
-                        e.target.opacity = 255;
+                        e.target.parent.opacity = 255;
                     }
                     this.touchTarget = null;
                     this.eventvalue.levelData[this.checkpoint-1].answer[2] = this.answerArr[2];
@@ -766,10 +771,10 @@ s
                     if(this.AnswerBoardArr[3].getChildByName('bigTag').getBoundingBox().contains(this.AnswerBoardArr[3].convertToNodeSpaceAR(e.currentTouch._point))) {
                         if(this.answerArr[3].indexOf(this.answer[i])  != -1) {
                             this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].setScale(e.target.scale);
+                            this.AnswerBoardArr[3].getChildByName('answerNode').children[this.player4.length].setScale(e.target.parent.scale);
                             if(this.types == 2) {
                                 this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].getComponent(cc.Sprite).spriteFrame = this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                                this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].setScale(e.target.scale/2);
+                                this.selectNode.children[this.selectType-1].getChildByName('bubble').getChildByName('answer3').children[this.player3.length].setScale(e.target.parent.scale/2);
                             }
                             this.player4.push(this.answer[i]);
                             this.touchNode.active = false;
@@ -779,7 +784,7 @@ s
                                 AudioManager.getInstance().playSound('这好像不是衣服哦~', false);
                             }
                             this.touchNode.active = false;
-                            e.target.opacity = 255;
+                            e.target.parent.opacity = 255;
                         }
                         this.touchTarget = null;
                         this.eventvalue.levelData[this.checkpoint-1].answer[3] = this.answerArr[3];
@@ -791,7 +796,7 @@ s
                 }
                 if(rightNum == 0){
                     this.touchNode.active = false;
-                    e.target.opacity = 255;
+                    e.target.parent.opacity = 255;
                     this.touchTarget = null;
                 }
                if(this.isSuccess()) {
@@ -855,7 +860,7 @@ s
             });
         }else if(this.types == 2) {
             AudioManager.getInstance().stopAll();
-            UIHelp.showOverTip(1,'做对啦！你真棒！试试其他办法吧～','试试其他办法',()=>{
+            UIHelp.showOverTip(1,'做对啦！你真棒！试试其他办法吧～','再试试',()=>{
                 AudioManager.getInstance().playSound('做对啦！你真棒！试试其他办法吧~', false);
             },()=>{
                 this.backButtonCallBack();
@@ -902,7 +907,7 @@ s
             });
         }else if(this.types == 2) {
             AudioManager.getInstance().stopAll()
-            UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧','查看分类结果',()=>{ 
+            UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧','看看结果',()=>{ 
                 AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             },()=>{
                 this.backButtonCallBack(); 
@@ -1083,17 +1088,17 @@ s
                         this.checkSize(this.checkpoint);
                         if(this.answer1.length) {
                             let node = cc.instantiate(this.bigNode);
-                            this.setTag(node ,'figureSquare', 1);
+                            this.setTag(node ,'figureSquare', 1, -20);
                             this.AnswerBoardArr.push(node);
                         }
                         if(this.answer2.length) {
                             let node = cc.instantiate(this.bigNode);
-                            this.setTag(node, 'figureSquare', 0.8);
+                            this.setTag(node, 'figureSquare', 0.8, -40);
                             this.AnswerBoardArr.push(node);
                         }
                         if(this.answer3.length) {
                             let node = cc.instantiate(this.bigNode);
-                            this.setTag(node, 'figureSquare', 0.6);
+                            this.setTag(node, 'figureSquare', 0.6, -60);
                             this.AnswerBoardArr.push(node);
                         }
                         break;
@@ -1204,26 +1209,52 @@ s
         if(this.types == 1) {
             for(let j = 20 * (checkpoint - 1); j < 20 * checkpoint; j++) {
                 if(this.typeDataArr[j]) {
+                    let nodeParent = new cc.Node();
                     let node = new cc.Node();
                     let sprite = node.addComponent(cc.Sprite);
                     sprite.spriteFrame = this.sourceSFArr[j%20];
-                    this.ItemNodeArr.push(node);
+                    let nodeShadow = new cc.Node();
+                    let spriteShadow = nodeShadow.addComponent(cc.Sprite)
+                    spriteShadow.spriteFrame = this.sourceSFArr[j%20];
+                    nodeShadow.color = cc.color(0,0,0);
+                    nodeShadow.opacity = 100;
+                    nodeShadow.setPosition(cc.v2(-10, -10))
+                    node.zIndex = 1
+                    nodeShadow.zIndex = 0
+                    node.name = 'node'
+                    nodeShadow.name = 'nodeShadow'
+                    nodeParent.addChild(node)
+                    nodeParent.addChild(nodeShadow)
+                    this.ItemNodeArr.push(nodeParent);
                 } 
             }
         }else if(this.types == 2) {
             for(let i = 27 * (checkpoint - 1); i < 27 * checkpoint; i++) {
                 if(this.typeDataArr[i]) {
+                    let nodeParent = new cc.Node();
                     let node = new cc.Node();
                     let sprite = node.addComponent(cc.Sprite);
                     let index = i % 27 + 1;
                     sprite.spriteFrame = this.sourceSFArr[Math.ceil(index/3) - 1];
+                    let nodeShadow = new cc.Node();
+                    let spriteShadow = nodeShadow.addComponent(cc.Sprite)
+                    spriteShadow.spriteFrame = this.sourceSFArr[Math.ceil(index/3) - 1];
+                    nodeShadow.color = cc.color(0,0,0);
+                    nodeShadow.setPosition(cc.v2(-10, -10))
+                    nodeShadow.opacity = 100
+                    node.zIndex = 1
+                    nodeShadow.zIndex = 0
+                    node.name = 'node'
+                    nodeShadow.name = 'nodeShadow'
+                    nodeParent.addChild(node)
+                    nodeParent.addChild(nodeShadow)
                     let size = index % 3;
                     if(size == 2) {
-                        node.scale = 0.8;
+                        nodeParent.scale = 0.8;
                     }else if(size == 0) {
-                        node.scale = 0.6;
+                        nodeParent.scale = 0.6;
                     }
-                    this.ItemNodeArr.push(node);
+                    this.ItemNodeArr.push(nodeParent);
                 }
             }
         }
@@ -1258,7 +1289,9 @@ s
         let upStartX = -(upNum - 1) * space / 2 - 50;
         let downStartX = -(downNum - 1) * space / 2 - 50;
         AudioManager.getInstance().playSound('sfx_ciopn', false,1,null, ()=>{
-            AudioManager.getInstance().playSound('把这些物品分类整理，并拖到对应区域内。', false);
+            if(this.checkpoint == 1) {
+                AudioManager.getInstance().playSound('把这些物品分类整理，并拖到对应区域内。', false);
+            }
         });
         if(upNum == downNum) {
             for(let i = 0; i < num; i++) {

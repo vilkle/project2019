@@ -44,7 +44,7 @@
                 "children": [
                   "scene"
                 ],
-                "height": 695.984375,
+                "height": 637,
                 "type": "panel",
                 "width": 1407.984375
               },
@@ -54,7 +54,7 @@
                   "console",
                   "timeline"
                 ],
-                "height": 277,
+                "height": 336,
                 "type": "panel",
                 "width": 1407.984375
               }
@@ -101,8 +101,8 @@
       "height": 551
     },
     "builder": {
-      "x": -1158,
-      "y": 26,
+      "x": -1393,
+      "y": -4,
       "width": 671,
       "height": 722
     }

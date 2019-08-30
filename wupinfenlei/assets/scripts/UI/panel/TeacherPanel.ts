@@ -15,6 +15,10 @@ const { ccclass, property } = cc._decorator;
 export default class TeacherPanel extends BaseUI {
     protected static className = "TeacherPanel";
 
+    @property(cc.Material)
+    private oriMaterial: cc.Material = null
+    @property(cc.Material)
+    private grayMaterial: cc.Material = null
     @property(cc.Prefab)
     private autoOptionNode : cc.Prefab = null;
     @property(cc.Prefab)
@@ -277,12 +281,12 @@ export default class TeacherPanel extends BaseUI {
                 if(alreadyCheck >= 10) {
                     for(let i = typeNum * checkPointNum; i < typeNum * (checkPointNum + 1); i++) {
                         if(this.toggleArr[i].isChecked == false) {
-                            this.imageArr[i].setState(1);
+                            this.imageArr[i].setMaterial(0, this.grayMaterial);
                         }
                     }
                 }else {
                     for(let i = typeNum * checkPointNum; i < typeNum * (checkPointNum + 1); i++) {
-                        this.imageArr[i].setState(0);
+                        this.imageArr[i].setMaterial(0, this.oriMaterial);
                     }
                 }
             });

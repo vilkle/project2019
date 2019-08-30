@@ -37,6 +37,8 @@ var TeacherPanel = /** @class */ (function (_super) {
     __extends(TeacherPanel, _super);
     function TeacherPanel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.oriMaterial = null;
+        _this.grayMaterial = null;
         _this.autoOptionNode = null;
         _this.manualOptionNode = null;
         _this.cookieNode = null;
@@ -281,13 +283,13 @@ var TeacherPanel = /** @class */ (function (_super) {
                 if (alreadyCheck >= 10) {
                     for (var i_1 = typeNum * checkPointNum; i_1 < typeNum * (checkPointNum + 1); i_1++) {
                         if (_this.toggleArr[i_1].isChecked == false) {
-                            _this.imageArr[i_1].setState(1);
+                            _this.imageArr[i_1].setMaterial(0, _this.grayMaterial);
                         }
                     }
                 }
                 else {
                     for (var i_2 = typeNum * checkPointNum; i_2 < typeNum * (checkPointNum + 1); i_2++) {
-                        _this.imageArr[i_2].setState(0);
+                        _this.imageArr[i_2].setMaterial(0, _this.oriMaterial);
                     }
                 }
             });
@@ -613,6 +615,12 @@ var TeacherPanel = /** @class */ (function (_super) {
         }.bind(this), JSON.stringify(jsonData));
     };
     TeacherPanel.className = "TeacherPanel";
+    __decorate([
+        property(cc.Material)
+    ], TeacherPanel.prototype, "oriMaterial", void 0);
+    __decorate([
+        property(cc.Material)
+    ], TeacherPanel.prototype, "grayMaterial", void 0);
     __decorate([
         property(cc.Prefab)
     ], TeacherPanel.prototype, "autoOptionNode", void 0);

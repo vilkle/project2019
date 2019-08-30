@@ -364,12 +364,16 @@ var GamePanel = /** @class */ (function (_super) {
         this.createItem(checkpoint);
         this.postItem();
     };
-    GamePanel.prototype.setTag = function (item, tagName, size) {
+    GamePanel.prototype.setTag = function (item, tagName, size, rotation) {
         var big = item.getChildByName('bigTag').getChildByName(tagName);
         var small = item.getChildByName('smallTag').getChildByName(tagName);
         if (size) {
             big.setScale(size);
             small.setScale(size);
+        }
+        if (rotation) {
+            big.angle = rotation;
+            small.angle = rotation;
         }
         if (big) {
             big.active = true;
@@ -652,13 +656,14 @@ var GamePanel = /** @class */ (function (_super) {
             this.ItemNodeArr[i].off(cc.Node.EventType.TOUCH_MOVE);
             this.ItemNodeArr[i].off(cc.Node.EventType.TOUCH_END);
             this.ItemNodeArr[i].off(cc.Node.EventType.TOUCH_CANCEL);
-            this.ItemNodeArr[i].opacity = 255;
+            this.ItemNodeArr[i].parent.opacity = 255;
         }
     };
     GamePanel.prototype.addListenerOnItem = function () {
         var _this = this;
         var _loop_7 = function (i) {
-            this_6.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_START, function (e) {
+            cc.log(this_6.ItemNodeArr[i]);
+            this_6.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_START, function (e) {
                 if (_this.touchTarget) {
                     return;
                 }
@@ -666,14 +671,14 @@ var GamePanel = /** @class */ (function (_super) {
                 _this.touchTarget = e.target;
                 _this.touchNode.active = true;
                 _this.touchNode.zIndex = 100;
-                e.target.opacity = 0;
+                e.target.parent.opacity = 0;
                 var point = _this.node.convertToNodeSpaceAR(e.currentTouch._point);
                 _this.touchNode.setPosition(point);
-                _this.touchNode.setScale(e.target.scale + 0.1);
+                _this.touchNode.setScale(e.target.parent.scale + 0.1);
                 _this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame;
-                _this.touchNode.scale = e.target.scale - 0.1;
+                _this.touchNode.scale = e.target.parent.scale - 0.1;
             });
-            this_6.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_MOVE, function (e) {
+            this_6.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_MOVE, function (e) {
                 if (_this.touchTarget != e.target) {
                     return;
                 }
@@ -701,16 +706,16 @@ var GamePanel = /** @class */ (function (_super) {
                     }
                 }
             });
-            this_6.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_END, function (e) {
+            this_6.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_END, function (e) {
                 if (_this.touchTarget != e.target) {
                     return;
                 }
                 AudioManager_1.AudioManager.getInstance().playSound('sfx_buttn', false);
                 _this.touchNode.active = false;
-                e.target.opacity = 255;
+                e.target.parent.opacity = 255;
                 _this.touchTarget = null;
             });
-            this_6.ItemNodeArr[i].on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
+            this_6.ItemNodeArr[i].getChildByName('node').on(cc.Node.EventType.TOUCH_CANCEL, function (e) {
                 if (_this.touchTarget != e.target) {
                     return;
                 }
@@ -720,10 +725,10 @@ var GamePanel = /** @class */ (function (_super) {
                     if (_this.AnswerBoardArr[0].getChildByName('bigTag').getBoundingBox().contains(_this.AnswerBoardArr[0].convertToNodeSpaceAR(e.currentTouch._point))) {
                         if (_this.answerArr[0].indexOf(_this.answer[i]) != -1) {
                             _this.AnswerBoardArr[0].getChildByName('answerNode').children[_this.player1.length].getComponent(cc.Sprite).spriteFrame = _this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            _this.AnswerBoardArr[0].getChildByName('answerNode').children[_this.player1.length].setScale(e.target.scale);
+                            _this.AnswerBoardArr[0].getChildByName('answerNode').children[_this.player1.length].setScale(e.target.parent.scale);
                             if (_this.types == 2) {
                                 _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer1').children[_this.player1.length].getComponent(cc.Sprite).spriteFrame = _this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                                _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer1').children[_this.player1.length].setScale(e.target.scale / 2);
+                                _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer1').children[_this.player1.length].setScale(e.target.parent.scale / 2);
                             }
                             _this.player1.push(_this.answer[i]);
                             _this.touchNode.active = false;
@@ -734,7 +739,7 @@ var GamePanel = /** @class */ (function (_super) {
                                 AudioManager_1.AudioManager.getInstance().playSound('这好像不是动物哦~', false);
                             }
                             _this.touchNode.active = false;
-                            e.target.opacity = 255;
+                            e.target.parent.opacity = 255;
                         }
                         _this.touchTarget = null;
                         _this.eventvalue.levelData[_this.checkpoint - 1].answer[0] = _this.answerArr[0];
@@ -748,10 +753,10 @@ var GamePanel = /** @class */ (function (_super) {
                     if (_this.AnswerBoardArr[1].getChildByName('bigTag').getBoundingBox().contains(_this.AnswerBoardArr[1].convertToNodeSpaceAR(e.currentTouch._point))) {
                         if (_this.answerArr[1].indexOf(_this.answer[i]) != -1) {
                             _this.AnswerBoardArr[1].getChildByName('answerNode').children[_this.player2.length].getComponent(cc.Sprite).spriteFrame = _this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            _this.AnswerBoardArr[1].getChildByName('answerNode').children[_this.player2.length].setScale(e.target.scale);
+                            _this.AnswerBoardArr[1].getChildByName('answerNode').children[_this.player2.length].setScale(e.target.parent.scale);
                             if (_this.types == 2) {
                                 _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer2').children[_this.player2.length].getComponent(cc.Sprite).spriteFrame = _this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                                _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer2').children[_this.player2.length].setScale(e.target.scale / 2);
+                                _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer2').children[_this.player2.length].setScale(e.target.parent.scale / 2);
                             }
                             _this.player2.push(_this.answer[i]);
                             _this.touchNode.active = false;
@@ -762,7 +767,7 @@ var GamePanel = /** @class */ (function (_super) {
                                 AudioManager_1.AudioManager.getInstance().playSound('这好像不是食物哦~', false);
                             }
                             _this.touchNode.active = false;
-                            e.target.opacity = 255;
+                            e.target.parent.opacity = 255;
                         }
                         _this.touchTarget = null;
                         _this.eventvalue.levelData[_this.checkpoint - 1].answer[1] = _this.answerArr[1];
@@ -776,10 +781,10 @@ var GamePanel = /** @class */ (function (_super) {
                     if (_this.AnswerBoardArr[2].getChildByName('bigTag').getBoundingBox().contains(_this.AnswerBoardArr[2].convertToNodeSpaceAR(e.currentTouch._point))) {
                         if (_this.answerArr[2].indexOf(_this.answer[i]) != -1) {
                             _this.AnswerBoardArr[2].getChildByName('answerNode').children[_this.player3.length].getComponent(cc.Sprite).spriteFrame = _this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            _this.AnswerBoardArr[2].getChildByName('answerNode').children[_this.player3.length].setScale(e.target.scale);
+                            _this.AnswerBoardArr[2].getChildByName('answerNode').children[_this.player3.length].setScale(e.target.parent.scale);
                             if (_this.types == 2) {
                                 _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer3').children[_this.player3.length].getComponent(cc.Sprite).spriteFrame = _this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                                _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer3').children[_this.player3.length].setScale(e.target.scale / 2);
+                                _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer3').children[_this.player3.length].setScale(e.target.parent.scale / 2);
                             }
                             _this.player3.push(_this.answer[i]);
                             _this.touchNode.active = false;
@@ -790,7 +795,7 @@ var GamePanel = /** @class */ (function (_super) {
                                 AudioManager_1.AudioManager.getInstance().playSound('这好像不是文具哦~', false);
                             }
                             _this.touchNode.active = false;
-                            e.target.opacity = 255;
+                            e.target.parent.opacity = 255;
                         }
                         _this.touchTarget = null;
                         _this.eventvalue.levelData[_this.checkpoint - 1].answer[2] = _this.answerArr[2];
@@ -804,10 +809,10 @@ var GamePanel = /** @class */ (function (_super) {
                     if (_this.AnswerBoardArr[3].getChildByName('bigTag').getBoundingBox().contains(_this.AnswerBoardArr[3].convertToNodeSpaceAR(e.currentTouch._point))) {
                         if (_this.answerArr[3].indexOf(_this.answer[i]) != -1) {
                             _this.AnswerBoardArr[3].getChildByName('answerNode').children[_this.player4.length].getComponent(cc.Sprite).spriteFrame = _this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                            _this.AnswerBoardArr[3].getChildByName('answerNode').children[_this.player4.length].setScale(e.target.scale);
+                            _this.AnswerBoardArr[3].getChildByName('answerNode').children[_this.player4.length].setScale(e.target.parent.scale);
                             if (_this.types == 2) {
                                 _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer3').children[_this.player3.length].getComponent(cc.Sprite).spriteFrame = _this.touchNode.getComponent(cc.Sprite).spriteFrame;
-                                _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer3').children[_this.player3.length].setScale(e.target.scale / 2);
+                                _this.selectNode.children[_this.selectType - 1].getChildByName('bubble').getChildByName('answer3').children[_this.player3.length].setScale(e.target.parent.scale / 2);
                             }
                             _this.player4.push(_this.answer[i]);
                             _this.touchNode.active = false;
@@ -818,7 +823,7 @@ var GamePanel = /** @class */ (function (_super) {
                                 AudioManager_1.AudioManager.getInstance().playSound('这好像不是衣服哦~', false);
                             }
                             _this.touchNode.active = false;
-                            e.target.opacity = 255;
+                            e.target.parent.opacity = 255;
                         }
                         _this.touchTarget = null;
                         _this.eventvalue.levelData[_this.checkpoint - 1].answer[3] = _this.answerArr[3];
@@ -830,7 +835,7 @@ var GamePanel = /** @class */ (function (_super) {
                 }
                 if (rightNum == 0) {
                     _this.touchNode.active = false;
-                    e.target.opacity = 255;
+                    e.target.parent.opacity = 255;
                     _this.touchTarget = null;
                 }
                 if (_this.isSuccess()) {
@@ -901,7 +906,7 @@ var GamePanel = /** @class */ (function (_super) {
         }
         else if (this.types == 2) {
             AudioManager_1.AudioManager.getInstance().stopAll();
-            UIHelp_1.UIHelp.showOverTip(1, '做对啦！你真棒！试试其他办法吧～', '试试其他办法', function () {
+            UIHelp_1.UIHelp.showOverTip(1, '做对啦！你真棒！试试其他办法吧～', '再试试', function () {
                 AudioManager_1.AudioManager.getInstance().playSound('做对啦！你真棒！试试其他办法吧~', false);
             }, function () {
                 _this.backButtonCallBack();
@@ -949,7 +954,7 @@ var GamePanel = /** @class */ (function (_super) {
         }
         else if (this.types == 2) {
             AudioManager_1.AudioManager.getInstance().stopAll();
-            UIHelp_1.UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧', '查看分类结果', function () {
+            UIHelp_1.UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧', '看看结果', function () {
                 AudioManager_1.AudioManager.getInstance().playSound('闯关成功，你真棒~', false);
             }, function () {
                 _this.backButtonCallBack();
@@ -1148,17 +1153,17 @@ var GamePanel = /** @class */ (function (_super) {
                         this.checkSize(this.checkpoint);
                         if (this.answer1.length) {
                             var node = cc.instantiate(this.bigNode);
-                            this.setTag(node, 'figureSquare', 1);
+                            this.setTag(node, 'figureSquare', 1, -20);
                             this.AnswerBoardArr.push(node);
                         }
                         if (this.answer2.length) {
                             var node = cc.instantiate(this.bigNode);
-                            this.setTag(node, 'figureSquare', 0.8);
+                            this.setTag(node, 'figureSquare', 0.8, -40);
                             this.AnswerBoardArr.push(node);
                         }
                         if (this.answer3.length) {
                             var node = cc.instantiate(this.bigNode);
-                            this.setTag(node, 'figureSquare', 0.6);
+                            this.setTag(node, 'figureSquare', 0.6, -60);
                             this.AnswerBoardArr.push(node);
                         }
                         break;
@@ -1271,28 +1276,54 @@ var GamePanel = /** @class */ (function (_super) {
         if (this.types == 1) {
             for (var j = 20 * (checkpoint - 1); j < 20 * checkpoint; j++) {
                 if (this.typeDataArr[j]) {
+                    var nodeParent = new cc.Node();
                     var node = new cc.Node();
                     var sprite = node.addComponent(cc.Sprite);
                     sprite.spriteFrame = this.sourceSFArr[j % 20];
-                    this.ItemNodeArr.push(node);
+                    var nodeShadow = new cc.Node();
+                    var spriteShadow = nodeShadow.addComponent(cc.Sprite);
+                    spriteShadow.spriteFrame = this.sourceSFArr[j % 20];
+                    nodeShadow.color = cc.color(0, 0, 0);
+                    nodeShadow.opacity = 100;
+                    nodeShadow.setPosition(cc.v2(-10, -10));
+                    node.zIndex = 1;
+                    nodeShadow.zIndex = 0;
+                    node.name = 'node';
+                    nodeShadow.name = 'nodeShadow';
+                    nodeParent.addChild(node);
+                    nodeParent.addChild(nodeShadow);
+                    this.ItemNodeArr.push(nodeParent);
                 }
             }
         }
         else if (this.types == 2) {
             for (var i = 27 * (checkpoint - 1); i < 27 * checkpoint; i++) {
                 if (this.typeDataArr[i]) {
+                    var nodeParent = new cc.Node();
                     var node = new cc.Node();
                     var sprite = node.addComponent(cc.Sprite);
                     var index = i % 27 + 1;
                     sprite.spriteFrame = this.sourceSFArr[Math.ceil(index / 3) - 1];
+                    var nodeShadow = new cc.Node();
+                    var spriteShadow = nodeShadow.addComponent(cc.Sprite);
+                    spriteShadow.spriteFrame = this.sourceSFArr[Math.ceil(index / 3) - 1];
+                    nodeShadow.color = cc.color(0, 0, 0);
+                    nodeShadow.setPosition(cc.v2(-10, -10));
+                    nodeShadow.opacity = 100;
+                    node.zIndex = 1;
+                    nodeShadow.zIndex = 0;
+                    node.name = 'node';
+                    nodeShadow.name = 'nodeShadow';
+                    nodeParent.addChild(node);
+                    nodeParent.addChild(nodeShadow);
                     var size = index % 3;
                     if (size == 2) {
-                        node.scale = 0.8;
+                        nodeParent.scale = 0.8;
                     }
                     else if (size == 0) {
-                        node.scale = 0.6;
+                        nodeParent.scale = 0.6;
                     }
-                    this.ItemNodeArr.push(node);
+                    this.ItemNodeArr.push(nodeParent);
                 }
             }
         }
@@ -1331,7 +1362,9 @@ var GamePanel = /** @class */ (function (_super) {
         var upStartX = -(upNum - 1) * space / 2 - 50;
         var downStartX = -(downNum - 1) * space / 2 - 50;
         AudioManager_1.AudioManager.getInstance().playSound('sfx_ciopn', false, 1, null, function () {
-            AudioManager_1.AudioManager.getInstance().playSound('把这些物品分类整理，并拖到对应区域内。', false);
+            if (_this.checkpoint == 1) {
+                AudioManager_1.AudioManager.getInstance().playSound('把这些物品分类整理，并拖到对应区域内。', false);
+            }
         });
         if (upNum == downNum) {
             var _loop_10 = function (i) {
