@@ -1,70 +1,296 @@
-2019-08-30T02:02:07.474Z - normal: Load ~/.CocosCreator/settings.json
-2019-08-30T02:02:07.548Z - normal: Initializing Asset Database
-2019-08-30T02:02:07.552Z - normal: checking language setting...
-2019-08-30T02:02:07.552Z - normal: Language: zh
-2019-08-30T02:02:08.421Z - success: preview server running at http://localhost:7456
-2019-08-30T02:02:08.471Z - success: protocol editor-framework registered
-2019-08-30T02:02:08.471Z - success: protocol app registered
-2019-08-30T02:02:08.471Z - success: protocol theme registered
-2019-08-30T02:02:08.471Z - success: protocol packages registered
-2019-08-30T02:02:08.471Z - success: protocol uuid registerred
-2019-08-30T02:02:08.472Z - success: protocol db registerred
-2019-08-30T02:02:08.472Z - success: protocol thumbnail registerred
-2019-08-30T02:02:08.472Z - success: protocol unpack registerred
-2019-08-30T02:02:08.472Z - success: protocol disable-commonjs registerred
-2019-08-30T02:02:08.581Z - normal: connected!
-2019-08-30T02:02:08.583Z - normal: Check project /Users/xes/Desktop/hub/wupinbianhuan
-2019-08-30T02:02:08.584Z - normal: Initializing project /Users/xes/Desktop/hub/wupinbianhuan
-2019-08-30T02:02:09.011Z - normal: Initializing Cocos2d
-2019-08-30T02:02:09.829Z - normal: Initializing engine extends
-2019-08-30T02:02:09.919Z - success: asset-db-debugger loaded
-2019-08-30T02:02:09.921Z - success: baidu-adapter loaded
-2019-08-30T02:02:09.922Z - success: color-picker loaded
-2019-08-30T02:02:10.029Z - success: fb-audience-network loaded
-2019-08-30T02:02:10.091Z - success: fb-live-stream loaded
-2019-08-30T02:02:10.094Z - success: google-play-instant loaded
-2019-08-30T02:02:10.100Z - success: huawei-runtime loaded
-2019-08-30T02:02:10.367Z - success: cpk-publish loaded
-2019-08-30T02:02:10.368Z - success: jsb-adapter loaded
-2019-08-30T02:02:10.373Z - success: oppo-runtime loaded
-2019-08-30T02:02:10.391Z - success: package-manager loaded
-2019-08-30T02:02:10.529Z - success: qqplay-adapter loaded
-2019-08-30T02:02:10.531Z - success: runtime-dev-tools loaded
-2019-08-30T02:02:10.550Z - success: sdkbox loaded
-2019-08-30T02:02:10.570Z - success: tester loaded
-2019-08-30T02:02:10.590Z - success: ui-grid loaded
-2019-08-30T02:02:10.607Z - success: ui-kit-preview-extra loaded
-2019-08-30T02:02:10.627Z - success: ui-kit-preview loaded
-2019-08-30T02:02:10.645Z - success: ui-kit loaded
-2019-08-30T02:02:10.662Z - success: ui-tree loaded
-2019-08-30T02:02:10.668Z - success: vivo-runtime loaded
-2019-08-30T02:02:10.669Z - success: weapp-adapter loaded
-2019-08-30T02:02:10.670Z - success: xiaomi-adapter loaded
-2019-08-30T02:02:10.729Z - success: assets loaded
-2019-08-30T02:02:10.749Z - success: builder loaded
-2019-08-30T02:02:11.078Z - success: cocos-services loaded
-2019-08-30T02:02:11.099Z - success: console loaded
-2019-08-30T02:02:11.143Z - success: fb-instant-games loaded
-2019-08-30T02:02:11.161Z - success: game-window loaded
-2019-08-30T02:02:11.162Z - success: google-instant-games loaded
-2019-08-30T02:02:11.186Z - success: hierarchy loaded
-2019-08-30T02:02:11.206Z - success: inspector loaded
-2019-08-30T02:02:11.208Z - success: keystore loaded
-2019-08-30T02:02:11.230Z - success: node-library loaded
-2019-08-30T02:02:11.231Z - success: package-asset loaded
-2019-08-30T02:02:11.233Z - success: preferences loaded
-2019-08-30T02:02:11.251Z - success: project-exporter loaded
-2019-08-30T02:02:11.271Z - success: project-importer loaded
-2019-08-30T02:02:11.327Z - success: project-settings loaded
-2019-08-30T02:02:11.345Z - success: scene loaded
-2019-08-30T02:02:11.347Z - success: simulator-debugger loaded
-2019-08-30T02:02:11.349Z - success: sprite-editor loaded
-2019-08-30T02:02:11.370Z - success: store loaded
-2019-08-30T02:02:11.394Z - success: timeline loaded
-2019-08-30T02:02:11.400Z - success: xiaomi-runtime loaded
-2019-08-30T02:02:11.425Z - success: auto_deploy loaded
-2019-08-30T02:02:13.085Z - info: Cocos Services load base data!
-2019-08-30T02:02:18.396Z - normal: Loading packages
-2019-08-30T02:02:18.401Z - normal: Watching packages
-2019-08-30T02:02:18.534Z - normal: Run Application
-2019-08-30T02:10:17.451Z - info: shutdown preview server
+2019-09-01T04:20:12.284Z - normal: Load ~/.CocosCreator/settings.json
+2019-09-01T04:20:13.472Z - normal: Initializing Asset Database
+2019-09-01T04:20:13.472Z - normal: checking language setting...
+2019-09-01T04:20:13.472Z - normal: Language: zh
+2019-09-01T04:20:14.394Z - success: preview server running at http://localhost:7456
+2019-09-01T04:20:14.394Z - success: protocol editor-framework registered
+2019-09-01T04:20:14.394Z - success: protocol app registered
+2019-09-01T04:20:14.394Z - success: protocol theme registered
+2019-09-01T04:20:14.394Z - success: protocol packages registered
+2019-09-01T04:20:14.394Z - success: protocol uuid registerred
+2019-09-01T04:20:14.394Z - success: protocol db registerred
+2019-09-01T04:20:14.394Z - success: protocol thumbnail registerred
+2019-09-01T04:20:14.394Z - success: protocol unpack registerred
+2019-09-01T04:20:14.394Z - success: protocol disable-commonjs registerred
+2019-09-01T04:20:14.488Z - normal: connected!
+2019-09-01T04:20:14.488Z - normal: Check project C:\Users\machao\Desktop\hub\wupinbianhuan
+2019-09-01T04:20:14.488Z - normal: Initializing project C:\Users\machao\Desktop\hub\wupinbianhuan
+2019-09-01T04:20:15.066Z - normal: Initializing Cocos2d
+2019-09-01T04:20:16.206Z - normal: Initializing engine extends
+2019-09-01T04:20:16.238Z - success: asset-db-debugger loaded
+2019-09-01T04:20:16.238Z - success: baidu-adapter loaded
+2019-09-01T04:20:16.238Z - success: color-picker loaded
+2019-09-01T04:20:16.347Z - success: fb-audience-network loaded
+2019-09-01T04:20:16.425Z - success: fb-live-stream loaded
+2019-09-01T04:20:16.425Z - success: google-play-instant loaded
+2019-09-01T04:20:16.441Z - success: huawei-runtime loaded
+2019-09-01T04:20:16.769Z - success: cpk-publish loaded
+2019-09-01T04:20:16.769Z - success: jsb-adapter loaded
+2019-09-01T04:20:16.769Z - success: oppo-runtime loaded
+2019-09-01T04:20:16.785Z - success: package-manager loaded
+2019-09-01T04:20:16.941Z - success: qqplay-adapter loaded
+2019-09-01T04:20:16.941Z - success: runtime-dev-tools loaded
+2019-09-01T04:20:16.941Z - success: sdkbox loaded
+2019-09-01T04:20:16.941Z - success: tester loaded
+2019-09-01T04:20:16.956Z - success: ui-grid loaded
+2019-09-01T04:20:16.956Z - success: ui-kit-preview-extra loaded
+2019-09-01T04:20:16.956Z - success: ui-kit-preview loaded
+2019-09-01T04:20:16.956Z - success: ui-kit loaded
+2019-09-01T04:20:16.956Z - success: ui-tree loaded
+2019-09-01T04:20:16.972Z - success: vivo-runtime loaded
+2019-09-01T04:20:16.972Z - success: weapp-adapter loaded
+2019-09-01T04:20:16.972Z - success: xiaomi-adapter loaded
+2019-09-01T04:20:17.019Z - success: assets loaded
+2019-09-01T04:20:17.019Z - success: builder loaded
+2019-09-01T04:20:17.378Z - success: cocos-services loaded
+2019-09-01T04:20:17.378Z - success: console loaded
+2019-09-01T04:20:17.425Z - success: fb-instant-games loaded
+2019-09-01T04:20:17.425Z - success: game-window loaded
+2019-09-01T04:20:17.441Z - success: google-instant-games loaded
+2019-09-01T04:20:17.441Z - success: hierarchy loaded
+2019-09-01T04:20:17.441Z - success: inspector loaded
+2019-09-01T04:20:17.441Z - success: keystore loaded
+2019-09-01T04:20:17.456Z - success: node-library loaded
+2019-09-01T04:20:17.456Z - success: package-asset loaded
+2019-09-01T04:20:17.456Z - success: preferences loaded
+2019-09-01T04:20:17.456Z - success: project-exporter loaded
+2019-09-01T04:20:17.456Z - success: project-importer loaded
+2019-09-01T04:20:17.472Z - success: project-settings loaded
+2019-09-01T04:20:17.472Z - success: scene loaded
+2019-09-01T04:20:17.472Z - success: simulator-debugger loaded
+2019-09-01T04:20:17.472Z - success: sprite-editor loaded
+2019-09-01T04:20:17.488Z - success: store loaded
+2019-09-01T04:20:17.488Z - success: timeline loaded
+2019-09-01T04:20:17.488Z - success: xiaomi-runtime loaded
+2019-09-01T04:20:17.503Z - success: auto_deploy loaded
+2019-09-01T04:20:19.234Z - info: Cocos Services load base data!
+2019-09-01T04:20:32.077Z - normal: Loading packages
+2019-09-01T04:20:32.088Z - normal: Watching packages
+2019-09-01T04:20:33.348Z - normal: Run Application
+2019-09-01T04:24:14.039Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "C:\\Users\\machao\\Desktop\\hub\\wupinbianhuan\\build",
+  "debug": false,
+  "dest": "C:\\Users\\machao\\Desktop\\hub\\wupinbianhuan\\build\\web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "EditBox",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket",
+    "Geom Utils",
+    "3D",
+    "3D Primitive",
+    "TypeScript Polyfill"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "gameFrame",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "C:\\Users\\machao\\Desktop\\hub\\wupinbianhuan",
+  "projectName": "gameFrame",
+  "debugBuildWorker": false
+}
+2019-09-01T04:24:14.048Z - normal: Building C:\Users\machao\Desktop\hub\wupinbianhuan
+2019-09-01T04:24:14.048Z - normal: Destination C:\Users\machao\Desktop\hub\wupinbianhuan\build\web-mobile
+2019-09-01T04:24:14.273Z - normal: Delete C:\Users\machao\Desktop\hub\wupinbianhuan\build\web-mobile\subpackages/**/*,C:\Users\machao\Desktop\hub\wupinbianhuan\build\web-mobile\**\*
+2019-09-01T04:24:55.593Z - normal: Start building assets
+2019-09-01T04:24:55.594Z - normal: Start spawn build-worker
+2019-09-01T04:24:56.740Z - normal: Finish spawn build-worker
+2019-09-01T04:24:56.740Z - normal: Start init build-worker
+2019-09-01T04:25:01.436Z - normal: Finish init build-worker
+2019-09-01T04:25:01.436Z - normal: Start build-assets in worker
+2019-09-01T04:25:18.372Z - normal: Finish build-assets in worker
+2019-09-01T04:25:18.383Z - normal: Finish building assets
+2019-09-01T04:25:18.459Z - normal: Start building plugin scripts
+2019-09-01T04:25:18.510Z - normal: Generating main.js from C:\CocosCreator_2.1.2\resources\static\build-templates\shares\main.js
+2019-09-01T04:25:18.533Z - normal: Generating html from C:\CocosCreator_2.1.2\resources\static\build-templates\web-mobile\template\index.html
+2019-09-01T04:25:19.260Z - normal: Built to "C:\Users\machao\Desktop\hub\wupinbianhuan\build\web-mobile" successfully
+2019-09-01T04:27:31.877Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "C:\\Users\\machao\\Desktop\\hub\\wupinbianhuan\\build",
+  "debug": false,
+  "dest": "C:\\Users\\machao\\Desktop\\hub\\wupinbianhuan\\build\\web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "excludedModules": [
+    "Canvas Renderer",
+    "Renderer Texture",
+    "Dynamic Atlas",
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "EditBox",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket",
+    "Geom Utils",
+    "3D",
+    "3D Primitive",
+    "TypeScript Polyfill"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
+  "template": "link",
+  "title": "gameFrame",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "auto",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "C:\\Users\\machao\\Desktop\\hub\\wupinbianhuan",
+  "projectName": "gameFrame",
+  "debugBuildWorker": false
+}
+2019-09-01T04:27:31.885Z - normal: Building C:\Users\machao\Desktop\hub\wupinbianhuan
+2019-09-01T04:27:31.885Z - normal: Destination C:\Users\machao\Desktop\hub\wupinbianhuan\build\web-mobile
+2019-09-01T04:27:31.888Z - normal: Delete C:\Users\machao\Desktop\hub\wupinbianhuan\build\web-mobile\subpackages/**/*,C:\Users\machao\Desktop\hub\wupinbianhuan\build\web-mobile\**\*
+2019-09-01T04:27:37.532Z - normal: Start building assets
+2019-09-01T04:27:37.532Z - normal: Start spawn build-worker
+2019-09-01T04:27:38.758Z - normal: Finish spawn build-worker
+2019-09-01T04:27:38.758Z - normal: Start init build-worker
+2019-09-01T04:27:43.625Z - normal: Finish init build-worker
+2019-09-01T04:27:43.625Z - normal: Start build-assets in worker
+2019-09-01T04:27:47.000Z - normal: Finish build-assets in worker
+2019-09-01T04:27:47.014Z - normal: Finish building assets
+2019-09-01T04:27:47.101Z - normal: Start building plugin scripts
+2019-09-01T04:27:47.113Z - normal: Generating main.js from C:\CocosCreator_2.1.2\resources\static\build-templates\shares\main.js
+2019-09-01T04:27:47.122Z - normal: Generating html from C:\CocosCreator_2.1.2\resources\static\build-templates\web-mobile\template\index.html
+2019-09-01T04:27:47.891Z - normal: Built to "C:\Users\machao\Desktop\hub\wupinbianhuan\build\web-mobile" successfully
+2019-09-01T04:28:23.034Z - info: shutdown preview server

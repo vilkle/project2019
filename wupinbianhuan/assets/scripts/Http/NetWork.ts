@@ -149,7 +149,11 @@ export class NetWork {
     }
 
     GetIsOnline() {
-        return this.GetRequest()["isOnline"];
+        let isOnline = 1;
+        if (this.GetRequest()["isOnline"]) {
+            isOnline = this.GetRequest()["isOnline"]
+        }
+        return isOnline;
     }
 
     LogJournalReport(errorType, data) {

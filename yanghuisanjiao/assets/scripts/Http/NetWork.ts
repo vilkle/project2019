@@ -149,7 +149,11 @@ export class NetWork {
     }
 
     GetIsOnline() {
-        return this.GetRequest()["isOnline"];
+        let isOnline = 1;
+        if (this.GetRequest()["isOnline"]) {
+            isOnline = this.GetRequest()["isOnline"]
+        }
+        return isOnline;
     }
 
     LogJournalReport(errorType, data) {
@@ -162,7 +166,7 @@ export class NetWork {
                 "&subject=" + this.GetRequest()["subject"] +
                 "&event=" + errorType +
                 "&identity=1" +
-                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: '此处需修改为自己的项目名字  拼音', data: data });
+                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: 'yanghuisanjiao', data: data });
         }
     }
 }

@@ -1,0 +1,48 @@
+
+cannon.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bubble_3
+  rotate: false
+  xy: 457, 99
+  size: 117, 117
+  orig: 117, 117
+  offset: 0, 0
+  index: -1
+bubble_333
+  rotate: false
+  xy: 695, 99
+  size: 117, 117
+  orig: 117, 117
+  offset: 0, 0
+  index: -1
+bubble_5
+  rotate: false
+  xy: 576, 99
+  size: 117, 117
+  orig: 117, 117
+  offset: 0, 0
+  index: -1
+bubble_7
+  rotate: false
+  xy: 338, 99
+  size: 117, 117
+  orig: 117, 117
+  offset: 0, 0
+  index: -1
+gun_1b
+  rotate: false
+  xy: 208, 99
+  size: 128, 117
+  orig: 128, 117
+  offset: 0, 0
+  index: -1
+gun_2
+  rotate: false
+  xy: 2, 2
+  size: 204, 214
+  orig: 204, 214
+  offset: 0, 0
+  index: -1

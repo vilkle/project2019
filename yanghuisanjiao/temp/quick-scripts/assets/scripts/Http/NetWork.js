@@ -1,5 +1,5 @@
 (function() {"use strict";var __module = CC_EDITOR ? module : {exports:{}};var __filename = 'preview-scripts/assets/scripts/Http/NetWork.js';var __require = CC_EDITOR ? function (request) {return cc.require(request, require);} : function (request) {return cc.require(request, __filename);};function __define (exports, require, module) {"use strict";
-cc._RF.push(module, 'd22fd6no05BYpK7fdZyiHuS', 'NetWork', __filename);
+cc._RF.push(module, '1b41b68gm5K0bX67blxW13T', 'NetWork', __filename);
 // scripts/Http/NetWork.ts
 
 "use strict";
@@ -116,7 +116,11 @@ var NetWork = /** @class */ (function () {
         return NetWork.theRequest;
     };
     NetWork.prototype.GetIsOnline = function () {
-        return this.GetRequest()["isOnline"];
+        var isOnline = 1;
+        if (this.GetRequest()["isOnline"]) {
+            isOnline = this.GetRequest()["isOnline"];
+        }
+        return isOnline;
     };
     NetWork.prototype.LogJournalReport = function (errorType, data) {
         if (ConstValue_1.ConstValue.IS_EDITIONS) {
@@ -128,7 +132,7 @@ var NetWork = /** @class */ (function () {
                 "&subject=" + this.GetRequest()["subject"] +
                 "&event=" + errorType +
                 "&identity=1" +
-                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue_1.ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: '此处需修改为自己的项目名字  拼音', data: data });
+                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue_1.ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: 'yanghuisanjiao', data: data });
         }
     };
     //判断是否是线上

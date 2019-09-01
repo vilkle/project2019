@@ -274,7 +274,12 @@
                     this.theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
                 }
             }
-            return this.theRequest["isOnline"];
+            
+            var isOnline = 1;
+            if (this.theRequest["isOnline"]) {
+                isOnline = this.theRequest["isOnline"]
+            }
+            return isOnline;
         }
         var isOnline = GetIsOnline() == 1; //1是线上  0是测试
         var isOwcr = location.protocol != 'owcr:' && location.protocol != 'file:';
