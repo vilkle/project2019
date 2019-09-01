@@ -134,8 +134,8 @@ export default class TeacherPanel extends BaseUI {
                 this.typeNull = ItemType.sexangle_black
                 break
             case 3:
-                this.type1 = ItemType.octagon_green
-                this.type2 = ItemType.octagon_yellow
+                this.type1 = ItemType.octagon_yellow
+                this.type2 = ItemType.octagon_green
                 this.arrow1 = ItemType.arrow_blue
                 this.arrow2 = ItemType.arrow_orange
                 this.arrowNull = ItemType.arrow_black
@@ -176,20 +176,37 @@ export default class TeacherPanel extends BaseUI {
                 this.ruleItemArr[i][j].getChildByName('sprite').active = false
             }
         }
-        this.setRuleDefault(0,0, this.type1)
-        this.setRuleDefault(1,2, this.type1) 
-        this.setRuleDefault(2,0, this.type1)
-        this.setRuleDefault(2,2, this.type1)
-        this.setRuleDefault(0,2, this.type2)
-        this.setRuleDefault(1,0, this.type2) 
-        this.setRuleDefault(3,0, this.type2)
-        this.setRuleDefault(3,2, this.type2)
-        this.setRuleDefault(0,1, this.arrow1)
-        this.setRuleDefault(1,1, this.arrow1) 
-        this.setRuleDefault(2,1, this.arrow2)
-        this.setRuleDefault(3,1, this.arrow2)
-        this.sameType = this.arrow2
-        this.diffType = this.arrow1
+        if(DaAnData.getInstance().figure == 1) {
+            this.setRuleDefault(0,0, this.type1)
+            this.setRuleDefault(1,2, this.type2) 
+            this.setRuleDefault(2,0, this.type1)
+            this.setRuleDefault(2,2, this.type2)
+            this.setRuleDefault(0,2, this.type1)
+            this.setRuleDefault(1,0, this.type2) 
+            this.setRuleDefault(3,0, this.type2)
+            this.setRuleDefault(3,2, this.type1)
+            this.setRuleDefault(0,1, this.arrow1)
+            this.setRuleDefault(1,1, this.arrow1) 
+            this.setRuleDefault(2,1, this.arrow2)
+            this.setRuleDefault(3,1, this.arrow2)
+            this.sameType = this.arrow1
+            this.diffType = this.arrow2
+        }else {
+            this.setRuleDefault(0,0, this.type1)
+            this.setRuleDefault(1,2, this.type1) 
+            this.setRuleDefault(2,0, this.type1)
+            this.setRuleDefault(2,2, this.type1)
+            this.setRuleDefault(0,2, this.type2)
+            this.setRuleDefault(1,0, this.type2) 
+            this.setRuleDefault(3,0, this.type2)
+            this.setRuleDefault(3,2, this.type2)
+            this.setRuleDefault(0,1, this.arrow1)
+            this.setRuleDefault(1,1, this.arrow1) 
+            this.setRuleDefault(2,1, this.arrow2)
+            this.setRuleDefault(3,1, this.arrow2)
+            this.sameType = this.arrow2
+            this.diffType = this.arrow1
+        }
     }
 
     defaultSubject( isTree: boolean) {
@@ -212,7 +229,13 @@ export default class TeacherPanel extends BaseUI {
                 }
             }
             this.setState(this.subjectItemArr[0][0], this.type2)
-            this.subjectDataArr[0][0] = this.type2
+            if(DaAnData.getInstance().figure == 1) {
+                this.subjectDataArr[0][0] = this.type1
+            }else  if(DaAnData.getInstance().figure == 2) {
+                this.subjectDataArr[0][0] = this.type2
+            }else  if(DaAnData.getInstance().figure == 3) {
+                this.subjectDataArr[0][0] = this.type1
+            }
             for(let i = 0; i < this.subjectItemArr.length; i++) {
                 for(let j = 0; j < this.subjectItemArr[i].length; j++) {
                     if(i%2 == 1) {
@@ -238,27 +261,29 @@ export default class TeacherPanel extends BaseUI {
                     }
                 }
             }
-            this.setSubjectDefault(0,0, this.type1)
-            this.setSubjectDefault(0,2, this.type1)
-            this.setSubjectDefault(1,2, this.type1)
-            this.setSubjectDefault(3,0, this.type1)
-            this.setSubjectDefault(3,8, this.type1)
-            this.setSubjectDefault(0,8, this.type2)
-            this.setSubjectDefault(1,0, this.type2)
-            this.setSubjectDefault(1,6, this.type2)
-            this.setSubjectDefault(2,2, this.type2)
-            this.setSubjectDefault(2,4, this.type2)
-            this.setSubjectDefault(0,1, this.arrow2)
-            this.setSubjectDefault(0,3, this.arrow2)
-            this.setSubjectDefault(2,5, this.arrow2)
-            this.setSubjectDefault(2,7, this.arrow2)
-            this.setSubjectDefault(3,1, this.arrow2)
-            this.setSubjectDefault(3,5, this.arrow2)
-            this.setSubjectDefault(0,5, this.arrow1)
-            this.setSubjectDefault(1,3, this.arrow1)
-            this.setSubjectDefault(1,7, this.arrow1)
-            this.setSubjectDefault(2,1, this.arrow1)
-            this.setSubjectDefault(3,7, this.arrow1)
+            if(DaAnData.getInstance().figure == 1) {
+                this.setSubjectDefault(0,0, this.type1)
+                this.setSubjectDefault(0,2, this.type1)
+                this.setSubjectDefault(1,2, this.type1)
+                this.setSubjectDefault(3,0, this.type1)
+                this.setSubjectDefault(3,8, this.type1)
+                this.setSubjectDefault(0,8, this.type2)
+                this.setSubjectDefault(1,0, this.type2)
+                this.setSubjectDefault(1,6, this.type2)
+                this.setSubjectDefault(2,2, this.type2)
+                this.setSubjectDefault(2,4, this.type2)
+                this.setSubjectDefault(0,1, this.arrow1)
+                this.setSubjectDefault(0,3, this.arrow1)
+                this.setSubjectDefault(2,5, this.arrow1)
+                this.setSubjectDefault(2,7, this.arrow1)
+                this.setSubjectDefault(3,1, this.arrow1)
+                this.setSubjectDefault(3,5, this.arrow1)
+                this.setSubjectDefault(0,5, this.arrow2)
+                this.setSubjectDefault(1,3, this.arrow2)
+                this.setSubjectDefault(1,7, this.arrow2)
+                this.setSubjectDefault(2,1, this.arrow2)
+                this.setSubjectDefault(3,7, this.arrow2)
+            }
         }
     }
 
@@ -313,7 +338,7 @@ export default class TeacherPanel extends BaseUI {
 
     }
 
-    nextType(type: ItemType): ItemType {
+    nextType(type: ItemType, isRule:boolean): ItemType {
         let highNum = Math.floor(type/3) * 3 + 3
         if(type%3 == 0) {
             highNum -= 3
@@ -322,6 +347,9 @@ export default class TeacherPanel extends BaseUI {
         let next = type + 1
         if(next > highNum) {
             next = lowNum
+        }
+        if(isRule && next == lowNum) {
+            next ++
         }
         return next
     }
@@ -441,7 +469,7 @@ export default class TeacherPanel extends BaseUI {
         }
         for(let i = 0; i < this.ruleItemArr.length; i++) {
             this.ruleItemArr[i][1].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
-                this.ruleDataArr[i][1] = this.nextType(this.ruleDataArr[i][1])
+                this.ruleDataArr[i][1] = this.nextType(this.ruleDataArr[i][1], true)
                 this.setState(this.ruleItemArr[i][1], this.ruleDataArr[i][1])
                 //相同排的同步变化
                 if(i==0) {
@@ -466,7 +494,7 @@ export default class TeacherPanel extends BaseUI {
         for(let i = 0; i < this.subjectItemArr.length; i++) {
             for(let j = 0; j < this.subjectItemArr[i].length; j++) {
                 this.subjectItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
-                    this.subjectDataArr[i][j] = this.nextType(this.subjectDataArr[i][j])
+                    this.subjectDataArr[i][j] = this.nextType(this.subjectDataArr[i][j], false)
                     this.setState(this.subjectItemArr[i][j], this.subjectDataArr[i][j]) 
                 })
             }
@@ -601,8 +629,8 @@ export default class TeacherPanel extends BaseUI {
                 break
             case 2:
                 DaAnData.getInstance().figure = 3
-                this.type1 = ItemType.octagon_green
-                this.type2 = ItemType.octagon_yellow
+                this.type1 = ItemType.octagon_yellow
+                this.type2 = ItemType.octagon_green
                 this.arrow1 = ItemType.arrow_blue
                 this.arrow2 = ItemType.arrow_orange
                 this.arrowNull = ItemType.arrow_black

@@ -133,8 +133,8 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.typeNull = ItemType_1.ItemType.sexangle_black;
                 break;
             case 3:
-                this.type1 = ItemType_1.ItemType.octagon_green;
-                this.type2 = ItemType_1.ItemType.octagon_yellow;
+                this.type1 = ItemType_1.ItemType.octagon_yellow;
+                this.type2 = ItemType_1.ItemType.octagon_green;
                 this.arrow1 = ItemType_1.ItemType.arrow_blue;
                 this.arrow2 = ItemType_1.ItemType.arrow_orange;
                 this.arrowNull = ItemType_1.ItemType.arrow_black;
@@ -171,20 +171,38 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.ruleItemArr[i][j].getChildByName('sprite').active = false;
             }
         }
-        this.setRuleDefault(0, 0, this.type1);
-        this.setRuleDefault(1, 2, this.type1);
-        this.setRuleDefault(2, 0, this.type1);
-        this.setRuleDefault(2, 2, this.type1);
-        this.setRuleDefault(0, 2, this.type2);
-        this.setRuleDefault(1, 0, this.type2);
-        this.setRuleDefault(3, 0, this.type2);
-        this.setRuleDefault(3, 2, this.type2);
-        this.setRuleDefault(0, 1, this.arrow1);
-        this.setRuleDefault(1, 1, this.arrow1);
-        this.setRuleDefault(2, 1, this.arrow2);
-        this.setRuleDefault(3, 1, this.arrow2);
-        this.sameType = this.arrow2;
-        this.diffType = this.arrow1;
+        if (DaAnData_1.DaAnData.getInstance().figure == 1) {
+            this.setRuleDefault(0, 0, this.type1);
+            this.setRuleDefault(1, 2, this.type2);
+            this.setRuleDefault(2, 0, this.type1);
+            this.setRuleDefault(2, 2, this.type2);
+            this.setRuleDefault(0, 2, this.type1);
+            this.setRuleDefault(1, 0, this.type2);
+            this.setRuleDefault(3, 0, this.type2);
+            this.setRuleDefault(3, 2, this.type1);
+            this.setRuleDefault(0, 1, this.arrow1);
+            this.setRuleDefault(1, 1, this.arrow1);
+            this.setRuleDefault(2, 1, this.arrow2);
+            this.setRuleDefault(3, 1, this.arrow2);
+            this.sameType = this.arrow1;
+            this.diffType = this.arrow2;
+        }
+        else {
+            this.setRuleDefault(0, 0, this.type1);
+            this.setRuleDefault(1, 2, this.type1);
+            this.setRuleDefault(2, 0, this.type1);
+            this.setRuleDefault(2, 2, this.type1);
+            this.setRuleDefault(0, 2, this.type2);
+            this.setRuleDefault(1, 0, this.type2);
+            this.setRuleDefault(3, 0, this.type2);
+            this.setRuleDefault(3, 2, this.type2);
+            this.setRuleDefault(0, 1, this.arrow1);
+            this.setRuleDefault(1, 1, this.arrow1);
+            this.setRuleDefault(2, 1, this.arrow2);
+            this.setRuleDefault(3, 1, this.arrow2);
+            this.sameType = this.arrow2;
+            this.diffType = this.arrow1;
+        }
     };
     TeacherPanel.prototype.defaultSubject = function (isTree) {
         for (var i = 0; i < this.subjectItemArr.length; i++) {
@@ -207,7 +225,15 @@ var TeacherPanel = /** @class */ (function (_super) {
                 }
             }
             this.setState(this.subjectItemArr[0][0], this.type2);
-            this.subjectDataArr[0][0] = this.type2;
+            if (DaAnData_1.DaAnData.getInstance().figure == 1) {
+                this.subjectDataArr[0][0] = this.type1;
+            }
+            else if (DaAnData_1.DaAnData.getInstance().figure == 2) {
+                this.subjectDataArr[0][0] = this.type2;
+            }
+            else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
+                this.subjectDataArr[0][0] = this.type1;
+            }
             for (var i = 0; i < this.subjectItemArr.length; i++) {
                 for (var j = 0; j < this.subjectItemArr[i].length; j++) {
                     if (i % 2 == 1) {
@@ -236,27 +262,29 @@ var TeacherPanel = /** @class */ (function (_super) {
                     }
                 }
             }
-            this.setSubjectDefault(0, 0, this.type1);
-            this.setSubjectDefault(0, 2, this.type1);
-            this.setSubjectDefault(1, 2, this.type1);
-            this.setSubjectDefault(3, 0, this.type1);
-            this.setSubjectDefault(3, 8, this.type1);
-            this.setSubjectDefault(0, 8, this.type2);
-            this.setSubjectDefault(1, 0, this.type2);
-            this.setSubjectDefault(1, 6, this.type2);
-            this.setSubjectDefault(2, 2, this.type2);
-            this.setSubjectDefault(2, 4, this.type2);
-            this.setSubjectDefault(0, 1, this.arrow2);
-            this.setSubjectDefault(0, 3, this.arrow2);
-            this.setSubjectDefault(2, 5, this.arrow2);
-            this.setSubjectDefault(2, 7, this.arrow2);
-            this.setSubjectDefault(3, 1, this.arrow2);
-            this.setSubjectDefault(3, 5, this.arrow2);
-            this.setSubjectDefault(0, 5, this.arrow1);
-            this.setSubjectDefault(1, 3, this.arrow1);
-            this.setSubjectDefault(1, 7, this.arrow1);
-            this.setSubjectDefault(2, 1, this.arrow1);
-            this.setSubjectDefault(3, 7, this.arrow1);
+            if (DaAnData_1.DaAnData.getInstance().figure == 1) {
+                this.setSubjectDefault(0, 0, this.type1);
+                this.setSubjectDefault(0, 2, this.type1);
+                this.setSubjectDefault(1, 2, this.type1);
+                this.setSubjectDefault(3, 0, this.type1);
+                this.setSubjectDefault(3, 8, this.type1);
+                this.setSubjectDefault(0, 8, this.type2);
+                this.setSubjectDefault(1, 0, this.type2);
+                this.setSubjectDefault(1, 6, this.type2);
+                this.setSubjectDefault(2, 2, this.type2);
+                this.setSubjectDefault(2, 4, this.type2);
+                this.setSubjectDefault(0, 1, this.arrow1);
+                this.setSubjectDefault(0, 3, this.arrow1);
+                this.setSubjectDefault(2, 5, this.arrow1);
+                this.setSubjectDefault(2, 7, this.arrow1);
+                this.setSubjectDefault(3, 1, this.arrow1);
+                this.setSubjectDefault(3, 5, this.arrow1);
+                this.setSubjectDefault(0, 5, this.arrow2);
+                this.setSubjectDefault(1, 3, this.arrow2);
+                this.setSubjectDefault(1, 7, this.arrow2);
+                this.setSubjectDefault(2, 1, this.arrow2);
+                this.setSubjectDefault(3, 7, this.arrow2);
+            }
         }
     };
     TeacherPanel.prototype.setRuleDefault = function (i, j, type) {
@@ -312,7 +340,7 @@ var TeacherPanel = /** @class */ (function (_super) {
             }
         }
     };
-    TeacherPanel.prototype.nextType = function (type) {
+    TeacherPanel.prototype.nextType = function (type, isRule) {
         var highNum = Math.floor(type / 3) * 3 + 3;
         if (type % 3 == 0) {
             highNum -= 3;
@@ -321,6 +349,9 @@ var TeacherPanel = /** @class */ (function (_super) {
         var next = type + 1;
         if (next > highNum) {
             next = lowNum;
+        }
+        if (isRule && next == lowNum) {
+            next++;
         }
         return next;
     };
@@ -438,7 +469,7 @@ var TeacherPanel = /** @class */ (function (_super) {
         }
         var _loop_1 = function (i) {
             this_1.ruleItemArr[i][1].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, function () {
-                _this.ruleDataArr[i][1] = _this.nextType(_this.ruleDataArr[i][1]);
+                _this.ruleDataArr[i][1] = _this.nextType(_this.ruleDataArr[i][1], true);
                 _this.setState(_this.ruleItemArr[i][1], _this.ruleDataArr[i][1]);
                 //相同排的同步变化
                 if (i == 0) {
@@ -470,7 +501,7 @@ var TeacherPanel = /** @class */ (function (_super) {
         var _loop_2 = function (i) {
             var _loop_3 = function (j) {
                 this_2.subjectItemArr[i][j].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, function () {
-                    _this.subjectDataArr[i][j] = _this.nextType(_this.subjectDataArr[i][j]);
+                    _this.subjectDataArr[i][j] = _this.nextType(_this.subjectDataArr[i][j], false);
                     _this.setState(_this.subjectItemArr[i][j], _this.subjectDataArr[i][j]);
                 });
             };
@@ -613,8 +644,8 @@ var TeacherPanel = /** @class */ (function (_super) {
                 break;
             case 2:
                 DaAnData_1.DaAnData.getInstance().figure = 3;
-                this.type1 = ItemType_1.ItemType.octagon_green;
-                this.type2 = ItemType_1.ItemType.octagon_yellow;
+                this.type1 = ItemType_1.ItemType.octagon_yellow;
+                this.type2 = ItemType_1.ItemType.octagon_green;
                 this.arrow1 = ItemType_1.ItemType.arrow_blue;
                 this.arrow2 = ItemType_1.ItemType.arrow_orange;
                 this.arrowNull = ItemType_1.ItemType.arrow_black;
