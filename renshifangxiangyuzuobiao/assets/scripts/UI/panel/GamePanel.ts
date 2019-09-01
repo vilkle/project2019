@@ -298,57 +298,56 @@ export default class GamePanel extends BaseUI {
             AudioManager.getInstance().stopAudio(this.audioIdArr[i])
         }
         this.audioIdArr = []
-        AudioManager.getInstance().stopAll()
         if(this.types == 1) {
             if(this.rightNum == 0) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('橘子没有在香蕉的上方哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('橘子没有在香蕉的上方哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 1) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('梨不是在香蕉的右上方哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('梨不是在香蕉的右上方哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 2) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 3) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 4) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 5) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 6) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 7) {
                 //AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false);
             }
         }else if(this.types == 2) {
             if(this.rightNum == 0) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('土豆没有在最中央的位置哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('土豆没有在最中央的位置哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 1) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('黄瓜没有在土豆的左面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('黄瓜没有在土豆的左面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 2) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('西红柿没有在黄瓜的右下方哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('西红柿没有在黄瓜的右下方哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 3) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('西兰花没有在西红柿的右面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('西兰花没有在西红柿的右面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 4) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('西兰花没有在南瓜的下面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('西兰花没有在南瓜的下面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 5) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('菠菜没有在土豆的上方哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('菠菜没有在土豆的上方哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 6) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('菠菜没有在白菜的右面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('菠菜没有在白菜的右面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 7) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('大蒜和菠菜相邻啦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('大蒜和菠菜相邻啦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 8) {}
         }else if(this.types == 3) {
             if(oriIndex == 0) {
@@ -375,7 +374,6 @@ export default class GamePanel extends BaseUI {
         if(this.erroring) {
             return
         }
-        AudioManager.getInstance().stopAll()
         if(this.types == 1) {
             this.fruitHand.active = false
             switch(rightNum) {
@@ -620,7 +618,6 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                 }
-                cc.log('overNum', this.overNum)
                 if(this.overNum == 0) {
                     for(let k = 0; k < this.gridNode.children.length; k++) {
                         if(this.types == 3) {
@@ -694,8 +691,8 @@ export default class GamePanel extends BaseUI {
                 if(!this.touchRight) {
                     if(this.types == 3) {
                         AudioManager.getInstance().playSound('sfx_kdclck', false);
-                        this.errAudio(i)
                         if(this.gridNode.children[index]) {
+                            this.errAudio(i)
                             this.gridNode.children[index].getChildByName('sprite').active = true
                             this.gridNode.children[index].getChildByName('sprite').getComponent(sp.Skeleton).skeletonData = this.touchNode.getComponent(sp.Skeleton).skeletonData
                             this.gridNode.children[index].getChildByName('sprite').getComponent(sp.Skeleton).setAnimation(0, 'idle', true)
@@ -718,8 +715,14 @@ export default class GamePanel extends BaseUI {
                                     });
                                 }
                             })
-                            this.gridNode.children[index].getChildByName('sprite').runAction(cc.sequence(cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), func));
+                            this.gridNode.children[index].getChildByName('sprite').runAction(cc.sequence(cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)),func));
                         }else{
+                            e.target.getComponent(sp.Skeleton).setAnimation(0, 'drag_end', false)
+                            e.target.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                                if(trackEntry.animation.name == 'drag_end') {
+                                    e.target.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+                                }
+                            });
                             e.target.opacity = 255;
                         }
                     }else {
@@ -736,8 +739,7 @@ export default class GamePanel extends BaseUI {
                                     this.gridNode.children[index].getChildByName('err').active = false;
                                     e.target.opacity = 255;
                                 })
-                                this.gridNode.children[index].getChildByName('err').runAction(cc.sequence(cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), func));
-                                AudioManager.getInstance().stopAll()
+                                this.gridNode.children[index].getChildByName('err').runAction(cc.sequence(cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)),func));
                                 this.errAudio(i, ()=>{})   
                             }else {
                                 e.target.opacity = 255;
