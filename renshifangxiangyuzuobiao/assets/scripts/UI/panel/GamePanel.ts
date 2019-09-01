@@ -40,6 +40,8 @@ export default class GamePanel extends BaseUI {
     private gridNode : cc.Node = null;
     private types : number = 0;
     private answerArr : number[] = [];
+    private answerArr1 : number[] = [];
+    private answerArr2 : number[] = [];
     private touchTarget : any = null;
     private touchRight : boolean = false;
     private overNum : number = 0;
@@ -88,6 +90,8 @@ export default class GamePanel extends BaseUI {
             this.parentNode = this.vegetableNode;
             this.touchNode = this.touchSprite;
             this.answerArr = [1,3,5,8,2,7,4,0,6];
+            this.answerArr1 = [1,3,7,8,2,4,5,0,6];
+            this.answerArr2 = [1,3,7,8,2,5,4,0,6];
             this.eventvalue.levelData[0].answer = [...this.answerArr];
             this.eventvalue.levelData[0].subject = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
         }else if(this.types == 3) {
@@ -247,15 +251,15 @@ export default class GamePanel extends BaseUI {
                 return true;
             }else if(this.rightNum == 1 && index == 5) {
                 return true;
-            }else if(this.rightNum == 2 && index == 2) {
+            }else if(this.rightNum == 2 && index == 1) {
                 return true;
-            }else if(this.rightNum == 3 && index == 6) {
+            }else if(this.rightNum == 3 && index == 2) {
                 return true;
-            }else if(this.rightNum == 4 && index == 4) {
+            }else if(this.rightNum == 4 && index == 6) {
                 return true;
-            }else if(this.rightNum == 5 && index == 0) {
+            }else if(this.rightNum == 5 && index == 4) {
                 return true;
-            }else if(this.rightNum == 6 && index == 1) {
+            }else if(this.rightNum == 6 && index == 0) {
                 return true;
             }else if(this.rightNum == 7 && index == 7) {
                 return true;
@@ -294,6 +298,7 @@ export default class GamePanel extends BaseUI {
             AudioManager.getInstance().stopAudio(this.audioIdArr[i])
         }
         this.audioIdArr = []
+        AudioManager.getInstance().stopAll()
         if(this.types == 1) {
             if(this.rightNum == 0) {
                 this.erroring = true
@@ -303,19 +308,19 @@ export default class GamePanel extends BaseUI {
                 AudioManager.getInstance().playSound('梨不是在香蕉的右上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 2) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 3) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 4) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 5) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 6) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false, 1, null, finishCallback);
+                AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false, 1, null, finishCallback);
             }else if(this.rightNum == 7) {
                 //AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false);
             }
@@ -370,6 +375,7 @@ export default class GamePanel extends BaseUI {
         if(this.erroring) {
             return
         }
+        AudioManager.getInstance().stopAll()
         if(this.types == 1) {
             this.fruitHand.active = false
             switch(rightNum) {
@@ -380,19 +386,19 @@ export default class GamePanel extends BaseUI {
                     AudioManager.getInstance().playSound('梨在香蕉的右上方',false,1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 case 2:
-                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    AudioManager.getInstance().playSound('橘子在草莓的后面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 case 3:
                     AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 case 4:
-                    AudioManager.getInstance().playSound('桃子在西瓜的左上方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    AudioManager.getInstance().playSound('桃子在香蕉的左面，苹果的上面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 case 5:
-                    AudioManager.getInstance().playSound('葡萄和梨不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    AudioManager.getInstance().playSound('桃子在西瓜的左上方', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 case 6:
-                    AudioManager.getInstance().playSound('橘子在草莓的后面', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
+                    AudioManager.getInstance().playSound('葡萄和梨不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 case 7:
                     break;
@@ -448,19 +454,19 @@ export default class GamePanel extends BaseUI {
                     str = '梨在香蕉的右上方';
                     break;
                 case 2:
-                    str = '桃子在香蕉的左面，苹果的上面';
+                    str = '橘子在草莓的后面';
                     break;
                 case 3:
                     str = '桃子在香蕉的左面，苹果的上面';
                     break;
                 case 4:
-                    str = '桃子在西瓜的左上方';
+                    str = '桃子在香蕉的左面，苹果的上面';
                     break;
                 case 5:
-                    str = '葡萄和梨不相邻';
+                    str = '桃子在西瓜的左上方';
                     break;
                 case 6:
-                    str = '橘子在草莓的后面';
+                    str = '葡萄和梨不相邻';
                     break;
                 case 7:
                     str = '最后一个水果放在哪里？';
@@ -583,32 +589,38 @@ export default class GamePanel extends BaseUI {
                 }
                 var point = this.node.convertToNodeSpaceAR(e.currentTouch._point);
                 this.touchNode.setPosition(point);
+                let last:number = -1
                 for(let j = 0; j < this.gridNode.children.length; j++) {
                     if(this.gridNode.children[j].getBoundingBox().contains(this.gridNode.convertToNodeSpaceAR(e.currentTouch._point))) {
+                        if(!this.gridNode.children[j].getChildByName('sprite').active) {
+                            last = j
+                            if(this.types == 3) {
+                                if(i == this.answerArr[j]) {
+                                    this.gridNode.children[j].getChildByName('white').active = true;
+                                }else {
+                                    this.gridNode.children[j].getChildByName('white').active = true;
+                                }
+                            }else {
+                                this.gridNode.children[j].getChildByName('box').active = true;
+                            }
+                            this.overNum++;
+                        }
+                       
                         for(let k = 0; k < this.gridNode.children.length; k ++) {
                             if(k != j) {
                                 if(this.types == 3) {
                                     this.gridNode.children[k].getChildByName('red').active = false;
                                     this.gridNode.children[k].getChildByName('white').active = false;
                                 }else { 
-                                    if(this.gridNode.children[i].getChildByName('box').active) {
+                                    if(this.gridNode.children[k].getChildByName('box').active) {
                                         this.gridNode.children[k].getChildByName('box').active = false;
                                     }
                                 }
                             }
                         }
-                        if(this.types == 3) {
-                            if(i == this.answerArr[j]) {
-                                this.gridNode.children[j].getChildByName('white').active = true;
-                            }else {
-                                this.gridNode.children[j].getChildByName('red').active = true;
-                            }
-                        }else {
-                            this.gridNode.children[j].getChildByName('box').active = true;
-                        }
-                        this.overNum++;
                     }
                 }
+                cc.log('overNum', this.overNum)
                 if(this.overNum == 0) {
                     for(let k = 0; k < this.gridNode.children.length; k++) {
                         if(this.types == 3) {
@@ -641,20 +653,39 @@ export default class GamePanel extends BaseUI {
                 for(let j = 0; j < this.gridNode.children.length; j++) {
                     if(this.gridNode.children[j].getBoundingBox().contains(this.gridNode.convertToNodeSpaceAR(e.currentTouch._point))) {
                         index = j
-                        if(i == this.answerArr[j]) {
+                        let rightIndex = 0
+                        let spriteActive = this.gridNode.children[j].getChildByName('sprite').active
+                        if(i == this.answerArr[j]&&!spriteActive) {
+                            rightIndex = 1
+                        }else if(i == this.answerArr1[j]&&!spriteActive) {
+                            rightIndex = 2
+                        }else if(i == this.answerArr2[j]&&!spriteActive) {
+                            rightIndex = 3
+                        }
+                        if(rightIndex) {
                             this.eventvalue.levelData[0].subject[j] = i;
                             this.eventvalue.levelData[0].result = 2
                             this.eventvalue.result = 2
                             this.isOver = 2
-                            this.gridNode.children[j].getChildByName('sprite').active = true; 
+                            this.gridNode.children[j].getChildByName('sprite').active = true;
+                            
+                            if(rightIndex == 1) {
+                            }else if(rightIndex ==2) {
+                                this.eventvalue.levelData[0].answer = this.answerArr1
+                            }else if(rightIndex ==3) {
+                                this.eventvalue.levelData[0].answer = this.answerArr2
+                            }
                             this.touchRight = true;
                             this.rightNum++;
                             if(this.types != 3) {
                                 this.bubbleAction(this.rightNum);
                                 this.cueAudio(this.rightNum)
+                                this.gridNode.children[j].getChildByName('sprite').getComponent(cc.Sprite).spriteFrame = this.touchNode.children[0].getComponent(cc.Sprite).spriteFrame 
                                 AudioManager.getInstance().playSound('sfx_putfrt', false);
                             }else {
                                 AudioManager.getInstance().playSound('sfx_kdmtched', false);
+                                this.gridNode.children[j].getChildByName('sprite').getComponent(sp.Skeleton).skeletonData = this.touchNode.getComponent(sp.Skeleton).skeletonData
+                                this.gridNode.children[j].getChildByName('sprite').getComponent(sp.Skeleton).setAnimation(0, 'idle', true)
                             }
                             this.isRight();
                         }
@@ -664,49 +695,57 @@ export default class GamePanel extends BaseUI {
                     if(this.types == 3) {
                         AudioManager.getInstance().playSound('sfx_kdclck', false);
                         this.errAudio(i)
-                        e.target.opacity = 255;
+                        if(this.gridNode.children[index]) {
+                            this.gridNode.children[index].getChildByName('sprite').active = true
+                            this.gridNode.children[index].getChildByName('sprite').getComponent(sp.Skeleton).skeletonData = this.touchNode.getComponent(sp.Skeleton).skeletonData
+                            this.gridNode.children[index].getChildByName('sprite').getComponent(sp.Skeleton).setAnimation(0, 'idle', true)
+                            let func = cc.callFunc(()=>{
+                                e.target.opacity = 255;
+                                this.gridNode.children[index].getChildByName('sprite').active = false
+                                if(e.target.getComponent(sp.Skeleton).findAnimation('cry')) {
+                                    e.target.getComponent(sp.Skeleton).setAnimation(0, 'cry', false);
+                                    e.target.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                                        if(trackEntry.animation.name == 'cry') {
+                                            e.target.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+                                        }
+                                    });
+                                }else {
+                                    e.target.getComponent(sp.Skeleton).setAnimation(0, 'false', false);
+                                    e.target.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                                        if(trackEntry.animation.name == 'false') {
+                                            e.target.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
+                                        }
+                                    });
+                                }
+                            })
+                            this.gridNode.children[index].getChildByName('sprite').runAction(cc.sequence(cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), func));
+                        }else{
+                            e.target.opacity = 255;
+                        }
                     }else {
                         AudioManager.getInstance().playSound('sfx_erro', false);
                         if(this.gridNode.children[index]) {
-                            if(!this.gridNode.children[index].getChildByName('sprite').active) {
+                            let sprite = this.gridNode.children[index].getChildByName('sprite')
+                            if(!sprite.active) {
                                 this.gridNode.children[index].getChildByName('err').active = true; 
                                 this.gridNode.children[index].getChildByName('err').getComponent(cc.Sprite).spriteFrame = this.touchNode.children[0].getComponent(cc.Sprite).spriteFrame
                                 this.finishing = true
-                                this.errAudio(i, ()=>{
+                                let func = cc.callFunc(()=>{
                                     this.erroring = false
                                     this.finishing = false
                                     this.gridNode.children[index].getChildByName('err').active = false;
                                     e.target.opacity = 255;
-        
-                                })   
+                                })
+                                this.gridNode.children[index].getChildByName('err').runAction(cc.sequence(cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), cc.moveBy(0.05, cc.v2(20,0)),cc.moveBy(0.05, cc.v2(-20,0)), func));
+                                AudioManager.getInstance().stopAll()
+                                this.errAudio(i, ()=>{})   
                             }else {
                                 e.target.opacity = 255;
                             }
                         }else{
                             e.target.opacity = 255;
                         }
-                    } 
-                    
-
-                    if(this.types == 3) {
-                        e.target.getComponent(sp.Skeleton).setAnimation(0,'drag_end', false);
-                        e.target.getComponent(sp.Skeleton).setCompleteListener(
-                            trackEntry=>{
-                                if(trackEntry.animation.name == 'drag_end') {
-                                    if(e.target.getComponent(sp.Skeleton).findAnimation('cry')) {
-                                        e.target.getComponent(sp.Skeleton).setAnimation(0, 'cry', false);
-                                        e.target.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
-                                            if(trackEntry.animation.name == 'cry') {
-                                                e.target.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
-                                            }
-                                        });
-                                    }else {
-                                        e.target.getComponent(sp.Skeleton).setAnimation(0, 'idle', true);
-                                    }
-                                }
-                            }
-                        );
-                    }
+                    }  
                 }
                 
                 for(let i = 0; i < this.gridNode.children.length; i ++) {
