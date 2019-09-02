@@ -234,16 +234,17 @@ var TeacherPanel = /** @class */ (function (_super) {
             else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
                 this.subjectDataArr[0][0] = this.type1;
             }
+            cc.log(this.arrow1, this.arrow2);
             for (var i = 0; i < this.subjectItemArr.length; i++) {
                 for (var j = 0; j < this.subjectItemArr[i].length; j++) {
                     if (i % 2 == 1) {
                         if (j % 2 == 1) {
-                            this.setState(this.subjectItemArr[i][j], this.arrow1);
-                            this.subjectDataArr[i][j] = this.arrow1;
-                        }
-                        else {
                             this.setState(this.subjectItemArr[i][j], this.arrow2);
                             this.subjectDataArr[i][j] = this.arrow2;
+                        }
+                        else {
+                            this.setState(this.subjectItemArr[i][j], this.arrow1);
+                            this.subjectDataArr[i][j] = this.arrow1;
                         }
                     }
                 }

@@ -201,8 +201,8 @@ var GamePanel = /** @class */ (function (_super) {
             this.handLight = this.arrowLight;
         }
         else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
-            this.type1 = ItemType_1.ItemType.octagon_green;
-            this.type2 = ItemType_1.ItemType.octagon_yellow;
+            this.type1 = ItemType_1.ItemType.octagon_yellow;
+            this.type2 = ItemType_1.ItemType.octagon_green;
             this.arrow1 = ItemType_1.ItemType.arrow_blue;
             this.arrow2 = ItemType_1.ItemType.arrow_orange;
             this.typeNull = ItemType_1.ItemType.octagon_black;
@@ -274,39 +274,16 @@ var GamePanel = /** @class */ (function (_super) {
             for (var j = 0; j < this.ruleItemArr[i].length; j++) {
                 this.ruleItemArr[i][j].getChildByName('blank').opacity = 255;
                 this.ruleItemArr[i][j].getChildByName('sprite').active = false;
+                this.setState(this.ruleItemArr[i][j], this.ruleDataArr[i][j]);
             }
         }
         if (this.figure == 1) {
-            this.setRuleDefault(0, 0, this.type1);
-            this.setRuleDefault(1, 2, this.type2);
-            this.setRuleDefault(2, 0, this.type1);
-            this.setRuleDefault(2, 2, this.type2);
-            this.setRuleDefault(0, 2, this.type1);
-            this.setRuleDefault(1, 0, this.type2);
-            this.setRuleDefault(3, 0, this.type2);
-            this.setRuleDefault(3, 2, this.type1);
-            this.setRuleDefault(0, 1, this.arrow2);
-            this.setRuleDefault(1, 1, this.arrow2);
-            this.setRuleDefault(2, 1, this.arrow1);
-            this.setRuleDefault(3, 1, this.arrow1);
-            this.sameType = this.arrow2;
-            this.diffType = this.arrow1;
+            this.sameType = this.ruleDataArr[0][1];
+            this.diffType = this.ruleDataArr[2][1];
         }
         else {
-            this.setRuleDefault(0, 0, this.type1);
-            this.setRuleDefault(1, 2, this.type1);
-            this.setRuleDefault(2, 0, this.type1);
-            this.setRuleDefault(2, 2, this.type1);
-            this.setRuleDefault(0, 2, this.type2);
-            this.setRuleDefault(1, 0, this.type2);
-            this.setRuleDefault(3, 0, this.type2);
-            this.setRuleDefault(3, 2, this.type2);
-            this.setRuleDefault(0, 1, this.arrow1);
-            this.setRuleDefault(1, 1, this.arrow1);
-            this.setRuleDefault(2, 1, this.arrow2);
-            this.setRuleDefault(3, 1, this.arrow2);
-            this.sameType = this.arrow2;
-            this.diffType = this.arrow1;
+            this.sameType = this.ruleDataArr[2][1];
+            this.diffType = this.ruleDataArr[0][1];
         }
     };
     GamePanel.prototype.initAnswer = function () {
