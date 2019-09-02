@@ -464,7 +464,8 @@ var GamePanel = /** @class */ (function (_super) {
                         var node_3 = _this.subjectItemArr[n][m];
                         if (node_3.getChildByName('blank').getBoundingBox().contains(node_3.convertToNodeSpaceAR(e.currentTouch._point))) {
                             if (_this.isSame(n, m, i)) {
-                                if (_this.judge(n, m, i) == 1) {
+                                var result = _this.judge(n, m, i);
+                                if (result == 1) {
                                     _this.answerDataArr[n][m] = _this.answerType(i);
                                     _this.setState(node_3, _this.answerType(i));
                                     _this.adsorbAction(node_3);
@@ -484,7 +485,7 @@ var GamePanel = /** @class */ (function (_super) {
                                         UIHelp_1.UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧～', null, '挑战成功');
                                     }
                                 }
-                                else if (_this.judge(n, m, i) == 2) {
+                                else if (result == 2) {
                                     _this.answerDataArr[n][m] = _this.answerType(i);
                                     _this.setState(node_3, _this.answerType(i));
                                     _this.adsorbAction(node_3);
@@ -501,7 +502,7 @@ var GamePanel = /** @class */ (function (_super) {
                                     _this.touchTarget = null;
                                     _this.touchNode.active = false;
                                 }
-                                else if (_this.judge(n, m, i) == 3) {
+                                else if (result == 3) {
                                     _this.answerDataArr[n][m] = _this.answerType(i);
                                     _this.setState(node_3, _this.answerType(i));
                                     _this.adsorbAction(node_3);
@@ -539,7 +540,9 @@ var GamePanel = /** @class */ (function (_super) {
                 }
                 for (var p = 0; p < _this.subjectItemArr.length; p++) {
                     for (var q = 0; q < _this.subjectItemArr[p].length; q++) {
-                        _this.subjectItemArr[p][q].getChildByName('light').active = false;
+                        if (_this.subjectItemArr[p][q].getChildByName('light').opacity == 255) {
+                            _this.subjectItemArr[p][q].getChildByName('light').active = false;
+                        }
                     }
                 }
                 _this.touchTarget = null;
@@ -655,9 +658,10 @@ var GamePanel = /** @class */ (function (_super) {
             if (indexOfAnswer == 0 || indexOfAnswer == 1) {
                 if (i > 4) {
                     if (this.answerDataArr[i - 1][j] && this.answerDataArr[i - 2][Math.floor(j / 2)]) {
-                        return this.correct(type, this.answerDataArr[i - 2][Math.floor(j / 2)], this.answerDataArr[i - 1][j]);
+                        return this.correct(this.answerDataArr[i - 2][Math.floor(j / 2)], type, this.answerDataArr[i - 1][j]);
                     }
                     else {
+                        this.noAnswerPoint(this.subjectItemArr[i - 1][j], this.subjectItemArr[i - 2][Math.floor(j / 2)]);
                         return 3;
                     }
                 }
@@ -669,12 +673,14 @@ var GamePanel = /** @class */ (function (_super) {
                         return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1], this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1]);
                     }
                     else {
+                        this.noAnswerPoint(this.subjectItemArr[i + 1][Math.floor(j / 2) * 2], this.subjectItemArr[i + 2][Math.floor(j / 2) * 2]);
+                        this.noAnswerPoint(this.subjectItemArr[i + 1][Math.floor(j / 2) * 2 + 1], this.subjectItemArr[i + 2][Math.floor(j / 2) * 2 + 1]);
                         return 3;
                     }
                 }
                 else if (i <= 4 && i >= 2) {
                     if (this.answerDataArr[i - 1][j] && this.answerDataArr[i - 2][Math.floor(j / 2)]) {
-                        return this.correct(type, this.answerDataArr[i - 2][Math.floor(j / 2)], this.answerDataArr[i - 1][j]);
+                        return this.correct(this.answerDataArr[i - 2][Math.floor(j / 2)], type, this.answerDataArr[i - 1][j]);
                     }
                     else if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2]) {
                         return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2], this.answerDataArr[i + 1][Math.floor(j / 2) * 2]);
@@ -683,6 +689,9 @@ var GamePanel = /** @class */ (function (_super) {
                         return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1], this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1]);
                     }
                     else {
+                        this.noAnswerPoint(this.subjectItemArr[i + 1][Math.floor(j / 2) * 2], this.subjectItemArr[i + 2][Math.floor(j / 2) * 2]);
+                        this.noAnswerPoint(this.subjectItemArr[i + 1][Math.floor(j / 2) * 2 + 1], this.subjectItemArr[i + 2][Math.floor(j / 2) * 2 + 1]);
+                        this.noAnswerPoint(this.subjectItemArr[i - 1][j], this.subjectItemArr[i - 2][Math.floor(j / 2)]);
                         return 3;
                     }
                 }
@@ -692,6 +701,7 @@ var GamePanel = /** @class */ (function (_super) {
                     return this.correct(this.answerDataArr[i - 1][Math.floor(j / 2)], this.answerDataArr[i + 1][j], type);
                 }
                 else {
+                    this.noAnswerPoint(this.subjectItemArr[i - 1][Math.floor(j / 2)], this.subjectItemArr[i + 1][j]);
                     return 3;
                 }
             }
@@ -700,9 +710,10 @@ var GamePanel = /** @class */ (function (_super) {
             if (indexOfAnswer == 0 || indexOfAnswer == 1) {
                 if (j > 6) {
                     if (this.answerDataArr[i][j - 1] && this.answerDataArr[i][j - 2]) {
-                        return this.correct(type, this.answerDataArr[i][j - 2], this.answerDataArr[i][j - 1]);
+                        return this.correct(this.answerDataArr[i][j - 2], type, this.answerDataArr[i][j - 1]);
                     }
                     else {
+                        this.noAnswerPoint(this.subjectItemArr[i][j - 1], this.subjectItemArr[i][j - 2]);
                         return 3;
                     }
                 }
@@ -711,6 +722,7 @@ var GamePanel = /** @class */ (function (_super) {
                         return this.correct(type, this.answerDataArr[i][j + 2], this.answerDataArr[i][j + 1]);
                     }
                     else {
+                        this.noAnswerPoint(this.subjectItemArr[i][j + 1], this.subjectItemArr[i][j + 2]);
                         return 3;
                     }
                 }
@@ -719,9 +731,11 @@ var GamePanel = /** @class */ (function (_super) {
                         return this.correct(type, this.answerDataArr[i][j + 2], this.answerDataArr[i][j + 1]);
                     }
                     else if (this.answerDataArr[i][j - 1] && this.answerDataArr[i][j - 2]) {
-                        return this.correct(type, this.answerDataArr[i][j - 2], this.answerDataArr[i][j - 1]);
+                        return this.correct(this.answerDataArr[i][j - 2], type, this.answerDataArr[i][j - 1]);
                     }
                     else {
+                        this.noAnswerPoint(this.subjectItemArr[i][j - 1], this.subjectItemArr[i][j - 2]);
+                        this.noAnswerPoint(this.subjectItemArr[i][j + 1], this.subjectItemArr[i][j + 2]);
                         return 3;
                     }
                 }
@@ -731,6 +745,7 @@ var GamePanel = /** @class */ (function (_super) {
                     return this.correct(this.answerDataArr[i][j - 1], this.answerDataArr[i][j + 1], type);
                 }
                 else {
+                    this.noAnswerPoint(this.subjectItemArr[i][j - 1], this.subjectItemArr[i][j + 1]);
                     return 3;
                 }
             }
@@ -739,6 +754,7 @@ var GamePanel = /** @class */ (function (_super) {
     GamePanel.prototype.correct = function (type1, type2, arrow) {
         if (arrow == this.sameType) {
             if (type1 == type2) {
+                this.rulePoint(type1, true);
                 return 1;
             }
             else {
@@ -747,10 +763,82 @@ var GamePanel = /** @class */ (function (_super) {
         }
         else if (arrow == this.diffType) {
             if (type1 != type2) {
+                this.rulePoint(type1, false);
                 return 1;
             }
             else {
                 return 2;
+            }
+        }
+    };
+    GamePanel.prototype.noAnswerPoint = function (item1, item2) {
+        cc.log(item1, item2);
+        if (!item1.getChildByName('sprite').active) {
+            var node1_1 = item1.getChildByName('light');
+            node1_1.active = true;
+            node1_1.opacity = 1;
+            node1_1.scale = 0.5;
+            var func = cc.callFunc(function () {
+                node1_1.active = false;
+                node1_1.opacity = 255;
+                node1_1.scale = 1;
+                cc.log('======');
+            });
+            var func1 = cc.callFunc(function () {
+                node1_1.opacity = 1;
+                node1_1.scale = 0.5;
+                cc.log('------');
+            });
+            var spawn1 = cc.spawn(cc.fadeIn(0.4), cc.scaleTo(0.4, 1));
+            var spawn2 = cc.spawn(cc.fadeOut(0.5), cc.scaleBy(0.5, 1.2));
+            var seq = cc.sequence(spawn1, spawn2, func1, spawn1, spawn2, func);
+            node1_1.stopAllActions();
+            node1_1.runAction(seq);
+        }
+        if (!item2.getChildByName('sprite').active) {
+            var node_4 = item2.getChildByName('light');
+            node_4.active = true;
+            node_4.opacity = 1;
+            node_4.scale = 0.5;
+            var func = cc.callFunc(function () {
+                node_4.active = false;
+                node_4.opacity = 255;
+                node_4.scale = 1;
+                cc.log('======1');
+            });
+            var func1 = cc.callFunc(function () {
+                node_4.opacity = 1;
+                node_4.scale = 0.5;
+                cc.log('-------1');
+            });
+            var spawn1 = cc.spawn(cc.fadeIn(0.4), cc.scaleTo(0.4, 1));
+            var spawn2 = cc.spawn(cc.fadeOut(0.5), cc.scaleBy(0.5, 1.2));
+            var seq = cc.sequence(spawn1, spawn2, func1, spawn1, spawn2, func);
+            node_4.stopAllActions();
+            node_4.runAction(seq);
+        }
+    };
+    GamePanel.prototype.rulePoint = function (firstType, isSame) {
+        for (var i = 0; i < this.ruleItemArr.length; ++i) {
+            for (var j = 0; j < this.ruleItemArr[i].length; ++j) {
+                if (isSame) {
+                    if (this.ruleDataArr[i][j] == this.sameType) {
+                        if (this.ruleDataArr[i][j - 1] == firstType) {
+                            this.ruleItemArr[i][j - 1].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
+                            this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
+                            this.ruleItemArr[i][j + 1].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
+                        }
+                    }
+                }
+                else {
+                    if (this.ruleDataArr[i][j] == this.diffType) {
+                        if (this.ruleDataArr[i][j - 1] == firstType) {
+                            this.ruleItemArr[i][j - 1].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
+                            this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
+                            this.ruleItemArr[i][j + 1].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
+                        }
+                    }
+                }
             }
         }
     };
