@@ -1085,8 +1085,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "树形",
-    "_N$string": "树形",
+    "_string": "树型",
+    "_N$string": "树型",
     "_fontSize": 40,
     "_lineHeight": 50,
     "_enableWrapText": true,
@@ -3214,8 +3214,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "八角星",
-    "_N$string": "八角星",
+    "_string": "八角形",
+    "_N$string": "八角形",
     "_fontSize": 40,
     "_lineHeight": 50,
     "_enableWrapText": true,

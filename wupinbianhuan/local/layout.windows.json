@@ -1,7 +1,6 @@
 {
   "version": "1.1.1",
   "windows": {
-    "worker": {},
     "main": {
       "main": true,
       "url": "app://editor/index.html",
@@ -19,7 +18,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 321,
+                "height": 486.984375,
                 "type": "panel",
                 "width": 204
               },
@@ -28,12 +27,12 @@
                 "children": [
                   "assets"
                 ],
-                "height": 321,
+                "height": 486,
                 "type": "panel",
                 "width": 204
               }
             ],
-            "height": 644,
+            "height": 975,
             "type": "dock-v",
             "width": 204
           },
@@ -44,9 +43,9 @@
                 "children": [
                   "scene"
                 ],
-                "height": 375.171875,
+                "height": 665.984375,
                 "type": "panel",
-                "width": 767.984375
+                "width": 1407.984375
               },
               {
                 "active": 0,
@@ -54,14 +53,14 @@
                   "console",
                   "timeline"
                 ],
-                "height": 266.828125,
+                "height": 307,
                 "type": "panel",
-                "width": 767.984375
+                "width": 1407.984375
               }
             ],
-            "height": 644,
+            "height": 975,
             "type": "dock-v",
-            "width": 767.984375
+            "width": 1407.984375
           },
           {
             "active": 0,
@@ -69,7 +68,7 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 644,
+            "height": 975,
             "type": "panel",
             "width": 304
           }
@@ -101,8 +100,8 @@
       "height": 548
     },
     "builder": {
-      "x": -1105,
-      "y": 12,
+      "x": -1419,
+      "y": 14,
       "width": 672,
       "height": 676
     }

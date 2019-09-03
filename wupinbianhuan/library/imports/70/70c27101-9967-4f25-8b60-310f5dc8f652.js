@@ -68,8 +68,10 @@ var TeacherPanel = /** @class */ (function (_super) {
         _this.answerDataArr = [];
         _this.currentType = 1; //当前的题目类型
         _this.currentFigure = 2;
-        _this.sameType = null; //相同类型之间变换的规则
-        _this.diffType = null;
+        _this.sameType1 = null; //相同类型之间变换的规则
+        _this.diffType1 = null;
+        _this.sameType2 = null;
+        _this.diffType2 = null;
         _this.type1 = null;
         _this.type2 = null;
         _this.arrow1 = null;
@@ -88,12 +90,16 @@ var TeacherPanel = /** @class */ (function (_super) {
         }
         if (DaAnData_1.DaAnData.getInstance().figure == 0) {
             DaAnData_1.DaAnData.getInstance().figure = 2;
-            this.sameType = ItemType_1.ItemType.arrow_orange;
-            this.diffType = ItemType_1.ItemType.arrow_blue;
+            this.sameType1 = ItemType_1.ItemType.arrow_orange;
+            this.diffType1 = ItemType_1.ItemType.arrow_blue;
+            this.sameType2 = ItemType_1.ItemType.arrow_orange;
+            this.diffType2 = ItemType_1.ItemType.arrow_blue;
         }
         else {
-            this.sameType = DaAnData_1.DaAnData.getInstance().ruleDataArr[2][1];
-            this.diffType = DaAnData_1.DaAnData.getInstance().ruleDataArr[0][1];
+            this.sameType1 = DaAnData_1.DaAnData.getInstance().ruleDataArr[2][1];
+            this.diffType1 = DaAnData_1.DaAnData.getInstance().ruleDataArr[0][1];
+            this.sameType2 = DaAnData_1.DaAnData.getInstance().ruleDataArr[2][1];
+            this.diffType2 = DaAnData_1.DaAnData.getInstance().ruleDataArr[0][1];
         }
         this.initData();
         this.initType();
@@ -224,15 +230,17 @@ var TeacherPanel = /** @class */ (function (_super) {
                     }
                 }
             }
-            this.setState(this.subjectItemArr[0][0], this.type2);
             if (DaAnData_1.DaAnData.getInstance().figure == 1) {
                 this.subjectDataArr[0][0] = this.type1;
+                this.setState(this.subjectItemArr[0][0], this.type1);
             }
             else if (DaAnData_1.DaAnData.getInstance().figure == 2) {
                 this.subjectDataArr[0][0] = this.type2;
+                this.setState(this.subjectItemArr[0][0], this.type2);
             }
             else if (DaAnData_1.DaAnData.getInstance().figure == 3) {
                 this.subjectDataArr[0][0] = this.type1;
+                this.setState(this.subjectItemArr[0][0], this.type1);
             }
             cc.log(this.arrow1, this.arrow2);
             for (var i = 0; i < this.subjectItemArr.length; i++) {
@@ -472,27 +480,6 @@ var TeacherPanel = /** @class */ (function (_super) {
             this_1.ruleItemArr[i][1].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, function () {
                 _this.ruleDataArr[i][1] = _this.nextType(_this.ruleDataArr[i][1], true);
                 _this.setState(_this.ruleItemArr[i][1], _this.ruleDataArr[i][1]);
-                //相同排的同步变化
-                if (i == 0) {
-                    _this.diffType = _this.ruleDataArr[0][1];
-                    _this.ruleDataArr[1][1] = _this.ruleDataArr[0][1];
-                    _this.setState(_this.ruleItemArr[1][1], _this.ruleDataArr[1][1]);
-                }
-                else if (i == 1) {
-                    _this.diffType = _this.ruleDataArr[1][1];
-                    _this.ruleDataArr[0][1] = _this.ruleDataArr[1][1];
-                    _this.setState(_this.ruleItemArr[0][1], _this.ruleDataArr[0][1]);
-                }
-                else if (i == 2) {
-                    _this.sameType = _this.ruleDataArr[2][1];
-                    _this.ruleDataArr[3][1] = _this.ruleDataArr[2][1];
-                    _this.setState(_this.ruleItemArr[3][1], _this.ruleDataArr[3][1]);
-                }
-                else if (i == 3) {
-                    _this.sameType = _this.ruleDataArr[3][1];
-                    _this.ruleDataArr[2][1] = _this.ruleDataArr[3][1];
-                    _this.setState(_this.ruleItemArr[2][1], _this.ruleDataArr[2][1]);
-                }
             });
         };
         var this_1 = this;
@@ -686,6 +673,20 @@ var TeacherPanel = /** @class */ (function (_super) {
         }
         if (!this.errorQuestion()) {
             this.showTip('题目不符合规则，请重新配题。');
+            return false;
+        }
+        var total = 0;
+        var answer = 0;
+        for (var i = 0; i < this.subjectItemArr.length; ++i) {
+            for (var j = 0; j < this.subjectItemArr[i].length; ++j) {
+                total++;
+                if (this.subjectItemArr[i][j].getChildByName('sprite').active) {
+                    answer++;
+                }
+            }
+        }
+        if (total == answer) {
+            this.showTip('留出作答区域，请重新配题。');
             return false;
         }
         return true;

@@ -141,6 +141,21 @@ export default class GamePanel extends BaseUI {
        
     }
 
+    stopIntervalPoint() {
+        for(let i = 0; i < this.intervalArr.length; i++) {
+            clearTimeout(this.intervalArr[i])
+        }
+        for(let i = 0; i < this.answerDataArr.length; ++i) {
+            for(let j = 0; j < this.answerDataArr[i].length; ++j) {
+                let node = this.subjectItemArr[i][j].getChildByName('light')
+                node.active = false
+                node.opacity = 255
+                node.scale = 1
+                node.stopAllActions()
+            }
+        }
+    }
+
     point() {
         for(let i = 0; i < this.answerDataArr.length; ++i) {
             for(let j = 0; j < this.answerDataArr[i].length; ++j) {
@@ -153,6 +168,7 @@ export default class GamePanel extends BaseUI {
                         node.active = false
                         node.opacity = 255
                         node.scale = 1
+                        cc.log('------point')
                     })
                     let func1 = cc.callFunc(()=>{
                         node.opacity = 1
@@ -287,8 +303,8 @@ export default class GamePanel extends BaseUI {
         if(this.type == 1) {
             let totalNum:number = 0
             let arrowNum:number = 0
-            for(let i = 0 ; i < this.subjectItemArr.length; i++) {
-                for(let j = 0; j < this.subjectItemArr.length; j++) {
+            for(let i = 0 ; i < this.subjectDataArr.length; i++) {
+                for(let j = 0; j < this.subjectDataArr[i].length; j++) {
                     if(i%2==1) {
                         totalNum++
                         if(this.subjectDataArr[i][j] != this.arrowNull) {
@@ -309,8 +325,8 @@ export default class GamePanel extends BaseUI {
         }else if(this.type == 2) {
             let totalNum:number = 0
             let arrowNum:number = 0
-            for(let i = 0 ; i < this.subjectItemArr.length; i++) {
-                for(let j = 0; j < this.subjectItemArr.length; j++) {
+            for(let i = 0 ; i < this.subjectDataArr.length; i++) {
+                for(let j = 0; j < this.subjectDataArr[i].length; j++) {
                     if(j%2==1) {
                         totalNum++
                         if(this.subjectDataArr[i][j] != this.arrowNull) {
@@ -349,6 +365,7 @@ export default class GamePanel extends BaseUI {
                 if(this.touchTarget || !this.touchEnable) {
                     return
                 }
+                this.stopIntervalPoint()
                 let rn = this.getRandomNum(1, 4);
                 AudioManager.getInstance().stopAll();
                 if(rn == 1) {
@@ -380,7 +397,7 @@ export default class GamePanel extends BaseUI {
                         let node = this.subjectItemArr[n][m]
                         if(!node.getChildByName('sprite').active) {
                             totalNum++
-                            if(node.getChildByName('blank').getBoundingBox().contains(node.convertToNodeSpaceAR(e.currentTouch._point))) {
+                            if(node.getChildByName('blank').getBoundingBox().contains(node.convertToNodeSpaceAR(e.currentTouch._point)) && this.isSame(n,m,i)) {
                                 node.getChildByName('light').active = true
                                 for(let p = 0; p < this.subjectItemArr.length; p++) {
                                     for(let q = 0; q < this.subjectItemArr[p].length; q++) {
@@ -411,6 +428,7 @@ export default class GamePanel extends BaseUI {
                 if(e.target != this.touchTarget || !this.touchEnable) {
                     return
                 }
+                this.intervalPoint()
                 let rn = this.getRandomNum(1, 4);
                 AudioManager.getInstance().stopAll();
                 if(rn == 1) {
@@ -434,6 +452,7 @@ export default class GamePanel extends BaseUI {
                 if(e.target != this.touchTarget || !this.touchEnable) {
                     return
                 }
+                this.intervalPoint()
                 let rn = this.getRandomNum(1, 4);
                 AudioManager.getInstance().stopAll();
                 if(rn == 1) {
@@ -448,7 +467,7 @@ export default class GamePanel extends BaseUI {
                 for(let n = 0; n < this.subjectItemArr.length; n ++) {
                     for(let m = 0; m < this.subjectItemArr[n].length; m++) {
                         let node: cc.Node = this.subjectItemArr[n][m]
-                        if(node.getChildByName('blank').getBoundingBox().contains(node.convertToNodeSpaceAR(e.currentTouch._point))) {
+                        if(node.getChildByName('blank').getBoundingBox().contains(node.convertToNodeSpaceAR(e.currentTouch._point))&&!this.subjectItemArr[n][m].getChildByName('sprite').active) {
                             if(this.isSame(n, m, i)) {
                                 let result = this.judge(n, m, i)
                                 if(result == 1) {
@@ -457,12 +476,12 @@ export default class GamePanel extends BaseUI {
                                     this.adsorbAction(node)
                                     this.eventvalue.levelData[0].result = 2
                                     this.isOver = 2
-                                    this.eventvalue.levelData[0].answer = this.answerDataArr
+                                    this.eventvalue.levelData[0].subject = this.answerDataArr
                                     if(this.success()) {
                                         DaAnData.getInstance().submitEnable = true
                                         this.eventvalue.levelData[0].result = 1
                                         this.isOver = 1
-                                        this.eventvalue.levelData[0].answer = this.answerDataArr
+                                        this.eventvalue.levelData[0].subject = this.answerDataArr
                                         console.log(this.eventvalue)
                                         DataReporting.getInstance().dispatchEvent('addLog', {
                                             eventType: 'clickSubmit',
@@ -495,19 +514,11 @@ export default class GamePanel extends BaseUI {
                                     this.eventvalue.levelData[0].answer = this.answerDataArr
                                     this.touchEnable = false
                                     AudioManager.getInstance().stopAudio(this.audioId)
-                                    if(this.type == 1) {
-                                        AudioManager.getInstance().playSound('请先完成前面的图形哦~', false, 1, null, ()=>{
-                                            this.touchEnable = true
-                                            this.setState(node, this.defaultType(i))
-                                            this.answerDataArr[n][m] = null
-                                        })
-                                    }else if(this.type == 2) {
-                                        AudioManager.getInstance().playSound('目前无法判断这个位置哦~', false, 1, null, ()=>{
-                                            this.touchEnable = true
-                                            this.setState(node, this.defaultType(i))
-                                            this.answerDataArr[n][m] = null
-                                        })
-                                    }
+                                    AudioManager.getInstance().playSound('目前无法判断这个位置哦~~', false, 1, null, ()=>{
+                                        this.touchEnable = true
+                                        this.setState(node, this.defaultType(i))
+                                        this.answerDataArr[n][m] = null
+                                    })
                                     this.touchTarget = null
                                     this.touchNode.active = false
                                 }
@@ -629,31 +640,31 @@ export default class GamePanel extends BaseUI {
             if(indexOfAnswer== 0||indexOfAnswer == 1) {
                 if(i > 4) {
                     if(this.answerDataArr[i-1][j] && this.answerDataArr[i-2][Math.floor(j/2)]) {
-                        return this.correct(this.answerDataArr[i-2][Math.floor(j/2)],type,this.answerDataArr[i-1][j])
+                        return this.correct(this.answerDataArr[i-2][Math.floor(j/2)],type,this.answerDataArr[i-1][j], 3)
                     }else {
                         this.noAnswerPoint(this.subjectItemArr[i-1][j], this.subjectItemArr[i-2][Math.floor(j/2)])
                         return 3
                     }
                 }else if(i < 2) {
-                    if(this.answerDataArr[i+1][Math.floor(j/2)*2] && this.answerDataArr[i+2][Math.floor(j/2)*2]) {
-                        return this.correct(type, this.answerDataArr[i+2][Math.floor(j/2)*2], this.answerDataArr[i+1][Math.floor(j/2)*2])
-                    }else if(this.answerDataArr[i+1][Math.floor(j/2)*2+1] && this.answerDataArr[i+2][Math.floor(j/2)*2+1]) {
-                        return this.correct(type,this.answerDataArr[i+2][Math.floor(j/2)*2+1], this.answerDataArr[i+1][Math.floor(j/2)*2+1])
+                    if(this.answerDataArr[i+1][j*2] && this.answerDataArr[i+2][j*2]) {
+                        return this.correct(type, this.answerDataArr[i+2][j*2], this.answerDataArr[i+1][j*2], 1)
+                    }else if(this.answerDataArr[i+1][j*2+1] && this.answerDataArr[i+2][j*2+1]) {
+                        return this.correct(type,this.answerDataArr[i+2][j*2+1], this.answerDataArr[i+1][j*2+1], 1)
                     }else {
-                        this.noAnswerPoint(this.subjectItemArr[i+1][Math.floor(j/2)*2], this.subjectItemArr[i+2][Math.floor(j/2)*2])
-                        this.noAnswerPoint(this.subjectItemArr[i+1][Math.floor(j/2)*2+1], this.subjectItemArr[i+2][Math.floor(j/2)*2+1])
+                        this.noAnswerPoint(this.subjectItemArr[i+1][j*2], this.subjectItemArr[i+2][j*2])
+                        this.noAnswerPoint(this.subjectItemArr[i+1][j*2+1], this.subjectItemArr[i+2][j*2+1])
                         return 3
                     }
                 }else if(i<=4&&i>=2) {
                     if(this.answerDataArr[i-1][j] && this.answerDataArr[i-2][Math.floor(j/2)]) {
-                        return this.correct(this.answerDataArr[i-2][Math.floor(j/2)],type,this.answerDataArr[i-1][j])
-                    }else  if(this.answerDataArr[i+1][Math.floor(j/2)*2] && this.answerDataArr[i+2][Math.floor(j/2)*2]) {
-                        return this.correct(type, this.answerDataArr[i+2][Math.floor(j/2)*2], this.answerDataArr[i+1][Math.floor(j/2)*2])
-                    }else if(this.answerDataArr[i+1][Math.floor(j/2)*2+1] && this.answerDataArr[i+2][Math.floor(j/2)*2+1]) {
-                        return this.correct(type,this.answerDataArr[i+2][Math.floor(j/2)*2+1], this.answerDataArr[i+1][Math.floor(j/2)*2+1])
+                        return this.correct(this.answerDataArr[i-2][Math.floor(j/2)],type,this.answerDataArr[i-1][j], 3)
+                    }else  if(this.answerDataArr[i+1][j*2] && this.answerDataArr[i+2][j*2]) {
+                        return this.correct(type, this.answerDataArr[i+2][j*2], this.answerDataArr[i+1][j*2], 1)
+                    }else if(this.answerDataArr[i+1][j*2+1] && this.answerDataArr[i+2][j*2+1]) {
+                        return this.correct(type,this.answerDataArr[i+2][j*2+1], this.answerDataArr[i+1][j*2+1], 1)
                     }else {
-                        this.noAnswerPoint(this.subjectItemArr[i+1][Math.floor(j/2)*2], this.subjectItemArr[i+2][Math.floor(j/2)*2])
-                        this.noAnswerPoint(this.subjectItemArr[i+1][Math.floor(j/2)*2+1], this.subjectItemArr[i+2][Math.floor(j/2)*2+1])
+                        this.noAnswerPoint(this.subjectItemArr[i+1][j*2], this.subjectItemArr[i+2][j*2])
+                        this.noAnswerPoint(this.subjectItemArr[i+1][j*2+1], this.subjectItemArr[i+2][j*2+1])
                         this.noAnswerPoint(this.subjectItemArr[i-1][j], this.subjectItemArr[i-2][Math.floor(j/2)])
                         return 3
                     }
@@ -661,7 +672,7 @@ export default class GamePanel extends BaseUI {
                 
             }else if(indexOfAnswer == 2||indexOfAnswer == 3) {
                 if(this.answerDataArr[i-1][Math.floor(j/2)] && this.answerDataArr[i+1][j]) {
-                    return this.correct(this.answerDataArr[i-1][Math.floor(j/2)], this.answerDataArr[i+1][j], type)
+                    return this.correct(this.answerDataArr[i-1][Math.floor(j/2)], this.answerDataArr[i+1][j], type, 2)
                 }else {
                     this.noAnswerPoint(this.subjectItemArr[i-1][Math.floor(j/2)], this.subjectItemArr[i+1][j])
                     return 3
@@ -671,23 +682,23 @@ export default class GamePanel extends BaseUI {
             if(indexOfAnswer== 0||indexOfAnswer == 1) {
                 if(j > 6) {
                     if(this.answerDataArr[i][j-1] && this.answerDataArr[i][j-2]) {
-                        return this.correct(this.answerDataArr[i][j-2], type, this.answerDataArr[i][j-1])
+                        return this.correct(this.answerDataArr[i][j-2], type, this.answerDataArr[i][j-1], 3)
                     }else {
                         this.noAnswerPoint(this.subjectItemArr[i][j-1], this.subjectItemArr[i][j-2])
                         return 3
                     }
                 }else if(j < 2) {
                     if(this.answerDataArr[i][j+1] && this.answerDataArr[i][j+2]) {
-                        return this.correct(type, this.answerDataArr[i][j+2], this.answerDataArr[i][j+1])
+                        return this.correct(type, this.answerDataArr[i][j+2], this.answerDataArr[i][j+1], 1)
                     }else {
                         this.noAnswerPoint(this.subjectItemArr[i][j+1], this.subjectItemArr[i][j+2])
                         return 3
                     }
                 }else if(j>=2&&j<=6) {
                     if(this.answerDataArr[i][j+1] && this.answerDataArr[i][j+2]) {
-                        return this.correct(type, this.answerDataArr[i][j+2], this.answerDataArr[i][j+1])
+                        return this.correct(type, this.answerDataArr[i][j+2], this.answerDataArr[i][j+1], 1)
                     }else if(this.answerDataArr[i][j-1] && this.answerDataArr[i][j-2]) {
-                        return this.correct(this.answerDataArr[i][j-2], type, this.answerDataArr[i][j-1])
+                        return this.correct(this.answerDataArr[i][j-2], type, this.answerDataArr[i][j-1], 3)
                     }else {
                         this.noAnswerPoint(this.subjectItemArr[i][j-1], this.subjectItemArr[i][j-2])
                         this.noAnswerPoint(this.subjectItemArr[i][j+1], this.subjectItemArr[i][j+2])
@@ -696,7 +707,7 @@ export default class GamePanel extends BaseUI {
                 }
             }else if(indexOfAnswer == 2||indexOfAnswer == 3) {
                 if(this.answerDataArr[i][j-1] && this.answerDataArr[i][j+1]) {
-                    return this.correct(this.answerDataArr[i][j-1], this.answerDataArr[i][j+1], type)
+                    return this.correct(this.answerDataArr[i][j-1], this.answerDataArr[i][j+1], type, 2)
                 }else {
                     this.noAnswerPoint(this.subjectItemArr[i][j-1], this.subjectItemArr[i][j+1])
                     return 3
@@ -705,19 +716,19 @@ export default class GamePanel extends BaseUI {
         }
     }
 
-    correct(type1: ItemType, type2:ItemType, arrow: ItemType): number {
+    correct(type1: ItemType, type2:ItemType, arrow: ItemType, answerType: number): number {
         if(arrow == this.sameType) {
             if(type1 == type2) {
-                this.rulePoint(type1, true)
                 return 1
             }else {
+                this.rulePoint(type1, type2, arrow, answerType)
                 return 2
             }
         }else if(arrow == this.diffType) {
             if(type1 != type2) {
-                this.rulePoint(type1, false)
                 return 1
             }else {
+                this.rulePoint(type1, type2, arrow, answerType)
                 return 2
             }
         }
@@ -734,12 +745,11 @@ export default class GamePanel extends BaseUI {
                 node1.active = false
                 node1.opacity = 255
                 node1.scale = 1
-                cc.log('======')
+                cc.log('-------noAnswerPoint')
             })
             let func1 = cc.callFunc(()=>{
                 node1.opacity = 1
                 node1.scale = 0.5
-                cc.log('------')
             })
             let spawn1 = cc.spawn(cc.fadeIn(0.4), cc.scaleTo(0.4, 1))
             let spawn2 = cc.spawn(cc.fadeOut(0.5), cc.scaleBy(0.5, 1.2))
@@ -756,12 +766,10 @@ export default class GamePanel extends BaseUI {
                 node.active = false
                 node.opacity = 255
                 node.scale = 1
-                cc.log('======1')
             })
             let func1 = cc.callFunc(()=>{
                 node.opacity = 1
                 node.scale = 0.5
-                cc.log('-------1')
             })
             let spawn1 = cc.spawn(cc.fadeIn(0.4), cc.scaleTo(0.4, 1))
             let spawn2 = cc.spawn(cc.fadeOut(0.5), cc.scaleBy(0.5, 1.2))
@@ -771,26 +779,28 @@ export default class GamePanel extends BaseUI {
         }
     }
 
-    rulePoint(firstType:ItemType, isSame: boolean) {
+    rulePoint(type1:ItemType, type2:ItemType, arrow:ItemType, answerType:number) {
        for(let i = 0; i < this.ruleItemArr.length; ++i) {
            for(let j = 0; j < this.ruleItemArr[i].length; ++j) {
-            if(isSame) {
-                if (this.ruleDataArr[i][j] == this.sameType) {
-                    if(this.ruleDataArr[i][j-1] == firstType) {
-                        this.ruleItemArr[i][j-1].runAction(cc.sequence(cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0),cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0)))
-                        this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0),cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0)))
-                        this.ruleItemArr[i][j+1].runAction(cc.sequence(cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0),cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0)))
+                if(answerType==1) {
+                    if(this.ruleDataArr[i][j] == arrow && this.ruleDataArr[i][j+1] == type2) {
+                            this.ruleItemArr[i][j-1].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
+                            this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
+                            this.ruleItemArr[i][j+1].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
+                    }
+                }else if(answerType==2) {
+                    if(this.ruleDataArr[i][j] == type1 && this.ruleDataArr[i][j+2] == type2) {
+                            this.ruleItemArr[i][j+2].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
+                            this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
+                            this.ruleItemArr[i][j+1].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
+                    }
+                }else if(answerType==3) {
+                    if(this.ruleDataArr[i][j+1] == arrow && this.ruleDataArr[i][j] == type1) {
+                        this.ruleItemArr[i][j+2].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
+                            this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
+                            this.ruleItemArr[i][j+1].runAction(cc.sequence(cc.moveBy(0.2, 20,0), cc.moveBy(0.2, -40,0),cc.moveBy(0.2, 40,0), cc.moveBy(0.2, -20,0)))
                     }
                 }
-            }else {
-                if(this.ruleDataArr[i][j] == this.diffType) {
-                    if(this.ruleDataArr[i][j-1] == firstType) {
-                        this.ruleItemArr[i][j-1].runAction(cc.sequence(cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0),cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0)))
-                        this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0),cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0)))
-                        this.ruleItemArr[i][j+1].runAction(cc.sequence(cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0),cc.moveBy(0.2, 50,0), cc.moveBy(0.2, -50,0)))
-                    }
-                }
-            }
            }
        }
     }

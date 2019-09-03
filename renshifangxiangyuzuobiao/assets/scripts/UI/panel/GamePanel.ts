@@ -304,19 +304,19 @@ export default class GamePanel extends BaseUI {
                 AudioManager.getInstance().playSound('橘子没有在香蕉的上方哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 1) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('梨不是在香蕉的右上方哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
+                AudioManager.getInstance().playSound('梨没有在香蕉的右上方哦，重新放一下吧~', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 2) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('橘子不是在草莓的后面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
+                AudioManager.getInstance().playSound('橘子没有在草莓的后面哦，重新放一下吧~', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 3) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在香蕉的左面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
+                AudioManager.getInstance().playSound('桃子没有在香蕉的左面哦，重新放一下吧~', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 4) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在苹果的上面哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
+                AudioManager.getInstance().playSound('桃子没有在苹果的上面哦，重新放一下吧~', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 5) {
                 this.erroring = true
-                AudioManager.getInstance().playSound('桃子不是在西瓜的左上方哦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
+                AudioManager.getInstance().playSound('桃子没有在西瓜的左上方哦，重新放一下吧~', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
             }else if(this.rightNum == 6) {
                 this.erroring = true
                 AudioManager.getInstance().playSound('葡萄和梨相邻啦，重新放一下吧！', false, 1, (id)=>{this.audioIdArr.push(id)}, finishCallback);
@@ -399,6 +399,7 @@ export default class GamePanel extends BaseUI {
                     AudioManager.getInstance().playSound('葡萄和梨不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 case 7:
+                    AudioManager.getInstance().playSound('最后一个水果放在哪里呢？', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 default:
                     return;
@@ -432,6 +433,7 @@ export default class GamePanel extends BaseUI {
                     AudioManager.getInstance().playSound('大蒜和菠菜不相邻', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 case 8:
+                    AudioManager.getInstance().playSound('最后一个蔬菜放在哪里呢？', false, 1, (id)=>{this.audioIdArr.push(id)}, ()=>{});
                     break;
                 default:
                     return;
@@ -467,7 +469,7 @@ export default class GamePanel extends BaseUI {
                     str = '葡萄和梨不相邻';
                     break;
                 case 7:
-                    str = '最后一个水果放在哪里？';
+                    str = '最后一个水果放在哪里呢？';
                     break;
                 default:
                     return;
@@ -500,7 +502,7 @@ export default class GamePanel extends BaseUI {
                     str = '大蒜和菠菜不相邻';
                     break;
                 case 8:
-                    str = '最后一个蔬菜放在哪里？';
+                    str = '最后一个蔬菜放在哪里呢？';
                     break;
                 default:
                     return;

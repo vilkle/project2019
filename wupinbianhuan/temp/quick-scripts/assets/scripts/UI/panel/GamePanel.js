@@ -138,6 +138,20 @@ var GamePanel = /** @class */ (function (_super) {
         }, 15000);
         this.intervalArr.push(index);
     };
+    GamePanel.prototype.stopIntervalPoint = function () {
+        for (var i = 0; i < this.intervalArr.length; i++) {
+            clearTimeout(this.intervalArr[i]);
+        }
+        for (var i = 0; i < this.answerDataArr.length; ++i) {
+            for (var j = 0; j < this.answerDataArr[i].length; ++j) {
+                var node = this.subjectItemArr[i][j].getChildByName('light');
+                node.active = false;
+                node.opacity = 255;
+                node.scale = 1;
+                node.stopAllActions();
+            }
+        }
+    };
     GamePanel.prototype.point = function () {
         for (var i = 0; i < this.answerDataArr.length; ++i) {
             var _loop_1 = function (j) {
@@ -150,6 +164,7 @@ var GamePanel = /** @class */ (function (_super) {
                         node_1.active = false;
                         node_1.opacity = 255;
                         node_1.scale = 1;
+                        cc.log('------point');
                     });
                     var func1 = cc.callFunc(function () {
                         node_1.opacity = 1;
@@ -290,8 +305,8 @@ var GamePanel = /** @class */ (function (_super) {
         if (this.type == 1) {
             var totalNum = 0;
             var arrowNum = 0;
-            for (var i = 0; i < this.subjectItemArr.length; i++) {
-                for (var j = 0; j < this.subjectItemArr.length; j++) {
+            for (var i = 0; i < this.subjectDataArr.length; i++) {
+                for (var j = 0; j < this.subjectDataArr[i].length; j++) {
                     if (i % 2 == 1) {
                         totalNum++;
                         if (this.subjectDataArr[i][j] != this.arrowNull) {
@@ -314,8 +329,8 @@ var GamePanel = /** @class */ (function (_super) {
         else if (this.type == 2) {
             var totalNum = 0;
             var arrowNum = 0;
-            for (var i = 0; i < this.subjectItemArr.length; i++) {
-                for (var j = 0; j < this.subjectItemArr.length; j++) {
+            for (var i = 0; i < this.subjectDataArr.length; i++) {
+                for (var j = 0; j < this.subjectDataArr[i].length; j++) {
                     if (j % 2 == 1) {
                         totalNum++;
                         if (this.subjectDataArr[i][j] != this.arrowNull) {
@@ -354,6 +369,7 @@ var GamePanel = /** @class */ (function (_super) {
                 if (_this.touchTarget || !_this.touchEnable) {
                     return;
                 }
+                _this.stopIntervalPoint();
                 var rn = _this.getRandomNum(1, 4);
                 AudioManager_1.AudioManager.getInstance().stopAll();
                 if (rn == 1) {
@@ -388,7 +404,7 @@ var GamePanel = /** @class */ (function (_super) {
                         var node_2 = _this.subjectItemArr[n][m];
                         if (!node_2.getChildByName('sprite').active) {
                             totalNum++;
-                            if (node_2.getChildByName('blank').getBoundingBox().contains(node_2.convertToNodeSpaceAR(e.currentTouch._point))) {
+                            if (node_2.getChildByName('blank').getBoundingBox().contains(node_2.convertToNodeSpaceAR(e.currentTouch._point)) && _this.isSame(n, m, i)) {
                                 node_2.getChildByName('light').active = true;
                                 for (var p = 0; p < _this.subjectItemArr.length; p++) {
                                     for (var q = 0; q < _this.subjectItemArr[p].length; q++) {
@@ -419,6 +435,7 @@ var GamePanel = /** @class */ (function (_super) {
                 if (e.target != _this.touchTarget || !_this.touchEnable) {
                     return;
                 }
+                _this.intervalPoint();
                 var rn = _this.getRandomNum(1, 4);
                 AudioManager_1.AudioManager.getInstance().stopAll();
                 if (rn == 1) {
@@ -445,6 +462,7 @@ var GamePanel = /** @class */ (function (_super) {
                 if (e.target != _this.touchTarget || !_this.touchEnable) {
                     return;
                 }
+                _this.intervalPoint();
                 var rn = _this.getRandomNum(1, 4);
                 AudioManager_1.AudioManager.getInstance().stopAll();
                 if (rn == 1) {
@@ -462,7 +480,7 @@ var GamePanel = /** @class */ (function (_super) {
                 var _loop_3 = function (n) {
                     var _loop_4 = function (m) {
                         var node_3 = _this.subjectItemArr[n][m];
-                        if (node_3.getChildByName('blank').getBoundingBox().contains(node_3.convertToNodeSpaceAR(e.currentTouch._point))) {
+                        if (node_3.getChildByName('blank').getBoundingBox().contains(node_3.convertToNodeSpaceAR(e.currentTouch._point)) && !_this.subjectItemArr[n][m].getChildByName('sprite').active) {
                             if (_this.isSame(n, m, i)) {
                                 var result = _this.judge(n, m, i);
                                 if (result == 1) {
@@ -511,20 +529,11 @@ var GamePanel = /** @class */ (function (_super) {
                                     _this.eventvalue.levelData[0].answer = _this.answerDataArr;
                                     _this.touchEnable = false;
                                     AudioManager_1.AudioManager.getInstance().stopAudio(_this.audioId);
-                                    if (_this.type == 1) {
-                                        AudioManager_1.AudioManager.getInstance().playSound('请先完成前面的图形哦~', false, 1, null, function () {
-                                            _this.touchEnable = true;
-                                            _this.setState(node_3, _this.defaultType(i));
-                                            _this.answerDataArr[n][m] = null;
-                                        });
-                                    }
-                                    else if (_this.type == 2) {
-                                        AudioManager_1.AudioManager.getInstance().playSound('目前无法判断这个位置哦~', false, 1, null, function () {
-                                            _this.touchEnable = true;
-                                            _this.setState(node_3, _this.defaultType(i));
-                                            _this.answerDataArr[n][m] = null;
-                                        });
-                                    }
+                                    AudioManager_1.AudioManager.getInstance().playSound('目前无法判断这个位置哦~~', false, 1, null, function () {
+                                        _this.touchEnable = true;
+                                        _this.setState(node_3, _this.defaultType(i));
+                                        _this.answerDataArr[n][m] = null;
+                                    });
                                     _this.touchTarget = null;
                                     _this.touchNode.active = false;
                                 }
@@ -658,7 +667,7 @@ var GamePanel = /** @class */ (function (_super) {
             if (indexOfAnswer == 0 || indexOfAnswer == 1) {
                 if (i > 4) {
                     if (this.answerDataArr[i - 1][j] && this.answerDataArr[i - 2][Math.floor(j / 2)]) {
-                        return this.correct(this.answerDataArr[i - 2][Math.floor(j / 2)], type, this.answerDataArr[i - 1][j]);
+                        return this.correct(this.answerDataArr[i - 2][Math.floor(j / 2)], type, this.answerDataArr[i - 1][j], 3);
                     }
                     else {
                         this.noAnswerPoint(this.subjectItemArr[i - 1][j], this.subjectItemArr[i - 2][Math.floor(j / 2)]);
@@ -666,31 +675,31 @@ var GamePanel = /** @class */ (function (_super) {
                     }
                 }
                 else if (i < 2) {
-                    if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2]) {
-                        return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2], this.answerDataArr[i + 1][Math.floor(j / 2) * 2]);
+                    if (this.answerDataArr[i + 1][j * 2] && this.answerDataArr[i + 2][j * 2]) {
+                        return this.correct(type, this.answerDataArr[i + 2][j * 2], this.answerDataArr[i + 1][j * 2], 1);
                     }
-                    else if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1]) {
-                        return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1], this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1]);
+                    else if (this.answerDataArr[i + 1][j * 2 + 1] && this.answerDataArr[i + 2][j * 2 + 1]) {
+                        return this.correct(type, this.answerDataArr[i + 2][j * 2 + 1], this.answerDataArr[i + 1][j * 2 + 1], 1);
                     }
                     else {
-                        this.noAnswerPoint(this.subjectItemArr[i + 1][Math.floor(j / 2) * 2], this.subjectItemArr[i + 2][Math.floor(j / 2) * 2]);
-                        this.noAnswerPoint(this.subjectItemArr[i + 1][Math.floor(j / 2) * 2 + 1], this.subjectItemArr[i + 2][Math.floor(j / 2) * 2 + 1]);
+                        this.noAnswerPoint(this.subjectItemArr[i + 1][j * 2], this.subjectItemArr[i + 2][j * 2]);
+                        this.noAnswerPoint(this.subjectItemArr[i + 1][j * 2 + 1], this.subjectItemArr[i + 2][j * 2 + 1]);
                         return 3;
                     }
                 }
                 else if (i <= 4 && i >= 2) {
                     if (this.answerDataArr[i - 1][j] && this.answerDataArr[i - 2][Math.floor(j / 2)]) {
-                        return this.correct(this.answerDataArr[i - 2][Math.floor(j / 2)], type, this.answerDataArr[i - 1][j]);
+                        return this.correct(this.answerDataArr[i - 2][Math.floor(j / 2)], type, this.answerDataArr[i - 1][j], 3);
                     }
-                    else if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2]) {
-                        return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2], this.answerDataArr[i + 1][Math.floor(j / 2) * 2]);
+                    else if (this.answerDataArr[i + 1][j * 2] && this.answerDataArr[i + 2][j * 2]) {
+                        return this.correct(type, this.answerDataArr[i + 2][j * 2], this.answerDataArr[i + 1][j * 2], 1);
                     }
-                    else if (this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1] && this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1]) {
-                        return this.correct(type, this.answerDataArr[i + 2][Math.floor(j / 2) * 2 + 1], this.answerDataArr[i + 1][Math.floor(j / 2) * 2 + 1]);
+                    else if (this.answerDataArr[i + 1][j * 2 + 1] && this.answerDataArr[i + 2][j * 2 + 1]) {
+                        return this.correct(type, this.answerDataArr[i + 2][j * 2 + 1], this.answerDataArr[i + 1][j * 2 + 1], 1);
                     }
                     else {
-                        this.noAnswerPoint(this.subjectItemArr[i + 1][Math.floor(j / 2) * 2], this.subjectItemArr[i + 2][Math.floor(j / 2) * 2]);
-                        this.noAnswerPoint(this.subjectItemArr[i + 1][Math.floor(j / 2) * 2 + 1], this.subjectItemArr[i + 2][Math.floor(j / 2) * 2 + 1]);
+                        this.noAnswerPoint(this.subjectItemArr[i + 1][j * 2], this.subjectItemArr[i + 2][j * 2]);
+                        this.noAnswerPoint(this.subjectItemArr[i + 1][j * 2 + 1], this.subjectItemArr[i + 2][j * 2 + 1]);
                         this.noAnswerPoint(this.subjectItemArr[i - 1][j], this.subjectItemArr[i - 2][Math.floor(j / 2)]);
                         return 3;
                     }
@@ -698,7 +707,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
             else if (indexOfAnswer == 2 || indexOfAnswer == 3) {
                 if (this.answerDataArr[i - 1][Math.floor(j / 2)] && this.answerDataArr[i + 1][j]) {
-                    return this.correct(this.answerDataArr[i - 1][Math.floor(j / 2)], this.answerDataArr[i + 1][j], type);
+                    return this.correct(this.answerDataArr[i - 1][Math.floor(j / 2)], this.answerDataArr[i + 1][j], type, 2);
                 }
                 else {
                     this.noAnswerPoint(this.subjectItemArr[i - 1][Math.floor(j / 2)], this.subjectItemArr[i + 1][j]);
@@ -710,7 +719,7 @@ var GamePanel = /** @class */ (function (_super) {
             if (indexOfAnswer == 0 || indexOfAnswer == 1) {
                 if (j > 6) {
                     if (this.answerDataArr[i][j - 1] && this.answerDataArr[i][j - 2]) {
-                        return this.correct(this.answerDataArr[i][j - 2], type, this.answerDataArr[i][j - 1]);
+                        return this.correct(this.answerDataArr[i][j - 2], type, this.answerDataArr[i][j - 1], 3);
                     }
                     else {
                         this.noAnswerPoint(this.subjectItemArr[i][j - 1], this.subjectItemArr[i][j - 2]);
@@ -719,7 +728,7 @@ var GamePanel = /** @class */ (function (_super) {
                 }
                 else if (j < 2) {
                     if (this.answerDataArr[i][j + 1] && this.answerDataArr[i][j + 2]) {
-                        return this.correct(type, this.answerDataArr[i][j + 2], this.answerDataArr[i][j + 1]);
+                        return this.correct(type, this.answerDataArr[i][j + 2], this.answerDataArr[i][j + 1], 1);
                     }
                     else {
                         this.noAnswerPoint(this.subjectItemArr[i][j + 1], this.subjectItemArr[i][j + 2]);
@@ -728,10 +737,10 @@ var GamePanel = /** @class */ (function (_super) {
                 }
                 else if (j >= 2 && j <= 6) {
                     if (this.answerDataArr[i][j + 1] && this.answerDataArr[i][j + 2]) {
-                        return this.correct(type, this.answerDataArr[i][j + 2], this.answerDataArr[i][j + 1]);
+                        return this.correct(type, this.answerDataArr[i][j + 2], this.answerDataArr[i][j + 1], 1);
                     }
                     else if (this.answerDataArr[i][j - 1] && this.answerDataArr[i][j - 2]) {
-                        return this.correct(this.answerDataArr[i][j - 2], type, this.answerDataArr[i][j - 1]);
+                        return this.correct(this.answerDataArr[i][j - 2], type, this.answerDataArr[i][j - 1], 3);
                     }
                     else {
                         this.noAnswerPoint(this.subjectItemArr[i][j - 1], this.subjectItemArr[i][j - 2]);
@@ -742,7 +751,7 @@ var GamePanel = /** @class */ (function (_super) {
             }
             else if (indexOfAnswer == 2 || indexOfAnswer == 3) {
                 if (this.answerDataArr[i][j - 1] && this.answerDataArr[i][j + 1]) {
-                    return this.correct(this.answerDataArr[i][j - 1], this.answerDataArr[i][j + 1], type);
+                    return this.correct(this.answerDataArr[i][j - 1], this.answerDataArr[i][j + 1], type, 2);
                 }
                 else {
                     this.noAnswerPoint(this.subjectItemArr[i][j - 1], this.subjectItemArr[i][j + 1]);
@@ -751,22 +760,22 @@ var GamePanel = /** @class */ (function (_super) {
             }
         }
     };
-    GamePanel.prototype.correct = function (type1, type2, arrow) {
+    GamePanel.prototype.correct = function (type1, type2, arrow, answerType) {
         if (arrow == this.sameType) {
             if (type1 == type2) {
-                this.rulePoint(type1, true);
                 return 1;
             }
             else {
+                this.rulePoint(type1, type2, arrow, answerType);
                 return 2;
             }
         }
         else if (arrow == this.diffType) {
             if (type1 != type2) {
-                this.rulePoint(type1, false);
                 return 1;
             }
             else {
+                this.rulePoint(type1, type2, arrow, answerType);
                 return 2;
             }
         }
@@ -782,12 +791,11 @@ var GamePanel = /** @class */ (function (_super) {
                 node1_1.active = false;
                 node1_1.opacity = 255;
                 node1_1.scale = 1;
-                cc.log('======');
+                cc.log('-------noAnswerPoint');
             });
             var func1 = cc.callFunc(function () {
                 node1_1.opacity = 1;
                 node1_1.scale = 0.5;
-                cc.log('------');
             });
             var spawn1 = cc.spawn(cc.fadeIn(0.4), cc.scaleTo(0.4, 1));
             var spawn2 = cc.spawn(cc.fadeOut(0.5), cc.scaleBy(0.5, 1.2));
@@ -804,12 +812,10 @@ var GamePanel = /** @class */ (function (_super) {
                 node_4.active = false;
                 node_4.opacity = 255;
                 node_4.scale = 1;
-                cc.log('======1');
             });
             var func1 = cc.callFunc(function () {
                 node_4.opacity = 1;
                 node_4.scale = 0.5;
-                cc.log('-------1');
             });
             var spawn1 = cc.spawn(cc.fadeIn(0.4), cc.scaleTo(0.4, 1));
             var spawn2 = cc.spawn(cc.fadeOut(0.5), cc.scaleBy(0.5, 1.2));
@@ -818,25 +824,28 @@ var GamePanel = /** @class */ (function (_super) {
             node_4.runAction(seq);
         }
     };
-    GamePanel.prototype.rulePoint = function (firstType, isSame) {
+    GamePanel.prototype.rulePoint = function (type1, type2, arrow, answerType) {
         for (var i = 0; i < this.ruleItemArr.length; ++i) {
             for (var j = 0; j < this.ruleItemArr[i].length; ++j) {
-                if (isSame) {
-                    if (this.ruleDataArr[i][j] == this.sameType) {
-                        if (this.ruleDataArr[i][j - 1] == firstType) {
-                            this.ruleItemArr[i][j - 1].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
-                            this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
-                            this.ruleItemArr[i][j + 1].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
-                        }
+                if (answerType == 1) {
+                    if (this.ruleDataArr[i][j] == arrow && this.ruleDataArr[i][j + 1] == type2) {
+                        this.ruleItemArr[i][j - 1].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
+                        this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
+                        this.ruleItemArr[i][j + 1].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
                     }
                 }
-                else {
-                    if (this.ruleDataArr[i][j] == this.diffType) {
-                        if (this.ruleDataArr[i][j - 1] == firstType) {
-                            this.ruleItemArr[i][j - 1].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
-                            this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
-                            this.ruleItemArr[i][j + 1].runAction(cc.sequence(cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0), cc.moveBy(0.2, 50, 0), cc.moveBy(0.2, -50, 0)));
-                        }
+                else if (answerType == 2) {
+                    if (this.ruleDataArr[i][j] == type1 && this.ruleDataArr[i][j + 2] == type2) {
+                        this.ruleItemArr[i][j + 2].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
+                        this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
+                        this.ruleItemArr[i][j + 1].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
+                    }
+                }
+                else if (answerType == 3) {
+                    if (this.ruleDataArr[i][j + 1] == arrow && this.ruleDataArr[i][j] == type1) {
+                        this.ruleItemArr[i][j + 2].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
+                        this.ruleItemArr[i][j].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
+                        this.ruleItemArr[i][j + 1].runAction(cc.sequence(cc.moveBy(0.2, 20, 0), cc.moveBy(0.2, -40, 0), cc.moveBy(0.2, 40, 0), cc.moveBy(0.2, -20, 0)));
                     }
                 }
             }

@@ -45,7 +45,7 @@ export class OverTips extends BaseUI {
     private spine_complete: sp.Skeleton = null;
     @property(cc.Node)
     private node_close: cc.Node = null;
-
+    private timeoutId: number = null
     private callback = null;
     private endInAnimation: boolean = false;
     private img_titles: cc.Node[] = [];
@@ -68,6 +68,7 @@ export class OverTips extends BaseUI {
     }
 
     onDestroy() {
+        clearTimeout(this.timeoutId)
         AudioManager.getInstance().stopAll()
     }
 
@@ -147,7 +148,7 @@ export class OverTips extends BaseUI {
                     Tools.playSpine(this.spine_complete, "stand", true);
                     this.endInAnimation = false;
                 });
-                setTimeout(() => {
+                this.timeoutId = setTimeout(() => {
                     AudioManager.getInstance().playSound("你真棒！等等还没做完的同学吧~", false, 1);
                 }, 1500);
                 AudioManager.getInstance().playSound("sfx_geupgrd", false, 1);

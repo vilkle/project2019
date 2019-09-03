@@ -71,8 +71,10 @@ export default class TeacherPanel extends BaseUI {
     private answerDataArr: ItemType[][] = []
     private currentType = 1 //当前的题目类型
     private currentFigure = 2
-    private sameType: ItemType = null  //相同类型之间变换的规则
-    private diffType: ItemType = null
+    private sameType1: ItemType = null  //相同类型之间变换的规则
+    private diffType1: ItemType = null
+    private sameType2: ItemType = null  
+    private diffType2: ItemType = null
     private type1: ItemType = null
     private type2: ItemType = null
     private arrow1: ItemType = null
@@ -91,11 +93,15 @@ export default class TeacherPanel extends BaseUI {
         }
         if(DaAnData.getInstance().figure == 0) {
             DaAnData.getInstance().figure = 2
-            this.sameType = ItemType.arrow_orange
-            this.diffType = ItemType.arrow_blue
+            this.sameType1 = ItemType.arrow_orange
+            this.diffType1 = ItemType.arrow_blue
+            this.sameType2 = ItemType.arrow_orange
+            this.diffType2 = ItemType.arrow_blue
         }else {
-            this.sameType = DaAnData.getInstance().ruleDataArr[2][1]
-            this.diffType = DaAnData.getInstance().ruleDataArr[0][1]
+            this.sameType1 = DaAnData.getInstance().ruleDataArr[2][1]
+            this.diffType1 = DaAnData.getInstance().ruleDataArr[0][1]
+            this.sameType2 = DaAnData.getInstance().ruleDataArr[3][1]
+            this.diffType2 = DaAnData.getInstance().ruleDataArr[1][1]
         }
         this.initData()
         this.initType()
@@ -228,13 +234,16 @@ export default class TeacherPanel extends BaseUI {
                     }
                 }
             }
-            this.setState(this.subjectItemArr[0][0], this.type2)
+            
             if(DaAnData.getInstance().figure == 1) {
                 this.subjectDataArr[0][0] = this.type1
+                this.setState(this.subjectItemArr[0][0], this.type1)
             }else  if(DaAnData.getInstance().figure == 2) {
                 this.subjectDataArr[0][0] = this.type2
+                this.setState(this.subjectItemArr[0][0], this.type2)
             }else  if(DaAnData.getInstance().figure == 3) {
                 this.subjectDataArr[0][0] = this.type1
+                this.setState(this.subjectItemArr[0][0], this.type1)
             }
             cc.log(this.arrow1, this.arrow2)
             for(let i = 0; i < this.subjectItemArr.length; i++) {
@@ -472,24 +481,6 @@ export default class TeacherPanel extends BaseUI {
             this.ruleItemArr[i][1].getChildByName('blank').on(cc.Node.EventType.TOUCH_START, ()=>{
                 this.ruleDataArr[i][1] = this.nextType(this.ruleDataArr[i][1], true)
                 this.setState(this.ruleItemArr[i][1], this.ruleDataArr[i][1])
-                //相同排的同步变化
-                if(i==0) {
-                    this.diffType = this.ruleDataArr[0][1]
-                    this.ruleDataArr[1][1] = this.ruleDataArr[0][1]
-                    this.setState(this.ruleItemArr[1][1], this.ruleDataArr[1][1])    
-                }else if(i==1) {
-                    this.diffType = this.ruleDataArr[1][1]
-                    this.ruleDataArr[0][1] = this.ruleDataArr[1][1]
-                    this.setState(this.ruleItemArr[0][1], this.ruleDataArr[0][1])
-                }else if(i==2) {
-                    this.sameType = this.ruleDataArr[2][1]
-                    this.ruleDataArr[3][1] = this.ruleDataArr[2][1]
-                    this.setState(this.ruleItemArr[3][1], this.ruleDataArr[3][1])
-                }else if(i==3) {
-                    this.sameType = this.ruleDataArr[3][1]
-                    this.ruleDataArr[2][1] = this.ruleDataArr[3][1]
-                    this.setState(this.ruleItemArr[2][1], this.ruleDataArr[2][1])
-                }
             })
         }
         for(let i = 0; i < this.subjectItemArr.length; i++) {
@@ -671,6 +662,20 @@ export default class TeacherPanel extends BaseUI {
         }
         if(!this.errorQuestion()) {
             this.showTip('题目不符合规则，请重新配题。')
+            return false
+        }
+        let total:number = 0
+        let answer:number = 0
+        for(let i = 0; i < this.subjectItemArr.length; ++i) {
+            for(let j = 0; j < this.subjectItemArr[i].length; ++j) {
+                total++
+                if(this.subjectItemArr[i][j].getChildByName('sprite').active) {
+                    answer++
+                }
+            }
+        }
+        if(total==answer) {
+            this.showTip('留出作答区域，请重新配题。')
             return false
         }
 

@@ -52,7 +52,7 @@ var UploadAndReturnPanel = /** @class */ (function (_super) {
     };
     UploadAndReturnPanel.prototype.onTiJiao = function () {
         if (DaAnData_1.DaAnData.getInstance().submitEnable) {
-            UIManager_1.UIManager.getInstance().openUI(SubmissionPanel_1.default, null, 210);
+            UIManager_1.UIManager.getInstance().openUI(SubmissionPanel_1.default, null, 222);
         }
         else {
             UIHelp_1.UIHelp.showTip('请通关后进行保存。');
