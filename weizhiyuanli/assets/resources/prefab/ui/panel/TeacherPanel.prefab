@@ -5596,6 +5596,15 @@
     "grayMaterial": {
       "__uuid__": "3a7bb79f-32fd-422e-ada2-96f518fed422"
     },
+    "ball": {
+      "__uuid__": "0bfa1f14-accc-4d3e-bc92-412a7baa056d"
+    },
+    "bottle": {
+      "__uuid__": "ebb7c855-d21b-4f7b-b081-3bf70e7317fa"
+    },
+    "crown": {
+      "__uuid__": "0c8a40db-b47f-428e-931b-b85b81100232"
+    },
     "_id": ""
   },
   {

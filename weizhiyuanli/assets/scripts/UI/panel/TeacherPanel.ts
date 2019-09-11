@@ -33,6 +33,12 @@ export default class TeacherPanel extends BaseUI {
     private oriMaterial: cc.Material = null
     @property(cc.Material)
     private grayMaterial: cc.Material = null
+    @property(cc.SpriteFrame)
+    private ball: cc.SpriteFrame = null;
+    @property(cc.SpriteFrame)
+    private bottle: cc.SpriteFrame = null;
+    @property(cc.SpriteFrame)
+    private crown: cc.SpriteFrame = null;
 
     private checkpointEnable: boolean = true
     private itemNodeArr: cc.Node[] = []
@@ -48,7 +54,44 @@ export default class TeacherPanel extends BaseUI {
                 this.checkpointLayout.runAction(cc.moveTo(0.2, cc.v2(0, 0)))
             }
         })
-        this.initItemNode()
+    }
+
+    initPanel() {
+        let checkpointNum = DaAnData.getInstance().checkpointsNum
+        let countArr = DaAnData.getInstance().countsArr
+        let goodsArr = DaAnData.getInstance().goodsArr
+        if(checkpointNum == 1) {
+            this.onCheckpointClick1()
+        }else if(checkpointNum == 2) {
+            this.onCheckpointClick2()
+        }else if(checkpointNum == 3) {
+            this.onCheckpointClick3()
+        }
+        for(let i = 0; i < this.itemNodeArr.length; ++i) {
+            let editbox = this.itemNodeArr[i].getChildByName('New EditBox')
+            editbox.getComponent(cc.EditBox).string = countArr[i].toString()
+            let node = this.itemNodeArr[i].getChildByName('rightAnswerNode')
+            let num = countArr[i]
+            let ge = num % 10
+            let shi = Math.floor(num/10) % 10
+            let bai = Math.floor(num/100) % 10
+            let qian = Math.floor(num/1000) % 10
+            node.getChildByName('qian').getComponent(cc.Label).string = qian.toString()
+            node.getChildByName('bai').getComponent(cc.Label).string = bai.toString()
+            node.getChildByName('shi').getComponent(cc.Label).string = shi.toString()
+            node.getChildByName('ge').getComponent(cc.Label).string = ge.toString()
+            let good = this.itemNodeArr[i].getChildByName('goodsSprite').getComponent(cc.Sprite)
+            let index = goodsArr[i]
+            if(index == 0) {
+                good.spriteFrame = this.ball
+            }else if(index == 1) {
+                good.spriteFrame = this.bottle
+            }else if(index == 2) {
+                good.spriteFrame = this.crown
+            }
+            this.itemNodeArr[i].getChildByName('addButton').active = false
+        }
+
     }
 
     initItemNode() {
@@ -276,9 +319,30 @@ export default class TeacherPanel extends BaseUI {
                     this.ClearNet();
                 } else {
                     if (content != null) {
-                        
+                        if(content.checkpointsNum) {
+                            DaAnData.getInstance().checkpointsNum = content.checkpointsNum
+                        }else {
+                            console.log('网络请求数据checkpointsNum为空')
+                            this.initItemNode()
+                            return
+                        }
+                        if(content.countsArr) {
+                            DaAnData.getInstance().countsArr = content.countsArr
+                        }else {
+                            console.log('网络请求数据countsArr为空')
+                            this.initItemNode()
+                            return
+                        }
+                        if(content.goodsArr) {
+                            DaAnData.getInstance().goodsArr = content.goodsArr
+                        }else {
+                            console.log('网络请求数据goodsArr为空')
+                            this.initItemNode()
+                            return
+                        }
+                        this.initPanel()
                     } else {
-                        
+                        this.initItemNode()
                     }
                 }
             }

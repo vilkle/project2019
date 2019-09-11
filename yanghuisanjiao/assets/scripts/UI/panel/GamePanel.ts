@@ -1,7 +1,6 @@
 import { BaseUI } from "../BaseUI";
 import { NetWork } from "../../Http/NetWork";
 import DataReporting from "../../Data/DataReporting";
-import ShaderMaterial from "../../shader/ShaderMaterial";
 import {AudioManager} from "../../Manager/AudioManager"
 import {UIHelp} from "../../Utils/UIHelp";
 
@@ -266,8 +265,8 @@ export default class GamePanel extends BaseUI {
         this.DSprite.node.active = true;
         this.questionLabel.string = '仔细观察图形，以下哪项不是图中的规律？'
         this.ALabel.string = '左右两侧最外层都是1'
-        this.BLabel.string = '第2行起，每一行第2个数从上到下可以组成一个等差数组'
-        this.CLabel.string = '第2行起，每一行第2个数从上到下可以组成一个等差数组'
+        this.BLabel.string = '第2行起，每一行第2个数从上到下可以组成一个等差数串'
+        this.CLabel.string = '第2行起，每一行第2个数从上到下不可以组成一个等差数串'
         this.DLabel.string = '第5行第2个数是4，则第20行第2个数是19'
         this.ALabel.fontSize = 30;
         this.BLabel.fontSize = 30;
@@ -307,7 +306,7 @@ export default class GamePanel extends BaseUI {
         this.CSprite.node.active = true;
         this.questionLabel.string = '仔细观察图形，发现了什么？'
         this.ALabel.string = '每个数等于肩上两个数的和'
-        this.BLabel.string = '每个数等于上一行数的和'
+        this.BLabel.string = '奇数行中间的数，等于上一行数的和'
         this.CLabel.string = '奇数行中间的数可组成等差数串'
         this.DSprite.node.active = false;
         for(let i = 0; i < this.triangleNode.children.length; i ++){
@@ -601,9 +600,9 @@ export default class GamePanel extends BaseUI {
         AudioManager.getInstance().playSound('sfx_yhwrng', false);
         this.touchEnable(false);
         if(this.answerIndex == 2) {
-            this.BSprite.spriteFrame = this.yellowFrame;
+            this.BSprite.spriteFrame = this.redFrame;
         }else if(this.answerIndex == 3) {
-            this.CSprite.spriteFrame = this.yellowFrame;
+            this.CSprite.spriteFrame = this.redFrame;
         }
         this.triangleNode.children[2].children[0].getComponent(sp.Skeleton).setAnimation(0, 'red', true);
         this.triangleNode.children[2].children[1].getComponent(sp.Skeleton).setAnimation(0, 'red', true);
@@ -634,7 +633,7 @@ export default class GamePanel extends BaseUI {
     wrong5_1() {
         AudioManager.getInstance().playSound('sfx_yhwrng', false);
         this.touchEnable(false);
-        this.BSprite.spriteFrame = this.yellowFrame;
+        this.BSprite.spriteFrame = this.redFrame;
         for(let i = 0; i < this.triangleNode.children.length; i++) {
             if(i == 4) {
                 for(let j = 0; j < this.triangleNode.children[i].children.length; j ++) {
