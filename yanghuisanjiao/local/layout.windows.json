@@ -1,15 +1,14 @@
 {
   "version": "1.1.1",
   "windows": {
-    "worker": {},
     "main": {
       "main": true,
       "url": "app://editor/index.html",
       "windowType": "dockable",
-      "x": -1920,
-      "y": -169,
-      "width": 1920,
-      "height": 1057,
+      "x": -1641,
+      "y": -93,
+      "width": 1280,
+      "height": 728,
       "layout": {
         "children": [
           {
@@ -19,23 +18,23 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 487.9375,
+                "height": 323,
                 "type": "panel",
-                "width": 330.34375
+                "width": 219.765625
               },
               {
                 "active": 0,
                 "children": [
                   "assets"
                 ],
-                "height": 485.046875,
+                "height": 321,
                 "type": "panel",
-                "width": 330.34375
+                "width": 219.765625
               }
             ],
-            "height": 975,
+            "height": 646,
             "type": "dock-v",
-            "width": 330.34375
+            "width": 219.765625
           },
           {
             "children": [
@@ -44,9 +43,9 @@
                 "children": [
                   "scene"
                 ],
-                "height": 569.96875,
+                "height": 377.25,
                 "type": "panel",
-                "width": 1094.640625
+                "width": 729.234375
               },
               {
                 "active": 0,
@@ -54,14 +53,14 @@
                   "console",
                   "timeline"
                 ],
-                "height": 403.015625,
+                "height": 266.734375,
                 "type": "panel",
-                "width": 1094.640625
+                "width": 729.234375
               }
             ],
-            "height": 975,
+            "height": 646,
             "type": "dock-v",
-            "width": 1094.640625
+            "width": 729.234375
           },
           {
             "active": 0,
@@ -69,9 +68,9 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 975,
+            "height": 646,
             "type": "panel",
-            "width": 491.015625
+            "width": 326.984375
           }
         ],
         "type": "dock-h"

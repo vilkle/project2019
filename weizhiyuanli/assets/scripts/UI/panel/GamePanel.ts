@@ -164,12 +164,21 @@ export default class GamePanel extends BaseUI {
         this.miya.setAnimation(0, 'boom', false)
         this.miya.setCompleteListener(trackEntry=>{
             if(trackEntry.animation.name == 'boom') {
+                var temp = this.countsArr[this.checkpointIndex-1]
+                var result =  temp / 10
+                var sum = temp % 10
+                while(result >= 1.0){
+                    temp = Math.floor(temp / 10) 
+                    result = temp / 10
+                    let num = temp % 10
+                    sum += num
+                }
                 if(this.goodsArr[this.checkpointIndex-1]==0) {
-                    this.talk(`想要皮球么？给我${this.countsArr[this.checkpointIndex-1]}个钻石吧！`)
+                    this.talk(`想要皮球么？给我${sum}个钻石吧！`)
                 }else if(this.goodsArr[this.checkpointIndex-1]==1) {
-                    this.talk(`想要酒瓶么？给我${this.countsArr[this.checkpointIndex-1]}个钻石吧！`)
+                    this.talk(`想要酒瓶么？给我${sum}个钻石吧！`)
                 }else if(this.goodsArr[this.checkpointIndex-1]==2) {
-                    this.talk(`想要王冠么？给我${this.countsArr[this.checkpointIndex-1]}个钻石吧！`)
+                    this.talk(`想要王冠么？给我${sum}个钻石吧！`)
                 }
             }
         })
