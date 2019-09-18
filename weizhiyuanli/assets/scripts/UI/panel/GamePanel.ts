@@ -103,7 +103,7 @@ export default class GamePanel extends BaseUI {
     }
 
     onLoad() {
-        
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
     }
 
     onEndGame() {
