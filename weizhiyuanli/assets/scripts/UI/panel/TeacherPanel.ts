@@ -310,7 +310,7 @@ export default class TeacherPanel extends BaseUI {
             if (!err) {
                 let res = response;
                 if (Array.isArray(res.data)) {
-                    
+                    this.initItemNode()
                     return;
                 }
                 let content = JSON.parse(res.data.courseware_content);

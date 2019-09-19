@@ -46,8 +46,6 @@ export class OverTips extends BaseUI {
     @property(cc.Label)
     private buttonLabel: cc.Label = null;
     @property(cc.Node)
-    private node_close: cc.Node = null;
-    @property(cc.Node)
     private button: cc.Node = null
     private callback = null;
     private btnCallback = null;
@@ -63,11 +61,11 @@ export class OverTips extends BaseUI {
     }
 
     start() {
-        this.node_close.on(cc.Node.EventType.TOUCH_END, this.onClickClose, this);
+       
     }
 
     onDisable() {
-        this.node_close.off(cc.Node.EventType.TOUCH_END, this.onClickClose, this);
+        
     }
 
     /**
