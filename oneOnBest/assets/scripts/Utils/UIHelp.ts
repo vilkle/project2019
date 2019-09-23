@@ -29,20 +29,20 @@ export class UIHelp {
     * @param {Function} callback    回调函数
     * @param {string} endTitle      end动效提示文字
     */
-    public static showOverTip(type: number, str: string = "", callback: Function = null, endTitle?: string) {
+    public static showOverTip(type: number, str: string = "", btnStr: string = '', btnCallback: Function, callback: Function = null, endTitle?: string) {
         let overTips = UIManager.getInstance().getUI(OverTips) as OverTips;
         if (!overTips) {
             UIManager.getInstance().openUI(OverTips, null, 210, () => {
-                UIHelp.showOverTip(type, str, callback, endTitle);
+                UIHelp.showOverTip(type, str, btnStr, btnCallback, callback, endTitle);
             });
         }
         else {
-            overTips.init(type, str, callback, endTitle);
+            overTips.init(type, str, btnStr, btnCallback, callback, endTitle);
         }
     }
 
     /**
-    * 二次确认框
+    * 二次确认框 4
     * @param message tips文字内容
     * @param type tips类型  0:内容tips   1:系统tips
     */

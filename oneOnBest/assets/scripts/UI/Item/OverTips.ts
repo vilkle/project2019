@@ -45,7 +45,9 @@ export class OverTips extends BaseUI {
     private spine_complete: sp.Skeleton = null;
     @property(cc.Node)
     private node_close: cc.Node = null;
-
+    @property(cc.Node)
+    private button: cc.Node = null
+    private btnCallback = null
     private callback = null;
     private endInAnimation: boolean = false;
     private img_titles: cc.Node[] = [];
@@ -74,24 +76,29 @@ export class OverTips extends BaseUI {
      @param {Function} callback    回调函数
      @param {string} endTitle      end动效提示文字
      */
-    init(type: number, str: string = "", callback: Function, endTitle?: string): void {
+    init(type: number, str: string = "", btnStr: string = '', btnCallback: Function, callback: Function, endTitle?: string): void {
         this.callback = callback;
         this.spine_false.node.active = type == 0;
         this.spine_true.node.active = type == 1;
         this.spine_complete.node.active = type == 2;
         this.label_tip.string = str;
-        this.label_tip.node.active = type != 2;
+        this.label_tip.node.active = true;
         switch (type) {
             case 0:
                 Tools.playSpine(this.spine_false, "false", false, this.delayClose.bind(this));
                 AudioManager.getInstance().playSound("sfx_genneg", false, 1);
+                this.button.active = false
+                this.button.getChildByName('Background').getChildByName('Label').getComponent(cc.Label).string = btnStr
+                this.btnCallback = btnCallback
                 break;
             case 1:
                 Tools.playSpine(this.spine_true, "true", false, this.delayClose.bind(this));
                 AudioManager.getInstance().playSound("sfx_genpos", false, 1);
+                this.button.active = false
                 break;
             case 2:
                 this.spine_complete.node.active = false;
+                this.button.active = false
                 if (!endTitle) endTitle = DefalutTitle[0];
                 if (endTitle.length != 4) return;
                 this.bones = [];
@@ -121,6 +128,10 @@ export class OverTips extends BaseUI {
         if (event) AudioManager.getInstance().playSound("sfx_buttn", false, 1);
         if (this.callback) this.callback();
         UIManager.getInstance().closeUI(OverTips);
+    }
+
+    buttonCallback() {
+        this.btnCallback()
     }
 
     createTitleImage(titleName: string) {
