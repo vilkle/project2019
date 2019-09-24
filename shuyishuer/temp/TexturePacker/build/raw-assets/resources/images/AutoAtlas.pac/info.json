@@ -1,0 +1,797 @@
+{
+  "mtimes": {
+    "ba3fb529-c46e-4cf9-8e22-36b16d3696f3": {
+      "assetMtime": 1565921346624,
+      "metaMtime": 1569290416988
+    },
+    "11d7abf7-9280-45ab-955e-a0cdb0c45ea5": {
+      "assetMtime": 1565921346632,
+      "metaMtime": 1569290417160
+    },
+    "ce5c5283-e01d-40f0-b739-f97c5dc35cd3": {
+      "assetMtime": 1565921346632,
+      "metaMtime": 1569290417160
+    },
+    "15c5f32e-2a22-44d5-a8dc-1b5ad54ddcec": {
+      "assetMtime": 1565921346631,
+      "metaMtime": 1569290417150
+    },
+    "a1fb4030-577b-418a-95a4-36e7b5e33a45": {
+      "assetMtime": 1565921346631,
+      "metaMtime": 1569290417150
+    },
+    "29cde8fb-dd9f-4981-8ebc-2ebec4fb65b3": {
+      "assetMtime": 1565921346630,
+      "metaMtime": 1569290417135
+    },
+    "ebe5bccb-4828-44af-94b9-94ac52a7c38f": {
+      "assetMtime": 1565921346630,
+      "metaMtime": 1569290417135
+    },
+    "31772398-84ae-431f-ac6d-2b57b0d66762": {
+      "assetMtime": 1565921346625,
+      "metaMtime": 1569290417162
+    },
+    "594c04b9-8bb8-4698-9817-63afdb29f451": {
+      "assetMtime": 1565921346625,
+      "metaMtime": 1569290417162
+    },
+    "34b93be1-4e4a-4a5f-9408-9a357ef4f1e1": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "061509a1-2dc5-4228-8c5e-edce1cb2e983": {
+      "assetMtime": 1565921346630,
+      "metaMtime": 1569290417211
+    },
+    "4a6b5a97-5fbf-4aee-910e-4be7cb8e1537": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "5e84c87d-e4b3-4575-bbe0-07eab7e24cae": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "66204e73-249a-4e98-9e62-c077b68a635f": {
+      "assetMtime": 1565921346626,
+      "metaMtime": 1569290417181
+    },
+    "d18b8639-bcea-466b-b17c-d05fa100d0d6": {
+      "assetMtime": 1565921346626,
+      "metaMtime": 1569290417181
+    },
+    "6925db0b-cac7-40e1-8671-31e2db3a1573": {
+      "assetMtime": 1565921346631,
+      "metaMtime": 1569290417140
+    },
+    "2368900f-2b7d-4ec8-aef5-f69341bfd7a0": {
+      "assetMtime": 1565921346631,
+      "metaMtime": 1569290417140
+    },
+    "6a6e95c0-7133-4380-a03e-6166212c59dd": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "6a8140a6-d39f-4d33-a271-e2f507e1f2d2": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "71944752-4d20-4e2b-b71d-45f874e6c6d7": {
+      "assetMtime": 1565921346627,
+      "metaMtime": 1569290417195
+    },
+    "933c10ba-5b0b-4bb7-a294-741a18b8641f": {
+      "assetMtime": 1565921346627,
+      "metaMtime": 1569290417195
+    },
+    "763a51d6-31b6-42ef-9274-5d54a2ddd819": {
+      "assetMtime": 1565921346626,
+      "metaMtime": 1569290417178
+    },
+    "4e5a2750-6820-4990-9157-82b90958252f": {
+      "assetMtime": 1565921346626,
+      "metaMtime": 1569290417178
+    },
+    "78fdd712-a3f2-4475-a7d2-0215c24cce9e": {
+      "assetMtime": 1565921346625,
+      "metaMtime": 1569290417171
+    },
+    "9faaeabe-c63c-4bdc-bcb7-833c01e6a632": {
+      "assetMtime": 1565921346625,
+      "metaMtime": 1569290417171
+    },
+    "85228957-0668-4e9b-8c92-8ddfdef3cb26": {
+      "assetMtime": 1568884128731,
+      "metaMtime": 1569290417235
+    },
+    "9d449606-afaf-47de-b6dc-0f5a6e4001d5": {
+      "assetMtime": 1568884128731,
+      "metaMtime": 1569290417235
+    },
+    "897bffd5-6e97-464b-a76a-0da4452de091": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "8f17955f-01aa-44c2-a31e-512195f628ff": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "91423fe7-091d-4e86-9197-fb806ac657db": {
+      "assetMtime": 1568884128707,
+      "metaMtime": 1569290417230
+    },
+    "60d5b18d-7d81-4971-b5c7-34ad06e71716": {
+      "assetMtime": 1568884128707,
+      "metaMtime": 1569290417230
+    },
+    "9be27a7b-b122-4c1c-b381-66ce18a3b703": {
+      "assetMtime": 1565921346627,
+      "metaMtime": 1569290417207
+    },
+    "36c838ef-4e0c-40fc-af9c-52dc58acb82a": {
+      "assetMtime": 1565921346627,
+      "metaMtime": 1569290417207
+    },
+    "a204e591-c845-4585-8c21-d904b6e70b39": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "a5a74f12-e6b5-461a-b1e0-a6bab5c2d9d2": {
+      "assetMtime": 1565921346627,
+      "metaMtime": 1569290417197
+    },
+    "fe1487b6-21ee-49b2-be64-8086cb7203c7": {
+      "assetMtime": 1565921346627,
+      "metaMtime": 1569290417197
+    },
+    "b99e3d8a-208f-46e7-8241-9ae910ed0cb9": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "d234028a-afb9-4f8a-8575-e253f8d1ba3e": {
+      "assetMtime": 1565921346632,
+      "metaMtime": 1569290417146
+    },
+    "df81f65e-6fb4-4e96-b9ae-f8306c80ab6c": {
+      "assetMtime": 1565921346632,
+      "metaMtime": 1569290417146
+    },
+    "d8f7ae1c-a6a0-48a3-82f7-78535c066e8f": {
+      "assetMtime": 1565921346629,
+      "metaMtime": 1568970781044
+    },
+    "d9af154b-cb4c-419e-abb0-05382c16fca8": {
+      "assetMtime": 1565921346630,
+      "metaMtime": 1569290417211
+    }
+  },
+  "result": {
+    "name": "AutoAtlas",
+    "width": 2048,
+    "height": 2048,
+    "ver": "1.2.0",
+    "uuid": "ba3fb529-c46e-4cf9-8e22-36b16d3696f3",
+    "maxWidth": 2048,
+    "maxHeight": 2048,
+    "padding": 2,
+    "allowRotation": true,
+    "forceSquared": false,
+    "powerOfTwo": true,
+    "algorithm": "MaxRects",
+    "format": "png",
+    "quality": 80,
+    "contourBleed": true,
+    "paddingBleed": true,
+    "filterUnused": false,
+    "platformSettings": {},
+    "subMetas": {},
+    "bleed": 1,
+    "atlases": [
+      {
+        "files": [
+          {
+            "name": "loadingBg",
+            "uuid": "11d7abf7-9280-45ab-955e-a0cdb0c45ea5",
+            "textureUuid": "ce5c5283-e01d-40f0-b739-f97c5dc35cd3",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096500_image_0.png",
+            "trim": {
+              "x": 3,
+              "y": 3,
+              "width": 10,
+              "height": 1112,
+              "rotatedWidth": 10,
+              "rotatedHeight": 1112
+            },
+            "rawWidth": 10,
+            "rawHeight": 1112,
+            "width": 16,
+            "height": 1118,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/ce/ce5c5283-e01d-40f0-b739-f97c5dc35cd3.png",
+            "x": 0,
+            "y": 0,
+            "rotatedWidth": 16,
+            "rotatedHeight": 1118
+          },
+          {
+            "name": "word",
+            "uuid": "d9af154b-cb4c-419e-abb0-05382c16fca8",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096609_image_24.png",
+            "trim": {
+              "x": 3,
+              "y": 1121,
+              "width": 674,
+              "height": 83,
+              "rotatedWidth": 83,
+              "rotatedHeight": 674
+            },
+            "rawWidth": 674,
+            "rawHeight": 83,
+            "width": 680,
+            "height": 89,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 0,
+            "y": 1118,
+            "rotated": true,
+            "rotatedWidth": 89,
+            "rotatedHeight": 680
+          },
+          {
+            "name": "u",
+            "uuid": "71944752-4d20-4e2b-b71d-45f874e6c6d7",
+            "textureUuid": "933c10ba-5b0b-4bb7-a294-741a18b8641f",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096534_image_11.png",
+            "trim": {
+              "x": 3,
+              "y": 1801,
+              "width": 220,
+              "height": 198,
+              "rotatedWidth": 220,
+              "rotatedHeight": 198
+            },
+            "rawWidth": 220,
+            "rawHeight": 198,
+            "width": 226,
+            "height": 204,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/93/933c10ba-5b0b-4bb7-a294-741a18b8641f.png",
+            "x": 0,
+            "y": 1798,
+            "rotatedWidth": 226,
+            "rotatedHeight": 204
+          },
+          {
+            "name": "dig-1",
+            "uuid": "29cde8fb-dd9f-4981-8ebc-2ebec4fb65b3",
+            "textureUuid": "ebe5bccb-4828-44af-94b9-94ac52a7c38f",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096500_image_2.png",
+            "trim": {
+              "x": 3,
+              "y": 2005,
+              "width": 19,
+              "height": 21,
+              "rotatedWidth": 21,
+              "rotatedHeight": 19
+            },
+            "rawWidth": 19,
+            "rawHeight": 21,
+            "width": 25,
+            "height": 27,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/eb/ebe5bccb-4828-44af-94b9-94ac52a7c38f.png",
+            "x": 0,
+            "y": 2002,
+            "rotated": true,
+            "rotatedWidth": 27,
+            "rotatedHeight": 25
+          },
+          {
+            "name": "dig",
+            "uuid": "6925db0b-cac7-40e1-8671-31e2db3a1573",
+            "textureUuid": "2368900f-2b7d-4ec8-aef5-f69341bfd7a0",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096516_image_8.png",
+            "trim": {
+              "x": 30,
+              "y": 2005,
+              "width": 19,
+              "height": 21,
+              "rotatedWidth": 21,
+              "rotatedHeight": 19
+            },
+            "rawWidth": 19,
+            "rawHeight": 21,
+            "width": 25,
+            "height": 27,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/23/2368900f-2b7d-4ec8-aef5-f69341bfd7a0.png",
+            "x": 27,
+            "y": 2002,
+            "rotated": true,
+            "rotatedWidth": 27,
+            "rotatedHeight": 25
+          },
+          {
+            "name": "singleColor",
+            "uuid": "763a51d6-31b6-42ef-9274-5d54a2ddd819",
+            "textureUuid": "4e5a2750-6820-4990-9157-82b90958252f",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096535_image_12.png",
+            "trim": {
+              "x": 57,
+              "y": 2005,
+              "width": 2,
+              "height": 2,
+              "rotatedWidth": 2,
+              "rotatedHeight": 2
+            },
+            "rawWidth": 2,
+            "rawHeight": 2,
+            "width": 8,
+            "height": 8,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/4e/4e5a2750-6820-4990-9157-82b90958252f.png",
+            "x": 54,
+            "y": 2002,
+            "rotatedWidth": 8,
+            "rotatedHeight": 8
+          },
+          {
+            "name": "jindu_bg",
+            "uuid": "d234028a-afb9-4f8a-8575-e253f8d1ba3e",
+            "textureUuid": "df81f65e-6fb4-4e96-b9ae-f8306c80ab6c",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096591_image_22.png",
+            "trim": {
+              "x": 19,
+              "y": 3,
+              "width": 636,
+              "height": 46,
+              "rotatedWidth": 46,
+              "rotatedHeight": 636
+            },
+            "rawWidth": 638,
+            "rawHeight": 48,
+            "width": 642,
+            "height": 52,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/df/df81f65e-6fb4-4e96-b9ae-f8306c80ab6c.png",
+            "x": 16,
+            "y": 0,
+            "rotated": true,
+            "rotatedWidth": 52,
+            "rotatedHeight": 642
+          },
+          {
+            "name": "hua",
+            "uuid": "91423fe7-091d-4e86-9197-fb806ac657db",
+            "textureUuid": "60d5b18d-7d81-4971-b5c7-34ad06e71716",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096560_image_17.png",
+            "trim": {
+              "x": 19,
+              "y": 645,
+              "width": 470,
+              "height": 250,
+              "rotatedWidth": 250,
+              "rotatedHeight": 470
+            },
+            "rawWidth": 512,
+            "rawHeight": 256,
+            "width": 476,
+            "height": 256,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/60/60d5b18d-7d81-4971-b5c7-34ad06e71716.png",
+            "x": 16,
+            "y": 642,
+            "rotated": true,
+            "rotatedWidth": 256,
+            "rotatedHeight": 476
+          },
+          {
+            "name": "syse_02",
+            "uuid": "85228957-0668-4e9b-8c92-8ddfdef3cb26",
+            "textureUuid": "9d449606-afaf-47de-b6dc-0f5a6e4001d5",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096551_image_14.png",
+            "trim": {
+              "x": 71,
+              "y": 3,
+              "width": 495,
+              "height": 252,
+              "rotatedWidth": 252,
+              "rotatedHeight": 495
+            },
+            "rawWidth": 512,
+            "rawHeight": 256,
+            "width": 501,
+            "height": 258,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/9d/9d449606-afaf-47de-b6dc-0f5a6e4001d5.png",
+            "x": 68,
+            "y": 0,
+            "rotated": true,
+            "rotatedWidth": 258,
+            "rotatedHeight": 501
+          },
+          {
+            "name": "img_guan",
+            "uuid": "6a8140a6-d39f-4d33-a271-e2f507e1f2d2",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096534_image_10.png",
+            "trim": {
+              "x": 71,
+              "y": 504,
+              "width": 65,
+              "height": 81,
+              "rotatedWidth": 81,
+              "rotatedHeight": 65
+            },
+            "rawWidth": 65,
+            "rawHeight": 81,
+            "width": 71,
+            "height": 87,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 68,
+            "y": 501,
+            "rotated": true,
+            "rotatedWidth": 87,
+            "rotatedHeight": 71
+          },
+          {
+            "name": "img_zhan",
+            "uuid": "d8f7ae1c-a6a0-48a3-82f7-78535c066e8f",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096602_image_23.png",
+            "trim": {
+              "x": 158,
+              "y": 504,
+              "width": 67,
+              "height": 80,
+              "rotatedWidth": 80,
+              "rotatedHeight": 67
+            },
+            "rawWidth": 67,
+            "rawHeight": 80,
+            "width": 73,
+            "height": 86,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 155,
+            "y": 501,
+            "rotated": true,
+            "rotatedWidth": 86,
+            "rotatedHeight": 73
+          },
+          {
+            "name": "img_gong",
+            "uuid": "5e84c87d-e4b3-4575-bbe0-07eab7e24cae",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096502_image_6.png",
+            "trim": {
+              "x": 71,
+              "y": 575,
+              "width": 64,
+              "height": 79,
+              "rotatedWidth": 79,
+              "rotatedHeight": 64
+            },
+            "rawWidth": 64,
+            "rawHeight": 79,
+            "width": 70,
+            "height": 85,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 68,
+            "y": 572,
+            "rotated": true,
+            "rotatedWidth": 85,
+            "rotatedHeight": 70
+          },
+          {
+            "name": "img_cheng",
+            "uuid": "897bffd5-6e97-464b-a76a-0da4452de091",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096555_image_15.png",
+            "trim": {
+              "x": 244,
+              "y": 504,
+              "width": 61,
+              "height": 80,
+              "rotatedWidth": 61,
+              "rotatedHeight": 80
+            },
+            "rawWidth": 61,
+            "rawHeight": 80,
+            "width": 67,
+            "height": 86,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 241,
+            "y": 501,
+            "rotatedWidth": 67,
+            "rotatedHeight": 86
+          },
+          {
+            "name": "btn01",
+            "uuid": "31772398-84ae-431f-ac6d-2b57b0d66762",
+            "textureUuid": "594c04b9-8bb8-4698-9817-63afdb29f451",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096500_image_3.png",
+            "trim": {
+              "x": 156,
+              "y": 577,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/59/594c04b9-8bb8-4698-9817-63afdb29f451.png",
+            "x": 153,
+            "y": 574,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "u2",
+            "uuid": "a5a74f12-e6b5-461a-b1e0-a6bab5c2d9d2",
+            "textureUuid": "fe1487b6-21ee-49b2-be64-8086cb7203c7",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096578_image_20.png",
+            "trim": {
+              "x": 92,
+              "y": 1121,
+              "width": 458,
+              "height": 203,
+              "rotatedWidth": 203,
+              "rotatedHeight": 458
+            },
+            "rawWidth": 458,
+            "rawHeight": 203,
+            "width": 464,
+            "height": 209,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/fe/fe1487b6-21ee-49b2-be64-8086cb7203c7.png",
+            "x": 89,
+            "y": 1118,
+            "rotated": true,
+            "rotatedWidth": 209,
+            "rotatedHeight": 464
+          },
+          {
+            "name": "img_zuo",
+            "uuid": "6a6e95c0-7133-4380-a03e-6166212c59dd",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096534_image_9.png",
+            "trim": {
+              "x": 92,
+              "y": 1585,
+              "width": 67,
+              "height": 79,
+              "rotatedWidth": 79,
+              "rotatedHeight": 67
+            },
+            "rawWidth": 67,
+            "rawHeight": 79,
+            "width": 73,
+            "height": 85,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 89,
+            "y": 1582,
+            "rotated": true,
+            "rotatedWidth": 85,
+            "rotatedHeight": 73
+          },
+          {
+            "name": "img_jie",
+            "uuid": "b99e3d8a-208f-46e7-8241-9ae910ed0cb9",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096588_image_21.png",
+            "trim": {
+              "x": 177,
+              "y": 1585,
+              "width": 68,
+              "height": 78,
+              "rotatedWidth": 68,
+              "rotatedHeight": 78
+            },
+            "rawWidth": 68,
+            "rawHeight": 78,
+            "width": 74,
+            "height": 84,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 174,
+            "y": 1582,
+            "rotatedWidth": 74,
+            "rotatedHeight": 84
+          },
+          {
+            "name": "img_da",
+            "uuid": "4a6b5a97-5fbf-4aee-910e-4be7cb8e1537",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096502_image_5.png",
+            "trim": {
+              "x": 92,
+              "y": 1658,
+              "width": 67,
+              "height": 78,
+              "rotatedWidth": 67,
+              "rotatedHeight": 78
+            },
+            "rawWidth": 67,
+            "rawHeight": 78,
+            "width": 73,
+            "height": 84,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 89,
+            "y": 1655,
+            "rotatedWidth": 73,
+            "rotatedHeight": 84
+          },
+          {
+            "name": "img_shu",
+            "uuid": "34b93be1-4e4a-4a5f-9408-9a357ef4f1e1",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096501_image_4.png",
+            "trim": {
+              "x": 165,
+              "y": 1669,
+              "width": 64,
+              "height": 78,
+              "rotatedWidth": 78,
+              "rotatedHeight": 64
+            },
+            "rawWidth": 64,
+            "rawHeight": 78,
+            "width": 70,
+            "height": 84,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 162,
+            "y": 1666,
+            "rotated": true,
+            "rotatedWidth": 84,
+            "rotatedHeight": 70
+          },
+          {
+            "name": "toast",
+            "uuid": "66204e73-249a-4e98-9e62-c077b68a635f",
+            "textureUuid": "d18b8639-bcea-466b-b17c-d05fa100d0d6",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096503_image_7.png",
+            "trim": {
+              "x": 165,
+              "y": 1739,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/d1/d18b8639-bcea-466b-b17c-d05fa100d0d6.png",
+            "x": 162,
+            "y": 1736,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "btn02",
+            "uuid": "78fdd712-a3f2-4475-a7d2-0215c24cce9e",
+            "textureUuid": "9faaeabe-c63c-4bdc-bcb7-833c01e6a632",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096535_image_13.png",
+            "trim": {
+              "x": 92,
+              "y": 1742,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/9f/9faaeabe-c63c-4bdc-bcb7-833c01e6a632.png",
+            "x": 89,
+            "y": 1739,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "yuanJiao",
+            "uuid": "9be27a7b-b122-4c1c-b381-66ce18a3b703",
+            "textureUuid": "36c838ef-4e0c-40fc-af9c-52dc58acb82a",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096571_image_18.png",
+            "trim": {
+              "x": 221,
+              "y": 1739,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/36/36c838ef-4e0c-40fc-af9c-52dc58acb82a.png",
+            "x": 218,
+            "y": 1736,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "img_chuang",
+            "uuid": "8f17955f-01aa-44c2-a31e-512195f628ff",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096558_image_16.png",
+            "trim": {
+              "x": 249,
+              "y": 1669,
+              "width": 63,
+              "height": 78,
+              "rotatedWidth": 78,
+              "rotatedHeight": 63
+            },
+            "rawWidth": 63,
+            "rawHeight": 78,
+            "width": 69,
+            "height": 84,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 246,
+            "y": 1666,
+            "rotated": true,
+            "rotatedWidth": 84,
+            "rotatedHeight": 69
+          },
+          {
+            "name": "img_tiao",
+            "uuid": "a204e591-c845-4585-8c21-d904b6e70b39",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096571_image_19.png",
+            "trim": {
+              "x": 251,
+              "y": 1585,
+              "width": 68,
+              "height": 77,
+              "rotatedWidth": 77,
+              "rotatedHeight": 68
+            },
+            "rawWidth": 68,
+            "rawHeight": 77,
+            "width": 74,
+            "height": 83,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 248,
+            "y": 1582,
+            "rotated": true,
+            "rotatedWidth": 83,
+            "rotatedHeight": 74
+          },
+          {
+            "name": "jindu",
+            "uuid": "15c5f32e-2a22-44d5-a8dc-1b5ad54ddcec",
+            "textureUuid": "a1fb4030-577b-418a-95a4-36e7b5e33a45",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096500_image_1.png",
+            "trim": {
+              "x": 301,
+              "y": 590,
+              "width": 609,
+              "height": 20,
+              "rotatedWidth": 20,
+              "rotatedHeight": 609
+            },
+            "rawWidth": 609,
+            "rawHeight": 20,
+            "width": 615,
+            "height": 26,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/a1/a1fb4030-577b-418a-95a4-36e7b5e33a45.png",
+            "x": 298,
+            "y": 587,
+            "rotated": true,
+            "rotatedWidth": 26,
+            "rotatedHeight": 615
+          }
+        ],
+        "width": 512,
+        "height": 2048,
+        "name": "AutoAtlas-1",
+        "imagePath": "/Users/xes/Desktop/hub/oneOnBest/temp/TexturePacker/build/raw-assets/resources/images/AutoAtlas.pac/AutoAtlas-1.png",
+        "compressd": {
+          "suffix": [
+            ".png"
+          ],
+          "imagePathNoExt": "/Users/xes/Desktop/hub/oneOnBest/temp/TexturePacker/build/raw-assets/resources/images/AutoAtlas.pac/compressed/AutoAtlas-1"
+        }
+      }
+    ],
+    "unpackedTextures": []
+  }
+}

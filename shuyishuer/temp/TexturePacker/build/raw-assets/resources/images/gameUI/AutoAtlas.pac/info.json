@@ -1,0 +1,447 @@
+{
+  "mtimes": {
+    "c96f40d4-a148-4f66-9ff7-b6908726e7b6": {
+      "assetMtime": 1568884128693,
+      "metaMtime": 1569290416989
+    },
+    "1a4f78c1-1d0a-446c-9e80-86cf8bbc9815": {
+      "assetMtime": 1568884128697,
+      "metaMtime": 1569290417092
+    },
+    "c482311a-0615-4170-acbf-a9b7ed891e1b": {
+      "assetMtime": 1568884128697,
+      "metaMtime": 1569290417092
+    },
+    "2a0cd0ca-d1d3-48f2-a784-8e7c7f4c0f92": {
+      "assetMtime": 1568884128701,
+      "metaMtime": 1569290417131
+    },
+    "8ffc7eeb-73fc-47a3-bd7d-2f77faff931a": {
+      "assetMtime": 1568884128701,
+      "metaMtime": 1569290417131
+    },
+    "3bd8faa8-f805-49b4-b909-385e2ace12d5": {
+      "assetMtime": 1568884128699,
+      "metaMtime": 1569290417108
+    },
+    "e5bf71d3-caca-4b27-96c7-b596f72ad06e": {
+      "assetMtime": 1568884128699,
+      "metaMtime": 1569290417108
+    },
+    "3fbeb3f0-1677-4476-83f9-f44649cede0e": {
+      "assetMtime": 1568884128700,
+      "metaMtime": 1569290417126
+    },
+    "b49d9802-1901-42d4-b16e-5a48aabba994": {
+      "assetMtime": 1568884128700,
+      "metaMtime": 1569290417126
+    },
+    "3fc78189-36ea-45c3-bfb4-dfcbd4872716": {
+      "assetMtime": 1568884128695,
+      "metaMtime": 1569290417066
+    },
+    "3a0742bd-0b3e-4288-8146-bc43754c805c": {
+      "assetMtime": 1568884128695,
+      "metaMtime": 1569290417066
+    },
+    "4833b362-26e0-40e9-a985-b705e5b2389d": {
+      "assetMtime": 1568884128695,
+      "metaMtime": 1569290417042
+    },
+    "36d1132c-8cbc-4ff3-9331-678d1ea69561": {
+      "assetMtime": 1568884128695,
+      "metaMtime": 1569290417042
+    },
+    "6ea26488-b146-4a82-a5cd-3c6ba4396482": {
+      "assetMtime": 1568884128698,
+      "metaMtime": 1569290417106
+    },
+    "e5b91efd-2a73-4efa-ba79-7c03165c626e": {
+      "assetMtime": 1568884128698,
+      "metaMtime": 1569290417106
+    },
+    "8592dc9d-a8f7-4243-bf25-06b481caeaf6": {
+      "assetMtime": 1568884128694,
+      "metaMtime": 1569290417050
+    },
+    "4f247a15-bf56-4e2e-92c1-57075e393b0a": {
+      "assetMtime": 1568884128694,
+      "metaMtime": 1569290417050
+    },
+    "8aee5e40-0b41-4e8b-8960-c0e5e78487d5": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417075
+    },
+    "7958d640-c135-4fdf-bc42-9dc1efeba006": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417075
+    },
+    "a4b9f045-5217-4842-8830-34f51df5eba3": {
+      "assetMtime": 1568884128697,
+      "metaMtime": 1569290417095
+    },
+    "ddbcb716-3f6c-4155-8a9b-dcf5a540b672": {
+      "assetMtime": 1568884128697,
+      "metaMtime": 1569290417095
+    },
+    "a794d633-b5c8-4701-bf7d-aff277d8556f": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417079
+    },
+    "80478016-6485-4e36-be30-8d3fb49ade23": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417079
+    },
+    "a7bd43d0-f772-4b4f-a856-57281f269297": {
+      "assetMtime": 1568884128700,
+      "metaMtime": 1569290417122
+    },
+    "75dec91c-3b86-4b11-9967-073c8bbf5931": {
+      "assetMtime": 1568884128700,
+      "metaMtime": 1569290417122
+    },
+    "d3dbcd30-fd8c-493c-83ce-a15f38b1d50f": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417064
+    },
+    "246d08a1-8b9f-4786-86ec-fe4d6994816f": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417064
+    }
+  },
+  "result": {
+    "name": "AutoAtlas",
+    "width": 1024,
+    "height": 1024,
+    "ver": "1.2.0",
+    "uuid": "c96f40d4-a148-4f66-9ff7-b6908726e7b6",
+    "maxWidth": 1024,
+    "maxHeight": 1024,
+    "padding": 2,
+    "allowRotation": true,
+    "forceSquared": false,
+    "powerOfTwo": false,
+    "algorithm": "MaxRects",
+    "format": "png",
+    "quality": 80,
+    "contourBleed": true,
+    "paddingBleed": true,
+    "filterUnused": false,
+    "platformSettings": {},
+    "subMetas": {},
+    "bleed": 1,
+    "atlases": [
+      {
+        "files": [
+          {
+            "name": "egg_2",
+            "uuid": "a4b9f045-5217-4842-8830-34f51df5eba3",
+            "textureUuid": "ddbcb716-3f6c-4155-8a9b-dcf5a540b672",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095219_image_9.png",
+            "trim": {
+              "x": 3,
+              "y": 3,
+              "width": 248,
+              "height": 273,
+              "rotatedWidth": 248,
+              "rotatedHeight": 273
+            },
+            "rawWidth": 248,
+            "rawHeight": 273,
+            "width": 254,
+            "height": 279,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/dd/ddbcb716-3f6c-4155-8a9b-dcf5a540b672.png",
+            "x": 0,
+            "y": 0,
+            "rotatedWidth": 254,
+            "rotatedHeight": 279
+          },
+          {
+            "name": "tips_bg",
+            "uuid": "3fbeb3f0-1677-4476-83f9-f44649cede0e",
+            "textureUuid": "b49d9802-1901-42d4-b16e-5a48aabba994",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095217_image_3.png",
+            "trim": {
+              "x": 3,
+              "y": 282,
+              "width": 665,
+              "height": 193,
+              "rotatedWidth": 665,
+              "rotatedHeight": 193
+            },
+            "rawWidth": 665,
+            "rawHeight": 193,
+            "width": 671,
+            "height": 199,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/b4/b49d9802-1901-42d4-b16e-5a48aabba994.png",
+            "x": 0,
+            "y": 279,
+            "rotatedWidth": 671,
+            "rotatedHeight": 199
+          },
+          {
+            "name": "bgitem_right",
+            "uuid": "3fc78189-36ea-45c3-bfb4-dfcbd4872716",
+            "textureUuid": "3a0742bd-0b3e-4288-8146-bc43754c805c",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095217_image_4.png",
+            "trim": {
+              "x": 257,
+              "y": 3,
+              "width": 49,
+              "height": 591,
+              "rotatedWidth": 591,
+              "rotatedHeight": 49
+            },
+            "rawWidth": 49,
+            "rawHeight": 591,
+            "width": 55,
+            "height": 597,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/3a/3a0742bd-0b3e-4288-8146-bc43754c805c.png",
+            "x": 254,
+            "y": 0,
+            "rotated": true,
+            "rotatedWidth": 597,
+            "rotatedHeight": 55
+          },
+          {
+            "name": "bgitem_left",
+            "uuid": "4833b362-26e0-40e9-a985-b705e5b2389d",
+            "textureUuid": "36d1132c-8cbc-4ff3-9331-678d1ea69561",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095218_image_5.png",
+            "trim": {
+              "x": 257,
+              "y": 58,
+              "width": 49,
+              "height": 591,
+              "rotatedWidth": 591,
+              "rotatedHeight": 49
+            },
+            "rawWidth": 49,
+            "rawHeight": 591,
+            "width": 55,
+            "height": 597,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/36/36d1132c-8cbc-4ff3-9331-678d1ea69561.png",
+            "x": 254,
+            "y": 55,
+            "rotated": true,
+            "rotatedWidth": 597,
+            "rotatedHeight": 55
+          },
+          {
+            "name": "button_done",
+            "uuid": "d3dbcd30-fd8c-493c-83ce-a15f38b1d50f",
+            "textureUuid": "246d08a1-8b9f-4786-86ec-fe4d6994816f",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095220_image_12.png",
+            "trim": {
+              "x": 257,
+              "y": 113,
+              "width": 281,
+              "height": 120,
+              "rotatedWidth": 281,
+              "rotatedHeight": 120
+            },
+            "rawWidth": 281,
+            "rawHeight": 120,
+            "width": 287,
+            "height": 126,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/24/246d08a1-8b9f-4786-86ec-fe4d6994816f.png",
+            "x": 254,
+            "y": 110,
+            "rotatedWidth": 287,
+            "rotatedHeight": 126
+          },
+          {
+            "name": "nest",
+            "uuid": "6ea26488-b146-4a82-a5cd-3c6ba4396482",
+            "textureUuid": "e5b91efd-2a73-4efa-ba79-7c03165c626e",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095218_image_6.png",
+            "trim": {
+              "x": 544,
+              "y": 113,
+              "width": 269,
+              "height": 86,
+              "rotatedWidth": 269,
+              "rotatedHeight": 86
+            },
+            "rawWidth": 269,
+            "rawHeight": 86,
+            "width": 275,
+            "height": 92,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/e5/e5b91efd-2a73-4efa-ba79-7c03165c626e.png",
+            "x": 541,
+            "y": 110,
+            "rotatedWidth": 275,
+            "rotatedHeight": 92
+          },
+          {
+            "name": "shadow",
+            "uuid": "3bd8faa8-f805-49b4-b909-385e2ace12d5",
+            "textureUuid": "e5bf71d3-caca-4b27-96c7-b596f72ad06e",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095216_image_2.png",
+            "trim": {
+              "x": 544,
+              "y": 205,
+              "width": 228,
+              "height": 48,
+              "rotatedWidth": 228,
+              "rotatedHeight": 48
+            },
+            "rawWidth": 228,
+            "rawHeight": 48,
+            "width": 234,
+            "height": 54,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/e5/e5bf71d3-caca-4b27-96c7-b596f72ad06e.png",
+            "x": 541,
+            "y": 202,
+            "rotatedWidth": 234,
+            "rotatedHeight": 54
+          },
+          {
+            "name": "dig-1",
+            "uuid": "8aee5e40-0b41-4e8b-8960-c0e5e78487d5",
+            "textureUuid": "7958d640-c135-4fdf-bc42-9dc1efeba006",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095219_image_8.png",
+            "trim": {
+              "x": 257,
+              "y": 239,
+              "width": 19,
+              "height": 21,
+              "rotatedWidth": 21,
+              "rotatedHeight": 19
+            },
+            "rawWidth": 19,
+            "rawHeight": 21,
+            "width": 25,
+            "height": 27,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/79/7958d640-c135-4fdf-bc42-9dc1efeba006.png",
+            "x": 254,
+            "y": 236,
+            "rotated": true,
+            "rotatedWidth": 27,
+            "rotatedHeight": 25
+          },
+          {
+            "name": "count_bg",
+            "uuid": "a794d633-b5c8-4701-bf7d-aff277d8556f",
+            "textureUuid": "80478016-6485-4e36-be30-8d3fb49ade23",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095219_image_10.png",
+            "trim": {
+              "x": 674,
+              "y": 259,
+              "width": 175,
+              "height": 155,
+              "rotatedWidth": 155,
+              "rotatedHeight": 175
+            },
+            "rawWidth": 175,
+            "rawHeight": 155,
+            "width": 181,
+            "height": 161,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/80/80478016-6485-4e36-be30-8d3fb49ade23.png",
+            "x": 671,
+            "y": 256,
+            "rotated": true,
+            "rotatedWidth": 161,
+            "rotatedHeight": 181
+          },
+          {
+            "name": "toast",
+            "uuid": "2a0cd0ca-d1d3-48f2-a784-8e7c7f4c0f92",
+            "textureUuid": "8ffc7eeb-73fc-47a3-bd7d-2f77faff931a",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095216_image_1.png",
+            "trim": {
+              "x": 819,
+              "y": 113,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/8f/8ffc7eeb-73fc-47a3-bd7d-2f77faff931a.png",
+            "x": 816,
+            "y": 110,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "dot",
+            "uuid": "1a4f78c1-1d0a-446c-9e80-86cf8bbc9815",
+            "textureUuid": "c482311a-0615-4170-acbf-a9b7ed891e1b",
+            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095207_image_0.png",
+            "trim": {
+              "x": 854,
+              "y": 3,
+              "width": 46,
+              "height": 46,
+              "rotatedWidth": 46,
+              "rotatedHeight": 46
+            },
+            "rawWidth": 46,
+            "rawHeight": 46,
+            "width": 52,
+            "height": 52,
+            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/c4/c482311a-0615-4170-acbf-a9b7ed891e1b.png",
+            "x": 851,
+            "y": 0,
+            "rotatedWidth": 52,
+            "rotatedHeight": 52
+          }
+        ],
+        "width": 903,
+        "height": 478,
+        "name": "AutoAtlas-1",
+        "imagePath": "/Users/xes/Desktop/hub/oneOnBest/temp/TexturePacker/build/raw-assets/resources/images/gameUI/AutoAtlas.pac/AutoAtlas-1.png",
+        "compressd": {
+          "suffix": [
+            ".png"
+          ],
+          "imagePathNoExt": "/Users/xes/Desktop/hub/oneOnBest/temp/TexturePacker/build/raw-assets/resources/images/gameUI/AutoAtlas.pac/compressed/AutoAtlas-1"
+        }
+      }
+    ],
+    "unpackedTextures": [
+      {
+        "name": "bg",
+        "uuid": "8592dc9d-a8f7-4243-bf25-06b481caeaf6",
+        "textureUuid": "4f247a15-bf56-4e2e-92c1-57075e393b0a",
+        "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095219_image_7.png",
+        "trim": {
+          "x": 0,
+          "y": 0,
+          "width": 1994,
+          "height": 960,
+          "rotatedWidth": 1994,
+          "rotatedHeight": 960
+        },
+        "rawWidth": 1994,
+        "rawHeight": 960,
+        "width": 2000,
+        "height": 966,
+        "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/4f/4f247a15-bf56-4e2e-92c1-57075e393b0a.png"
+      },
+      {
+        "name": "stageitem",
+        "uuid": "a7bd43d0-f772-4b4f-a856-57281f269297",
+        "textureUuid": "75dec91c-3b86-4b11-9967-073c8bbf5931",
+        "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312095219_image_11.png",
+        "trim": {
+          "x": 0,
+          "y": 0,
+          "width": 1573,
+          "height": 48,
+          "rotatedWidth": 1573,
+          "rotatedHeight": 48
+        },
+        "rawWidth": 1573,
+        "rawHeight": 48,
+        "width": 1579,
+        "height": 54,
+        "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/75/75dec91c-3b86-4b11-9967-073c8bbf5931.png"
+      }
+    ]
+  }
+}
