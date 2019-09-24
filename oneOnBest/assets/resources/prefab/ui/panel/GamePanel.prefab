@@ -1802,7 +1802,7 @@
       "__id__": 1
     },
     "component": "",
-    "_componentId": "7384bGn8U5JVZApf54dkmn1",
+    "_componentId": "246c2OOkGlKHoa6ZJOVEHI+",
     "handler": "handleButtonClick",
     "customEventData": ""
   },
@@ -1874,9 +1874,6 @@
     "egg": {
       "__uuid__": "b3e5d4f6-91de-4f44-be0d-b4e91495bf9c"
     },
-    "messageBox": {
-      "__uuid__": "315aaebb-ea8d-4b77-a23e-2410bf0782f3"
-    },
     "layoutTop": {
       "__id__": 28
     },
@@ -1885,6 +1882,9 @@
     },
     "btnSure": {
       "__id__": 47
+    },
+    "bg": {
+      "__id__": 3
     },
     "_id": ""
   },

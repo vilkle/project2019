@@ -15,16 +15,13 @@ import DataReporting from "../../Data/DataReporting";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class Game extends cc.Component {
-
+export default class GamePanel extends BaseUI {
+    protected static className = "GamePanel";
     @property(cc.Label)
     countLabel: cc.Label = null;
 
     @property(cc.Prefab)
     egg: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    messageBox: cc.Prefab = null;
 
     @property(cc.Layout)
     layoutTop: cc.Layout = null;
@@ -35,6 +32,8 @@ export default class Game extends cc.Component {
     @property(cc.Button)
     btnSure: cc.Button = null;
 
+    @property(cc.Node)
+    bg: cc.Node = null
     //元素数量
     itemNumber: number = 10;
     //元素集合（编辑器设置的是类数组对象）
@@ -61,17 +60,24 @@ export default class Game extends cc.Component {
     submitCourse: boolean = true;
     //提交按钮是否禁用
     disabled: boolean = false;
-
     //已选元素集合
     selection: Array<cc.Node> = [];
-
+    answerArr: number[] = []
+    subjectArr: number[] = []
     kaiShiZuoDa: boolean = false;
-
     daTiData = [];
-
     gameOver: boolean = false;
     //当前操作过的游戏回合
     caoZuoRound: number = 0;
+    private isOver : number = 2;
+    private eventvalue = {
+        isResult: 1,
+        isLevel: 1,
+        levelData: [
+
+        ],
+        result: 4
+    }
 
     //初始化
     handleInitItems(num: number) {
@@ -87,11 +93,18 @@ export default class Game extends cc.Component {
 
     //计算正确答案的数量，用于判断是否漏选
     getAnswerCount() {
+        this.answerArr = []
         let num = 0;
         for (let i in this.items) {
             if (~~i > (this.itemNumber - 1)) continue
             this.checkAnswer(this.items[i]) && num++;
+            if(this.checkAnswer(this.items[i])) {
+                this.answerArr.push(this.items[i])
+            }
         }
+        console.log(this.round)
+        this.eventvalue.levelData[this.round-1].answer = [...this.answerArr]
+    
         return num;
     }
 
@@ -131,7 +144,7 @@ export default class Game extends cc.Component {
         //更新已选集合
         if (item.selected) {
             // 交叉播放音效
-            let audioName = this.audioCount ? 'audioSelect_1' : 'audioSelect_2';
+            let audioName = this.audioCount ? 'sfx_egg01' : 'sfx_egg02';
             AudioManager.getInstance().playSound(audioName)
             this.audioCount = !this.audioCount;
             // 选中
@@ -145,6 +158,15 @@ export default class Game extends cc.Component {
             i > -1 && this.selection.splice(i, 1);
             if (!item.bingo) this.errorAnswer--;
         }
+        this.subjectArr = []
+        for(let it of this.selection) {
+            this.subjectArr.push(it.getComponent('egg').text)
+        }
+        this.isOver = 2
+        this.eventvalue.result = 2
+        this.eventvalue.levelData[this.round-1].result = 2
+        this.eventvalue.levelData[this.round-1].subject = [...this.subjectArr]
+        console.log(this.eventvalue)
         this.showButton();
     }
 
@@ -171,7 +193,7 @@ export default class Game extends cc.Component {
         }
         this.btnSure.interactable = !bingo;
         //播放破蛋音效
-        let audioName = bingo ? 'audioAllRight' : 'audioError';
+        let audioName = bingo ? 'sfx_allright' : 'sfx_fewright';
         AudioManager.getInstance().playSound(audioName)
         let delay = bingo ? 2000 : 700;
         //动画结束后弹出机器人
@@ -186,16 +208,25 @@ export default class Game extends cc.Component {
         if (bingo) {
             // Toast 弹窗，并进入下一回合
             if (this.totalRound > this.round) {
+                this.eventvalue.levelData[this.round-1].result = 1
                 this.round++;
                 this.resetItems();
                 UIHelp.showOverTip(1, '答对了！你真棒！\n再尝试一下吧 ', null, null, null, null)
                 //this.setToast('答对了！你真棒！\n再尝试一下吧 ', 0);
                 this.daTiData.push('1');
             } else {
+                this.isOver = 1
+                this.eventvalue.result = 1
+                this.eventvalue.levelData[this.round-1].result = 1
+                DataReporting.getInstance().dispatchEvent('addLog', {
+                    eventType: 'clickSubmit',
+                    eventValue: JSON.stringify(this.eventvalue)
+                });
+                console.log(this.eventvalue)
                 this.daTiData.push('1');
                 this.gameOver = true;
+                DaAnData.getInstance().submitEnable = true
                 UIHelp.showOverTip(2, '你真棒！闯关成功！',null, null, null, '闯关成功')
-                //this.setToast('你真棒！闯关成功！', 1, true);
                 this.shuJuShangBao();
                 // courseware.page.sendToParent('clickSubmit', 1);
                 // courseware.page.sendToParent('addLog', { eventType: 'clickSubmit', eventValue: 1 });
@@ -207,7 +238,6 @@ export default class Game extends cc.Component {
             // Toast 弹窗，不重置继续操作
             this.roundOver = false;
             UIHelp.showOverTip(0, '啊哦，请再试一试～',null, null, null, null )
-            this.setToast('啊哦，请再试一试～', 2);
         }
     }
 
@@ -302,24 +332,24 @@ export default class Game extends cc.Component {
         return ((Math.random() * ++n) >> 0) + min;
     }
 
-    //创建tips
-    setToast(str: string, right: number = 0, buXuGuanBi?: boolean) {
-        let m = cc.instantiate(this.messageBox);
-        m.getComponent('box').text = str;
-        m.getComponent('box').right = right;
-        m.getComponent('box').buXuGuanBi = buXuGuanBi;
-        this.node.addChild(m);
-    }
-
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
         AudioManager.getInstance().playSound('sfx_12opne')
+        for(let i = 0; i < 4; i++) {
+            this.eventvalue.levelData.push({
+                subject: [],
+                answer: [],
+                result: 4
+            });
+        }
         if(ConstValue.IS_TEACHER) {
             this.type = DaAnData.getInstance().type
             this.norm = DaAnData.getInstance().judgeNum
             this.itemNumber = DaAnData.getInstance().num
             this.items = DaAnData.getInstance().numArr
+            this.init()
+            UIManager.getInstance().openUI(UploadAndReturnPanel, null, 300)
         }else {
             this.getNet()
         }
@@ -346,28 +376,44 @@ export default class Game extends cc.Component {
     }
 
     onEndGame() {
-        this.shuJuShangBao();
+        //如果已经上报过数据 则不再上报数据
+        if (DataReporting.isRepeatReport) {
+            DataReporting.getInstance().dispatchEvent('addLog', {
+                eventType: 'clickSubmit',
+                eventValue: JSON.stringify(this.eventvalue)
+            });
+            DataReporting.isRepeatReport = false;
+        }
         //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.kaiShiZuoDa ? (this.gameOver ? 1 : 2) : 0 });
+        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
     }
 
     start() {
-        DataReporting.getInstance().dispatchEvent("start");
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
-        // this.items = this.initItemNumer();
-        this.handleInitItems(this.itemNumber);
-        // 监听 item 的选中事件
-        this.node.on('select', (event) => {
-            this.handleItemSelect(event);
-            event.stopPropagation();
+        
+        this.bg.on(cc.Node.EventType.TOUCH_START, ()=>{
+            this.isOver = 2;
+            this.eventvalue.result = 2
+            this.eventvalue.levelData[this.round-1].result = 2
         });
-        // 监听 messageBox 的关闭事件
-        this.node.on('close', (event) => {
-            this.handleBoxClose(event);
-            event.stopPropagation();
-        });
+      
     }
     // update (dt) {}
+
+    init() {
+          // this.items = this.initItemNumer();
+          this.handleInitItems(this.itemNumber);
+          // 监听 item 的选中事件
+          this.node.on('select', (event) => {
+              this.handleItemSelect(event);
+              event.stopPropagation();
+          });
+          // 监听 messageBox 的关闭事件
+          this.node.on('close', (event) => {
+              this.handleBoxClose(event);
+              event.stopPropagation();
+          });
+    }
 
 getNet() {
     NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
@@ -407,6 +453,7 @@ getNet() {
                     console.error('content.numArr is null')
                     return
                 }
+                this.init()
             }
         } else {
            console.error('content is null')

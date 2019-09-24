@@ -8,17 +8,11 @@
   "design-resolution-height": 960,
   "design-resolution-width": 1994,
   "excluded-modules": [
-    "Renderer Texture",
-    "Dynamic Atlas",
-    "Label Effect",
     "ParticleSystem",
     "TiledMap",
     "DragonBones",
     "RichText",
     "MotionStreak",
-    "ProgressBar",
-    "ScrollBar",
-    "ScrollView",
     "PageView",
     "PageViewIndicator",
     "Slider",
@@ -51,13 +45,12 @@
   "group-list": [
     "default"
   ],
-  "last-module-event-record-time": 1565318679645,
+  "last-module-event-record-time": 1569312040115,
   "simulator-orientation": false,
   "simulator-resolution": {
     "height": 640,
     "width": 960
   },
   "use-customize-simulator": true,
-  "use-project-simulator-setting": false,
-  "start-scene": "current"
+  "use-project-simulator-setting": false
 }

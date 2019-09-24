@@ -85,6 +85,7 @@ export class OverTips extends BaseUI {
         this.label_tip.node.active = true;
         switch (type) {
             case 0:
+                this.node_close.active = true
                 Tools.playSpine(this.spine_false, "false", false, this.delayClose.bind(this));
                 AudioManager.getInstance().playSound("sfx_genneg", false, 1);
                 this.button.active = false
@@ -92,11 +93,13 @@ export class OverTips extends BaseUI {
                 this.btnCallback = btnCallback
                 break;
             case 1:
+                this.node_close.active = true
                 Tools.playSpine(this.spine_true, "true", false, this.delayClose.bind(this));
                 AudioManager.getInstance().playSound("sfx_genpos", false, 1);
                 this.button.active = false
                 break;
             case 2:
+                this.node_close.active = false
                 this.spine_complete.node.active = false;
                 this.button.active = false
                 if (!endTitle) endTitle = DefalutTitle[0];
@@ -121,7 +124,7 @@ export class OverTips extends BaseUI {
     }
 
     delayClose(): void {
-        this.scheduleOnce(function () { this.onClickClose() }.bind(this), 0);
+        //this.scheduleOnce(function () { this.onClickClose() }.bind(this), 0);
     }
 
     onClickClose(event?, customEventData?): void {

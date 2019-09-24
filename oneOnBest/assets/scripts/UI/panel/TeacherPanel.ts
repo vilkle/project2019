@@ -5,6 +5,8 @@ import { NetWork } from "../../Http/NetWork";
 import { UIHelp } from "../../Utils/UIHelp";
 import { DaAnData } from "../../Data/DaAnData";
 import GamePanel from "./GamePanel";
+import {ListenerManager} from "../../Manager/ListenerManager";
+import {ListenerType} from "../../Data/ListenerType";
 
 const { ccclass, property } = cc._decorator;
 
@@ -66,6 +68,9 @@ export default class TeacherPanel extends BaseUI {
             let node = cc.instantiate(this.editBoxPrefab)
             this.eiditBoxNode.addChild(node)
             this.editBoxArr[i] = node.getComponent(cc.EditBox)
+            if(this.numArr[i]) {
+                this.editBoxArr[i].string = this.numArr[i].toString()
+            }
             node.on('editing-did-ended', function(editbox){
                 let str = editbox.string
                 const rex = /^[0-9]{1,2}$/
@@ -187,7 +192,9 @@ export default class TeacherPanel extends BaseUI {
     //上传课件按钮
     onBtnSaveClicked() {
         if(this.check()) {
-            UIManager.getInstance().showUI(GamePanel);
+            UIManager.getInstance().showUI(GamePanel, null,() => {
+                ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
+            });
         }
         
     }

@@ -655,19 +655,13 @@
     "_frameCache": null,
     "_curFrame": null,
     "_skeletonCache": null,
-    "_animationName": {
-      "0": "f",
-      "1": "a",
-      "2": "l",
-      "3": "s",
-      "4": "e"
-    },
+    "_animationName": "",
     "_animationQueue": [],
     "_headAniInfo": null,
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "c06fb1a8-12c0-4b58-a3c2-5995fb4219aa"
+      "__uuid__": "d3018be4-29d7-4f7f-89fa-1ef946fdefa1"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
@@ -786,7 +780,7 @@
     "_playTimes": 0,
     "_isAniComplete": true,
     "_N$skeletonData": {
-      "__uuid__": "516fd1df-745b-4f40-8398-07fc8457b639"
+      "__uuid__": "9ee0a826-c4e0-4956-8091-e532c2a4f7c9"
     },
     "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
