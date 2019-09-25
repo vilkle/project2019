@@ -55,9 +55,9 @@ var SubmissionPanel = /** @class */ (function (_super) {
         }
         var data = JSON.stringify({ CoursewareKey: ConstValue_1.ConstValue.CoursewareKey,
             type: DaAnData_1.DaAnData.getInstance().type,
-            judgeNum: DaAnData_1.DaAnData.getInstance().judgeNum,
-            num: DaAnData_1.DaAnData.getInstance().num,
-            numArr: DaAnData_1.DaAnData.getInstance().numArr
+            norm: DaAnData_1.DaAnData.getInstance().norm,
+            count: DaAnData_1.DaAnData.getInstance().count,
+            question: DaAnData_1.DaAnData.getInstance().question
         });
         NetWork_1.NetWork.getInstance().httpRequest(NetWork_1.NetWork.GET_TITLE + "?title_id=" + NetWork_1.NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {

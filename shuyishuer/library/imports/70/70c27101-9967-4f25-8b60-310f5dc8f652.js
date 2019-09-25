@@ -42,17 +42,17 @@ var TeacherPanel = /** @class */ (function (_super) {
         _this.eiditBoxNode = null;
         _this.editBoxPrefab = null;
         _this.type = 1;
-        _this.judgeNum = null;
-        _this.num = 8;
-        _this.numArr = [];
+        _this.norm = null;
+        _this.count = 8;
+        _this.question = [];
         _this.editBoxArr = [];
         return _this;
     }
     TeacherPanel.prototype.onLoad = function () {
         this.type = 1;
         DaAnData_1.DaAnData.getInstance().type = 1;
-        this.num = 8;
-        DaAnData_1.DaAnData.getInstance().num = 8;
+        this.count = 8;
+        DaAnData_1.DaAnData.getInstance().count = 8;
         this.initEditBoxArr(8);
     };
     TeacherPanel.prototype.start = function () {
@@ -73,9 +73,9 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.toggleContainer[3].isChecked = true;
                 break;
         }
-        this.judgeEditBox.string = this.judgeNum.toString();
-        this.numEditBox.string = this.num.toString();
-        this.initEditBoxArr(this.num);
+        this.judgeEditBox.string = this.norm;
+        this.numEditBox.string = this.count.toString();
+        this.initEditBoxArr(this.count);
     };
     TeacherPanel.prototype.initEditBoxArr = function (num) {
         this.eiditBoxNode.removeAllChildren();
@@ -84,8 +84,8 @@ var TeacherPanel = /** @class */ (function (_super) {
             var node = cc.instantiate(this.editBoxPrefab);
             this.eiditBoxNode.addChild(node);
             this.editBoxArr[i] = node.getComponent(cc.EditBox);
-            if (this.numArr[i]) {
-                this.editBoxArr[i].string = this.numArr[i].toString();
+            if (this.question[i]) {
+                this.editBoxArr[i].string = this.question[i];
             }
             node.on('editing-did-ended', function (editbox) {
                 var str = editbox.string;
@@ -119,7 +119,7 @@ var TeacherPanel = /** @class */ (function (_super) {
     };
     TeacherPanel.prototype.judgeEditBoxCallback = function (sender) {
         var str = this.judgeEditBox.string;
-        var num = parseInt(str);
+        var num = str;
         var rex = /^[0-9]{1,2}$/;
         if (!rex.test(str)) {
             if (str = '') {
@@ -128,15 +128,15 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.judgeEditBox.node.getChildByName('PLACEHOLDER_LABEL').active = true;
             }
             else {
-                if (this.judgeNum != null) {
-                    num = this.judgeNum;
-                    this.judgeEditBox.string = this.judgeNum.toString();
+                if (this.norm != '') {
+                    num = this.norm;
+                    this.judgeEditBox.string = this.norm;
                     this.numEditBox.node.getChildByName('PLACEHOLDER_LABEL').active = false;
                 }
             }
         }
-        this.judgeNum = num;
-        DaAnData_1.DaAnData.getInstance().judgeNum = this.judgeNum;
+        this.norm = num;
+        DaAnData_1.DaAnData.getInstance().norm = this.norm;
     };
     TeacherPanel.prototype.numEditBoxCallback = function (sender) {
         var str = this.numEditBox.string;
@@ -149,58 +149,58 @@ var TeacherPanel = /** @class */ (function (_super) {
                 this.numEditBox.node.getChildByName('PLACEHOLDER_LABEL').active = true;
             }
             else {
-                num = this.num;
-                this.numEditBox.string = this.num.toString();
+                num = this.count;
+                this.numEditBox.string = this.count.toString();
                 this.numEditBox.node.getChildByName('PLACEHOLDER_LABEL').active = false;
             }
         }
-        if (this.num != num) {
+        if (this.count != num) {
             this.initEditBoxArr(num);
         }
-        this.num = num;
-        DaAnData_1.DaAnData.getInstance().num = this.num;
+        this.count = num;
+        DaAnData_1.DaAnData.getInstance().count = this.count;
     };
     TeacherPanel.prototype.check = function () {
-        if (this.judgeNum == null) {
+        if (this.norm == null) {
             UIHelp_1.UIHelp.showTip('题干标准为空，请输入题干标准。');
             return false;
         }
-        if (this.num == null) {
+        if (this.count == null) {
             UIHelp_1.UIHelp.showTip('选数区域的数量为空，请输入选数区域数量。');
             return false;
         }
-        if (this.judgeNum > 30 || this.judgeNum < 0) {
+        if (parseInt(this.norm) > 30 || parseInt(this.norm) < 0) {
             UIHelp_1.UIHelp.showTip('题干标准不是不大于30的整数，请重新输入题干标准');
             return false;
         }
-        if (this.num < 8 || this.num > 15) {
+        if (this.count < 8 || this.count > 15) {
             UIHelp_1.UIHelp.showTip('选数区域数量不是8～15的整数，请重新输入选数区域数量');
             return false;
         }
-        this.numArr = [];
+        this.question = [];
         for (var i = 0; i < this.editBoxArr.length; ++i) {
             if (this.editBoxArr[i].string == '') {
-                this.numArr[i] = null;
+                this.question[i] = null;
             }
             else {
-                this.numArr[i] = parseInt(this.editBoxArr[i].string);
+                this.question[i] = this.editBoxArr[i].string;
             }
         }
         for (var i = 0; i < this.editBoxArr.length; ++i) {
-            if (this.numArr[i] == null) {
+            if (this.question[i] == null) {
                 UIHelp_1.UIHelp.showTip("\u8BF7\u8F93\u5165\u7B2C\u4E00\u9898\u7B2C" + (i + 1) + "\u4E2A\u53EF\u9009\u6570\u3002");
                 return false;
             }
-            if (this.numArr[i] < 0 || this.numArr[i] > 50) {
+            if (parseInt(this.question[i]) < 0 || parseInt(this.question[i]) > 50) {
                 UIHelp_1.UIHelp.showTip("\u7B2C\u4E00\u9898\u7B2C" + (i + 1) + "\u4E2A\u53EF\u9009\u6570\u4E0D\u7B26\u54080\uFF5E50\u7684\u89C4\u5219\uFF0C\u8BF7\u91CD\u65B0\u8F93\u5165\u3002");
                 return false;
             }
         }
-        DaAnData_1.DaAnData.getInstance().numArr = this.numArr.slice();
+        DaAnData_1.DaAnData.getInstance().question = this.question.slice();
         console.log(this.type);
-        console.log(this.judgeNum);
-        console.log(this.num);
-        console.log(this.numArr);
+        console.log(this.norm);
+        console.log(this.count);
+        console.log(this.question);
         return true;
     };
     //上传课件按钮
@@ -234,28 +234,28 @@ var TeacherPanel = /** @class */ (function (_super) {
                             console.error('content.type is null');
                             return;
                         }
-                        if (content.judgeNum) {
-                            this.judgeNum = content.judgeNum;
-                            DaAnData_1.DaAnData.getInstance().judgeNum = content.judgeNum;
+                        if (content.norm) {
+                            this.norm = content.norm;
+                            DaAnData_1.DaAnData.getInstance().norm = content.norm;
                         }
                         else {
-                            console.error('content.judgeNum is null');
+                            console.error('content.norm is null');
                             return;
                         }
-                        if (content.num) {
-                            this.num = content.num;
-                            DaAnData_1.DaAnData.getInstance().num = content.num;
+                        if (content.count) {
+                            this.count = content.count;
+                            DaAnData_1.DaAnData.getInstance().count = content.count;
                         }
                         else {
-                            console.error('content.num is null');
+                            console.error('content.count is null');
                             return;
                         }
-                        if (content.numArr) {
-                            this.numArr = content.numArr;
-                            DaAnData_1.DaAnData.getInstance().numArr = content.numArr;
+                        if (content.question) {
+                            this.question = content.question;
+                            DaAnData_1.DaAnData.getInstance().question = content.question;
                         }
                         else {
-                            console.error('content.numArr is null');
+                            console.error('content.question is null');
                             return;
                         }
                         this.setPanel();

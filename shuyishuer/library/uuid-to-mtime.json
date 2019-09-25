@@ -749,11 +749,6 @@
     "meta": 1568970780788,
     "relativePath": "scripts/Utils/StringExtension.ts"
   },
-  "9cd01690-35b1-4c51-8e2c-50c374c981f9": {
-    "asset": 1569205697711,
-    "meta": 1569205698600,
-    "relativePath": "scripts/Http/NetWork.ts"
-  },
   "b4d79c36-fcb5-42a9-8557-0346383c9a46": {
     "asset": 1568884128689,
     "meta": 1569231308517,
@@ -1089,11 +1084,6 @@
     "meta": 1569312151106,
     "relativePath": "scene/BoundingBoxDemo.fire"
   },
-  "6ecd0372-494a-432d-8c75-bc33749fe2fb": {
-    "asset": 1569290417317,
-    "meta": 1569290417322,
-    "relativePath": "scene/Student.fire"
-  },
   "ba74e4c8-533f-4c9d-ae48-1274cdf9bec4": {
     "asset": 1569309966654,
     "meta": 1569309966662,
@@ -1169,30 +1159,10 @@
     "meta": 1569294390063,
     "relativePath": "scripts/UI/Item/OverTips.ts"
   },
-  "bdbea803-f652-47d6-9d72-3d005b3703ca": {
-    "asset": 1569297228065,
-    "meta": 1569297239355,
-    "relativePath": "scripts/UI/panel/SubmissionPanel.ts"
-  },
-  "6d2b7894-59ba-4c1f-b76e-fc960bce347d": {
-    "asset": 1569305120654,
-    "meta": 1569306710840,
-    "relativePath": "scripts/Data/DaAnData.ts"
-  },
-  "a75e94dc-05bd-44a5-bdab-af7a2bed76a7": {
-    "asset": 1569307506401,
-    "meta": 1569307634601,
-    "relativePath": "scene/Teacher.fire"
-  },
   "c44e670b-83ce-49cd-a205-36f05db07ef1": {
     "asset": 1569309238841,
     "meta": 1569309541598,
     "relativePath": "scripts/Utils/UIHelp.ts"
-  },
-  "246c238e-9069-4a1e-86ba-64939510723e": {
-    "asset": 1569310960209,
-    "meta": 1569311031521,
-    "relativePath": "scripts/UI/panel/GamePanel.ts"
   },
   "a36a349c-4dd1-4b9a-b8fb-eebae9124ce2": {
     "asset": 1569310920118,
@@ -1209,14 +1179,44 @@
     "meta": 1569311690584,
     "relativePath": "resources/prefab/ui/panel/UploadAndReturnPanel.prefab"
   },
+  "9cd01690-35b1-4c51-8e2c-50c374c981f9": {
+    "asset": 1569322211581,
+    "meta": 1569322216721,
+    "relativePath": "scripts/Http/NetWork.ts"
+  },
+  "6d2b7894-59ba-4c1f-b76e-fc960bce347d": {
+    "asset": 1569380557667,
+    "meta": 1569381812223,
+    "relativePath": "scripts/Data/DaAnData.ts"
+  },
+  "bdbea803-f652-47d6-9d72-3d005b3703ca": {
+    "asset": 1569380554839,
+    "meta": 1569381812745,
+    "relativePath": "scripts/UI/panel/SubmissionPanel.ts"
+  },
+  "6ecd0372-494a-432d-8c75-bc33749fe2fb": {
+    "asset": 1569381994608,
+    "meta": 1569382017721,
+    "relativePath": "scene/Student.fire"
+  },
   "70c27101-9967-4f25-8b60-310f5dc8f652": {
-    "asset": 1569311728919,
-    "meta": 1569311809758,
+    "asset": 1569386109321,
+    "meta": 1569386275748,
     "relativePath": "scripts/UI/panel/TeacherPanel.ts"
   },
+  "246c238e-9069-4a1e-86ba-64939510723e": {
+    "asset": 1569386553446,
+    "meta": 1569386556333,
+    "relativePath": "scripts/UI/panel/GamePanel.ts"
+  },
+  "a75e94dc-05bd-44a5-bdab-af7a2bed76a7": {
+    "asset": 1569386968642,
+    "meta": 1569386968659,
+    "relativePath": "scene/Teacher.fire"
+  },
   "66b51a1b-71dd-4c8b-875c-6e87377f022c": {
-    "asset": 1569312148294,
-    "meta": 1569312150553,
+    "asset": 1569386962176,
+    "meta": 1569386964381,
     "relativePath": "scripts/Data/ConstValue.ts"
   }
 }

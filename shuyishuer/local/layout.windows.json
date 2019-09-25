@@ -8,7 +8,7 @@
       "x": -1920,
       "y": -169,
       "width": 1920,
-      "height": 986,
+      "height": 1009,
       "layout": {
         "children": [
           {
@@ -18,23 +18,23 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 456,
+                "height": 302.28125,
                 "type": "panel",
-                "width": 306
+                "width": 204
               },
               {
                 "active": 0,
                 "children": [
                   "assets"
                 ],
-                "height": 517,
+                "height": 342.71875,
                 "type": "panel",
-                "width": 306
+                "width": 204
               }
             ],
-            "height": 975,
+            "height": 647,
             "type": "dock-v",
-            "width": 306
+            "width": 204
           },
           {
             "children": [
@@ -43,9 +43,9 @@
                 "children": [
                   "scene"
                 ],
-                "height": 517,
+                "height": 342.71875,
                 "type": "panel",
-                "width": 1154
+                "width": 768
               },
               {
                 "active": 0,
@@ -53,14 +53,14 @@
                   "console",
                   "timeline"
                 ],
-                "height": 456,
+                "height": 302.28125,
                 "type": "panel",
-                "width": 1154
+                "width": 768
               }
             ],
-            "height": 975,
+            "height": 647,
             "type": "dock-v",
-            "width": 1154
+            "width": 768
           },
           {
             "active": 0,
@@ -68,9 +68,9 @@
               "inspector",
               "cocos-services"
             ],
-            "height": 975,
+            "height": 647,
             "type": "panel",
-            "width": 456
+            "width": 304
           }
         ],
         "type": "dock-h"
@@ -85,7 +85,8 @@
         "scene"
       ]
     },
-    "window-1569311814137": {}
+    "window-1569386817900": {},
+    "worker": {}
   },
   "panels": {
     "sprite-editor": {

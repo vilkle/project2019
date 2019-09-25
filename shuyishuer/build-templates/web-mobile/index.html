@@ -330,7 +330,7 @@
                         "&subject=" + theRequest["subject"] +
                         "&event=" + "CoursewareErrorLogEvent" +
                         "&identity=1" +
-                        "&extra=" + JSON.stringify({ ErrorLog: data, CoursewareName: "oneOnBest", url: location })
+                        "&extra=" + JSON.stringify({ ErrorLog: data, CoursewareName: "shuyishuer", url: location })
                 }
 
                 //加载时间上报
@@ -382,7 +382,7 @@
                         "&identity=1" +
                         "&extra=" + JSON.stringify({ curTime: getNowFormatDate(), curGame: gameName })
                 }
-                reportCurTime("engineLoadStart", "oneOnBest");
+                reportCurTime("engineLoadStart", "shuyishuer");
                 //引擎加载
                 var splash = document.getElementById('splash');
                 splash.style.display = 'block';
@@ -392,7 +392,7 @@
                 cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.js';
 
                 var engineLoaded = function () {
-                    reportCurTime("engineLoadEnd", "oneOnBest");
+                    reportCurTime("engineLoadEnd", "shuyishuer");
                     document.body.removeChild(cocos2d);
                     cocos2d.removeEventListener('load', engineLoaded, false);
                     window.boot();

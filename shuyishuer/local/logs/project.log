@@ -1,136 +1,72 @@
-2019-09-24T03:45:28.043Z - normal: Load ~/.CocosCreator/settings.json
-2019-09-24T03:45:28.114Z - normal: Initializing Asset Database
-2019-09-24T03:45:28.118Z - normal: checking language setting...
-2019-09-24T03:45:28.118Z - normal: Language: zh
-2019-09-24T03:45:29.063Z - success: preview server running at http://localhost:7456
-2019-09-24T03:45:29.113Z - success: protocol editor-framework registered
-2019-09-24T03:45:29.113Z - success: protocol app registered
-2019-09-24T03:45:29.113Z - success: protocol theme registered
-2019-09-24T03:45:29.113Z - success: protocol packages registered
-2019-09-24T03:45:29.113Z - success: protocol uuid registerred
-2019-09-24T03:45:29.114Z - success: protocol db registerred
-2019-09-24T03:45:29.114Z - success: protocol thumbnail registerred
-2019-09-24T03:45:29.114Z - success: protocol unpack registerred
-2019-09-24T03:45:29.114Z - success: protocol disable-commonjs registerred
-2019-09-24T03:45:29.221Z - normal: connected!
-2019-09-24T03:45:29.224Z - normal: Check project /Users/xes/Desktop/hub/oneOnBest
-2019-09-24T03:45:29.226Z - normal: Initializing project /Users/xes/Desktop/hub/oneOnBest
-2019-09-24T03:45:29.683Z - normal: Initializing Cocos2d
-2019-09-24T03:45:30.520Z - normal: Initializing engine extends
-2019-09-24T03:45:30.605Z - success: asset-db-debugger loaded
-2019-09-24T03:45:30.623Z - success: baidu-adapter loaded
-2019-09-24T03:45:30.624Z - success: color-picker loaded
-2019-09-24T03:45:30.743Z - success: fb-audience-network loaded
-2019-09-24T03:45:30.820Z - success: fb-live-stream loaded
-2019-09-24T03:45:30.825Z - success: google-play-instant loaded
-2019-09-24T03:45:30.832Z - success: huawei-runtime loaded
-2019-09-24T03:45:31.130Z - success: cpk-publish loaded
-2019-09-24T03:45:31.131Z - success: jsb-adapter loaded
-2019-09-24T03:45:31.136Z - success: oppo-runtime loaded
-2019-09-24T03:45:31.155Z - success: package-manager loaded
-2019-09-24T03:45:31.298Z - success: qqplay-adapter loaded
-2019-09-24T03:45:31.300Z - success: runtime-dev-tools loaded
-2019-09-24T03:45:31.325Z - success: sdkbox loaded
-2019-09-24T03:45:31.345Z - success: tester loaded
-2019-09-24T03:45:31.362Z - success: ui-grid loaded
-2019-09-24T03:45:31.376Z - success: ui-kit-preview-extra loaded
-2019-09-24T03:45:31.393Z - success: ui-kit-preview loaded
-2019-09-24T03:45:31.407Z - success: ui-kit loaded
-2019-09-24T03:45:31.423Z - success: ui-tree loaded
-2019-09-24T03:45:31.429Z - success: vivo-runtime loaded
-2019-09-24T03:45:31.430Z - success: weapp-adapter loaded
-2019-09-24T03:45:31.431Z - success: xiaomi-adapter loaded
-2019-09-24T03:45:31.489Z - success: assets loaded
-2019-09-24T03:45:31.506Z - success: builder loaded
-2019-09-24T03:45:31.844Z - success: cocos-services loaded
-2019-09-24T03:45:31.864Z - success: console loaded
-2019-09-24T03:45:31.910Z - success: fb-instant-games loaded
-2019-09-24T03:45:31.929Z - success: game-window loaded
-2019-09-24T03:45:31.930Z - success: google-instant-games loaded
-2019-09-24T03:45:31.951Z - success: hierarchy loaded
-2019-09-24T03:45:31.968Z - success: inspector loaded
-2019-09-24T03:45:31.970Z - success: keystore loaded
-2019-09-24T03:45:31.988Z - success: node-library loaded
-2019-09-24T03:45:31.990Z - success: package-asset loaded
-2019-09-24T03:45:31.991Z - success: preferences loaded
-2019-09-24T03:45:32.006Z - success: project-exporter loaded
-2019-09-24T03:45:32.023Z - success: project-importer loaded
-2019-09-24T03:45:32.038Z - success: project-settings loaded
-2019-09-24T03:45:32.056Z - success: scene loaded
-2019-09-24T03:45:32.057Z - success: simulator-debugger loaded
-2019-09-24T03:45:32.058Z - success: sprite-editor loaded
-2019-09-24T03:45:32.106Z - success: store loaded
-2019-09-24T03:45:32.124Z - success: timeline loaded
-2019-09-24T03:45:32.129Z - success: xiaomi-runtime loaded
-2019-09-24T03:45:35.148Z - normal: Loading packages
-2019-09-24T03:45:35.158Z - normal: Watching packages
-2019-09-24T03:45:35.468Z - info: Cocos Services load base data!
-2019-09-24T03:45:35.613Z - normal: Run Application
-2019-09-24T06:53:06.520Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T06:53:06.769Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T06:53:07.002Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T06:54:00.560Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T06:54:00.860Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T06:54:09.730Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T06:54:10.059Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T06:57:23.031Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T06:57:23.346Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:06:07.678Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:06:08.104Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:19:01.588Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:19:01.828Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:19:18.920Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:19:19.162Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:19:21.976Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:19:22.233Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:23:16.994Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:23:17.282Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:26:06.359Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:26:06.619Z - info: 只有预制节点 "GamePanel" 及其子节点会被保存。
-2019-09-24T07:28:47.534Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:28:47.796Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:28:48.364Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:32:21.941Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:32:21.950Z - error: Failed to apply "New EditBox" because the prefab asset is missing, please save the prefab to a new asset by dragging and drop the node from Node Tree into Assets.
-    at Object.applyPrefab (/Applications/CocosCreator2.1.2.app/Contents/Resources/app.asar/editor/page/scene-utils/index.js:1:5296)
-    at Object.save (/Applications/CocosCreator2.1.2.app/Contents/Resources/app.asar/editor/page/scene-utils/edit-mode/modes/prefab.js:1:2379)
-    at Object.run (/Applications/CocosCreator2.1.2.app/Contents/Resources/app.asar/editor/page/scene-utils/edit-mode/index.js:1:2078)
-    at _queue.s.queue (/Applications/CocosCreator2.1.2.app/Contents/Resources/app.asar/editor/page/scene-utils/lib/tasks.js:1:539)
-    at /Applications/CocosCreator2.1.2.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:987:13
-    at Immediate.process (/Applications/CocosCreator2.1.2.app/Contents/Resources/app.asar/node_modules/async/lib/async.js:953:21)
-    at runCallback (timers.js:672:20)
-    at tryOnImmediate (timers.js:645:5)
-    at processImmediate [as _immediateCallback] (timers.js:617:5)
-2019-09-24T07:32:22.388Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:39:04.177Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:39:04.734Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:41:58.295Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:41:59.268Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:41:59.623Z - info: 只有预制节点 "New EditBox" 及其子节点会被保存。
-2019-09-24T07:44:20.057Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:44:20.277Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:44:21.056Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:45:42.836Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:45:43.100Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:45:43.395Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:45:43.639Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:45:46.782Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:47:40.230Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:47:40.686Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:47:41.102Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:47:51.575Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:47:51.794Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:47:52.027Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:47:52.259Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:51:17.488Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:51:17.760Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:54:41.292Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:54:41.626Z - info: 只有预制节点 "UploadAndReturnPanel" 及其子节点会被保存。
-2019-09-24T07:55:14.386Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-09-24T07:55:14.758Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-09-24T07:56:50.628Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-09-24T07:56:51.899Z - info: 只有预制节点 "TeacherPanel" 及其子节点会被保存。
-2019-09-24T08:00:39.802Z - normal: Start building with options : {
+2019-09-24T10:09:09.803Z - normal: Load ~/.CocosCreator/settings.json
+2019-09-24T10:09:09.891Z - normal: Initializing Asset Database
+2019-09-24T10:09:09.896Z - normal: checking language setting...
+2019-09-24T10:09:09.897Z - normal: Language: zh
+2019-09-24T10:09:10.933Z - success: preview server running at http://localhost:7456
+2019-09-24T10:09:10.947Z - success: protocol editor-framework registered
+2019-09-24T10:09:10.948Z - success: protocol app registered
+2019-09-24T10:09:10.948Z - success: protocol theme registered
+2019-09-24T10:09:10.948Z - success: protocol packages registered
+2019-09-24T10:09:10.948Z - success: protocol uuid registerred
+2019-09-24T10:09:10.948Z - success: protocol db registerred
+2019-09-24T10:09:10.948Z - success: protocol thumbnail registerred
+2019-09-24T10:09:10.948Z - success: protocol unpack registerred
+2019-09-24T10:09:10.949Z - success: protocol disable-commonjs registerred
+2019-09-24T10:09:11.065Z - normal: connected!
+2019-09-24T10:09:11.067Z - normal: Check project /Users/xes/Desktop/hub/shuyishuer
+2019-09-24T10:09:11.068Z - normal: Initializing project /Users/xes/Desktop/hub/shuyishuer
+2019-09-24T10:09:11.505Z - normal: Initializing Cocos2d
+2019-09-24T10:09:12.406Z - normal: Initializing engine extends
+2019-09-24T10:09:12.433Z - success: asset-db-debugger loaded
+2019-09-24T10:09:12.435Z - success: baidu-adapter loaded
+2019-09-24T10:09:12.438Z - success: color-picker loaded
+2019-09-24T10:09:12.553Z - success: fb-audience-network loaded
+2019-09-24T10:09:12.612Z - success: fb-live-stream loaded
+2019-09-24T10:09:12.618Z - success: google-play-instant loaded
+2019-09-24T10:09:12.626Z - success: huawei-runtime loaded
+2019-09-24T10:09:12.941Z - success: cpk-publish loaded
+2019-09-24T10:09:12.943Z - success: jsb-adapter loaded
+2019-09-24T10:09:12.948Z - success: oppo-runtime loaded
+2019-09-24T10:09:12.957Z - success: package-manager loaded
+2019-09-24T10:09:13.111Z - success: qqplay-adapter loaded
+2019-09-24T10:09:13.114Z - success: runtime-dev-tools loaded
+2019-09-24T10:09:13.124Z - success: sdkbox loaded
+2019-09-24T10:09:13.131Z - success: tester loaded
+2019-09-24T10:09:13.139Z - success: ui-grid loaded
+2019-09-24T10:09:13.144Z - success: ui-kit-preview-extra loaded
+2019-09-24T10:09:13.148Z - success: ui-kit-preview loaded
+2019-09-24T10:09:13.153Z - success: ui-kit loaded
+2019-09-24T10:09:13.159Z - success: ui-tree loaded
+2019-09-24T10:09:13.175Z - success: vivo-runtime loaded
+2019-09-24T10:09:13.176Z - success: weapp-adapter loaded
+2019-09-24T10:09:13.178Z - success: xiaomi-adapter loaded
+2019-09-24T10:09:13.230Z - success: assets loaded
+2019-09-24T10:09:13.235Z - success: builder loaded
+2019-09-24T10:09:13.569Z - success: cocos-services loaded
+2019-09-24T10:09:13.578Z - success: console loaded
+2019-09-24T10:09:13.628Z - success: fb-instant-games loaded
+2019-09-24T10:09:13.637Z - success: game-window loaded
+2019-09-24T10:09:13.638Z - success: google-instant-games loaded
+2019-09-24T10:09:13.644Z - success: hierarchy loaded
+2019-09-24T10:09:13.652Z - success: inspector loaded
+2019-09-24T10:09:13.653Z - success: keystore loaded
+2019-09-24T10:09:13.664Z - success: node-library loaded
+2019-09-24T10:09:13.667Z - success: package-asset loaded
+2019-09-24T10:09:13.669Z - success: preferences loaded
+2019-09-24T10:09:13.673Z - success: project-exporter loaded
+2019-09-24T10:09:13.680Z - success: project-importer loaded
+2019-09-24T10:09:13.685Z - success: project-settings loaded
+2019-09-24T10:09:13.693Z - success: scene loaded
+2019-09-24T10:09:13.699Z - success: simulator-debugger loaded
+2019-09-24T10:09:13.701Z - success: sprite-editor loaded
+2019-09-24T10:09:13.707Z - success: store loaded
+2019-09-24T10:09:13.721Z - success: timeline loaded
+2019-09-24T10:09:13.729Z - success: xiaomi-runtime loaded
+2019-09-24T10:09:17.048Z - normal: Loading packages
+2019-09-24T10:09:17.092Z - normal: Watching packages
+2019-09-24T10:09:17.159Z - info: Cocos Services load base data!
+2019-09-24T10:09:17.416Z - normal: Run Application
+2019-09-25T03:33:09.121Z - normal: Start building with options : {
   "actualPlatform": "web-mobile",
   "android-instant": {
     "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
@@ -149,9 +85,9 @@
     "orientation": "portrait",
     "subContext": ""
   },
-  "buildPath": "/Users/xes/Desktop/hub/oneOnBest/build",
+  "buildPath": "/Users/xes/Desktop/hub/shuyishuer/build",
   "debug": false,
-  "dest": "/Users/xes/Desktop/hub/oneOnBest/build/web-mobile",
+  "dest": "/Users/xes/Desktop/hub/shuyishuer/build/web-mobile",
   "embedWebDebugger": false,
   "encryptJs": true,
   "excludeScenes": [
@@ -221,30 +157,30 @@
   },
   "xxteaKey": "ce558dd3-8f51-47",
   "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/hub/oneOnBest",
+  "project": "/Users/xes/Desktop/hub/shuyishuer",
   "projectName": "gameFrame",
   "debugBuildWorker": false
 }
-2019-09-24T08:00:39.809Z - normal: Building /Users/xes/Desktop/hub/oneOnBest
-2019-09-24T08:00:39.809Z - normal: Destination /Users/xes/Desktop/hub/oneOnBest/build/web-mobile
-2019-09-24T08:00:39.968Z - normal: Delete /Users/xes/Desktop/hub/oneOnBest/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/oneOnBest/build/web-mobile/**/*
-2019-09-24T08:01:29.028Z - normal: Start building assets
-2019-09-24T08:01:29.030Z - normal: Start spawn build-worker
-2019-09-24T08:01:29.962Z - normal: Finish spawn build-worker
-2019-09-24T08:01:29.962Z - normal: Start init build-worker
-2019-09-24T08:01:33.654Z - normal: Finish init build-worker
-2019-09-24T08:01:33.655Z - normal: Start build-assets in worker
-2019-09-24T08:01:39.332Z - warn: 原图 db://assets/resources/images/spine/hua.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/hua.json 直接使用，因此原图仍然会保留一份。
-2019-09-24T08:01:39.337Z - warn: 原图 db://assets/resources/images/spine/syse_02.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/syse_02.json 直接使用，因此原图仍然会保留一份。
-2019-09-24T08:01:39.338Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas.
-2019-09-24T08:01:39.339Z - warn: db://assets/resources/images/gameUI/stageitem.png has not been packed into AutoAtlas.
-2019-09-24T08:01:39.763Z - normal: Finish build-assets in worker
-2019-09-24T08:01:39.777Z - normal: Finish building assets
-2019-09-24T08:01:39.815Z - normal: Start building plugin scripts
-2019-09-24T08:01:39.911Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
-2019-09-24T08:01:39.926Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-09-24T08:01:40.255Z - normal: Built to "/Users/xes/Desktop/hub/oneOnBest/build/web-mobile" successfully
-2019-09-24T08:02:30.595Z - normal: Start building with options : {
+2019-09-25T03:33:09.129Z - normal: Building /Users/xes/Desktop/hub/shuyishuer
+2019-09-25T03:33:09.130Z - normal: Destination /Users/xes/Desktop/hub/shuyishuer/build/web-mobile
+2019-09-25T03:33:09.449Z - normal: Delete /Users/xes/Desktop/hub/shuyishuer/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/shuyishuer/build/web-mobile/**/*
+2019-09-25T03:33:27.829Z - normal: Start building assets
+2019-09-25T03:33:27.831Z - normal: Start spawn build-worker
+2019-09-25T03:33:30.521Z - normal: Finish spawn build-worker
+2019-09-25T03:33:30.522Z - normal: Start init build-worker
+2019-09-25T03:33:42.726Z - normal: Finish init build-worker
+2019-09-25T03:33:42.728Z - normal: Start build-assets in worker
+2019-09-25T03:33:47.212Z - warn: 原图 db://assets/resources/images/spine/hua.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/hua.json 直接使用，因此原图仍然会保留一份。
+2019-09-25T03:33:47.226Z - warn: 原图 db://assets/resources/images/spine/syse_02.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/syse_02.json 直接使用，因此原图仍然会保留一份。
+2019-09-25T03:33:47.370Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas.
+2019-09-25T03:33:47.371Z - warn: db://assets/resources/images/gameUI/stageitem.png has not been packed into AutoAtlas.
+2019-09-25T03:33:49.217Z - normal: Finish build-assets in worker
+2019-09-25T03:33:49.227Z - normal: Finish building assets
+2019-09-25T03:33:49.275Z - normal: Start building plugin scripts
+2019-09-25T03:33:49.365Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
+2019-09-25T03:33:49.388Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-09-25T03:33:50.063Z - normal: Built to "/Users/xes/Desktop/hub/shuyishuer/build/web-mobile" successfully
+2019-09-25T03:36:06.697Z - normal: Start building with options : {
   "actualPlatform": "web-mobile",
   "android-instant": {
     "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
@@ -263,9 +199,9 @@
     "orientation": "portrait",
     "subContext": ""
   },
-  "buildPath": "/Users/xes/Desktop/hub/oneOnBest/build",
+  "buildPath": "/Users/xes/Desktop/hub/shuyishuer/build",
   "debug": false,
-  "dest": "/Users/xes/Desktop/hub/oneOnBest/build/web-mobile",
+  "dest": "/Users/xes/Desktop/hub/shuyishuer/build/web-mobile",
   "embedWebDebugger": false,
   "encryptJs": true,
   "excludeScenes": [
@@ -335,26 +271,254 @@
   },
   "xxteaKey": "ce558dd3-8f51-47",
   "zipCompressJs": true,
-  "project": "/Users/xes/Desktop/hub/oneOnBest",
+  "project": "/Users/xes/Desktop/hub/shuyishuer",
   "projectName": "gameFrame",
   "debugBuildWorker": false
 }
-2019-09-24T08:02:30.604Z - normal: Building /Users/xes/Desktop/hub/oneOnBest
-2019-09-24T08:02:30.605Z - normal: Destination /Users/xes/Desktop/hub/oneOnBest/build/web-mobile
-2019-09-24T08:02:30.608Z - normal: Delete /Users/xes/Desktop/hub/oneOnBest/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/oneOnBest/build/web-mobile/**/*
-2019-09-24T08:02:46.978Z - normal: Start building assets
-2019-09-24T08:02:46.979Z - normal: Start spawn build-worker
-2019-09-24T08:02:48.857Z - normal: Finish spawn build-worker
-2019-09-24T08:02:48.858Z - normal: Start init build-worker
-2019-09-24T08:02:54.989Z - normal: Finish init build-worker
-2019-09-24T08:02:54.989Z - normal: Start build-assets in worker
-2019-09-24T08:02:58.304Z - warn: 原图 db://assets/resources/images/spine/hua.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/hua.json 直接使用，因此原图仍然会保留一份。
-2019-09-24T08:02:58.309Z - warn: 原图 db://assets/resources/images/spine/syse_02.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/syse_02.json 直接使用，因此原图仍然会保留一份。
-2019-09-24T08:02:58.311Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas.
-2019-09-24T08:02:58.356Z - warn: db://assets/resources/images/gameUI/stageitem.png has not been packed into AutoAtlas.
-2019-09-24T08:02:59.690Z - normal: Finish build-assets in worker
-2019-09-24T08:02:59.710Z - normal: Finish building assets
-2019-09-24T08:02:59.763Z - normal: Start building plugin scripts
-2019-09-24T08:02:59.821Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
-2019-09-24T08:02:59.837Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
-2019-09-24T08:03:00.381Z - normal: Built to "/Users/xes/Desktop/hub/oneOnBest/build/web-mobile" successfully
+2019-09-25T03:36:06.704Z - normal: Building /Users/xes/Desktop/hub/shuyishuer
+2019-09-25T03:36:06.704Z - normal: Destination /Users/xes/Desktop/hub/shuyishuer/build/web-mobile
+2019-09-25T03:36:06.707Z - normal: Delete /Users/xes/Desktop/hub/shuyishuer/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/shuyishuer/build/web-mobile/**/*
+2019-09-25T03:36:35.531Z - normal: Start building assets
+2019-09-25T03:36:35.532Z - normal: Start spawn build-worker
+2019-09-25T03:36:39.018Z - normal: Finish spawn build-worker
+2019-09-25T03:36:39.018Z - normal: Start init build-worker
+2019-09-25T03:36:50.470Z - normal: Finish init build-worker
+2019-09-25T03:36:50.470Z - normal: Start build-assets in worker
+2019-09-25T03:36:56.243Z - warn: 原图 db://assets/resources/images/spine/hua.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/hua.json 直接使用，因此原图仍然会保留一份。
+2019-09-25T03:36:56.265Z - warn: 原图 db://assets/resources/images/spine/syse_02.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/syse_02.json 直接使用，因此原图仍然会保留一份。
+2019-09-25T03:36:56.267Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas.
+2019-09-25T03:36:56.274Z - warn: db://assets/resources/images/gameUI/stageitem.png has not been packed into AutoAtlas.
+2019-09-25T03:36:57.983Z - normal: Finish build-assets in worker
+2019-09-25T03:36:57.995Z - normal: Finish building assets
+2019-09-25T03:36:58.031Z - normal: Start building plugin scripts
+2019-09-25T03:36:58.091Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
+2019-09-25T03:36:58.109Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-09-25T03:36:58.855Z - normal: Built to "/Users/xes/Desktop/hub/shuyishuer/build/web-mobile" successfully
+2019-09-25T04:47:29.435Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/hub/shuyishuer/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/hub/shuyishuer/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [
+    "1a4215b9-6b2e-4bc3-9286-39fa6185720a",
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "excludedModules": [
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket",
+    "Geom Utils",
+    "3D",
+    "3D Primitive",
+    "TypeScript Polyfill"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "sourceMaps": false,
+  "startScene": "a75e94dc-05bd-44a5-bdab-af7a2bed76a7",
+  "template": "link",
+  "title": "gameFrame",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "landscape",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/hub/shuyishuer",
+  "projectName": "gameFrame",
+  "debugBuildWorker": false
+}
+2019-09-25T04:47:29.443Z - normal: Building /Users/xes/Desktop/hub/shuyishuer
+2019-09-25T04:47:29.443Z - normal: Destination /Users/xes/Desktop/hub/shuyishuer/build/web-mobile
+2019-09-25T04:47:29.445Z - normal: Delete /Users/xes/Desktop/hub/shuyishuer/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/shuyishuer/build/web-mobile/**/*
+2019-09-25T04:47:37.741Z - normal: Start building assets
+2019-09-25T04:47:37.741Z - normal: Start spawn build-worker
+2019-09-25T04:47:39.268Z - normal: Finish spawn build-worker
+2019-09-25T04:47:39.268Z - normal: Start init build-worker
+2019-09-25T04:47:44.840Z - normal: Finish init build-worker
+2019-09-25T04:47:44.841Z - normal: Start build-assets in worker
+2019-09-25T04:47:48.226Z - warn: 原图 db://assets/resources/images/spine/hua.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/hua.json 直接使用，因此原图仍然会保留一份。
+2019-09-25T04:47:48.234Z - warn: 原图 db://assets/resources/images/spine/syse_02.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/syse_02.json 直接使用，因此原图仍然会保留一份。
+2019-09-25T04:47:48.236Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas.
+2019-09-25T04:47:48.238Z - warn: db://assets/resources/images/gameUI/stageitem.png has not been packed into AutoAtlas.
+2019-09-25T04:47:49.142Z - normal: Finish build-assets in worker
+2019-09-25T04:47:49.149Z - normal: Finish building assets
+2019-09-25T04:47:49.190Z - normal: Start building plugin scripts
+2019-09-25T04:47:49.247Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
+2019-09-25T04:47:49.256Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-09-25T04:47:49.789Z - normal: Built to "/Users/xes/Desktop/hub/shuyishuer/build/web-mobile" successfully
+2019-09-25T04:49:28.057Z - normal: Start building with options : {
+  "actualPlatform": "web-mobile",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "http://10.2.35.30:7456/preview-android-instant/",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
+  "apiLevel": "",
+  "appABIs": [],
+  "appBundle": false,
+  "baidugame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "testappid",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "buildPath": "/Users/xes/Desktop/hub/shuyishuer/build",
+  "debug": false,
+  "dest": "/Users/xes/Desktop/hub/shuyishuer/build/web-mobile",
+  "embedWebDebugger": false,
+  "encryptJs": true,
+  "excludeScenes": [
+    "1a4215b9-6b2e-4bc3-9286-39fa6185720a",
+    "a75e94dc-05bd-44a5-bdab-af7a2bed76a7"
+  ],
+  "excludedModules": [
+    "ParticleSystem",
+    "TiledMap",
+    "DragonBones",
+    "RichText",
+    "MotionStreak",
+    "PageView",
+    "PageViewIndicator",
+    "Slider",
+    "VideoPlayer",
+    "WebView",
+    "Animation",
+    "Collider",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
+    "Intersection",
+    "Native Socket",
+    "Geom Utils",
+    "3D",
+    "3D Primitive",
+    "TypeScript Polyfill"
+  ],
+  "fb-instant-games": {},
+  "includeSDKBox": false,
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "md5Cache": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.gameFrame",
+  "platform": "web-mobile",
+  "previewHeight": "720",
+  "previewWidth": "1280",
+  "qqplay": {
+    "REMOTE_SERVER_ROOT": "",
+    "orientation": "portrait",
+    "zip": false
+  },
+  "scenes": [
+    "6ecd0372-494a-432d-8c75-bc33749fe2fb"
+  ],
+  "sourceMaps": false,
+  "startScene": "6ecd0372-494a-432d-8c75-bc33749fe2fb",
+  "template": "link",
+  "title": "gameFrame",
+  "useDebugKeystore": true,
+  "vsVersion": "auto",
+  "webOrientation": "landscape",
+  "wechatgame": {
+    "REMOTE_SERVER_ROOT": "",
+    "appid": "wx6ac3f5090a6b99c5",
+    "orientation": "portrait",
+    "subContext": ""
+  },
+  "xxteaKey": "ce558dd3-8f51-47",
+  "zipCompressJs": true,
+  "project": "/Users/xes/Desktop/hub/shuyishuer",
+  "projectName": "gameFrame",
+  "debugBuildWorker": false
+}
+2019-09-25T04:49:28.069Z - normal: Building /Users/xes/Desktop/hub/shuyishuer
+2019-09-25T04:49:28.069Z - normal: Destination /Users/xes/Desktop/hub/shuyishuer/build/web-mobile
+2019-09-25T04:49:28.071Z - normal: Delete /Users/xes/Desktop/hub/shuyishuer/build/web-mobile/subpackages/**/*,/Users/xes/Desktop/hub/shuyishuer/build/web-mobile/**/*
+2019-09-25T04:49:43.628Z - normal: Start building assets
+2019-09-25T04:49:43.628Z - normal: Start spawn build-worker
+2019-09-25T04:49:46.606Z - normal: Finish spawn build-worker
+2019-09-25T04:49:46.606Z - normal: Start init build-worker
+2019-09-25T04:49:57.664Z - normal: Finish init build-worker
+2019-09-25T04:49:57.664Z - normal: Start build-assets in worker
+2019-09-25T04:50:03.537Z - warn: 原图 db://assets/resources/images/spine/hua.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/hua.json 直接使用，因此原图仍然会保留一份。
+2019-09-25T04:50:03.547Z - warn: 原图 db://assets/resources/images/spine/syse_02.png 已经被打包到自动图集 resources/images/AutoAtlas.pac，但由于这张原图同时被 db://assets/resources/images/spine/syse_02.json 直接使用，因此原图仍然会保留一份。
+2019-09-25T04:50:03.550Z - warn: db://assets/resources/images/gameUI/bg.png has not been packed into AutoAtlas.
+2019-09-25T04:50:03.555Z - warn: db://assets/resources/images/gameUI/stageitem.png has not been packed into AutoAtlas.
+2019-09-25T04:50:05.252Z - normal: Finish build-assets in worker
+2019-09-25T04:50:05.266Z - normal: Finish building assets
+2019-09-25T04:50:05.309Z - normal: Start building plugin scripts
+2019-09-25T04:50:05.376Z - normal: Generating main.js from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/shares/main.js
+2019-09-25T04:50:05.390Z - normal: Generating html from /Applications/CocosCreator2.1.2.app/Contents/Resources/static/build-templates/web-mobile/template/index.html
+2019-09-25T04:50:06.076Z - normal: Built to "/Users/xes/Desktop/hub/shuyishuer/build/web-mobile" successfully

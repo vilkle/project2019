@@ -7,9 +7,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var DaAnData = /** @class */ (function () {
     function DaAnData() {
         this.type = null;
-        this.judgeNum = null;
-        this.num = null;
-        this.numArr = [];
+        this.norm = null;
+        this.count = null;
+        this.question = [];
         this.submitEnable = false;
     }
     DaAnData.getInstance = function () {

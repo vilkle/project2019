@@ -273,6 +273,7 @@ var GamePanel = /** @class */ (function (_super) {
         this.layoutTop.node.removeAllChildren();
         this.items = this.initItemNumer();
         this.handleInitItems(this.itemNumber);
+        console.log(this.items);
     };
     //验证答案是否正确
     GamePanel.prototype.checkAnswer = function (text) {
@@ -306,6 +307,7 @@ var GamePanel = /** @class */ (function (_super) {
         //设置标准数
         var norm = this.initNormItem();
         arr[norm.index] = norm.value;
+        console.log(norm);
         return arr;
     };
     //设置题干标准数
@@ -346,9 +348,9 @@ var GamePanel = /** @class */ (function (_super) {
         }
         if (ConstValue_1.ConstValue.IS_TEACHER) {
             this.type = DaAnData_1.DaAnData.getInstance().type;
-            this.norm = DaAnData_1.DaAnData.getInstance().judgeNum;
-            this.itemNumber = DaAnData_1.DaAnData.getInstance().num;
-            this.items = DaAnData_1.DaAnData.getInstance().numArr;
+            this.norm = parseInt(DaAnData_1.DaAnData.getInstance().norm);
+            this.itemNumber = DaAnData_1.DaAnData.getInstance().count;
+            this.items = DaAnData_1.DaAnData.getInstance().question.map(Number);
             this.init();
             UIManager_1.UIManager.getInstance().openUI(UploadAndReturnPanel_1.default, null, 300);
         }
@@ -430,28 +432,33 @@ var GamePanel = /** @class */ (function (_super) {
                         console.error('content.type is null');
                         return;
                     }
-                    if (content.judgeNum) {
-                        this.norm = content.judgeNum;
-                        DaAnData_1.DaAnData.getInstance().judgeNum = content.judgeNum;
+                    if (content.norm) {
+                        this.norm = parseInt(content.norm);
+                        DaAnData_1.DaAnData.getInstance().norm = content.norm;
                     }
                     else {
-                        console.error('content.judgeNum is null');
+                        console.error('content.norm is null');
                         return;
                     }
-                    if (content.num) {
-                        this.itemNumber = content.num;
-                        DaAnData_1.DaAnData.getInstance().num = content.num;
+                    if (content.count) {
+                        this.itemNumber = content.count;
+                        DaAnData_1.DaAnData.getInstance().count = content.count;
                     }
                     else {
-                        console.error('content.num is null');
+                        console.error('content.count is null');
                         return;
                     }
-                    if (content.numArr) {
-                        this.items = content.numArr;
-                        DaAnData_1.DaAnData.getInstance().numArr = content.numArr;
+                    if (content.question) {
+                        this.items = [];
+                        DaAnData_1.DaAnData.getInstance().question = [];
+                        for (var i in content.question) {
+                            var num = parseInt(content.question[i]);
+                            this.items[i] = num;
+                            DaAnData_1.DaAnData.getInstance().question[i] = num.toString();
+                        }
                     }
                     else {
-                        console.error('content.numArr is null');
+                        console.error('content.question is null');
                         return;
                     }
                     this.init();

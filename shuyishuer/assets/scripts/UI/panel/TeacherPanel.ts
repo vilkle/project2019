@@ -24,16 +24,16 @@ export default class TeacherPanel extends BaseUI {
     @property(cc.Prefab)
     private editBoxPrefab: cc.Prefab = null
     private type: number = 1
-    private judgeNum: number = null
-    private num: number = 8
-    private numArr: number[] = []
+    private norm: string = null
+    private count: number = 8
+    private question: string[] = []
     private editBoxArr: cc.EditBox[] = []
 
     onLoad() {
         this.type = 1
         DaAnData.getInstance().type = 1
-        this.num = 8
-        DaAnData.getInstance().num = 8
+        this.count = 8
+        DaAnData.getInstance().count = 8
         this.initEditBoxArr(8)
     }
 
@@ -56,9 +56,9 @@ export default class TeacherPanel extends BaseUI {
                 this.toggleContainer[3].isChecked = true
                 break
         }
-        this.judgeEditBox.string = this.judgeNum.toString()
-        this.numEditBox.string = this.num.toString()
-       this.initEditBoxArr(this.num)
+        this.judgeEditBox.string = this.norm
+        this.numEditBox.string = this.count.toString()
+       this.initEditBoxArr(this.count)
     }
 
     initEditBoxArr(num: number) {
@@ -68,8 +68,8 @@ export default class TeacherPanel extends BaseUI {
             let node = cc.instantiate(this.editBoxPrefab)
             this.eiditBoxNode.addChild(node)
             this.editBoxArr[i] = node.getComponent(cc.EditBox)
-            if(this.numArr[i]) {
-                this.editBoxArr[i].string = this.numArr[i].toString()
+            if(this.question[i]) {
+                this.editBoxArr[i].string = this.question[i]
             }
             node.on('editing-did-ended', function(editbox){
                 let str = editbox.string
@@ -105,7 +105,7 @@ export default class TeacherPanel extends BaseUI {
 
     judgeEditBoxCallback(sender) {
         let str = this.judgeEditBox.string
-        let num = parseInt(str)
+        let num = str
         let rex = /^[0-9]{1,2}$/
         if(!rex.test(str)) {
             if(str = '') {
@@ -113,15 +113,15 @@ export default class TeacherPanel extends BaseUI {
                 this.judgeEditBox.string = ''
                 this.judgeEditBox.node.getChildByName('PLACEHOLDER_LABEL').active = true
             }else {
-                if(this.judgeNum != null) {
-                    num = this.judgeNum
-                    this.judgeEditBox.string = this.judgeNum.toString()
+                if(this.norm != '') {
+                    num = this.norm
+                    this.judgeEditBox.string = this.norm
                     this.numEditBox.node.getChildByName('PLACEHOLDER_LABEL').active = false
                 }
             }
         }
-        this.judgeNum = num
-        DaAnData.getInstance().judgeNum = this.judgeNum
+        this.norm = num
+        DaAnData.getInstance().norm = this.norm
     }
 
     numEditBoxCallback(sender) {
@@ -134,58 +134,58 @@ export default class TeacherPanel extends BaseUI {
                 this.numEditBox.string = ''
                 this.numEditBox.node.getChildByName('PLACEHOLDER_LABEL').active = true
             }else {
-                num = this.num
-                this.numEditBox.string = this.num.toString()
+                num = this.count
+                this.numEditBox.string = this.count.toString()
                 this.numEditBox.node.getChildByName('PLACEHOLDER_LABEL').active = false
             }
         }
-        if(this.num != num) {
+        if(this.count != num) {
             this.initEditBoxArr(num)
         }
-        this.num = num
-        DaAnData.getInstance().num = this.num
+        this.count = num
+        DaAnData.getInstance().count = this.count
     }
 
     check():boolean {
-        if(this.judgeNum == null) {
+        if(this.norm == null) {
             UIHelp.showTip('题干标准为空，请输入题干标准。')
             return false
         }
-        if(this.num == null) {
+        if(this.count == null) {
             UIHelp.showTip('选数区域的数量为空，请输入选数区域数量。')
             return false
         }
-       if(this.judgeNum > 30 || this.judgeNum < 0) {
+       if(parseInt(this.norm) > 30 || parseInt(this.norm) < 0) {
             UIHelp.showTip('题干标准不是不大于30的整数，请重新输入题干标准')
             return false
        }
-       if(this.num < 8 || this.num > 15) {
+       if(this.count < 8 || this.count > 15) {
             UIHelp.showTip('选数区域数量不是8～15的整数，请重新输入选数区域数量')
             return false
        }
-       this.numArr = []
+       this.question = []
        for(let i = 0; i < this.editBoxArr.length; ++i) {
            if(this.editBoxArr[i].string=='') {
-                this.numArr[i] = null
+                this.question[i] = null
            }else {
-                this.numArr[i] = parseInt(this.editBoxArr[i].string)
+                this.question[i] = this.editBoxArr[i].string
            }
        }
        for(let i = 0; i < this.editBoxArr.length; ++i) {
-            if(this.numArr[i] == null) {
+            if(this.question[i] == null) {
                 UIHelp.showTip(`请输入第一题第${i+1}个可选数。`)
                 return false
             }
-            if(this.numArr[i] < 0 || this.numArr[i] > 50) {
+            if(parseInt(this.question[i]) < 0 || parseInt(this.question[i]) > 50) {
                 UIHelp.showTip(`第一题第${i+1}个可选数不符合0～50的规则，请重新输入。`)
                 return false
             }
        }
-       DaAnData.getInstance().numArr = [...this.numArr]
+       DaAnData.getInstance().question = [...this.question]
        console.log(this.type)
-       console.log(this.judgeNum)
-       console.log(this.num)
-       console.log(this.numArr)
+       console.log(this.norm)
+       console.log(this.count)
+       console.log(this.question)
        return true 
     }
 
@@ -220,25 +220,25 @@ export default class TeacherPanel extends BaseUI {
                             console.error('content.type is null')
                             return
                         }
-                        if(content.judgeNum) {
-                            this.judgeNum = content.judgeNum
-                            DaAnData.getInstance().judgeNum = content.judgeNum
+                        if(content.norm) {
+                            this.norm = content.norm
+                            DaAnData.getInstance().norm = content.norm
                         }else {
-                            console.error('content.judgeNum is null')
+                            console.error('content.norm is null')
                             return
                         }
-                        if(content.num) {
-                            this.num = content.num
-                            DaAnData.getInstance().num = content.num
+                        if(content.count) {
+                            this.count = content.count
+                            DaAnData.getInstance().count = content.count
                         }else {
-                            console.error('content.num is null')
+                            console.error('content.count is null')
                             return
                         }
-                        if(content.numArr) {
-                            this.numArr = content.numArr
-                            DaAnData.getInstance().numArr = content.numArr
+                        if(content.question) {
+                            this.question = content.question
+                            DaAnData.getInstance().question = content.question
                         }else {
-                            console.error('content.numArr is null')
+                            console.error('content.question is null')
                             return
                         }
                         this.setPanel();

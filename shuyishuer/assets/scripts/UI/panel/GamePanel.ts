@@ -266,6 +266,7 @@ export default class GamePanel extends BaseUI {
         this.layoutTop.node.removeAllChildren();
         this.items = this.initItemNumer();
         this.handleInitItems(this.itemNumber);
+        console.log(this.items)
     }
 
     //验证答案是否正确
@@ -301,6 +302,7 @@ export default class GamePanel extends BaseUI {
         //设置标准数
         let norm = this.initNormItem();
         arr[norm.index] = norm.value;
+        console.log(norm)
         return arr;
     }
 
@@ -308,7 +310,7 @@ export default class GamePanel extends BaseUI {
     initNormItem() {
         // 生成一个 1 ~ 8 的随机数作为标准数的波动范围
         let range = this.norm > 8 ? this.setRangeRandom(1, 8) : 1;
-        let value: number | string = this.type & 1 ? this.norm + range : this.norm - range;
+        let value: number = this.type & 1 ? this.norm + range : this.norm - range;
         let index = this.setRangeRandom(0, this.itemNumber);
         // 返回一个随机 index 的正确答案 value
         return { index, value }
@@ -345,9 +347,9 @@ export default class GamePanel extends BaseUI {
         }
         if(ConstValue.IS_TEACHER) {
             this.type = DaAnData.getInstance().type
-            this.norm = DaAnData.getInstance().judgeNum
-            this.itemNumber = DaAnData.getInstance().num
-            this.items = DaAnData.getInstance().numArr
+            this.norm = parseInt(DaAnData.getInstance().norm) 
+            this.itemNumber = DaAnData.getInstance().count
+            this.items = DaAnData.getInstance().question.map(Number)
             this.init()
             UIManager.getInstance().openUI(UploadAndReturnPanel, null, 300)
         }else {
@@ -432,25 +434,30 @@ getNet() {
                     console.error('content.type is null')
                     return
                 }
-                if(content.judgeNum) {
-                    this.norm = content.judgeNum
-                    DaAnData.getInstance().judgeNum = content.judgeNum
+                if(content.norm) {
+                    this.norm = parseInt(content.norm)
+                    DaAnData.getInstance().norm = content.norm
                 }else {
-                    console.error('content.judgeNum is null')
+                    console.error('content.norm is null')
                     return
                 }
-                if(content.num) {
-                    this.itemNumber = content.num
-                    DaAnData.getInstance().num = content.num
+                if(content.count) {
+                    this.itemNumber = content.count
+                    DaAnData.getInstance().count = content.count
                 }else {
-                    console.error('content.num is null')
+                    console.error('content.count is null')
                     return
                 }
-                if(content.numArr) {
-                    this.items = content.numArr
-                    DaAnData.getInstance().numArr = content.numArr
+                if(content.question) {
+                    this.items = []
+                    DaAnData.getInstance().question = []
+                    for(let i in content.question) {
+                        let num = parseInt(content.question[i])
+                        this.items[i] = num
+                        DaAnData.getInstance().question[i] = num.toString()
+                    }
                 }else {
-                    console.error('content.numArr is null')
+                    console.error('content.question is null')
                     return
                 }
                 this.init()

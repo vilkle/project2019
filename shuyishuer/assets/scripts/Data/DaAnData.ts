@@ -1,9 +1,9 @@
 export class DaAnData{
     private static instance: DaAnData
     public type: number = null
-    public judgeNum: number = null
-    public num: number = null
-    public numArr: number[] = []
+    public norm: string = null
+    public count: number = null
+    public question: string[] = []
     public submitEnable = false
     static getInstance(){
         if(this.instance == null) {
