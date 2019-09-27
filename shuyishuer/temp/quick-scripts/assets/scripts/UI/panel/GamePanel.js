@@ -338,6 +338,7 @@ var GamePanel = /** @class */ (function (_super) {
     };
     // LIFE-CYCLE CALLBACKS:
     GamePanel.prototype.onLoad = function () {
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
         AudioManager_1.AudioManager.getInstance().playSound('sfx_12opne');
         for (var i = 0; i < 4; i++) {
             this.eventvalue.levelData.push({

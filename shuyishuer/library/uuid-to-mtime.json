@@ -790,7 +790,7 @@
     "relativePath": "resources/audio/sfx_fewright.mp3"
   },
   "39170766-0cc0-4d65-b02e-03a4eb3772f7": {
-    "asset": 1569231103662,
+    "asset": 1569405923104,
     "meta": 1569231307292,
     "relativePath": "resources/images/gameUI"
   },
@@ -881,13 +881,8 @@
   },
   "ba3fb529-c46e-4cf9-8e22-36b16d3696f3": {
     "asset": 1565921346624,
-    "meta": 1569290416988,
+    "meta": 1569405895320,
     "relativePath": "resources/images/AutoAtlas.pac"
-  },
-  "c96f40d4-a148-4f66-9ff7-b6908726e7b6": {
-    "asset": 1568884128693,
-    "meta": 1569290416989,
-    "relativePath": "resources/images/gameUI/AutoAtlas.pac"
   },
   "36d1132c-8cbc-4ff3-9331-678d1ea69561": {
     "asset": 1568884128695,
@@ -1070,8 +1065,8 @@
     "relativePath": "resources/prefab/ui/panel/SubmissionPanel.prefab"
   },
   "62af3dd2-526f-4df6-81ef-c3b28cf4a879": {
-    "asset": 1569311811956,
-    "meta": 1569311811974,
+    "asset": 1569405667454,
+    "meta": 1569405667466,
     "relativePath": "resources/prefab/ui/panel/TeacherPanel.prefab"
   },
   "95b2391b-716d-4af5-94e5-04a4f623f404": {
@@ -1204,19 +1199,19 @@
     "meta": 1569386275748,
     "relativePath": "scripts/UI/panel/TeacherPanel.ts"
   },
-  "246c238e-9069-4a1e-86ba-64939510723e": {
-    "asset": 1569386553446,
-    "meta": 1569386556333,
-    "relativePath": "scripts/UI/panel/GamePanel.ts"
-  },
   "a75e94dc-05bd-44a5-bdab-af7a2bed76a7": {
-    "asset": 1569386968642,
-    "meta": 1569386968659,
+    "asset": 1569408564326,
+    "meta": 1569408564332,
     "relativePath": "scene/Teacher.fire"
   },
+  "246c238e-9069-4a1e-86ba-64939510723e": {
+    "asset": 1569408471561,
+    "meta": 1569408512036,
+    "relativePath": "scripts/UI/panel/GamePanel.ts"
+  },
   "66b51a1b-71dd-4c8b-875c-6e87377f022c": {
-    "asset": 1569386962176,
-    "meta": 1569386964381,
+    "asset": 1569408562575,
+    "meta": 1569408563249,
     "relativePath": "scripts/Data/ConstValue.ts"
   }
 }

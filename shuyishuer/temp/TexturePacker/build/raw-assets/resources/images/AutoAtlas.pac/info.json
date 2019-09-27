@@ -2,7 +2,7 @@
   "mtimes": {
     "ba3fb529-c46e-4cf9-8e22-36b16d3696f3": {
       "assetMtime": 1565921346624,
-      "metaMtime": 1569290416988
+      "metaMtime": 1569405895320
     },
     "11d7abf7-9280-45ab-955e-a0cdb0c45ea5": {
       "assetMtime": 1565921346632,
@@ -20,6 +20,14 @@
       "assetMtime": 1565921346631,
       "metaMtime": 1569290417150
     },
+    "1a4f78c1-1d0a-446c-9e80-86cf8bbc9815": {
+      "assetMtime": 1568884128697,
+      "metaMtime": 1569290417092
+    },
+    "c482311a-0615-4170-acbf-a9b7ed891e1b": {
+      "assetMtime": 1568884128697,
+      "metaMtime": 1569290417092
+    },
     "29cde8fb-dd9f-4981-8ebc-2ebec4fb65b3": {
       "assetMtime": 1565921346630,
       "metaMtime": 1569290417135
@@ -27,6 +35,14 @@
     "ebe5bccb-4828-44af-94b9-94ac52a7c38f": {
       "assetMtime": 1565921346630,
       "metaMtime": 1569290417135
+    },
+    "2a0cd0ca-d1d3-48f2-a784-8e7c7f4c0f92": {
+      "assetMtime": 1568884128701,
+      "metaMtime": 1569290417131
+    },
+    "8ffc7eeb-73fc-47a3-bd7d-2f77faff931a": {
+      "assetMtime": 1568884128701,
+      "metaMtime": 1569290417131
     },
     "31772398-84ae-431f-ac6d-2b57b0d66762": {
       "assetMtime": 1565921346625,
@@ -43,6 +59,38 @@
     "061509a1-2dc5-4228-8c5e-edce1cb2e983": {
       "assetMtime": 1565921346630,
       "metaMtime": 1569290417211
+    },
+    "3bd8faa8-f805-49b4-b909-385e2ace12d5": {
+      "assetMtime": 1568884128699,
+      "metaMtime": 1569290417108
+    },
+    "e5bf71d3-caca-4b27-96c7-b596f72ad06e": {
+      "assetMtime": 1568884128699,
+      "metaMtime": 1569290417108
+    },
+    "3fbeb3f0-1677-4476-83f9-f44649cede0e": {
+      "assetMtime": 1568884128700,
+      "metaMtime": 1569290417126
+    },
+    "b49d9802-1901-42d4-b16e-5a48aabba994": {
+      "assetMtime": 1568884128700,
+      "metaMtime": 1569290417126
+    },
+    "3fc78189-36ea-45c3-bfb4-dfcbd4872716": {
+      "assetMtime": 1568884128695,
+      "metaMtime": 1569290417066
+    },
+    "3a0742bd-0b3e-4288-8146-bc43754c805c": {
+      "assetMtime": 1568884128695,
+      "metaMtime": 1569290417066
+    },
+    "4833b362-26e0-40e9-a985-b705e5b2389d": {
+      "assetMtime": 1568884128695,
+      "metaMtime": 1569290417042
+    },
+    "36d1132c-8cbc-4ff3-9331-678d1ea69561": {
+      "assetMtime": 1568884128695,
+      "metaMtime": 1569290417042
     },
     "4a6b5a97-5fbf-4aee-910e-4be7cb8e1537": {
       "assetMtime": 1565921346629,
@@ -76,6 +124,14 @@
       "assetMtime": 1565921346629,
       "metaMtime": 1568970781044
     },
+    "6ea26488-b146-4a82-a5cd-3c6ba4396482": {
+      "assetMtime": 1568884128698,
+      "metaMtime": 1569290417106
+    },
+    "e5b91efd-2a73-4efa-ba79-7c03165c626e": {
+      "assetMtime": 1568884128698,
+      "metaMtime": 1569290417106
+    },
     "71944752-4d20-4e2b-b71d-45f874e6c6d7": {
       "assetMtime": 1565921346627,
       "metaMtime": 1569290417195
@@ -108,9 +164,25 @@
       "assetMtime": 1568884128731,
       "metaMtime": 1569290417235
     },
+    "8592dc9d-a8f7-4243-bf25-06b481caeaf6": {
+      "assetMtime": 1568884128694,
+      "metaMtime": 1569290417050
+    },
+    "4f247a15-bf56-4e2e-92c1-57075e393b0a": {
+      "assetMtime": 1568884128694,
+      "metaMtime": 1569290417050
+    },
     "897bffd5-6e97-464b-a76a-0da4452de091": {
       "assetMtime": 1565921346629,
       "metaMtime": 1568970781044
+    },
+    "8aee5e40-0b41-4e8b-8960-c0e5e78487d5": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417075
+    },
+    "7958d640-c135-4fdf-bc42-9dc1efeba006": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417075
     },
     "8f17955f-01aa-44c2-a31e-512195f628ff": {
       "assetMtime": 1565921346629,
@@ -136,6 +208,14 @@
       "assetMtime": 1565921346629,
       "metaMtime": 1568970781044
     },
+    "a4b9f045-5217-4842-8830-34f51df5eba3": {
+      "assetMtime": 1568884128697,
+      "metaMtime": 1569290417095
+    },
+    "ddbcb716-3f6c-4155-8a9b-dcf5a540b672": {
+      "assetMtime": 1568884128697,
+      "metaMtime": 1569290417095
+    },
     "a5a74f12-e6b5-461a-b1e0-a6bab5c2d9d2": {
       "assetMtime": 1565921346627,
       "metaMtime": 1569290417197
@@ -143,6 +223,22 @@
     "fe1487b6-21ee-49b2-be64-8086cb7203c7": {
       "assetMtime": 1565921346627,
       "metaMtime": 1569290417197
+    },
+    "a794d633-b5c8-4701-bf7d-aff277d8556f": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417079
+    },
+    "80478016-6485-4e36-be30-8d3fb49ade23": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417079
+    },
+    "a7bd43d0-f772-4b4f-a856-57281f269297": {
+      "assetMtime": 1568884128700,
+      "metaMtime": 1569290417122
+    },
+    "75dec91c-3b86-4b11-9967-073c8bbf5931": {
+      "assetMtime": 1568884128700,
+      "metaMtime": 1569290417122
     },
     "b99e3d8a-208f-46e7-8241-9ae910ed0cb9": {
       "assetMtime": 1565921346629,
@@ -155,6 +251,14 @@
     "df81f65e-6fb4-4e96-b9ae-f8306c80ab6c": {
       "assetMtime": 1565921346632,
       "metaMtime": 1569290417146
+    },
+    "d3dbcd30-fd8c-493c-83ce-a15f38b1d50f": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417064
+    },
+    "246d08a1-8b9f-4786-86ec-fe4d6994816f": {
+      "assetMtime": 1568884128696,
+      "metaMtime": 1569290417064
     },
     "d8f7ae1c-a6a0-48a3-82f7-78535c066e8f": {
       "assetMtime": 1565921346629,
@@ -190,226 +294,154 @@
       {
         "files": [
           {
-            "name": "loadingBg",
-            "uuid": "11d7abf7-9280-45ab-955e-a0cdb0c45ea5",
-            "textureUuid": "ce5c5283-e01d-40f0-b739-f97c5dc35cd3",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096500_image_0.png",
+            "name": "bg",
+            "uuid": "8592dc9d-a8f7-4243-bf25-06b481caeaf6",
+            "textureUuid": "4f247a15-bf56-4e2e-92c1-57075e393b0a",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_22.png",
             "trim": {
               "x": 3,
               "y": 3,
+              "width": 1994,
+              "height": 960,
+              "rotatedWidth": 960,
+              "rotatedHeight": 1994
+            },
+            "rawWidth": 1994,
+            "rawHeight": 960,
+            "width": 2000,
+            "height": 966,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/4f/4f247a15-bf56-4e2e-92c1-57075e393b0a.png",
+            "x": 0,
+            "y": 0,
+            "rotated": true,
+            "rotatedWidth": 966,
+            "rotatedHeight": 2000
+          },
+          {
+            "name": "loadingBg",
+            "uuid": "11d7abf7-9280-45ab-955e-a0cdb0c45ea5",
+            "textureUuid": "ce5c5283-e01d-40f0-b739-f97c5dc35cd3",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944511_image_0.png",
+            "trim": {
+              "x": 3,
+              "y": 2003,
               "width": 10,
               "height": 1112,
-              "rotatedWidth": 10,
-              "rotatedHeight": 1112
+              "rotatedWidth": 1112,
+              "rotatedHeight": 10
             },
             "rawWidth": 10,
             "rawHeight": 1112,
             "width": 16,
             "height": 1118,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/ce/ce5c5283-e01d-40f0-b739-f97c5dc35cd3.png",
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/ce/ce5c5283-e01d-40f0-b739-f97c5dc35cd3.png",
             "x": 0,
-            "y": 0,
-            "rotatedWidth": 16,
-            "rotatedHeight": 1118
-          },
-          {
-            "name": "word",
-            "uuid": "d9af154b-cb4c-419e-abb0-05382c16fca8",
-            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096609_image_24.png",
-            "trim": {
-              "x": 3,
-              "y": 1121,
-              "width": 674,
-              "height": 83,
-              "rotatedWidth": 83,
-              "rotatedHeight": 674
-            },
-            "rawWidth": 674,
-            "rawHeight": 83,
-            "width": 680,
-            "height": 89,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 0,
-            "y": 1118,
+            "y": 2000,
             "rotated": true,
-            "rotatedWidth": 89,
-            "rotatedHeight": 680
+            "rotatedWidth": 1118,
+            "rotatedHeight": 16
           },
           {
-            "name": "u",
-            "uuid": "71944752-4d20-4e2b-b71d-45f874e6c6d7",
-            "textureUuid": "933c10ba-5b0b-4bb7-a294-741a18b8641f",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096534_image_11.png",
+            "name": "stageitem",
+            "uuid": "a7bd43d0-f772-4b4f-a856-57281f269297",
+            "textureUuid": "75dec91c-3b86-4b11-9967-073c8bbf5931",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944516_image_32.png",
             "trim": {
-              "x": 3,
-              "y": 1801,
-              "width": 220,
-              "height": 198,
-              "rotatedWidth": 220,
-              "rotatedHeight": 198
-            },
-            "rawWidth": 220,
-            "rawHeight": 198,
-            "width": 226,
-            "height": 204,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/93/933c10ba-5b0b-4bb7-a294-741a18b8641f.png",
-            "x": 0,
-            "y": 1798,
-            "rotatedWidth": 226,
-            "rotatedHeight": 204
-          },
-          {
-            "name": "dig-1",
-            "uuid": "29cde8fb-dd9f-4981-8ebc-2ebec4fb65b3",
-            "textureUuid": "ebe5bccb-4828-44af-94b9-94ac52a7c38f",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096500_image_2.png",
-            "trim": {
-              "x": 3,
-              "y": 2005,
-              "width": 19,
-              "height": 21,
-              "rotatedWidth": 21,
-              "rotatedHeight": 19
-            },
-            "rawWidth": 19,
-            "rawHeight": 21,
-            "width": 25,
-            "height": 27,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/eb/ebe5bccb-4828-44af-94b9-94ac52a7c38f.png",
-            "x": 0,
-            "y": 2002,
-            "rotated": true,
-            "rotatedWidth": 27,
-            "rotatedHeight": 25
-          },
-          {
-            "name": "dig",
-            "uuid": "6925db0b-cac7-40e1-8671-31e2db3a1573",
-            "textureUuid": "2368900f-2b7d-4ec8-aef5-f69341bfd7a0",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096516_image_8.png",
-            "trim": {
-              "x": 30,
-              "y": 2005,
-              "width": 19,
-              "height": 21,
-              "rotatedWidth": 21,
-              "rotatedHeight": 19
-            },
-            "rawWidth": 19,
-            "rawHeight": 21,
-            "width": 25,
-            "height": 27,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/23/2368900f-2b7d-4ec8-aef5-f69341bfd7a0.png",
-            "x": 27,
-            "y": 2002,
-            "rotated": true,
-            "rotatedWidth": 27,
-            "rotatedHeight": 25
-          },
-          {
-            "name": "singleColor",
-            "uuid": "763a51d6-31b6-42ef-9274-5d54a2ddd819",
-            "textureUuid": "4e5a2750-6820-4990-9157-82b90958252f",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096535_image_12.png",
-            "trim": {
-              "x": 57,
-              "y": 2005,
-              "width": 2,
-              "height": 2,
-              "rotatedWidth": 2,
-              "rotatedHeight": 2
-            },
-            "rawWidth": 2,
-            "rawHeight": 2,
-            "width": 8,
-            "height": 8,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/4e/4e5a2750-6820-4990-9157-82b90958252f.png",
-            "x": 54,
-            "y": 2002,
-            "rotatedWidth": 8,
-            "rotatedHeight": 8
-          },
-          {
-            "name": "jindu_bg",
-            "uuid": "d234028a-afb9-4f8a-8575-e253f8d1ba3e",
-            "textureUuid": "df81f65e-6fb4-4e96-b9ae-f8306c80ab6c",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096591_image_22.png",
-            "trim": {
-              "x": 19,
+              "x": 1121,
               "y": 3,
-              "width": 636,
-              "height": 46,
-              "rotatedWidth": 46,
-              "rotatedHeight": 636
+              "width": 1573,
+              "height": 48,
+              "rotatedWidth": 48,
+              "rotatedHeight": 1573
             },
-            "rawWidth": 638,
+            "rawWidth": 1573,
             "rawHeight": 48,
-            "width": 642,
-            "height": 52,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/df/df81f65e-6fb4-4e96-b9ae-f8306c80ab6c.png",
-            "x": 16,
+            "width": 1579,
+            "height": 54,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/75/75dec91c-3b86-4b11-9967-073c8bbf5931.png",
+            "x": 1118,
             "y": 0,
             "rotated": true,
-            "rotatedWidth": 52,
-            "rotatedHeight": 642
-          },
-          {
-            "name": "hua",
-            "uuid": "91423fe7-091d-4e86-9197-fb806ac657db",
-            "textureUuid": "60d5b18d-7d81-4971-b5c7-34ad06e71716",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096560_image_17.png",
-            "trim": {
-              "x": 19,
-              "y": 645,
-              "width": 470,
-              "height": 250,
-              "rotatedWidth": 250,
-              "rotatedHeight": 470
-            },
-            "rawWidth": 512,
-            "rawHeight": 256,
-            "width": 476,
-            "height": 256,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/60/60d5b18d-7d81-4971-b5c7-34ad06e71716.png",
-            "x": 16,
-            "y": 642,
-            "rotated": true,
-            "rotatedWidth": 256,
-            "rotatedHeight": 476
+            "rotatedWidth": 54,
+            "rotatedHeight": 1579
           },
           {
             "name": "syse_02",
             "uuid": "85228957-0668-4e9b-8c92-8ddfdef3cb26",
             "textureUuid": "9d449606-afaf-47de-b6dc-0f5a6e4001d5",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096551_image_14.png",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_21.png",
             "trim": {
-              "x": 71,
-              "y": 3,
+              "x": 969,
+              "y": 1582,
               "width": 495,
               "height": 252,
-              "rotatedWidth": 252,
-              "rotatedHeight": 495
+              "rotatedWidth": 495,
+              "rotatedHeight": 252
             },
             "rawWidth": 512,
             "rawHeight": 256,
             "width": 501,
             "height": 258,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/9d/9d449606-afaf-47de-b6dc-0f5a6e4001d5.png",
-            "x": 68,
-            "y": 0,
-            "rotated": true,
-            "rotatedWidth": 258,
-            "rotatedHeight": 501
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/9d/9d449606-afaf-47de-b6dc-0f5a6e4001d5.png",
+            "x": 966,
+            "y": 1579,
+            "rotatedWidth": 501,
+            "rotatedHeight": 258
+          },
+          {
+            "name": "u2",
+            "uuid": "a5a74f12-e6b5-461a-b1e0-a6bab5c2d9d2",
+            "textureUuid": "fe1487b6-21ee-49b2-be64-8086cb7203c7",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944516_image_30.png",
+            "trim": {
+              "x": 1121,
+              "y": 1840,
+              "width": 458,
+              "height": 203,
+              "rotatedWidth": 458,
+              "rotatedHeight": 203
+            },
+            "rawWidth": 458,
+            "rawHeight": 203,
+            "width": 464,
+            "height": 209,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/fe/fe1487b6-21ee-49b2-be64-8086cb7203c7.png",
+            "x": 1118,
+            "y": 1837,
+            "rotatedWidth": 464,
+            "rotatedHeight": 209
+          },
+          {
+            "name": "img_zhan",
+            "uuid": "d8f7ae1c-a6a0-48a3-82f7-78535c066e8f",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944517_image_36.png",
+            "trim": {
+              "x": 969,
+              "y": 1840,
+              "width": 67,
+              "height": 80,
+              "rotatedWidth": 67,
+              "rotatedHeight": 80
+            },
+            "rawWidth": 67,
+            "rawHeight": 80,
+            "width": 73,
+            "height": 86,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 966,
+            "y": 1837,
+            "rotatedWidth": 73,
+            "rotatedHeight": 86
           },
           {
             "name": "img_guan",
             "uuid": "6a8140a6-d39f-4d33-a271-e2f507e1f2d2",
             "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096534_image_10.png",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_16.png",
             "trim": {
-              "x": 71,
-              "y": 504,
+              "x": 969,
+              "y": 1926,
               "width": 65,
               "height": 81,
               "rotatedWidth": 81,
@@ -419,163 +451,21 @@
             "rawHeight": 81,
             "width": 71,
             "height": 87,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 68,
-            "y": 501,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 966,
+            "y": 1923,
             "rotated": true,
             "rotatedWidth": 87,
             "rotatedHeight": 71
           },
           {
-            "name": "img_zhan",
-            "uuid": "d8f7ae1c-a6a0-48a3-82f7-78535c066e8f",
-            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096602_image_23.png",
-            "trim": {
-              "x": 158,
-              "y": 504,
-              "width": 67,
-              "height": 80,
-              "rotatedWidth": 80,
-              "rotatedHeight": 67
-            },
-            "rawWidth": 67,
-            "rawHeight": 80,
-            "width": 73,
-            "height": 86,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 155,
-            "y": 501,
-            "rotated": true,
-            "rotatedWidth": 86,
-            "rotatedHeight": 73
-          },
-          {
-            "name": "img_gong",
-            "uuid": "5e84c87d-e4b3-4575-bbe0-07eab7e24cae",
-            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096502_image_6.png",
-            "trim": {
-              "x": 71,
-              "y": 575,
-              "width": 64,
-              "height": 79,
-              "rotatedWidth": 79,
-              "rotatedHeight": 64
-            },
-            "rawWidth": 64,
-            "rawHeight": 79,
-            "width": 70,
-            "height": 85,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 68,
-            "y": 572,
-            "rotated": true,
-            "rotatedWidth": 85,
-            "rotatedHeight": 70
-          },
-          {
-            "name": "img_cheng",
-            "uuid": "897bffd5-6e97-464b-a76a-0da4452de091",
-            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096555_image_15.png",
-            "trim": {
-              "x": 244,
-              "y": 504,
-              "width": 61,
-              "height": 80,
-              "rotatedWidth": 61,
-              "rotatedHeight": 80
-            },
-            "rawWidth": 61,
-            "rawHeight": 80,
-            "width": 67,
-            "height": 86,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 241,
-            "y": 501,
-            "rotatedWidth": 67,
-            "rotatedHeight": 86
-          },
-          {
-            "name": "btn01",
-            "uuid": "31772398-84ae-431f-ac6d-2b57b0d66762",
-            "textureUuid": "594c04b9-8bb8-4698-9817-63afdb29f451",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096500_image_3.png",
-            "trim": {
-              "x": 156,
-              "y": 577,
-              "width": 50,
-              "height": 50,
-              "rotatedWidth": 50,
-              "rotatedHeight": 50
-            },
-            "rawWidth": 50,
-            "rawHeight": 50,
-            "width": 56,
-            "height": 56,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/59/594c04b9-8bb8-4698-9817-63afdb29f451.png",
-            "x": 153,
-            "y": 574,
-            "rotatedWidth": 56,
-            "rotatedHeight": 56
-          },
-          {
-            "name": "u2",
-            "uuid": "a5a74f12-e6b5-461a-b1e0-a6bab5c2d9d2",
-            "textureUuid": "fe1487b6-21ee-49b2-be64-8086cb7203c7",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096578_image_20.png",
-            "trim": {
-              "x": 92,
-              "y": 1121,
-              "width": 458,
-              "height": 203,
-              "rotatedWidth": 203,
-              "rotatedHeight": 458
-            },
-            "rawWidth": 458,
-            "rawHeight": 203,
-            "width": 464,
-            "height": 209,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/fe/fe1487b6-21ee-49b2-be64-8086cb7203c7.png",
-            "x": 89,
-            "y": 1118,
-            "rotated": true,
-            "rotatedWidth": 209,
-            "rotatedHeight": 464
-          },
-          {
-            "name": "img_zuo",
-            "uuid": "6a6e95c0-7133-4380-a03e-6166212c59dd",
-            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096534_image_9.png",
-            "trim": {
-              "x": 92,
-              "y": 1585,
-              "width": 67,
-              "height": 79,
-              "rotatedWidth": 79,
-              "rotatedHeight": 67
-            },
-            "rawWidth": 67,
-            "rawHeight": 79,
-            "width": 73,
-            "height": 85,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 89,
-            "y": 1582,
-            "rotated": true,
-            "rotatedWidth": 85,
-            "rotatedHeight": 73
-          },
-          {
             "name": "img_jie",
             "uuid": "b99e3d8a-208f-46e7-8241-9ae910ed0cb9",
             "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096588_image_21.png",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944516_image_33.png",
             "trim": {
-              "x": 177,
-              "y": 1585,
+              "x": 1042,
+              "y": 1840,
               "width": 68,
               "height": 78,
               "rotatedWidth": 68,
@@ -585,20 +475,561 @@
             "rawHeight": 78,
             "width": 74,
             "height": 84,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 174,
-            "y": 1582,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 1039,
+            "y": 1837,
             "rotatedWidth": 74,
             "rotatedHeight": 84
+          },
+          {
+            "name": "toast",
+            "uuid": "2a0cd0ca-d1d3-48f2-a784-8e7c7f4c0f92",
+            "textureUuid": "8ffc7eeb-73fc-47a3-bd7d-2f77faff931a",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_4.png",
+            "trim": {
+              "x": 1056,
+              "y": 1924,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/8f/8ffc7eeb-73fc-47a3-bd7d-2f77faff931a.png",
+            "x": 1053,
+            "y": 1921,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "singleColor",
+            "uuid": "763a51d6-31b6-42ef-9274-5d54a2ddd819",
+            "textureUuid": "4e5a2750-6820-4990-9157-82b90958252f",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_19.png",
+            "trim": {
+              "x": 1056,
+              "y": 1980,
+              "width": 2,
+              "height": 2,
+              "rotatedWidth": 2,
+              "rotatedHeight": 2
+            },
+            "rawWidth": 2,
+            "rawHeight": 2,
+            "width": 8,
+            "height": 8,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/4e/4e5a2750-6820-4990-9157-82b90958252f.png",
+            "x": 1053,
+            "y": 1977,
+            "rotatedWidth": 8,
+            "rotatedHeight": 8
+          },
+          {
+            "name": "jindu",
+            "uuid": "15c5f32e-2a22-44d5-a8dc-1b5ad54ddcec",
+            "textureUuid": "a1fb4030-577b-418a-95a4-36e7b5e33a45",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_1.png",
+            "trim": {
+              "x": 3,
+              "y": 2019,
+              "width": 609,
+              "height": 20,
+              "rotatedWidth": 609,
+              "rotatedHeight": 20
+            },
+            "rawWidth": 609,
+            "rawHeight": 20,
+            "width": 615,
+            "height": 26,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/a1/a1fb4030-577b-418a-95a4-36e7b5e33a45.png",
+            "x": 0,
+            "y": 2016,
+            "rotatedWidth": 615,
+            "rotatedHeight": 26
+          },
+          {
+            "name": "dig-1",
+            "uuid": "29cde8fb-dd9f-4981-8ebc-2ebec4fb65b3",
+            "textureUuid": "ebe5bccb-4828-44af-94b9-94ac52a7c38f",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_3.png",
+            "trim": {
+              "x": 618,
+              "y": 2019,
+              "width": 19,
+              "height": 21,
+              "rotatedWidth": 21,
+              "rotatedHeight": 19
+            },
+            "rawWidth": 19,
+            "rawHeight": 21,
+            "width": 25,
+            "height": 27,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/eb/ebe5bccb-4828-44af-94b9-94ac52a7c38f.png",
+            "x": 615,
+            "y": 2016,
+            "rotated": true,
+            "rotatedWidth": 27,
+            "rotatedHeight": 25
+          },
+          {
+            "name": "dig",
+            "uuid": "6925db0b-cac7-40e1-8671-31e2db3a1573",
+            "textureUuid": "2368900f-2b7d-4ec8-aef5-f69341bfd7a0",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_14.png",
+            "trim": {
+              "x": 645,
+              "y": 2019,
+              "width": 19,
+              "height": 21,
+              "rotatedWidth": 21,
+              "rotatedHeight": 19
+            },
+            "rawWidth": 19,
+            "rawHeight": 21,
+            "width": 25,
+            "height": 27,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/23/2368900f-2b7d-4ec8-aef5-f69341bfd7a0.png",
+            "x": 642,
+            "y": 2016,
+            "rotated": true,
+            "rotatedWidth": 27,
+            "rotatedHeight": 25
+          },
+          {
+            "name": "dig-1",
+            "uuid": "8aee5e40-0b41-4e8b-8960-c0e5e78487d5",
+            "textureUuid": "7958d640-c135-4fdf-bc42-9dc1efeba006",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_24.png",
+            "trim": {
+              "x": 672,
+              "y": 2019,
+              "width": 19,
+              "height": 21,
+              "rotatedWidth": 21,
+              "rotatedHeight": 19
+            },
+            "rawWidth": 19,
+            "rawHeight": 21,
+            "width": 25,
+            "height": 27,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/79/7958d640-c135-4fdf-bc42-9dc1efeba006.png",
+            "x": 669,
+            "y": 2016,
+            "rotated": true,
+            "rotatedWidth": 27,
+            "rotatedHeight": 25
+          },
+          {
+            "name": "word",
+            "uuid": "d9af154b-cb4c-419e-abb0-05382c16fca8",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944518_image_37.png",
+            "trim": {
+              "x": 969,
+              "y": 3,
+              "width": 674,
+              "height": 83,
+              "rotatedWidth": 83,
+              "rotatedHeight": 674
+            },
+            "rawWidth": 674,
+            "rawHeight": 83,
+            "width": 680,
+            "height": 89,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 966,
+            "y": 0,
+            "rotated": true,
+            "rotatedWidth": 89,
+            "rotatedHeight": 680
+          },
+          {
+            "name": "jindu_bg",
+            "uuid": "d234028a-afb9-4f8a-8575-e253f8d1ba3e",
+            "textureUuid": "df81f65e-6fb4-4e96-b9ae-f8306c80ab6c",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944517_image_34.png",
+            "trim": {
+              "x": 969,
+              "y": 683,
+              "width": 636,
+              "height": 46,
+              "rotatedWidth": 46,
+              "rotatedHeight": 636
+            },
+            "rawWidth": 638,
+            "rawHeight": 48,
+            "width": 642,
+            "height": 52,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/df/df81f65e-6fb4-4e96-b9ae-f8306c80ab6c.png",
+            "x": 966,
+            "y": 680,
+            "rotated": true,
+            "rotatedWidth": 52,
+            "rotatedHeight": 642
+          },
+          {
+            "name": "shadow",
+            "uuid": "3bd8faa8-f805-49b4-b909-385e2ace12d5",
+            "textureUuid": "e5bf71d3-caca-4b27-96c7-b596f72ad06e",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_7.png",
+            "trim": {
+              "x": 969,
+              "y": 1325,
+              "width": 228,
+              "height": 48,
+              "rotatedWidth": 48,
+              "rotatedHeight": 228
+            },
+            "rawWidth": 228,
+            "rawHeight": 48,
+            "width": 234,
+            "height": 54,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/e5/e5bf71d3-caca-4b27-96c7-b596f72ad06e.png",
+            "x": 966,
+            "y": 1322,
+            "rotated": true,
+            "rotatedWidth": 54,
+            "rotatedHeight": 234
+          },
+          {
+            "name": "bgitem_right",
+            "uuid": "3fc78189-36ea-45c3-bfb4-dfcbd4872716",
+            "textureUuid": "3a0742bd-0b3e-4288-8146-bc43754c805c",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_9.png",
+            "trim": {
+              "x": 1021,
+              "y": 683,
+              "width": 49,
+              "height": 591,
+              "rotatedWidth": 49,
+              "rotatedHeight": 591
+            },
+            "rawWidth": 49,
+            "rawHeight": 591,
+            "width": 55,
+            "height": 597,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/3a/3a0742bd-0b3e-4288-8146-bc43754c805c.png",
+            "x": 1018,
+            "y": 680,
+            "rotatedWidth": 55,
+            "rotatedHeight": 597
+          },
+          {
+            "name": "nest",
+            "uuid": "6ea26488-b146-4a82-a5cd-3c6ba4396482",
+            "textureUuid": "e5b91efd-2a73-4efa-ba79-7c03165c626e",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_17.png",
+            "trim": {
+              "x": 1023,
+              "y": 1280,
+              "width": 269,
+              "height": 86,
+              "rotatedWidth": 86,
+              "rotatedHeight": 269
+            },
+            "rawWidth": 269,
+            "rawHeight": 86,
+            "width": 275,
+            "height": 92,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/e5/e5b91efd-2a73-4efa-ba79-7c03165c626e.png",
+            "x": 1020,
+            "y": 1277,
+            "rotated": true,
+            "rotatedWidth": 92,
+            "rotatedHeight": 275
+          },
+          {
+            "name": "bgitem_left",
+            "uuid": "4833b362-26e0-40e9-a985-b705e5b2389d",
+            "textureUuid": "36d1132c-8cbc-4ff3-9331-678d1ea69561",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_10.png",
+            "trim": {
+              "x": 1058,
+              "y": 3,
+              "width": 49,
+              "height": 591,
+              "rotatedWidth": 49,
+              "rotatedHeight": 591
+            },
+            "rawWidth": 49,
+            "rawHeight": 591,
+            "width": 55,
+            "height": 597,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/36/36d1132c-8cbc-4ff3-9331-678d1ea69561.png",
+            "x": 1055,
+            "y": 0,
+            "rotatedWidth": 55,
+            "rotatedHeight": 597
+          },
+          {
+            "name": "btn01",
+            "uuid": "31772398-84ae-431f-ac6d-2b57b0d66762",
+            "textureUuid": "594c04b9-8bb8-4698-9817-63afdb29f451",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_5.png",
+            "trim": {
+              "x": 1058,
+              "y": 600,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/59/594c04b9-8bb8-4698-9817-63afdb29f451.png",
+            "x": 1055,
+            "y": 597,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "tips_bg",
+            "uuid": "3fbeb3f0-1677-4476-83f9-f44649cede0e",
+            "textureUuid": "b49d9802-1901-42d4-b16e-5a48aabba994",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_8.png",
+            "trim": {
+              "x": 1175,
+              "y": 3,
+              "width": 665,
+              "height": 193,
+              "rotatedWidth": 193,
+              "rotatedHeight": 665
+            },
+            "rawWidth": 665,
+            "rawHeight": 193,
+            "width": 671,
+            "height": 199,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/b4/b49d9802-1901-42d4-b16e-5a48aabba994.png",
+            "x": 1172,
+            "y": 0,
+            "rotated": true,
+            "rotatedWidth": 199,
+            "rotatedHeight": 671
+          },
+          {
+            "name": "hua",
+            "uuid": "91423fe7-091d-4e86-9197-fb806ac657db",
+            "textureUuid": "60d5b18d-7d81-4971-b5c7-34ad06e71716",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_26.png",
+            "trim": {
+              "x": 1175,
+              "y": 674,
+              "width": 470,
+              "height": 250,
+              "rotatedWidth": 250,
+              "rotatedHeight": 470
+            },
+            "rawWidth": 512,
+            "rawHeight": 256,
+            "width": 476,
+            "height": 256,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/60/60d5b18d-7d81-4971-b5c7-34ad06e71716.png",
+            "x": 1172,
+            "y": 671,
+            "rotated": true,
+            "rotatedWidth": 256,
+            "rotatedHeight": 476
+          },
+          {
+            "name": "egg_2",
+            "uuid": "a4b9f045-5217-4842-8830-34f51df5eba3",
+            "textureUuid": "ddbcb716-3f6c-4155-8a9b-dcf5a540b672",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_29.png",
+            "trim": {
+              "x": 1175,
+              "y": 1150,
+              "width": 248,
+              "height": 273,
+              "rotatedWidth": 248,
+              "rotatedHeight": 273
+            },
+            "rawWidth": 248,
+            "rawHeight": 273,
+            "width": 254,
+            "height": 279,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/dd/ddbcb716-3f6c-4155-8a9b-dcf5a540b672.png",
+            "x": 1172,
+            "y": 1147,
+            "rotatedWidth": 254,
+            "rotatedHeight": 279
+          },
+          {
+            "name": "button_done",
+            "uuid": "d3dbcd30-fd8c-493c-83ce-a15f38b1d50f",
+            "textureUuid": "246d08a1-8b9f-4786-86ec-fe4d6994816f",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944517_image_35.png",
+            "trim": {
+              "x": 1175,
+              "y": 1429,
+              "width": 281,
+              "height": 120,
+              "rotatedWidth": 281,
+              "rotatedHeight": 120
+            },
+            "rawWidth": 281,
+            "rawHeight": 120,
+            "width": 287,
+            "height": 126,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/24/246d08a1-8b9f-4786-86ec-fe4d6994816f.png",
+            "x": 1172,
+            "y": 1426,
+            "rotatedWidth": 287,
+            "rotatedHeight": 126
+          },
+          {
+            "name": "count_bg",
+            "uuid": "a794d633-b5c8-4701-bf7d-aff277d8556f",
+            "textureUuid": "80478016-6485-4e36-be30-8d3fb49ade23",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944516_image_31.png",
+            "trim": {
+              "x": 1429,
+              "y": 1150,
+              "width": 175,
+              "height": 155,
+              "rotatedWidth": 155,
+              "rotatedHeight": 175
+            },
+            "rawWidth": 175,
+            "rawHeight": 155,
+            "width": 181,
+            "height": 161,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/80/80478016-6485-4e36-be30-8d3fb49ade23.png",
+            "x": 1426,
+            "y": 1147,
+            "rotated": true,
+            "rotatedWidth": 161,
+            "rotatedHeight": 181
+          },
+          {
+            "name": "img_cheng",
+            "uuid": "897bffd5-6e97-464b-a76a-0da4452de091",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_23.png",
+            "trim": {
+              "x": 1429,
+              "y": 1331,
+              "width": 61,
+              "height": 80,
+              "rotatedWidth": 80,
+              "rotatedHeight": 61
+            },
+            "rawWidth": 61,
+            "rawHeight": 80,
+            "width": 67,
+            "height": 86,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 1426,
+            "y": 1328,
+            "rotated": true,
+            "rotatedWidth": 86,
+            "rotatedHeight": 67
+          },
+          {
+            "name": "img_zuo",
+            "uuid": "6a6e95c0-7133-4380-a03e-6166212c59dd",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_15.png",
+            "trim": {
+              "x": 1462,
+              "y": 1398,
+              "width": 67,
+              "height": 79,
+              "rotatedWidth": 67,
+              "rotatedHeight": 79
+            },
+            "rawWidth": 67,
+            "rawHeight": 79,
+            "width": 73,
+            "height": 85,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 1459,
+            "y": 1395,
+            "rotatedWidth": 73,
+            "rotatedHeight": 85
+          },
+          {
+            "name": "toast",
+            "uuid": "66204e73-249a-4e98-9e62-c077b68a635f",
+            "textureUuid": "d18b8639-bcea-466b-b17c-d05fa100d0d6",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_13.png",
+            "trim": {
+              "x": 1515,
+              "y": 1331,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/d1/d18b8639-bcea-466b-b17c-d05fa100d0d6.png",
+            "x": 1512,
+            "y": 1328,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "img_gong",
+            "uuid": "5e84c87d-e4b3-4575-bbe0-07eab7e24cae",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_12.png",
+            "trim": {
+              "x": 1462,
+              "y": 1483,
+              "width": 64,
+              "height": 79,
+              "rotatedWidth": 79,
+              "rotatedHeight": 64
+            },
+            "rawWidth": 64,
+            "rawHeight": 79,
+            "width": 70,
+            "height": 85,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 1459,
+            "y": 1480,
+            "rotated": true,
+            "rotatedWidth": 85,
+            "rotatedHeight": 70
+          },
+          {
+            "name": "btn02",
+            "uuid": "78fdd712-a3f2-4475-a7d2-0215c24cce9e",
+            "textureUuid": "9faaeabe-c63c-4bdc-bcb7-833c01e6a632",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_20.png",
+            "trim": {
+              "x": 1535,
+              "y": 1387,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
+            },
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/9f/9faaeabe-c63c-4bdc-bcb7-833c01e6a632.png",
+            "x": 1532,
+            "y": 1384,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
           },
           {
             "name": "img_da",
             "uuid": "4a6b5a97-5fbf-4aee-910e-4be7cb8e1537",
             "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096502_image_5.png",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_11.png",
             "trim": {
-              "x": 92,
-              "y": 1658,
+              "x": 1470,
+              "y": 1553,
               "width": 67,
               "height": 78,
               "rotatedWidth": 67,
@@ -608,9 +1039,9 @@
             "rawHeight": 78,
             "width": 73,
             "height": 84,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 89,
-            "y": 1655,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 1467,
+            "y": 1550,
             "rotatedWidth": 73,
             "rotatedHeight": 84
           },
@@ -618,127 +1049,33 @@
             "name": "img_shu",
             "uuid": "34b93be1-4e4a-4a5f-9408-9a357ef4f1e1",
             "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096501_image_4.png",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_6.png",
             "trim": {
-              "x": 165,
-              "y": 1669,
+              "x": 1470,
+              "y": 1637,
               "width": 64,
               "height": 78,
-              "rotatedWidth": 78,
-              "rotatedHeight": 64
+              "rotatedWidth": 64,
+              "rotatedHeight": 78
             },
             "rawWidth": 64,
             "rawHeight": 78,
             "width": 70,
             "height": 84,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 162,
-            "y": 1666,
-            "rotated": true,
-            "rotatedWidth": 84,
-            "rotatedHeight": 70
-          },
-          {
-            "name": "toast",
-            "uuid": "66204e73-249a-4e98-9e62-c077b68a635f",
-            "textureUuid": "d18b8639-bcea-466b-b17c-d05fa100d0d6",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096503_image_7.png",
-            "trim": {
-              "x": 165,
-              "y": 1739,
-              "width": 50,
-              "height": 50,
-              "rotatedWidth": 50,
-              "rotatedHeight": 50
-            },
-            "rawWidth": 50,
-            "rawHeight": 50,
-            "width": 56,
-            "height": 56,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/d1/d18b8639-bcea-466b-b17c-d05fa100d0d6.png",
-            "x": 162,
-            "y": 1736,
-            "rotatedWidth": 56,
-            "rotatedHeight": 56
-          },
-          {
-            "name": "btn02",
-            "uuid": "78fdd712-a3f2-4475-a7d2-0215c24cce9e",
-            "textureUuid": "9faaeabe-c63c-4bdc-bcb7-833c01e6a632",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096535_image_13.png",
-            "trim": {
-              "x": 92,
-              "y": 1742,
-              "width": 50,
-              "height": 50,
-              "rotatedWidth": 50,
-              "rotatedHeight": 50
-            },
-            "rawWidth": 50,
-            "rawHeight": 50,
-            "width": 56,
-            "height": 56,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/9f/9faaeabe-c63c-4bdc-bcb7-833c01e6a632.png",
-            "x": 89,
-            "y": 1739,
-            "rotatedWidth": 56,
-            "rotatedHeight": 56
-          },
-          {
-            "name": "yuanJiao",
-            "uuid": "9be27a7b-b122-4c1c-b381-66ce18a3b703",
-            "textureUuid": "36c838ef-4e0c-40fc-af9c-52dc58acb82a",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096571_image_18.png",
-            "trim": {
-              "x": 221,
-              "y": 1739,
-              "width": 50,
-              "height": 50,
-              "rotatedWidth": 50,
-              "rotatedHeight": 50
-            },
-            "rawWidth": 50,
-            "rawHeight": 50,
-            "width": 56,
-            "height": 56,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/36/36c838ef-4e0c-40fc-af9c-52dc58acb82a.png",
-            "x": 218,
-            "y": 1736,
-            "rotatedWidth": 56,
-            "rotatedHeight": 56
-          },
-          {
-            "name": "img_chuang",
-            "uuid": "8f17955f-01aa-44c2-a31e-512195f628ff",
-            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096558_image_16.png",
-            "trim": {
-              "x": 249,
-              "y": 1669,
-              "width": 63,
-              "height": 78,
-              "rotatedWidth": 78,
-              "rotatedHeight": 63
-            },
-            "rawWidth": 63,
-            "rawHeight": 78,
-            "width": 69,
-            "height": 84,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 246,
-            "y": 1666,
-            "rotated": true,
-            "rotatedWidth": 84,
-            "rotatedHeight": 69
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 1467,
+            "y": 1634,
+            "rotatedWidth": 70,
+            "rotatedHeight": 84
           },
           {
             "name": "img_tiao",
             "uuid": "a204e591-c845-4585-8c21-d904b6e70b39",
             "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096571_image_19.png",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_28.png",
             "trim": {
-              "x": 251,
-              "y": 1585,
+              "x": 1470,
+              "y": 1721,
               "width": 68,
               "height": 77,
               "rotatedWidth": 77,
@@ -748,47 +1085,116 @@
             "rawHeight": 77,
             "width": 74,
             "height": 83,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
-            "x": 248,
-            "y": 1582,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 1467,
+            "y": 1718,
             "rotated": true,
             "rotatedWidth": 83,
             "rotatedHeight": 74
           },
           {
-            "name": "jindu",
-            "uuid": "15c5f32e-2a22-44d5-a8dc-1b5ad54ddcec",
-            "textureUuid": "a1fb4030-577b-418a-95a4-36e7b5e33a45",
-            "path": "/Users/xes/Desktop/hub/oneOnBest/temp/trimImages/spritesheet_js_1569312096500_image_1.png",
+            "name": "yuanJiao",
+            "uuid": "9be27a7b-b122-4c1c-b381-66ce18a3b703",
+            "textureUuid": "36c838ef-4e0c-40fc-af9c-52dc58acb82a",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_27.png",
             "trim": {
-              "x": 301,
-              "y": 590,
-              "width": 609,
-              "height": 20,
-              "rotatedWidth": 20,
-              "rotatedHeight": 609
+              "x": 1540,
+              "y": 1637,
+              "width": 50,
+              "height": 50,
+              "rotatedWidth": 50,
+              "rotatedHeight": 50
             },
-            "rawWidth": 609,
-            "rawHeight": 20,
-            "width": 615,
-            "height": 26,
-            "originalPath": "/Users/xes/Desktop/hub/oneOnBest/library/imports/a1/a1fb4030-577b-418a-95a4-36e7b5e33a45.png",
-            "x": 298,
-            "y": 587,
+            "rawWidth": 50,
+            "rawHeight": 50,
+            "width": 56,
+            "height": 56,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/36/36c838ef-4e0c-40fc-af9c-52dc58acb82a.png",
+            "x": 1537,
+            "y": 1634,
+            "rotatedWidth": 56,
+            "rotatedHeight": 56
+          },
+          {
+            "name": "dot",
+            "uuid": "1a4f78c1-1d0a-446c-9e80-86cf8bbc9815",
+            "textureUuid": "c482311a-0615-4170-acbf-a9b7ed891e1b",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944513_image_2.png",
+            "trim": {
+              "x": 1543,
+              "y": 1553,
+              "width": 46,
+              "height": 46,
+              "rotatedWidth": 46,
+              "rotatedHeight": 46
+            },
+            "rawWidth": 46,
+            "rawHeight": 46,
+            "width": 52,
+            "height": 52,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/c4/c482311a-0615-4170-acbf-a9b7ed891e1b.png",
+            "x": 1540,
+            "y": 1550,
+            "rotatedWidth": 52,
+            "rotatedHeight": 52
+          },
+          {
+            "name": "u",
+            "uuid": "71944752-4d20-4e2b-b71d-45f874e6c6d7",
+            "textureUuid": "933c10ba-5b0b-4bb7-a294-741a18b8641f",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944514_image_18.png",
+            "trim": {
+              "x": 1374,
+              "y": 3,
+              "width": 220,
+              "height": 198,
+              "rotatedWidth": 198,
+              "rotatedHeight": 220
+            },
+            "rawWidth": 220,
+            "rawHeight": 198,
+            "width": 226,
+            "height": 204,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/93/933c10ba-5b0b-4bb7-a294-741a18b8641f.png",
+            "x": 1371,
+            "y": 0,
             "rotated": true,
-            "rotatedWidth": 26,
-            "rotatedHeight": 615
+            "rotatedWidth": 204,
+            "rotatedHeight": 226
+          },
+          {
+            "name": "img_chuang",
+            "uuid": "8f17955f-01aa-44c2-a31e-512195f628ff",
+            "textureUuid": "061509a1-2dc5-4228-8c5e-edce1cb2e983",
+            "path": "/Users/xes/Desktop/hub/shuyishuer/temp/trimImages/spritesheet_js_1569405944515_image_25.png",
+            "trim": {
+              "x": 1374,
+              "y": 229,
+              "width": 63,
+              "height": 78,
+              "rotatedWidth": 63,
+              "rotatedHeight": 78
+            },
+            "rawWidth": 63,
+            "rawHeight": 78,
+            "width": 69,
+            "height": 84,
+            "originalPath": "/Users/xes/Desktop/hub/shuyishuer/library/imports/06/061509a1-2dc5-4228-8c5e-edce1cb2e983.png",
+            "x": 1371,
+            "y": 226,
+            "rotatedWidth": 69,
+            "rotatedHeight": 84
           }
         ],
-        "width": 512,
+        "width": 2048,
         "height": 2048,
         "name": "AutoAtlas-1",
-        "imagePath": "/Users/xes/Desktop/hub/oneOnBest/temp/TexturePacker/build/raw-assets/resources/images/AutoAtlas.pac/AutoAtlas-1.png",
+        "imagePath": "/Users/xes/Desktop/hub/shuyishuer/temp/TexturePacker/build/raw-assets/resources/images/AutoAtlas.pac/AutoAtlas-1.png",
         "compressd": {
           "suffix": [
             ".png"
           ],
-          "imagePathNoExt": "/Users/xes/Desktop/hub/oneOnBest/temp/TexturePacker/build/raw-assets/resources/images/AutoAtlas.pac/compressed/AutoAtlas-1"
+          "imagePathNoExt": "/Users/xes/Desktop/hub/shuyishuer/temp/TexturePacker/build/raw-assets/resources/images/AutoAtlas.pac/compressed/AutoAtlas-1"
         }
       }
     ],

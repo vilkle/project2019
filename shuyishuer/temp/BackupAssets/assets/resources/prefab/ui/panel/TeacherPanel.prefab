@@ -757,8 +757,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "1、设置体感类型",
-    "_N$string": "1、设置体感类型",
+    "_string": "1、设置题干类型",
+    "_N$string": "1、设置题干类型",
     "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,

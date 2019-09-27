@@ -337,6 +337,7 @@ export default class GamePanel extends BaseUI {
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
         AudioManager.getInstance().playSound('sfx_12opne')
         for(let i = 0; i < 4; i++) {
             this.eventvalue.levelData.push({
