@@ -75,7 +75,7 @@ export default class GamePanel extends BaseUI {
 
      onLoad () {
         this.isTecher();
-        
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, function () {});
     }
 
     start() {
