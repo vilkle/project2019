@@ -93,6 +93,7 @@ var GamePanel = /** @class */ (function (_super) {
         return _this;
     }
     GamePanel.prototype.onLoad = function () {
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
         if (ConstValue_1.ConstValue.IS_TEACHER) {
             this.types = DaAnData_1.DaAnData.getInstance().types;
             this.typetype = DaAnData_1.DaAnData.getInstance().typetype;

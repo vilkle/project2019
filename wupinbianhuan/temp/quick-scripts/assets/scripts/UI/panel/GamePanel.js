@@ -489,12 +489,12 @@ var GamePanel = /** @class */ (function (_super) {
                                     _this.adsorbAction(node_3);
                                     _this.eventvalue.levelData[0].result = 2;
                                     _this.isOver = 2;
-                                    _this.eventvalue.levelData[0].answer = _this.answerDataArr;
+                                    _this.eventvalue.levelData[0].subject = _this.answerDataArr;
                                     if (_this.success()) {
                                         DaAnData_1.DaAnData.getInstance().submitEnable = true;
                                         _this.eventvalue.levelData[0].result = 1;
                                         _this.isOver = 1;
-                                        _this.eventvalue.levelData[0].answer = _this.answerDataArr;
+                                        _this.eventvalue.levelData[0].subject = _this.answerDataArr;
                                         console.log(_this.eventvalue);
                                         DataReporting_1.default.getInstance().dispatchEvent('addLog', {
                                             eventType: 'clickSubmit',

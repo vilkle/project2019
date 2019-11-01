@@ -70,6 +70,10 @@ export default class GamePanel extends BaseUI {
         result: 4
     }
 
+    onLoad() {
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
+    }
+
     start() {
         this.bg.on(cc.Node.EventType.TOUCH_START, ()=>{
             this.isOver = 2;

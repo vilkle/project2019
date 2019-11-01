@@ -98,8 +98,8 @@ var TeacherPanel = /** @class */ (function (_super) {
         else {
             this.sameType1 = DaAnData_1.DaAnData.getInstance().ruleDataArr[2][1];
             this.diffType1 = DaAnData_1.DaAnData.getInstance().ruleDataArr[0][1];
-            this.sameType2 = DaAnData_1.DaAnData.getInstance().ruleDataArr[2][1];
-            this.diffType2 = DaAnData_1.DaAnData.getInstance().ruleDataArr[0][1];
+            this.sameType2 = DaAnData_1.DaAnData.getInstance().ruleDataArr[3][1];
+            this.diffType2 = DaAnData_1.DaAnData.getInstance().ruleDataArr[1][1];
         }
         this.initData();
         this.initType();

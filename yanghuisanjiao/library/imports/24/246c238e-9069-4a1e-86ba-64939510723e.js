@@ -68,6 +68,9 @@ var GamePanel = /** @class */ (function (_super) {
         };
         return _this;
     }
+    GamePanel.prototype.onLoad = function () {
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
+    };
     GamePanel.prototype.start = function () {
         var _this = this;
         this.bg.on(cc.Node.EventType.TOUCH_START, function () {

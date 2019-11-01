@@ -82,6 +82,7 @@ export default class GamePanel extends BaseUI {
 
 
     onLoad() {
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
         if(ConstValue.IS_TEACHER) {
             this.types = DaAnData.getInstance().types;
             this.typetype = DaAnData.getInstance().typetype;
