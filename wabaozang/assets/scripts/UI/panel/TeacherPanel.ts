@@ -189,34 +189,43 @@ export default class TeacherPanel extends BaseUI {
                         if(!selectNode.getChildByName('shadow').active) {
                             this.selectArr.push(selectNode)
                             selectNode.getChildByName('shadow').active = true
+                        }else {
+                            selectNode.getChildByName('shadow').active = false
+                            let index = this.selectArr.indexOf(selectNode)
+                            this.selectArr.splice(index, 1)
                         }
                     }
                 }else {
                     UIHelp.showTip('与已选中方格边边相邻的方格才可以被选择。')
                     return
                 }
-                return
+              
             }else {
                 let arr: number[] = []
                 arr.push(this.itemNodeArr.indexOf(item))
                  //判断点击格子是否与以选择格子相邻
-                if(this.adjacent(arr)) {
-                    node.color = cc.Color.GRAY
-                    this.selectArr.push(item)
+                if(this.adjacent(arr)||this.selectArr.indexOf(item) != -1) {
+                    if(!node.color.equals(cc.Color.GRAY)) {
+                        node.color = cc.Color.GRAY
+                        this.selectArr.push(item)
+                    }else {
+                        node.color = cc.Color.WHITE
+                        this.selectArr.splice(this.selectArr.indexOf(item), 1) 
+                    }
                 }else {
                     UIHelp.showTip('与已选中方格边边相邻的方格才可以被选择。')
                     return
                 }
-                return
+                
             }
             //如果点击格子为以选择的格子，格子取消选中效果
-            if(this.selectArr.indexOf(item) != -1) {
-                if(node.color.equals(cc.Color.GRAY)) {
-                    node.color = cc.Color.WHITE
-                    this.selectArr.splice(this.selectArr.indexOf(item), 1)
-                    return
-                }
-            }
+            // if(this.selectArr.indexOf(item) != -1) {
+            //     if(node.color.equals(cc.Color.GRAY)) {
+            //         node.color = cc.Color.WHITE
+            //         this.selectArr.splice(this.selectArr.indexOf(item), 1)
+            //         return
+            //     }
+            // }
            
             console.log(this.selectArr)
         })
@@ -314,7 +323,7 @@ export default class TeacherPanel extends BaseUI {
                 arr = []
                 arr = [selectIndex - 1, selectIndex + 1, selectIndex + this.num, selectIndex - this.num]
                 for (const key in index) {
-                    if (arr.indexOf(index[key])) {
+                    if (arr.indexOf(index[key]) != -1) {
                         return true
                     }
                 }
