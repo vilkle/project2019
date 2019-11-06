@@ -143,7 +143,7 @@ export class NetWork {
         NetWork.empty = NetWork.theRequest["empty"];
         NetWork.isLive = NetWork.theRequest['isLive'];
         this.LogJournalReport('CoursewareLogEvent', '')
-        console.log('11111gaolei', NetWork.courseware_id, '           ', NetWork.theRequest['id'], '           ', JSON.stringify(NetWork.theRequest));
+        console.log('-----', NetWork.courseware_id, '           ', NetWork.theRequest['id'], '           ', JSON.stringify(NetWork.theRequest));
         return NetWork.theRequest;
 
     }

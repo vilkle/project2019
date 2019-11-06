@@ -59,7 +59,7 @@ export default class TeacherPanel extends BaseUI {
     private itemNodeArr: cc.Node[] = []
     private selectArr: cc.Node[] = []
     private groupArr: cc.Node[] = []
-    private groupInfoArr: number[] = []
+    private groupInfoArr: cc.Node[] = []
     private touchTarget: any = null
 
     // onLoad () {}
@@ -73,17 +73,14 @@ export default class TeacherPanel extends BaseUI {
         switch(this.type) {
             case 1:
                 this.toggleContainer[0].isChecked = true
-                this.num = 4
                 this.setNode(4)
                 break
             case 2:
                 this.toggleContainer[1].isChecked = true
-                this.num = 5
                 this.setNode(5)
                 break
             case 3:
                 this.toggleContainer[2].isChecked = true
-                this.num = 6
                 this.setNode(6)
                 break
             default:
@@ -94,9 +91,15 @@ export default class TeacherPanel extends BaseUI {
     }
 
     setNode(num: number) {
+        this.num = num
         this.selectArr = []
         this.posArr = []
+        this.groupArr = []
+        this.groupInfoArr = []
+        this.itemNodeArr = []
+        this.itemArr = []
         this.node1.removeAllChildren()
+        this.node2.getChildByName('group').removeAllChildren()
         let lenth = num * 105 + (num + 1) * 3 + num - 1
         this.node1.width = lenth
         let black = this.node2.getChildByName('item')
@@ -114,6 +117,7 @@ export default class TeacherPanel extends BaseUI {
             this.itemNodeArr[i] = node
             this.addListenerOnItem(node)
             this.addMouseListener(node)
+            this.groupInfoArr[i] = null
             this.itemArr[i] = 5
             this.posArr[i] = cc.v2(0,0)
         }
@@ -169,20 +173,8 @@ export default class TeacherPanel extends BaseUI {
             }
             this.touchTarget = e.target
             let index = this.itemNodeArr.indexOf(item)
-            //如果点击格子已经分组，寻找同组格子设置为选中效果
             if(item.getChildByName('sprite').getComponent(cc.Sprite).spriteFrame) {
                 let partnerArr = this.getPartner(index)
-                // for (const key in partnerArr) {
-                //     let selectNode = this.itemNodeArr[partnerArr[key]]
-                //     if(selectNode.getChildByName('shadow').active) {
-                //         selectNode.getChildByName('shadow').active = false
-                //         let index = this.selectArr.indexOf(selectNode)
-                //         this.selectArr.splice(index, 1)
-                //     }else {
-                //         this.selectArr.push(selectNode)
-                //         selectNode.getChildByName('shadow').active = true
-                //     }
-                // }
                 if(this.adjacent(partnerArr)) {
                     for (const key in partnerArr) {
                         let selectNode = this.itemNodeArr[partnerArr[key]]
@@ -203,7 +195,6 @@ export default class TeacherPanel extends BaseUI {
             }else {
                 let arr: number[] = []
                 arr.push(this.itemNodeArr.indexOf(item))
-                 //判断点击格子是否与以选择格子相邻
                 if(this.adjacent(arr)||this.selectArr.indexOf(item) != -1) {
                     if(!node.color.equals(cc.Color.GRAY)) {
                         node.color = cc.Color.GRAY
@@ -215,19 +206,9 @@ export default class TeacherPanel extends BaseUI {
                 }else {
                     UIHelp.showTip('与已选中方格边边相邻的方格才可以被选择。')
                     return
-                }
-                
+                }  
             }
-            //如果点击格子为以选择的格子，格子取消选中效果
-            // if(this.selectArr.indexOf(item) != -1) {
-            //     if(node.color.equals(cc.Color.GRAY)) {
-            //         node.color = cc.Color.WHITE
-            //         this.selectArr.splice(this.selectArr.indexOf(item), 1)
-            //         return
-            //     }
-            // }
            
-            console.log(this.selectArr)
         })
         item.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
             
@@ -247,29 +228,98 @@ export default class TeacherPanel extends BaseUI {
         })
     }
 
+    sortNumber(a:number, b:number) {
+        return b - a
+    }
+
     addMaterialCallback() {
         let arr = this.materialNode.children
         for (const key in arr) {
             arr[key].on('click', (e)=>{
+                //筛选出选择的组
+                let selectGroupArr: cc.Node[] = []
                 for (const index in this.selectArr) {
-                    let materialIndex = arr.indexOf(arr[key])
                     let selectNode = this.selectArr[index]
                     let itemIndex = this.itemNodeArr.indexOf(selectNode)
+                    let groupInfo = this.groupInfoArr[itemIndex]
+                    if(groupInfo != null && selectGroupArr.indexOf(groupInfo) == -1) {
+                        selectGroupArr.push(groupInfo)
+                    }
+                    this.groupInfoArr[itemIndex] = null
+                }
+                console.log(this.groupInfoArr)
+                //删除选择的组节点
+        
+                console.log('selectGroupArr----', selectGroupArr)
+                for(let i = 0; i < selectGroupArr.length; ++i) {
+                    let index = this.groupArr.indexOf(selectGroupArr[i])
+                    this.groupArr[index].removeFromParent()
+                    this.groupArr.splice(index, 1)
+                }
+                selectGroupArr = []
+                //创建新的组
+                let selectNumArr: number[] = []
+                let materialIndex = arr.indexOf(arr[key])
+                let spriteframe = this.getSpriteframe(materialIndex)
+                for (const index in this.selectArr) {
+                    let selectNode = this.selectArr[index]
+                    let itemIndex = this.itemNodeArr.indexOf(selectNode)
+                    selectNumArr[parseInt(index)] = itemIndex
                     selectNode.getChildByName('shadow').active = false
                     let sp = selectNode.getChildByName('sprite').getComponent(cc.Sprite)
-                    sp.spriteFrame = this.getSpriteframe(materialIndex)
+                    sp.spriteFrame = spriteframe
                     selectNode.getChildByName('wb').color = cc.Color.WHITE
                     this.itemArr[itemIndex] = materialIndex
-                    let pos = selectNode.getPosition()
-                    this.posArr[itemIndex] = pos
-                    this.groupInfoArr[index] = this.groupArr.length
-                    //创建摆放样式
-                   
+                    // let pos = selectNode.getPosition()
+                    // this.posArr[itemIndex] = pos
                 }
+                //创建组节点
+                if(materialIndex != 5) {
+                    let groupNode = this.createGroup(selectNumArr, spriteframe)
+                    this.groupArr.push(groupNode)
+                }
+                selectNumArr = []
                 this.selectArr = []
             })
         }
     
+    }
+
+    createGroup(selectArr: number[], spriteframe: cc.SpriteFrame): cc.Node {
+        let rowArr: number[] = []
+        let colArr: number[] = []
+        for (const key in selectArr) {
+            let row = Math.floor(selectArr[key] / this.num) 
+            let col = selectArr[key] % this.num
+            let index: number = parseInt(key)
+            rowArr[index] = row
+            colArr[index] = col
+        }
+        let maxRow = Math.max.apply(Math, rowArr)
+        let minRow = Math.min.apply(Math, rowArr)
+        let maxCol = Math.max.apply(Math, colArr)
+        let minCol = Math.min.apply(Math, colArr)
+        let height = maxRow - minRow + 1
+        let width = maxCol - minCol + 1
+        let node = new cc.Node()
+        for(let i = 0; i < selectArr.length; ++i) {
+            let y = - (rowArr[i] - minRow - height / 2 + 0.5) * 105
+            let x =  (colArr[i] - minCol - width / 2 + 0.5) * 105
+            let itemNode = cc.instantiate(this.itemPrefab)
+            itemNode.getChildByName('bg').active = false
+            itemNode.getChildByName('sprite').getComponent(cc.Sprite).spriteFrame = spriteframe
+            node.addChild(itemNode)
+            itemNode.setPosition(cc.v2(x, y))
+        }
+        let nodeX = (minCol + width / 2) * 109
+        let nodeY = -(minRow + height / 2) * 109
+        this.node2.getChildByName('group').addChild(node)
+        node.setPosition(cc.v2(nodeX, nodeY))
+        for (const key in selectArr) {
+            this.posArr[selectArr[key]] = cc.v2(nodeX, nodeY)
+            this.groupInfoArr[selectArr[key]] = node
+        }
+        return node
     }
 
 
