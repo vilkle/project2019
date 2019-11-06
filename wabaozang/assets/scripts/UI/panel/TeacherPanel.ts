@@ -165,6 +165,34 @@ export default class TeacherPanel extends BaseUI {
         
     }
 
+    addListenerOnGroupNode(groupArr: cc.Node[]) {
+        for(let i = 0; i < groupArr.length; ++i) {
+            let node: cc.Node = groupArr[i]
+            node.on(cc.Node.EventType.TOUCH_START, (e)=>{
+
+            })
+            node.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
+
+            })
+            node.on(cc.Node.EventType.TOUCH_END, (e)=>{
+
+            })
+            node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+
+            })
+        }
+    }
+
+    removeListenerOnGroupNode(groupArr: cc.Node[]) {
+        for(let i = 0; i < groupArr.length; ++i) {
+            let node: cc.Node = groupArr[i]
+            node.off(cc.Node.EventType.TOUCH_START)
+            node.off(cc.Node.EventType.TOUCH_MOVE)
+            node.off(cc.Node.EventType.TOUCH_END)
+            node.off(cc.Node.EventType.TOUCH_CANCEL)
+        }
+    }
+
     addListenerOnItem(item: cc.Node) {
         let node = item.getChildByName('wb')
         item.on(cc.Node.EventType.TOUCH_START, (e)=>{
@@ -247,10 +275,7 @@ export default class TeacherPanel extends BaseUI {
                     }
                     this.groupInfoArr[itemIndex] = null
                 }
-                console.log(this.groupInfoArr)
                 //删除选择的组节点
-        
-                console.log('selectGroupArr----', selectGroupArr)
                 for(let i = 0; i < selectGroupArr.length; ++i) {
                     let index = this.groupArr.indexOf(selectGroupArr[i])
                     this.groupArr[index].removeFromParent()
@@ -302,6 +327,8 @@ export default class TeacherPanel extends BaseUI {
         let height = maxRow - minRow + 1
         let width = maxCol - minCol + 1
         let node = new cc.Node()
+        node.width = width
+        node.height = height
         for(let i = 0; i < selectArr.length; ++i) {
             let y = - (rowArr[i] - minRow - height / 2 + 0.5) * 105
             let x =  (colArr[i] - minCol - width / 2 + 0.5) * 105
