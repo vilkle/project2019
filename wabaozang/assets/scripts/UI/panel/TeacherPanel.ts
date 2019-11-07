@@ -51,11 +51,18 @@ export default class TeacherPanel extends BaseUI {
     private frame9: cc.SpriteFrame = null
     @property(cc.SpriteFrame)
     private frame10: cc.SpriteFrame = null
+    @property(cc.ScrollView)
+    private scrollview: cc.ScrollView = null
+    private boxWidth: number = 0
+    private boxHeight: number = 0
     private num: number = 0
     private type: number = 0
     private itemArr: number[] = []
     private posArr: cc.Vec2[] = []
-
+    private xArr: number[] = []
+    private yArr: number[] = []
+    private rotationArr: number[] = []
+    private groupNumArr: number[] =[]
     private itemNodeArr: cc.Node[] = []
     private selectArr: cc.Node[] = []
     private groupArr: cc.Node[] = []
@@ -108,6 +115,8 @@ export default class TeacherPanel extends BaseUI {
         black.height = lenth + 6
         white.width = lenth
         white.height = lenth
+        this.boxWidth = lenth
+        this.boxHeight = lenth
         white.x = 3
         white.y = -3
         this.gridNode.height = lenth
@@ -119,6 +128,7 @@ export default class TeacherPanel extends BaseUI {
             this.addMouseListener(node)
             this.groupInfoArr[i] = null
             this.itemArr[i] = 5
+            this.groupNumArr[i] = 0
             this.posArr[i] = cc.v2(0,0)
         }
     }
@@ -148,7 +158,7 @@ export default class TeacherPanel extends BaseUI {
             for (const key in this.itemArr) {
                 for (const _key in partnerArr) {
                     let nKey = parseInt(key) 
-                    if (this.itemArr[key] == this.itemArr[index] && partnerArr.indexOf(nKey) == -1) {
+                    if (this.itemArr[key] == this.itemArr[index] && partnerArr.indexOf(nKey) == -1 && this.groupNumArr[nKey] == this.groupNumArr[index]) {
                         let _nKey = partnerArr[_key]
                         let arr: number[] = [_nKey - 1, _nKey + 1, _nKey + this.num, _nKey - this.num]
                         if(arr.indexOf(nKey) != -1) {
@@ -165,32 +175,82 @@ export default class TeacherPanel extends BaseUI {
         
     }
 
-    addListenerOnGroupNode(groupArr: cc.Node[]) {
-        for(let i = 0; i < groupArr.length; ++i) {
-            let node: cc.Node = groupArr[i]
-            node.on(cc.Node.EventType.TOUCH_START, (e)=>{
-
-            })
-            node.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
-
-            })
-            node.on(cc.Node.EventType.TOUCH_END, (e)=>{
-
-            })
-            node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
-
-            })
+    correctPos(pos: cc.Vec2, node: cc.Node): cc.Vec2 {
+        let width: number = 0
+        let height: number = 0
+        if(node.rotation%180 == 0) {
+            width = node.width
+            height = node.height
+        }else {
+            width = node.height
+            height = node.width
         }
+        if(pos.x + width / 2 > this.boxWidth) {
+            pos.x = this.boxWidth - width / 2
+        }else if(pos.x - width / 2 < 3) {
+            pos.x = width / 2 + 3
+        }
+        if(pos.y + height /2 > - 3) {
+            pos.y = - 3 - height / 2
+        }else if(pos.y - height / 2 < - this.boxHeight) {
+            pos.y = height / 2 - this.boxHeight
+        }
+        return pos
     }
 
-    removeListenerOnGroupNode(groupArr: cc.Node[]) {
-        for(let i = 0; i < groupArr.length; ++i) {
-            let node: cc.Node = groupArr[i]
-            node.off(cc.Node.EventType.TOUCH_START)
-            node.off(cc.Node.EventType.TOUCH_MOVE)
-            node.off(cc.Node.EventType.TOUCH_END)
-            node.off(cc.Node.EventType.TOUCH_CANCEL)
-        }
+    addListenerOnGroupNode(node: cc.Node) {
+        let firstPos: cc.Vec2 = cc.v2(0, 0)
+        let lastPos: cc.Vec2 = cc.v2(0, 0)
+        node.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            if(this.touchTarget) {
+                return
+            }
+            this.touchTarget = e.target
+            node.zIndex = 100
+            this.scrollview.enabled = false
+            firstPos = this.node2.getChildByName('group').convertToNodeSpaceAR(e.currentTouch._point)
+            
+        })
+        node.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
+            if(this.touchTarget != e.target) {
+                return
+            }
+            let pos = this.node2.getChildByName('group').convertToNodeSpaceAR(e.currentTouch._point)
+            pos = this.correctPos(pos, node)
+            node.setPosition(pos)
+        })
+        node.on(cc.Node.EventType.TOUCH_END, (e)=>{
+            if(this.touchTarget != e.target) {
+                return
+            }
+            this.touchTarget = null
+            this.scrollview.enabled = true
+            node.zIndex = 10
+            lastPos = this.node2.getChildByName('group').convertToNodeSpaceAR(e.currentTouch._point)
+            if(firstPos.equals(lastPos)) {
+                node.rotation += 90 
+                if(node.rotation >= 360 ) {
+                    node.rotation = 0
+                }
+                lastPos = this.correctPos(lastPos, node)
+                node.setPosition(lastPos)
+            }
+        })
+        node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+            if(this.touchTarget != e.target) {
+                return
+            }
+            this.touchTarget = null
+            this.scrollview.enabled = true
+            node.zIndex = 10
+        })
+    }
+
+    removeListenerOnGroupNode(node: cc.Node) {
+        node.off(cc.Node.EventType.TOUCH_START)
+        node.off(cc.Node.EventType.TOUCH_MOVE)
+        node.off(cc.Node.EventType.TOUCH_END)
+        node.off(cc.Node.EventType.TOUCH_CANCEL)
     }
 
     addListenerOnItem(item: cc.Node) {
@@ -264,6 +324,12 @@ export default class TeacherPanel extends BaseUI {
         let arr = this.materialNode.children
         for (const key in arr) {
             arr[key].on('click', (e)=>{
+                //检测选中组是否相连
+                let isComplete: boolean = this.isComplete()
+                if(!isComplete) {
+                    UIHelp.showTip('请保证已选中的方格边边相邻。')
+                    return
+                }
                 //筛选出选择的组
                 let selectGroupArr: cc.Node[] = []
                 for (const index in this.selectArr) {
@@ -295,12 +361,14 @@ export default class TeacherPanel extends BaseUI {
                     sp.spriteFrame = spriteframe
                     selectNode.getChildByName('wb').color = cc.Color.WHITE
                     this.itemArr[itemIndex] = materialIndex
-                    // let pos = selectNode.getPosition()
-                    // this.posArr[itemIndex] = pos
+                    this.groupNumArr[itemIndex] = this.selectArr.length
                 }
                 //创建组节点
                 if(materialIndex != 5) {
                     let groupNode = this.createGroup(selectNumArr, spriteframe)
+                    console.log('width is ', groupNode.width)
+                    console.log('height is ', groupNode.height)
+                    this.addListenerOnGroupNode(groupNode)
                     this.groupArr.push(groupNode)
                 }
                 selectNumArr = []
@@ -327,8 +395,8 @@ export default class TeacherPanel extends BaseUI {
         let height = maxRow - minRow + 1
         let width = maxCol - minCol + 1
         let node = new cc.Node()
-        node.width = width
-        node.height = height
+        node.width = width * 105
+        node.height = height * 105
         for(let i = 0; i < selectArr.length; ++i) {
             let y = - (rowArr[i] - minRow - height / 2 + 0.5) * 105
             let x =  (colArr[i] - minCol - width / 2 + 0.5) * 105
@@ -346,7 +414,7 @@ export default class TeacherPanel extends BaseUI {
             this.posArr[selectArr[key]] = cc.v2(nodeX, nodeY)
             this.groupInfoArr[selectArr[key]] = node
         }
-        return node
+        return node                      
     }
 
 
@@ -411,6 +479,38 @@ export default class TeacherPanel extends BaseUI {
         }
     }
    
+    isComplete(): boolean {
+        let selectArr: number[] = []
+        for (const key in this.selectArr) {
+            let index = this.itemNodeArr.indexOf(this.selectArr[key])
+            selectArr[parseInt(key)] = index 
+        }
+        let completeNum: number = 0
+        for (const key in selectArr) {
+            let chooseIndex = selectArr[key]
+            let remainderArr: number[] = []
+            let cloneSelectArr = [...selectArr]
+            cloneSelectArr.splice(parseInt(key), 1)
+            remainderArr = [...cloneSelectArr]
+            let adjacentNum: number = 0
+            for (const _key in remainderArr) {
+                let index = remainderArr[_key]
+                let arr: number[] = [index - 1, index + 1, index + this.num, index - this.num]
+                if(arr.indexOf(chooseIndex) != -1) {
+                    adjacentNum++
+                }
+            }
+            if(adjacentNum > 0) {
+                completeNum++
+            }
+        }
+        if(completeNum == this.selectArr.length) {
+            return true
+        }else {
+            return false
+        }
+    }
+
     onToggleContainer(toggle) {
         var index = this.toggleContainer.indexOf(toggle);
         switch(index) {
@@ -445,7 +545,16 @@ export default class TeacherPanel extends BaseUI {
         
         DaAnData.getInstance().type = this.type
         DaAnData.getInstance().itemArr = [...this.itemArr]
-     
+        for (const key in this.groupInfoArr) {
+           let index = parseInt(key)
+           this.xArr[index] = this.groupInfoArr[key].x
+           this.yArr[index] = this.groupInfoArr[key].y
+           this.rotationArr[index] = this.groupInfoArr[key].rotation
+        }
+        DaAnData.getInstance().xArr = [...this.xArr]
+        DaAnData.getInstance().yArr = [...this.yArr]
+        DaAnData.getInstance().rotationArr = [...this.rotationArr]
+
         UIManager.getInstance().showUI(GamePanel, () => {
             ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
         });

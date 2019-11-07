@@ -2,7 +2,9 @@ export class DaAnData {
     private static instance: DaAnData;
     public type: number = 0;
     public itemArr: number[] = [];
-    public posArr: cc.Vec2[] = [];
+    public xArr: number[] = [];
+    public yArr: number[] = [];
+    public rotationArr: number[] = [];
     public submitEnable = false;
    
     static getInstance() {

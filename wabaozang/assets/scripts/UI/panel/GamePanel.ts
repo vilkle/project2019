@@ -11,30 +11,7 @@ export default class GamePanel extends BaseUI {
 
     @property (cc.Node)
     private bg:cc.Node = null;
-    @property([cc.Node])
-    private nodeArr: cc.Node[] = []
-    @property(cc.Node)
-    private grid: cc.Node = null
-    @property(cc.Node)
-    private touchNode: cc.Node = null
-    @property(sp.Skeleton)
-    private dolphins: sp.Skeleton = null
-    @property(sp.Skeleton)
-    private boy: sp.Skeleton = null
-    @property(sp.Skeleton)
-    private shell: sp.Skeleton = null
-    @property(cc.Node)
-    private labaBoundingBox: cc.Node = null
-    @property(sp.Skeleton)
-    private laba: sp.Skeleton = null
-    private answerArr: number[] = [1,2,3,6,1,2,6,6,1]
-    private subjectArr: number[] = [6,6,6,6,6,6,6,6,6]
-    private blingArr: number[] = []
-    private touchEnable: boolean = true
-    private touchTarget: any = null
-    private overNum: number = 0
-    private wrongNum: number = 0
-    private isOver : number = 0;
+  
     private eventvalue = {
         isResult: 1,
         isLevel: 0,
@@ -50,7 +27,7 @@ export default class GamePanel extends BaseUI {
 
     protected static className = "GamePanel";
 
-    onLoad() {
+    /*onLoad() {
         cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
         this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
             if(this.isOver != 1) {
@@ -349,4 +326,4 @@ export default class GamePanel extends BaseUI {
             }
         }.bind(this), null);
     }
-}
+}*/

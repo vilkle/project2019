@@ -474,7 +474,7 @@
     "elastic": true,
     "bounceDuration": 0.23,
     "scrollEvents": [],
-    "cancelInnerEvents": true,
+    "cancelInnerEvents": false,
     "_N$content": {
       "__id__": 12
     },
@@ -8239,6 +8239,9 @@
     },
     "frame10": {
       "__uuid__": "3e3c8b20-c8f2-43d9-b8cd-f08a2c518ccf"
+    },
+    "scrollview": {
+      "__id__": 11
     },
     "_id": ""
   },
