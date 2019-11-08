@@ -3,20 +3,76 @@ import { NetWork } from "../../Http/NetWork";
 import DataReporting from "../../Data/DataReporting";
 import { UIHelp } from "../../Utils/UIHelp";
 import { AudioManager } from "../../Manager/AudioManager";
+import { ConstValue } from "../../Data/ConstValue";
+import { DaAnData } from "../../Data/DaAnData";
+import { UIManager } from "../../Manager/UIManager";
+import UploadAndReturnPanel from "./UploadAndReturnPanel";
 
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class GamePanel extends BaseUI {
 
-    @property (cc.Node)
+    @property(cc.Node)
     private bg:cc.Node = null;
-  
+    @property(cc.Node)
+    private labaBoundingBox: cc.Node = null
+    @property(sp.Skeleton)
+    private laba: sp.Skeleton = null
+    @property(cc.Node)
+    private wave1: cc.Node = null
+    @property(cc.Node)
+    private wave2: cc.Node = null
+    @property(cc.Node)
+    private material: cc.Node = null
+    @property(cc.Node)
+    private board: cc.Node = null
+    @property(cc.SpriteFrame)
+    private frame1: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame2: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame3: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame4: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame5: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame6: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame7: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame8: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame9: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private frame10: cc.SpriteFrame = null
+    @property(cc.Prefab)
+    private itemPrefab: cc.Prefab = null
+    @property(cc.Prefab)
+    private bigItemPrefab: cc.Prefab = null
+    @property(cc.Prefab)
+    private titlePrefab: cc.Prefab = null
+    @property(cc.Prefab)
+    private littleTitlePrefab: cc.Prefab = null
+    private num: number = 0
+    private type: number = 0
+    private itemArr: number[] = []
+    private xArr: number[] = []
+    private yArr: number[] = []
+    private rotationArr: number[] = []
+    private groupNumArr: number[] = []
+    private itemNodeArr: cc.Node[] = []
+    private horizonTitleArr: cc.Node[] = []
+    private VerticalTitleArr: cc.Node[] = []
+
+    private isOver: number = 0
     private eventvalue = {
         isResult: 1,
         isLevel: 0,
         levelData: [
             {
+               
                 subject: [6,6,6,6,6,6,6,6,6],
                 answer: [1,2,3,6,1,2,6,6,1],
                 result: 4
@@ -24,11 +80,27 @@ export default class GamePanel extends BaseUI {
         ],
         result: 4
     }
+    private sizeInfo = {
+        title:{
+            width: 0,
+            height: 0,
+        },
+        square:{
+            width: 0,
+            height: 0,
+        },
+        spaceLong: 0,
+        spaceShort: 0,
+        fontSize: 60,
+        deepBlue: cc.color(29, 111, 158),
+        lightGray: cc.color(217, 217, 217)
+    }
 
     protected static className = "GamePanel";
 
-    /*onLoad() {
+    onLoad() {
         cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
+        
         this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
             if(this.isOver != 1) {
                 this.isOver = 2;
@@ -44,14 +116,23 @@ export default class GamePanel extends BaseUI {
                 this.laba.setAnimation(0, 'null', true)
             })
         })
-        for(let i = 0; i < this.nodeArr.length; ++i) {
-            this.addListenerOnItem(this.nodeArr[i])
+        if(ConstValue.IS_TEACHER) {
+            UIManager.getInstance().openUI(UploadAndReturnPanel, null, 212)
+            this.type = DaAnData.getInstance().type
+            this.itemArr = DaAnData.getInstance().itemArr
+            this.xArr = DaAnData.getInstance().xArr
+            this.yArr = DaAnData.getInstance().yArr
+            this.rotationArr = DaAnData.getInstance().rotationArr
+            this.setPanel()
+        }else {
+            this.getNet()
         }
     }
 
     start() {
+        this.oceanWave(this.wave1, this.wave2)
         let id = setTimeout(() => {
-            AudioManager.getInstance().playSound('title')
+            //AudioManager.getInstance().playSound('title')
             clearTimeout(id)
         }, 500);
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
@@ -78,237 +159,197 @@ export default class GamePanel extends BaseUI {
     }
 
     setPanel() {
+        switch (this.type) {
+            case 1:
+                this.initSizeInfo(4)
+                break;
+            case 2:
+                this.initSizeInfo(5)
+                break;
+            case 3:
+                this.initSizeInfo(6)
+                break;
+            default:
+                break;
+        }
+        this.setMaterial(this.material)
+        //this.setBoard(this.board)
+    }
+
+    initSizeInfo(num: number) {
+        this.num = num
+        let totalLen: number = 900
+        this.sizeInfo.title.width = this.sizeInfo.square.width = this.sizeInfo.square.height = totalLen / (num + 1 / 2) - 4
+        this.sizeInfo.title.height = this.sizeInfo.title.width / 2 - 4
+        this.sizeInfo.spaceLong = totalLen / (num + 1 / 2)
+        this.sizeInfo.spaceShort = this.sizeInfo.spaceLong / 2
+    }
+
+    setBoard(rootNode: cc.Node) {
+        let size = this.num + 1
+        for(let i = 0; i < size; ++i) {
+            for(let j = 0; j < size; ++j) {
+                if(i == 0 && j != size - 1) {
+                    let node = cc.instantiate(this.titlePrefab)
+
+
+                }else if(j == size - 1 && i != 0) {
+
+                }else if(i == 0 && j == size - 1) {
+
+                }else {
+
+                }
+            }
+        }
+    }
+
+    getPartner(index: number, arr: number[]): number[] {
+        let partnerArr: number[] = []
+        partnerArr.push(index)
+        let len: number = partnerArr.length
+        let over = false
+        while(!over) {
+            len = partnerArr.length
+            for (const key in arr) {
+                for (const _key in partnerArr) {
+                    let nKey = parseInt(key) 
+                    if (arr[key] == arr[index] && partnerArr.indexOf(nKey) == -1 && this.groupNumArr[nKey] == this.groupNumArr[index]) {
+                        let _nKey = partnerArr[_key]
+                        let _arr: number[] = [_nKey - 1, _nKey + 1, _nKey + this.num, _nKey - this.num]
+                        if(_arr.indexOf(nKey) != -1) {
+                            partnerArr.push(nKey)
+                        } 
+                    }
+                }
+            }
+            if(len == partnerArr.length) {
+                over = true
+            }
+        }
+        for (const key in partnerArr) {
+            arr[partnerArr[key]] = 5
+        }
+        return partnerArr
+    }
+
+    setMaterial(rootNode: cc.Node) {
+        let arr: number[] = [...this.itemArr]
+        let groupArr: number[][] = []
+        for (const key in arr) {
+           if(arr[key] != 5) {
+                let group: number[] = this.getPartner(parseInt(key), arr)
+                groupArr.push(group)
+           }
+        }
+        for (const key in groupArr) {
+            let index: number = parseInt(key)
+            let frame: cc.SpriteFrame = this.getSpriteframe(this.itemArr[groupArr[key][0]])
+            let node = this.createGroup(groupArr[key], frame)
+            let _index: number = groupArr[index][0]
+            let x: number = this.xArr[_index]
+            let y: number = this.yArr[_index]
+            let rotation = this.rotationArr[_index]
+            node.rotation = rotation
+            node.setPosition(cc.v2(x, y))
+            this.material.addChild(node)
+        }
         
     }
 
-    getIndex(spriteframe: cc.SpriteFrame): number {
-        switch(spriteframe) {
-            case this.nodeArr[0].getComponent(cc.Sprite).spriteFrame:
-                return 1
+   
+    createGroup(selectArr: number[], spriteframe: cc.SpriteFrame): cc.Node {
+        let rowArr: number[] = []
+        let colArr: number[] = []
+        for (const key in selectArr) {
+            let row = Math.floor(selectArr[key] / this.num) 
+            let col = selectArr[key] % this.num
+            let index: number = parseInt(key)
+            rowArr[index] = row
+            colArr[index] = col
+        }
+        let maxRow = Math.max.apply(Math, rowArr)
+        let minRow = Math.min.apply(Math, rowArr)
+        let maxCol = Math.max.apply(Math, colArr)
+        let minCol = Math.min.apply(Math, colArr)
+        let height = maxRow - minRow + 1
+        let width = maxCol - minCol + 1
+        let node = new cc.Node()
+        node.width = width * 105
+        node.height = height * 105
+        for(let i = 0; i < selectArr.length; ++i) {
+            let y = - (rowArr[i] - minRow - height / 2 + 0.5) * 109
+            let x =  (colArr[i] - minCol - width / 2 + 0.5) * 109
+            let itemNode = cc.instantiate(this.itemPrefab)
+            itemNode.getChildByName('bg').active = false
+            itemNode.getChildByName('wb').active = false
+            itemNode.getChildByName('sprite').getComponent(cc.Sprite).spriteFrame = spriteframe
+            node.addChild(itemNode)
+            itemNode.setPosition(cc.v2(x, y))
+        }
+      
+        return node                      
+    }
+
+    
+    getSpriteframe(index: number):cc.SpriteFrame {
+        switch(index) {
+            case 0:
+                return this.frame1
                 break
-            case this.nodeArr[1].getComponent(cc.Sprite).spriteFrame:
-                return 2
+            case 1:
+                return this.frame2
                 break
-            case this.nodeArr[2].getComponent(cc.Sprite).spriteFrame:
-                return 3
+            case 2:
+                return this.frame3
+                break
+            case 3:
+                return this.frame4
+                break
+            case 4:
+                return this.frame5
+                break
+            case 5:
+                return null
+                break
+            case 6:
+                return this.frame6
+                break
+            case 7:
+                return this.frame7
+                break
+            case 8:
+                return this.frame8
+                break
+            case 9:
+                return this.frame9
+                break
+            case 10:
+                return this.frame10
                 break
             default:
-                console.error('error in getIndex')
-                return 0
+                console.error('获取宝藏纹理失败')
                 break
         }
     }
 
-    addListenerOnItem(node: cc.Node) {
-        node.on(cc.Node.EventType.TOUCH_START, (e)=>{
-            if(this.touchTarget||e.target.opacity==0||!this.touchEnable) {
-                return
-            }
-            if(this.blingArr.length > 0) {
-                this.wrongNum = 0
-                for (const key in this.blingArr) {
-                    let node = this.grid.children[this.blingArr[key]]
-                    node.opacity = 0
-                    node.stopAllActions()
-                }
-                this.blingArr = []
-            }
-            this.touchTarget = e.target
-            this.touchNode.active = true
-            this.touchNode.getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame
-            var point = this.node.convertToNodeSpaceAR(e.currentTouch._point);
-            this.touchNode.setPosition(point);
-        })
-        node.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
-            if(this.touchTarget != e.target) {
-                return
-            }
-            var point = this.node.convertToNodeSpaceAR(e.currentTouch._point)
-            this.touchNode.setPosition(point)
-            let gridArr = this.grid.children
-            for(let i = 0; i < gridArr.length; ++i) {
-                if(gridArr[i].getBoundingBox().contains(this.grid.convertToNodeSpaceAR(e.currentTouch._point))) {
-                    if(gridArr[i].opacity == 0 || gridArr[i].opacity == 70) {
-                        gridArr[i].opacity = 70
-                        gridArr[i].getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame
-                        for (const key in gridArr) {
-                            if(parseInt(key) !== i) {
-                                if(gridArr[key].opacity !== 255) {
-                                    gridArr[key].opacity = 0
-                                }
-                            }
-                        }
-                    }
-                }else {
-                    this.overNum++
-                }
-                if(i == gridArr.length - 1) {
-                    if(this.overNum == gridArr.length) {
-                        for (const key in gridArr) {
-                            if(gridArr[key].opacity !== 255) {
-                                gridArr[key].opacity = 0
-                            }
-                        }
-                    }
-                    this.overNum = 0
-                }
-            }
-        })
-        node.on(cc.Node.EventType.TOUCH_END, (e)=>{
-            if(this.touchTarget != e.target) {
-                return
-            }
-            let gridArr = this.grid.children
-            for (const key in gridArr) {
-                if(gridArr[key].opacity !== 255) {
-                    gridArr[key].opacity = 0
-                }
-            }
-            this.touchNode.active = false
-            this.touchTarget = null
-        })
-        node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
-            if(this.touchTarget != e.target) {
-                return
-            }
-            let gridArr = this.grid.children
-            for(let i = 0; i < gridArr.length; ++i) {
-                if(gridArr[i].getBoundingBox().contains(this.grid.convertToNodeSpaceAR(e.currentTouch._point))) {
-                    if(gridArr[i].opacity == 0 || gridArr[i].opacity == 70) {
-                        let index = this.getIndex(e.target.getComponent(cc.Sprite).spriteFrame)
-                        gridArr[i].opacity = 255
-                        gridArr[i].getComponent(cc.Sprite).spriteFrame = e.target.getComponent(cc.Sprite).spriteFrame
-                        if(this.answerArr[i] == index) {
-                            this.isOver = 2
-                            this.eventvalue.result = 2
-                            this.eventvalue.levelData[0].result = 2
-                            this.subjectArr[i] = this.answerArr[i]
-                            this.eventvalue.levelData[0].subject = [...this.subjectArr]
-                            console.log(this.eventvalue)
-                            this.wrongNum = 0
-                            this.boy.setAnimation(0, 'right', false)
-                            this.boy.addAnimation(0,'right_Loop',false)
-                            this.boy.addAnimation(0, 'Loop2Idle', false)
-                            this.boy.addAnimation(0, 'idle', true)
-                            AudioManager.getInstance().stopAll()
-                            this.laba.setAnimation(0, 'null', true)
-                            AudioManager.getInstance().playSound('right',false)
-                            let rightNum = 0
-                            for (const key in gridArr) {
-                                if(gridArr[key].opacity==255) {
-                                    rightNum++
-                                }
-                            }
-                            if(rightNum==6) {
-                                this.isOver = 1
-                                this.eventvalue.result = 1
-                                this.eventvalue.levelData[0].result = 1
-                                console.log(this.eventvalue)
-                                DataReporting.getInstance().dispatchEvent('addLog', {
-                                    eventType: 'clickSubmit',
-                                    eventValue: JSON.stringify(this.eventvalue)
-                                });
-                                UIHelp.showOverTip(2, '你真棒，等等还没做完的同学吧.', null, '挑战成功')
-                            }
-                        }else {
-                            this.shakingshaking(gridArr[i])
-                            this.dolphins.setAnimation(0,'false',false)
-                            this.dolphins.addAnimation(0, 'idle', true)
-                            this.boy.setAnimation(0, 'false', false)
-                            this.boy.addAnimation(0, 'idle', true)
-                            this.wrongNum++
-                            AudioManager.getInstance().stopAll()
-                            this.laba.setAnimation(0, 'null', true)
-                            if(this.wrongNum < 3) {
-                                AudioManager.getInstance().playSound('wrong')
-                                AudioManager.getInstance().playSound('我不在这')
-                            }else {
-                                AudioManager.getInstance().playSound('wrong')
-                                AudioManager.getInstance().playSound('我不在这', false, 1, null, ()=>{
-                                    AudioManager.getInstance().playSound('再仔细观察一下啊')
-                                })
-                            }
-                        }
-                    }
-                }
-            }
-            for (const key in gridArr) {
-                if(gridArr[key].opacity !== 255) {
-                    gridArr[key].opacity = 0
-                }
-            }
-            this.touchNode.active = false
-            this.touchTarget = null
-        })
+    oceanWave(wave1: cc.Node, wave2: cc.Node) {
+        wave2.opacity = 0
+        let up = cc.moveBy(1, cc.v2(35,0))
+        let down = cc.moveBy(2, cc.v2(-35,0))
+        let fadein = cc.fadeIn(1)
+        let fadeout = cc.fadeOut(2)
+        let spawn1 = cc.spawn(up, fadein)
+        let spawn2 = cc.spawn(down, fadeout)
+        let seq = cc.sequence(spawn1, spawn2)
+        let rep = cc.repeatForever(seq)
+        let id = setTimeout(() => {
+            wave2.runAction(rep.clone())
+        }, 1000);
+        wave1.runAction(rep)
     }
 
-    shakingshaking(node: cc.Node) {
-        node.opacity = 255
-        this.touchEnable = false
-        let left = cc.moveBy(0.05, cc.v2(-20,0))
-        let right = cc.moveBy(0.05, cc.v2(20,0))
-        let func = cc.callFunc(()=>{
-            node.opacity = 0
-            if(this.wrongNum < 3) {
-                this.touchEnable = true
-            }else {
-                this.touchEnable = true
-                this.blingbling()
-            }
-        })
-        let seq = cc.sequence(left, right, left, right, left, right, left, right, func)
-        node.runAction(seq)
-    }
-
-    blingbling() {
-        this.blingArr = []
-        let gridArr = this.grid.children
-        let blingNum = 0
-        for (const it of [0,1,2,4,5,8]) {
-            if(gridArr[it].opacity == 0) {
-                blingNum++
-            }
-        }
-        for(let i in gridArr) {
-            if([0,1,2,4,5,8].indexOf(parseInt(i)) != -1) {
-                if(gridArr[i].opacity == 0) {
-                    let node = gridArr[i]
-                    this.blingArr.push(parseInt(i))
-                    node.getComponent(cc.Sprite).spriteFrame = this.getSpriteFrame(parseInt(i))
-                    let fadein = cc.fadeIn(0.3)
-                    let fadeout = cc.fadeOut(0.3)
-                    let func = cc.callFunc(()=>{
-                        this.wrongNum = 0
-                        node.opacity = 0
-                        let num = 0
-                        for (const it of [0,1,2,4,5,8]) {
-                            if(gridArr[it].opacity == 0) {
-                                num++
-                            }
-                        }
-                        if(num == blingNum) {
-                            //this.touchEnable = true
-                            this.blingArr = []
-                        }
-                    })
-                    let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, func)
-                    node.runAction(seq)
-                }
-            }
-        }
-       
-    }
-
-    getSpriteFrame(index: number): cc.SpriteFrame {
-        if(index == 0 || index == 4 || index == 8) {
-            return this.nodeArr[0].getComponent(cc.Sprite).spriteFrame
-        }else if(index == 1 || index == 5) {
-            return this.nodeArr[1].getComponent(cc.Sprite).spriteFrame
-        }else if(index == 2) {
-            return this.nodeArr[2].getComponent(cc.Sprite).spriteFrame
-        }
-
-    }
+ 
 
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
@@ -326,4 +367,4 @@ export default class GamePanel extends BaseUI {
             }
         }.bind(this), null);
     }
-}*/
+}

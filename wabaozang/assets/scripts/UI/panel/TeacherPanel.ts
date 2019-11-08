@@ -109,16 +109,16 @@ export default class TeacherPanel extends BaseUI {
         this.node2.getChildByName('group').removeAllChildren()
         let lenth = num * 105 + (num + 1) * 3 + num - 1
         this.node1.width = lenth
-        let black = this.node2.getChildByName('item')
-        let white = black.getChildByName('bg')
-        black.width = lenth + 6
-        black.height = lenth + 6
-        white.width = lenth
-        white.height = lenth
-        this.boxWidth = lenth
-        this.boxHeight = lenth
-        white.x = 3
-        white.y = -3
+        // let black = this.node2.getChildByName('item')
+        // let white = black.getChildByName('bg')
+        // black.width = lenth + 6
+        // black.height = lenth + 6
+        // white.width = lenth
+        // white.height = lenth
+        this.boxWidth = 500
+        this.boxHeight = 850
+        // white.x = 3
+        // white.y = -3
         this.gridNode.height = lenth
         for(let i = 0; i < num * num; ++i) {
             let node = cc.instantiate(this.itemPrefab)
@@ -366,8 +366,6 @@ export default class TeacherPanel extends BaseUI {
                 //创建组节点
                 if(materialIndex != 5) {
                     let groupNode = this.createGroup(selectNumArr, spriteframe)
-                    console.log('width is ', groupNode.width)
-                    console.log('height is ', groupNode.height)
                     this.addListenerOnGroupNode(groupNode)
                     this.groupArr.push(groupNode)
                 }
@@ -395,21 +393,22 @@ export default class TeacherPanel extends BaseUI {
         let height = maxRow - minRow + 1
         let width = maxCol - minCol + 1
         let node = new cc.Node()
-        node.width = width * 105
-        node.height = height * 105
+        node.width = width * 109
+        node.height = height * 109
         for(let i = 0; i < selectArr.length; ++i) {
-            let y = - (rowArr[i] - minRow - height / 2 + 0.5) * 105
-            let x =  (colArr[i] - minCol - width / 2 + 0.5) * 105
+            let y = - (rowArr[i] - minRow - height / 2 + 0.5) * 109
+            let x =  (colArr[i] - minCol - width / 2 + 0.5) * 109
             let itemNode = cc.instantiate(this.itemPrefab)
             itemNode.getChildByName('bg').active = false
             itemNode.getChildByName('sprite').getComponent(cc.Sprite).spriteFrame = spriteframe
             node.addChild(itemNode)
             itemNode.setPosition(cc.v2(x, y))
         }
-        let nodeX = (minCol + width / 2) * 109
-        let nodeY = -(minRow + height / 2) * 109
+        let nodeX = (minCol + width / 2) * 110
+        let nodeY = -(minRow + height / 2) * 110
+        let nodePos: cc.Vec2 = this.correctPos(cc.v2(nodeX, nodeY), node)
         this.node2.getChildByName('group').addChild(node)
-        node.setPosition(cc.v2(nodeX, nodeY))
+        node.setPosition(nodePos)
         for (const key in selectArr) {
             this.posArr[selectArr[key]] = cc.v2(nodeX, nodeY)
             this.groupInfoArr[selectArr[key]] = node
@@ -547,9 +546,15 @@ export default class TeacherPanel extends BaseUI {
         DaAnData.getInstance().itemArr = [...this.itemArr]
         for (const key in this.groupInfoArr) {
            let index = parseInt(key)
-           this.xArr[index] = this.groupInfoArr[key].x
-           this.yArr[index] = this.groupInfoArr[key].y
-           this.rotationArr[index] = this.groupInfoArr[key].rotation
+           if(this.groupInfoArr[key]) {
+                this.xArr[index] = this.groupInfoArr[key].x
+                this.yArr[index] = this.groupInfoArr[key].y
+                this.rotationArr[index] = this.groupInfoArr[key].rotation
+           }else {
+                this.xArr[index] = 0
+                this.yArr[index] = 0
+                this.rotationArr[index] = 0
+           }
         }
         DaAnData.getInstance().xArr = [...this.xArr]
         DaAnData.getInstance().yArr = [...this.yArr]
