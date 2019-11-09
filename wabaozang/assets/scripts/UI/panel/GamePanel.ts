@@ -65,7 +65,8 @@ export default class GamePanel extends BaseUI {
     private itemNodeArr: cc.Node[] = []
     private horizonTitleArr: cc.Node[] = []
     private VerticalTitleArr: cc.Node[] = []
-
+    private answer: number[] = []
+    private subject: number[] = []
     private isOver: number = 0
     private eventvalue = {
         isResult: 1,
@@ -173,7 +174,7 @@ export default class GamePanel extends BaseUI {
                 break;
         }
         this.setMaterial(this.material)
-        //this.setBoard(this.board)
+        this.setBoard(this.board)
     }
 
     initSizeInfo(num: number) {
@@ -185,23 +186,129 @@ export default class GamePanel extends BaseUI {
         this.sizeInfo.spaceShort = this.sizeInfo.spaceLong / 2
     }
 
+    addListenerOnItem(nodeArr: cc.Node[]) {
+        for(let i = 0; i < nodeArr.length; ++i) {
+            let node = nodeArr[i]
+            node.on(cc.Node.EventType.TOUCH_START, (e)=>{
+                cc.log('======')
+                this.changeState(node)
+            })
+            node.on(cc.Node.EventType.TOUCH_END, (e)=>{
+                
+            })
+            node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+                
+            })
+
+        }
+    }
+    removeListenerOnItem(nodeArr: cc.Node[]) {
+        for(let i = 0; i < nodeArr.length; ++i) {
+            let node = nodeArr[i]
+            node.off(cc.Node.EventType.TOUCH_START)
+            node.off(cc.Node.EventType.TOUCH_END)
+            node.off(cc.Node.EventType.TOUCH_CANCEL)
+        }
+    }
+
+    changeState(node: cc.Node) {
+      let normal = node.getChildByName('normal')
+      let right = node.getChildByName('right')
+      let wrong = node.getChildByName('wrong')
+      if(normal.active) {
+        right.active = true
+        normal.active = false
+      }else if(right.active) {
+        wrong.active = true
+        right.active = false
+      }else if(wrong.active) {
+        normal.active = true
+        wrong.active = false
+      }
+    }
+
+    setTitle(itemArr: number[]) {
+        let horiArr = []
+        let verArr = []
+        for(let i = 0; i < this.num; ++i) {
+            horiArr.push(0)
+            verArr.push(0)
+        }
+       
+        for(let i = 0; i < this.num; ++i) {
+            for(let j = 0; j < this.num; ++j) {
+                let index = i * this.num + j
+                if(this.itemArr[index] != 5) {
+                    horiArr[j]++
+                    verArr[i]++
+                    this.answer.push(index)
+                }
+
+            }
+        }
+        for(let i = 0; i < this.num; ++i) {
+           this.horizonTitleArr[i].getChildByName('label').getComponent(cc.Label).string = horiArr[i]
+           this.VerticalTitleArr[i].getChildByName('label').getComponent(cc.Label).string = verArr[i]
+        }
+    }
+
     setBoard(rootNode: cc.Node) {
+        this.horizonTitleArr = []
+        this.VerticalTitleArr = []
+        this.itemNodeArr = []
         let size = this.num + 1
         for(let i = 0; i < size; ++i) {
             for(let j = 0; j < size; ++j) {
                 if(i == 0 && j != size - 1) {
                     let node = cc.instantiate(this.titlePrefab)
-
-
+                    node.width = this.sizeInfo.title.width
+                    node.height = this.sizeInfo.title.height
+                    let x = (j + 1 / 2) * this.sizeInfo.spaceLong
+                    let y = -this.sizeInfo.spaceShort * 1 / 2
+                    node.setPosition(cc.v2(x, y))
+                    this.board.addChild(node)
+                    this.horizonTitleArr[j] = node
                 }else if(j == size - 1 && i != 0) {
-
+                    let node = cc.instantiate(this.titlePrefab)
+                    node.width = this.sizeInfo.title.width
+                    node.height = this.sizeInfo.title.height
+                    node.angle = 90
+                    node.getChildByName('label').angle = -90
+                    let x = this.num * this.sizeInfo.spaceLong + this.sizeInfo.spaceShort / 2
+                    let y = -(i - 1 / 2) * this.sizeInfo.spaceLong - this.sizeInfo.spaceShort
+                    node.setPosition(cc.v2(x, y))
+                    this.board.addChild(node)
+                    this.VerticalTitleArr[i - 1] = node
                 }else if(i == 0 && j == size - 1) {
-
+                    let node = cc.instantiate(this.littleTitlePrefab)
+                    node.width = this.sizeInfo.title.height
+                    node.height = this.sizeInfo.title.height
+                    let x = this.num * this.sizeInfo.spaceLong + this.sizeInfo.spaceShort / 2
+                    let y = -this.sizeInfo.spaceShort / 2
+                    node.setPosition(cc.v2(x, y))
+                    this.board.addChild(node)
                 }else {
-
+                    let node = cc.instantiate(this.bigItemPrefab)
+                    node.setContentSize(cc.size(this.sizeInfo.square.width, this.sizeInfo.square.height))
+                    node.getChildByName('normal').setContentSize(cc.size(this.sizeInfo.square.width, this.sizeInfo.square.height))
+                    node.getChildByName('point').setContentSize(cc.size(this.sizeInfo.square.width, this.sizeInfo.square.height))
+                    node.getChildByName('wrong').setContentSize(cc.size(this.sizeInfo.square.width, this.sizeInfo.square.height))
+                    node.getChildByName('right').setContentSize(cc.size(this.sizeInfo.square.width, this.sizeInfo.square.height))
+                    node.getChildByName('sprite').setContentSize(cc.size(this.sizeInfo.square.width, this.sizeInfo.square.height))
+                    node.getChildByName('box').setContentSize(cc.size(this.sizeInfo.square.width + 5, this.sizeInfo.square.height + 5))
+                    let x = (j + 1 / 2) * this.sizeInfo.spaceLong
+                    let y = -(i - 1 / 2) * this.sizeInfo.spaceLong - this.sizeInfo.spaceShort
+                    node.setPosition(cc.v2(x, y))
+                    this.board.addChild(node)
+                    this.itemNodeArr.push(node)
                 }
             }
         }
+        this.setTitle(this.itemArr)
+        this.addListenerOnItem(this.itemNodeArr)
+        console.log(this.itemNodeArr.length)
+        console.log(this.VerticalTitleArr.length)
+        console.log(this.horizonTitleArr.length)
     }
 
     getPartner(index: number, arr: number[]): number[] {
@@ -335,8 +442,8 @@ export default class GamePanel extends BaseUI {
 
     oceanWave(wave1: cc.Node, wave2: cc.Node) {
         wave2.opacity = 0
-        let up = cc.moveBy(1, cc.v2(35,0))
-        let down = cc.moveBy(2, cc.v2(-35,0))
+        let up = cc.moveBy(1, cc.v2(50,0))
+        let down = cc.moveBy(2, cc.v2(-50,0))
         let fadein = cc.fadeIn(1)
         let fadeout = cc.fadeOut(2)
         let spawn1 = cc.spawn(up, fadein)

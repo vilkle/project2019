@@ -109,16 +109,9 @@ export default class TeacherPanel extends BaseUI {
         this.node2.getChildByName('group').removeAllChildren()
         let lenth = num * 105 + (num + 1) * 3 + num - 1
         this.node1.width = lenth
-        // let black = this.node2.getChildByName('item')
-        // let white = black.getChildByName('bg')
-        // black.width = lenth + 6
-        // black.height = lenth + 6
-        // white.width = lenth
-        // white.height = lenth
         this.boxWidth = 500
         this.boxHeight = 850
-        // white.x = 3
-        // white.y = -3
+        
         this.gridNode.height = lenth
         for(let i = 0; i < num * num; ++i) {
             let node = cc.instantiate(this.itemPrefab)
@@ -178,12 +171,25 @@ export default class TeacherPanel extends BaseUI {
     correctPos(pos: cc.Vec2, node: cc.Node): cc.Vec2 {
         let width: number = 0
         let height: number = 0
+
+
+
         if(node.rotation%180 == 0) {
             width = node.width
             height = node.height
+            if(width > this.boxWidth) {
+                node.rotation = 90
+                width = node.height
+                height = node.width
+            }
         }else {
             width = node.height
             height = node.width
+            if(height > this.boxWidth) {
+                node.rotation = 0
+                width = node.width
+                height = node.height
+            }
         }
         if(pos.x + width / 2 > this.boxWidth) {
             pos.x = this.boxWidth - width / 2
