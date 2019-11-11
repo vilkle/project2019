@@ -97,6 +97,23 @@ export default class TeacherPanel extends BaseUI {
         this.addMaterialCallback()
     }
 
+    initGame() {
+        let itemArr = [...this.itemArr]
+        let arr: number[] = []
+        for(let i = 0; i < itemArr.length; ++i) {
+            this.itemNodeArr[i].getChildByName('sprite').getComponent(cc.Sprite).spriteFrame = this.getSpriteframe(itemArr[i])
+            if(itemArr[i] != 5) {
+                let index = itemArr[i]
+                arr = this.getPartner(itemArr[i])
+                for(let j = 0; j < arr.length; ++j) {
+                    itemArr[arr[j]] = 5
+                }
+                this.createGroup(arr, this.getSpriteframe(index))
+            }
+            
+        }
+    }
+
     setNode(num: number) {
         this.num = num
         this.selectArr = []
@@ -185,7 +202,7 @@ export default class TeacherPanel extends BaseUI {
         }else {
             width = node.height
             height = node.width
-            if(height > this.boxWidth) {
+            if(width > this.boxWidth) {
                 node.rotation = 0
                 width = node.width
                 height = node.height
@@ -547,7 +564,16 @@ export default class TeacherPanel extends BaseUI {
 
     //上传课件按钮
     onBtnSaveClicked() {
-        
+        let num: number = 0
+        for (const key in this.itemArr) {
+            if (this.itemArr[key] != 5) {
+                num++
+            }
+        }
+        if(num == 0) {
+            UIHelp.showTip('请生成宝藏。')
+            return
+        }
         DaAnData.getInstance().type = this.type
         DaAnData.getInstance().itemArr = [...this.itemArr]
         for (const key in this.groupInfoArr) {
@@ -596,7 +622,23 @@ export default class TeacherPanel extends BaseUI {
                             this.itemArr = content.itemArr
                         }else {
                             console.error('网络请求数据itemArr为空。')
+                        }
+                        if(content.xArr) {
+                            this.xArr = content.xArr
+                        }else {
+                            console.error('网络请求数据xArr为空。')
                         }  
+                        if(content.yArr) {
+                            this.yArr = content.yArr
+                        }else {
+                            console.error('网络请求数据yArr为空。')
+                        }  
+                        if(content.rotationArr) {
+                            this.rotationArr = content.rotationArr
+                        }else {
+                            console.error('网络请求数据rotationAarr为空。')
+                        }    
+                        
                         this.setPanel();
                     } else {
                         this.setPanel();

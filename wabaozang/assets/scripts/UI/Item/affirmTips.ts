@@ -96,7 +96,7 @@ export class AffirmTips extends BaseUI {
     OnClickCancel() {
         console.log("取消");
         UIManager.getInstance().closeUI(AffirmTips);
-        this.callback(0);
+        //this.callback(0);
     }
 
     // update (dt) {}

@@ -12,7 +12,7 @@ export class UIHelp {
     public static showTip(message: string) {
         let tipUI = UIManager.getInstance().getUI(TipUI) as TipUI;
         if (!tipUI) {
-            UIManager.getInstance().openUI(TipUI, null, 210, () => {
+            UIManager.getInstance().openUI(TipUI, null, 213, () => {
                 UIHelp.showTip(message);
             });
         }

@@ -12,7 +12,8 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class GamePanel extends BaseUI {
-
+    @property(cc.Node)
+    private mask: cc.Node = null
     @property(cc.Node)
     private bg:cc.Node = null;
     @property(cc.Node)
@@ -27,6 +28,12 @@ export default class GamePanel extends BaseUI {
     private material: cc.Node = null
     @property(cc.Node)
     private board: cc.Node = null
+    @property(cc.Button)
+    private refreshBtn: cc.Button = null
+    @property(cc.Button)
+    private submitBtn: cc.Button = null
+    @property(cc.Button)
+    private pointBtn: cc.Button = null
     @property(cc.SpriteFrame)
     private frame1: cc.SpriteFrame = null
     @property(cc.SpriteFrame)
@@ -47,6 +54,30 @@ export default class GamePanel extends BaseUI {
     private frame9: cc.SpriteFrame = null
     @property(cc.SpriteFrame)
     private frame10: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe1: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe2: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe3: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe4: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe5: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe6: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe7: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe8: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe9: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private Bframe10: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private grayFrame: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private blueFrame: cc.SpriteFrame = null
     @property(cc.Prefab)
     private itemPrefab: cc.Prefab = null
     @property(cc.Prefab)
@@ -65,8 +96,13 @@ export default class GamePanel extends BaseUI {
     private itemNodeArr: cc.Node[] = []
     private horizonTitleArr: cc.Node[] = []
     private VerticalTitleArr: cc.Node[] = []
+    private horArr: number[] = []
+    private verArr: number[] = []
     private answer: number[] = []
     private subject: number[] = []
+    private groupArr: number[][] = []
+    private groupNodeArr: cc.Node[] = []
+    private timeoutArr: number[] = []
     private isOver: number = 0
     private eventvalue = {
         isResult: 1,
@@ -74,8 +110,8 @@ export default class GamePanel extends BaseUI {
         levelData: [
             {
                
-                subject: [6,6,6,6,6,6,6,6,6],
-                answer: [1,2,3,6,1,2,6,6,1],
+                subject: [],
+                answer: [],
                 result: 4
             }
         ],
@@ -131,11 +167,55 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
+        AudioManager.getInstance().playSound('sfx_12opne')
         this.oceanWave(this.wave1, this.wave2)
         let id = setTimeout(() => {
             //AudioManager.getInstance().playSound('title')
             clearTimeout(id)
+            let index = this.timeoutArr.indexOf(id)
+            this.timeoutArr.splice(index, 1)
         }, 500);
+        this.timeoutArr.push(id)
+        this.pointBtn.node.on(cc.Node.EventType.TOUCH_START, ()=>{
+            for(let i = 0; i < this.num; ++i) {
+                if(this.horArr[i] == 1) {
+                    for(let j = 0; j < this.itemNodeArr.length; j++) {
+                        if(j % this.num == i) {
+                            this.itemNodeArr[j].getChildByName('point').active = true
+                        }
+                    }
+                }
+                if(this.verArr[i] == 1) {
+                    for(let j = 0; j < this.itemNodeArr.length; j++) {
+                        if(i == Math.floor(j / this.num)) {
+                            this.itemNodeArr[j].getChildByName('point').active = true
+                        }
+                    }
+                }
+            }
+        })
+        this.pointBtn.node.on(cc.Node.EventType.TOUCH_END, (e)=>{
+            let id = setTimeout(() => {
+                for(let j = 0; j < this.itemNodeArr.length; j++) {
+                    this.itemNodeArr[j].getChildByName('point').active = false
+                }
+                clearTimeout(id)
+                let index = this.timeoutArr.indexOf(id)
+                this.timeoutArr.splice(index, 1)
+            }, 2000)
+            this.timeoutArr.push(id)
+        })
+        this.pointBtn.node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+            let id = setTimeout(() => {
+                for(let j = 0; j < this.itemNodeArr.length; j++) {
+                    this.itemNodeArr[j].getChildByName('point').active = false
+                }
+                clearTimeout(id)
+                let index = this.timeoutArr.indexOf(id)
+                this.timeoutArr.splice(index, 1)
+            }, 2000)
+            this.timeoutArr.push(id)
+        })
         DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
     }
 
@@ -153,7 +233,9 @@ export default class GamePanel extends BaseUI {
     }
 
     onDestroy() {
-
+       for (const key in this.timeoutArr) {
+           clearTimeout(this.timeoutArr[key])
+       }
     }
 
     onShow() {
@@ -190,8 +272,13 @@ export default class GamePanel extends BaseUI {
         for(let i = 0; i < nodeArr.length; ++i) {
             let node = nodeArr[i]
             node.on(cc.Node.EventType.TOUCH_START, (e)=>{
-                cc.log('======')
-                this.changeState(node)
+                AudioManager.getInstance().playSound('sfx_pckblck')
+                this.isOver = 2
+                this.eventvalue.result = 2
+                this.eventvalue.levelData[0].result = 2
+                this.eventvalue.levelData[0].subject = this.subject
+                this.changeState(node, i)
+                this.checkTitle()
             })
             node.on(cc.Node.EventType.TOUCH_END, (e)=>{
                 
@@ -211,23 +298,107 @@ export default class GamePanel extends BaseUI {
         }
     }
 
-    changeState(node: cc.Node) {
-      let normal = node.getChildByName('normal')
-      let right = node.getChildByName('right')
-      let wrong = node.getChildByName('wrong')
-      if(normal.active) {
-        right.active = true
-        normal.active = false
-      }else if(right.active) {
-        wrong.active = true
-        right.active = false
-      }else if(wrong.active) {
-        normal.active = true
-        wrong.active = false
-      }
+    setState(node: cc.Node, state: string) {
+        let normal = node.getChildByName('normal')
+        let right = node.getChildByName('right')
+        let wrong = node.getChildByName('wrong')
+        if(state == 'normal') {
+            normal.active = true
+            right.active = false
+            wrong.active = false
+        }else if(state == 'right') {
+            normal.active = false
+            right.active = true
+            wrong.active = false
+        }else if(state == 'wrong') {
+            normal.active = false
+            right.active = false
+            wrong.active = true
+        }
     }
 
-    setTitle(itemArr: number[]) {
+    changeState(node: cc.Node, index: number) {
+        
+        let normal = node.getChildByName('normal')
+        let right = node.getChildByName('right')
+        let wrong = node.getChildByName('wrong')
+        if(normal.active) {
+            this.subject.push(index)
+            this.change(right, normal)
+        }else if(right.active) {
+            let key = this.subject.indexOf(index)
+            this.subject.splice(key, 1)
+            this.change(wrong, right)
+        }else if(wrong.active) {
+            this.change(normal, wrong)
+        }
+    }
+
+    change(appearNode: cc.Node, disappearNode: cc.Node) {
+        appearNode.opacity = 0
+        appearNode.setScale(0)
+        appearNode.active = true
+        let fadein = cc.fadeIn(0.1)
+        let scale = cc.scaleTo(0.1, 1)
+        let spawn = cc.spawn(fadein, scale)
+        let func = cc.callFunc(()=>{
+            disappearNode.active = false
+        })
+        let seq = cc.sequence(spawn, func)
+        appearNode.runAction(seq.clone())
+    }
+
+    checkTitle() {
+        let horiArr = []
+        let verArr = []
+        let totalNum = 0
+        let correctNum = 0
+        for(let i = 0; i < this.num; ++i) {
+            horiArr.push(0)
+            verArr.push(0)
+        }
+        for(let i = 0; i < this.num; ++i) {
+            for(let j = 0; j < this.num; ++j) {
+                let index = i * this.num + j
+                if(this.itemNodeArr[index].getChildByName('right').active) {
+                    horiArr[j]++
+                    verArr[i]++
+                }
+            }
+        }
+        for(let i = 0; i < this.num; ++i) {
+            if(this.horArr[i] == horiArr[i] && this.horArr[i] != 0) {
+                this.horizonTitleArr[i].getChildByName('label').color = this.sizeInfo.lightGray
+                this.horizonTitleArr[i].getComponent(cc.Sprite).spriteFrame = this.grayFrame
+                correctNum++
+            }else {
+                this.horizonTitleArr[i].getChildByName('label').color = this.sizeInfo.deepBlue
+                this.horizonTitleArr[i].getComponent(cc.Sprite).spriteFrame = this.blueFrame
+            }
+            if(this.verArr[i] == verArr[i] && this.verArr[i] != 0) {
+                this.VerticalTitleArr[i].getChildByName('label').color = this.sizeInfo.lightGray
+                this.VerticalTitleArr[i].getComponent(cc.Sprite).spriteFrame = this.grayFrame
+                correctNum++
+            }else {
+                this.VerticalTitleArr[i].getChildByName('label').color = this.sizeInfo.deepBlue
+                this.VerticalTitleArr[i].getComponent(cc.Sprite).spriteFrame = this.blueFrame
+            }
+            if(this.horArr[i] != 0) {
+                totalNum++
+            }
+            if(this.verArr[i] != 0) {
+                totalNum++
+            }
+        }
+        console.log('----', totalNum, correctNum)
+       if(totalNum == correctNum) {
+            this.submitBtn.interactable = true
+       }else {
+           this.submitBtn.interactable = false
+       }
+    }
+
+    setTitle() {
         let horiArr = []
         let verArr = []
         for(let i = 0; i < this.num; ++i) {
@@ -246,6 +417,9 @@ export default class GamePanel extends BaseUI {
 
             }
         }
+        this.eventvalue.levelData[0].answer = [...this.answer]
+        this.horArr = [...horiArr]
+        this.verArr = [...verArr]
         for(let i = 0; i < this.num; ++i) {
            this.horizonTitleArr[i].getChildByName('label').getComponent(cc.Label).string = horiArr[i]
            this.VerticalTitleArr[i].getChildByName('label').getComponent(cc.Label).string = verArr[i]
@@ -299,16 +473,13 @@ export default class GamePanel extends BaseUI {
                     let x = (j + 1 / 2) * this.sizeInfo.spaceLong
                     let y = -(i - 1 / 2) * this.sizeInfo.spaceLong - this.sizeInfo.spaceShort
                     node.setPosition(cc.v2(x, y))
-                    this.board.addChild(node)
+                    rootNode.addChild(node)
                     this.itemNodeArr.push(node)
                 }
             }
         }
-        this.setTitle(this.itemArr)
+        this.setTitle()
         this.addListenerOnItem(this.itemNodeArr)
-        console.log(this.itemNodeArr.length)
-        console.log(this.VerticalTitleArr.length)
-        console.log(this.horizonTitleArr.length)
     }
 
     getPartner(index: number, arr: number[]): number[] {
@@ -342,24 +513,25 @@ export default class GamePanel extends BaseUI {
 
     setMaterial(rootNode: cc.Node) {
         let arr: number[] = [...this.itemArr]
-        let groupArr: number[][] = []
+        this.groupArr = []
         for (const key in arr) {
            if(arr[key] != 5) {
                 let group: number[] = this.getPartner(parseInt(key), arr)
-                groupArr.push(group)
+                this.groupArr.push(group)
            }
         }
-        for (const key in groupArr) {
+        for (const key in this.groupArr) {
             let index: number = parseInt(key)
-            let frame: cc.SpriteFrame = this.getSpriteframe(this.itemArr[groupArr[key][0]])
-            let node = this.createGroup(groupArr[key], frame)
-            let _index: number = groupArr[index][0]
+            let frame: cc.SpriteFrame = this.getSpriteframe(this.itemArr[this.groupArr[key][0]], 1)
+            let node = this.createGroup(this.groupArr[key], frame)
+            this.groupNodeArr[index] = node
+            let _index: number = this.groupArr[index][0]
             let x: number = this.xArr[_index]
             let y: number = this.yArr[_index]
             let rotation = this.rotationArr[_index]
             node.rotation = rotation
             node.setPosition(cc.v2(x, y))
-            this.material.addChild(node)
+            rootNode.addChild(node)
         }
         
     }
@@ -399,40 +571,80 @@ export default class GamePanel extends BaseUI {
     }
 
     
-    getSpriteframe(index: number):cc.SpriteFrame {
+    getSpriteframe(index: number, size: number):cc.SpriteFrame {
         switch(index) {
             case 0:
-                return this.frame1
+                if(size == 1) {
+                    return this.frame1
+                }else if(size == 2) {
+                    return this.Bframe1
+                }
                 break
             case 1:
-                return this.frame2
+                if(size == 1) {
+                    return this.frame2
+                }else if(size == 2) {
+                    return this.Bframe2
+                }
                 break
             case 2:
-                return this.frame3
+                if(size == 1) {
+                    return this.frame3
+                }else if(size == 2) {
+                    return this.Bframe3
+                }
                 break
             case 3:
-                return this.frame4
+                if(size == 1) {
+                    return this.frame4
+                }else if(size == 2) {
+                    return this.Bframe4
+                }
                 break
             case 4:
-                return this.frame5
+                if(size == 1) {
+                    return this.frame5
+                }else if(size == 2) {
+                    return this.Bframe5
+                }
                 break
             case 5:
                 return null
                 break
             case 6:
-                return this.frame6
+                if(size == 1) {
+                    return this.frame6
+                }else if(size == 2) {
+                    return this.Bframe6
+                }
                 break
             case 7:
-                return this.frame7
+                if(size == 1) {
+                    return this.frame7
+                }else if(size == 2) {
+                    return this.Bframe7
+                }
                 break
             case 8:
-                return this.frame8
+                if(size == 1) {
+                    return this.frame8
+                }else if(size == 2) {
+                    return this.Bframe8
+                }
                 break
             case 9:
-                return this.frame9
+                if(size == 1) {
+                    return this.frame9
+                }else if(size == 2) {
+                    return this.Bframe9
+                }
                 break
             case 10:
-                return this.frame10
+                if(size == 1) {
+                    return this.frame10
+                }else if(size == 2) {
+                    return this.Bframe10
+                }
                 break
             default:
                 console.error('获取宝藏纹理失败')
@@ -452,11 +664,146 @@ export default class GamePanel extends BaseUI {
         let rep = cc.repeatForever(seq)
         let id = setTimeout(() => {
             wave2.runAction(rep.clone())
+            let index = this.timeoutArr.indexOf(id)
+            this.timeoutArr.splice(index, 1)
+            clearTimeout(id)
         }, 1000);
+        this.timeoutArr.push(id)
         wave1.runAction(rep)
     }
 
- 
+    onBtnSubmitClick() {
+        let correctNum: number = 0
+        for(let i = 0; i < this.subject.length; ++i) {
+            if(this.answer.indexOf(this.subject[i]) != -1) {
+                correctNum++
+            }
+        }
+        if(correctNum == this.answer.length) {
+            this.isOver = 1
+            this.eventvalue.result = 1
+            this.eventvalue.levelData[0].result = 1
+            DataReporting.getInstance().dispatchEvent('addLog', {
+                eventType: 'clickSubmit',
+                eventValue: JSON.stringify(this.eventvalue)
+            })
+            DaAnData.getInstance().submitEnable = true
+            this.mask.on(cc.Node.EventType.TOUCH_START, ()=>{})
+            this.pointBtn.interactable = false
+            this.refreshBtn.interactable = false
+            this.submitBtn.interactable = false
+            this.removeListenerOnItem(this.itemNodeArr)
+            for(let i = 0; i < this.itemNodeArr.length; ++i) {
+                if(this.itemArr[i] != 5) {
+                    let sprite = this.itemNodeArr[i].getChildByName('sprite')
+                    sprite.getComponent(cc.Sprite).spriteFrame = this.getSpriteframe(this.itemArr[i], 2)
+                    sprite.setContentSize(cc.size(this.sizeInfo.square.width, this.sizeInfo.square.height))
+                    sprite.active = true
+                    sprite.setScale(0)
+                    sprite.opacity = 0
+                    let fadein = cc.fadeIn(0.1)
+                    let scale = cc.scaleTo(0.1, 1)
+                    let spawn = cc.spawn(fadein, scale)
+                    let delay = cc.delayTime(0.5)
+                    let seq = cc.sequence(delay, spawn)
+                    sprite.runAction(seq)
+                    let spine = this.itemNodeArr[i].getChildByName('spine')
+                    spine.active = true
+                    spine.getComponent(sp.Skeleton).setAnimation(0, 'animation', false)
+                    AudioManager.getInstance().playSound('sfx_shvdimt')
+                }
+            }
+
+            let id = setTimeout(() => {
+                UIHelp.showOverTip(2,'你真棒，等等还没做完的同学吧。', null, '挑战成功')
+                let index = this.timeoutArr.indexOf(id)
+                this.timeoutArr.splice(index, 1)
+                clearTimeout(id)
+            }, 2000);
+            this.timeoutArr.push(id)
+        }else {
+            this.mask.on(cc.Node.EventType.TOUCH_START, ()=>{})
+            let pointArr: cc.Node[] = []
+            let wrongGroup: number[][] = []
+            for(let i = 0; i < this.itemNodeArr.length; ++i) {
+                if(this.itemNodeArr[i].getChildByName('right').active) {
+                    if(this.answer.indexOf(i) == - 1) {
+                        pointArr.push(this.itemNodeArr[i])
+                    }
+                }
+               
+            }
+
+            for(let i = 0; i < this.answer.length; ++i) {
+                if(this.subject.indexOf(this.answer[i]) == -1) {
+                    for(let j = 0; j < this.groupArr.length; ++j) {
+                        if(this.groupArr[j].indexOf(this.answer[i]) != -1) {
+                            if(wrongGroup.indexOf(this.groupArr[j]) == -1) {
+                                wrongGroup.push(this.groupArr[j])
+                            }
+                        }
+                    }
+                }
+            }
+            for(let i = 0; i < wrongGroup.length; ++i) {
+                for(let j = 0; j < wrongGroup[i].length; ++j) {
+                    if(this.itemNodeArr[wrongGroup[i][j]].getChildByName('right').active) {
+                        pointArr.push(this.itemNodeArr[wrongGroup[i][j]])
+                    }
+                }
+            }
+            let overNum = 0
+            for(let i = 0; i < pointArr.length; ++i) {
+                let box = pointArr[i].getChildByName('box')
+                let spine = pointArr[i].getChildByName('spine')
+                spine.active = true
+                AudioManager.getInstance().playSound('sfx_gnthng')
+                spine.getComponent(sp.Skeleton).setAnimation(0, 'animation', false)
+                box.active = true
+                box.opacity = 0
+                let delay = cc.delayTime(0.5)
+                let fadein = cc.fadeIn(0.5)
+                let fadeout = cc.fadeOut(0.5)
+                let fun = cc.callFunc(()=>{
+                    box.active = false
+                    overNum++
+                    if(overNum == pointArr.length) {
+                        this.mask.off(cc.Node.EventType.TOUCH_START)
+                    }
+                })
+                let seq = cc.sequence(delay, fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                box.runAction(seq)
+            }
+
+
+            for(let i = 0; i < this.answer.length; ++i) {
+                if(this.subject.indexOf(this.answer[i]) == -1) {
+                    for(let j = 0; j < this.groupArr.length; j++) {
+                        if(this.groupArr[j].indexOf(this.answer[i]) != - 1) {
+                            let delay = cc.delayTime(0.5)
+                            let fadein = cc.fadeIn(0.5)
+                            let fadeout = cc.fadeOut(0.5)
+                            let seq = cc.sequence(delay, fadeout, fadein, fadeout, fadein, fadeout, fadein)
+                            this.groupNodeArr[j].runAction(seq)
+                        }
+                    }
+                }
+            }
+        }
+       
+
+    }
+
+    onBtnRefreshClick() {
+        UIHelp.AffirmTip(1, '你确定要清楚所有操作么？', ()=>{
+            for(let i = 0; i < this.itemNodeArr.length; ++i) {
+                this.setState(this.itemNodeArr[i], 'normal')
+            }
+            this.subject = []
+            this.checkTitle()
+           
+        })
+    }
 
     getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
@@ -467,6 +814,31 @@ export default class GamePanel extends BaseUI {
                 }
                 let content = JSON.parse(response_data.data.courseware_content);
                 if (content != null) {
+                    if(content.type) {
+                        this.type = content.type
+                    }else {
+                        console.error('网络请求数据type为空。')
+                    }
+                    if(content.itemArr) {
+                        this.itemArr = content.itemArr
+                    }else {
+                        console.error('网络请求数据itemArr为空。')
+                    }
+                    if(content.xArr) {
+                        this.xArr = content.xArr
+                    }else {
+                        console.error('网络请求数据xArr为空。')
+                    }  
+                    if(content.yArr) {
+                        this.yArr = content.yArr
+                    }else {
+                        console.error('网络请求数据yArr为空。')
+                    }  
+                    if(content.rotationArr) {
+                        this.rotationArr = content.rotationArr
+                    }else {
+                        console.error('网络请求数据rotationAarr为空。')
+                    }    
                     this.setPanel();
                 }
             } else {
