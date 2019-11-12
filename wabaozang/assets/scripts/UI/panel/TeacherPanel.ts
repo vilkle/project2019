@@ -80,20 +80,21 @@ export default class TeacherPanel extends BaseUI {
         switch(this.type) {
             case 1:
                 this.toggleContainer[0].isChecked = true
-                this.setNode(4)
+                this.setNode(4, false)
                 break
             case 2:
                 this.toggleContainer[1].isChecked = true
-                this.setNode(5)
+                this.setNode(5, false)
                 break
             case 3:
                 this.toggleContainer[2].isChecked = true
-                this.setNode(6)
+                this.setNode(6, false)
                 break
             default:
                 console.error('there is a erro on toggle setting.')
                 break
         }
+        this.initGame()
         this.addMaterialCallback()
     }
 
@@ -102,26 +103,34 @@ export default class TeacherPanel extends BaseUI {
         let arr: number[] = []
         for(let i = 0; i < itemArr.length; ++i) {
             this.itemNodeArr[i].getChildByName('sprite').getComponent(cc.Sprite).spriteFrame = this.getSpriteframe(itemArr[i])
+        }
+        for(let i = 0; i < itemArr.length; ++i) {
             if(itemArr[i] != 5) {
                 let index = itemArr[i]
-                arr = this.getPartner(itemArr[i])
+                arr = this.getPartner(i)
+                console.log(arr)
                 for(let j = 0; j < arr.length; ++j) {
                     itemArr[arr[j]] = 5
                 }
-                this.createGroup(arr, this.getSpriteframe(index))
+                let groupNode = this.createGroup(arr, this.getSpriteframe(index))
+                groupNode.setPosition(cc.v2(this.xArr[i], this.yArr[i]))
+                groupNode.rotation = this.rotationArr[i]
+                this.addListenerOnGroupNode(groupNode)
             }
             
         }
     }
 
-    setNode(num: number) {
+    setNode(num: number, isReset: boolean) {
         this.num = num
+        if(isReset) {
+            this.itemArr = []
+        }
         this.selectArr = []
         this.posArr = []
         this.groupArr = []
         this.groupInfoArr = []
         this.itemNodeArr = []
-        this.itemArr = []
         this.node1.removeAllChildren()
         this.node2.getChildByName('group').removeAllChildren()
         let lenth = num * 105 + (num + 1) * 3 + num - 1
@@ -137,7 +146,9 @@ export default class TeacherPanel extends BaseUI {
             this.addListenerOnItem(node)
             this.addMouseListener(node)
             this.groupInfoArr[i] = null
-            this.itemArr[i] = 5
+            if(isReset) {
+                this.itemArr[i] = 5
+            }
             this.groupNumArr[i] = 0
             this.posArr[i] = cc.v2(0,0)
         }
@@ -538,15 +549,15 @@ export default class TeacherPanel extends BaseUI {
         switch(index) {
             case 0:
                 this.type = 1;
-                this.setNode(4)
+                this.setNode(4, true)
                 break
             case 1:
                 this.type = 2;
-                this.setNode(5)
+                this.setNode(5, true)
                 break
             case 2:
                 this.type = 3;
-                this.setNode(6)
+                this.setNode(6, true)
                 break
         }
     }
