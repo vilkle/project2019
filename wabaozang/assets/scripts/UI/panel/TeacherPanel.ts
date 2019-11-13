@@ -108,17 +108,18 @@ export default class TeacherPanel extends BaseUI {
             if(itemArr[i] != 5) {
                 let index = itemArr[i]
                 arr = this.getPartner(i)
-                console.log(arr)
-                for(let j = 0; j < arr.length; ++j) {
-                    itemArr[arr[j]] = 5
-                }
                 let groupNode = this.createGroup(arr, this.getSpriteframe(index))
                 groupNode.setPosition(cc.v2(this.xArr[i], this.yArr[i]))
                 groupNode.rotation = this.rotationArr[i]
+                this.groupArr.push(groupNode)
                 this.addListenerOnGroupNode(groupNode)
+                for(let j = 0; j < arr.length; ++j) {
+                    this.groupInfoArr[arr[j]] = groupNode
+                    itemArr[arr[j]] = 5
+                }
             }
-            
         }
+        console.log(this.groupInfoArr)
     }
 
     setNode(num: number, isReset: boolean) {
@@ -373,7 +374,7 @@ export default class TeacherPanel extends BaseUI {
                     if(groupInfo != null && selectGroupArr.indexOf(groupInfo) == -1) {
                         selectGroupArr.push(groupInfo)
                     }
-                    this.groupInfoArr[itemIndex] = null
+                    //this.groupInfoArr[itemIndex] = null
                 }
                 //删除选择的组节点
                 for(let i = 0; i < selectGroupArr.length; ++i) {
@@ -402,6 +403,10 @@ export default class TeacherPanel extends BaseUI {
                     let groupNode = this.createGroup(selectNumArr, spriteframe)
                     this.addListenerOnGroupNode(groupNode)
                     this.groupArr.push(groupNode)
+                }else { 
+                    for (const key in selectNumArr) {
+                        this.groupInfoArr[selectNumArr[key]] = null
+                    }
                 }
                 selectNumArr = []
                 this.selectArr = []
@@ -442,6 +447,10 @@ export default class TeacherPanel extends BaseUI {
         let nodeY = -(minRow + height / 2) * 110
         let nodePos: cc.Vec2 = this.correctPos(cc.v2(nodeX, nodeY), node)
         this.node2.getChildByName('group').addChild(node)
+        if(this.groupInfoArr[selectArr[0]]) {
+            nodePos = this.groupInfoArr[selectArr[0]].position
+            node.angle = this.groupInfoArr[selectArr[0]].angle
+        }
         node.setPosition(nodePos)
         for (const key in selectArr) {
             this.posArr[selectArr[key]] = cc.v2(nodeX, nodeY)
