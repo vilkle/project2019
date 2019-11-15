@@ -78,6 +78,8 @@ export default class GamePanel extends BaseUI {
     private grayFrame: cc.SpriteFrame = null
     @property(cc.SpriteFrame)
     private blueFrame: cc.SpriteFrame = null
+    @property(cc.SpriteFrame)
+    private greenFrame: cc.SpriteFrame = null
     @property(cc.Prefab)
     private itemPrefab: cc.Prefab = null
     @property(cc.Prefab)
@@ -137,7 +139,7 @@ export default class GamePanel extends BaseUI {
 
     onLoad() {
         cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
-        
+        //this.refreshBtn.interactable = false
         this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
             if(this.isOver != 1) {
                 this.isOver = 2;
@@ -177,8 +179,13 @@ export default class GamePanel extends BaseUI {
         }, 500);
         this.timeoutArr.push(id)
         this.pointBtn.node.on(cc.Node.EventType.TOUCH_START, ()=>{
+            for(let i = 0; i < this.timeoutArr.length; ++i) {
+                clearTimeout(this.timeoutArr[i])
+            }
             for(let i = 0; i < this.num; ++i) {
                 if(this.horArr[i] == 1) {
+                    // this.horizonTitleArr[i].getComponent(cc.Sprite).spriteFrame = this.greenFrame
+                    // this.horizonTitleArr[i].getChildByName('label').color = cc.Color.WHITE
                     for(let j = 0; j < this.itemNodeArr.length; j++) {
                         if(j % this.num == i) {
                             this.itemNodeArr[j].getChildByName('point').active = true
@@ -186,6 +193,8 @@ export default class GamePanel extends BaseUI {
                     }
                 }
                 if(this.verArr[i] == 1) {
+                    // this.VerticalTitleArr[i].getComponent(cc.Sprite).spriteFrame = this.greenFrame
+                    // this.VerticalTitleArr [i].getChildByName('label').color = cc.Color.WHITE
                     for(let j = 0; j < this.itemNodeArr.length; j++) {
                         if(i == Math.floor(j / this.num)) {
                             this.itemNodeArr[j].getChildByName('point').active = true
@@ -199,6 +208,7 @@ export default class GamePanel extends BaseUI {
                 for(let j = 0; j < this.itemNodeArr.length; j++) {
                     this.itemNodeArr[j].getChildByName('point').active = false
                 }
+                //this.checkTitle()
                 clearTimeout(id)
                 let index = this.timeoutArr.indexOf(id)
                 this.timeoutArr.splice(index, 1)
@@ -210,6 +220,7 @@ export default class GamePanel extends BaseUI {
                 for(let j = 0; j < this.itemNodeArr.length; j++) {
                     this.itemNodeArr[j].getChildByName('point').active = false
                 }
+                //this.checkTitle()
                 clearTimeout(id)
                 let index = this.timeoutArr.indexOf(id)
                 this.timeoutArr.splice(index, 1)
@@ -272,13 +283,16 @@ export default class GamePanel extends BaseUI {
         for(let i = 0; i < nodeArr.length; ++i) {
             let node = nodeArr[i]
             node.on(cc.Node.EventType.TOUCH_START, (e)=>{
+                for(let j = 0; j < this.itemNodeArr.length; j++) {
+                    this.itemNodeArr[j].getChildByName('point').active = false
+                }
                 AudioManager.getInstance().playSound('sfx_pckblck')
                 this.isOver = 2
                 this.eventvalue.result = 2
                 this.eventvalue.levelData[0].result = 2
                 this.eventvalue.levelData[0].subject = this.subject
                 this.changeState(node, i)
-                this.checkTitle()
+                
             })
             node.on(cc.Node.EventType.TOUCH_END, (e)=>{
                 
@@ -318,7 +332,6 @@ export default class GamePanel extends BaseUI {
     }
 
     changeState(node: cc.Node, index: number) {
-        
         let normal = node.getChildByName('normal')
         let right = node.getChildByName('right')
         let wrong = node.getChildByName('wrong')
@@ -332,6 +345,7 @@ export default class GamePanel extends BaseUI {
         }else if(wrong.active) {
             this.change(normal, wrong)
         }
+        this.checkTitle()
     }
 
     change(appearNode: cc.Node, disappearNode: cc.Node) {
@@ -353,6 +367,7 @@ export default class GamePanel extends BaseUI {
         let verArr = []
         let totalNum = 0
         let correctNum = 0
+        let selectNum = 0
         for(let i = 0; i < this.num; ++i) {
             horiArr.push(0)
             verArr.push(0)
@@ -361,11 +376,19 @@ export default class GamePanel extends BaseUI {
             for(let j = 0; j < this.num; ++j) {
                 let index = i * this.num + j
                 if(this.itemNodeArr[index].getChildByName('right').active) {
-                    horiArr[j]++
-                    verArr[i]++
+                    if(!this.itemNodeArr[index].getChildByName('wrong').active) {
+                        horiArr[j]++
+                        verArr[i]++
+                    }
+                    selectNum++
                 }
             }
         }
+        // if(selectNum) {
+        //     this.refreshBtn.interactable = true
+        // }else {
+        //     this.refreshBtn.interactable = false
+        // }
         for(let i = 0; i < this.num; ++i) {
             if(this.horArr[i] == horiArr[i] && this.horArr[i] != 0) {
                 this.horizonTitleArr[i].getChildByName('label').color = this.sizeInfo.lightGray
@@ -391,11 +414,11 @@ export default class GamePanel extends BaseUI {
             }
         }
         console.log('----', totalNum, correctNum)
-       if(totalNum == correctNum) {
-            this.submitBtn.interactable = true
-       }else {
-           this.submitBtn.interactable = false
-       }
+    //    if(totalNum == correctNum) {
+    //         this.submitBtn.interactable = true
+    //    }else {
+    //        this.submitBtn.interactable = false
+    //    }
     }
 
     setTitle() {
@@ -529,7 +552,10 @@ export default class GamePanel extends BaseUI {
             let x: number = this.xArr[_index]
             let y: number = this.yArr[_index]
             let rotation = this.rotationArr[_index]
-            node.rotation = rotation
+            node.angle = rotation
+            for(let i = 0; i < node.children.length; ++i) {
+                node.children[i].angle = - rotation
+            }
             node.setPosition(cc.v2(x, y))
             rootNode.addChild(node)
         }
@@ -691,7 +717,7 @@ export default class GamePanel extends BaseUI {
             this.mask.on(cc.Node.EventType.TOUCH_START, ()=>{})
             this.pointBtn.interactable = false
             this.refreshBtn.interactable = false
-            this.submitBtn.interactable = false
+            //this.submitBtn.interactable = false
             this.removeListenerOnItem(this.itemNodeArr)
             for(let i = 0; i < this.itemNodeArr.length; ++i) {
                 if(this.itemArr[i] != 5) {
@@ -766,15 +792,17 @@ export default class GamePanel extends BaseUI {
                 let fadeout = cc.fadeOut(0.5)
                 let fun = cc.callFunc(()=>{
                     box.active = false
-                    overNum++
-                    if(overNum == pointArr.length) {
-                        this.mask.off(cc.Node.EventType.TOUCH_START)
-                    }
                 })
                 let seq = cc.sequence(delay, fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
                 box.runAction(seq)
             }
-
+            let id = setTimeout(() => {
+                this.mask.off(cc.Node.EventType.TOUCH_START)
+                clearTimeout(id)
+                let index = this.timeoutArr.indexOf(id)
+                this.timeoutArr.splice(index, 1)
+            }, 3500)
+            this.timeoutArr.push(id)
 
             for(let i = 0; i < this.answer.length; ++i) {
                 if(this.subject.indexOf(this.answer[i]) == -1) {

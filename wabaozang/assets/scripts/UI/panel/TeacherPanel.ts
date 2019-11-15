@@ -94,6 +94,8 @@ export default class TeacherPanel extends BaseUI {
                 console.error('there is a erro on toggle setting.')
                 break
         }
+        this.materialNode.children[5].getComponent(cc.Button).interactable = false
+        this.materialNode.children[5].getChildByName('Background').color = cc.color(200, 200, 200)
         this.initGame()
         this.addMaterialCallback()
     }
@@ -110,7 +112,10 @@ export default class TeacherPanel extends BaseUI {
                 arr = this.getPartner(i)
                 let groupNode = this.createGroup(arr, this.getSpriteframe(index))
                 groupNode.setPosition(cc.v2(this.xArr[i], this.yArr[i]))
-                groupNode.rotation = this.rotationArr[i]
+                groupNode.angle = this.rotationArr[i]
+                for(let i = 0; i < groupNode.children.length; ++i) {
+                    groupNode.children[i].angle = - groupNode.angle
+                }
                 this.groupArr.push(groupNode)
                 this.addListenerOnGroupNode(groupNode)
                 for(let j = 0; j < arr.length; ++j) {
@@ -136,7 +141,7 @@ export default class TeacherPanel extends BaseUI {
         this.node2.getChildByName('group').removeAllChildren()
         let lenth = num * 105 + (num + 1) * 3 + num - 1
         this.node1.width = lenth
-        this.boxWidth = 500
+        this.boxWidth = 570
         this.boxHeight = 850
         
         this.gridNode.height = lenth
@@ -160,12 +165,21 @@ export default class TeacherPanel extends BaseUI {
         item.on(cc.Node.EventType.MOUSE_MOVE, (e)=>{
             if(node.color.equals(cc.Color.WHITE)) {
                 node.color = cc.color(220, 220, 220, 255)
+                if(item.getChildByName('sprite').getComponent(cc.Sprite).spriteFrame) {
+                    item.getChildByName('mask').active = true
+                }
+            }else if(node.color.equals(cc.Color.GRAY)) {
+                item.getChildByName('mask').active = true
             }
         })
         item.on(cc.Node.EventType.MOUSE_LEAVE, (e)=>{
             if(node.color.equals(cc.color(220, 220, 220, 255))) {
                 node.color = cc.Color.WHITE
+                if(item.getChildByName('sprite').getComponent(cc.Sprite).spriteFrame) {
+                    item.getChildByName('mask').active = false
+                }
             }
+            item.getChildByName('mask').active = false
             
         })
     }
@@ -203,11 +217,11 @@ export default class TeacherPanel extends BaseUI {
 
 
 
-        if(node.rotation%180 == 0) {
+        if(node.angle%180 == 0) {
             width = node.width
             height = node.height
             if(width > this.boxWidth) {
-                node.rotation = 90
+                node.angle = 90
                 width = node.height
                 height = node.width
             }
@@ -215,10 +229,13 @@ export default class TeacherPanel extends BaseUI {
             width = node.height
             height = node.width
             if(width > this.boxWidth) {
-                node.rotation = 0
+                node.angle = 0
                 width = node.width
                 height = node.height
             }
+        }
+        for(let i = 0; i < node.children.length; ++i) {
+            node.children[i].angle = - node.angle
         }
         if(pos.x + width / 2 > this.boxWidth) {
             pos.x = this.boxWidth - width / 2
@@ -263,9 +280,12 @@ export default class TeacherPanel extends BaseUI {
             node.zIndex = 10
             lastPos = this.node2.getChildByName('group').convertToNodeSpaceAR(e.currentTouch._point)
             if(firstPos.equals(lastPos)) {
-                node.rotation += 90 
-                if(node.rotation >= 360 ) {
-                    node.rotation = 0
+                node.angle -= 90 
+                if(node.angle <= -360 ) {
+                    node.angle = 0
+                }
+                for(let i = 0; i < node.children.length; ++i) {
+                    node.children[i].angle = - node.angle
                 }
                 lastPos = this.correctPos(lastPos, node)
                 node.setPosition(lastPos)
@@ -330,6 +350,13 @@ export default class TeacherPanel extends BaseUI {
                     UIHelp.showTip('与已选中方格边边相邻的方格才可以被选择。')
                     return
                 }  
+            }
+            if(this.selectArr.length == 0) {
+                this.materialNode.children[5].getComponent(cc.Button).interactable = false
+                this.materialNode.children[5].getChildByName('Background').color = cc.color(200, 200, 200)
+            }else {
+                this.materialNode.children[5].getComponent(cc.Button).interactable = true
+                this.materialNode.children[5].getChildByName('Background').color = cc.color(255, 255, 255)
             }
            
         })
@@ -410,6 +437,9 @@ export default class TeacherPanel extends BaseUI {
                 }
                 selectNumArr = []
                 this.selectArr = []
+                this.materialNode.children[5].getComponent(cc.Button)
+                this.materialNode.children[5].getComponent(cc.Button).interactable = false
+                this.materialNode.children[5].getChildByName('Background').color = cc.color(200, 200, 200)
             })
         }
     
@@ -449,7 +479,7 @@ export default class TeacherPanel extends BaseUI {
         this.node2.getChildByName('group').addChild(node)
         if(this.groupInfoArr[selectArr[0]]) {
             nodePos = this.groupInfoArr[selectArr[0]].position
-            node.angle = this.groupInfoArr[selectArr[0]].angle
+            node.angle = this.groupInfoArr[selectArr[0]].angle 
         }
         node.setPosition(nodePos)
         for (const key in selectArr) {
@@ -601,7 +631,7 @@ export default class TeacherPanel extends BaseUI {
            if(this.groupInfoArr[key]) {
                 this.xArr[index] = this.groupInfoArr[key].x
                 this.yArr[index] = this.groupInfoArr[key].y
-                this.rotationArr[index] = this.groupInfoArr[key].rotation
+                this.rotationArr[index] = this.groupInfoArr[key].angle
            }else {
                 this.xArr[index] = 0
                 this.yArr[index] = 0
