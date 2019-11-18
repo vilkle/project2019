@@ -150,7 +150,7 @@ export default class TeacherPanel extends BaseUI {
         DaAnData.getInstance().qType = this.qType
         UIManager.getInstance().showUI(GamePanel, () => {
             ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
-        });
+        })
     }
 
     getNet() {

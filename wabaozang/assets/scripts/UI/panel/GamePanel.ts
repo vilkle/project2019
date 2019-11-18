@@ -151,7 +151,7 @@ export default class GamePanel extends BaseUI {
             this.laba.setAnimation(0, 'click', false)
             this.laba.addAnimation(0, 'speak', true)
             AudioManager.getInstance().stopAll()
-            AudioManager.getInstance().playSound('title', false, 1, null, ()=>{
+            AudioManager.getInstance().playSound('找出宝藏的位置吧', false, 1, null, ()=>{
                 this.laba.setAnimation(0, 'null', true)
             })
         })
@@ -172,7 +172,7 @@ export default class GamePanel extends BaseUI {
         AudioManager.getInstance().playSound('sfx_12opne')
         this.oceanWave(this.wave1, this.wave2)
         let id = setTimeout(() => {
-            //AudioManager.getInstance().playSound('title')
+            AudioManager.getInstance().playSound('找出宝藏的位置吧')
             clearTimeout(id)
             let index = this.timeoutArr.indexOf(id)
             this.timeoutArr.splice(index, 1)
@@ -362,7 +362,7 @@ export default class GamePanel extends BaseUI {
         appearNode.runAction(seq.clone())
     }
 
-    checkTitle() {
+    checkTitle(): boolean {
         let horiArr = []
         let verArr = []
         let totalNum = 0
@@ -413,12 +413,18 @@ export default class GamePanel extends BaseUI {
                 totalNum++
             }
         }
-        console.log('----', totalNum, correctNum)
-    //    if(totalNum == correctNum) {
-    //         this.submitBtn.interactable = true
-    //    }else {
-    //        this.submitBtn.interactable = false
-    //    }
+        for(let i = 0; i < this.num; ++i) {
+            if(this.horizonTitleArr[i]) {
+
+            }
+        }
+       if(totalNum == correctNum) {
+            return true
+            //this.submitBtn.interactable = true
+       }else {
+            return false
+            //this.submitBtn.interactable = false
+       }
     }
 
     setTitle() {
@@ -699,12 +705,85 @@ export default class GamePanel extends BaseUI {
     }
 
     onBtnSubmitClick() {
+        //行列个数检测
+        if(!this.checkTitle()) {
+            this.mask.on(cc.Node.EventType.TOUCH_START, ()=>{})
+            this.laba.setAnimation(0, 'null', true)
+            AudioManager.getInstance().stopAll()
+            AudioManager.getInstance().playSound('啊哦，宝藏数量不正确哦')
+            let horiArr = []
+            let verArr = []
+            for(let i = 0; i < this.num; ++i) {
+                horiArr.push(0)
+                verArr.push(0)
+            }
+            for(let i = 0; i < this.num; ++i) {
+                for(let j = 0; j < this.num; ++j) {
+                    let index = i * this.num + j
+                    if(this.itemNodeArr[index].getChildByName('right').active) {
+                        if(!this.itemNodeArr[index].getChildByName('wrong').active) {
+                            horiArr[j]++
+                            verArr[i]++
+                        }
+                    }
+                }
+            }
+            for(let i = 0; i < this.num; ++i) {
+                if(this.horArr[i] != 0 && this.horArr[i] != horiArr[i]) {
+                    for(let n = 0; n < this.num; ++n) {
+                        for(let m = 0; m < this.num; ++m) {
+                            let index = n * this.num + m
+                            if(m == i) {
+                                let box = this.itemNodeArr[index].getChildByName('box')
+                                box.active = true
+                                let fadein = cc.fadeIn(0.5)
+                                let fadeout = cc.fadeOut(0.5)
+                                let fun = cc.callFunc(()=>{
+                                    box.active = false
+                                })
+                                let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                                box.stopAllActions()
+                                box.runAction(seq)
+                            }
+                        }
+                    }
+                }
+                if(this.verArr[i] != 0 && this.verArr[i] != verArr[i]) {
+                    for(let n = 0; n < this.num; ++n) {
+                        for(let m = 0; m < this.num; ++m) {
+                            let index = n * this.num + m
+                            if(n == i) {
+                                let box = this.itemNodeArr[index].getChildByName('box')
+                                box.active = true
+                                let fadein = cc.fadeIn(0.5)
+                                let fadeout = cc.fadeOut(0.5)
+                                let fun = cc.callFunc(()=>{
+                                    box.active = false
+                                })
+                                let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                                box.stopAllActions()
+                                box.runAction(seq)
+                            }
+                        }
+                    }
+                }
+            }
+            let id = setTimeout(() => {
+                this.mask.off(cc.Node.EventType.TOUCH_START)
+                clearTimeout(id)
+                let index = this.timeoutArr.indexOf(id)
+                this.timeoutArr.splice(index, 1)
+            }, 3500)
+            this.timeoutArr.push(id)
+            return 
+        }
         let correctNum: number = 0
         for(let i = 0; i < this.subject.length; ++i) {
             if(this.answer.indexOf(this.subject[i]) != -1) {
                 correctNum++
             }
         }
+        //形状检测
         if(correctNum == this.answer.length) {
             this.isOver = 1
             this.eventvalue.result = 1
@@ -748,6 +827,9 @@ export default class GamePanel extends BaseUI {
             }, 2000);
             this.timeoutArr.push(id)
         }else {
+            this.laba.setAnimation(0, 'null', true)
+            AudioManager.getInstance().stopAll()
+            AudioManager.getInstance().playSound('啊哦~和目标图案形状不一样哟', false)
             this.mask.on(cc.Node.EventType.TOUCH_START, ()=>{})
             let pointArr: cc.Node[] = []
             let wrongGroup: number[][] = []
@@ -794,6 +876,7 @@ export default class GamePanel extends BaseUI {
                     box.active = false
                 })
                 let seq = cc.sequence(delay, fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                box.stopAllActions()
                 box.runAction(seq)
             }
             let id = setTimeout(() => {
@@ -812,6 +895,7 @@ export default class GamePanel extends BaseUI {
                             let fadein = cc.fadeIn(0.5)
                             let fadeout = cc.fadeOut(0.5)
                             let seq = cc.sequence(delay, fadeout, fadein, fadeout, fadein, fadeout, fadein)
+                            this.groupNodeArr[j].stopAllActions()
                             this.groupNodeArr[j].runAction(seq)
                         }
                     }
