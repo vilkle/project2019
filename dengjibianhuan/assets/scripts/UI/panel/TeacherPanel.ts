@@ -84,12 +84,15 @@ export default class TeacherPanel extends BaseUI {
         switch (this.type) {
             case 1:
                 this.option1.color = cc.Color.RED
+                this.interface1()
                 break;
             case 2:
                 this.option2.color = cc.Color.RED
+                this.interface2()
                 break;
             case 3:
                 this.option3.color = cc.Color.RED
+                this.interface3()
                 break;
             default:
                 break;

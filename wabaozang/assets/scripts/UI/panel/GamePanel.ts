@@ -450,8 +450,11 @@ export default class GamePanel extends BaseUI {
         this.horArr = [...horiArr]
         this.verArr = [...verArr]
         for(let i = 0; i < this.num; ++i) {
-           this.horizonTitleArr[i].getChildByName('label').getComponent(cc.Label).string = horiArr[i]
-           this.VerticalTitleArr[i].getChildByName('label').getComponent(cc.Label).string = verArr[i]
+            if(horiArr[i] == 0 || verArr[i] == 0 || horiArr[i] == this.num || verArr[i] == this.num) {
+                this.pointBtn.node.active = false
+            } 
+            this.horizonTitleArr[i].getChildByName('label').getComponent(cc.Label).string = horiArr[i]
+            this.VerticalTitleArr[i].getChildByName('label').getComponent(cc.Label).string = verArr[i]
         }
     }
 
