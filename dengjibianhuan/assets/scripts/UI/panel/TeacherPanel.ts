@@ -53,6 +53,7 @@ export default class TeacherPanel extends BaseUI {
         this.option1.on(cc.Node.EventType.TOUCH_START, (e)=>{
             this.option1.color = cc.Color.RED
             this.type = 1
+            this.qType = 1
             this.option2.color = cc.Color.BLACK
             this.option3.color = cc.Color.BLACK
             this.interface1()
@@ -60,6 +61,7 @@ export default class TeacherPanel extends BaseUI {
         this.option2.on(cc.Node.EventType.TOUCH_START, (e)=>{
             this.option2.color = cc.Color.RED
             this.type = 2
+            this.qType = 1
             this.option1.color = cc.Color.BLACK
             this.option3.color = cc.Color.BLACK
             this.interface2()
@@ -67,6 +69,7 @@ export default class TeacherPanel extends BaseUI {
         this.option3.on(cc.Node.EventType.TOUCH_START, (e)=>{
             this.option3.color = cc.Color.RED
             this.type = 3
+            this.qType = 1
             this.option2.color = cc.Color.BLACK
             this.option1.color = cc.Color.BLACK
             this.interface3()
@@ -107,6 +110,15 @@ export default class TeacherPanel extends BaseUI {
         this.node2.getChildByName('toggle2').getChildByName('frame').getComponent(cc.Sprite).spriteFrame = this.frame5
         this.node2.getChildByName('toggle3').getChildByName('frame').getComponent(cc.Sprite).spriteFrame = this.frame2
         this.node2.getChildByName('toggle4').getChildByName('frame').getComponent(cc.Sprite).spriteFrame = this.frame1
+        if(this.qType == 1) {
+            this.toggleContainer[0].isChecked = true
+        }else if(this.qType == 2) {
+            this.toggleContainer[1].isChecked = true
+        }else if(this.qType == 3) {
+            this.toggleContainer[2].isChecked = true
+        }else if(this.qType == 4) {
+            this.toggleContainer[3].isChecked = true
+        }
 
     }
 
@@ -118,6 +130,15 @@ export default class TeacherPanel extends BaseUI {
         this.node2.getChildByName('toggle2').getChildByName('frame').getComponent(cc.Sprite).spriteFrame = this.frame9
         this.node2.getChildByName('toggle3').getChildByName('frame').getComponent(cc.Sprite).spriteFrame = this.frame3
         this.node2.getChildByName('toggle4').getChildByName('frame').getComponent(cc.Sprite).spriteFrame = this.frame7
+        if(this.qType == 1) {
+            this.toggleContainer[0].isChecked = true
+        }else if(this.qType == 2) {
+            this.toggleContainer[1].isChecked = true
+        }else if(this.qType == 3) {
+            this.toggleContainer[2].isChecked = true
+        }else if(this.qType == 4) {
+            this.toggleContainer[3].isChecked = true
+        }
     }
 
     interface3() {
@@ -125,6 +146,12 @@ export default class TeacherPanel extends BaseUI {
         this.node2.getChildByName('toggle2').active = false
         this.node2.getChildByName('toggle3').active = false
         this.node2.getChildByName('toggle4').active = false
+        if(this.qType == 1) {
+            this.toggleContainer[0].isChecked = true
+        }else {
+            console.error('there is an erro on value of  qType.')
+        }
+        
     }
 
     onToggleContainer(toggle) {
@@ -152,7 +179,7 @@ export default class TeacherPanel extends BaseUI {
         DaAnData.getInstance().type = this.type
         DaAnData.getInstance().qType = this.qType
         UIManager.getInstance().showUI(GamePanel, () => {
-            ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1}); 
+            ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, {state: 1})
         })
     }
 
