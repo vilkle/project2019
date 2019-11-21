@@ -1,6 +1,6 @@
 {
   "ver": "2.3.1",
-  "uuid": "86b18c39-6a98-4a46-974f-3cc140fd795d",
+  "uuid": "32264104-214d-4847-84aa-114a4bb9be6f",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -9,8 +9,8 @@
   "subMetas": {
     "img_icon_tishikuang": {
       "ver": "1.0.4",
-      "uuid": "1d7aac7a-d85f-4405-8cc0-6fbadc72fcad",
-      "rawTextureUuid": "86b18c39-6a98-4a46-974f-3cc140fd795d",
+      "uuid": "28f54e4b-3f6f-413d-832c-580a258be4b5",
+      "rawTextureUuid": "32264104-214d-4847-84aa-114a4bb9be6f",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
