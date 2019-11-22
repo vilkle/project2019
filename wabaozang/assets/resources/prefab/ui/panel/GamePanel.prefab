@@ -1831,6 +1831,9 @@
     "littleTitlePrefab": {
       "__uuid__": "61ee0a7d-ad73-4de0-b5dc-726fc5fb454b"
     },
+    "boxPrefab": {
+      "__uuid__": "6952d29d-60b2-46b9-a6d3-f68c7b17d4fd"
+    },
     "_id": ""
   },
   {

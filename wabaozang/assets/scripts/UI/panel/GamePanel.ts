@@ -88,6 +88,8 @@ export default class GamePanel extends BaseUI {
     private titlePrefab: cc.Prefab = null
     @property(cc.Prefab)
     private littleTitlePrefab: cc.Prefab = null
+    @property(cc.Prefab)
+    private boxPrefab: cc.Prefab = null
     private num: number = 0
     private type: number = 0
     private itemArr: number[] = []
@@ -731,44 +733,76 @@ export default class GamePanel extends BaseUI {
                     }
                 }
             }
+            console.log(this.horArr, horiArr)
+            console.log(this.verArr, verArr)
             for(let i = 0; i < this.num; ++i) {
-                if(this.horArr[i] != 0 && this.horArr[i] != horiArr[i]) {
-                    for(let n = 0; n < this.num; ++n) {
-                        for(let m = 0; m < this.num; ++m) {
-                            let index = n * this.num + m
-                            if(m == i) {
-                                let box = this.itemNodeArr[index].getChildByName('box')
-                                box.active = true
-                                let fadein = cc.fadeIn(0.5)
-                                let fadeout = cc.fadeOut(0.5)
-                                let fun = cc.callFunc(()=>{
-                                    box.active = false
-                                })
-                                let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
-                                box.stopAllActions()
-                                box.runAction(seq)
-                            }
-                        }
-                    }
+                if(this.horArr[i] != horiArr[i]) {
+                    let node = cc.instantiate(this.boxPrefab)
+                    node.width = this.sizeInfo.spaceLong
+                    node.height = this.sizeInfo.spaceLong * this.num + this.sizeInfo.spaceShort
+                    let x = (i + 1 / 2) * this.sizeInfo.spaceLong
+                    let y = -node.height / 2
+                    node.setPosition(cc.v2(x, y))
+                    this.board.addChild(node)
+                    let fadein = cc.fadeIn(0.5)
+                    let fadeout = cc.fadeOut(0.5)
+                    let fun = cc.callFunc(()=>{
+                       node.removeFromParent()
+                    })
+                    let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                    node.stopAllActions()
+                    node.runAction(seq)
+                    // for(let n = 0; n < this.num; ++n) {
+                    //     for(let m = 0; m < this.num; ++m) {
+                    //         let index = n * this.num + m
+                    //         if(m == i) {
+                    //             let box = this.itemNodeArr[index].getChildByName('box')
+                    //             box.active = true
+                    //             let fadein = cc.fadeIn(0.5)
+                    //             let fadeout = cc.fadeOut(0.5)
+                    //             let fun = cc.callFunc(()=>{
+                    //                 box.active = false
+                    //             })
+                    //             let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                    //             box.stopAllActions()
+                    //             box.runAction(seq)
+                    //         }
+                    //     }
+                    // }
                 }
-                if(this.verArr[i] != 0 && this.verArr[i] != verArr[i]) {
-                    for(let n = 0; n < this.num; ++n) {
-                        for(let m = 0; m < this.num; ++m) {
-                            let index = n * this.num + m
-                            if(n == i) {
-                                let box = this.itemNodeArr[index].getChildByName('box')
-                                box.active = true
-                                let fadein = cc.fadeIn(0.5)
-                                let fadeout = cc.fadeOut(0.5)
-                                let fun = cc.callFunc(()=>{
-                                    box.active = false
-                                })
-                                let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
-                                box.stopAllActions()
-                                box.runAction(seq)
-                            }
-                        }
-                    }
+                if(this.verArr[i] != verArr[i]) {
+                    let node = cc.instantiate(this.boxPrefab)
+                    node.width = this.sizeInfo.spaceLong * this.num + this.sizeInfo.spaceShort
+                    node.height = this.sizeInfo.spaceLong
+                    let x = node.width / 2
+                    let y = - this.sizeInfo.spaceShort - (i + 1 / 2) * this.sizeInfo.spaceLong
+                    node.setPosition(cc.v2(x, y))
+                    this.board.addChild(node)
+                    let fadein = cc.fadeIn(0.5)
+                    let fadeout = cc.fadeOut(0.5)
+                    let fun = cc.callFunc(()=>{
+                       node.removeFromParent()
+                    })
+                    let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                    node.stopAllActions()
+                    node.runAction(seq)
+                    // for(let n = 0; n < this.num; ++n) {
+                    //     for(let m = 0; m < this.num; ++m) {
+                    //         let index = n * this.num + m
+                    //         if(n == i) {
+                    //             let box = this.itemNodeArr[index].getChildByName('box')
+                    //             box.active = true
+                    //             let fadein = cc.fadeIn(0.5)
+                    //             let fadeout = cc.fadeOut(0.5)
+                    //             let fun = cc.callFunc(()=>{
+                    //                 box.active = false
+                    //             })
+                    //             let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                    //             box.stopAllActions()
+                    //             box.runAction(seq)
+                    //         }
+                    //     }
+                    // }
                 }
             }
             let id = setTimeout(() => {
