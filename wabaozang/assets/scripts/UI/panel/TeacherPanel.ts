@@ -68,6 +68,7 @@ export default class TeacherPanel extends BaseUI {
     private groupArr: cc.Node[] = []
     private groupInfoArr: cc.Node[] = []
     private touchTarget: any = null
+    private isReset: boolean = false
 
     // onLoad () {}
 
@@ -80,15 +81,15 @@ export default class TeacherPanel extends BaseUI {
         switch(this.type) {
             case 1:
                 this.toggleContainer[0].isChecked = true
-                this.setNode(4, false)
+                this.setNode(4, this.isReset)
                 break
             case 2:
                 this.toggleContainer[1].isChecked = true
-                this.setNode(5, false)
+                this.setNode(5, this.isReset)
                 break
             case 3:
                 this.toggleContainer[2].isChecked = true
-                this.setNode(6, false)
+                this.setNode(6, this.isReset)
                 break
             default:
                 console.error('there is a erro on toggle setting.')
@@ -124,7 +125,7 @@ export default class TeacherPanel extends BaseUI {
                 }
             }
         }
-        console.log(this.groupInfoArr)
+        console.log(this.itemArr)
     }
 
     setNode(num: number, isReset: boolean) {
@@ -654,6 +655,7 @@ export default class TeacherPanel extends BaseUI {
             if (!err) {
                 let res = response;
                 if (Array.isArray(res.data)) {
+                    this.isReset = true
                     this.setPanel();
                     return;
                 }

@@ -960,6 +960,7 @@ export default class GamePanel extends BaseUI {
             if (!err) {
                 let response_data = response;
                 if (Array.isArray(response_data.data)) {
+                    this.setPanel()
                     return;
                 }
                 let content = JSON.parse(response_data.data.courseware_content);
