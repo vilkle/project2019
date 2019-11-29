@@ -181,6 +181,7 @@ export default class GamePanel extends BaseUI {
         }, 500);
         this.timeoutArr.push(id)
         this.pointBtn.node.on(cc.Node.EventType.TOUCH_START, ()=>{
+            AudioManager.getInstance().playSound('sfx_buttn', false)
             for(let i = 0; i < this.timeoutArr.length; ++i) {
                 clearTimeout(this.timeoutArr[i])
             }
@@ -288,7 +289,7 @@ export default class GamePanel extends BaseUI {
                 for(let j = 0; j < this.itemNodeArr.length; j++) {
                     this.itemNodeArr[j].getChildByName('point').active = false
                 }
-                AudioManager.getInstance().playSound('sfx_pckblck')
+                AudioManager.getInstance().playSound('sfx_buttn')
                 this.isOver = 2
                 this.eventvalue.result = 2
                 this.eventvalue.levelData[0].result = 2
@@ -710,6 +711,7 @@ export default class GamePanel extends BaseUI {
     }
 
     onBtnSubmitClick() {
+        AudioManager.getInstance().playSound('sfx_buttn', false)
         //行列个数检测
         if(!this.checkTitle()) {
             this.mask.on(cc.Node.EventType.TOUCH_START, ()=>{})
@@ -733,8 +735,6 @@ export default class GamePanel extends BaseUI {
                     }
                 }
             }
-            console.log(this.horArr, horiArr)
-            console.log(this.verArr, verArr)
             for(let i = 0; i < this.num; ++i) {
                 if(this.horArr[i] != horiArr[i]) {
                     let node = cc.instantiate(this.boxPrefab)
@@ -901,9 +901,9 @@ export default class GamePanel extends BaseUI {
             for(let i = 0; i < pointArr.length; ++i) {
                 let box = pointArr[i].getChildByName('box')
                 let spine = pointArr[i].getChildByName('spine')
-                spine.active = true
-                AudioManager.getInstance().playSound('sfx_gnthng')
-                spine.getComponent(sp.Skeleton).setAnimation(0, 'animation', false)
+                //spine.active = true
+                //AudioManager.getInstance().playSound('sfx_gnthng')
+                //spine.getComponent(sp.Skeleton).setAnimation(0, 'animation', false)
                 box.active = true
                 box.opacity = 0
                 let delay = cc.delayTime(0.5)
@@ -944,6 +944,7 @@ export default class GamePanel extends BaseUI {
     }
 
     onBtnRefreshClick() {
+        AudioManager.getInstance().playSound('sfx_buttn', false)
         UIHelp.AffirmTip(1, '你确定要清楚所有操作么？', ()=>{
             for(let i = 0; i < this.itemNodeArr.length; ++i) {
                 this.setState(this.itemNodeArr[i], 'normal')
