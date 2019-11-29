@@ -193,13 +193,13 @@ export default class GamePanel extends BaseUI {
             for (const key in this.operateNodeArr[this.stepNum - 1]) {
                 this.operateNodeArr[this.stepNum - 1][key].stopAllActions()
             }
-          
             for(let i = 0; i < this.nodeArr[this.stepNum - 1].length; ++i) {
                 let x = this.nodeArr[this.stepNum - 1][i].x - 25
                 let y = this.nodeArr[this.stepNum - 1][i].y - 25
                 let rect: cc.Rect = cc.rect(x, y, 50, 50)
                 if(rect.contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                     if(!this.nodeArr[this.stepNum - 1][i].equals(this.pathArr[this.stepNum-1].startPos)) {
+                        AudioManager.getInstance().playSound('sfx_jump1', false)
                         this.wrong.active = true
                         this.wrong.zIndex = 100
                         this.wrong.setPosition(this.nodeArr[this.stepNum - 1][i])
@@ -221,6 +221,7 @@ export default class GamePanel extends BaseUI {
             let rect: cc.Rect = cc.rect(x, y, 50, 50)
             this.right.zIndex = 100
             if(rect.contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
+                AudioManager.getInstance().playSound('sfx_jump1', false)
                 this.right.active = true
                 this.right.setPosition(this.pathArr[this.stepNum - 1].startPos)
                   //设置层级
@@ -297,6 +298,7 @@ export default class GamePanel extends BaseUI {
             if(!this.right.active || this.isComplete(this.stepNum, this.type)) {
                 return
             }
+            AudioManager.getInstance().playSound('sfx_jump2', false)
             let point = this.terminalPointArr[this.stepNum - 1].getChildByName('point')
             point.active = false
             this.right.active = false
@@ -440,6 +442,7 @@ export default class GamePanel extends BaseUI {
             if(!this.right.active || this.isComplete(this.stepNum, this.type)) {
                 return
             }
+            AudioManager.getInstance().playSound('sfx_jump2', false)
             if(this.stepNum == 1) {
                 this.startPoint.zIndex = 54
             }else {
@@ -889,7 +892,7 @@ export default class GamePanel extends BaseUI {
                         console.error('网络请求数据type为空。') 
                     }
                     if(content.qType) {
-                        this.qType = content.qType
+                        this.qTtype = content.qType
                     }else {
                         console.error('网络请求数据qType为空。') 
                     }
