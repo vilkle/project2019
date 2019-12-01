@@ -72,7 +72,8 @@ export default class TeacherPanel extends BaseUI {
 
     // onLoad () {}
 
-    start() {                                   
+    start() { 
+        this.isReset = false                                  
         this.type = 3
         this.getNet();
     }
@@ -95,6 +96,7 @@ export default class TeacherPanel extends BaseUI {
                 console.error('there is a erro on toggle setting.')
                 break
         }
+        this.isReset = true
         this.materialNode.children[5].getComponent(cc.Button).interactable = false
         this.materialNode.children[5].getChildByName('Background').color = cc.color(200, 200, 200)
         this.initGame()
@@ -589,15 +591,15 @@ export default class TeacherPanel extends BaseUI {
         switch(index) {
             case 0:
                 this.type = 1;
-                this.setNode(4, true)
+                this.setNode(4, this.isReset)
                 break
             case 1:
                 this.type = 2;
-                this.setNode(5, true)
+                this.setNode(5, this.isReset)
                 break
             case 2:
                 this.type = 3;
-                this.setNode(6, true)
+                this.setNode(6, this.isReset)
                 break
         }
     }
@@ -656,6 +658,7 @@ export default class TeacherPanel extends BaseUI {
                 let res = response;
                 if (Array.isArray(res.data)) {
                     this.isReset = true
+                    console.log('-----------')
                     this.setPanel();
                     return;
                 }
@@ -693,6 +696,7 @@ export default class TeacherPanel extends BaseUI {
                         
                         this.setPanel();
                     } else {
+                        this.isReset = true
                         this.setPanel();
                     }
                 }

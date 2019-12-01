@@ -79,7 +79,7 @@ export default class GamePanel extends BaseUI {
             if(this.isOver != 1) {
                 this.isOver = 2
                 this.eventvalue.result = 2
-                this.eventvalue.levelData[0].result = 2
+                this.eventvalue.levelData[this.stepNum - 1].result = 2
             }
         })
         // this.labaBoundingBox.on(cc.Node.EventType.TOUCH_START, (e)=>{
@@ -194,9 +194,9 @@ export default class GamePanel extends BaseUI {
                 this.operateNodeArr[this.stepNum - 1][key].stopAllActions()
             }
             for(let i = 0; i < this.nodeArr[this.stepNum - 1].length; ++i) {
-                let x = this.nodeArr[this.stepNum - 1][i].x - 25
-                let y = this.nodeArr[this.stepNum - 1][i].y - 25
-                let rect: cc.Rect = cc.rect(x, y, 50, 50)
+                let x = this.nodeArr[this.stepNum - 1][i].x - 40
+                let y = this.nodeArr[this.stepNum - 1][i].y - 40
+                let rect: cc.Rect = cc.rect(x, y, 80, 80)
                 if(rect.contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                     if(!this.nodeArr[this.stepNum - 1][i].equals(this.pathArr[this.stepNum-1].startPos)) {
                         AudioManager.getInstance().playSound('sfx_jump1', false)
@@ -216,9 +216,9 @@ export default class GamePanel extends BaseUI {
                     }
                 }
             }
-            let x = this.pathArr[this.stepNum - 1].startPos.x - 25
-            let y = this.pathArr[this.stepNum - 1].startPos.y - 25
-            let rect: cc.Rect = cc.rect(x, y, 50, 50)
+            let x = this.pathArr[this.stepNum - 1].startPos.x - 40
+            let y = this.pathArr[this.stepNum - 1].startPos.y - 40
+            let rect: cc.Rect = cc.rect(x, y, 80, 80)
             this.right.zIndex = 100
             if(rect.contains(this.node.convertToNodeSpaceAR(e.currentTouch._point))) {
                 AudioManager.getInstance().playSound('sfx_jump1', false)
@@ -349,10 +349,12 @@ export default class GamePanel extends BaseUI {
                 this.isOver = 2
                 this.eventvalue.result = 2
                 this.eventvalue.levelData[this.stepNum - 1].result = 1
+                cc.log(this.eventvalue)
                 this.stepNum++
                 if(this.isComplete(this.stepNum, this.type)) {
                     this.isOver = 1
                     this.eventvalue.result = 1
+                    DataReporting.isRepeatReport = false
                     DataReporting.getInstance().dispatchEvent('addLog', {
                         eventType: 'clickSubmit',
                         eventValue: JSON.stringify(this.eventvalue)
@@ -360,6 +362,7 @@ export default class GamePanel extends BaseUI {
                     let id = setTimeout(() => {
                         this.maskOff()
                         DaAnData.getInstance().submitEnable = true
+                        cc.log(this.eventvalue)
                         UIHelp.showOverTip(2, '你真棒，等等还没做完的同学吧。', null, '挑战成功')
                         clearTimeout(id)
                         let index = this.timeoutIndexArr.indexOf(id)

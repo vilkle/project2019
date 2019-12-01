@@ -825,6 +825,7 @@ export default class GamePanel extends BaseUI {
             this.isOver = 1
             this.eventvalue.result = 1
             this.eventvalue.levelData[0].result = 1
+            DataReporting.isRepeatReport = false
             DataReporting.getInstance().dispatchEvent('addLog', {
                 eventType: 'clickSubmit',
                 eventValue: JSON.stringify(this.eventvalue)
@@ -945,7 +946,7 @@ export default class GamePanel extends BaseUI {
 
     onBtnRefreshClick() {
         AudioManager.getInstance().playSound('sfx_buttn', false)
-        UIHelp.AffirmTip(1, '你确定要清楚所有操作么？', ()=>{
+        UIHelp.AffirmTip(1, '你确定要清除所有操作么？', ()=>{
             for(let i = 0; i < this.itemNodeArr.length; ++i) {
                 this.setState(this.itemNodeArr[i], 'normal')
             }
