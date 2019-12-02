@@ -1,0 +1,68 @@
+2019-09-25T02:06:50.764Z - normal: Load ~/.CocosCreator/settings.json
+2019-09-25T02:06:50.902Z - normal: Initializing Asset Database
+2019-09-25T02:06:50.915Z - normal: checking language setting...
+2019-09-25T02:06:50.915Z - normal: Language: zh
+2019-09-25T02:06:52.176Z - success: preview server running at http://localhost:7457
+2019-09-25T02:06:52.256Z - success: protocol editor-framework registered
+2019-09-25T02:06:52.257Z - success: protocol app registered
+2019-09-25T02:06:52.257Z - success: protocol theme registered
+2019-09-25T02:06:52.257Z - success: protocol packages registered
+2019-09-25T02:06:52.259Z - success: protocol uuid registerred
+2019-09-25T02:06:52.259Z - success: protocol db registerred
+2019-09-25T02:06:52.260Z - success: protocol thumbnail registerred
+2019-09-25T02:06:52.260Z - success: protocol unpack registerred
+2019-09-25T02:06:52.261Z - success: protocol disable-commonjs registerred
+2019-09-25T02:06:52.384Z - normal: connected!
+2019-09-25T02:06:52.385Z - normal: Check project /Users/xes/Desktop/vueOneOnBest/student
+2019-09-25T02:06:52.387Z - normal: Initializing project /Users/xes/Desktop/vueOneOnBest/student
+2019-09-25T02:06:53.164Z - normal: Initializing Cocos2d
+2019-09-25T02:06:54.344Z - normal: Initializing engine extends
+2019-09-25T02:06:54.447Z - success: asset-db-debugger loaded
+2019-09-25T02:06:54.450Z - success: baidu-adapter loaded
+2019-09-25T02:06:54.452Z - success: color-picker loaded
+2019-09-25T02:06:54.606Z - success: fb-audience-network loaded
+2019-09-25T02:06:54.697Z - success: fb-live-stream loaded
+2019-09-25T02:06:54.704Z - success: google-play-instant loaded
+2019-09-25T02:06:54.722Z - success: huawei-runtime loaded
+2019-09-25T02:06:55.128Z - success: cpk-publish loaded
+2019-09-25T02:06:55.129Z - success: jsb-adapter loaded
+2019-09-25T02:06:55.136Z - success: oppo-runtime loaded
+2019-09-25T02:06:55.168Z - success: package-manager loaded
+2019-09-25T02:06:55.415Z - success: qqplay-adapter loaded
+2019-09-25T02:06:55.422Z - success: runtime-dev-tools loaded
+2019-09-25T02:06:55.459Z - success: sdkbox loaded
+2019-09-25T02:06:55.499Z - success: tester loaded
+2019-09-25T02:06:55.541Z - success: ui-grid loaded
+2019-09-25T02:06:55.577Z - success: ui-kit-preview-extra loaded
+2019-09-25T02:06:55.615Z - success: ui-kit-preview loaded
+2019-09-25T02:06:55.646Z - success: ui-kit loaded
+2019-09-25T02:06:55.678Z - success: ui-tree loaded
+2019-09-25T02:06:55.690Z - success: vivo-runtime loaded
+2019-09-25T02:06:55.691Z - success: weapp-adapter loaded
+2019-09-25T02:06:55.693Z - success: xiaomi-adapter loaded
+2019-09-25T02:06:55.778Z - success: assets loaded
+2019-09-25T02:06:55.813Z - success: builder loaded
+2019-09-25T02:06:56.295Z - success: cocos-services loaded
+2019-09-25T02:06:56.332Z - success: console loaded
+2019-09-25T02:06:56.388Z - success: fb-instant-games loaded
+2019-09-25T02:06:56.390Z - success: google-instant-games loaded
+2019-09-25T02:06:56.426Z - success: hierarchy loaded
+2019-09-25T02:06:56.461Z - success: inspector loaded
+2019-09-25T02:06:56.463Z - success: keystore loaded
+2019-09-25T02:06:56.498Z - success: node-library loaded
+2019-09-25T02:06:56.502Z - success: package-asset loaded
+2019-09-25T02:06:56.506Z - success: preferences loaded
+2019-09-25T02:06:56.531Z - success: project-exporter loaded
+2019-09-25T02:06:56.630Z - success: project-importer loaded
+2019-09-25T02:06:56.661Z - success: project-settings loaded
+2019-09-25T02:06:56.699Z - success: scene loaded
+2019-09-25T02:06:56.702Z - success: simulator-debugger loaded
+2019-09-25T02:06:56.706Z - success: sprite-editor loaded
+2019-09-25T02:06:56.739Z - success: store loaded
+2019-09-25T02:06:56.776Z - success: timeline loaded
+2019-09-25T02:06:56.787Z - success: xiaomi-runtime loaded
+2019-09-25T02:06:58.330Z - info: Cocos Services load base data!
+2019-09-25T02:07:03.220Z - normal: Loading packages
+2019-09-25T02:07:03.237Z - normal: Watching packages
+2019-09-25T02:07:03.467Z - normal: Run Application
+2019-09-25T10:01:39.670Z - info: shutdown preview server

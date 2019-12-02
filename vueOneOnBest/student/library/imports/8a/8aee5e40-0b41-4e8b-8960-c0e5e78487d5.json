@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "dig-1",
+    "texture": "7958d640-c135-4fdf-bc42-9dc1efeba006",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      19,
+      21
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      19,
+      21
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

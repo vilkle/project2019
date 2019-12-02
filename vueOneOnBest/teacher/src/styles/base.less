@@ -1,0 +1,52 @@
+@bg: #f6fafa;
+@mainBg: #fff;
+@mainWidth: 1000px;
+
+body {
+  background-color: @bg;
+}
+
+.header {
+  margin-bottom: 12px;
+
+  &-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .el-step__icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .el-step.is-horizontal .el-step__line {
+    top: 17px;
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: @mainWidth;
+  margin: 0 auto;
+  height: 100%;
+
+  .el-main {
+    background-color: @mainBg;
+
+    .el-form-item__label,
+    .el-checkbox {
+      line-height: 1.5;
+    }
+  }
+
+  .footer {
+    padding: 0;
+    height: 90px;
+    line-height: 90px;
+    text-align: right;
+  }
+}
+

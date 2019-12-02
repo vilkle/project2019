@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "button_done",
+    "texture": "246d08a1-8b9f-4786-86ec-fe4d6994816f",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      281,
+      120
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      281,
+      120
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

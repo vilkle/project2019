@@ -1,0 +1,1 @@
+{"version":3,"sources":["ConstValue.ts"],"names":[],"mappings":";;;;;AAAA;IAAA;IAEA,CAAC;IAD0B,sBAAW,GAAG,KAAK,CAAC,CAAA,0BAA0B;IACzE,iBAAC;CAFD,AAEC,IAAA;AAFY,gCAAU","file":"","sourceRoot":"../../../../../assets/scripts/Data","sourcesContent":["export class ConstValue {\n    public static readonly IS_EDITIONS = false;//是否为发布版本，用于数据上报 及 log输出控制\n}"]}
