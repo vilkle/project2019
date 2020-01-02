@@ -31,10 +31,15 @@ export default class GamePanel extends BaseUI {
     private gc: cc.Graphics = null
     @property(cc.Node)
     private progressNode: cc.Node = null
+    @property(cc.Node)
+    private mask: cc.Node = null
     private figureType: number = null
     private figureLevel: number[] = null
     private pointArr: cc.Vec2[] = []
+    private figurePointArr1: cc.Vec2[] = [cc.v2(-109, 20), cc.v2(349, 20), cc.v2(70, -288), cc.v2(-389, -288)]
+    private figurePointArr2: cc.Vec2[] = [cc.v2(-20, 80), cc.v2(206, -84), cc.v2(120, -350), cc.v2(-160, -350), cc.v2(-247, -84)]
     private startPos: cc.Vec2 = null
+    private idArr:number[] = []
     private levelNum: number = 0
     private isOver: number = 4
     private eventvalue = {
@@ -89,34 +94,151 @@ export default class GamePanel extends BaseUI {
             let endPos = this.node.convertToNodeSpaceAR(e.currentTouch._point)
             this.getPoint(this.startPos, endPos)
             let angle =this.getAngle(this.startPos, endPos)
-            if(this.pointArr.length == 2) {
+            if(this.pointArr.length >= 2) {
+                this.mask.active = true
+                let world: cc.Vec2 = cc.v2(0, 0)
+                if(this.figureType == 0) {
+                    world = this.node.convertToWorldSpaceAR(cc.v2(-20, 20))
+                }else if(this.figureType == 1) {
+                    world = this.node.convertToWorldSpaceAR(cc.v2(-20, 80))
+                }
                 let pos = this.getMidPoint(this.pointArr[0], this.pointArr[1])
-                console.log('pos is', pos)
-                this.m1.angle = -angle
                 let figure1 = this.m1.getChildByName('figure')
-                figure1.angle = angle
                 this.m1.setPosition(pos)
-                figure1.setPosition(cc.v2(-(pos.x + 20) / Math.cos(angle) , -(pos.y - 20) / Math.cos(angle)))
-                console.log('figure pos is ', cc.v2(-(pos.x + 20) , -(pos.y - 20)))
+                this.m1.angle = -angle
+                figure1.angle = angle
+                let lastPos1 = this.m1.convertToNodeSpaceAR(world)
+                figure1.setPosition(lastPos1)
                 
-                this.m2.angle = -180 - angle
                 let figure2 = this.m2.getChildByName('figure')
-                figure2.angle = angle + 180
                 this.m2.setPosition(pos)
-                figure2.setPosition(cc.v2((pos.x + 20) / Math.cos(angle) , (pos.y - 20) / Math.cos(angle)))
-                setTimeout(() => {
+                this.m2.angle = -180 - angle
+                figure2.angle = angle + 180
+                let lastPos2 = this.m2.convertToNodeSpaceAR(world)
+                figure2.setPosition(lastPos2)
+                let num = this.NumberOfCrossingPoint()
+                console.log('-=-=-====-=-=-=-=', num)
+                let id = setTimeout(() => {
                     let pos1 = this.m1.getPosition()
                     let pos2 = this.m2.getPosition()
-                    this.m1.setPosition(cc.v2(pos1.x - 50, pos1.y))
-                    this.m2.setPosition(cc.v2(pos2.x + 50, pos2.y))
+                    if(angle < 45 || angle > 135) {
+                        if(angle< 45) {
+                            this.m1.runAction(cc.moveTo(0.5, cc.v2(pos1.x, pos1.y - 50)))
+                            this.m2.runAction(cc.moveTo(0.5, cc.v2(pos2.x, pos2.y + 50)))
+                        }else if(angle > 135) {
+                            this.m1.runAction(cc.moveTo(0.5, cc.v2(pos2.x, pos2.y + 50)))
+                            this.m2.runAction(cc.moveTo(0.5, cc.v2(pos1.x, pos1.y - 50)))
+                        }
+                    }else {
+                        this.m1.runAction(cc.moveTo(0.5, cc.v2(pos1.x - 50, pos1.y)))
+                        this.m2.runAction(cc.moveTo(0.5, cc.v2(pos2.x + 50, pos2.y)))
+                    }
+                    let id1 = setTimeout(() => {
+                        if(this.isSuccess(num)) {
+                            if(this.levelNum == this.figureLevel.length - 1) {
+                                this.progress(this.levelNum+2)
+                                if(this.figureLevel.length == 1) {
+                                    UIHelp.showOverTip(2, '挑战成功', '', ()=>{}, null, '挑战成功')
+                                }else {
+                                    UIHelp.showOverTip(2, '闯关成功', '', ()=>{}, null, '闯关成功')
+                                }
+                            }else {
+                                UIHelp.showOverTip(1, '答对了', '下一关', ()=>{ this.levelNum++;this.nextLevel();})
+                            }
+                            
+                        }else {
+                            UIHelp.showTip('再仔细观察一下，加油～')
+                            this.reset()
+                        }
+
+                        clearTimeout(id1)
+                        let index1 = this.idArr.indexOf(id1)
+                        this.idArr.splice(index1, 1)
+                    }, 800);
+                    this.idArr.push(id1)
+                 
+                    clearTimeout(id)
+                    let index = this.idArr.indexOf(id)
+                    this.idArr.splice(index, 1)
                 }, 2000);
+                this.idArr.push(id)
+            }else {
+                this.gc.clear()
             }
-            
+
             this.startPos = null
         })
         this.bg.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
             this.startPos = null
         })
+    }
+
+    isSuccess(pointNum: number): boolean {
+        let index = this.figureLevel[this.levelNum]
+        console.log('-------- pointNum index', pointNum, index)
+        if(index == 0 && pointNum == 1) {
+            return true
+        }else if(index == 1 && pointNum == 0) {
+            return true
+        }else if(index == 2 && pointNum == 2) {
+            return true
+        }else if(index == 3 && pointNum == 0) {
+            return true
+        }else if(index == 4 && pointNum == 1) {
+            return true
+        }
+        return false
+    }
+
+    reset() {
+        let pos: cc.Vec2 = cc.v2(0, 0)
+        if(this.figureType == 0) {
+            pos = cc.v2(-20, 20)
+        }else if(this.figureType == 1) {
+            pos = cc.v2(-20, 80)
+        }
+        this.gc.clear()
+        this.m1.setPosition(pos)
+        this.m2.setPosition(pos)
+        this.m1.angle = 0
+        this.m2.angle = 0
+        let figure1 = this.m1.getChildByName('figure')
+        let figure2 = this.m2.getChildByName('figure')
+        figure1.setPosition(cc.v2(0, 0))
+        figure2.setPosition(cc.v2(0, 0))
+        figure1.angle = 0
+        figure2.angle = 0
+    }
+
+    nextLevel() {
+        this.reset()
+        this.progress(this.levelNum + 1)
+        this.bubble.getChildByName('label').getComponent(cc.Label).string = this.getTitle(this.figureLevel[this.levelNum])
+        this.mask.active = false
+    }
+
+    getTitle(index: number): string {
+        let str: string = ''
+        switch(index){
+            case 0:
+                str = '试试用一刀剪成一个四边形和一个三角形'
+                break
+            case 1:
+                str = '试试用一刀剪成两个四边形'
+                break
+            case 2:
+                str = '试试用一刀剪成一个四边形和一个三角形'
+                break
+            case 3:
+                str = '试试用一刀剪成一个四边形和一个五边形'
+                break
+            case 4:
+                str = '试试用一刀剪成两个四边形'
+                break
+            default:
+                break
+        }
+        return str
     }
 
     setPanel() {
@@ -131,9 +253,8 @@ export default class GamePanel extends BaseUI {
         }
         let totalNum = this.figureLevel.length
         this.initProgress(totalNum)
-        
         this.progress(1)
-
+        this.bubble.getChildByName('label').getComponent(cc.Label).string = this.getTitle(this.figureLevel[this.levelNum])
     }
     segmentsIntr(a:cc.Vec2,b:cc.Vec2,c:cc.Vec2,d:cc.Vec2): any{
         /**1解线性方程组,求线段交点.**/
@@ -189,7 +310,44 @@ export default class GamePanel extends BaseUI {
         let result = Math.atan(tan) / (Math.PI / 180)
         result = Math.round(result)
         console.log('angle is',result)
-        return result
+        if(p1.x > p2.x) {
+            if(p1.y < p2.y) {
+                return result
+            }else {
+                return 180 - result
+            }
+        }else {
+            if(p1.y < p2.y) {
+                return 180 - result
+            }else {
+                return result
+            }
+        }
+    }
+
+    NumberOfCrossingPoint(): number {
+        let num: number = 0
+        if(this.figureType == 0) {
+            for (const key in this.pointArr) {
+               for (const index in this.figurePointArr1) {
+                    let space = Math.sqrt(Math.pow((this.pointArr[key].x - this.figurePointArr1[index].x), 2) + Math.pow((this.pointArr[key].y - this.figurePointArr1[index].y), 2))
+                    if(space < 20) {
+                        num++
+                    }
+               }
+            }
+        }else {
+            for (const key in this.pointArr) {
+                for (const index in this.figurePointArr2) {
+                     let space = Math.sqrt(Math.pow((this.pointArr[key].x - this.figurePointArr2[index].x), 2) + Math.pow((this.pointArr[key].y - this.figurePointArr2[index].y), 2))
+                     if(space < 20) {
+                         num++
+                     }
+                }
+             }
+        }
+
+        return num
     }
 
     getPoint(p1:cc.Vec2, p2:cc.Vec2) {
@@ -321,6 +479,13 @@ export default class GamePanel extends BaseUI {
                 this.changeState(this.progressNode.getChildByName('line1'), 3, false)
                 this.changeState(this.progressNode.getChildByName('line2'), 3, false)
                 break
+            case 4: 
+                this.changeState(this.progressNode.getChildByName('circle1'), 3, true)
+                this.changeState(this.progressNode.getChildByName('circle2'), 3, true)
+                this.changeState(this.progressNode.getChildByName('circle3'), 3, true)
+                this.changeState(this.progressNode.getChildByName('line1'), 3, false)
+                this.changeState(this.progressNode.getChildByName('line2'), 3, false)
+                break
             default:
                 break
         }
@@ -382,7 +547,9 @@ export default class GamePanel extends BaseUI {
     }
 
     onDestroy() {
-       
+       for (const key in this.idArr) {
+           clearTimeout(this.idArr[key])
+       }
     }
 
     onShow() {

@@ -156,7 +156,10 @@ export default class TeacherPanel extends BaseUI {
         }
     }
 
-  
+    sortNumber(a,b)
+    {
+        return a - b
+    }
 
   
     //上传课件按钮
@@ -166,7 +169,7 @@ export default class TeacherPanel extends BaseUI {
             UIHelp.showTip('未编辑完题目，请勾选完提交')
             return
         }
-
+        this.figureLevel.sort(this.sortNumber)
         DaAnData.getInstance().figureLevel = this.figureLevel
         DaAnData.getInstance().figureType = this.figureType
         console.log(DaAnData.getInstance().figureType)
