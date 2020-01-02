@@ -135,6 +135,12 @@ export default class GamePanel extends BaseUI {
                     }
                     let id1 = setTimeout(() => {
                         if(this.isSuccess(num)) {
+                            this.spine.setAnimation(0, 'right', false)
+                            this.spine.setCompleteListener(trackEntry=>{
+                                if(trackEntry.animation.name == 'right') {
+                                    this.spine.setAnimation(0, 'idle', true)
+                                }
+                            })
                             if(this.levelNum == this.figureLevel.length - 1) {
                                 this.progress(this.levelNum+2)
                                 if(this.figureLevel.length == 1) {
@@ -147,6 +153,13 @@ export default class GamePanel extends BaseUI {
                             }
                             
                         }else {
+                            this.spine.setAnimation(0, 'wrong', false)
+                            this.spine.setCompleteListener(trackEntry=>{
+                                if(trackEntry.animation.name == 'wrong') {
+                                    this.spine.setAnimation(0, 'idle', true)
+                                }
+                            })
+                            this.mask.active = false
                             UIHelp.showTip('再仔细观察一下，加油～')
                             this.reset()
                         }
