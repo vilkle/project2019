@@ -187,7 +187,7 @@ export default class TeacherPanel extends BaseUI {
             if (!err) {
                 let res = response;
                 if (Array.isArray(res.data)) {
-                    
+                    console.error('There is a error on getNet.')
                     return;
                 }
                 let content = JSON.parse(res.data.courseware_content);

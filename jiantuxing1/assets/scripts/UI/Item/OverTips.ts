@@ -97,14 +97,15 @@ export class OverTips extends BaseUI {
         }else {
             this.button.active = false
         }
+
         if(btnCallback) {
             this.btnCallback = btnCallback
-            this.id = setTimeout(() => {
-                UIManager.getInstance().closeUI(OverTips)
-                btnCallback()
-                clearTimeout(this.id)
-                this.id = null
-            }, 9000)
+            // this.id = setTimeout(() => {
+            //     UIManager.getInstance().closeUI(OverTips)
+            //     btnCallback()
+            //     clearTimeout(this.id)
+            //     this.id = null
+            // }, 9000)
         }
         switch (type) {
             case 0:
@@ -139,7 +140,7 @@ export class OverTips extends BaseUI {
     }
 
     delayClose(): void {
-        this.scheduleOnce(function () {  }.bind(this), 0);
+        //this.scheduleOnce(function () {  }.bind(this), 0);
     }
 
     onClickClose(event?, customEventData?): void {
@@ -176,7 +177,7 @@ export class OverTips extends BaseUI {
                     this.endInAnimation = false;
                 });
                 AudioManager.getInstance().playSound("sfx_geupgrd", false, 1);
-                AudioManager.getInstance().playSound('“你真棒！等等还没做完的同学吧~', false)
+                //AudioManager.getInstance().playSound('“你真棒！等等还没做完的同学吧~', false)
             }
         }.bind(this));
     }
