@@ -46,7 +46,7 @@ export default class GamePanel extends BaseUI {
     private levelNum: number = 0
     private isOver: number = 4
     private eventvalue = {
-        isResult: 0,
+        isResult: 1,
         isLevel: 1,
         levelData: [
            
@@ -115,8 +115,8 @@ export default class GamePanel extends BaseUI {
         this.bg.on(cc.Node.EventType.TOUCH_END, (e)=>{
             let endPos = this.node.convertToNodeSpaceAR(e.currentTouch._point)
             let isClose: boolean = this.getPoint(this.startPos, endPos)
-            if(this.pointArr.length >= 2) {
-                let num = this.NumberOfCrossingPoint()
+            let num = this.NumberOfCrossingPoint()
+            if(this.pointArr.length >= 2 && !this.pointArr[0].equals(this.pointArr[1])) {
                 let angle =this.getAngle(this.pointArr[0], this.pointArr[1])
                 this.mask.active = true
                 let world: cc.Vec2 = cc.v2(0, 0)
@@ -153,6 +153,7 @@ export default class GamePanel extends BaseUI {
                             this.isOver = 2
                             this.eventvalue.result = 2
                             this.eventvalue.levelData[this.levelNum].result = 1
+                            this.eventvalue.levelData[this.levelNum].subject = true
                             let id2 = setTimeout(() => {
                                 if(this.levelNum == this.figureLevel.length - 1) {
                                     DaAnData.getInstance().submitEnable = true
@@ -182,6 +183,7 @@ export default class GamePanel extends BaseUI {
                             this.isOver = 2
                             this.eventvalue.result = 2
                             this.eventvalue.levelData[this.levelNum].result = 2
+                            this.eventvalue.levelData[this.levelNum].subject = false
                             AudioManager.getInstance().playSound('sfx_wrong', false)
                             this.spine.setAnimation(0, 'wrong', false)
                             this.spine.setCompleteListener(trackEntry=>{
@@ -214,8 +216,8 @@ export default class GamePanel extends BaseUI {
         this.bg.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
             let endPos = this.rememberPos
             let isClose: boolean = this.getPoint(this.startPos, endPos)
-            if(this.pointArr.length >= 2) {
-                let num = this.NumberOfCrossingPoint()
+            let num = this.NumberOfCrossingPoint()
+            if(this.pointArr.length >= 2 && !this.pointArr[0].equals(this.pointArr[1])) {
                 let angle =this.getAngle(this.pointArr[0], this.pointArr[1])
                 this.mask.active = true
                 let world: cc.Vec2 = cc.v2(0, 0)
@@ -252,6 +254,7 @@ export default class GamePanel extends BaseUI {
                             this.isOver = 2
                             this.eventvalue.result = 2
                             this.eventvalue.levelData[this.levelNum].result = 1
+                            this.eventvalue.levelData[this.levelNum].subject = true
                             let id2 = setTimeout(() => {
                                 if(this.levelNum == this.figureLevel.length - 1) {
                                     this.progress(this.levelNum+2)
@@ -281,6 +284,7 @@ export default class GamePanel extends BaseUI {
                             this.isOver = 2
                             this.eventvalue.result = 2
                             this.eventvalue.levelData[this.levelNum].result = 2
+                            this.eventvalue.levelData[this.levelNum].subject = false
                             AudioManager.getInstance().playSound('sfx_wrong')
                             this.spine.setAnimation(0, 'wrong', false)
                             this.spine.setCompleteListener(trackEntry=>{
@@ -762,8 +766,8 @@ export default class GamePanel extends BaseUI {
     addData(len: number) {
         for(let i = 0; i < len; ++i) {
             this.eventvalue.levelData.push({
-                answer: null,
-                subject: null,
+                answer: true,
+                subject: false,
                 result: 4
             })
         }
