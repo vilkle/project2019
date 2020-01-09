@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学而思在线 - iPad互动课件</title>
+    <style>
+        html,body,#app {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>  
+    <script src="./webview-bridge.js"></script>
+    <script src="./courseware-v1.0.0-alpha.js"></script>
+    <script>
+        // 初始化
+        function bridgeHandler (bridge) {
+            clearTimeout(timer)
+            console.log('bridge ready.')
+            var cw = courseware({
+                el: '#app',
+                url: './index.html' + location.search
+            })
+            if (bridge && bridge.registerHandler) {
+                bridge.registerHandler('send', function(data, responseCallback) {
+                    cw.send(data.type, data.data)
+                    responseCallback(data)
+                })
+            }
+            // if (bridge && bridge.registerHandler) {
+            //     bridge.registerHandler('alert', function(data, responseCallback) {
+            //         alert(JSON.stringify(data))
+            //         responseCallback(data)
+            //     })
+            // }
+            cw.on('*', function (data) {
+                console.log('on *', data)
+                if (bridge && bridge.callHandler) {
+                    bridge.callHandler(data.type, data, function(response) {
+                        console.log('JS调用OC的返回值-', data.type, ':', response)
+                    })
+                }
+            })
+        }
+
+        // ipad
+        if (navigator.userAgent.toLocaleLowerCase().indexOf('ipad') > -1) {
+            var timer = setTimeout(function () {
+                alert('bridge 初始化失败！')
+            }, 1000)
+            bridgeReady(bridgeHandler)
+        // 普通示例
+        } else {
+            bridgeHandler()
+        }
+    </script>
+</body>
+</html>
