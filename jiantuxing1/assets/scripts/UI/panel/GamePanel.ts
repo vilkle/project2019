@@ -8,6 +8,7 @@ import UploadAndReturnPanel from "./UploadAndReturnPanel";
 import { UIHelp } from "../../Utils/UIHelp";
 import { AudioManager } from "../../Manager/AudioManager";
 import { OverTips } from "../Item/OverTips";
+import { isString } from "../../collections/util";
 
 const { ccclass, property } = cc._decorator;
 
@@ -35,11 +36,16 @@ export default class GamePanel extends BaseUI {
     private mask: cc.Node = null
     @property(cc.Node)
     private scissor: cc.Node = null
+    @property(cc.Node)
+    private bearBox: cc.Node = null
     private figureType: number = null
     private figureLevel: number[] = null
     private pointArr: cc.Vec2[] = []
     private figurePointArr1: cc.Vec2[] = [cc.v2(-109, 20), cc.v2(349, 20), cc.v2(70, -288), cc.v2(-389, -288)]
     private figurePointArr2: cc.Vec2[] = [cc.v2(-20, 80), cc.v2(206, -84), cc.v2(120, -350), cc.v2(-160, -350), cc.v2(-247, -84)]
+    private figurePointArr: cc.Vec2[] = []
+    private pointArr1: cc.Vec2[] =[]
+    private pointArr2: cc.Vec2[] =[]
     private startPos: cc.Vec2 = null
     private rememberPos: cc.Vec2 = null
     private idArr:number[] = []
@@ -73,11 +79,14 @@ export default class GamePanel extends BaseUI {
                 this.eventvalue.levelData[this.levelNum].result = 2;
             }
         })
-       
+        this.bearBox.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            this.playTitle(this.figureLevel[this.levelNum])
+        })
         
     }
 
     start() {
+        this.playTitle(this.figureLevel[this.levelNum])
         this.addListener()
     }
 
@@ -86,11 +95,13 @@ export default class GamePanel extends BaseUI {
         if(this.figureType == 0) {
             this.m1.getChildByName('figure').getComponent(cc.Sprite).spriteFrame = this.quadrangle
             this.m2.getChildByName('figure').getComponent(cc.Sprite).spriteFrame = this.quadrangle
+            this.figurePointArr = this.figurePointArr1
         }else if(this.figureType == 1) {
             this.m1.getChildByName('figure').getComponent(cc.Sprite).spriteFrame = this.sexangle
             this.m2.getChildByName('figure').getComponent(cc.Sprite).spriteFrame = this.sexangle
             this.m1.setPosition(cc.v2(this.m1.x, this.m1.y + 60))
             this.m2.setPosition(cc.v2(this.m2.x, this.m2.y + 60))
+            this.figurePointArr = this.figurePointArr2
         }
         let totalNum = this.figureLevel.length
         this.initProgress(totalNum)
@@ -118,6 +129,7 @@ export default class GamePanel extends BaseUI {
             let num = this.NumberOfCrossingPoint()
             if(this.pointArr.length >= 2 && !this.pointArr[0].equals(this.pointArr[1])) {
                 let angle =this.getAngle(this.pointArr[0], this.pointArr[1])
+                this.pointArrBuilder(this.figurePointArr, this.pointArr[0], this.pointArr[1], angle)
                 this.mask.active = true
                 let world: cc.Vec2 = cc.v2(0, 0)
                 if(this.figureType == 0) {
@@ -140,9 +152,10 @@ export default class GamePanel extends BaseUI {
                 let lastPos2 = this.m2.convertToNodeSpaceAR(world)
                 figure2.setPosition(lastPos2)
                 let id = setTimeout(() => {
-                    this.scissorAction(this.pointArr[0], this.pointArr[1], angle)
+                    let isRight: boolean = this.isSuccess(num, isClose)
+                    this.scissorAction(this.pointArr[0], this.pointArr[1], angle, isRight)
                     let id1 = setTimeout(() => {
-                        if(this.isSuccess(num, isClose)) {
+                        if(isRight) {
                             AudioManager.getInstance().playSound('sfx_right', false)
                             this.spine.setAnimation(0, 'right', false)
                             this.spine.setCompleteListener(trackEntry=>{
@@ -192,6 +205,7 @@ export default class GamePanel extends BaseUI {
                                 }
                             })
                             this.mask.active = false
+                            AudioManager.getInstance().playSound('5不太对哦～再重新试试吧')
                             UIHelp.showTip('再仔细观察一下，加油～')
                             this.reset()
                         }
@@ -219,6 +233,7 @@ export default class GamePanel extends BaseUI {
             let num = this.NumberOfCrossingPoint()
             if(this.pointArr.length >= 2 && !this.pointArr[0].equals(this.pointArr[1])) {
                 let angle =this.getAngle(this.pointArr[0], this.pointArr[1])
+                this.pointArrBuilder(this.figurePointArr, this.pointArr[0], this.pointArr[1], angle)
                 this.mask.active = true
                 let world: cc.Vec2 = cc.v2(0, 0)
                 if(this.figureType == 0) {
@@ -241,9 +256,10 @@ export default class GamePanel extends BaseUI {
                 let lastPos2 = this.m2.convertToNodeSpaceAR(world)
                 figure2.setPosition(lastPos2)
                 let id = setTimeout(() => {
-                    this.scissorAction(this.pointArr[0], this.pointArr[1], angle)
+                    let isRight: boolean = this.isSuccess(num, isClose)
+                    this.scissorAction(this.pointArr[0], this.pointArr[1], angle, isRight)
                     let id1 = setTimeout(() => {
-                        if(this.isSuccess(num, isClose)) {
+                        if(isRight) {
                             AudioManager.getInstance().playSound('sfx_right', false)
                             this.spine.setAnimation(0, 'right', false)
                             this.spine.setCompleteListener(trackEntry=>{
@@ -279,7 +295,6 @@ export default class GamePanel extends BaseUI {
                                 this.idArr.splice(index2, 1)
                             }, 1000);
                             this.idArr.push(id2)
-                            
                         }else {
                             this.isOver = 2
                             this.eventvalue.result = 2
@@ -293,6 +308,7 @@ export default class GamePanel extends BaseUI {
                                 }
                             })
                             this.mask.active = false
+                            AudioManager.getInstance().playSound('5不太对哦～再重新试试吧')
                             UIHelp.showTip('再仔细观察一下，加油～')
                             this.reset()
                         }
@@ -330,7 +346,7 @@ export default class GamePanel extends BaseUI {
         this.bubble.runAction(cc.scaleTo(0.3, 1,1))
     }
 
-    scissorAction(p1: cc.Vec2, p2: cc.Vec2, angle: number) {
+    scissorAction(p1: cc.Vec2, p2: cc.Vec2, angle: number, isRight:boolean) {
         let start: cc.Vec2 = cc.v2(0, 0)
         let end: cc.Vec2 = cc.v2(0, 0)
         let began: cc.Vec2 = cc.v2(0, 0)
@@ -374,27 +390,87 @@ export default class GamePanel extends BaseUI {
             this.scissor.getComponent(sp.Skeleton).setAnimation(1, 'idle', true)
         })
         let fun3 = cc.callFunc(()=>{
-            let pos1 = this.m1.getPosition()
-            let pos2 = this.m2.getPosition()
-            if(angle < 45 || angle > 135) {
-                if(angle< 45) {
-                    this.m1.runAction(cc.moveTo(1, cc.v2(pos1.x, pos1.y - 50)))
-                    this.m2.runAction(cc.moveTo(1, cc.v2(pos2.x, pos2.y + 50)))
-                }else if(angle > 135) {
-                    this.m1.runAction(cc.moveTo(1, cc.v2(pos2.x, pos2.y + 50)))
-                    this.m2.runAction(cc.moveTo(1, cc.v2(pos1.x, pos1.y - 50)))
-                }
-            }else {
-                this.m1.runAction(cc.moveTo(1, cc.v2(pos1.x - 50, pos1.y)))
-                this.m2.runAction(cc.moveTo(1, cc.v2(pos2.x + 50, pos2.y)))
-            }
+            this.dividAction(angle, isRight)
         })
-
 
         let spawn1 = cc.spawn(rotate1, move1)
         let spawn2 = cc.spawn(rotate2, move4)
         let seq = cc.sequence(spawn1, fun1, move2, fun3, move3, fun2, spawn2,)
         this.scissor.runAction(seq)
+    }
+
+    dividAction(angle: number, isRight: boolean) {
+        let pos1 = this.m1.getPosition()
+        let pos2 = this.m2.getPosition()
+        let func = cc.callFunc(()=>{
+            this.breathAction(this.pointArr1, isRight)
+            this.breathAction(this.pointArr2, isRight)
+        })
+        if(angle < 45 || angle > 135) {
+            if(angle< 45) {
+                this.m1.runAction(cc.sequence(cc.moveTo(1, cc.v2(pos1.x, pos1.y - 50)), func))
+                this.m2.runAction(cc.moveTo(1, cc.v2(pos2.x, pos2.y + 50)))
+            }else if(angle > 135) {
+                this.m1.runAction(cc.sequence(cc.moveTo(1, cc.v2(pos2.x, pos2.y + 50)), func))
+                this.m2.runAction(cc.moveTo(1, cc.v2(pos1.x, pos1.y - 50)))
+            }
+        }else {
+            this.m1.runAction(cc.sequence(cc.moveTo(1, cc.v2(pos1.x - 50, pos1.y)), func))
+            this.m2.runAction(cc.moveTo(1, cc.v2(pos2.x + 50, pos2.y)))
+        }
+    }
+
+    breathAction(pointArr: cc.Vec2[], isRight: boolean) {
+        this.gc.clear()
+        this.gc.lineWidth = 20
+        this.gc.moveTo(pointArr[0].x, pointArr[0].y)
+        if(isRight) {
+            this.gc.strokeColor.fromHEX('#9eff14')
+        }else {
+            this.gc.strokeColor.fromHEX('#ff6278')
+        }
+        for(let i = 0; i < pointArr.length; ++i) {
+            if(i == 0) {
+                this.gc.moveTo(pointArr[0].x, pointArr[0].y)
+            }else {
+                this.gc.lineTo(pointArr[i].x, pointArr[i].y)
+            }
+        }
+        this.gc.lineTo(pointArr[0].x, pointArr[0].y)
+        this.gc.close()
+        this.gc.stroke()
+        let fadein = cc.fadeIn(0.2)
+        let fadeout = cc.fadeOut(0.2)
+        let func = cc.callFunc(()=>{
+            this.gc.clear()
+        })
+        let seq = cc.sequence(fadeout, fadein, fadeout, fadein, fadeout, fadein, func)
+        this.gc.node.runAction(seq)
+    }
+
+    pointArrBuilder(arr: cc.Vec2[], p1: cc.Vec2, p2: cc.Vec2, angle: number) {
+        this.pointArr1 = []
+        this.pointArr2 = []
+        for(let i = 0; i < arr.length; ++i) {
+            if(arr[i].equals(p1) || arr[i].equals(p2)) {
+                continue
+            }
+            if(angle == 0) {
+                if(arr[i].y > p1.y) {
+                    this.pointArr1.push(arr[i])
+                }else {
+                    this.pointArr2.push(arr[i])
+                }
+            }else {
+                let tempx = (p1.x - p2.x) / (p1.y - p2.y) * (arr[i].y - p2.y) + p2.x
+                if(tempx > arr[i].x) {
+                    this.pointArr1.push(arr[i])
+                }else {
+                    this.pointArr2.push(arr[i])
+                }
+            }
+        }
+        console.log(this.pointArr1, this.pointArr2)
     }
 
     isSuccess(pointNum: number, isClose: boolean): boolean {
@@ -441,25 +517,49 @@ export default class GamePanel extends BaseUI {
         this.bubbleAction()
         this.figureAction()
         this.mask.active = false
+        this.playTitle(this.figureLevel[this.levelNum])
+    }
+
+    playTitle(levelNum: number) {
+        AudioManager.getInstance().stopAll()
+        switch(levelNum){
+            case 0:
+                AudioManager.getInstance().playSound('1试着剪一刀', false, 1, null, ()=>{AudioManager.getInstance().playSound('1剪掉一个四边形', false, 1, null, ()=>{AudioManager.getInstance().playSound('1使剩下的部分是一个三角形')})})
+                break
+            case 1:
+                AudioManager.getInstance().playSound('1试着剪一刀', false, 1, null, ()=>{AudioManager.getInstance().playSound('1剪掉一个四边形', false, 1, null, ()=>{AudioManager.getInstance().playSound('2使剩下的部分是一个四边形')})})
+                break
+            case 2:
+                AudioManager.getInstance().playSound('1试着剪一刀', false, 1, null, ()=>{AudioManager.getInstance().playSound('3将纸剪成一个四边形和一个三角形')})
+                break
+            case 3:
+                AudioManager.getInstance().playSound('1试着剪一刀', false, 1, null, ()=>{AudioManager.getInstance().playSound('4将纸剪成一个四边形和一个五角形')})
+                break
+            case 4:
+                AudioManager.getInstance().playSound('1试着剪一刀', false, 1, null, ()=>{})
+                break
+            default:
+                break
+        }
     }
 
     getTitle(index: number): string {
         let str: string = ''
         switch(index){
             case 0:
-                str = '试试用一刀剪成一个四边形和一个三角形'
+                str = '试着剪一刀将纸剪成一个四边形和一个三角形'
                 break
             case 1:
-                str = '试试用一刀剪成两个四边形'
+                str = '试着剪一刀将纸剪成两个四边形'
                 break
             case 2:
-                str = '试试用一刀剪成一个四边形和一个三角形'
+                str = '试着剪一刀将纸剪成一个四边形和一个三角形'
                 break
             case 3:
-                str = '试试用一刀剪成一个四边形和一个五边形'
+                str = '试着剪一刀将纸剪成一个四边形和一个五边形'
                 break
             case 4:
-                str = '试试用一刀剪成两个四边形'
+                str = '试着剪一刀将纸剪成两个四边形'
                 break
             default:
                 break
