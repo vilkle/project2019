@@ -556,7 +556,7 @@ export default class GamePanel extends BaseUI {
         }
 
         if(angle < 45 || angle > 135) {
-            if(totaly1 > totaly2) {
+            if(angle>90) {
                 for(let i = 0; i < this.pointArr1.length; ++i) {
                     this.pointArr1[i].y += 50
                 }
