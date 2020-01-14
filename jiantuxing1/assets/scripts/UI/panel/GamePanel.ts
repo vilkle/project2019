@@ -30,6 +30,8 @@ export default class GamePanel extends BaseUI {
     private sexangle: cc.SpriteFrame = null
     @property(cc.Graphics)
     private gc: cc.Graphics = null
+    @property(cc.Graphics)
+    private gl: cc.Graphics = null
     @property(cc.Node)
     private progressNode: cc.Node = null
     @property(cc.Node)
@@ -129,6 +131,7 @@ export default class GamePanel extends BaseUI {
             let num = this.NumberOfCrossingPoint()
             if(this.pointArr.length >= 2 && !this.pointArr[0].equals(this.pointArr[1])) {
                 let angle =this.getAngle(this.pointArr[0], this.pointArr[1])
+                console.log('---angle',angle)
                 this.pointArrBuilder(this.figurePointArr, this.pointArr[0], this.pointArr[1], angle)
                 this.mask.active = true
                 let world: cc.Vec2 = cc.v2(0, 0)
@@ -213,7 +216,7 @@ export default class GamePanel extends BaseUI {
                         clearTimeout(id1)
                         let index1 = this.idArr.indexOf(id1)
                         this.idArr.splice(index1, 1)
-                    }, 3800);
+                    }, 4000);
                     this.idArr.push(id1)
                  
                     clearTimeout(id)
@@ -316,7 +319,7 @@ export default class GamePanel extends BaseUI {
                         clearTimeout(id1)
                         let index1 = this.idArr.indexOf(id1)
                         this.idArr.splice(index1, 1)
-                    }, 3800);
+                    }, 4000);
                     this.idArr.push(id1)
                  
                     clearTimeout(id)
@@ -402,75 +405,189 @@ export default class GamePanel extends BaseUI {
     dividAction(angle: number, isRight: boolean) {
         let pos1 = this.m1.getPosition()
         let pos2 = this.m2.getPosition()
+
+        if(angle < 45 || angle > 135) {
+            if(angle< 45) {
+                pos1 = cc.v2(pos1.x, pos1.y - 50)
+                pos2 = cc.v2(pos2.x, pos2.y + 50)
+            }else if(angle > 135) {
+                pos1 = cc.v2(pos1.x, pos1.y + 50)
+                pos2 = cc.v2(pos2.x, pos2.y - 50)
+            }
+        }else {
+            pos1 = cc.v2(pos1.x - 50, pos1.y)
+            pos2 = cc.v2(pos2.x + 50, pos2.y)
+        }
         let func = cc.callFunc(()=>{
             this.breathAction(this.pointArr1, isRight)
             this.breathAction(this.pointArr2, isRight)
         })
-        if(angle < 45 || angle > 135) {
-            if(angle< 45) {
-                this.m1.runAction(cc.sequence(cc.moveTo(1, cc.v2(pos1.x, pos1.y - 50)), func))
-                this.m2.runAction(cc.moveTo(1, cc.v2(pos2.x, pos2.y + 50)))
-            }else if(angle > 135) {
-                this.m1.runAction(cc.sequence(cc.moveTo(1, cc.v2(pos2.x, pos2.y + 50)), func))
-                this.m2.runAction(cc.moveTo(1, cc.v2(pos1.x, pos1.y - 50)))
-            }
-        }else {
-            this.m1.runAction(cc.sequence(cc.moveTo(1, cc.v2(pos1.x - 50, pos1.y)), func))
-            this.m2.runAction(cc.moveTo(1, cc.v2(pos2.x + 50, pos2.y)))
-        }
+        this.m1.runAction(cc.sequence(cc.moveTo(1, pos1), func))
+        this.m2.runAction(cc.moveTo(1, pos2))
     }
 
     breathAction(pointArr: cc.Vec2[], isRight: boolean) {
-        this.gc.clear()
-        this.gc.lineWidth = 20
-        this.gc.moveTo(pointArr[0].x, pointArr[0].y)
+        this.gl.lineWidth = 20
+        this.gl.moveTo(pointArr[0].x, pointArr[0].y)
         if(isRight) {
-            this.gc.strokeColor.fromHEX('#9eff14')
+            this.gl.strokeColor.fromHEX('#9eff14')
         }else {
-            this.gc.strokeColor.fromHEX('#ff6278')
+            this.gl.strokeColor.fromHEX('#ff6278')
         }
+        let canvas = cc.director.getScene().getChildByName('Canvas')
+        let width = canvas.width / 2
+        let height = canvas.height / 2
         for(let i = 0; i < pointArr.length; ++i) {
             if(i == 0) {
-                this.gc.moveTo(pointArr[0].x, pointArr[0].y)
+                this.gl.moveTo(pointArr[i].x + width, pointArr[i].y+ height)
             }else {
-                this.gc.lineTo(pointArr[i].x, pointArr[i].y)
+                this.gl.lineTo(pointArr[i].x + width, pointArr[i].y + height)
             }
         }
-        this.gc.lineTo(pointArr[0].x, pointArr[0].y)
-        this.gc.close()
-        this.gc.stroke()
-        let fadein = cc.fadeIn(0.2)
-        let fadeout = cc.fadeOut(0.2)
-        let func = cc.callFunc(()=>{
-            this.gc.clear()
-        })
-        let seq = cc.sequence(fadeout, fadein, fadeout, fadein, fadeout, fadein, func)
-        this.gc.node.runAction(seq)
+        this.gl.lineTo(pointArr[0].x + width, pointArr[0].y + height)
+        
+        this.gl.close()
+        this.gl.stroke()
+        // let fadein = cc.fadeIn(0.2)
+        // let fadeout = cc.fadeOut(0.2)
+        // let func = cc.callFunc(()=>{
+        //     this.gl.clear()
+        // })
+        // let seq = cc.sequence(fadeout, fadein, fadeout, fadein, fadeout, fadein, func)
+        // this.gl.node.runAction(seq)
     }
 
     pointArrBuilder(arr: cc.Vec2[], p1: cc.Vec2, p2: cc.Vec2, angle: number) {
         this.pointArr1 = []
         this.pointArr2 = []
+        if(p1.x > p2.x) {
+            let temp = p1
+            p1 = p2
+            p2 = temp
+        }
+        let bottom1 = true
+        let bottom2 = true
+        let arr11 = []
+        let arr22 = []
         for(let i = 0; i < arr.length; ++i) {
             if(arr[i].equals(p1) || arr[i].equals(p2)) {
                 continue
             }
-            if(angle == 0) {
+            let pos = cc.v2(arr[i].x, arr[i].y)
+            if(angle == 180) {
                 if(arr[i].y > p1.y) {
-                    this.pointArr1.push(arr[i])
+                    if(this.pointArr2.length > 0) {
+                        bottom2 = false
+                    }
+                    if(bottom1) {
+                        this.pointArr1.push(pos)
+                    }else {
+                        arr11.push(pos)
+                    }
                 }else {
-                    this.pointArr2.push(arr[i])
+                    if(this.pointArr1.length > 0) {
+                        bottom1 = false
+                    }
+                    if(bottom2) {
+                        this.pointArr2.push(pos)
+                    }else {
+                        arr22.push(pos)
+                    }
                 }
             }else {
                 let tempx = (p1.x - p2.x) / (p1.y - p2.y) * (arr[i].y - p2.y) + p2.x
                 if(tempx > arr[i].x) {
-                    this.pointArr1.push(arr[i])
+                    if(this.pointArr2.length > 0) {
+                        bottom2 = false
+                    }
+                    if(bottom1) {
+                        this.pointArr1.push(pos)
+                    }else {
+                        arr11.push(pos)
+                    }
                 }else {
-                    this.pointArr2.push(arr[i])
+                    if(this.pointArr1.length > 0) {
+                        bottom1 = false
+                    }
+                    if(bottom2) {
+                        this.pointArr2.push(pos)
+                    }else {
+                        arr22.push(pos)
+                    }
                 }
             }
         }
-        console.log(this.pointArr1, this.pointArr2)
+        this.pointArr1 = [...arr11,...this.pointArr1]
+        this.pointArr2 = [...arr22,...this.pointArr2]
+        let a = cc.v2(p1.x, p1.y)
+        let b = cc.v2(p2.x, p2.y)
+        let c = cc.v2(p1.x, p1.y)
+        let d = cc.v2(p2.x, p2.y)
+        let distance1 = Math.sqrt(Math.pow((p1.x - this.pointArr1[this.pointArr1.length-1].x), 2) + Math.pow((p1.y - this.pointArr1[this.pointArr1.length-1].y), 2))
+        let distance2 = Math.sqrt(Math.pow((p2.x - this.pointArr1[this.pointArr1.length-1].x), 2) + Math.pow((p2.y - this.pointArr1[this.pointArr1.length-1].y), 2))
+        if(distance1 < distance2) {
+            this.pointArr1.push(a)
+            this.pointArr1.push(b)
+        }else {
+            this.pointArr1.push(b)
+            this.pointArr1.push(a)
+        }
+        let distance3 = Math.sqrt(Math.pow((p1.x - this.pointArr2[this.pointArr2.length-1].x), 2) + Math.pow((p1.y - this.pointArr2[this.pointArr2.length-1].y), 2))
+        let distance4 = Math.sqrt(Math.pow((p2.x - this.pointArr2[this.pointArr2.length-1].x), 2) + Math.pow((p2.y - this.pointArr2[this.pointArr2.length-1].y), 2))
+        if(distance3 < distance4) {
+            this.pointArr2.push(c)
+            this.pointArr2.push(d)
+        }else {
+            this.pointArr2.push(d)
+            this.pointArr2.push(c)
+        }
+
+        let totalx1:number = 0
+        let totalx2:number = 0
+        let totaly1:number = 0
+        let totaly2:number = 0
+        for(let i = 0; i < this.pointArr1.length; ++i){
+            totalx1 += this.pointArr1[i].x
+            totaly1 += this.pointArr1[i].y
+        }
+        for(let i = 0; i < this.pointArr2.length; ++i) {
+            totalx2 += this.pointArr2[i].x
+            totaly2 += this.pointArr2[i].y
+        }
+
+        if(angle < 45 || angle > 135) {
+            if(totaly1 > totaly2) {
+                for(let i = 0; i < this.pointArr1.length; ++i) {
+                    this.pointArr1[i].y += 50
+                }
+                for(let i = 0; i < this.pointArr2.length; ++i) {
+                    this.pointArr2[i].y -= 50
+                }
+            }else {
+                for(let i = 0; i < this.pointArr1.length; ++i) {
+                    this.pointArr1[i].y -= 50
+                }
+                for(let i = 0; i < this.pointArr2.length; ++i) {
+                    this.pointArr2[i].y += 50
+                }
+            }
+        }else {
+            if(totalx1 > totalx2) {
+                for(let i = 0; i < this.pointArr1.length; ++i) {
+                    this.pointArr1[i].x += 50
+                }
+                for(let i = 0; i < this.pointArr2.length; ++i) {
+                    this.pointArr2[i].x -= 50
+                }
+            }else {
+                for(let i = 0; i < this.pointArr1.length; ++i) {
+                    this.pointArr1[i].x -= 50
+                }
+                for(let i = 0; i < this.pointArr2.length; ++i) {
+                    this.pointArr2[i].x += 50
+                }
+            }
+        }
     }
 
     isSuccess(pointNum: number, isClose: boolean): boolean {
@@ -497,7 +614,7 @@ export default class GamePanel extends BaseUI {
             pos = cc.v2(-20, 80)
         }
         this.gc.clear()
-        this.m1.setPosition(pos)
+        this.m1.setPosition(pos) 
         this.m2.setPosition(pos)
         this.m1.angle = 0
         this.m2.angle = 0
