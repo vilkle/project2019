@@ -177,7 +177,7 @@ export class OverTips extends BaseUI {
                     this.endInAnimation = false;
                 });
                 AudioManager.getInstance().playSound("sfx_geupgrd", false, 1);
-                //AudioManager.getInstance().playSound('“你真棒！等等还没做完的同学吧~', false)
+                AudioManager.getInstance().playSound('“你真棒！等等还没做完的同学吧~', false)
             }
         }.bind(this));
     }

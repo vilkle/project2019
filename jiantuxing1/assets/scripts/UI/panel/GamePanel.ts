@@ -210,9 +210,9 @@ export default class GamePanel extends BaseUI {
                                     })
                                     this.progress(this.levelNum+2)
                                     if(this.figureLevel.length == 1) {
-                                        UIHelp.showOverTip(2, '', '', ()=>{}, null, '挑战成功')
+                                        UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧~', '', ()=>{}, null, '挑战成功')
                                     }else {
-                                        UIHelp.showOverTip(2, '', '', ()=>{}, null, '闯关成功')
+                                        UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧~', '', ()=>{}, null, '闯关成功')
                                     }
                                 }else {
                                     UIHelp.showOverTip(1, '答对了', '下一关', ()=>{ this.levelNum++;this.nextLevel();})
@@ -241,7 +241,7 @@ export default class GamePanel extends BaseUI {
                             if(this.figureType == 1) {
                                 AudioManager.getInstance().stopAll()
                                 AudioManager.getInstance().playSound('5不太对哦～再重新试试吧')
-                                UIHelp.showTip('再仔细观察一下，加油～')
+                                UIHelp.showTip('不太对哦，再重新试试吧。')
                             }
                             this.reset()
                         }
@@ -250,7 +250,6 @@ export default class GamePanel extends BaseUI {
                         this.idArr.splice(index1, 1)
                     }, time);
                     this.idArr.push(id1)
-                 
                     clearTimeout(id)
                     let index = this.idArr.indexOf(id)
                     this.idArr.splice(index, 1)
@@ -341,9 +340,9 @@ export default class GamePanel extends BaseUI {
                                         eventValue: JSON.stringify(this.eventvalue)
                                     })
                                     if(this.figureLevel.length == 1) {
-                                        UIHelp.showOverTip(2, '', '', ()=>{}, null, '挑战成功')
+                                        UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧~', '', ()=>{}, null, '挑战成功')
                                     }else {
-                                        UIHelp.showOverTip(2, '', '', ()=>{}, null, '闯关成功')
+                                        UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧~', '', ()=>{}, null, '闯关成功')
                                     }
                                 }else {
                                     UIHelp.showOverTip(1, '答对了', '下一关', ()=>{ this.levelNum++;this.nextLevel();})
@@ -371,11 +370,10 @@ export default class GamePanel extends BaseUI {
                             if(this.figureType == 1) {
                                 AudioManager.getInstance().stopAll()
                                 AudioManager.getInstance().playSound('5不太对哦～再重新试试吧')
-                                UIHelp.showTip('再仔细观察一下，加油～')
+                                UIHelp.showTip('不太对哦，再重新试试吧。')
                             }
                             this.reset()
                         }
-
                         clearTimeout(id1)
                         let index1 = this.idArr.indexOf(id1)
                         this.idArr.splice(index1, 1)
@@ -882,7 +880,7 @@ export default class GamePanel extends BaseUI {
                 AudioManager.getInstance().playSound('1试着剪一刀', false, 1, null, ()=>{AudioManager.getInstance().playSound('4将纸剪成一个四边形和一个五角形')})
                 break
             case 4:
-                AudioManager.getInstance().playSound('试着剪一刀，将纸剪成两个四边形', false, 1, null, ()=>{})
+                AudioManager.getInstance().playSound('1试着剪一刀', false, 1, null, ()=>{AudioManager.getInstance().playSound('将纸剪成两个四边形')})
                 break
             default:
                 break
@@ -893,16 +891,16 @@ export default class GamePanel extends BaseUI {
         let str: string = ''
         switch(index){
             case 0:
-                str = '试着剪一刀，将纸剪成一个四边形和一个三角形。'
+                str = '试着剪一刀，剪掉一个四边形使剩下的部分是一个三角形。'
                 break
             case 1:
-                str = '试着剪一刀，将纸剪成两个四边形。'
+                str = '试着剪一刀，剪掉一个四边形使剩下的部分是一个四边形。'
                 break
             case 2:
                 str = '试着剪一刀，将纸剪成一个四边形和一个三角形。'
                 break
             case 3:
-                str = '试着剪一刀，将纸剪成一个四边形和一个五边形。'
+                str = '试着剪一刀，将纸剪成一个四边形和一个五角形。'
                 break
             case 4:
                 str = '试着剪一刀，将纸剪成两个四边形。'
