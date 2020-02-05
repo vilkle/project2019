@@ -44,6 +44,7 @@ export default class GamePanel extends BaseUI {
     private bearBox: cc.Node = null
     private figureType: number = null
     private figureLevel: number[] = null
+    private boardArr: cc.Vec2[] = [cc.v2(-555, 137), cc.v2(455,137), cc.v2(570, 35), cc.v2(570, -373), cc.v2(548, -405), cc.v2(-550, -405), cc.v2(-580, -375), cc.v2(-580, 108)]
     private pointArr: cc.Vec2[] = []
     private figurePointArr1: cc.Vec2[] = [cc.v2(-109, 20), cc.v2(349, 20), cc.v2(70, -288), cc.v2(-389, -288)]
     private figurePointArr2: cc.Vec2[] = [cc.v2(-20, 80), cc.v2(206, -84), cc.v2(120, -350), cc.v2(-160, -350), cc.v2(-247, -84)]
@@ -92,11 +93,12 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
-        this.playTitle(this.figureLevel[this.levelNum])
-        this.addListener()
+     
     }
 
     setPanel() {
+        this.playTitle(this.figureLevel[this.levelNum])
+        this.addListener()
         this.addData(this.figureLevel.length)
         if(this.figureType == 0) {
             this.m1.getChildByName('figure').getComponent(cc.Sprite).spriteFrame = this.quadrangle
@@ -123,6 +125,7 @@ export default class GamePanel extends BaseUI {
             }
             this.gc.node.opacity = 255
             this.startPos = this.node.convertToNodeSpaceAR(e.currentTouch._point)
+            console.log('-=-=-=-=-', this.pnpoly(this.boardArr, this.startPos))
         })
         this.bg.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
             let pos: cc.Vec2 = this.node.convertToNodeSpaceAR(e.currentTouch._point)
@@ -256,6 +259,11 @@ export default class GamePanel extends BaseUI {
                 }, 200);
                 this.idArr.push(id)
             }else {
+                if(this.pnpoly(this.figurePointArr, this.startPos)) {
+                    AudioManager.getInstance().stopAll()
+                    AudioManager.getInstance().playSound('5要从图形外侧开始剪哦~')
+                    this.shake()
+                }
                 this.gc.clear()
             }
             this.rememberPos = null
@@ -386,6 +394,11 @@ export default class GamePanel extends BaseUI {
                 }, 200);
                 this.idArr.push(id)
             }else {
+                if(this.pnpoly(this.figurePointArr, this.startPos)) {
+                    AudioManager.getInstance().stopAll()
+                    AudioManager.getInstance().playSound('5要从图形外侧开始剪哦~')
+                    this.shake()
+                }
                 this.gc.clear()
             }
             this.rememberPos = null
@@ -570,6 +583,20 @@ export default class GamePanel extends BaseUI {
         let seq1 = cc.sequence(delay ,func, delay, func1, delay, func, delay, func1, delay, func)
         //let seq = cc.sequence(fadeout, fadein, fadeout, fadein, fadeout, fadein, func)
         graphics.node.runAction(seq1)
+    }
+
+    shake() {
+        this.mask.active = true
+        let rotate1 = cc.moveBy(0.05, cc.v2(20, 0))
+        let rotate2 = cc.moveBy(0.05, cc.v2(-20, 0))
+        let rotate3 = cc.moveBy(0.1, cc.v2(40, 0))
+        let rotate4 = cc.moveBy(0.1, cc.v2(-40, 0))
+        let func = cc.callFunc(()=>{
+            this.mask.active = false
+        })
+        let seq = cc.sequence(rotate1, rotate4, rotate3, rotate4, rotate3, rotate4, rotate3, rotate2, func)
+        this.m1.runAction(seq)
+        this.m2.runAction(seq.clone())
     }
 
     pointArrBuilder(arr: cc.Vec2[], p1: cc.Vec2, p2: cc.Vec2, angle: number) {
@@ -1007,6 +1034,19 @@ export default class GamePanel extends BaseUI {
         return num
     }
 
+    pnpoly (arr: cc.Vec2[], point: cc.Vec2):boolean {
+        let i = 0
+        let j = 0
+        let c = false
+        let len = arr.length
+        for (i = 0, j = len-1; i < len; j = i++) {
+                if ( ( (arr[i].y>point.y) != (arr[j].y>point.y) ) && (point.x < (arr[j].x-arr[i].x) * (point.y-arr[i].y) / (arr[j].y-arr[i].y) + arr[i].x) ){
+                    c = !c
+                }
+            }
+        return c
+    }
+
     getPoint(p1:cc.Vec2, p2:cc.Vec2): boolean {
         this.pointArr = []
         if(this.figureType == 0) {
@@ -1088,7 +1128,9 @@ export default class GamePanel extends BaseUI {
             {
                 com.moveTo(pos.x,pos.y)
                 pos.addSelf(increment)
-                com.lineTo(pos.x,pos.y)
+                if(this.pnpoly(this.boardArr, cc.v2(pos.x - width, pos.y - height))) {
+                    com.lineTo(pos.x,pos.y)
+                }
                 com.stroke()
             }
             //留空
@@ -1103,7 +1145,9 @@ export default class GamePanel extends BaseUI {
         if(drawingLine)
         {
             com.moveTo(pos.x,pos.y)
-            com.lineTo(end.x,end.y)
+            if(this.pnpoly(this.boardArr, cc.v2(pos.x - width, pos.y - height))) {
+                com.lineTo(end.x,end.y)
+            }
             com.stroke()
         }
     }
@@ -1249,8 +1293,10 @@ export default class GamePanel extends BaseUI {
                 }
                 let content = JSON.parse(response_data.data.courseware_content);
                 if (content != null) {
-                    if(content.figureType) {
-                        this.figureType = content.figureType
+                    this.figureType = null
+                    this.figureType = content.figureType
+                    if(this.figureType != null) {
+                        
                    }else {
                        console.error('figureType wrong at getNet')
                    }

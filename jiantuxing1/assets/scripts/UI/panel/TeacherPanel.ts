@@ -187,7 +187,7 @@ export default class TeacherPanel extends BaseUI {
             if (!err) {
                 let res = response;
                 if (Array.isArray(res.data)) {
-                    console.error('There is a error on getNet.')
+                    //console.error('There is a error on getNet.')
                     return;
                 }
                 let content = JSON.parse(res.data.courseware_content);
@@ -196,8 +196,10 @@ export default class TeacherPanel extends BaseUI {
                     this.ClearNet();
                 } else {
                     if (content != null) {
-                       if(content.figureType) {
-                            this.figureType = content.figureType
+                        this.figureType = null
+                        this.figureType = content.figureType
+                        if(this.figureType != null) {
+                            
                        }else {
                            console.error('figureType wrong at getNet')
                        }
