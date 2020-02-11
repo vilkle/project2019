@@ -44,7 +44,7 @@ export default class GamePanel extends BaseUI {
     private bearBox: cc.Node = null
     private figureType: number = null
     private figureLevel: number[] = null
-    private boardArr: cc.Vec2[] = [cc.v2(-555, 137), cc.v2(455,137), cc.v2(570, 35), cc.v2(570, -373), cc.v2(548, -405), cc.v2(-550, -405), cc.v2(-580, -375), cc.v2(-580, 108)]
+    private boardArr: cc.Vec2[] = [cc.v2(-555, 110), cc.v2(455,110), cc.v2(570, 35), cc.v2(570, -373), cc.v2(548, -387), cc.v2(-550, -387), cc.v2(-580, -375), cc.v2(-580, 108)]
     private pointArr: cc.Vec2[] = []
     private figurePointArr1: cc.Vec2[] = [cc.v2(-109, 20), cc.v2(349, 20), cc.v2(70, -288), cc.v2(-389, -288)]
     private figurePointArr2: cc.Vec2[] = [cc.v2(-20, 80), cc.v2(206, -84), cc.v2(120, -350), cc.v2(-160, -350), cc.v2(-247, -84)]
@@ -89,7 +89,7 @@ export default class GamePanel extends BaseUI {
         this.bearBox.on(cc.Node.EventType.TOUCH_START, (e)=>{
             this.playTitle(this.figureLevel[this.levelNum])
         })
-        
+        DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
     }
 
     start() {
@@ -125,7 +125,6 @@ export default class GamePanel extends BaseUI {
             }
             this.gc.node.opacity = 255
             this.startPos = this.node.convertToNodeSpaceAR(e.currentTouch._point)
-            console.log('-=-=-=-=-', this.pnpoly(this.boardArr, this.startPos))
         })
         this.bg.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
             let pos: cc.Vec2 = this.node.convertToNodeSpaceAR(e.currentTouch._point)
@@ -164,7 +163,6 @@ export default class GamePanel extends BaseUI {
                 let id = setTimeout(() => {
                     let isRight: boolean = this.isSuccess(num, isClose)
                     let time: number = 3500
-                    let wrongSound: boolean = true
                     if(this.figureType ==0) {
                         if(this.pointArr1.length == 4 || this.pointArr2.length == 4) {
                             this.scissorAction(this.pointArr[0], this.pointArr[1], angle, isRight)
@@ -175,12 +173,33 @@ export default class GamePanel extends BaseUI {
                             }
                         }else {
                             this.gc.clear()
-                            wrongSound = false
                             time = 2500
                             AudioManager.getInstance().stopAll()
                             AudioManager.getInstance().playSound('要剪去一个四边形哦〜')
-                            this.breathAction(this.oriPointArr1, false, this.gl1)
-                            this.breathAction(this.oriPointArr2, false, this.gl2)
+                            let bool1 = false
+                            let bool2 = false
+                            let bool3 = false
+                            let bool4 = false
+                            for (const key in this.pointArr) {
+                                if (this.pointArr[key].equals(cc.v2(349, 20))) {
+                                    bool1 = true
+                                }else  if (this.pointArr[key].equals(cc.v2(-389, -288))) {
+                                    bool2 = true
+                                }else  if (this.pointArr[key].equals(cc.v2(-109, 20))) {
+                                    bool3 = true
+                                }else  if (this.pointArr[key].equals(cc.v2(70, -288))) {
+                                    bool4 = true
+                                }
+                            }
+                            if(bool1 && bool2) {
+                                this.breathAction(this.figurePointArr, false, this.gl1)
+                                this.breathAction([cc.v2(349, 20), cc.v2(-389, -288)], false, this.gl2)
+                            }else if(bool3 && bool4) {
+                                this.breathAction(this.figurePointArr, false, this.gl1)
+                                this.breathAction([cc.v2(-109, 20), cc.v2(70, -288)], false, this.gl2)
+                            }
+                            // this.breathAction(this.oriPointArr1, false, this.gl1)
+                            // this.breathAction(this.oriPointArr2, false, this.gl2)
                         }
                     }else if(this.figureType == 1) {
                         time = 3500
@@ -188,14 +207,6 @@ export default class GamePanel extends BaseUI {
                     }
                     let id1 = setTimeout(() => {
                         if(isRight) {
-                            //人物动画
-                            AudioManager.getInstance().playSound('sfx_right', false)
-                            this.spine.setAnimation(0, 'right', false)
-                            this.spine.setCompleteListener(trackEntry=>{
-                                if(trackEntry.animation.name == 'right') {
-                                    this.spine.setAnimation(0, 'idle', true)
-                                }
-                            })
                             this.isOver = 2
                             this.eventvalue.result = 2
                             this.eventvalue.levelData[this.levelNum].result = 1
@@ -218,7 +229,7 @@ export default class GamePanel extends BaseUI {
                                         UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧~', '', ()=>{}, null, '闯关成功')
                                     }
                                 }else {
-                                    UIHelp.showOverTip(1, '答对了', '下一关', ()=>{ this.levelNum++;this.nextLevel();})
+                                    UIHelp.showOverTip(1, '', '下一关', ()=>{ this.levelNum++;this.nextLevel();})
                                 }
                                 clearTimeout(id2)
                                 let index2 = this.idArr.indexOf(id2)
@@ -231,15 +242,6 @@ export default class GamePanel extends BaseUI {
                             this.eventvalue.result = 2
                             this.eventvalue.levelData[this.levelNum].result = 2
                             this.eventvalue.levelData[this.levelNum].subject = false
-                            if(wrongSound) {
-                                AudioManager.getInstance().playSound('sfx_wrong', false)
-                            }
-                            this.spine.setAnimation(0, 'wrong', false)
-                            this.spine.setCompleteListener(trackEntry=>{
-                                if(trackEntry.animation.name == 'wrong') {
-                                    this.spine.setAnimation(0, 'idle', true)
-                                }
-                            })
                             this.mask.active = false
                             if(this.figureType == 1) {
                                 AudioManager.getInstance().stopAll()
@@ -301,7 +303,6 @@ export default class GamePanel extends BaseUI {
                 let id = setTimeout(() => {
                     let isRight: boolean = this.isSuccess(num, isClose)
                     let time: number = 3500
-                    let wrongSound: boolean = true
                     if(this.figureType ==0) {
                         if(this.pointArr1.length == 4 || this.pointArr2.length == 4) {
                             this.scissorAction(this.pointArr[0], this.pointArr[1], angle, isRight)
@@ -312,12 +313,33 @@ export default class GamePanel extends BaseUI {
                             }
                         }else {
                             this.gc.clear()
-                            wrongSound = false
                             time = 2500
                             AudioManager.getInstance().stopAll()
                             AudioManager.getInstance().playSound('要剪去一个四边形哦〜')
-                            this.breathAction(this.oriPointArr1, false, this.gl1)
-                            this.breathAction(this.oriPointArr2, false, this.gl2)
+                            let bool1 = false
+                            let bool2 = false
+                            let bool3 = false
+                            let bool4 = false
+                            for (const key in this.pointArr) {
+                                if (this.pointArr[key].equals(cc.v2(349, 20))) {
+                                    bool1 = true
+                                }else  if (this.pointArr[key].equals(cc.v2(-389, -288))) {
+                                    bool2 = true
+                                }else  if (this.pointArr[key].equals(cc.v2(-109, 20))) {
+                                    bool3 = true
+                                }else  if (this.pointArr[key].equals(cc.v2(70, -288))) {
+                                    bool4 = true
+                                }
+                            }
+                            if(bool1 && bool2) {
+                                this.breathAction(this.figurePointArr, false, this.gl1)
+                                this.breathAction([cc.v2(349, 20), cc.v2(-389, -288)], false, this.gl2)
+                            }else if(bool3 && bool4) {
+                                this.breathAction(this.figurePointArr, false, this.gl1)
+                                this.breathAction([cc.v2(-109, 20), cc.v2(70, -288)], false, this.gl2)
+                            }
+                            // this.breathAction(this.oriPointArr1, false, this.gl1)
+                            // this.breathAction(this.oriPointArr2, false, this.gl2)
                         }
                     }else if(this.figureType == 1) {
                         time = 3500
@@ -325,13 +347,6 @@ export default class GamePanel extends BaseUI {
                     }
                     let id1 = setTimeout(() => {
                         if(isRight) {
-                            AudioManager.getInstance().playSound('sfx_right', false)
-                            this.spine.setAnimation(0, 'right', false)
-                            this.spine.setCompleteListener(trackEntry=>{
-                                if(trackEntry.animation.name == 'right') {
-                                    this.spine.setAnimation(0, 'idle', true)
-                                }
-                            })
                             this.isOver = 2
                             this.eventvalue.result = 2
                             this.eventvalue.levelData[this.levelNum].result = 1
@@ -353,7 +368,7 @@ export default class GamePanel extends BaseUI {
                                         UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧~', '', ()=>{}, null, '闯关成功')
                                     }
                                 }else {
-                                    UIHelp.showOverTip(1, '答对了', '下一关', ()=>{ this.levelNum++;this.nextLevel();})
+                                    UIHelp.showOverTip(1, '', '下一关', ()=>{ this.levelNum++;this.nextLevel();})
                                 }
                                 clearTimeout(id2)
                                 let index2 = this.idArr.indexOf(id2)
@@ -365,15 +380,6 @@ export default class GamePanel extends BaseUI {
                             this.eventvalue.result = 2
                             this.eventvalue.levelData[this.levelNum].result = 2
                             this.eventvalue.levelData[this.levelNum].subject = false
-                            if(wrongSound) {
-                                AudioManager.getInstance().playSound('sfx_wrong')
-                            }
-                            this.spine.setAnimation(0, 'wrong', false)
-                            this.spine.setCompleteListener(trackEntry=>{
-                                if(trackEntry.animation.name == 'wrong') {
-                                    this.spine.setAnimation(0, 'idle', true)
-                                }
-                            })
                             this.mask.active = false
                             if(this.figureType == 1) {
                                 AudioManager.getInstance().stopAll()
@@ -387,7 +393,6 @@ export default class GamePanel extends BaseUI {
                         this.idArr.splice(index1, 1)
                     }, time);
                     this.idArr.push(id1)
-                 
                     clearTimeout(id)
                     let index = this.idArr.indexOf(id)
                     this.idArr.splice(index, 1)
@@ -484,15 +489,15 @@ export default class GamePanel extends BaseUI {
 
         if(angle < 45 || angle > 135) {
             if(angle< 45) {
-                pos1 = cc.v2(pos1.x, pos1.y - 50)
-                pos2 = cc.v2(pos2.x, pos2.y + 50)
+                pos1 = cc.v2(pos1.x, pos1.y - 25)
+                pos2 = cc.v2(pos2.x, pos2.y + 25)
             }else if(angle > 135) {
-                pos1 = cc.v2(pos1.x, pos1.y + 50)
-                pos2 = cc.v2(pos2.x, pos2.y - 50)
+                pos1 = cc.v2(pos1.x, pos1.y + 25)
+                pos2 = cc.v2(pos2.x, pos2.y - 25)
             }
         }else {
-            pos1 = cc.v2(pos1.x - 50, pos1.y)
-            pos2 = cc.v2(pos2.x + 50, pos2.y)
+            pos1 = cc.v2(pos1.x - 25, pos1.y)
+            pos2 = cc.v2(pos2.x + 25, pos2.y)
         }
         let func = cc.callFunc(()=>{
             //不同形状岔路
@@ -501,6 +506,25 @@ export default class GamePanel extends BaseUI {
             }else if(this.figureType == 1) {
                 this.breathAction(this.pointArr1, isRight, this.gl1)
                 this.breathAction(this.pointArr2, isRight, this.gl2)
+                if(isRight) {
+                    AudioManager.getInstance().playSound('sfx_right', false)
+                    this.spine.setAnimation(0, 'right', false)
+                    this.spine.setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == 'right') {
+                            this.spine.setAnimation(0, 'idle', true)
+                        }
+                    })
+                }else {
+                    if(this.pointArr1.length == 4 || this.pointArr2.length == 4) {
+                        AudioManager.getInstance().playSound('sfx_wrong', false)
+                    }
+                    this.spine.setAnimation(0, 'wrong', false)
+                    this.spine.setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == 'wrong') {
+                            this.spine.setAnimation(0, 'idle', true)
+                        }
+                    })
+                }
             } 
         })
         this.m1.runAction(cc.sequence(cc.moveTo(1, pos1), func))
@@ -512,8 +536,24 @@ export default class GamePanel extends BaseUI {
             let fun = cc.callFunc(()=>{
                 if(this.isRight(this.oriPointArr1.length)) {
                     this.breathAction(this.oriPointArr1, true, this.gl1)
+                    AudioManager.getInstance().playSound('sfx_right', false)
+                    this.spine.setAnimation(0, 'right', false)
+                    this.spine.setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == 'right') {
+                            this.spine.setAnimation(0, 'idle', true)
+                        }
+                    })
                 }else {
                     this.breathAction(this.oriPointArr1, false, this.gl1)
+                    if(this.pointArr1.length == 4 || this.pointArr2.length == 4) {
+                        AudioManager.getInstance().playSound('sfx_wrong', false)
+                    }
+                    this.spine.setAnimation(0, 'wrong', false)
+                    this.spine.setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == 'wrong') {
+                            this.spine.setAnimation(0, 'idle', true)
+                        }
+                    })
                 }
             })
             this.m2.runAction(cc.sequence(cc.delayTime(0.5), cc.fadeOut(1), fun))
@@ -521,8 +561,24 @@ export default class GamePanel extends BaseUI {
             let fun = cc.callFunc(()=>{
                 if(this.isRight(this.oriPointArr2.length)) {
                     this.breathAction(this.oriPointArr2, true, this.gl1)
+                    AudioManager.getInstance().playSound('sfx_right', false)
+                    this.spine.setAnimation(0, 'right', false)
+                    this.spine.setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == 'right') {
+                            this.spine.setAnimation(0, 'idle', true)
+                        }
+                    })
                 }else {
                     this.breathAction(this.oriPointArr2, false, this.gl1)
+                    if(this.pointArr1.length == 4 || this.pointArr2.length == 4) {
+                        AudioManager.getInstance().playSound('sfx_wrong', false)
+                    }
+                    this.spine.setAnimation(0, 'wrong', false)
+                    this.spine.setCompleteListener(trackEntry=>{
+                        if(trackEntry.animation.name == 'wrong') {
+                            this.spine.setAnimation(0, 'idle', true)
+                        }
+                    })
                 }
             })
             this.m1.runAction(cc.sequence(cc.delayTime(0.5), cc.fadeOut(1), fun))
@@ -793,33 +849,33 @@ export default class GamePanel extends BaseUI {
         if(angle < 45 || angle > 135) {
             if(angle>90) {
                 for(let i = 0; i < this.pointArr1.length; ++i) {
-                    this.pointArr1[i].y += 50
+                    this.pointArr1[i].y += 25
                 }
                 for(let i = 0; i < this.pointArr2.length; ++i) {
-                    this.pointArr2[i].y -= 50
+                    this.pointArr2[i].y -= 25
                 }
             }else {
                 for(let i = 0; i < this.pointArr1.length; ++i) {
-                    this.pointArr1[i].y -= 50
+                    this.pointArr1[i].y -= 25
                 }
                 for(let i = 0; i < this.pointArr2.length; ++i) {
-                    this.pointArr2[i].y += 50
+                    this.pointArr2[i].y += 25
                 }
             }
         }else {
             if(totalx1 > totalx2) {
                 for(let i = 0; i < this.pointArr1.length; ++i) {
-                    this.pointArr1[i].x += 50
+                    this.pointArr1[i].x += 25
                 }
                 for(let i = 0; i < this.pointArr2.length; ++i) {
-                    this.pointArr2[i].x -= 50
+                    this.pointArr2[i].x -= 25
                 }
             }else {
                 for(let i = 0; i < this.pointArr1.length; ++i) {
-                    this.pointArr1[i].x -= 50
+                    this.pointArr1[i].x -= 25
                 }
                 for(let i = 0; i < this.pointArr2.length; ++i) {
-                    this.pointArr2[i].x += 50
+                    this.pointArr2[i].x += 25
                 }
             }
         }
@@ -927,7 +983,7 @@ export default class GamePanel extends BaseUI {
                 str = '试着剪一刀，将纸剪成一个四边形和一个三角形。'
                 break
             case 3:
-                str = '试着剪一刀，将纸剪成一个四边形和一个五角形。'
+                str = '试着剪一刀，将纸剪成一个四边形和一个五边形。'
                 break
             case 4:
                 str = '试着剪一刀，将纸剪成两个四边形。'
