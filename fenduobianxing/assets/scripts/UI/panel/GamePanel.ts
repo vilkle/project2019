@@ -213,6 +213,7 @@ export default class GamePanel extends BaseUI {
                             eventType: 'clickSubmit',
                             eventValue: JSON.stringify(this.eventvalue)
                         })
+                        AudioManager.getInstance().stopAll()
                         UIHelp.showOverTip(2,'闯关成功，棒棒哒~', '', null,null,'闯关成功')
                     }
                 }
@@ -318,6 +319,10 @@ export default class GamePanel extends BaseUI {
                 arr[index].getComponent(cc.Sprite).spriteFrame = null
            }
         }
+        let seq = cc.sequence(cc.scaleTo(1, 1.1, 1), cc.scaleTo(1, 1, 1.1))
+        let rep = cc.repeatForever(seq)
+        this.button.node.stopAllActions()
+        this.button.node.runAction(rep)
     }
   
     round2() {
@@ -346,6 +351,10 @@ export default class GamePanel extends BaseUI {
                 arr[index].getComponent(cc.Sprite).spriteFrame = null
            }
         }
+        let seq = cc.sequence(cc.scaleTo(1, 1.1, 1), cc.scaleTo(1, 1, 1.1))
+        let rep = cc.repeatForever(seq)
+        this.button.node.stopAllActions()
+        this.button.node.runAction(rep)
     }
 
     round3() {
@@ -375,6 +384,10 @@ export default class GamePanel extends BaseUI {
                 arr[index].getComponent(cc.Sprite).spriteFrame = null
            }
         }
+        let seq = cc.sequence(cc.scaleTo(1, 1.1, 1), cc.scaleTo(1, 1, 1.1))
+        let rep = cc.repeatForever(seq)
+        this.button.node.stopAllActions()
+        this.button.node.runAction(rep)
     }
 
     startRun(node: cc.Node) {
