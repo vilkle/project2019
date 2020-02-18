@@ -1,0 +1,97 @@
+
+duobianxing.png
+size: 2048,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+x1
+  rotate: false
+  xy: 745, 2
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+x10
+  rotate: true
+  xy: 501, 66
+  size: 60, 242
+  orig: 60, 242
+  offset: 0, 0
+  index: -1
+x11
+  rotate: true
+  xy: 2, 4
+  size: 57, 213
+  orig: 57, 213
+  offset: 0, 0
+  index: -1
+x12
+  rotate: true
+  xy: 257, 58
+  size: 68, 242
+  orig: 68, 242
+  offset: 0, 0
+  index: -1
+x13
+  rotate: true
+  xy: 2, 63
+  size: 63, 253
+  orig: 63, 253
+  offset: 0, 0
+  index: -1
+x2
+  rotate: false
+  xy: 813, 2
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+x3
+  rotate: false
+  xy: 1126, 60
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+x4
+  rotate: false
+  xy: 1194, 60
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+x5
+  rotate: false
+  xy: 1262, 60
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+x6
+  rotate: false
+  xy: 881, 9
+  size: 59, 59
+  orig: 59, 59
+  offset: 0, 0
+  index: -1
+x7
+  rotate: false
+  xy: 1330, 67
+  size: 59, 59
+  orig: 59, 59
+  offset: 0, 0
+  index: -1
+x8
+  rotate: true
+  xy: 745, 70
+  size: 56, 198
+  orig: 56, 198
+  offset: 0, 0
+  index: -1
+x9
+  rotate: true
+  xy: 945, 51
+  size: 75, 179
+  orig: 75, 179
+  offset: 0, 0
+  index: -1

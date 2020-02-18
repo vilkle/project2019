@@ -40,6 +40,10 @@ export default class GamePanel extends BaseUI {
     private title2: cc.SpriteFrame = null
     @property(cc.SpriteFrame)
     private title3: cc.SpriteFrame = null
+    @property(cc.Node)
+    private mask: cc.Node = null
+    @property(cc.Node)
+    private spine: cc.Node = null
     private altas: cc.SpriteAtlas = null
     private loadResOver: boolean = false
     private audioOver: boolean = false
@@ -82,7 +86,12 @@ export default class GamePanel extends BaseUI {
         this.eventvalue.levelData[0].subject = [[],[]]
         this.eventvalue.levelData[1].subject = [[],[]]
         this.eventvalue.levelData[2].subject = [[],[],[]]
-        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
+        cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null)
+        cc.loader.loadRes("audio/bgm.mp3", cc.AudioClip, (err, audioClip)=> { })
+        cc.loader.loadRes("audio/success.mp3", cc.AudioClip, (err, audioClip)=> { })
+        cc.loader.loadRes("audio/1.把所有的多边形分在红框，不是多边形的分在蓝框.mp3", cc.AudioClip, (err, audioClip)=> { })
+        cc.loader.loadRes("audio/2.把所有正多边形分在红框，不是正多边形的分在蓝框.mp3", cc.AudioClip, (err, audioClip)=> { })
+        cc.loader.loadRes("audio/3.按图形的边数分一分.mp3", cc.AudioClip, (err, audioClip)=> { })
         this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
             if(this.isOver != 1) {
                 this.isOver = 2;
@@ -98,11 +107,13 @@ export default class GamePanel extends BaseUI {
                 AudioManager.getInstance().stopAudio(this.audioId[key])
             }
             if(this.levelNum == 0) {
-                AudioManager.getInstance().playSound('仔细观察动手分一分', false, 1, (id)=>{this.audioId.push(id), ()=>{}})
+                AudioManager.getInstance().playSound('仔细观察动手分一分', false, 1, (id)=>{this.audioId.push(id)}, ()=>{
+                    AudioManager.getInstance().playSound('1.把所有的多边形分在红框，不是多边形的分在蓝框', false, 1, (id)=>{this.audioId.push(id)}, ()=>{})
+                })
             }else if(this.levelNum == 1) {
-                AudioManager.getInstance().playSound('仔细观察动手分一分', false, 1, (id)=>{this.audioId.push(id), ()=>{}})
+                AudioManager.getInstance().playSound('2.把所有正多边形分在红框，不是正多边形的分在蓝框', false, 1, (id)=>{this.audioId.push(id), ()=>{}})
             }else if(this.levelNum == 2) {
-                AudioManager.getInstance().playSound('仔细观察动手分一分', false, 1, (id)=>{this.audioId.push(id), ()=>{}})
+                AudioManager.getInstance().playSound('3.按图形的边数分一分', false, 1, (id)=>{this.audioId.push(id), ()=>{}})
             }
         })
         this.button.enabled = false
@@ -149,8 +160,6 @@ export default class GamePanel extends BaseUI {
                 if(e.target != this.touchTarget) {
                     return
                 }
-                var point = this.figurePoint.convertToNodeSpaceAR(e.currentTouch._point)
-                e.target.setPosition(cc.v2(e.target.x, point.y))
                 e.target.opacity = 255
                 this.touchNode.active = false
                 this.touchTarget = null
@@ -189,8 +198,6 @@ export default class GamePanel extends BaseUI {
                     if(isJudge) {
                         AudioManager.getInstance().playSound('wrong', false)
                     }
-                    var point = this.figurePoint.convertToNodeSpaceAR(e.currentTouch._point)
-                    e.target.setPosition(cc.v2(e.target.x, point.y))
                     e.target.opacity = 255
                 }
                 this.touchNode.active = false
@@ -198,12 +205,21 @@ export default class GamePanel extends BaseUI {
                 if(this.isSuccess()) {
                     this.eventvalue.levelData[this.levelNum].result = 1
                     if(this.levelNum < 2) {
+                        AudioManager.getInstance().stopAll()
+                        AudioManager.getInstance().playSound('success', false)
+                        this.spine.active = true
+                        this.spine.getComponent(sp.Skeleton).setAnimation(0, 'animation', false)
+                        this.spine.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
+                            if(trackEntry.animation.name == 'animation') {
+                                this.spine.active = false
+                            }
+                        })
                         let id = setTimeout(() => {
                             this.nextRound()
                             clearTimeout(id)
                             let index = this.timeoutArr.indexOf(id)
                             this.timeoutArr.splice(index, 1)
-                        }, 1000)
+                        }, 5000)
                         this.timeoutArr.push(id)
                     }else {
                         this.isOver = 1
@@ -294,11 +310,14 @@ export default class GamePanel extends BaseUI {
     }
 
     round1() {
+        this.mask.active = true
         AudioManager.getInstance().stopAll()
         this.audioOver = false
         AudioManager.getInstance().playSound('仔细观察动手分一分', false, 1, (id)=>{this.audioId.push(id)}, ()=>{
-            this.button.enabled = true
-            this.audioOver = true
+            AudioManager.getInstance().playSound('1.把所有的多边形分在红框，不是多边形的分在蓝框', false, 1, (id)=>{this.audioId.push(id)}, ()=>{
+                this.button.enabled = true
+                this.audioOver = true
+            })
         })
         this.title.spriteFrame = this.title1
         this.rightNum = 0
@@ -319,16 +338,13 @@ export default class GamePanel extends BaseUI {
                 arr[index].getComponent(cc.Sprite).spriteFrame = null
            }
         }
-        let seq = cc.sequence(cc.scaleTo(1, 1.1, 1), cc.scaleTo(1, 1, 1.1))
-        let rep = cc.repeatForever(seq)
-        this.button.node.stopAllActions()
-        this.button.node.runAction(rep)
     }
   
     round2() {
+        this.mask.active = true
         AudioManager.getInstance().stopAll()
         this.audioOver = false
-        AudioManager.getInstance().playSound('仔细观察动手分一分', false, 1, (id)=>{this.audioId.push(id)}, ()=>{
+        AudioManager.getInstance().playSound('2.把所有正多边形分在红框，不是正多边形的分在蓝框', false, 1, (id)=>{this.audioId.push(id)}, ()=>{
             this.button.enabled = true
             this.audioOver = true
         })
@@ -351,16 +367,13 @@ export default class GamePanel extends BaseUI {
                 arr[index].getComponent(cc.Sprite).spriteFrame = null
            }
         }
-        let seq = cc.sequence(cc.scaleTo(1, 1.1, 1), cc.scaleTo(1, 1, 1.1))
-        let rep = cc.repeatForever(seq)
-        this.button.node.stopAllActions()
-        this.button.node.runAction(rep)
     }
 
     round3() {
+        this.mask.active = true
         AudioManager.getInstance().stopAll()
         this.audioOver = false
-        AudioManager.getInstance().playSound('仔细观察动手分一分', false, 1, (id)=>{this.audioId.push(id)}, ()=>{
+        AudioManager.getInstance().playSound('3.按图形的边数分一分', false, 1, (id)=>{this.audioId.push(id)}, ()=>{
             this.button.enabled = true
             this.audioOver = true
         })
@@ -384,15 +397,12 @@ export default class GamePanel extends BaseUI {
                 arr[index].getComponent(cc.Sprite).spriteFrame = null
            }
         }
-        let seq = cc.sequence(cc.scaleTo(1, 1.1, 1), cc.scaleTo(1, 1, 1.1))
-        let rep = cc.repeatForever(seq)
-        this.button.node.stopAllActions()
-        this.button.node.runAction(rep)
     }
 
     startRun(node: cc.Node) {
+        this.mask.active = false
         this.button.node.active = false
-        let divisor = [0,4.5,2.4,5.3,0,3.9,3,4.1,1.1,1.6]
+        let divisor = [0,4.5,2.4,5.3,0,3.7,3,4.1,1.1,1.6]
         let arr = this.figureArr
         for(let i = 0; i < arr.length; ++i) {
             arr[i].opacity = 0
