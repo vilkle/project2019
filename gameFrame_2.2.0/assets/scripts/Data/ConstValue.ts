@@ -4,5 +4,12 @@ export class ConstValue {
     public static readonly CONFIG_FILE_DIR = "config/";
     public static readonly PREFAB_UI_DIR = "prefab/ui/panel/";
     public static readonly AUDIO_DIR = "audio/";
-    public static readonly CoursewareKey = "";//每个课件唯一的key 24位随机字符串 可用随机密码生成器来生成。
+    public static readonly CoursewareKey = "ZhaoYuanZhu_169_YingYu";//每个课件唯一的key 24位随机字符串 可用随机密码生成器来生成。
+}
+
+export enum AnswerResult {
+    AnswerError = 'answer_error',   //答错
+    AnswerRight = 'answer_right',   //答对
+    AnswerHalf  = 'answer_half',    //未答完
+    NoAnswer    = 'no_answer',      //未作答
 }

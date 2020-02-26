@@ -20,9 +20,7 @@ export default class TeacherPanel extends BaseUI {
     @property(cc.Button) btnPreview: cc.Button = null;
 
     onLoad () {
-        this.getNet(function () {
-            
-        });
+        this.getNet();
     }
 
     onDestroy() {
@@ -36,22 +34,18 @@ export default class TeacherPanel extends BaseUI {
 
     //保存
     onBtnSaveClicked() {
-        UIManager.getInstance().openUI(SubmissionPanel, 201);
+        UIManager.getInstance().showUI(SubmissionPanel);
     }
 
     //预览
     onBtnPreviewlicked() {
         UIManager.getInstance().showUI(GamePanel, () => {
-            //教师端显示底栏以及顶栏状态
-            if (ConstValue.IS_TEACHER) {
-                ListenerManager.getInstance().trigger(ListenerType.ShowBottom);
                 ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, { state: 1 });
-            }
         });
     }
 
 
-    getNet(callBack: Function) {
+    getNet() {
         NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.titleId, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 if (Array.isArray(response.data)) {
@@ -66,7 +60,7 @@ export default class TeacherPanel extends BaseUI {
                     if (content != null) {
                         if (content.CoursewareKey == ConstValue.CoursewareKey) {
                             //TODO: 数据接收
-                            callBack();
+                            this.initData()
                         } else {
                             UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
                                 (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
@@ -81,6 +75,9 @@ export default class TeacherPanel extends BaseUI {
         }.bind(this), null);
     }
 
+    initData() {
+
+    }
 
     //删除课件数据  一般为脏数据清理
     ClearNet() {

@@ -1,3 +1,11 @@
+/*
+ * @Author: 马超
+ * @Date: 2020-02-26 13:52:34
+ * @LastEditTime: 2020-02-26 17:11:28
+ * @Description: 游戏脚本
+ * @FilePath: \gameFrame_2.2.0\assets\scripts\UI\panel\GamePanel.ts
+ */
+
 import { BaseUI } from "../BaseUI";
 import { NetWork } from "../../Http/NetWork";
 import DataReporting from "../../Data/DataReporting";
@@ -50,16 +58,10 @@ export default class GamePanel extends BaseUI {
 
     protected static className = "GamePanel";
 
-    @property(cc.Node) private nodeBJ: cc.Node = null;
-    @property(cc.Node) private nodeAudio: cc.Node = null;
-    @property(cc.Node) private nodeMask: cc.Node = null;
-    @property([cc.Button]) private arrBtns: cc.Button[] = [];
-    @property([cc.Sprite]) private arrCylinders: cc.Sprite[] = [];
+    @property(cc.Node) private bg: cc.Node = null;
+    @property(cc.Node) private title: cc.Node = null;
+    @property(cc.Node) private mask: cc.Node = null;
 
-    //0答题
-    @property({ type: [cc.AudioClip] }) private arrAudio: cc.AudioClip[] = [];
-    //0正确 1错误
-    @property({ type: [cc.AudioClip] }) private arrEffect: cc.AudioClip[] = [];
 
     private ANSWER_COUNT: number = 6;      //正确答案个数
 
@@ -72,21 +74,17 @@ export default class GamePanel extends BaseUI {
     private tryCounts: number[] = [];   //每关尝试次数
     bFinished = false;
     bFirstStart = true;
-
+  
     onLoad() {
-        ListenerManager.getInstance().add(ListenerType.OnClickReturn, this, this.onBtnBottomBackClicked);
-        ListenerManager.getInstance().add(ListenerType.OnClicktijiao, this, this.onBtnBottomSavelicked);
 
-        this.nodeBJ.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.nodeAudio.on(cc.Node.EventType.TOUCH_END, this.onNodeAudioTouchEnd, this);
+        this.bg.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
+        this.title.on(cc.Node.EventType.TOUCH_END, this.onNodeAudioTouchEnd, this);
     }
 
     onDestroy() {
-        ListenerManager.getInstance().remove(ListenerType.OnClickReturn, this, this.onBtnBottomBackClicked);
-        ListenerManager.getInstance().remove(ListenerType.OnClicktijiao, this, this.onBtnBottomSavelicked);
 
-        this.nodeBJ.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.nodeAudio.off(cc.Node.EventType.TOUCH_END, this.onNodeAudioTouchEnd, this);
+        this.bg.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
+        this.title.off(cc.Node.EventType.TOUCH_END, this.onNodeAudioTouchEnd, this);
     }
 
     start() {
@@ -155,8 +153,8 @@ export default class GamePanel extends BaseUI {
             }
         }
     }
-
-    private onTouchEnd(event: cc.Event.EventTouch) {
+  
+    private onTouchEnd(event: cc.Event.EventTouch, num: number) {
         if (this.bFirstStart) {
             this.bFirstStart = false;
             this.startTime = Tools.getNowTimeS();
@@ -226,29 +224,9 @@ export default class GamePanel extends BaseUI {
      * @memberof GamePanel
      */
     private onRecovery(data: any) {
-        let doneData = data.result[0].doneSth;
-        for (let i = 0; i < doneData.length; i++) {
-            this.arrCylinders[i].node.active = true;
-            this.arrBtns[doneData[i]].node.getChildByName('Background').opacity = 255;
-        }
+       
     }
-
-    //教师端  返回编辑器界面
-    onBtnBottomBackClicked() {
-        UIManager.getInstance().closeUI(TipUI);
-        UIManager.getInstance().closeUI(OverTips);
-        UIManager.getInstance().closeUI(GamePanel);
-        ListenerManager.getInstance().trigger(ListenerType.OnEditStateSwitching, { state: 0 });
-    }
-    //教师端  上传题目
-    onBtnBottomSavelicked() {
-        if (this.bFinished) {
-            UIManager.getInstance().openUI(SubmissionPanel, 201);
-        } else {
-            UIHelp.showTip("请答对所有题目之后进行保存");
-        }
-    }
-
+    
     addSDKEventListener() {
         GameMsg.getInstance().addEvent(GameMsgType.ACTION_SYNC_RECEIVE, this.onSDKMsgActionReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.DISABLED, this.onSDKMsgDisabledReceived.bind(this));
