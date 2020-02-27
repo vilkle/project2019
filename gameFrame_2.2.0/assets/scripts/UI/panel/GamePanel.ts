@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-26 13:52:34
- * @LastEditTime: 2020-02-26 17:11:28
+ * @LastEditTime: 2020-02-27 20:28:40
  * @Description: 游戏脚本
  * @FilePath: \gameFrame_2.2.0\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -22,6 +22,7 @@ import { AnswerResult } from "../../Data/ConstValue";
 import GameMsg from "../../Data/GameMsg";
 import { GameMsgType } from "../../Data/GameMsgType";
 import { Tools } from "../../UIComm/Tools";
+import {ReportManager}from "../../Manager/ReportManager";
 
 export class ReporteSubject {
     subjectData = [];
@@ -69,22 +70,30 @@ export default class GamePanel extends BaseUI {
     private arrCorrectIndex: number[] = [];   //答对的下表
 
     private playCount: number = 0;      //统计作答次数  以通关为维度
-    private startTime: number = 0;      //每关开始时间
-    private coastTimes: number[] = [];  //每关作答耗时
+    //private startTime: number = 0;      //每关开始时间
+    //private coastTimes: number[] = [];  //每关作答耗时
     private tryCounts: number[] = [];   //每关尝试次数
     bFinished = false;
     bFirstStart = true;
+    private answerResult: AnswerResult = AnswerResult.NoAnswer
+   
+
+
+
+
+    
   
     onLoad() {
 
-        this.bg.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.title.on(cc.Node.EventType.TOUCH_END, this.onNodeAudioTouchEnd, this);
+        this.bg.on(cc.Node.EventType.TOUCH_START, ()=>{}, this);
+        this.title.on(cc.Node.EventType.TOUCH_START, ()=>{});
     }
+
 
     onDestroy() {
 
-        this.bg.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
-        this.title.off(cc.Node.EventType.TOUCH_END, this.onNodeAudioTouchEnd, this);
+        this.bg.off(cc.Node.EventType.TOUCH_START);
+        this.title.off(cc.Node.EventType.TOUCH_START);
     }
 
     start() {
@@ -93,104 +102,18 @@ export default class GamePanel extends BaseUI {
         //新课堂上报
         GameMsg.getInstance().gameStart();
         this.playCount += 1;
-
-        this.getRemoteDataByCoursewareID(function () {
-        }.bind(this));
+        //数据通信
+        this.getRemoteDataByCoursewareID(function () {}.bind(this));
 
         //预加载OverTip资源
         cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab, function (err, prefab) { });
 
-        this.node.runAction(
-            cc.sequence(
-                cc.delayTime(0.5),
-                cc.callFunc(function () {
-                    this.audioID = cc.audioEngine.playMusic(this.arrAudio[0], false);
-                    cc.audioEngine.setFinishCallback(this.audioID, function () {
-                        this.audioID = -1;
-                        this.nodeMask.active = false;
-                    }.bind(this))
-                }.bind(this))
-            )
-        )
+      
     }
 
-    private onBtnClicked(event: cc.Event.EventTouch, data) {
-        if (this.bFirstStart) {
-            this.bFirstStart = false;
-            this.startTime = Tools.getNowTimeS();
-            this.tryCounts.push(1);
-        }
-
-        let index = parseInt(data);
-        if (this.arrCorrectIndex.indexOf(index) < 0) {
-            if (index > 5) {
-                cc.audioEngine.playEffect(this.arrEffect[1], false);
-                this.arrBtns[index].node.getChildByName('Background').stopAllActions();
-                this.arrBtns[index].node.getChildByName('Background').opacity = 0;
-                this.arrBtns[index].node.getChildByName('Background').runAction(cc.blink(1, 3));
-            } else {
-                this.arrCorrectIndex.push(index);
-
-                cc.audioEngine.playEffect(this.arrEffect[0], false);
-                this.arrBtns[index].node.getChildByName('Background').opacity = 255;
-
-                this.arrCylinders[this.arrCorrectIndex.length - 1].node.active = true;
-
-                //上报新课堂操作结果 用于数据恢复
-                GameMsg.getInstance().dataArchival(this.arrCorrectIndex.length, this.reportDataNew());
-
-                if (this.arrCorrectIndex.length == this.ANSWER_COUNT) {
-                    cc.audioEngine.playEffect(this.arrAudio[1], false);
-                    UIHelp.showOverTip(2, '挑战成功，你真棒~', null, false, 0, '挑战成功');
-                    if (!this.bFinished) {
-                        this.bFinished = true;
-                        this.coastTimes.push(Tools.getNowTimeS() - this.startTime);
-                    }
-                    //新课堂数据上报
-                    cc.log(this.reportDataNew())
-                    GameMsg.getInstance().gameOver(this.reportDataNew());
-                }
-            }
-        }
-    }
-  
-    private onTouchEnd(event: cc.Event.EventTouch, num: number) {
-        if (this.bFirstStart) {
-            this.bFirstStart = false;
-            this.startTime = Tools.getNowTimeS();
-            this.tryCounts.push(1);
-        }
-
-        let startPos = event.getStartLocation();
-        let endPos = event.getLocation();
-        let dis = Tools.getDisBetween2Points(startPos, endPos);
-        if (dis > 2) {
-            return;
-        }
-
-        cc.audioEngine.playEffect(this.arrEffect[1], false);
-    }
 
     private onNodeAudioTouchEnd(event: cc.Event.EventTouch) {
-        if (this.bFirstStart) {
-            this.bFirstStart = false;
-            this.startTime = Tools.getNowTimeS();
-            this.tryCounts.push(1);
-        }
 
-        let startPos = event.getStartLocation();
-        let endPos = event.getLocation();
-        let dis = Tools.getDisBetween2Points(startPos, endPos);
-        if (dis > 2) {
-            return;
-        }
-
-        if (-1 == this.audioID) {
-            this.audioID = cc.audioEngine.playMusic(this.arrAudio[0], false);
-            cc.audioEngine.setFinishCallback(this.audioID, function () {
-                this.audioID = -1;
-            }.bind(this))
-        }
     }
 
     /**
@@ -200,19 +123,7 @@ export default class GamePanel extends BaseUI {
      * @memberof GamePanel
      */
     private onInit() {
-        this.arrCorrectIndex = [];
-        for (let i = 0; i < this.arrCylinders.length; i++) {
-            this.arrCylinders[i].node.active = false;
-        }
 
-        for (let i = 0; i < this.arrBtns.length; i++) {
-            this.arrBtns[i].node.getChildByName('Background').stopAllActions();
-            this.arrBtns[i].node.opacity = 0;
-        }
-
-        this.startTime = 0;
-        this.tryCounts = [];
-        this.coastTimes = [];
     }
 
     /**
@@ -263,8 +174,9 @@ export default class GamePanel extends BaseUI {
     }
     //游戏结束消息监听
     onSDKMsgStopReceived() {
+        ReportManager.getInstance().gameOver(this.answerResult)
         //新课堂上报
-        GameMsg.getInstance().gameOver(this.reportDataNew(true));
+        GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData());
         GameMsg.getInstance().finished();
     }
     //初始化消息监听
@@ -309,42 +221,5 @@ export default class GamePanel extends BaseUI {
         }.bind(this), null);
     }
 
-    reportDataNew(bReceiveStop?: boolean) {
-        let type = 'txt';
-        let index = this.playCount;//第几次作答  以通关为维度
-        let result = [];
-        let gameOver = null;//只有全部作答完成或者才进行赋值
-
-        let levelData = new ReporteLevelDataNew();
-        levelData.id = 1;
-        levelData.question_info = '';
-        if (this.bFinished || this.arrCorrectIndex.length == 6) {
-            levelData.answer_res = AnswerResult.AnswerRight;
-        } else if (this.bFirstStart == true) {
-            levelData.answer_res = AnswerResult.NoAnswer;
-        } else {
-            levelData.answer_res = AnswerResult.AnswerHalf;
-        } 
-        levelData.answer_num = 1;
-        levelData.answer_time = (this.coastTimes[0] ?  this.coastTimes[0] : (Tools.getNowTimeS() - this.startTime)) + 's';
-        levelData.doneSth = this.arrCorrectIndex;
-
-        result.push(levelData);
-
-
-        if (this.bFinished || bReceiveStop) {
-            gameOver = new GameOverData();
-            gameOver.percentage = this.bFinished ? '100%' : '0%';
-            gameOver.answer_all_state = levelData.answer_res;
-            gameOver.complete_degree = levelData.answer_res == AnswerResult.AnswerRight ? '1/1' : '0/1';
-            gameOver.answer_all_time = (this.coastTimes[0] ?  this.coastTimes[0] : (Tools.getNowTimeS() - this.startTime)) + 's';
-        }
-
-        return {
-            type: type,
-            index: index,
-            result: result,
-            gameOver: gameOver
-        };
-    }
+   
 }
