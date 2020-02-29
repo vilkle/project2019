@@ -1,9 +1,9 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-27 19:59:56
- * @LastEditTime: 2020-02-28 18:04:35
+ * @LastEditTime: 2020-02-29 20:14:53
  * @Description: 上报数据管理类
- * @FilePath: \gameFrame_2.2.0\assets\scripts\Manager\ReportManager.ts
+ * @FilePath: \wucaibinfenbang\assets\scripts\Manager\ReportManager.ts
  */
 import {AnswerResult} from "../Data/ConstValue"
 
@@ -20,7 +20,7 @@ export class ReportManager
         return this.instance;
     }
     private level: number = 0 //当前关卡排位
-    private levelNum: number = 5 //总的关卡数
+    private levelNum: number = 0 //总的关卡数
     private coastTimes: number = 0 //计时结束的时间
     private timeId: number = 0 //计时器timeout id
     private answerdata = { //上报数据结构
@@ -37,6 +37,7 @@ export class ReportManager
  * @param {number} num 关卡数目
  */
     addResult(num: number) {
+        this.levelNum = num
         for(let i = 0; i < num; ++i) {
             this.answerdata.result.push({
                 id: i + 1,
@@ -90,12 +91,13 @@ export class ReportManager
         }
         clearInterval(this.timeId)
         this.timeId = null
-        this.level ++
+        console.log(this.level)
         this.answerdata.result[this.level].question_info = ''
         this.answerdata.result[this.level].answer_res = result
         this.answerdata.result[this.level].answer_num += 0
         this.answerdata.result[this.level].answer_time = (this.coastTimes/100).toString() + 's'
         this.answerdata.gameOver = null
+        this.level ++
     }
 
 /**
@@ -131,10 +133,19 @@ export class ReportManager
         }
         this.answerdata.gameOver.answer_all_time = `${time}s`
         this.answerdata.gameOver.complete_degree = `${this.level}/${this.levelNum}`
+        console.log('answerdata------',this.answerdata)
+    }
+
+    answerHalf() {
+        this.answerdata.result[this.level].answer_res = AnswerResult.AnswerHalf
     }
 
     getAnswerData(): any {
         return this.answerdata
+    }
+
+    getLevel(): number {
+        return this.level
     }
 
     clearInterval() {

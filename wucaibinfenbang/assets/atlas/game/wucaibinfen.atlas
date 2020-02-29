@@ -1,0 +1,69 @@
+
+wucaibinfen.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1chong
+  rotate: false
+  xy: 2, 55
+  size: 794, 216
+  orig: 794, 216
+  offset: 0, 0
+  index: -1
+2chong
+  rotate: false
+  xy: 2, 713
+  size: 849, 213
+  orig: 849, 213
+  offset: 0, 0
+  index: -1
+3chong
+  rotate: false
+  xy: 853, 751
+  size: 877, 175
+  orig: 877, 175
+  offset: 0, 0
+  index: -1
+4chong
+  rotate: false
+  xy: 853, 650
+  size: 918, 99
+  orig: 918, 99
+  offset: 0, 0
+  index: -1
+5chong
+  rotate: false
+  xy: 848, 475
+  size: 877, 173
+  orig: 877, 173
+  offset: 0, 0
+  index: -1
+6chong
+  rotate: false
+  xy: 2, 498
+  size: 844, 213
+  orig: 844, 213
+  offset: 0, 0
+  index: -1
+7chong
+  rotate: false
+  xy: 2, 273
+  size: 796, 223
+  orig: 796, 223
+  offset: 0, 0
+  index: -1
+hongqi
+  rotate: false
+  xy: 800, 295
+  size: 307, 178
+  orig: 307, 178
+  offset: 0, 0
+  index: -1
+hongqimugun
+  rotate: true
+  xy: 2, 2
+  size: 51, 381
+  orig: 51, 381
+  offset: 0, 0
+  index: -1
