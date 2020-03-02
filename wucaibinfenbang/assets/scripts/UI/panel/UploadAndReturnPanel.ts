@@ -1,3 +1,10 @@
+/*
+ * @Author: 马超
+ * @Date: 2020-02-29 14:55:20
+ * @LastEditTime: 2020-03-01 12:51:42
+ * @Description: 游戏脚本
+ * @FilePath: \wucaibinfenbang\assets\scripts\UI\panel\UploadAndReturnPanel.ts
+ */
 import { BaseUI } from "../BaseUI";
 import { UIManager } from "../../Manager/UIManager";
 import GamePanel from "./GamePanel";

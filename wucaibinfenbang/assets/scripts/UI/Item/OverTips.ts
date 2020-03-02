@@ -186,7 +186,7 @@ export class OverTips extends BaseUI {
         if (!this.endInAnimation) return;
         for (let index = 0; index < this.img_titles.length; index++) {
             this.img_titles[index].active = true;
-            this.img_titles[index].position = cc.v2(this.bones[index].worldX - 189, this.bones[index].worldY + 10);
+            this.img_titles[index].position = cc.v2(this.bones[index].worldX - 189, this.bones[index].worldY - 80);
         }
     }
 }

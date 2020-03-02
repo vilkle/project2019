@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-27 19:59:56
- * @LastEditTime: 2020-02-29 20:14:53
+ * @LastEditTime: 2020-03-01 16:08:12
  * @Description: 上报数据管理类
  * @FilePath: \wucaibinfenbang\assets\scripts\Manager\ReportManager.ts
  */
@@ -77,7 +77,7 @@ export class ReportManager
         }
         this.timeId = setInterval(()=>{
             this.coastTimes += 1
-        }, 100)
+        }, 10)
     }
 
 /**
@@ -116,7 +116,7 @@ export class ReportManager
             answer_all_time: '0s',
             complete_degree: `0/${this.levelNum}`
         }
-        let percentage = (this.level / this.levelNum).toFixed(2)
+        let percentage = (this.level / this.levelNum * 100).toFixed(2)
         this.answerdata.gameOver.percentage = `${percentage}%`
         if(parseFloat(percentage) == 0.00) {
             this.answerdata.gameOver.answer_all_state = AnswerResult.NoAnswer
@@ -136,12 +136,28 @@ export class ReportManager
         console.log('answerdata------',this.answerdata)
     }
 
+    answerReset() {
+        this.answerdata =  { 
+            type : 'text',
+            index: 1,
+            result: [
+    
+            ],
+            gameOver: null
+        }
+        this.addResult(this.levelNum)
+    }
+
     answerHalf() {
         this.answerdata.result[this.level].answer_res = AnswerResult.AnswerHalf
     }
 
     getAnswerData(): any {
         return this.answerdata
+    }
+
+    setAnswerData(data: any) {
+        this.answerdata = data
     }
 
     getLevel(): number {
