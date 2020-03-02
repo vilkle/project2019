@@ -5,23 +5,22 @@
       true
     ]
   ],
-  "design-resolution-height": 960,
-  "design-resolution-width": 1994,
+  "design-resolution-height": 1152,
+  "design-resolution-width": 2048,
   "excluded-modules": [
-    "Renderer Texture",
-    "Dynamic Atlas",
     "Label Effect",
     "ParticleSystem",
     "TiledMap",
     "DragonBones",
     "RichText",
     "MotionStreak",
-    "ProgressBar",
     "ScrollBar",
     "ScrollView",
+    "Toggle",
     "PageView",
     "PageViewIndicator",
     "Slider",
+    "EditBox",
     "VideoPlayer",
     "WebView",
     "Animation",
@@ -51,7 +50,7 @@
   "group-list": [
     "default"
   ],
-  "last-module-event-record-time": 1565318679645,
+  "last-module-event-record-time": 1583129373631,
   "simulator-orientation": false,
   "simulator-resolution": {
     "height": 640,

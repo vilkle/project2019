@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-02 12:00:53
+ * @LastEditTime: 2020-03-02 18:07:47
  * @Description: 游戏脚本
  * @FilePath: \wucaibinfenbang\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -56,6 +56,7 @@ export default class GamePanel extends BaseUI {
     private isPlay: boolean = false
     private timeoutIdArr: number[] = []
     private audioIdArr: number[] = []
+    private nodeArr: cc.Node[] = []
     private actionId: number = 0
     private archival = {
         answerdata: null,
@@ -81,10 +82,12 @@ export default class GamePanel extends BaseUI {
             AudioManager.getInstance().stopAll()
             //缤纷棒能拼出什么，动手试一试
             AudioManager.getInstance().playSound('缤纷棒能拼出什么，动手试一试', false, 1, null, ()=>{
-                this.mask.active = false
-                this.title.active = true
-                this.trumpet.active = true
-                ReportManager.getInstance().levelStart(false)
+                AudioManager.getInstance().playSound('四根缤纷棒能拼出什么', false, 1, null, ()=>{
+                    this.mask.active = false
+                    this.title.active = true
+                    this.trumpet.active = true
+                    ReportManager.getInstance().levelStart(false)
+                })
             })
             clearTimeout(id)
             let index = this.timeoutIdArr.indexOf(id)
@@ -129,6 +132,8 @@ export default class GamePanel extends BaseUI {
         this.node1.active = true
         this.node2.active = false
         this.roundNode = this.node1
+        this.slotsArr = this.roundNode.getChildByName('slots').children
+        this.nodeArr = [this.slotsArr[1], this.slotsArr[2], this.slotsArr[3], this.slotsArr[0]]
         this.resetInterface()
         this.removeListenerOnOptions()
         this.addListenerOnOptions()
@@ -141,6 +146,8 @@ export default class GamePanel extends BaseUI {
         this.node2.active = true
         this.node1.active = false
         this.roundNode = this.node2
+        this.slotsArr = this.roundNode.getChildByName('slots').children
+        this.nodeArr = [this.slotsArr[0], this.slotsArr[1], this.slotsArr[2], this.slotsArr[3], this.slotsArr[4]]
         this.resetInterface()
         this.removeListenerOnOptions()
         this.addListenerOnOptions()
@@ -150,7 +157,6 @@ export default class GamePanel extends BaseUI {
         this.roundNode.getChildByName('slots').active = true
         this.roundNode.getChildByName('example').active = true
         this.boundingBox = this.roundNode.getChildByName('BoundingBox')
-        this.slotsArr = this.roundNode.getChildByName('slots').children
         this.sticksArr = this.roundNode.getChildByName('sticks').children
         for (const key in this.slotsArr) {
             this.slotsArr[key].getChildByName('slot').active = true
@@ -219,8 +225,8 @@ export default class GamePanel extends BaseUI {
                         GameMsg.getInstance().dataArchival(this.actionId, this.archival)
                         this.stopAudio()
                         AudioManager.getInstance().playSound('棒棒棒', false, 1, (id)=>{this.audioIdArr.push(id)})
-                        this.slotsArr[this.rightNum].getChildByName('stick').active = true
-                        this.slotsArr[this.rightNum].getChildByName('slot').active = false
+                        this.nodeArr[this.rightNum].getChildByName('stick').active = true
+                        this.nodeArr[this.rightNum].getChildByName('slot').active = false
                         this.rightNum++
                         if(this.isSuccess(this.rightNum)) {
                             this.mask.active = true
@@ -278,20 +284,33 @@ export default class GamePanel extends BaseUI {
             this.spine.active = true
             if(level == 0) {
                 this.spine.getComponent(sp.Skeleton).setAnimation(0, 'qz', false)
+                this.spine.getComponent(sp.Skeleton).addAnimation(0, 'qz', false)                
             }else if(level == 1) {
                 this.spine.getComponent(sp.Skeleton).setAnimation(0, 'cz', false)
+                this.spine.getComponent(sp.Skeleton).addAnimation(0, 'cz', false)
             }
         })
-        this.spine.getComponent(sp.Skeleton).setCompleteListener(
-            trackEntry=>{
-               this.spine.active = false
-               if(level == 0) {
-                    UIHelp.showOverTip(1,'答对了', '下一关', ()=>{this.round2(); ReportManager.getInstance().levelStart(false)}, null, null)
-               }else if(level == 1) {
+        let id = setTimeout(() => {
+            this.spine.active = false
+            if(level == 0) {
+                    UIHelp.showOverTip(1,'', '下一关', ()=>{
+                        this.mask.active = true
+                        AudioManager.getInstance().stopAll()
+                        AudioManager.getInstance().playSound('五个缤纷棒能拼出什么', false, 1, null, ()=>{
+                            this.mask.active = true
+                            this.round2()
+                            ReportManager.getInstance().levelStart(false)
+                        })
+                    }, null, null)
+            }else if(level == 1) {
                     UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧~', '', null, null, '闯关成功')
-               }
             }
-        )
+            clearTimeout(id)
+            let index = this.timeoutIdArr.indexOf(id)
+            this.timeoutIdArr.splice(index, 1)
+        }, 3500);
+        this.timeoutIdArr.push(id)
+        
         if(level == 0) {
             node = this.showNode.getChildByName('show1')  
         }else if(level == 1) {
@@ -365,18 +384,21 @@ export default class GamePanel extends BaseUI {
         if(this.isPlay) {
             return
         }
+        this.mask.active = true
         this.isPlay = true
         this.trumpetActionStart()
         let level = ReportManager.getInstance().getLevel()
         if(level == 0) {
             AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('四根缤纷棒能拼出什么', false, 1, null, ()=>{
+                this.mask.active = false
                 this.isPlay = false
                 this.trumpetActionStop()
             })
         }else if(level == 1) {
             AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('五个缤纷棒能拼出什么', false, 1, null, ()=>{
+                this.mask.active = false
                 this.isPlay = false
                 this.trumpetActionStop()
             })

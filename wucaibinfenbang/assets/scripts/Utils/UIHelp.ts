@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-02-29 19:43:06
+ * @LastEditTime: 2020-03-02 14:06:56
  * @Description: 游戏脚本
  * @FilePath: \wucaibinfenbang\assets\scripts\Utils\UIHelp.ts
  */
@@ -19,7 +19,7 @@ export class UIHelp {
     public static showTip(message: string) {
         let tipUI = UIManager.getInstance().getUI(TipUI) as TipUI;
         if (!tipUI) {
-            UIManager.getInstance().openUI(TipUI, null, () => {
+            UIManager.getInstance().openUI(TipUI, 212, () => {
                 UIHelp.showTip(message);
             });
         }
