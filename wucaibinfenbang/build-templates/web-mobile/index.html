@@ -365,35 +365,23 @@
                         data.ErrorLog = log;
                     }
                     data.curTime = getNowFormatDate();
-                    data.CoursewareName = "此处需修改为自己的项目名字  拼音";
+                    data.CoursewareName = "wucaibinfenbang_169_machao";
 
-                    if (window['bNewClassEnv']) {
-                        img.src = (window['isOnline'] ? 'https://logserver.haibian.com/statistical/?type=7&' : 'https://ceshi-statistical.haibian.com/?type=7&') +
-                            'coursewareId=' + theRequest["coursewareId"] +
-                            "&chapterId=" + theRequest["chapterId"] +
-                            "&userId=" + theRequest["userId"] +
-                            "&bLive=" + theRequest["bLive"] +
-                            "&bPreload=" + theRequest["bPreload"] +
-                            "&env=" + theRequest["env"] +
-                            "&app=" + theRequest["app"] +
-                            "&platform=" + theRequest["platform"] +
-                            "&channel=" + theRequest["channel"] +
-                            "&browser=" + theRequest["browser"] +
-                            "&appVersion=" + theRequest["appVersion"] +
-                            "&event=" + eventName +
-                            "&identity=1" +
-                            "&extra=" + JSON.stringify(data)
-                    } else {
-                        img.src = (window['isOnline'] == 1 ? 'https://logserver.haibian.com/statistical/?type=7&' : 'https://ceshi-statistical.haibian.com/?type=7&') +
-                            'course_id=' + theRequest["id"] +
-                            "&chapter_id=" + theRequest["chapter_id"] +
-                            "&user_id=" + theRequest["user_id"] +
-                            "&subject=" + theRequest["subject"] +
-                            "&event=" + eventName +
-                            "&identity=1" +
-                            "&extra=" + JSON.stringify(data)
-                    }
-
+                    img.src = (window['isOnline'] ? 'https://logserver.haibian.com/statistical/?type=7&' : 'https://ceshi-statistical.haibian.com/?type=7&') +
+                        'coursewareId=' + theRequest["coursewareId"] +
+                        "&chapterId=" + theRequest["chapterId"] +
+                        "&userId=" + theRequest["userId"] +
+                        "&bLive=" + theRequest["bLive"] +
+                        "&bPreload=" + theRequest["bPreload"] +
+                        "&env=" + theRequest["env"] +
+                        "&app=" + theRequest["app"] +
+                        "&platform=" + theRequest["platform"] +
+                        "&channel=" + theRequest["channel"] +
+                        "&browser=" + theRequest["browser"] +
+                        "&appVersion=" + theRequest["appVersion"] +
+                        "&event=" + eventName +
+                        "&identity=1" +
+                        "&extra=" + JSON.stringify(data)
                 }
                 upLog("engineLoadStart");
                 //新课堂上报事件

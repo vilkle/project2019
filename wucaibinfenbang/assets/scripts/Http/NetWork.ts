@@ -19,16 +19,7 @@ export class NetWork {
     public static readonly MODIFY = NetWork.BASE + "/modify";
     public static readonly CLEAR = NetWork.BASE + "/clear";
 
-    // public static courseware_id = null;
-    // public static title_id = null;
-    // public static user_id = null;
-
     public static empty: boolean = false;//清理脏数据的开关，在URL里面拼此参数 = true；
-
-    // public static chapter_id = null;
-    // public static subject = null;
-    // /*isLive参数已添加，直播课参数传YES，回放传NO  */
-    // public static isLive = null;
 
     //新课堂参数
     public static userId = null;        //用户id
@@ -43,8 +34,6 @@ export class NetWork {
     public static channel = null;       //使用方(辅导端、学生端、未来黑板、配齐、教研云、……）
     public static browser = null;       //浏览器信息（内核及版本）
     public static appVersion = null;    //端的版本信息
-
-    public static bNewClassEnv = null;     //是否新课堂环境  用是否browser参数来确定
 
     private static theRequest = null;
     static getInstance() {
@@ -68,32 +57,20 @@ export class NetWork {
                 //教师端没有titleId的情况
                 UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
                     (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
-                        "URL参数错误,请联系技术人员！",
+                        "URL参数错误,缺少titleId,请联系技术人员！",
                         "", "", "确定");
                 });
                 return;
             }
         } else {
-            if (NetWork.bNewClassEnv) {
-                //新课堂学生端  判断所有参数
-                if (!ConstValue.IS_TEACHER && (!NetWork.userId || !NetWork.coursewareId || !NetWork.env || !NetWork.app || !NetWork.channel || !NetWork.browser)) {
-                    UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
-                        (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
-                            "URL参数错误,请联系客服！",
-                            "", "", "确定");
-                    });
-                    return;
-                }
-            } else {
-                if (!ConstValue.IS_TEACHER && (!NetWork.coursewareId || !NetWork.userId)) {
-                    //学生端没有userid或coursewareId的情况
-                    UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
-                        (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
-                            "异常编号为001,请联系客服！",
-                            "", "", "确定");
-                    });
-                    return;
-                }
+            //新课堂学生端  判断所有参数
+            if (!ConstValue.IS_TEACHER && (!NetWork.userId || !NetWork.coursewareId || !NetWork.env || !NetWork.app || !NetWork.channel || !NetWork.browser)) {
+                UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
+                    (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
+                        "URL参数错误,请联系客服！",
+                        "", "", "确定");
+                });
+                return;
             }
         }
 
@@ -170,30 +147,20 @@ export class NetWork {
             }
         }
 
-        NetWork.bNewClassEnv = NetWork.theRequest["browser"] ? true : false;
-        if (NetWork.bNewClassEnv) {
-            //新课堂url必需参数
-            NetWork.userId = NetWork.theRequest['userId'];
-            NetWork.chapterId = NetWork.theRequest['chapterId'];
-            NetWork.coursewareId = NetWork.theRequest['coursewareId'];
-            NetWork.titleId = NetWork.theRequest['titleId'];
-            NetWork.bLive = NetWork.theRequest['bLive'];
-            NetWork.bPreload = NetWork.theRequest['bPreload'];
-            NetWork.env = NetWork.theRequest['env'];
-            NetWork.app = NetWork.theRequest['app'];
-            NetWork.platform = NetWork.theRequest['platform'];
-            NetWork.channel = NetWork.theRequest['channel'];
-            NetWork.browser = NetWork.theRequest['browser'];
-            NetWork.appVersion = NetWork.theRequest['appVersion'];
-            NetWork.empty = NetWork.theRequest["empty"];
-        } else {
-            //老课堂
-            NetWork.coursewareId = NetWork.theRequest["id"];
-            NetWork.titleId = NetWork.theRequest["title_id"];
-            NetWork.userId = NetWork.theRequest["user_id"];
-            NetWork.empty = NetWork.theRequest["empty"];
-            // NetWork.isLive = NetWork.theRequest['isLive'];
-        }
+        //新课堂url必需参数
+        NetWork.userId = NetWork.theRequest['userId'];
+        NetWork.chapterId = NetWork.theRequest['chapterId'];
+        NetWork.coursewareId = NetWork.theRequest['coursewareId'];
+        NetWork.titleId = NetWork.theRequest['titleId'];
+        NetWork.bLive = NetWork.theRequest['bLive'];
+        NetWork.bPreload = NetWork.theRequest['bPreload'];
+        NetWork.env = NetWork.theRequest['env'];
+        NetWork.app = NetWork.theRequest['app'];
+        NetWork.platform = NetWork.theRequest['platform'];
+        NetWork.channel = NetWork.theRequest['channel'];
+        NetWork.browser = NetWork.theRequest['browser'];
+        NetWork.appVersion = NetWork.theRequest['appVersion'];
+        NetWork.empty = NetWork.theRequest["empty"];
 
         this.LogJournalReport('CoursewareLogEvent', '')
 
@@ -234,7 +201,7 @@ export class NetWork {
                 "&appVersion=" + this.GetRequest()["appVersion"] +
                 "&event=" + errorType +
                 "&identity=1" +
-                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: '此处需修改为自己的项目名字  拼音', data: data });
+                "&extra=" + JSON.stringify({ url: location, CoursewareKey: ConstValue.CoursewareKey, empty: this.GetRequest()["empty"], CoursewareName: 'wucaibinfenbang169_machao', data: data });
         }
     }
 }

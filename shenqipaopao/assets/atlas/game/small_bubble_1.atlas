@@ -1,0 +1,20 @@
+
+small_bubble_1.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blue_bubble_01
+  rotate: false
+  xy: 190, 2
+  size: 186, 188
+  orig: 186, 188
+  offset: 0, 0
+  index: -1
+yellow_bubble_01
+  rotate: false
+  xy: 2, 2
+  size: 186, 188
+  orig: 186, 188
+  offset: 0, 0
+  index: -1

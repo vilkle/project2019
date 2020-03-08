@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-02 18:07:47
+ * @LastEditTime: 2020-03-07 15:20:55
  * @Description: 游戏脚本
  * @FilePath: \wucaibinfenbang\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -49,6 +49,7 @@ export default class GamePanel extends BaseUI {
     private touchTarget: any = null
     private slotsArr: cc.Node[] = []
     private sticksArr: cc.Node[] = []
+    private slotupsArr: cc.Node[] = []
     private boundingBox: cc.Node = null
     private roundNode: cc.Node = null
     private rightNum: number = 0 //没关答对的数量
@@ -56,15 +57,14 @@ export default class GamePanel extends BaseUI {
     private isPlay: boolean = false
     private timeoutIdArr: number[] = []
     private audioIdArr: number[] = []
-    private nodeArr: cc.Node[] = []
+    private nodeArr: number[] = [] //节点对应信息
     private actionId: number = 0
+    private isOver: boolean = false
     private archival = {
         answerdata: null,
         gamedata: [[],[]]
     }
-
     
-   
     onLoad() {
         if(ConstValue.IS_TEACHER) {
             DaAnData.getInstance().submitEnable = true//没有教师端直接提交
@@ -75,17 +75,18 @@ export default class GamePanel extends BaseUI {
         this.bg.on(cc.Node.EventType.TOUCH_START, ()=>{
             this.gameResult = AnswerResult.AnswerHalf
             ReportManager.getInstance().answerHalf()
+            ReportManager.getInstance().touchStart()
         }, this)
         this.title.on(cc.Node.EventType.TOUCH_START, this.audioCallback, this)
         this.trumpet.on(cc.Node.EventType.TOUCH_START, this.audioCallback, this)
         let id = setTimeout(()=>{
             AudioManager.getInstance().stopAll()
             //缤纷棒能拼出什么，动手试一试
+            this.trumpetActionStart()
             AudioManager.getInstance().playSound('缤纷棒能拼出什么，动手试一试', false, 1, null, ()=>{
                 AudioManager.getInstance().playSound('四根缤纷棒能拼出什么', false, 1, null, ()=>{
+                    this.trumpetActionStop()
                     this.mask.active = false
-                    this.title.active = true
-                    this.trumpet.active = true
                     ReportManager.getInstance().levelStart(false)
                 })
             })
@@ -119,11 +120,12 @@ export default class GamePanel extends BaseUI {
         cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab, function (err, prefab) { })
         //添加上报result数据
         ReportManager.getInstance().addResult(2)
+        ReportManager.getInstance().setQuestionInfo(0, '四根缤纷棒能拼出什么?')
+        ReportManager.getInstance().setQuestionInfo(1, '五根缤纷棒能拼出什么?')
         //播放题干
         this.mask.active = true
         //题型初始化
         this.round1()
-       
     }
 
     round1() {
@@ -133,7 +135,7 @@ export default class GamePanel extends BaseUI {
         this.node2.active = false
         this.roundNode = this.node1
         this.slotsArr = this.roundNode.getChildByName('slots').children
-        this.nodeArr = [this.slotsArr[1], this.slotsArr[2], this.slotsArr[3], this.slotsArr[0]]
+        this.nodeArr = [3,2,1,0]
         this.resetInterface()
         this.removeListenerOnOptions()
         this.addListenerOnOptions()
@@ -147,7 +149,7 @@ export default class GamePanel extends BaseUI {
         this.node1.active = false
         this.roundNode = this.node2
         this.slotsArr = this.roundNode.getChildByName('slots').children
-        this.nodeArr = [this.slotsArr[0], this.slotsArr[1], this.slotsArr[2], this.slotsArr[3], this.slotsArr[4]]
+        this.nodeArr = [0,1,2,3,4]
         this.resetInterface()
         this.removeListenerOnOptions()
         this.addListenerOnOptions()
@@ -155,12 +157,14 @@ export default class GamePanel extends BaseUI {
 
     resetInterface() {
         this.roundNode.getChildByName('slots').active = true
+        this.roundNode.getChildByName('slotups').active = true
         this.roundNode.getChildByName('example').active = true
         this.boundingBox = this.roundNode.getChildByName('BoundingBox')
+        this.slotupsArr = this.roundNode.getChildByName('slotups').children
         this.sticksArr = this.roundNode.getChildByName('sticks').children
         for (const key in this.slotsArr) {
             this.slotsArr[key].getChildByName('slot').active = true
-            this.slotsArr[key].getChildByName('stick').active = false
+            this.slotupsArr[key].getChildByName('stick').active = false
          }
          for (const key in this.sticksArr) {
              this.sticksArr[key].active = true
@@ -171,6 +175,8 @@ export default class GamePanel extends BaseUI {
         for(let i = 0; i < this.sticksArr.length; ++i) {
             let node = this.sticksArr[i]
             node.on(cc.Node.EventType.TOUCH_START, (e)=>{
+                ReportManager.getInstance().touchStart()
+                ReportManager.getInstance().setAnswerNum(1)
                 if(this.touchTarget || e.target.opacity == 0) {
                     return
                 }
@@ -203,6 +209,28 @@ export default class GamePanel extends BaseUI {
                     pos.y = height - viewHeight
                 }
                 this.touchNode.setPosition(pos)
+                let boxArr: cc.Node[] = this.boundingBox.children
+                let overNum = 0
+                for(let j = 0; j < boxArr.length; ++j) {
+                    if(boxArr[j].getBoundingBox().contains(this.boundingBox.convertToNodeSpaceAR(e.currentTouch._point)) && this.mate1(i, j) && this.slotupsArr[this.nodeArr[j]].getChildByName('stick').active == false) {
+                        boxArr[j].getChildByName('box').active = true
+                        for(let m = 0; m < boxArr.length; ++m) {
+                            if(m != j) {
+                                boxArr[m].getChildByName('box').active = false
+                            }
+                        }
+                    }else {
+                        overNum ++
+                    }
+                    if(j == boxArr.length - 1) {
+                        if(overNum == boxArr.length) {
+                            for(let n = 0; n < boxArr.length; ++n) {
+                                boxArr[n].getChildByName('box').active = false
+                            }
+                        }
+                    }
+                }
+                
             }) 
             node.on(cc.Node.EventType.TOUCH_END, (e)=>{
                 if(this.touchTarget != e.target) {
@@ -211,45 +239,81 @@ export default class GamePanel extends BaseUI {
                 this.touchTarget = null
                 this.touchNode.active = false
                 e.target.opacity = 255
+                let boxArr: cc.Node[] = this.boundingBox.children
+                for(let n = 0; n < boxArr.length; ++n) {
+                    boxArr[n].getChildByName('box').active = false
+                }
             }) 
             node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
                 if(this.touchTarget != e.target) {
                     return
                 }
-                if(this.boundingBox.getBoundingBox().contains(this.roundNode.convertToNodeSpaceAR(e.currentTouch._point))) {
-                    if(this.isRight(i)) {
-                        let level = ReportManager.getInstance().getLevel()
-                        this.actionId++
-                        this.archival.gamedata[level].push(i)
-                        this.archival.answerdata = ReportManager.getInstance().getAnswerData()
-                        GameMsg.getInstance().dataArchival(this.actionId, this.archival)
-                        this.stopAudio()
-                        AudioManager.getInstance().playSound('棒棒棒', false, 1, (id)=>{this.audioIdArr.push(id)})
-                        this.nodeArr[this.rightNum].getChildByName('stick').active = true
-                        this.nodeArr[this.rightNum].getChildByName('slot').active = false
-                        this.rightNum++
-                        if(this.isSuccess(this.rightNum)) {
-                            this.mask.active = true
-                            if(level == 0) {
-                                ReportManager.getInstance().levelEnd(AnswerResult.AnswerRight)
-                                GameMsg.getInstance().answerSyncSend(ReportManager.getInstance().getAnswerData())
-                            }else if(level == 1) {
-                                this.gameResult = AnswerResult.AnswerRight
-                                ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
-                                GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData())
-                            } 
-                            this.showAction(level)
+                let num = 0
+                let boxArr: cc.Node[] = this.boundingBox.children
+                let skipIndex = 100
+                for(let j = 0; j < boxArr.length; ++j) {
+                    if(boxArr[j].getBoundingBox().contains(this.boundingBox.convertToNodeSpaceAR(e.currentTouch._point)) && this.mate1(i, j)) {
+                        if(this.mate2(i)) {
+                            if(this.isRight(i, j)) {
+                                let level = ReportManager.getInstance().getLevel() - 1
+                                this.actionId++
+                                this.archival.gamedata[level].push(i)
+                                this.archival.answerdata = ReportManager.getInstance().getAnswerData()
+                                GameMsg.getInstance().dataArchival(this.actionId, this.archival)
+                                this.stopAudio()
+                                AudioManager.getInstance().playSound('棒棒棒', false, 1, (id)=>{this.audioIdArr.push(id)})
+                                this.slotupsArr[this.nodeArr[this.rightNum]].getChildByName('stick').active = true
+                                this.slotsArr[this.nodeArr[this.rightNum]].getChildByName('slot').active = false
+                                this.rightNum++
+                                if(this.isSuccess(this.rightNum)) {
+                                    this.mask.active = true
+                                    if(level == 0) {
+                                        ReportManager.getInstance().levelEnd(AnswerResult.AnswerRight)
+                                        GameMsg.getInstance().answerSyncSend(ReportManager.getInstance().getAnswerData())
+                                    }else if(level == 1) {
+                                        this.gameResult = AnswerResult.AnswerRight
+                                        this.isOver = true
+                                        ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
+                                        GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData())
+                                    } 
+                                    this.showAction(level)
+                                }
+                                num ++
+                            }else {
+                                //顺序不对
+                                let node = boxArr[this.rightNum].getChildByName('box')
+                                skipIndex = this.rightNum
+                                node.active = true
+                                node.opacity = 0
+                                let fadein = cc.fadeIn(0.3)
+                                let fadeout = cc.fadeOut(0.3)
+                                let fun = cc.callFunc(()=>{this.mask.active = false; node.opacity = 255; node.active = false})
+                                let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
+                                this.mask.active = true
+                                this.stopAudio()
+                                AudioManager.getInstance().playSound('dingdingding', false, 1, (id)=>{this.audioIdArr.push(id)})
+                                node.runAction(seq)
+                                e.target.opacity = 255
+                            }
+                        }else {
+                            //与正确答案形状不匹配
+                            this.stopAudio()
+                            AudioManager.getInstance().playSound('还没轮到我', false, 1, (id)=>{this.audioIdArr.push(id)})
+                            e.target.opacity = 255
                         }
-                    }else {
-                        this.stopAudio()
-                        AudioManager.getInstance().playSound('还没轮到我', false, 1, (id)=>{this.audioIdArr.push(id)})
-                        e.target.opacity = 255
                     }
-                }else {
+                }
+                if(num == 0) {
+                    //slot和stick不匹配
                     e.target.opacity = 255
                 }
                 this.touchTarget = null
                 this.touchNode.active = false
+                for(let n = 0; n < boxArr.length; ++n) {
+                    if(n != skipIndex) {
+                        boxArr[n].getChildByName('box').active = false
+                    }
+                }
             }) 
         }
     }
@@ -261,6 +325,42 @@ export default class GamePanel extends BaseUI {
             node.off(cc.Node.EventType.TOUCH_END)
             node.off(cc.Node.EventType.TOUCH_CANCEL)
         }
+    } 
+
+    mate2(stickIndex: number) {
+        let level = ReportManager.getInstance().getLevel() - 1
+        if(level == 0) {
+            if(this.rightNum < 3 && [1,2,3].indexOf(stickIndex) != -1) {
+                return true
+            }else if(this.rightNum ==3 && stickIndex == 0){
+                return true
+            }
+        }else if(level == 1) {
+            if([0,1,2].indexOf(stickIndex) != -1 && [0,2,4].indexOf(this.rightNum) != -1) {
+                return true
+            }else if([3,4].indexOf(stickIndex) != -1 && [1,3].indexOf(this.rightNum) != -1) {
+                return true
+            }
+        }
+        return false
+    }
+
+    mate1(stickIndex: number, boxIndex: number): boolean {
+        let level = ReportManager.getInstance().getLevel() - 1
+        if(level == 0) {
+            if(stickIndex == 0 && boxIndex == 3) {
+                return true
+            }else if([1,2,3].indexOf(stickIndex) != -1 && [0,1,2].indexOf(boxIndex) != -1){
+                return true
+            }
+        }else if(level == 1) {
+            if([0,1,2].indexOf(stickIndex) != -1 && [0,2,4].indexOf(boxIndex) != -1) {
+                return true
+            }else if([3,4].indexOf(stickIndex) != -1 && [1,3].indexOf(boxIndex) != -1) {
+                return true
+            }
+        }
+        return false
     }
     /**
      * @description: 停止audioIdArr中的音频
@@ -274,6 +374,7 @@ export default class GamePanel extends BaseUI {
 
     showAction(level: number) {
         this.roundNode.getChildByName('slots').active = false
+        this.roundNode.getChildByName('slotups').active = false
         this.roundNode.getChildByName('example').active = false
         let node: cc.Node = null
         let fadein = cc.fadeIn(0.2)
@@ -293,22 +394,24 @@ export default class GamePanel extends BaseUI {
         let id = setTimeout(() => {
             this.spine.active = false
             if(level == 0) {
-                    UIHelp.showOverTip(1,'', '下一关', ()=>{
-                        this.mask.active = true
-                        AudioManager.getInstance().stopAll()
-                        AudioManager.getInstance().playSound('五个缤纷棒能拼出什么', false, 1, null, ()=>{
-                            this.mask.active = true
-                            this.round2()
-                            ReportManager.getInstance().levelStart(false)
-                        })
-                    }, null, null)
+                //UIHelp.showOverTip(1,'', '下一关', ()=>{
+                    this.round2()
+                    this.mask.active = true
+                    AudioManager.getInstance().stopAll()
+                    this.trumpetActionStart()
+                    AudioManager.getInstance().playSound('五个缤纷棒能拼出什么', false, 1, null, ()=>{
+                        this.trumpetActionStop()
+                        this.mask.active = false
+                        ReportManager.getInstance().levelStart(false)
+                    })
+                //}, null, null)
             }else if(level == 1) {
                     UIHelp.showOverTip(2, '你真棒！等等还没做完的同学吧~', '', null, null, '闯关成功')
             }
             clearTimeout(id)
             let index = this.timeoutIdArr.indexOf(id)
             this.timeoutIdArr.splice(index, 1)
-        }, 3500);
+        }, 4000);
         this.timeoutIdArr.push(id)
         
         if(level == 0) {
@@ -324,7 +427,7 @@ export default class GamePanel extends BaseUI {
     }
 
     isSuccess(rightNum: number):boolean {
-        let level = ReportManager.getInstance().getLevel()
+        let level = ReportManager.getInstance().getLevel() - 1
         if(level == 0 && rightNum >= 4) {
             return true
         }else if(level == 1 && rightNum >= 5) {
@@ -333,18 +436,18 @@ export default class GamePanel extends BaseUI {
         return false
     }
 
-    isRight(stickIndex: number):boolean {
-        let level = ReportManager.getInstance().getLevel()
+    isRight(stickIndex: number, boxIndex: number):boolean {
+        let level = ReportManager.getInstance().getLevel() - 1
         if(level == 0) {
-            if(this.rightNum < 3 && [1,2,3].indexOf(stickIndex) != -1) {
+            if(this.rightNum < 3 && [1,2,3].indexOf(stickIndex) != -1 && this.rightNum == boxIndex) {
                 return true
             }else if(this.rightNum == 3 && stickIndex == 0) {
                 return true
             }
         }else if(level == 1) {
-            if([0,2,4].indexOf(this.rightNum) != -1 && [0,1,2].indexOf(stickIndex) != -1) {
+            if([0,2,4].indexOf(this.rightNum) != -1 && [0,1,2].indexOf(stickIndex) != -1 && this.rightNum == boxIndex) {
                 return true
-            }else if([1,3].indexOf(this.rightNum) != -1 && [3,4].indexOf(stickIndex) != -1) {
+            }else if([1,3].indexOf(this.rightNum) != -1 && [3,4].indexOf(stickIndex) != -1 && this.rightNum == boxIndex) {
                 return true
             }
         }
@@ -373,7 +476,7 @@ export default class GamePanel extends BaseUI {
         this.trumpetId = null
         this.trumpet.children[0].active = false
         this.trumpet.children[1].active = false
-        this.trumpet.children[2].active = false
+        this.trumpet.children[2].active = true
     }
     /**
      * @description: 题干按钮语音结束回调
@@ -381,13 +484,15 @@ export default class GamePanel extends BaseUI {
      * @return: 
      */
     audioCallback() {
+        ReportManager.getInstance().touchStart()
+        //ReportManager.getInstance().gameOver(AnswerResult.NoAnswer)
         if(this.isPlay) {
             return
         }
         this.mask.active = true
         this.isPlay = true
         this.trumpetActionStart()
-        let level = ReportManager.getInstance().getLevel()
+        let level = ReportManager.getInstance().getLevel() - 1
         if(level == 0) {
             AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('四根缤纷棒能拼出什么', false, 1, null, ()=>{
@@ -417,11 +522,14 @@ export default class GamePanel extends BaseUI {
         this.mask.active = true
         let id = setTimeout(() => {
             AudioManager.getInstance().stopAll()
+            this.trumpetActionStart()
             AudioManager.getInstance().playSound('缤纷棒能拼出什么，动手试一试', false, 1, null, ()=>{
+                this.trumpetActionStop()
                 this.mask.active = false
                 this.title.active = true
                 this.trumpet.active = true
                 ReportManager.getInstance().answerReset()
+                ReportManager.getInstance().levelStart(false)
             })
             clearTimeout(id)
             let index = this.timeoutIdArr.indexOf(id)
@@ -444,7 +552,7 @@ export default class GamePanel extends BaseUI {
             let len = data.gamedata[0].length
             for(let i = 0; i < len; ++i) {
                 this.slotsArr[i].getChildByName('slot').active = false
-                this.slotsArr[i].getChildByName('stick').active = true
+                this.slotupsArr[i].getChildByName('stick').active = true
                 this.sticksArr[data.gamedata[0][i]].active = false
             }
             ReportManager.getInstance().setAnswerData(data.answerdata)
@@ -454,7 +562,7 @@ export default class GamePanel extends BaseUI {
             let len = data.gamedata[1].length
             for(let i = 0; i < len; ++i) {
                 this.slotsArr[i].getChildByName('slot').active = false
-                this.slotsArr[i].getChildByName('stick').active = true
+                this.slotupsArr[i].getChildByName('stick').active = true
                 this.sticksArr[data.gamedata[1][i]].active = false
             }
             ReportManager.getInstance().setAnswerData(data.answerdata)
@@ -501,15 +609,17 @@ export default class GamePanel extends BaseUI {
     }
     //游戏结束消息监听
     onSDKMsgStopReceived() {
-        ReportManager.getInstance().gameOver(this.gameResult)
-        //新课堂上报
-        GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData());
+        if(!this.isOver) {
+            ReportManager.getInstance().gameOver(this.gameResult)
+            //新课堂上报
+            GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData());
+        }
         GameMsg.getInstance().finished();
     }
     //初始化消息监听
     onSDKMsgInitReceived() {
         this.actionId = 0
-        this.archival = [[],[]]
+        this.archival.gamedata = [[],[]]
         this.onInit();
     }
 
@@ -531,7 +641,6 @@ export default class GamePanel extends BaseUI {
                     if (content.CoursewareKey == ConstValue.CoursewareKey) {
                         // cc.log("拉取到数据：")
                         // cc.log(content);
-                        this.onInit()
                     } else {
                         UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
                             (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
