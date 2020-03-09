@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-07 15:14:33
+ * @LastEditTime: 2020-03-09 15:02:31
  * @Description: 游戏脚本
  * @FilePath: \shenqipaopao\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -96,12 +96,12 @@ export default class GamePanel extends BaseUI {
         this.initGame()
         let id = setTimeout(()=>{
             AudioManager.getInstance().stopAll()
-            AudioManager.getInstance().playSound('仔细观察选出正确的泡泡吧', false, 1, null, ()=>{
+            AudioManager.getInstance().playSound('title', false, 1, null, ()=>{
                 this.audioOver = true
                 ReportManager.getInstance().levelStart(false)
                 if(this.loadResOver) {
                     this.mask.active = false
-                }
+                }44444
             })
             clearTimeout(id)
             let index = this.timeoutIdArr.indexOf(id)
@@ -134,6 +134,7 @@ export default class GamePanel extends BaseUI {
                 if(this.touchTarget || !e.target.getChildByName('sprite').active) {
                     return
                 }
+                AudioManager.getInstance().playSound('touch', false, 1)
                 ReportManager.getInstance().answerHalf()
                 this.touchTarget = e.target
                 this.touchNode.active = true
@@ -219,6 +220,7 @@ export default class GamePanel extends BaseUI {
                         index = j
                         this.mask.active = true
                         if(this.isRight(i, j)) {
+                            AudioManager.getInstance().playSound('right', false, 1)
                             this.rightNum ++
                             arr[j].getChildByName('bottom').active = true
                             let sp = arr[j].getChildByName('sprite')
@@ -246,6 +248,9 @@ export default class GamePanel extends BaseUI {
                             let seq = cc.sequence(fadein, cc.delayTime(0.2), fadeout, fun)
                             sp.runAction(seq)
                         }else {
+                            AudioManager.getInstance().playSound('wrong', false, 1)
+                            this.mask.active = true
+                            AudioManager.getInstance().playSound('replay', false, 1, null, ()=>{this.mask.active = false})
                             arr[j].getChildByName('bottom').active = true
                             let sp = arr[j].getChildByName('sprite')
                             sp.active = true
@@ -337,7 +342,7 @@ export default class GamePanel extends BaseUI {
     audioCallback() {
         this.mask.active = true
         AudioManager.getInstance().stopAll()
-        AudioManager.getInstance().playSound('仔细观察选出正确的泡泡吧', false, 1, null, ()=>{this.mask.active = false})
+        AudioManager.getInstance().playSound('title', false, 1, null, ()=>{this.mask.active = false})
     }
 
     /**
@@ -361,7 +366,7 @@ export default class GamePanel extends BaseUI {
          }
         this.mask.active = true
         AudioManager.getInstance().stopAll()
-        AudioManager.getInstance().playSound('仔细观察选出正确的泡泡吧', false, 1, null, ()=>{
+        AudioManager.getInstance().playSound('title', false, 1, null, ()=>{
             this.mask.active = false
             ReportManager.getInstance().levelStart(false)
            
