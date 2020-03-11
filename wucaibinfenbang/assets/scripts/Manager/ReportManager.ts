@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-27 19:59:56
- * @LastEditTime: 2020-03-07 15:22:17
+ * @LastEditTime: 2020-03-09 21:48:54
  * @Description: 上报数据管理类
  * @FilePath: \wucaibinfenbang\assets\scripts\Manager\ReportManager.ts
  */
@@ -24,7 +24,7 @@ export class ReportManager
     private level: number = 0 //当前关卡排位
     private levelNum: number = 0 //总的关卡数
     private coastTimes: number = 0 //计时结束的时间
-    private timeId: number = 0 //计时器timeout id
+    private timeId: number = null //计时器timeout id
     private answerdata = { //上报数据结构
         type : 'txt',
         index: 1,
@@ -159,6 +159,18 @@ export class ReportManager
             gameOver: null
         }
         this.addResult(this.levelNum)
+    }
+
+    isStart(): any {
+        if(this.timeId != null) {
+            return true
+        }else {
+            return false
+        }
+    }
+
+    addLevel() {
+        this.level ++
     }
 
     touchStart() {

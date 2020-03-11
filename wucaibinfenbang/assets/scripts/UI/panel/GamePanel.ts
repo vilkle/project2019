@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-07 15:20:55
+ * @LastEditTime: 2020-03-09 21:49:12
  * @Description: 游戏脚本
  * @FilePath: \wucaibinfenbang\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -73,9 +73,9 @@ export default class GamePanel extends BaseUI {
             this.getNet()
         }
         this.bg.on(cc.Node.EventType.TOUCH_START, ()=>{
-            this.gameResult = AnswerResult.AnswerHalf
-            ReportManager.getInstance().answerHalf()
-            ReportManager.getInstance().touchStart()
+            //this.gameResult = AnswerResult.AnswerHalf
+            //ReportManager.getInstance().answerHalf()
+            //ReportManager.getInstance().touchStart()
         }, this)
         this.title.on(cc.Node.EventType.TOUCH_START, this.audioCallback, this)
         this.trumpet.on(cc.Node.EventType.TOUCH_START, this.audioCallback, this)
@@ -87,7 +87,7 @@ export default class GamePanel extends BaseUI {
                 AudioManager.getInstance().playSound('四根缤纷棒能拼出什么', false, 1, null, ()=>{
                     this.trumpetActionStop()
                     this.mask.active = false
-                    ReportManager.getInstance().levelStart(false)
+                    //ReportManager.getInstance().levelStart(false)
                 })
             })
             clearTimeout(id)
@@ -112,6 +112,8 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
+        console.log(this.isOver)
+        ReportManager.getInstance().logAnswerdata()
         //监听新课堂发出的消息
         this.addSDKEventListener()
         //新课堂上报
@@ -126,6 +128,7 @@ export default class GamePanel extends BaseUI {
         this.mask.active = true
         //题型初始化
         this.round1()
+        //ReportManager.getInstance().logAnswerdata()
     }
 
     round1() {
@@ -175,7 +178,15 @@ export default class GamePanel extends BaseUI {
         for(let i = 0; i < this.sticksArr.length; ++i) {
             let node = this.sticksArr[i]
             node.on(cc.Node.EventType.TOUCH_START, (e)=>{
+                this.gameResult = AnswerResult.AnswerHalf
+                //ReportManager.getInstance().logAnswerdata()
+                let a = ReportManager.getInstance().isStart()
+                console.log(a)
+                if(!ReportManager.getInstance().isStart()) {
+                    ReportManager.getInstance().levelStart(false)
+                }
                 ReportManager.getInstance().touchStart()
+                ReportManager.getInstance().answerHalf()
                 ReportManager.getInstance().setAnswerNum(1)
                 if(this.touchTarget || e.target.opacity == 0) {
                     return
@@ -402,7 +413,7 @@ export default class GamePanel extends BaseUI {
                     AudioManager.getInstance().playSound('五个缤纷棒能拼出什么', false, 1, null, ()=>{
                         this.trumpetActionStop()
                         this.mask.active = false
-                        ReportManager.getInstance().levelStart(false)
+                        //ReportManager.getInstance().levelStart(false)
                     })
                 //}, null, null)
             }else if(level == 1) {
@@ -484,8 +495,13 @@ export default class GamePanel extends BaseUI {
      * @return: 
      */
     audioCallback() {
+        this.gameResult = AnswerResult.AnswerHalf
+        if(!ReportManager.getInstance().isStart()) {
+            ReportManager.getInstance().levelStart(false)
+        }
         ReportManager.getInstance().touchStart()
-        //ReportManager.getInstance().gameOver(AnswerResult.NoAnswer)
+        ReportManager.getInstance().answerHalf()
+        ReportManager.getInstance().setAnswerNum(1)
         if(this.isPlay) {
             return
         }
@@ -529,7 +545,7 @@ export default class GamePanel extends BaseUI {
                 this.title.active = true
                 this.trumpet.active = true
                 ReportManager.getInstance().answerReset()
-                ReportManager.getInstance().levelStart(false)
+                //ReportManager.getInstance().levelStart(false)
             })
             clearTimeout(id)
             let index = this.timeoutIdArr.indexOf(id)
@@ -610,6 +626,9 @@ export default class GamePanel extends BaseUI {
     //游戏结束消息监听
     onSDKMsgStopReceived() {
         if(!this.isOver) {
+            if(!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().addLevel()
+            }
             ReportManager.getInstance().gameOver(this.gameResult)
             //新课堂上报
             GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData());
