@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-27 19:59:56
- * @LastEditTime: 2020-03-09 21:48:54
+ * @LastEditTime: 2020-03-18 23:52:40
  * @Description: 上报数据管理类
  * @FilePath: \wucaibinfenbang\assets\scripts\Manager\ReportManager.ts
  */
@@ -40,6 +40,7 @@ export class ReportManager
  */
     addResult(num: number) {
         this.levelNum = num
+        this.answerdata.result = []
         for(let i = 0; i < num; ++i) {
             this.answerdata.result.push({
                 id: i + 1,
@@ -159,6 +160,11 @@ export class ReportManager
             gameOver: null
         }
         this.addResult(this.levelNum)
+        this.level = 0
+        this.degreeNum = 0
+        this.rightNum = 0
+        this.coastTimes = 0
+        this.timeId = null
     }
 
     isStart(): any {
@@ -203,6 +209,10 @@ export class ReportManager
 
     getLevel(): number {
         return this.level
+    }
+
+    setLevel(num: number) {
+        this.level = 0
     }
 
     clearInterval() {

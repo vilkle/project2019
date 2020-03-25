@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-09 15:02:31
+ * @LastEditTime: 2020-03-19 12:02:32
  * @Description: 游戏脚本
  * @FilePath: \shenqipaopao\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -63,8 +63,8 @@ export default class GamePanel extends BaseUI {
             this.getNet()
         }
         this.bg.on(cc.Node.EventType.TOUCH_START, ()=>{
-            this.gameResult = AnswerResult.AnswerHalf
-            ReportManager.getInstance().answerHalf()
+            // this.gameResult = AnswerResult.AnswerHalf
+            // ReportManager.getInstance().answerHalf()
         }, this)
         this.title.on(cc.Node.EventType.TOUCH_START, this.audioCallback, this)
         this.mask.active = true
@@ -72,7 +72,7 @@ export default class GamePanel extends BaseUI {
     }
 
     onDestroy() {
-        
+        ReportManager.getInstance().answerReset()
         this.bg.off(cc.Node.EventType.TOUCH_START)
         //this.title.off(cc.Node.EventType.TOUCH_START)
        
@@ -98,10 +98,10 @@ export default class GamePanel extends BaseUI {
             AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('title', false, 1, null, ()=>{
                 this.audioOver = true
-                ReportManager.getInstance().levelStart(false)
+                //ReportManager.getInstance().levelStart(false)
                 if(this.loadResOver) {
                     this.mask.active = false
-                }44444
+                }
             })
             clearTimeout(id)
             let index = this.timeoutIdArr.indexOf(id)
@@ -129,7 +129,12 @@ export default class GamePanel extends BaseUI {
         for(let i = 0; i < arr.length; ++i) {
             let node = arr[i]
             node.on(cc.Node.EventType.TOUCH_START, (e)=>{
+                this.gameResult = AnswerResult.AnswerHalf
+                if(!ReportManager.getInstance().isStart()) {
+                    ReportManager.getInstance().levelStart(false)
+                }
                 ReportManager.getInstance().touchStart()
+                ReportManager.getInstance().answerHalf()
                 ReportManager.getInstance().setAnswerNum(1)
                 if(this.touchTarget || !e.target.getChildByName('sprite').active) {
                     return
@@ -220,6 +225,8 @@ export default class GamePanel extends BaseUI {
                         index = j
                         this.mask.active = true
                         if(this.isRight(i, j)) {
+                            ReportManager.getInstance().answerRight()
+                            GameMsg.getInstance().answerSyncSend(ReportManager.getInstance().getAnswerData())
                             AudioManager.getInstance().playSound('right', false, 1)
                             this.rightNum ++
                             arr[j].getChildByName('bottom').active = true
@@ -248,6 +255,8 @@ export default class GamePanel extends BaseUI {
                             let seq = cc.sequence(fadein, cc.delayTime(0.2), fadeout, fun)
                             sp.runAction(seq)
                         }else {
+                            ReportManager.getInstance().answerWrong()
+                            GameMsg.getInstance().answerSyncSend(ReportManager.getInstance().getAnswerData())
                             AudioManager.getInstance().playSound('wrong', false, 1)
                             this.mask.active = true
                             AudioManager.getInstance().playSound('replay', false, 1, null, ()=>{this.mask.active = false})
@@ -340,6 +349,13 @@ export default class GamePanel extends BaseUI {
      * @return: 
      */
     audioCallback() {
+        this.gameResult = AnswerResult.AnswerHalf
+        if(!ReportManager.getInstance().isStart()) {
+            ReportManager.getInstance().levelStart(false)
+        }
+        ReportManager.getInstance().touchStart()
+        ReportManager.getInstance().answerHalf()
+        ReportManager.getInstance().setAnswerNum(1)
         this.mask.active = true
         AudioManager.getInstance().stopAll()
         AudioManager.getInstance().playSound('title', false, 1, null, ()=>{this.mask.active = false})
@@ -422,6 +438,9 @@ export default class GamePanel extends BaseUI {
     //游戏结束消息监听
     onSDKMsgStopReceived() {
         if(!this.isOver) {
+            if(!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().addLevel()
+            }
             ReportManager.getInstance().gameOver(this.gameResult)
             //新课堂上报
             GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData());

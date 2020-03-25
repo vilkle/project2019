@@ -1,3 +1,10 @@
+/*
+ * @Author: 马超
+ * @Date: 2020-02-29 14:55:20
+ * @LastEditTime: 2020-03-18 17:00:39
+ * @Description: 游戏脚本
+ * @FilePath: \wucaibinfenbang\assets\scripts\UI\panel\SubmissionPanel.ts
+ */
 import { BaseUI } from "../BaseUI";
 import { UIManager } from "../../Manager/UIManager";
 import { NetWork } from "../../Http/NetWork";
@@ -55,7 +62,7 @@ export default class SubmissionPanel extends BaseUI {
 
     //添加答案信息
     AddNet(gameDataJson) {
-        let data = { title_id: NetWork.titleId, courseware_content: gameDataJson, is_result: 1, is_lavel: 0, lavel_num: 0 };
+        let data = { title_id: NetWork.titleId, courseware_content: gameDataJson, is_result: 1, is_lavel: 1, lavel_num: 2 };
         NetWork.getInstance().httpRequest(NetWork.ADD, "POST", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 UIHelp.showTip("答案提交成功");
@@ -66,7 +73,7 @@ export default class SubmissionPanel extends BaseUI {
 
     //修改课件
     ModifyNet(gameDataJson) {
-        let jsonData = { courseware_id: NetWork.coursewareId, courseware_content: gameDataJson, is_result: 1, is_lavel: 0, lavel_num: 0 };
+        let jsonData = { courseware_id: NetWork.coursewareId, courseware_content: gameDataJson, is_result: 1, is_lavel: 1, lavel_num: 2 };
         NetWork.getInstance().httpRequest(NetWork.MODIFY, "POST", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 UIHelp.showTip("答案修改成功");

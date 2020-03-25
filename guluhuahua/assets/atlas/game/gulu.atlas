@@ -1,0 +1,97 @@
+
+gulu.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bq1
+  rotate: false
+  xy: 2, 38
+  size: 234, 191
+  orig: 234, 191
+  offset: 0, 0
+  index: -1
+bq2
+  rotate: false
+  xy: 294, 319
+  size: 234, 191
+  orig: 234, 191
+  offset: 0, 0
+  index: -1
+bq3
+  rotate: false
+  xy: 530, 321
+  size: 235, 189
+  orig: 235, 189
+  offset: 0, 0
+  index: -1
+gl_a1
+  rotate: false
+  xy: 813, 447
+  size: 94, 63
+  orig: 94, 63
+  offset: 0, 0
+  index: -1
+gl_a2
+  rotate: false
+  xy: 238, 2
+  size: 137, 41
+  orig: 137, 41
+  offset: 0, 0
+  index: -1
+gl_b
+  rotate: false
+  xy: 767, 348
+  size: 44, 162
+  orig: 44, 162
+  offset: 0, 0
+  index: -1
+gl_f1
+  rotate: false
+  xy: 187, 18
+  size: 36, 18
+  orig: 36, 18
+  offset: 0, 0
+  index: -1
+gl_f2
+  rotate: false
+  xy: 767, 328
+  size: 37, 18
+  orig: 37, 18
+  offset: 0, 0
+  index: -1
+gl_h1
+  rotate: false
+  xy: 294, 250
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+gl_l1
+  rotate: true
+  xy: 2, 18
+  size: 18, 183
+  orig: 18, 183
+  offset: 0, 0
+  index: -1
+gl_l2
+  rotate: false
+  xy: 238, 45
+  size: 40, 184
+  orig: 40, 184
+  offset: 0, 0
+  index: -1
+gl_sh
+  rotate: false
+  xy: 294, 280
+  size: 216, 37
+  orig: 216, 37
+  offset: 0, 0
+  index: -1
+gl_t
+  rotate: false
+  xy: 2, 231
+  size: 290, 279
+  orig: 290, 279
+  offset: 0, 0
+  index: -1

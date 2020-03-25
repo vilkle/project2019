@@ -1,0 +1,32 @@
+{
+  "ver": "2.3.1",
+  "uuid": "63bea64c-dbad-4afa-ae7f-9ea13c4c20f8",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "platformSettings": {},
+  "subMetas": {
+    "油麦菜选中": {
+      "ver": "1.0.4",
+      "uuid": "e093581c-a2c4-41ed-878c-638d1efe2536",
+      "rawTextureUuid": "63bea64c-dbad-4afa-ae7f-9ea13c4c20f8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 336,
+      "height": 292,
+      "rawWidth": 336,
+      "rawHeight": 292,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

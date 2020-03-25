@@ -1,0 +1,32 @@
+{
+  "ver": "2.3.1",
+  "uuid": "e2721ae8-5843-4d23-b711-6352d0d809db",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "platformSettings": {},
+  "subMetas": {
+    "葡萄选中": {
+      "ver": "1.0.4",
+      "uuid": "1a7f0379-b2c5-4bb3-bf10-3d6b9bcbe046",
+      "rawTextureUuid": "e2721ae8-5843-4d23-b711-6352d0d809db",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 204,
+      "height": 245,
+      "rawWidth": 204,
+      "rawHeight": 245,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

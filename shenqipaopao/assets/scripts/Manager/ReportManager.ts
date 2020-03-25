@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-27 19:59:56
- * @LastEditTime: 2020-03-07 15:18:33
+ * @LastEditTime: 2020-03-19 12:02:04
  * @Description: 上报数据管理类
  * @FilePath: \shenqipaopao\assets\scripts\Manager\ReportManager.ts
  */
@@ -24,7 +24,7 @@ export class ReportManager
     private level: number = 0 //当前关卡排位
     private levelNum: number = 0 //总的关卡数
     private coastTimes: number = 0 //计时结束的时间
-    private timeId: number = 0 //计时器timeout id
+    private timeId: number = null //计时器timeout id
     private answerdata = { //上报数据结构
         type : 'txt',
         index: 1,
@@ -126,7 +126,12 @@ export class ReportManager
         let percentage = (this.rightNum / this.levelNum * 100).toFixed(2)
         this.answerdata.gameOver.percentage = `${percentage}%`
         if(parseFloat(percentage) == 0.00) {
-            this.answerdata.gameOver.answer_all_state = AnswerResult.NoAnswer
+            if(this.answerdata.result[0].answer_res == AnswerResult.NoAnswer) {
+                this.answerdata.gameOver.answer_all_state = AnswerResult.NoAnswer
+            }else if(this.answerdata.result[0].answer_res == AnswerResult.AnswerHalf) {
+                this.answerdata.gameOver.answer_all_state = AnswerResult.AnswerHalf
+            }
+            
         }else if(parseFloat(percentage) == 100.00) {
             this.answerdata.gameOver.answer_all_state = AnswerResult.AnswerRight
         }else {
@@ -159,6 +164,23 @@ export class ReportManager
             gameOver: null
         }
         this.addResult(this.levelNum)
+        this.level = 0
+        this.degreeNum = 0
+        this.rightNum = 0
+        this.coastTimes = 0
+        this.timeId = null
+    }
+
+    isStart(): any {
+        if(this.timeId != null) {
+            return true
+        }else {
+            return false
+        }
+    }
+
+    addLevel() {
+        this.level ++
     }
 
     touchStart() {
@@ -179,6 +201,14 @@ export class ReportManager
 
     answerHalf() {
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerHalf
+    }
+
+    answerRight() {
+        this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerRight
+    }
+
+    answerWrong() {
+        this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerError
     }
 
     getAnswerData(): any {

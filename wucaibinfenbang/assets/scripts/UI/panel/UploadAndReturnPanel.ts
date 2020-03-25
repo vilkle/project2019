@@ -15,6 +15,7 @@ import { DaAnData } from "../../Data/DaAnData";
 import { UIHelp } from "../../Utils/UIHelp";
 import { OverTips } from "../Item/OverTips";
 import { AudioManager } from "../../Manager/AudioManager";
+import { ReportManager } from "../../Manager/ReportManager";
 const { ccclass, property } = cc._decorator;
 
 @ccclass

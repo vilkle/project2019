@@ -1,0 +1,32 @@
+{
+  "ver": "2.3.1",
+  "uuid": "5b831e5e-d5be-4117-a8be-6d3e1b4e0895",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "platformSettings": {},
+  "subMetas": {
+    "黄花选中": {
+      "ver": "1.0.4",
+      "uuid": "78a948bc-5f8b-4348-950b-449158a31a15",
+      "rawTextureUuid": "5b831e5e-d5be-4117-a8be-6d3e1b4e0895",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 223,
+      "height": 213,
+      "rawWidth": 223,
+      "rawHeight": 213,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

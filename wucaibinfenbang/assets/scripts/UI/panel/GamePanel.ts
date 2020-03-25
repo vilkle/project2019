@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-09 21:49:12
+ * @LastEditTime: 2020-03-19 11:08:57
  * @Description: 游戏脚本
  * @FilePath: \wucaibinfenbang\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -58,6 +58,7 @@ export default class GamePanel extends BaseUI {
     private timeoutIdArr: number[] = []
     private audioIdArr: number[] = []
     private nodeArr: number[] = [] //节点对应信息
+    private nodeUpArr: number[] = []
     private actionId: number = 0
     private isOver: boolean = false
     private archival = {
@@ -98,6 +99,7 @@ export default class GamePanel extends BaseUI {
     }
 
     onDestroy() {
+        ReportManager.getInstance().answerReset()
         this.removeListenerOnOptions()
         this.bg.off(cc.Node.EventType.TOUCH_START)
         this.title.off(cc.Node.EventType.TOUCH_START)
@@ -139,6 +141,7 @@ export default class GamePanel extends BaseUI {
         this.roundNode = this.node1
         this.slotsArr = this.roundNode.getChildByName('slots').children
         this.nodeArr = [3,2,1,0]
+        this.nodeUpArr = [2,1,0,3]
         this.resetInterface()
         this.removeListenerOnOptions()
         this.addListenerOnOptions()
@@ -153,6 +156,7 @@ export default class GamePanel extends BaseUI {
         this.roundNode = this.node2
         this.slotsArr = this.roundNode.getChildByName('slots').children
         this.nodeArr = [0,1,2,3,4]
+        this.nodeUpArr = [0,1,2,3,4]
         this.resetInterface()
         this.removeListenerOnOptions()
         this.addListenerOnOptions()
@@ -179,9 +183,6 @@ export default class GamePanel extends BaseUI {
             let node = this.sticksArr[i]
             node.on(cc.Node.EventType.TOUCH_START, (e)=>{
                 this.gameResult = AnswerResult.AnswerHalf
-                //ReportManager.getInstance().logAnswerdata()
-                let a = ReportManager.getInstance().isStart()
-                console.log(a)
                 if(!ReportManager.getInstance().isStart()) {
                     ReportManager.getInstance().levelStart(false)
                 }
@@ -223,7 +224,7 @@ export default class GamePanel extends BaseUI {
                 let boxArr: cc.Node[] = this.boundingBox.children
                 let overNum = 0
                 for(let j = 0; j < boxArr.length; ++j) {
-                    if(boxArr[j].getBoundingBox().contains(this.boundingBox.convertToNodeSpaceAR(e.currentTouch._point)) && this.mate1(i, j) && this.slotupsArr[this.nodeArr[j]].getChildByName('stick').active == false) {
+                    if(boxArr[j].getBoundingBox().contains(this.boundingBox.convertToNodeSpaceAR(e.currentTouch._point)) && this.mate1(i, j) && this.slotupsArr[this.nodeUpArr[j]].getChildByName('stick').active == false) {
                         boxArr[j].getChildByName('box').active = true
                         for(let m = 0; m < boxArr.length; ++m) {
                             if(m != j) {
@@ -273,7 +274,7 @@ export default class GamePanel extends BaseUI {
                                 GameMsg.getInstance().dataArchival(this.actionId, this.archival)
                                 this.stopAudio()
                                 AudioManager.getInstance().playSound('棒棒棒', false, 1, (id)=>{this.audioIdArr.push(id)})
-                                this.slotupsArr[this.nodeArr[this.rightNum]].getChildByName('stick').active = true
+                                this.slotupsArr[this.nodeUpArr[this.rightNum]].getChildByName('stick').active = true
                                 this.slotsArr[this.nodeArr[this.rightNum]].getChildByName('slot').active = false
                                 this.rightNum++
                                 if(this.isSuccess(this.rightNum)) {
@@ -285,6 +286,7 @@ export default class GamePanel extends BaseUI {
                                         this.gameResult = AnswerResult.AnswerRight
                                         this.isOver = true
                                         ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
+                                        GameMsg.getInstance().answerSyncSend(ReportManager.getInstance().getAnswerData())
                                         GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData())
                                     } 
                                     this.showAction(level)

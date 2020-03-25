@@ -1,0 +1,32 @@
+{
+  "ver": "2.3.1",
+  "uuid": "9d97fde9-6679-4953-bbb5-a8e5cfe2a8cf",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "platformSettings": {},
+  "subMetas": {
+    "香蕉选中": {
+      "ver": "1.0.4",
+      "uuid": "f1564e2d-9517-4358-98af-5bc1c8746226",
+      "rawTextureUuid": "9d97fde9-6679-4953-bbb5-a8e5cfe2a8cf",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 233,
+      "height": 250,
+      "rawWidth": 233,
+      "rawHeight": 250,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
