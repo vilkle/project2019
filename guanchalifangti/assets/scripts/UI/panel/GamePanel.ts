@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-24 15:27:00
+ * @LastEditTime: 2020-03-26 16:15:47
  * @Description: 游戏脚本
  * @FilePath: \guanchalifangti\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -163,6 +163,7 @@ export default class GamePanel extends BaseUI {
             this.audioCallback()
             return
         }
+        console.log('=============', ReportManager.getInstance().getLevel())
         if(!isAction) {
             this.gameResult = AnswerResult.AnswerHalf
             if (!ReportManager.getInstance().isStart()) {
@@ -400,7 +401,8 @@ export default class GamePanel extends BaseUI {
         this.errNode.active = false
         this.mask.active = false
         //恢复上报数据
-        let level = data.level
+        let level = data.level - 1
+        console.log('========-----', level)
         let answerdata = data.answerdata
         let gamedata = data.gamedata
         this.rightNum = gamedata.length
@@ -419,7 +421,7 @@ export default class GamePanel extends BaseUI {
     addSDKEventListener() {
         GameMsg.getInstance().addEvent(GameMsgType.ACTION_SYNC_RECEIVE, this.onSDKMsgActionReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.DISABLED, this.onSDKMsgDisabledReceived.bind(this));
-        GameMsg.getInstance().addEvent(GameMsgType.DATA_RECOVERY, this.onSDKMsgRecoveryReceived.bind(this));
+        //GameMsg.getInstance().addEvent(GameMsgType.DATA_RECOVERY, this.onSDKMsgRecoveryReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.STOP, this.onSDKMsgStopReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.INIT, this.onSDKMsgInitReceived.bind(this));
     }

@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-27 19:59:56
- * @LastEditTime: 2020-03-19 12:09:13
+ * @LastEditTime: 2020-03-26 16:15:28
  * @Description: 上报数据管理类
  * @FilePath: \guanchalifangti\assets\scripts\Manager\ReportManager.ts
  */
@@ -71,7 +71,7 @@ export class ReportManager
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.NoAnswer
         if(isBreak) {
             this.answerdata.result[this.level - 1].answer_num += 0
-            let time: string = this.answerdata.result[this.level].answer_time
+            let time: string = this.answerdata.result[this.level - 1].answer_time
             let len = time.length
             this.coastTimes = parseFloat(time.substring(0, len - 2)) * 100
             this.answerdata.result[this.level - 1].answer_time = time
