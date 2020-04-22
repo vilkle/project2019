@@ -36,7 +36,7 @@ export class Tools  {
      * @param {*} loop 是否循环
      * @param {*} callback 播放完毕回调
      */
-    public static playSpine(sp_Skeleton:sp.Skeleton,animName:string,loop:boolean,callback:any=null) {
+    public static playSpine(sp_Skeleton:sp.Skeleton,animName:string,loop:boolean,callback:any=null, callback1:any=null) {
         // sp_Skeleton.premultipliedAlpha=false;//这样设置在cocos creator中才能有半透明效果
         
         // let spine = this.node.getComponent(sp.Skeleton);
@@ -51,6 +51,12 @@ export class Tools  {
                 }
             });
         }
+        let id = setTimeout(() => {
+            if(callback1) {
+                callback1()
+            }
+            clearTimeout(id)
+        }, 4000);
     }
 
     //参数获取

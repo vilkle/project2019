@@ -1,7 +1,7 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-26 18:51:47
+ * @LastEditTime: 2020-04-03 20:51:11
  * @Description: 游戏脚本
  * @FilePath: \guluhuahua\assets\scripts\UI\panel\GamePanel.ts
  */
@@ -56,13 +56,15 @@ import {
 import {
     AudioManager
 } from "../../Manager/AudioManager";
-import { GameData } from "../../Data/GameData";
+import {
+    GameData
+} from "../../Data/GameData";
 
 const {
     ccclass,
     property
 } = cc._decorator;
-
+const standardNum: number = 11
 @ccclass
 export default class GamePanel extends BaseUI {
 
@@ -93,7 +95,15 @@ export default class GamePanel extends BaseUI {
     private archival = {
         answerdata: null,
         level: null,
-        gamedata: [[],[],[],[]]
+        gamedata: [
+            [],
+            [],
+            [],
+            []
+        ],
+        rightNum: null,
+        totalNum: null,
+        standardNum: standardNum
     }
 
     onLoad() {
@@ -111,11 +121,11 @@ export default class GamePanel extends BaseUI {
         this.laba.on(cc.Node.EventType.TOUCH_START, this.audioCallback, this)
         this.mask.active = true
         this.gulu.setAnimation(0, 'idle1', false)
-        this.gulu.setCompleteListener(trackEntry=>{
-            let index = Math.floor(Math.random() * 10) 
-            if(index >= 8) {
+        this.gulu.setCompleteListener(trackEntry => {
+            let index = Math.floor(Math.random() * 10)
+            if (index >= 8) {
                 this.gulu.setAnimation(0, 'idle2', false)
-            }else {
+            } else {
                 this.gulu.setAnimation(0, 'idle1', false)
             }
         })
@@ -141,7 +151,12 @@ export default class GamePanel extends BaseUI {
         cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab, function (err, prefab) {})
         //添加上报result数据
         ReportManager.getInstance().addResult(4)
+        ReportManager.getInstance().setStandardNum(standardNum)
         ReportManager.getInstance().setQuestionInfo(0, '咕噜咕噜画了谁？找一找')
+        ReportManager.getInstance().setQuestionInfo(1, '咕噜咕噜画了谁？找一找')
+        ReportManager.getInstance().setQuestionInfo(2, '咕噜咕噜画了谁？找一找')
+        ReportManager.getInstance().setQuestionInfo(3, '咕噜咕噜画了谁？找一找')
+        
         //初始化游戏
         this.initGame(1)
         let id = setTimeout(() => {
@@ -167,27 +182,27 @@ export default class GamePanel extends BaseUI {
     }
 
     initGame(level: number) {
-        if(this.pointId != null) {
+        if (this.pointId != null) {
             clearTimeout(this.pointId)
         }
         this.pointId = null
         this.rightNum = 0
-        if(this.optionArr.length > 0) {
+        if (this.optionArr.length > 0) {
             this.removeListenerOnOptions(this.optionArr)
         }
         this.resetGame(level)
-        if(level == 1) {
+        if (level == 1) {
             this.roundNode = this.node1
-            this.drawArr = [-1,0,1]
-        }else if(level == 2) {
+            this.drawArr = [-1, 0, 1]
+        } else if (level == 2) {
             this.roundNode = this.node2
-            this.drawArr = [0,-1,1,2]
-        }else if(level == 3) {
+            this.drawArr = [0, -1, 1, 2]
+        } else if (level == 3) {
             this.roundNode = this.node3
-            this.drawArr = [0,1,-1,2]
-        }else if(level == 4) {
+            this.drawArr = [0, 1, -1, 2]
+        } else if (level == 4) {
             this.roundNode = this.node4
-            this.drawArr = [-1,0,1,2]
+            this.drawArr = [-1, 0, 1, 2]
         }
         this.optionArr = this.roundNode.getChildByName('options').children
         this.boardArr = this.roundNode.getChildByName('board').children
@@ -196,22 +211,22 @@ export default class GamePanel extends BaseUI {
 
     resetGame(level: number) {
         let node = null
-        for(let i = 0; i < 4; ++i) {
-            if(i == 0) {
+        for (let i = 0; i < 4; ++i) {
+            if (i == 0) {
                 node = this.node1
-            }else if(i == 1) {
+            } else if (i == 1) {
                 node = this.node2
-            }else if(i == 2) {
+            } else if (i == 2) {
                 node = this.node3
-            }else if(i == 3) {
+            } else if (i == 3) {
                 node = this.node4
             }
             let boardArr = node.getChildByName('board').children
-            for(let n = 0; n < boardArr.length; ++n) {
+            for (let n = 0; n < boardArr.length; ++n) {
                 boardArr[n].active = false
             }
             let optionArr = node.getChildByName('options').children
-            for(let m = 0; m < optionArr.length; ++m) {
+            for (let m = 0; m < optionArr.length; ++m) {
                 optionArr[m].getChildByName('sprite').active = true
                 optionArr[m].getChildByName('spine').active = false
             }
@@ -220,19 +235,19 @@ export default class GamePanel extends BaseUI {
         this.node2.active = false
         this.node3.active = false
         this.node4.active = false
-        if(level == 1) {
+        if (level == 1) {
             this.node1.active = true
-        }else if(level == 2) {
+        } else if (level == 2) {
             this.node2.active = true
-        }else if(level == 3) {
+        } else if (level == 3) {
             this.node3.active = true
-        }else if(level == 4) {
+        } else if (level == 4) {
             this.node4.active = true
         }
     }
 
     point() {
-        if(this.pointId != null) {
+        if (this.pointId != null) {
             clearTimeout(this.pointId)
         }
         this.pointId = setTimeout(() => {
@@ -240,24 +255,27 @@ export default class GamePanel extends BaseUI {
         }, 8000);
     }
 
-    actionCallback(i:number, isAction: boolean, level?:number) {
+    actionCallback(i: number, isAction: boolean, level ? : number) {
         let node = this.optionArr[i]
-        if(!isAction) {
+        if (!isAction) {
             this.gameResult = AnswerResult.AnswerHalf
-            if(!ReportManager.getInstance().isStart()) {
+            if (!ReportManager.getInstance().isStart()) {
                 ReportManager.getInstance().levelStart(false)
             }
             ReportManager.getInstance().touchStart()
-            ReportManager.getInstance().answerHalf()
+            ReportManager.getInstance().touchHalf()
             ReportManager.getInstance().setAnswerNum(1)
-            GameMsg.getInstance().actionSynchro({index: i, level: ReportManager.getInstance().getLevel()})
-        }else {
+            GameMsg.getInstance().actionSynchro({
+                index: i,
+                level: ReportManager.getInstance().getLevel()
+            })
+        } else {
             ReportManager.getInstance().setLevel(level)
         }
-    
+
         this.point()
         let sprite = node.getChildByName('sprite')
-        if(!sprite.active) {
+        if (!sprite.active) {
             return
         }
         this.mask.active = true
@@ -266,24 +284,26 @@ export default class GamePanel extends BaseUI {
         sprite.active = false
         let str = node.name
         spine.getComponent(sp.Skeleton).setAnimation(0, str, false)
-        if(this.drawArr[i] >= 0) {
+        if (this.drawArr[i] >= 0) {
             AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('是我是我', false)
-            this.rightNum ++
+            this.rightNum++
             sprite.active = false
-            for(let n = 0; n < this.boardArr.length; ++n) {
+            for (let n = 0; n < this.boardArr.length; ++n) {
                 this.boardArr[n].active = false
             }
             this.boardArr[this.drawArr[i]].active = true
-            if(this.isSuccess()) {
+            if (this.isSuccess()) {
                 let level = ReportManager.getInstance().getLevel()
-                if(level == 4) {
-                    if(!isAction) {
+                if (level == 4) {
+                    if (!isAction) {
+                        ReportManager.getInstance().answerRight()
                         ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
-                        GameMsg.getInstance().answerSyncSend(ReportManager.getInstance().getAnswerData())
+                        console.log('syncSend-------', ReportManager.getInstance().getAnswerData())
+                        console.log('gameOver-------', ReportManager.getInstance().getAnswerData())
                         GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData())
                     }
-                    if(this.pointId != null) {
+                    if (this.pointId != null) {
                         clearTimeout(this.pointId)
                         this.pointId = null
                     }
@@ -294,40 +314,51 @@ export default class GamePanel extends BaseUI {
                         clearTimeout(id)
                     }, 2000);
                     this.timeoutIdArr[this.timeoutIdArr.length] = id
-                }else {
-                    if(!isAction) {
+                } else {
+                    if (!isAction) {
+                        ReportManager.getInstance().answerRight()
                         ReportManager.getInstance().levelEnd(AnswerResult.AnswerRight)
-                        GameMsg.getInstance().answerSyncSend(ReportManager.getInstance().getAnswerData())
+                        console.log('syncSend-------', ReportManager.getInstance().getAnswerData())
                     }
-                   
+                    let id0 = setTimeout(() => {
+                        UIHelp.showOverTip(1, '', '', null, ()=>{UIManager.getInstance().closeUI(OverTips)})
+                        let index = this.timeoutIdArr.indexOf(id0)
+                        this.timeoutIdArr.splice(index, 1)
+                        clearTimeout(id0)
+                    }, 1000);
+                    this.timeoutIdArr[this.timeoutIdArr.length] = id0
                     let id = setTimeout(() => {
                         this.initGame(level + 1)
                         this.mask.active = false
                         let index = this.timeoutIdArr.indexOf(id)
                         this.timeoutIdArr.splice(index, 1)
                         clearTimeout(id)
-                    }, 2000);
+                    }, 5000);
                     this.timeoutIdArr[this.timeoutIdArr.length] = id
                 }
-            }else {
-                if(!isAction) {
+            } else {
+                if (!isAction) {
                     this.actionId++
                     this.archival.answerdata = ReportManager.getInstance().getAnswerData()
                     this.archival.level = ReportManager.getInstance().getLevel()
                     this.archival.gamedata[this.archival.level - 1].push(i)
+                    this.archival.rightNum = ReportManager.getInstance().getRightNum()
+                    this.archival.totalNum = ReportManager.getInstance().getTotalNum()
+                    ReportManager.getInstance().answerHalf()
+                    console.log('syncSend-------', ReportManager.getInstance().getAnswerData())
                     GameMsg.getInstance().dataArchival(this.actionId, this.archival)
                 }
                 this.mask.active = false
             }
-        }else {
-            if(!isAction) {
+        } else {
+            if (!isAction) {
                 ReportManager.getInstance().answerWrong()
-                 GameMsg.getInstance().answerSyncSend(ReportManager.getInstance().getAnswerData())
+                console.log('syncSend-------', ReportManager.getInstance().getAnswerData())
             }
             AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('不是我哦', false)
-            spine.getComponent(sp.Skeleton).setCompleteListener(trackEntry=>{
-                if(trackEntry.animation.name == str) {
+            spine.getComponent(sp.Skeleton).setCompleteListener(trackEntry => {
+                if (trackEntry.animation.name == str) {
                     this.mask.active = false
                     spine.active = false
                     sprite.active = true
@@ -340,7 +371,7 @@ export default class GamePanel extends BaseUI {
         for (let i = 0; i < arr.length; ++i) {
             let node = arr[i]
             node.on(cc.Node.EventType.TOUCH_START, (e) => {
-               this.actionCallback(i, false)
+                this.actionCallback(i, false)
             })
             node.on(cc.Node.EventType.TOUCH_MOVE, (e) => {
 
@@ -362,16 +393,16 @@ export default class GamePanel extends BaseUI {
             node.off(cc.Node.EventType.TOUCH_CANCEL)
         }
     }
-    
+
     isSuccess() {
         let level = ReportManager.getInstance().getLevel()
-        if(level == 1 && this.rightNum == 2) {
+        if (level == 1 && this.rightNum == 2) {
             return true
-        }else if(level == 2 && this.rightNum == 3) {
+        } else if (level == 2 && this.rightNum == 3) {
             return true
-        }else if(level == 3 && this.rightNum == 3) {
+        } else if (level == 3 && this.rightNum == 3) {
             return true
-        }else if(level == 4 && this.rightNum == 3) {
+        } else if (level == 4 && this.rightNum == 3) {
             return true
         }
     }
@@ -392,18 +423,18 @@ export default class GamePanel extends BaseUI {
      * @param {type} 
      * @return: 
      */
-    audioCallback(isAction?: number) {
+    audioCallback(isAction ? : number) {
         this.point()
-        if(isAction == 1) {
-           
-        }else {
+        if (isAction == 1) {
+
+        } else {
             console.log('adfasdfsadfasdfasdfas')
             this.gameResult = AnswerResult.AnswerHalf
             if (!ReportManager.getInstance().isStart()) {
                 ReportManager.getInstance().levelStart(false)
             }
             ReportManager.getInstance().touchStart()
-            ReportManager.getInstance().answerHalf()
+            ReportManager.getInstance().touchHalf()
             ReportManager.getInstance().setAnswerNum(1)
             GameMsg.getInstance().actionSynchro(-1)
         }
@@ -416,6 +447,7 @@ export default class GamePanel extends BaseUI {
         //         spine.setAnimation(0, 'speak', true)
         //     }
         // })
+        ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
         AudioManager.getInstance().stopAll()
         AudioManager.getInstance().playSound('题干', false, 1, null, () => {
             this.mask.active = false
@@ -462,16 +494,18 @@ export default class GamePanel extends BaseUI {
         let answerdata = data.answerdata
         let gamedata = data.gamedata
         this.rightNum = gamedata.length
-        ReportManager.getInstance().setPercentage(((this.rightNum / 6) * 100).toFixed(2))
+        ReportManager.getInstance().setRightNum(data.rightNum)
+        ReportManager.getInstance().setTotalNum(data.totalNum)
+        ReportManager.getInstance().setStandardNum(data.standardNum)
         ReportManager.getInstance().setAnswerData(answerdata)
         ReportManager.getInstance().setLevel(level - 1)
         //重置界面
         this.isBreak = true
         this.initGame(level)
         this.rightNum = gamedata[level - 1].length
-        for(let i = 0; i < gamedata[level-1].length; ++ i){
-            this.optionArr[gamedata[level-1][i]].getChildByName('spine').active = true
-            this.optionArr[gamedata[level-1][i]].getChildByName('sprite').active = false
+        for (let i = 0; i < gamedata[level - 1].length; ++i) {
+            this.optionArr[gamedata[level - 1][i]].getChildByName('spine').active = true
+            this.optionArr[gamedata[level - 1][i]].getChildByName('sprite').active = false
         }
     }
 
@@ -485,15 +519,15 @@ export default class GamePanel extends BaseUI {
     //动作同步消息监听
     onSDKMsgActionReceived(data: any) {
         data = eval(data)
-        if(data.action == -1) {
+        if (data.action == -1) {
             console.log('-----action', data.action)
             this.audioCallback(1)
-        }else {
+        } else {
             let index = data.action.index
             let level = data.action.level
             this.actionCallback(index, true, level)
         }
-        
+
     }
     //禁用消息监听
     onSDKMsgDisabledReceived() {

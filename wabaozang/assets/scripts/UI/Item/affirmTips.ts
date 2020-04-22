@@ -1,7 +1,7 @@
 
 import { BaseUI } from "../BaseUI";
 import { UIManager } from "../../Manager/UIManager";
-
+import GameMsg from "../../Data/GameMsg";
 const { ccclass, property } = cc._decorator;
 @ccclass
 export class AffirmTips extends BaseUI {
@@ -88,12 +88,14 @@ export class AffirmTips extends BaseUI {
 
     //ok 1 确认 0 取消
     OnClickOk() {
+        GameMsg.getInstance().actionSynchro(-6)
         console.log("确认");
         UIManager.getInstance().closeUI(AffirmTips);
         this.callback(1);
     }
 
     OnClickCancel() {
+        GameMsg.getInstance().actionSynchro(-6)
         console.log("取消");
         UIManager.getInstance().closeUI(AffirmTips);
         //this.callback(0);

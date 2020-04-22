@@ -113,7 +113,7 @@ export class OverTips extends BaseUI {
                 AudioManager.getInstance().playSound("sfx_genneg", false, 1);
                 break;
             case 1:
-                Tools.playSpine(this.spine_true, "true", false, this.delayClose.bind(this));
+                Tools.playSpine(this.spine_true, "true", false, null, this.delayClose.bind(this));
                 AudioManager.getInstance().playSound("sfx_genpos", false, 1);
                 break;
             case 2:
@@ -140,7 +140,7 @@ export class OverTips extends BaseUI {
     }
 
     delayClose(): void {
-        //this.scheduleOnce(function () {  }.bind(this), 0);
+        this.scheduleOnce(function () { this.callback() }.bind(this), 0);
     }
 
     buttonCallback() {

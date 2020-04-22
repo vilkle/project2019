@@ -1,12 +1,12 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-27 19:59:56
- * @LastEditTime: 2020-03-26 16:31:08
+ * @LastEditTime: 2020-04-03 17:29:41
  * @Description: 上报数据管理类
  * @FilePath: \guluhuahua\assets\scripts\Manager\ReportManager.ts
  */
-import {AnswerResult} from "../Data/ConstValue"
-
+import {AnswerResult} from "../Data/ConstValue";
+import GameMsg from "../Data/GameMsg"
 export class ReportManager
 {
     private static instance: ReportManager = null;
@@ -20,7 +20,9 @@ export class ReportManager
         return this.instance;
     }
     private degreeNum: number = 0
-    private rightNum: number = 0 //正确关卡数
+    private standardNum: number = 0//标准正确作答次数
+    private rightNum: number = 0 //正确作答次数
+    private totalNum: number = 0//作答总次数
     private level: number = 0 //当前关卡排位
     private levelNum: number = 0 //总的关卡数
     private coastTimes: number = 0 //计时结束的时间
@@ -98,9 +100,6 @@ export class ReportManager
             return
         }
         clearInterval(this.timeId)
-        if(result == AnswerResult.AnswerRight) {
-            this.rightNum ++
-        }
         this.timeId = null
         this.answerdata.result[this.level - 1].answer_res = result
         this.answerdata.result[this.level - 1].answer_num += 0
@@ -117,7 +116,9 @@ export class ReportManager
             console.warn('There is no data in answerdata, please push result in answerdata first.')
             return
         }
-        this.levelEnd(result)
+        if(this.isStart()) {
+            this.levelEnd(result)
+        }
         this.answerdata.gameOver = {
             percentage: "0%",
             answer_all_state: AnswerResult.NoAnswer,
@@ -125,19 +126,22 @@ export class ReportManager
             complete_degree: `0/${this.levelNum}`
         }
         let percentage: string = ''
-        if(this.levelNum <= 1) {
-            percentage = this.percentage
+        let progress: string = ''
+        if(this.totalNum == 0) {
+            percentage = '0.0'
         }else {
-            percentage = (this.rightNum / this.levelNum * 100).toFixed(2)
+            percentage = (this.rightNum / this.totalNum * 100).toFixed(2)
         }
+        progress = (this.rightNum / this.standardNum * 100).toFixed(2)
+    
         this.answerdata.gameOver.percentage = `${percentage}%`
-        if(parseFloat(percentage) == 0.00) {
+        if(parseFloat(progress) == 0.00) {
             if(this.answerdata.result[0].answer_res == AnswerResult.NoAnswer) {
                 this.answerdata.gameOver.answer_all_state = AnswerResult.NoAnswer
             }else if(this.answerdata.result[0].answer_res == AnswerResult.AnswerHalf) {
                 this.answerdata.gameOver.answer_all_state = AnswerResult.AnswerHalf
             }
-        }else if(parseFloat(percentage) == 100.00) {
+        }else if(parseFloat(progress) == 100.00) {
             this.answerdata.gameOver.answer_all_state = AnswerResult.AnswerRight
         }else {
             this.answerdata.gameOver.answer_all_state = AnswerResult.AnswerHalf
@@ -154,9 +158,9 @@ export class ReportManager
             }
             time += parseFloat(str)
         }
-        this.answerdata.gameOver.answer_all_time = `${time}s`
+        this.answerdata.gameOver.answer_all_time = `${time.toFixed(2)}s`
         this.answerdata.gameOver.complete_degree = `${this.degreeNum}\/${this.levelNum}`
-        console.log('answerdata------',this.answerdata)
+        console.log('answerdata-----', this.answerdata)
     }
 
     updateTime() {
@@ -179,6 +183,7 @@ export class ReportManager
         this.percentage = '0'
         this.degreeNum = 0
         this.rightNum = 0
+        this.totalNum = 0
         this.coastTimes = 0
         this.timeId = null
     }
@@ -208,6 +213,10 @@ export class ReportManager
         this.degreeNum = this.level
     }
 
+    setTime() {
+        this.answerdata.result[this.level - 1].answer_time = (this.coastTimes/100).toString() + 's'
+    }
+
     setAnswerNum(num: number) {
         this.answerdata.result[this.level - 1].answer_num = num
     }
@@ -220,15 +229,30 @@ export class ReportManager
         console.log('answerdata-------:', this.answerdata)
     }
 
-    answerHalf() {
+    touchHalf() {
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerHalf
     }
+
+    answerHalf() {
+        this.rightNum++
+        this.totalNum++
+        this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerHalf
+        this.answerdata.result[this.level - 1].answer_time = (this.coastTimes/100).toString() + 's'
+        GameMsg.getInstance().answerSyncSend(this.answerdata)
+    }
     answerRight() {
+        this.rightNum++
+        this.totalNum++
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerRight
+        this.answerdata.result[this.level - 1].answer_time = (this.coastTimes/100).toString() + 's'
+        GameMsg.getInstance().answerSyncSend(this.answerdata)
     }
 
     answerWrong() {
+        this.totalNum++
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerError
+        this.answerdata.result[this.level - 1].answer_time = (this.coastTimes/100).toString() + 's'
+        GameMsg.getInstance().answerSyncSend(this.answerdata)
     }
     getAnswerData(): any {
         return this.answerdata
@@ -240,6 +264,30 @@ export class ReportManager
 
     getLevel(): number {
         return this.level
+    }
+
+    getRightNum(): number {
+        return this.rightNum
+    }
+
+    setRightNum(num: number) {
+        this.rightNum = num
+    }
+
+    getTotalNum(): number {
+        return this.totalNum
+    }
+
+    setTotalNum(num: number) {
+        this.totalNum = num
+    }
+
+    getStandardNum(): number {
+        return this.standardNum
+    }
+
+    setStandardNum(num: number) {
+        this.standardNum = num
     }
 
     clearInterval() {

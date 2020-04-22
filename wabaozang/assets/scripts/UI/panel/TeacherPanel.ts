@@ -4,7 +4,9 @@ import SubmissionPanel from "./SubmissionPanel";
 import { NetWork } from "../../Http/NetWork";
 import { UIHelp } from "../../Utils/UIHelp";
 import { DaAnData } from "../../Data/DaAnData";
+import ErrorPanel from "./ErrorPanel";
 import GamePanel from "./GamePanel";
+import { ConstValue } from "../../Data/ConstValue";
 import {ListenerManager} from "../../Manager/ListenerManager";
 import {ListenerType} from "../../Data/ListenerType";
 
@@ -144,8 +146,8 @@ export default class TeacherPanel extends BaseUI {
         this.node2.getChildByName('group').removeAllChildren()
         let lenth = num * 105 + (num + 1) * 3 + num - 1
         this.node1.width = lenth
-        this.boxWidth = 570
-        this.boxHeight = 850
+        this.boxWidth = 520
+        this.boxHeight = 950
         
         this.gridNode.height = lenth
         for(let i = 0; i < num * num; ++i) {
@@ -217,8 +219,6 @@ export default class TeacherPanel extends BaseUI {
     correctPos(pos: cc.Vec2, node: cc.Node): cc.Vec2 {
         let width: number = 0
         let height: number = 0
-
-
 
         if(node.angle%180 == 0) {
             width = node.width
@@ -629,6 +629,7 @@ export default class TeacherPanel extends BaseUI {
         }
         DaAnData.getInstance().type = this.type
         DaAnData.getInstance().itemArr = [...this.itemArr]
+        console.log('======', this.itemArr)
         for (const key in this.groupInfoArr) {
            let index = parseInt(key)
            if(this.groupInfoArr[key]) {
@@ -652,50 +653,58 @@ export default class TeacherPanel extends BaseUI {
     }
 
     getNet() {
-        NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.title_id, "GET", "application/json;charset=utf-8", function (err, response) {
-            console.log("消息返回" + response);
+        NetWork.getInstance().httpRequest(NetWork.GET_TITLE + "?title_id=" + NetWork.titleId, "GET", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
-                let res = response;
-                if (Array.isArray(res.data)) {
+                if (Array.isArray(response.data)) {
                     this.isReset = true
-                    console.log('-----------')
-                    this.setPanel();
+                    this.setPanel()
                     return;
                 }
-                let content = JSON.parse(res.data.courseware_content);
-                NetWork.courseware_id = res.data.courseware_id;
-                if (NetWork.empty) {//如果URL里面带了empty参数 并且为true  就立刻清除数据
+                let content = JSON.parse(response.data.courseware_content);
+                NetWork.coursewareId = response.data.courseware_id;
+                if (NetWork.empty) {
+                    //如果URL里面带了empty参数 并且为true  就立刻清除数据
                     this.ClearNet();
                 } else {
                     if (content != null) {
-                        if(content.type) {
-                            this.type = content.type
-                        }else {
-                            console.error('网络请求数据type为空。')
+                        if (content.CoursewareKey == ConstValue.CoursewareKey) {
+                            //TODO: 数据接收
+                            if(content.type) {
+                                this.type = content.type
+                            }else {
+                                console.warn('网络请求数据type为空。')
+                            }
+                            if(content.itemArr) {
+                                this.itemArr = content.itemArr
+                            }else {
+                                console.warn('网络请求数据itemArr为空。')
+                            }
+                            if(content.xArr) {
+                                this.xArr = content.xArr
+                            }else {
+                                console.warn('网络请求数据xArr为空。')
+                            }  
+                            if(content.yArr) {
+                                this.yArr = content.yArr
+                            }else {
+                                console.warn('网络请求数据yArr为空。')
+                            }  
+                            if(content.rotationArr) {
+                                this.rotationArr = content.rotationArr
+                            }else {
+                                console.warn('网络请求数据rotationAarr为空。')
+                            }    
+                            
+                            this.setPanel();
+                        } else {
+                            UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
+                                (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
+                                    "CoursewareKey错误,请联系客服！",
+                                    "", "", "确定");
+                            });
+                            return;
                         }
-                        if(content.itemArr) {
-                            this.itemArr = content.itemArr
-                        }else {
-                            console.error('网络请求数据itemArr为空。')
-                        }
-                        if(content.xArr) {
-                            this.xArr = content.xArr
-                        }else {
-                            console.error('网络请求数据xArr为空。')
-                        }  
-                        if(content.yArr) {
-                            this.yArr = content.yArr
-                        }else {
-                            console.error('网络请求数据yArr为空。')
-                        }  
-                        if(content.rotationArr) {
-                            this.rotationArr = content.rotationArr
-                        }else {
-                            console.error('网络请求数据rotationAarr为空。')
-                        }    
-                        
-                        this.setPanel();
-                    } else {
+                    }else {
                         this.isReset = true
                         this.setPanel();
                     }
@@ -704,10 +713,13 @@ export default class TeacherPanel extends BaseUI {
         }.bind(this), null);
     }
 
+    initData() {
+
+    }
 
     //删除课件数据  一般为脏数据清理
     ClearNet() {
-        let jsonData = { courseware_id: NetWork.courseware_id };
+        let jsonData = { courseware_id: NetWork.coursewareId };
         NetWork.getInstance().httpRequest(NetWork.CLEAR, "POST", "application/json;charset=utf-8", function (err, response) {
             if (!err) {
                 UIHelp.showTip("答案删除成功");

@@ -1,15 +1,24 @@
 import { BaseUI } from "../BaseUI";
 import { NetWork } from "../../Http/NetWork";
-import DataReporting from "../../Data/DataReporting";
+//import DataReporting from "../../Data/DataReporting";
+import ErrorPanel from "./ErrorPanel";
 import { UIHelp } from "../../Utils/UIHelp";
 import { AudioManager } from "../../Manager/AudioManager";
 import { ConstValue } from "../../Data/ConstValue";
 import { DaAnData } from "../../Data/DaAnData";
 import { UIManager } from "../../Manager/UIManager";
 import UploadAndReturnPanel from "./UploadAndReturnPanel";
+import { ListenerType } from "../../Data/ListenerType";
+import { ListenerManager } from "../../Manager/ListenerManager";
+import { AnswerResult } from "../../Data/ConstValue";
+import GameMsg from "../../Data/GameMsg";
+import { GameMsgType } from "../../Data/GameMsgType";
+import { Tools } from "../../UIComm/Tools";
+import {ReportManager}from "../../Manager/ReportManager";
+import {OverTips} from "../Item/OverTips";
+import { AffirmTips } from "../Item/affirmTips";
 
 const { ccclass, property } = cc._decorator;
-
 @ccclass
 export default class GamePanel extends BaseUI {
     @property(cc.Node)
@@ -90,6 +99,7 @@ export default class GamePanel extends BaseUI {
     private littleTitlePrefab: cc.Prefab = null
     @property(cc.Prefab)
     private boxPrefab: cc.Prefab = null
+    private standardNum: number = 1
     private num: number = 0
     private type: number = 0
     private itemArr: number[] = []
@@ -104,22 +114,23 @@ export default class GamePanel extends BaseUI {
     private verArr: number[] = []
     private answer: number[] = []
     private subject: number[] = []
+    private wrong: number[] = []
     private groupArr: number[][] = []
     private groupNodeArr: cc.Node[] = []
     private timeoutArr: number[] = []
-    private isOver: number = 0
-    private eventvalue = {
-        isResult: 1,
-        isLevel: 0,
-        levelData: [
-            {
-               
-                subject: [],
-                answer: [],
-                result: 4
-            }
-        ],
-        result: 4
+    private isOver: boolean = false
+    private gameResult: AnswerResult = AnswerResult.NoAnswer
+    private actionId: number = 0
+    private rightNum: number = 0
+    private isBreak: boolean = null
+    private isAudio: boolean = false
+    private archival = {
+        answerdata: null,
+        gamedata: [],
+        wrong: [],
+        rightNum: null,
+        totalNum: null,
+        standardNum: this.standardNum
     }
     private sizeInfo = {
         title:{
@@ -141,24 +152,13 @@ export default class GamePanel extends BaseUI {
 
     onLoad() {
         cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
-        //this.refreshBtn.interactable = false
+        this.refreshBtn.interactable = false
+        //this.submitBtn.interactable = false
         this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
-            if(this.isOver != 1) {
-                this.isOver = 2;
-                this.eventvalue.result = 2;
-                this.eventvalue.levelData[0].result = 2
-            }
         })
-        this.labaBoundingBox.on(cc.Node.EventType.TOUCH_START, (e)=>{
-            this.laba.setAnimation(0, 'click', false)
-            this.laba.addAnimation(0, 'speak', true)
-            AudioManager.getInstance().stopAll()
-            AudioManager.getInstance().playSound('找出宝藏的位置吧', false, 1, null, ()=>{
-                this.laba.setAnimation(0, 'null', true)
-            })
-        })
+        this.labaBoundingBox.on(cc.Node.EventType.TOUCH_START, this.audioCallback, this)
         if(ConstValue.IS_TEACHER) {
-            UIManager.getInstance().openUI(UploadAndReturnPanel, null, 212)
+            UIManager.getInstance().openUI(UploadAndReturnPanel, 212)
             this.type = DaAnData.getInstance().type
             this.itemArr = DaAnData.getInstance().itemArr
             this.xArr = DaAnData.getInstance().xArr
@@ -171,79 +171,43 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
+         //监听新课堂发出的消息
+         this.addSDKEventListener()
+         //新课堂上报
+         GameMsg.getInstance().gameStart()
+         //预加载OverTip资源
+         cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab,()=>{})
+        //添加上报result数据
+        ReportManager.getInstance().addResult(1)
+        this.standardNum = 1
+        ReportManager.getInstance().setStandardNum(this.standardNum)
+        ReportManager.getInstance().setQuestionInfo(0, '一起动手，挑战下面的关卡吧！')
         AudioManager.getInstance().playSound('sfx_12opne')
         this.oceanWave(this.wave1, this.wave2)
         let id = setTimeout(() => {
-            AudioManager.getInstance().playSound('找出宝藏的位置吧')
+            this.mask.active = true
+            this.isAudio = true
+            let spine = this.laba
+            spine.setAnimation(0, 'click', false)
+            spine.setCompleteListener(trackEntry=>{
+                if(trackEntry.animation.name == 'click') {
+                    spine.setAnimation(0, 'speak', true)
+                }
+            })
+            AudioManager.getInstance().stopAll()
+            AudioManager.getInstance().playSound('找出宝藏的位置吧', false, 1, null, () => {
+                this.mask.active = false
+                this.isAudio = false
+                spine.setAnimation(0, 'null', true)
+            })
             clearTimeout(id)
             let index = this.timeoutArr.indexOf(id)
             this.timeoutArr.splice(index, 1)
         }, 500);
         this.timeoutArr.push(id)
-        this.pointBtn.node.on(cc.Node.EventType.TOUCH_START, ()=>{
-            AudioManager.getInstance().playSound('sfx_buttn', false)
-            for(let i = 0; i < this.timeoutArr.length; ++i) {
-                clearTimeout(this.timeoutArr[i])
-            }
-            for(let i = 0; i < this.num; ++i) {
-                if(this.horArr[i] == 1) {
-                    // this.horizonTitleArr[i].getComponent(cc.Sprite).spriteFrame = this.greenFrame
-                    // this.horizonTitleArr[i].getChildByName('label').color = cc.Color.WHITE
-                    for(let j = 0; j < this.itemNodeArr.length; j++) {
-                        if(j % this.num == i) {
-                            this.itemNodeArr[j].getChildByName('point').active = true
-                        }
-                    }
-                }
-                if(this.verArr[i] == 1) {
-                    // this.VerticalTitleArr[i].getComponent(cc.Sprite).spriteFrame = this.greenFrame
-                    // this.VerticalTitleArr [i].getChildByName('label').color = cc.Color.WHITE
-                    for(let j = 0; j < this.itemNodeArr.length; j++) {
-                        if(i == Math.floor(j / this.num)) {
-                            this.itemNodeArr[j].getChildByName('point').active = true
-                        }
-                    }
-                }
-            }
-        })
-        this.pointBtn.node.on(cc.Node.EventType.TOUCH_END, (e)=>{
-            let id = setTimeout(() => {
-                for(let j = 0; j < this.itemNodeArr.length; j++) {
-                    this.itemNodeArr[j].getChildByName('point').active = false
-                }
-                //this.checkTitle()
-                clearTimeout(id)
-                let index = this.timeoutArr.indexOf(id)
-                this.timeoutArr.splice(index, 1)
-            }, 2000)
-            this.timeoutArr.push(id)
-        })
-        this.pointBtn.node.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
-            let id = setTimeout(() => {
-                for(let j = 0; j < this.itemNodeArr.length; j++) {
-                    this.itemNodeArr[j].getChildByName('point').active = false
-                }
-                //this.checkTitle()
-                clearTimeout(id)
-                let index = this.timeoutArr.indexOf(id)
-                this.timeoutArr.splice(index, 1)
-            }, 2000)
-            this.timeoutArr.push(id)
-        })
-        DataReporting.getInstance().addEvent('end_game', this.onEndGame.bind(this));
-    }
-
-    onEndGame() {
-        //如果已经上报过数据 则不再上报数据
-        if (DataReporting.isRepeatReport) {
-            DataReporting.getInstance().dispatchEvent('addLog', {
-                eventType: 'clickSubmit',
-                eventValue: JSON.stringify(this.eventvalue)
-            });
-            DataReporting.isRepeatReport = false;
-        }
-        //eventValue  0为未答题   1为答对了    2为答错了或未完成
-        DataReporting.getInstance().dispatchEvent('end_finished', { eventType: 'activity', eventValue: this.isOver });
+        this.pointBtn.node.on(cc.Node.EventType.TOUCH_START, this.onBtnPointStart, this)
+        this.pointBtn.node.on(cc.Node.EventType.TOUCH_END, this.onBtnPointEnd, this)
+        this.pointBtn.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onBtnPointEnd, this)
     }
 
     onDestroy() {
@@ -281,7 +245,7 @@ export default class GamePanel extends BaseUI {
         this.sizeInfo.spaceLong = totalLen / (num + 1 / 2)
         this.sizeInfo.spaceShort = this.sizeInfo.spaceLong / 2
     }
-
+    
     addListenerOnItem(nodeArr: cc.Node[]) {
         for(let i = 0; i < nodeArr.length; ++i) {
             let node = nodeArr[i]
@@ -290,11 +254,8 @@ export default class GamePanel extends BaseUI {
                     this.itemNodeArr[j].getChildByName('point').active = false
                 }
                 AudioManager.getInstance().playSound('sfx_buttn')
-                this.isOver = 2
-                this.eventvalue.result = 2
-                this.eventvalue.levelData[0].result = 2
-                this.eventvalue.levelData[0].subject = this.subject
-                this.changeState(node, i)
+                console.log('subject----', this.subject)
+                this.changeState(node, i, false)
                 
             })
             node.on(cc.Node.EventType.TOUCH_END, (e)=>{
@@ -334,7 +295,7 @@ export default class GamePanel extends BaseUI {
         }
     }
 
-    changeState(node: cc.Node, index: number) {
+    changeState(node: cc.Node, index: number, isAction: boolean) {
         let normal = node.getChildByName('normal')
         let right = node.getChildByName('right')
         let wrong = node.getChildByName('wrong')
@@ -344,11 +305,36 @@ export default class GamePanel extends BaseUI {
         }else if(right.active) {
             let key = this.subject.indexOf(index)
             this.subject.splice(key, 1)
+            this.wrong.push(index)
             this.change(wrong, right)
         }else if(wrong.active) {
+            let key = this.wrong.indexOf(index)
+            this.wrong.splice(key, 1)
             this.change(normal, wrong)
         }
         this.checkTitle()
+        //数据同步 数据恢复
+        if (!isAction) {
+            this.gameResult = AnswerResult.AnswerHalf
+            if (!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().levelStart(false)
+            }
+            ReportManager.getInstance().touchStart()
+            ReportManager.getInstance().touchHalf()
+            ReportManager.getInstance().setAnswerNum(1)
+            //数据同步
+            GameMsg.getInstance().actionSynchro({
+                index: index,
+            })
+            //数据恢复
+            this.actionId++
+            this.archival.answerdata = ReportManager.getInstance().getAnswerData()
+            this.archival.gamedata = [...this.subject]
+            this.archival.wrong = [...this.wrong]
+            this.archival.rightNum = ReportManager.getInstance().getRightNum()
+            this.archival.totalNum = ReportManager.getInstance().getTotalNum()
+            GameMsg.getInstance().dataArchival(this.actionId, this.archival)
+        } 
     }
 
     change(appearNode: cc.Node, disappearNode: cc.Node) {
@@ -387,11 +373,11 @@ export default class GamePanel extends BaseUI {
                 }
             }
         }
-        // if(selectNum) {
-        //     this.refreshBtn.interactable = true
-        // }else {
-        //     this.refreshBtn.interactable = false
-        // }
+        if(selectNum) {
+            this.refreshBtn.interactable = true
+        }else {
+            this.refreshBtn.interactable = false
+        }
         for(let i = 0; i < this.num; ++i) {
             if(this.horArr[i] == horiArr[i] && this.horArr[i] != 0) {
                 this.horizonTitleArr[i].getChildByName('label').color = this.sizeInfo.lightGray
@@ -422,11 +408,11 @@ export default class GamePanel extends BaseUI {
             }
         }
        if(totalNum == correctNum) {
-            return true
             //this.submitBtn.interactable = true
+            return true
        }else {
-            return false
             //this.submitBtn.interactable = false
+            return false 
        }
     }
 
@@ -449,7 +435,7 @@ export default class GamePanel extends BaseUI {
 
             }
         }
-        this.eventvalue.levelData[0].answer = [...this.answer]
+        //this.eventvalue.levelData[0].answer = [...this.answer]
         this.horArr = [...horiArr]
         this.verArr = [...verArr]
         for(let i = 0; i < this.num; ++i) {
@@ -710,7 +696,78 @@ export default class GamePanel extends BaseUI {
         wave1.runAction(rep)
     }
 
-    onBtnSubmitClick() {
+    onBtnPointStart(isAction: number) {
+        if (isAction == 1) {
+
+        } else {
+            this.gameResult = AnswerResult.AnswerHalf
+            if (!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().levelStart(false)
+            }
+            ReportManager.getInstance().touchStart()
+            ReportManager.getInstance().touchHalf()
+            ReportManager.getInstance().setAnswerNum(1)
+            GameMsg.getInstance().actionSynchro(-4)
+        }
+        AudioManager.getInstance().playSound('sfx_buttn', false)
+        for(let i = 0; i < this.timeoutArr.length; ++i) {
+            clearTimeout(this.timeoutArr[i])
+        }
+        for(let i = 0; i < this.num; ++i) {
+            if(this.horArr[i] == 1) {
+                for(let j = 0; j < this.itemNodeArr.length; j++) {
+                    if(j % this.num == i) {
+                        this.itemNodeArr[j].getChildByName('point').active = true
+                    }
+                }
+            }
+            if(this.verArr[i] == 1) {
+                for(let j = 0; j < this.itemNodeArr.length; j++) {
+                    if(i == Math.floor(j / this.num)) {
+                        this.itemNodeArr[j].getChildByName('point').active = true
+                    }
+                }
+            }
+        }
+    }
+
+    onBtnPointEnd(isAction: number) {
+        if (isAction == 1) {
+
+        } else {
+            this.gameResult = AnswerResult.AnswerHalf
+            if (!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().levelStart(false)
+            }
+            ReportManager.getInstance().touchStart()
+            ReportManager.getInstance().touchHalf()
+            ReportManager.getInstance().setAnswerNum(1)
+            GameMsg.getInstance().actionSynchro(-5)
+        }
+        let id = setTimeout(() => {
+            for(let j = 0; j < this.itemNodeArr.length; j++) {
+                this.itemNodeArr[j].getChildByName('point').active = false
+            }
+            clearTimeout(id)
+            let index = this.timeoutArr.indexOf(id)
+            this.timeoutArr.splice(index, 1)
+        }, 2000)
+        this.timeoutArr.push(id)
+    }
+
+    onBtnSubmitClick(isAction: number) {
+        if (isAction == 1) {
+
+        } else {
+            this.gameResult = AnswerResult.AnswerHalf
+            if (!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().levelStart(false)
+            }
+            ReportManager.getInstance().touchStart()
+            ReportManager.getInstance().touchHalf()
+            ReportManager.getInstance().setAnswerNum(1)
+            GameMsg.getInstance().actionSynchro(-3)
+        }
         AudioManager.getInstance().playSound('sfx_buttn', false)
         //行列个数检测
         if(!this.checkTitle()) {
@@ -752,23 +809,6 @@ export default class GamePanel extends BaseUI {
                     let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
                     node.stopAllActions()
                     node.runAction(seq)
-                    // for(let n = 0; n < this.num; ++n) {
-                    //     for(let m = 0; m < this.num; ++m) {
-                    //         let index = n * this.num + m
-                    //         if(m == i) {
-                    //             let box = this.itemNodeArr[index].getChildByName('box')
-                    //             box.active = true
-                    //             let fadein = cc.fadeIn(0.5)
-                    //             let fadeout = cc.fadeOut(0.5)
-                    //             let fun = cc.callFunc(()=>{
-                    //                 box.active = false
-                    //             })
-                    //             let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
-                    //             box.stopAllActions()
-                    //             box.runAction(seq)
-                    //         }
-                    //     }
-                    // }
                 }
                 if(this.verArr[i] != verArr[i]) {
                     let node = cc.instantiate(this.boxPrefab)
@@ -786,23 +826,6 @@ export default class GamePanel extends BaseUI {
                     let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
                     node.stopAllActions()
                     node.runAction(seq)
-                    // for(let n = 0; n < this.num; ++n) {
-                    //     for(let m = 0; m < this.num; ++m) {
-                    //         let index = n * this.num + m
-                    //         if(n == i) {
-                    //             let box = this.itemNodeArr[index].getChildByName('box')
-                    //             box.active = true
-                    //             let fadein = cc.fadeIn(0.5)
-                    //             let fadeout = cc.fadeOut(0.5)
-                    //             let fun = cc.callFunc(()=>{
-                    //                 box.active = false
-                    //             })
-                    //             let seq = cc.sequence(fadein, fadeout, fadein, fadeout, fadein, fadeout, fun)
-                    //             box.stopAllActions()
-                    //             box.runAction(seq)
-                    //         }
-                    //     }
-                    // }
                 }
             }
             let id = setTimeout(() => {
@@ -812,6 +835,11 @@ export default class GamePanel extends BaseUI {
                 this.timeoutArr.splice(index, 1)
             }, 3500)
             this.timeoutArr.push(id)
+            if(isAction == 1) {
+
+            }else {
+                ReportManager.getInstance().answerWrong()
+            }
             return 
         }
         let correctNum: number = 0
@@ -822,20 +850,22 @@ export default class GamePanel extends BaseUI {
         }
         //形状检测
         if(correctNum == this.answer.length) {
-            this.isOver = 1
-            this.eventvalue.result = 1
-            this.eventvalue.levelData[0].result = 1
-            DataReporting.isRepeatReport = false
-            DataReporting.getInstance().dispatchEvent('addLog', {
-                eventType: 'clickSubmit',
-                eventValue: JSON.stringify(this.eventvalue)
-            })
+            if(isAction == 1) {
+
+            }else {
+                this.isOver = true
+                ReportManager.getInstance().answerRight()
+                ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
+                console.log('syncSend-------', ReportManager.getInstance().getAnswerData())
+                console.log('gameOver-------', ReportManager.getInstance().getAnswerData())
+                GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData())
+            }
             DaAnData.getInstance().submitEnable = true
             this.mask.on(cc.Node.EventType.TOUCH_START, ()=>{})
             this.pointBtn.interactable = false
             this.refreshBtn.interactable = false
             //this.submitBtn.interactable = false
-            this.removeListenerOnItem(this.itemNodeArr)
+            //this.removeListenerOnItem(this.itemNodeArr)
             for(let i = 0; i < this.itemNodeArr.length; ++i) {
                 if(this.itemArr[i] != 5) {
                     let sprite = this.itemNodeArr[i].getChildByName('sprite')
@@ -858,13 +888,18 @@ export default class GamePanel extends BaseUI {
             }
 
             let id = setTimeout(() => {
-                UIHelp.showOverTip(2,'你真棒，等等还没做完的同学吧。', null, '挑战成功')
+                UIHelp.showOverTip(2,'你真棒，等等还没做完的同学吧。', "", null, null, '挑战成功')
                 let index = this.timeoutArr.indexOf(id)
                 this.timeoutArr.splice(index, 1)
                 clearTimeout(id)
             }, 2000);
             this.timeoutArr.push(id)
         }else {
+            if(isAction == 1) {
+
+            }else {
+                ReportManager.getInstance().answerWrong()
+            }
             this.laba.setAnimation(0, 'null', true)
             AudioManager.getInstance().stopAll()
             AudioManager.getInstance().playSound('啊哦~和目标图案形状不一样哟', false)
@@ -940,11 +975,21 @@ export default class GamePanel extends BaseUI {
                 }
             }
         }
-       
-
     }
 
-    onBtnRefreshClick() {
+    onBtnRefreshClick(isAction: number) {
+        if (isAction == 1) {
+
+        } else {
+            this.gameResult = AnswerResult.AnswerHalf
+            if (!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().levelStart(false)
+            }
+            ReportManager.getInstance().touchStart()
+            ReportManager.getInstance().touchHalf()
+            ReportManager.getInstance().setAnswerNum(1)
+            GameMsg.getInstance().actionSynchro(-2)
+        }
         AudioManager.getInstance().playSound('sfx_buttn', false)
         UIHelp.AffirmTip(1, '你确定要清除所有操作么？', ()=>{
             for(let i = 0; i < this.itemNodeArr.length; ++i) {
@@ -956,46 +1001,246 @@ export default class GamePanel extends BaseUI {
         })
     }
 
+    affirmCallback(isAction: number) {
+        if (isAction == 1) {
+
+        } else {
+            this.gameResult = AnswerResult.AnswerHalf
+            if (!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().levelStart(false)
+            }
+            ReportManager.getInstance().touchStart()
+            ReportManager.getInstance().touchHalf()
+            ReportManager.getInstance().setAnswerNum(1)
+            GameMsg.getInstance().actionSynchro(-6)
+        }
+        UIManager.getInstance().closeUI(AffirmTips)
+        for(let i = 0; i < this.itemNodeArr.length; ++i) {
+            this.setState(this.itemNodeArr[i], 'normal')
+        }
+        this.subject = []
+        this.checkTitle()
+    }
+
+    audioCallback(isAction: number) {
+        if (isAction == 1) {
+
+        } else {
+            this.gameResult = AnswerResult.AnswerHalf
+            if (!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().levelStart(false)
+            }
+            ReportManager.getInstance().touchStart()
+            ReportManager.getInstance().touchHalf()
+            ReportManager.getInstance().setAnswerNum(1)
+            GameMsg.getInstance().actionSynchro(-1)
+        }
+        this.mask.active = true
+        this.isAudio = true
+        let spine = this.laba
+        spine.setAnimation(0, 'click', false)
+        spine.setCompleteListener(trackEntry=>{
+            if(trackEntry.animation.name == 'click') {
+                spine.setAnimation(0, 'speak', true)
+            }
+        })
+        AudioManager.getInstance().stopAll()
+        AudioManager.getInstance().playSound('找出宝藏的位置吧', false, 1, null, () => {
+            this.mask.active = false
+            this.isAudio = false
+            spine.setAnimation(0, 'null', true)
+        })
+    }
+
+    private onInit() {
+        this.isOver = false
+        this.refreshBtn.interactable = false
+        //this.submitBtn.interactable = false
+        ReportManager.getInstance().answerReset()
+        UIManager.getInstance().closeUI(OverTips)
+        this.rightNum = 0
+        this.mask.active = true
+        this.isAudio = true
+        let spine = this.laba
+        spine.setAnimation(0, 'click', false)
+        spine.setCompleteListener(trackEntry=>{
+            if(trackEntry.animation.name == 'click') {
+                spine.setAnimation(0, 'speak', true)
+            }
+        })
+        AudioManager.getInstance().stopAll()
+        AudioManager.getInstance().playSound('找出宝藏的位置吧', false, 1, null, () => {
+            this.mask.active = false
+            this.isAudio = false
+            spine.setAnimation(0, 'null', true)
+        })
+
+        for (const key in this.itemNodeArr) {
+           let node = this.itemNodeArr[key]
+           node.getChildByName('normal').active = true
+           node.getChildByName('wrong').active = false
+           node.getChildByName('right').active = false
+           node.getChildByName('sprite').active = false
+           node.getChildByName('point').active = false
+           node.getChildByName('spine').active = false
+           node.getChildByName('box').active = false 
+        }
+        this.subject = []
+        this.checkTitle()
+    }
+
+    private onRecovery(data: any) {
+        this.isOver = false
+        let gamedata = data.gamedata
+        let wrong = data.wrong
+        for (const key in this.itemNodeArr) {
+            let node = this.itemNodeArr[key]
+            node.getChildByName('normal').active = true
+            node.getChildByName('wrong').active = false
+            node.getChildByName('right').active = false
+            node.getChildByName('sprite').active = false
+            node.getChildByName('point').active = false
+            node.getChildByName('spine').active = false
+            node.getChildByName('box').active = false 
+         }
+         this.checkTitle()
+        for (const key in gamedata) {
+            let node = this.itemNodeArr[gamedata[key]]
+            node.getChildByName('right').active = true
+            node.getChildByName('normal').active = false
+        }
+        for (const key in wrong) {
+            let node = this.itemNodeArr[wrong[key]]
+            node.getChildByName('wrong').active = true
+            node.getChildByName('normal').active = false
+        }
+        UIManager.getInstance().closeUI(OverTips)
+        ReportManager.getInstance().setAnswerData(data.answerdata)
+        ReportManager.getInstance().setRightNum(data.rightNum)
+        ReportManager.getInstance().setTotalNum(data.totalNum)
+        ReportManager.getInstance().setStandardNum(data.standardNum)
+        this.subject = [...gamedata]
+        this.wrong = [...wrong]
+        this.checkTitle()
+    }
+
+    addSDKEventListener() {
+        GameMsg.getInstance().addEvent(GameMsgType.ACTION_SYNC_RECEIVE, this.onSDKMsgActionReceived.bind(this));
+        GameMsg.getInstance().addEvent(GameMsgType.DISABLED, this.onSDKMsgDisabledReceived.bind(this));
+        //GameMsg.getInstance().addEvent(GameMsgType.DATA_RECOVERY, this.onSDKMsgRecoveryReceived.bind(this));
+        GameMsg.getInstance().addEvent(GameMsgType.STOP, this.onSDKMsgStopReceived.bind(this));
+        GameMsg.getInstance().addEvent(GameMsgType.INIT, this.onSDKMsgInitReceived.bind(this));
+    }
+
+     //动作同步消息监听
+     onSDKMsgActionReceived(data: any) {
+        data = eval(data)
+        if (data.action == -1) {
+            console.log('-----action', data.action)
+            this.audioCallback(1)
+        }else if(data.action == -2) {
+            this.onBtnRefreshClick(1)
+        }else if(data.action == -3) {
+            this.onBtnSubmitClick(1)
+        }else if(data.action == -4) {
+            this.onBtnPointStart(1)
+        }else if(data.action == -5) {
+            this.onBtnPointEnd(1)
+        }else if(data.action == -6) {
+            this.affirmCallback(1)
+        } else {
+            let index = data.action.index
+            this.changeState(this.itemNodeArr[index], index, true)
+        }
+
+    }
+    //禁用消息监听
+    onSDKMsgDisabledReceived() {
+        //交互游戏暂不处理此消息
+    }
+    //数据恢复消息监听
+    onSDKMsgRecoveryReceived(data: any) {
+        data = eval(data)
+        this.onRecovery(data.data);
+    }
+    //游戏结束消息监听
+    onSDKMsgStopReceived() {
+        if (!this.isOver) {
+            if (!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().addLevel()
+            }
+            ReportManager.getInstance().gameOver(this.gameResult)
+            //新课堂上报
+            GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData());
+        }
+
+        GameMsg.getInstance().finished();
+    }
+    //初始化消息监听
+    onSDKMsgInitReceived() {
+        this.actionId = 0
+        this.archival.gamedata = [
+           
+        ]
+        this.onInit();
+    }
+
     getNet() {
-        NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.courseware_id, "GET", "application/json;charset=utf-8", function (err, response) {
+        NetWork.getInstance().httpRequest(NetWork.GET_QUESTION + "?courseware_id=" + NetWork.coursewareId, "GET", "application/json;charset=utf-8", function (err, response) {
+            console.log("消息返回" + response);
             if (!err) {
-                let response_data = response;
-                if (Array.isArray(response_data.data)) {
+                if (Array.isArray(response.data)) {
                     this.setPanel()
+                    UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
+                        (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
+                            "CoursewareKey错误,请联系客服！",
+                            "", "", "确定");
+                    });
                     return;
                 }
-                let content = JSON.parse(response_data.data.courseware_content);
+                let content = JSON.parse(response.data.courseware_content);
                 if (content != null) {
-                    if(content.type) {
-                        this.type = content.type
-                    }else {
-                        console.error('网络请求数据type为空。')
+                    if (content.CoursewareKey == ConstValue.CoursewareKey) {
+                        if(content.type) {
+                            this.type = content.type
+                        }else {
+                            console.error('网络请求数据type为空。')
+                        }
+                        if(content.itemArr) {
+                            this.itemArr = content.itemArr
+                        }else {
+                            console.error('网络请求数据itemArr为空。')
+                        }
+                        if(content.xArr) {
+                            this.xArr = content.xArr
+                        }else {
+                            console.error('网络请求数据xArr为空。')
+                        }  
+                        if(content.yArr) {
+                            this.yArr = content.yArr
+                        }else {
+                            console.error('网络请求数据yArr为空。')
+                        }  
+                        if(content.rotationArr) {
+                            this.rotationArr = content.rotationArr
+                        }else {
+                            console.error('网络请求数据rotationAarr为空。')
+                        }    
+                        this.setPanel();
+                    } else {
+                        UIManager.getInstance().openUI(ErrorPanel, 1000, () => {
+                            (UIManager.getInstance().getUI(ErrorPanel) as ErrorPanel).setPanel(
+                                "CoursewareKey错误,请联系客服！",
+                                "", "", "确定");
+                        });
+                        return;
                     }
-                    if(content.itemArr) {
-                        this.itemArr = content.itemArr
-                    }else {
-                        console.error('网络请求数据itemArr为空。')
-                    }
-                    if(content.xArr) {
-                        this.xArr = content.xArr
-                    }else {
-                        console.error('网络请求数据xArr为空。')
-                    }  
-                    if(content.yArr) {
-                        this.yArr = content.yArr
-                    }else {
-                        console.error('网络请求数据yArr为空。')
-                    }  
-                    if(content.rotationArr) {
-                        this.rotationArr = content.rotationArr
-                    }else {
-                        console.error('网络请求数据rotationAarr为空。')
-                    }    
+                }else {
                     this.setPanel();
                 }
-            } else {
-                this.setPanel();
             }
         }.bind(this), null);
     }
+
+
 }

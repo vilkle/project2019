@@ -1,3 +1,10 @@
+/*
+ * @Author: 马超
+ * @Date: 2020-02-29 14:55:20
+ * @LastEditTime: 2020-03-02 14:06:56
+ * @Description: 游戏脚本
+ * @FilePath: \wucaibinfenbang\assets\scripts\Utils\UIHelp.ts
+ */
 import { UIManager } from "../Manager/UIManager";
 import { TipUI } from "../UI/panel/TipUI";
 import { AffirmTips } from "../UI/Item/affirmTips";
@@ -12,7 +19,7 @@ export class UIHelp {
     public static showTip(message: string) {
         let tipUI = UIManager.getInstance().getUI(TipUI) as TipUI;
         if (!tipUI) {
-            UIManager.getInstance().openUI(TipUI, null, 213, () => {
+            UIManager.getInstance().openUI(TipUI, 212, () => {
                 UIHelp.showTip(message);
             });
         }
@@ -29,15 +36,15 @@ export class UIHelp {
     * @param {Function} callback    回调函数
     * @param {string} endTitle      end动效提示文字
     */
-    public static showOverTip(type: number, str: string = "", callback: Function = null, endTitle?: string) {
+    public static showOverTip(type: number, str: string = "", btnStr: string, btnCallback: Function, callback: Function = null, endTitle?: string) {
         let overTips = UIManager.getInstance().getUI(OverTips) as OverTips;
         if (!overTips) {
-            UIManager.getInstance().openUI(OverTips, null, 210, () => {
-                UIHelp.showOverTip(type, str, callback, endTitle);
+            UIManager.getInstance().openUI(OverTips, 210, () => {
+                UIHelp.showOverTip(type, str, btnStr, btnCallback, callback, endTitle);
             });
         }
         else {
-            overTips.init(type, str, callback, endTitle);
+            overTips.init(type, str, btnStr, btnCallback, callback, endTitle);
         }
     }
 
@@ -49,7 +56,7 @@ export class UIHelp {
     public static AffirmTip(type: number, des: string, callback: any, btnCloselDes?: string, btnOkDes?: string) {
         let overTips = UIManager.getInstance().getUI(AffirmTips) as AffirmTips;
         if (!overTips) {
-            UIManager.getInstance().openUI(AffirmTips, null, 210, () => {
+            UIManager.getInstance().openUI(AffirmTips, 210, () => {
                 UIHelp.AffirmTip(type, des, callback, btnCloselDes, btnOkDes);
             });
         }
