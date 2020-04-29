@@ -133,14 +133,14 @@ export default class GamePanel extends BaseUI {
     }
 
     startAction() {
-        let func = cc.callFunc(()=>{
-            let fun = cc.callFunc(()=>{
-                this.faguangtiAction()
-            }) 
-            this.guanzi.active = true
-            let seq = cc.sequence(cc.moveTo(1, cc.v2(600, -444)), fun)
-            this.guanzi.runAction(seq)
-        })
+        // let func = cc.callFunc(()=>{
+        //     let fun = cc.callFunc(()=>{
+        //         this.faguangtiAction()
+        //     }) 
+        //     this.guanzi.active = true
+        //     let seq = cc.sequence(cc.moveTo(1, cc.v2(600, -444)), fun)
+        //     this.guanzi.runAction(seq)
+        // })
         this.tiban.node.active = true
         this.caozuoban.node.active = true
         this.tiban.setAnimation(0, 'chuchang-01', false)
@@ -172,7 +172,6 @@ export default class GamePanel extends BaseUI {
             this.guanzi.runAction(seq)
         })
         .start()
-
         // this.quanquan.runAction(cc.sequence(cc.moveTo(0.5, cc.v2(938, 435)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut())))
         // this.paipai.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(824, -172)).easing(cc.easeSineOut()), cc.moveBy(0.1, cc.v2(20, 0)).easing(cc.easeSineOut()) ))
         // this.operationPanel.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(809, -371)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut()), func))
