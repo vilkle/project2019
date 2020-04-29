@@ -145,10 +145,37 @@ export default class GamePanel extends BaseUI {
         this.caozuoban.node.active = true
         this.tiban.setAnimation(0, 'chuchang-01', false)
         this.caozuoban.setAnimation(0, 'ruchang-01', false)
-        cc.Tween
-        this.quanquan.runAction(cc.sequence(cc.moveTo(0.5, cc.v2(938, 435)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut())))
-        this.paipai.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(824, -172)).easing(cc.easeSineOut()), cc.moveBy(0.1, cc.v2(20, 0)).easing(cc.easeSineOut()) ))
-        this.operationPanel.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(809, -371)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut()), func))
+        let t = new cc.Tween();
+        t.target(this.quanquan)
+        .to(0.5, {position: cc.v2(938, 435)}, {easing:"easeSineOut", progress:null})
+        .by(0.3, {position: cc.v2(30, 0)}, {easing:"easeSineOut", progress:null})
+        .by(0.3, {position: cc.v2(-10, 0)}, {easing:"easeSineOut", progress:null})
+        .start();
+
+        let t1 = new cc.Tween()
+        t1.target(this.paipai)
+        .to(0.7, {position: cc.v2(824, -172)}, {easing:"easeSineOut", progress:null})
+        .by(0.1, {position: cc.v2(20, 0)}, {easing:"easeSineOut", progress:null})
+        .start()
+
+        let t2 = new cc.Tween()
+        t2.target(this.operationPanel)
+        .to(0.7, {position: cc.v2(809, -371)}, {easing:"easeSineOut", progress:null})
+        .by(0.3, {position: cc.v2(30, 0)}, {easing:"easeSineOut", progress:null})
+        .by(0.3, {position: cc.v2(-10, 0)}, {easing:"easeSineOut", progress:null})
+        .call(()=>{
+            let fun = cc.callFunc(()=>{
+                this.faguangtiAction()
+            }) 
+            this.guanzi.active = true
+            let seq = cc.sequence(cc.moveTo(1, cc.v2(600, -444)), fun)
+            this.guanzi.runAction(seq)
+        })
+        .start()
+
+        // this.quanquan.runAction(cc.sequence(cc.moveTo(0.5, cc.v2(938, 435)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut())))
+        // this.paipai.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(824, -172)).easing(cc.easeSineOut()), cc.moveBy(0.1, cc.v2(20, 0)).easing(cc.easeSineOut()) ))
+        // this.operationPanel.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(809, -371)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut()), func))
     }
 
     faguangtiAction() {
