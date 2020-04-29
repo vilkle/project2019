@@ -1,0 +1,125 @@
+
+paipai-01.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 2, 203
+  size: 270, 297
+  orig: 270, 299
+  offset: 0, 1
+  index: -1
+caozg-1
+  rotate: true
+  xy: 2, 2
+  size: 48, 104
+  orig: 48, 106
+  offset: 0, 1
+  index: -1
+caozg-2
+  rotate: false
+  xy: 274, 264
+  size: 47, 105
+  orig: 47, 107
+  offset: 0, 1
+  index: -1
+ear-r
+  rotate: true
+  xy: 439, 450
+  size: 50, 69
+  orig: 50, 71
+  offset: 0, 1
+  index: -1
+era-l
+  rotate: false
+  xy: 189, 132
+  size: 51, 69
+  orig: 51, 71
+  offset: 0, 1
+  index: -1
+eye-l
+  rotate: false
+  xy: 112, 84
+  size: 23, 36
+  orig: 23, 38
+  offset: 0, 1
+  index: -1
+eye-l-happy
+  rotate: false
+  xy: 274, 243
+  size: 38, 19
+  orig: 38, 21
+  offset: 0, 1
+  index: -1
+eye-r-happy
+  rotate: false
+  xy: 274, 243
+  size: 38, 19
+  orig: 38, 21
+  offset: 0, 1
+  index: -1
+eye-r
+  rotate: false
+  xy: 383, 402
+  size: 22, 36
+  orig: 22, 38
+  offset: 0, 1
+  index: -1
+eye-r-unhappy
+  rotate: true
+  xy: 361, 331
+  size: 38, 9
+  orig: 38, 11
+  offset: 0, 1
+  index: -1
+eye-l-unhappy
+  rotate: true
+  xy: 361, 331
+  size: 38, 9
+  orig: 38, 11
+  offset: 0, 1
+  index: -1
+glasss
+  rotate: false
+  xy: 274, 440
+  size: 163, 60
+  orig: 163, 62
+  offset: 0, 1
+  index: -1
+hair
+  rotate: false
+  xy: 2, 122
+  size: 185, 79
+  orig: 185, 81
+  offset: 0, 1
+  index: -1
+hand-l
+  rotate: false
+  xy: 274, 371
+  size: 107, 67
+  orig: 107, 69
+  offset: 0, 1
+  index: -1
+hand-r
+  rotate: false
+  xy: 2, 52
+  size: 108, 68
+  orig: 108, 70
+  offset: 0, 1
+  index: -1
+mouth-1
+  rotate: true
+  xy: 323, 279
+  size: 90, 36
+  orig: 90, 38
+  offset: 0, 1
+  index: -1
+mouth-2
+  rotate: false
+  xy: 323, 267
+  size: 28, 10
+  orig: 28, 12
+  offset: 0, 1
+  index: -1

@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "huoguo",
+    "texture": "35dc010a-2b59-4d98-9bfd-bb6f41e2aef0",
+    "atlas": "",
+    "rect": [
+      0,
+      0,
+      443,
+      425
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      443,
+      425
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

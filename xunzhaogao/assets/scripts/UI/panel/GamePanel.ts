@@ -25,6 +25,26 @@ export default class GamePanel extends BaseUI {
     private mask: cc.Node = null
     @property(cc.Node)
     private bg:cc.Node = null;
+    @property(cc.Node)
+    private paipai: cc.Node = null
+    @property(cc.Node)
+    private left: cc.Node = null
+    @property(cc.Node)
+    private right: cc.Node = null
+    @property(cc.Label)
+    private progressLabel: cc.Label = null
+    @property(sp.Skeleton)
+    private caozuoban: sp.Skeleton = null
+    @property(sp.Skeleton)
+    private tiban: sp.Skeleton = null
+    @property(cc.Node)
+    private guanzi: cc.Node = null
+    @property(cc.Node)
+    private quanquan: cc.Node = null
+    @property(cc.Node)
+    private operationPanel: cc.Node = null
+
+   
   
     private standardNum: number = 1
   
@@ -52,14 +72,25 @@ export default class GamePanel extends BaseUI {
 
     onLoad() {
         cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
-       
+        cc.loader.loadRes('atlas/paipai-01', sp.SkeletonData, null)
+        cc.loader.loadRes('atlas/tiban', sp.SkeletonData, (err, spine)=>{
+            if(!err) {
+                console.log('load spine err1')
+            }
+        })
+        cc.loader.loadRes('atlas/caozuoban', sp.SkeletonData, (err, spine)=>{
+            if(!err) {
+                console.log('load spine err2')
+            }
+        })
+        this.initGame()
         this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
         })
        
         if(ConstValue.IS_TEACHER) {
             UIManager.getInstance().openUI(UploadAndReturnPanel, 212)
           
-            this.setPanel()
+            //this.setPanel()
         }else {
             this.getNet()
         }
@@ -75,7 +106,14 @@ export default class GamePanel extends BaseUI {
         this.standardNum = 1
         ReportManager.getInstance().setStandardNum(this.standardNum)
         ReportManager.getInstance().setQuestionInfo(0, '一起动手，挑战下面的关卡吧！')
-       
+        let id = setTimeout(() => {
+            console.log('start action')
+            this.startAction()
+            let index = this.timeoutArr.indexOf(id)
+            this.timeoutArr.splice(index, 1)
+        }, 500);
+        this.timeoutArr[this.timeoutArr.length] = id
+        
     }
 
     onDestroy() {
@@ -84,7 +122,45 @@ export default class GamePanel extends BaseUI {
        }
     }
 
-  
+    initGame() {
+        this.tiban.node.active = false
+        this.caozuoban.node.active = false
+        this.quanquan.setPosition(cc.v2(1090, 435)) 
+        this.paipai.setPosition(cc.v2(1252, -172))
+        this.operationPanel.setPosition(cc.v2(1238, -371))
+        this.guanzi.setPosition(cc.v2(1060, -444))
+        this.guanzi.active = false
+    }
+
+    startAction() {
+        let func = cc.callFunc(()=>{
+            let fun = cc.callFunc(()=>{
+                this.faguangtiAction()
+            }) 
+            this.guanzi.active = true
+            let seq = cc.sequence(cc.moveTo(1, cc.v2(600, -444)), fun)
+            this.guanzi.runAction(seq)
+        })
+        this.tiban.node.active = true
+        this.caozuoban.node.active = true
+        this.tiban.setAnimation(0, 'chuchang-01', false)
+        this.caozuoban.setAnimation(0, 'ruchang-01', false)
+        cc.Tween
+        this.quanquan.runAction(cc.sequence(cc.moveTo(0.5, cc.v2(938, 435)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut())))
+        this.paipai.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(824, -172)).easing(cc.easeSineOut()), cc.moveBy(0.1, cc.v2(20, 0)).easing(cc.easeSineOut()) ))
+        this.operationPanel.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(809, -371)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut()), func))
+    }
+
+    faguangtiAction() {
+        let faguangti = this.guanzi.getChildByName('faguangti')
+        let func = cc.callFunc(()=>{
+            faguangti.setPosition(cc.v2(208, 0))
+        }) 
+        let moveBy = cc.moveTo(1.5, cc.v2(-430, 0))
+        let seq = cc.sequence(moveBy, func)
+        let forever = cc.repeatForever(seq)
+        faguangti.runAction(forever)
+    }
 
     private onInit() {
         this.isOver = false
