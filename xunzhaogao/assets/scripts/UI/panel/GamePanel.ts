@@ -882,16 +882,14 @@ export default class GamePanel extends BaseUI {
         this.gl.clear()
         this.gc.clear()
         if(level == 1 || level == 2) {
-            if(angle <= 10 || angle >= 350) {//
-                if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
-                    if(pos.x > -148) {
-                        this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
-                        if(pos.x <= -47 && pos.x >= -87) {
-                            this.drawLine(cc.v2(-67, -117), cc.v2(-67, 455), this.gc)
-                        }
+            if(angle <= 10 || angle >= 350) {
+                if(pos.y >=-137 && pos.y <= -97 && pos.x <= -47 && pos.x+width >= -631) {
+                    this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
+                    if(pos.x <= -47 && pos.x >= -87) {
+                        this.drawLine(cc.v2(-67, -117), cc.v2(-67, 455), this.gc)
                     }
                 }
-            }else if(angle <= 85 && angle >= 65) {//
+            }else if(angle <= 85 && angle >= 65) {
                 let angle = 74.3
                 if(angle<0) {
                     angle = 360 - Math.abs(angle)
@@ -899,18 +897,14 @@ export default class GamePanel extends BaseUI {
                 let cos = Math.cos(angle * Math.PI / 180)
                 let sin = Math.sin(angle * Math.PI / 180)
                 let long = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
-                if(this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos)) && long <= 10) {
-                    let jiaodian1 = this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
-                    let jiaodian2 = this.zhixianjiaodian(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
-                    if(pos.y < -117) {
-                        this.drawLine(cc.v2(-197, -282), cc.v2(-50, 238), this.gl)
-                        if(pos.y >= -257 && pos.y <= -217) {
-                            this.drawLine(cc.v2(-183, -237), cc.v2(-183-(height+150)*sin, -237+(height+150)*cos), this.gc)
-                        }
+                if(pos.y <= 202 && pos.y+width*sin >= -137 && long <= 10) {
+                    this.drawLine(cc.v2(-197, -282), cc.v2(-50, 238), this.gl)
+                    if(pos.y >= -257 && pos.y <= -217) {
+                        this.drawLine(cc.v2(-183, -237), cc.v2(-183-(height+150)*sin, -237+(height+150)*cos), this.gc)
                     }
                 }
             }else if(angle <= 190 && angle >= 170) {
-                if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
+                if(pos.x >= -631 && pos.x-width <= -87 && pos.y >=162 && pos.y <= 202) {
                     if(pos.x < -529) {
                         this.drawLine(cc.v2(100, 182), cc.v2(-690, 182), this.gl)
                         if(pos.x >= -631 && pos.x <= -591) {
@@ -918,7 +912,7 @@ export default class GamePanel extends BaseUI {
                         }
                     }
                 }
-            }else if(angle <= 265 && angle >= 245) {//
+            }else if(angle <= 265 && angle >= 245) {
                 let angle = 254.3
                 if(angle<0) {
                     angle = 360 - Math.abs(angle)
@@ -926,27 +920,21 @@ export default class GamePanel extends BaseUI {
                 let cos = Math.cos(angle * Math.PI / 180)
                 let sin = Math.sin(angle * Math.PI / 180)
                 let long = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
-                if(this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos)) && long <= 10) {
-                    let jiaodian1 = this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
-                    let jiaodian2 = this.zhixianjiaodian(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
-                    if(pos.y > 182) {
-                        this.drawLine(cc.v2(-493, 311), cc.v2(-639, -208), this.gl)
-                        if(pos.y >= 276 && pos.y <= 316) {
-                            this.drawLine(cc.v2(-498, 296), cc.v2(-498+(height+150)*-sin, 296- (height+150)*-cos), this.gc)
-                        }
+                if(pos.y >= -137 && pos.y- width*-sin && long <= 10) {
+                    this.drawLine(cc.v2(-493, 311), cc.v2(-639, -208), this.gl)
+                    if(pos.y >= 276 && pos.y <= 316) {
+                        this.drawLine(cc.v2(-498, 296), cc.v2(-498+(height+150)*-sin, 296- (height+150)*-cos), this.gc)
                     }
                 }
             }else if(angle <= 280 && angle >= 260) {//
-                if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
-                    if(pos.x < -529) {
-                        this.drawLine(cc.v2(100, 182), cc.v2(-690, 182), this.gl)
-                        if(pos.x >= -631 && pos.x <= -591) {
-                            this.drawLine(cc.v2(-611, 182), cc.v2(-611, -260), this.gc)
-                        }
+                if(pos.x+height >= -529 && pos.x <= -67 && pos.y >=162 && pos.y <= 202) {
+                    this.drawLine(cc.v2(100, 182), cc.v2(-690, 182), this.gl)
+                    if(pos.x >= -631 && pos.x <= -591) {
+                        this.drawLine(cc.v2(-611, 182), cc.v2(-611, -260), this.gc)
                     }
                 }
             }else if(angle <= 100 && angle >= 80) {
-                if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
+                if(pos.x >= -611 && pos.x+height <= -148 && pos.y >=-137 && pos.y <= -97) {
                     if(pos.x > -148) {
                         this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
                         if(pos.x >= -87 && pos.x <= -47) {
@@ -967,25 +955,21 @@ export default class GamePanel extends BaseUI {
                 //     this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 200), this.gc)
                 // }
             }else if(angle <= 190 && angle >= 170) {//
-                if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
-                    if(pos.x > -241 || pos.x < -517) {
-                        this.drawLine(cc.v2(-750, 129), cc.v2(100, 129), this.gl)
-                        if(pos.x >= -79 && pos.x <= -39) {
-                            this.drawLine(cc.v2(-59, 129), cc.v2(-59, -420), this.gc)
-                        }else if(pos.x >= -639 && pos.x <= -599) {
-                            this.drawLine(cc.v2(-619, 129), cc.v2(-619, -420), this.gc)
-                        }
+                if(pos.x >= -619 && pos.x-width <= -241 && pos.y <= 149 && pos.y >= 109) {
+                    this.drawLine(cc.v2(-750, 129), cc.v2(100, 129), this.gl)
+                    if(pos.x >= -79 && pos.x <= -39) {
+                        this.drawLine(cc.v2(-59, 129), cc.v2(-59, -420), this.gc)
+                    }else if(pos.x >= -639 && pos.x <= -599) {
+                        this.drawLine(cc.v2(-619, 129), cc.v2(-619, -420), this.gc)
                     }
                 }
             }else if(angle <= 280 && angle >= 260) {
-                if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
-                    if(pos.x > -241 || pos.x < -517) {
-                        this.drawLine(cc.v2(-750, 129), cc.v2(100, 129), this.gl)
-                        if(pos.x >= -79 && pos.x <= -39) {
-                            this.drawLine(cc.v2(-59, 129), cc.v2(-59, -300), this.gc)
-                        }else if(pos.x >= -639 && pos.x <= -599) {
-                            this.drawLine(cc.v2(-619, 129), cc.v2(-619, -300), this.gc)
-                        }
+                if(pos.x+height > -517 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
+                    this.drawLine(cc.v2(-750, 129), cc.v2(100, 129), this.gl)
+                    if(pos.x >= -79 && pos.x <= -39) {
+                        this.drawLine(cc.v2(-59, 129), cc.v2(-59, -300), this.gc)
+                    }else if(pos.x >= -639 && pos.x <= -599) {
+                        this.drawLine(cc.v2(-619, 129), cc.v2(-619, -300), this.gc)
                     }
                 }
             }
