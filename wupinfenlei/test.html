@@ -1,0 +1,355 @@
+<!--
+ * @Description: 
+ * @Author: zw
+ * @Date: 2019-12-10 16:31:34
+ * @LastEditors  : ChangJ
+ * @LastEditTime : 2019-12-19 15:49:08
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>接口消息测试</title>
+    <style>
+        p{
+            margin: 0;
+            font-size: 12px;
+        }
+        .two-text-but {
+            outline: none;
+            width: 62px;
+            float: left;
+            /* margin-left: 20px; */
+            cursor: pointer;
+        }
+
+        .four-text-but {
+            outline: none;
+            width: 72px;
+            float: left;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .info-box {
+            display: inline-block;
+            width: 100%;
+            height: 200px;
+            border: 1px solid;
+            position: absolute;
+            bottom: -200px;
+            overflow: auto;
+            /* pointer-events: none; */
+        }
+
+        .span-custom {
+            display: inline-block;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex;">
+
+        <div style='float:left;font-size: 14px;'>历史步数: </div>
+        <div id="stepNum" style='float:left;width:20px'>0</div>
+        <input id='changeStep' type="number" style="outline:none;float:left;width:40px">
+        <button id="sureBt" class="two-text-but" onmousedown="changeBg(this)" onclick="changeStep(this)">确认</button>
+
+        <div style="float:left;margin-left: 20px;font-size: 14px;">发送消息间隔: </div>
+        <input id='changeThreshhold' style="outline:none;float:left;width:40px">
+        <button  id="sureBt2" class="two-text-but" onmousedown="changeBg(this)" onclick="changeThreshhold(this)">确认</button>
+
+        <button id="stopOpe" class="four-text-but" onmousedown="changeBg(this)"
+            onclick="forbidOrStartOperate(this)">禁止操作</button>
+        <button id="reload" class="four-text-but" onmousedown="changeBg(this)" onclick="initGame(this)">初始游戏</button>
+        <button id="reload" class="four-text-but" onmousedown="changeBg(this)" onclick="reloadGame(this)">重启游戏</button>
+        <button id="endGame" class="four-text-but" onmousedown="changeBg(this)" onclick="stopGame(this)">结束游戏</button>
+    </div>
+    <div class="container">
+        <div style="display:flex;position:relative">
+            <div style="width:600px;position: relative;">
+                <iframe id="teacher" style="width: 600px;height:450px;border:3px solid white;"
+                    src="./index.html?userId=1000117937&chapterId=100485446&coursewareId=2968&bLive=1&bPreload=0&env=test&app=学而思在线Test&platform=iPad&channel=student&appVersion=100.0.7&showOver=1&showStar=1&showReplay=1&browser=iOS"></iframe>
+                <div id='teacherBox' class="info-box">
+                </div>
+            </div>
+            <div style="width:600px;margin-left: 20px;position:relative">
+                <iframe id="student" style="width: 600px;height:450px;pointer-events: none;border:3px solid white;"
+                    src="./index.html?userId=1000117937&chapterId=100485446&coursewareId=2968&bLive=1&bPreload=0&env=test&app=学而思在线Test&platform=iPad&channel=student&appVersion=100.0.7&showOver=1&showStar=1&showReplay=1&browser=iOS"></iframe>
+                <div id='studentBox' class="info-box">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let saveAry = []
+        let teacherShow = {showedAry:[],index:-1}
+        let studentShow = {showedAry:[],index:-1}
+        let actionSendId = -1
+        let actionReceiveId = -1
+        let teacherIframe = document.getElementById('teacher');
+        let studentIframe = document.getElementById('student');
+        let finish0Txt = document.getElementById('finishedID0')
+        let finish1Txt = document.getElementById('finishedID1')
+        let stepNum = document.getElementById('stepNum')
+        window.addEventListener('message', function (e) {
+            // console.log('APP接受到消息:',e.source.frameElement.id)
+            let receiveData = e.data.msg
+            switch (receiveData.type) {
+                case 'engine_load_start': {
+                    this.showReceiveInfo(e)
+                } break
+                case 'engine_load_complete': {
+                    this.showReceiveInfo(e)
+                } break
+                case 'res_load_start':
+                    this.showReceiveInfo(e)
+                    break
+                case 'res_load_process':
+                    this.showReceiveInfo(e)
+                    break
+                case 'res_load_complete':
+                    this.showReceiveInfo(e)
+                    break
+                case 'game_start':
+                    this.showReceiveInfo(e)
+                    break
+                case 'game_over':{
+                    //this.showReceiveInfo(e)
+                }
+                case 'finished':
+                    this.finishedGame()
+                    this.showReceiveInfo(e)
+                    break
+                case 'action_sync_send': {
+                    this.showReceiveInfo(null, { role: 'teacher', info: { type: 'action_sync_send', name: 'send' }, data: receiveData.data })
+                    receiveData.type = 'action_sync_receive'
+                    studentIframe.contentWindow.postMessage({ type: 'gameMsg', msg: receiveData }, '*');
+                    this.showReceiveInfo(null, { role: 'student', info: { type: 'action_sync_receive', name: 'receive' }, data: receiveData.data })
+                }
+                    break
+                case 'init': {
+                    saveAry = []
+                    stepNum.innerText = saveAry.length
+                }
+                case 'pause':
+                case 'stop': {
+
+                }
+                case 'reload':
+                case 'threshhold':
+                case 'data_recovery': {
+                    console.log()
+                    this.showReceiveInfo(null, { role: 'student', info: { type: receiveData.type, name: 'receive' }, data: receiveData.data })
+                    this.showReceiveInfo(null, { role: 'teacher', info: { type: receiveData.type, name: 'receive' }, data: receiveData.data })
+                    teacherIframe.contentWindow.postMessage({ type: 'gameMsg', msg: receiveData }, '*');
+                    studentIframe.contentWindow.postMessage({ type: 'gameMsg', msg: receiveData }, '*');
+                } break
+                case 'data_archival': {
+                    saveAry.push(receiveData.data)
+                    stepNum.innerText = saveAry.length
+                    this.showReceiveInfo(e)
+                } break
+                case 'disabled': {
+                    this.showReceiveInfo(null, { role: 'student', info: { type: 'disabled', name: 'receive' }, data: receiveData.data })
+                    this.showReceiveInfo(null, { role: 'teacher', info: { type: 'disabled', name: 'receive' }, data: receiveData.data })
+                    studentIframe.contentWindow.postMessage({ type: 'gameMsg', msg: receiveData }, '*');
+                    teacherIframe.contentWindow.postMessage({ type: 'gameMsg', msg: receiveData }, '*');
+                } break
+
+            }
+        })
+        function showReceiveInfo(e, info) {
+            let role = info ? info.role : e.source.frameElement.id
+            let receiveBox = document.getElementById(`${role}Box`)
+            let receiveData = info ? { type: info.info.type } : e.data.msg
+            if (receiveBox) {
+                let preStr = receiveBox.innerHTML;
+                let showDataHead = info ? (info.info.name === 'receive' ? 'Receive-->' : 'Send-->') : 'Send-->'
+                let showData = ''
+                let showDetail
+                if (info) {
+                    showDetail = info.data
+                } else {
+                    showDetail = e.data.msg.data
+                }
+                let resultStr = ''
+                let objStr = ''
+                let overStr = ''
+                if (typeof showDetail === 'object') {
+                    for (let key in showDetail) {
+                        console.log(key)
+                        if(key == 'result') {
+                            let resultInfo = showDetail[key]
+                            for (let index in resultInfo) {
+                                resultStr += '\{'
+                                objStr = ''
+                                for (let i in resultInfo[index]) {
+                                    objStr += `${i}:${resultInfo[index][i].toString()} `
+                                }
+                                resultStr += `${index}:${objStr.toString()}\}`
+                            }
+                            showData += `${key}:${resultStr} `
+                        }else if(key == 'gameOver') {
+                            for (let index in showDetail[key]) {
+                                overStr += `${index}:${showDetail[key][index].toString()}\}`
+                            }
+                            showData += `${key}:${overStr} `
+                        }else {
+                            showData += `${key}:${showDetail[key].toString()} `
+                        }
+                    }
+                    showData = showData === '' ? '无参数' : showData
+                } else {
+                    showData += (showDetail === undefined ? '无参数' : showDetail)
+                }
+                let oneItemStr = getInfoTime()+ showDataHead + receiveData.type + '---' + showData 
+                let changedData = role=== 'teacher'?teacherShow:studentShow
+                if (changedData.index < 20) {
+                    changedData.index++
+                    let str = preStr + oneItemStr
+                    injectDom(receiveBox,oneItemStr)
+                }
+                changedData.showedAry.push(oneItemStr)
+                addNewDataP(receiveBox)
+                scrollToBottom(receiveBox)
+            }
+        }
+        function scrollToBottom(box){
+            box.scrollHeight !== 200?box.scrollTop = box.scrollHeight:''
+        }
+        function getInfoTime(){
+            let date = new Date() 
+            let hour = date.getHours()
+            hour = hour.toString().length === 2 ? hour : ('0' + hour)
+            let min = date.getMinutes()
+            min = min.toString().length === 2 ? min : ('0' + min)
+            let sec = date.getSeconds()
+            sec = sec.toString().length === 2 ? sec : ('0' + sec)
+            return hour+':'+min+':'+sec+'  '
+        }
+        function changeBg(e) {
+            e.style.background = 'red'
+        }
+        function changeStep(e) {
+            sureBt.style.background = 'buttonface'
+            let input = document.getElementById('changeStep')
+            let stepNum = document.getElementById('stepNum')
+            if (Number(input.value) > 0 && Number(input.value) <= Number(stepNum.innerText)) {
+                if (input.value !== '') {
+                    window.postMessage({ type: 'gameMsg', msg: { type: 'data_recovery', data: saveAry[input.value - 1] } }, '*');
+                }
+            } else {
+                alert('步数不合法')
+            }
+        }
+        function changeThreshhold(e){
+            sureBt2.style.background = 'buttonface'
+            let input = document.getElementById('changeThreshhold')
+            if (Number(input.value) > 0) {
+                if (input.value !== '') {
+                    window.postMessage({ type: 'gameMsg', msg: { type: 'threshhold', data: Number(input.value) } }, '*');
+                }
+            } else {
+                alert('时间间隔不合法')
+            }
+        }
+        function forbidOrStartOperate(e) {
+            e.style.background = 'buttonface'
+            let disableNum = -1
+            let opeBut = document.getElementById('stopOpe')
+            if (teacherIframe.style.pointerEvents === 'none') {
+                teacherIframe.style.border = '3px solid white'
+                teacherIframe.style.pointerEvents = 'all'
+                opeBut.innerText = '禁止操作'
+                disableNum = 0
+            } else {
+                teacherIframe.style.border = '3px solid red'
+                teacherIframe.style.pointerEvents = 'none'
+                opeBut.innerText = '开启操作'
+                disableNum = 1
+            }
+            window.postMessage({ type: 'gameMsg', msg: { type: 'disabled', data: disableNum } }, '*');
+        }
+        function initGame(e) {
+            e.style.background = 'buttonface'
+            window.postMessage({ type: 'gameMsg', msg: { type: 'init', data: {} } }, '*');
+        }
+        function reloadGame(e) {
+            e.style.background = 'buttonface'
+            window.postMessage({ type: 'gameMsg', msg: { type: 'reload', data: {} } }, '*');
+            let stepNum = document.getElementById('stepNum')
+            stepNum.innerText = '0'
+        }
+        function stopGame(e) {
+            e.style.background = 'buttonface'
+            window.postMessage({ type: 'gameMsg', msg: { type: 'stop', data: {} } }, '*');
+            let stepNum = document.getElementById('stepNum')
+            stepNum.innerText = '0'
+        }
+        function finishedGame(e) {
+        }
+        function getClientHeight(el) {
+            return getPositionSize(el, 'clientHeight');
+        }
+        function getPositionSize(el, prop) {
+            return el === window || el === document
+                ? document.documentElement[prop]
+                : el[prop];
+        }
+        function addNewDataP(container){
+            let role = container.id.indexOf('teacher')!== -1?'teacher':'student'
+            const scrollBottom = container.scrollTop + getClientHeight(container);
+            if(container.scrollHeight !== 200 &&container.scrollHeight - scrollBottom === 0){//当前scroll 在底端 补充一个p进入 
+                container.removeChild(container.children[0])
+                let changedData = role === 'teacher'?teacherShow:studentShow
+                changedData.index++
+                injectDom(container,changedData.showedAry[changedData.index])
+            }
+        }
+        function onScroll(e) {
+            let container = e.target
+            let distance = 50
+            let role = e.target.id.indexOf('teacher')!== -1?'teacher':'student'
+            const scrollBottom = container.scrollTop + getClientHeight(container);
+            shouldTrigger = container.scrollHeight - scrollBottom <= distance;
+            let changedData = role === 'teacher'? teacherShow:studentShow
+            if (shouldTrigger) {//下拉
+                if(changedData.index+1 < changedData.showedAry.length){
+                    container.removeChild(container.children[0])
+                    changedData.index++
+                    injectDom(container,changedData.showedAry[changedData.index])
+                }
+            }else if(container.scrollTop <= distance  && changedData.index-20 >0){//上拉
+                if(changedData.index - 1 >= 0){
+                    changedData.index--
+                    injectDom(container,changedData.showedAry[changedData.index-20],true)
+                    container.scrollTop += 20
+                    container.removeChild(container.children[container.children.length-1])
+                }
+            }
+        }
+        function injectDom(node,text,pre){
+            let frag = document.createDocumentFragment()
+            let span = document.createElement('p')
+            let textNode = document.createTextNode(text);
+            span.appendChild(textNode)
+            frag.appendChild(span)
+            pre?node.prepend(frag):node.appendChild(frag)
+        }
+        window.addEventListener("DOMContentLoaded", function () {
+            let teacherBox = document.getElementById('teacherBox');
+            let studentBox = document.getElementById('studentBox');
+            
+            teacherBox.addEventListener('scroll', onScroll);
+            studentBox.addEventListener('scroll', onScroll);
+        })
+    </script>
+</body>
+
+</html>

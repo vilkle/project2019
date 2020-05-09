@@ -1,3 +1,10 @@
+/*
+ * @Author: 马超
+ * @Date: 2020-04-27 11:26:32
+ * @LastEditTime: 2020-05-08 22:40:09
+ * @Description: 游戏脚本
+ * @FilePath: \xunzhaogao\assets\scripts\UI\panel\GamePanel.ts
+ */
 import { BaseUI } from "../BaseUI";
 import { NetWork } from "../../Http/NetWork";
 //import DataReporting from "../../Data/DataReporting";
@@ -43,25 +50,44 @@ export default class GamePanel extends BaseUI {
     private quanquan: cc.Node = null
     @property(cc.Node)
     private operationPanel: cc.Node = null
-
+    @property(cc.Node)
+    private ruler: cc.Node = null
+    @property(cc.Graphics)
+    private gl: cc.Graphics = null
+    @property(cc.Graphics)
+    private gc: cc.Graphics = null
+    @property(cc.Node)
+    private broadNode: cc.Node = null
+    @property(cc.Node)
+    private round1Node: cc.Node = null
+    @property(cc.Node)
+    private round3Node: cc.Node = null
+    @property(cc.Node)
+    private gao:cc.Node = null
+    @property(cc.Node)
+    private di: cc.Node = null
+    @property(cc.Vec2)
+    private weiyi: cc.Vec2 = null //点击位置和锚点之间的距离
    
-  
-    private standardNum: number = 1
-  
-    private answer: number[] = []
-    private subject: number[] = []
-   
+    private intervalId = null
+    private xuxianId = null
+    private isRightBtn: boolean = false
+    private isLeftBtn: boolean = false
+    private isRotation: boolean = false
+    private standardNum: number = 3
+    private rulerPos: cc.Vec2 = cc.v2(-30, -117)
     private timeoutArr: number[] = []
     private isOver: boolean = false
     private gameResult: AnswerResult = AnswerResult.NoAnswer
     private actionId: number = 0
-    private rightNum: number = 0
-    private isBreak: boolean = null
+    private isAction: boolean = false
+    private isBreak: boolean = false
     private isAudio: boolean = false
     private archival = {
         answerdata: null,
-        gamedata: [],
-        wrong: [],
+        level: null,
+        angle: null,
+        pos: null,
         rightNum: null,
         totalNum: null,
         standardNum: this.standardNum
@@ -86,7 +112,6 @@ export default class GamePanel extends BaseUI {
         this.initGame()
         this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
         })
-       
         if(ConstValue.IS_TEACHER) {
             UIManager.getInstance().openUI(UploadAndReturnPanel, 212)
           
@@ -102,8 +127,8 @@ export default class GamePanel extends BaseUI {
          //新课堂上报
          GameMsg.getInstance().gameStart()
         //添加上报result数据
-        ReportManager.getInstance().addResult(1)
-        this.standardNum = 1
+        ReportManager.getInstance().addResult(3)
+        this.standardNum = 3
         ReportManager.getInstance().setStandardNum(this.standardNum)
         ReportManager.getInstance().setQuestionInfo(0, '一起动手，挑战下面的关卡吧！')
         let id = setTimeout(() => {
@@ -113,16 +138,25 @@ export default class GamePanel extends BaseUI {
             this.timeoutArr.splice(index, 1)
         }, 500);
         this.timeoutArr[this.timeoutArr.length] = id
-        
+        this.round1()
     }
 
     onDestroy() {
+        if(this.intervalId) {
+            clearInterval(this.intervalId)
+            this.intervalId = null
+        }
+        if(this.xuxianId) {
+            clearInterval(this.xuxianId)
+            this.xuxianId = null
+        }
        for (const key in this.timeoutArr) {
            clearTimeout(this.timeoutArr[key])
        }
     }
 
     initGame() {
+        this.broadNode.opacity = 0
         this.tiban.node.active = false
         this.caozuoban.node.active = false
         this.quanquan.setPosition(cc.v2(1090, 435)) 
@@ -130,17 +164,161 @@ export default class GamePanel extends BaseUI {
         this.operationPanel.setPosition(cc.v2(1238, -371))
         this.guanzi.setPosition(cc.v2(1060, -444))
         this.guanzi.active = false
+        this.addlistenerOnRuler()
+        this.onBtnLeft()
+        this.onBtnRight()
+    }
+
+    round1() {
+        this.round1Node.active = true
+        this.round3Node.active = false
+        this.setprogress(1)
+        this.resetInterface()
+    }
+
+    round2() {
+        this.round1Node.active = true
+        this.round3Node.active = false
+        this.setprogress(2)
+        this.resetInterface()
+    }
+    
+    round3() {
+        this.round1Node.active = false
+        this.round3Node.active = true
+        this.setprogress(3)
+        this.resetInterface()
+    }
+
+    resetInterface() {
+        this.mask.active = false
+        this.drawLine(cc.v2(-680, -120), cc.v2(360, -120), this.gl)
+        this.ruler.setPosition(this.rulerPos)
+        this.ruler.angle = 0
+        this.gao.active = false
+        this.di.active = false
+        this.gl.clear()
+        this.gc.clear()
+    }
+
+    starAction(pos: cc.Vec2) {
+        AudioManager.getInstance().playSound('点击', false)
+        let ruler = this.ruler
+        this.gl.clear()
+        ruler.getChildByName('box').active = true
+        pos = this.resetPos(pos)
+        ruler.setPosition(pos)
+    }
+
+    moveAction(pos: cc.Vec2) {
+        let ruler = this.ruler
+        pos = this.resetPos(pos)
+        ruler.setPosition(pos)
+        this.point(pos)
+        this.yanchangxian(pos)
+    }
+
+    endAction() {
+        let ruler = this.ruler
+        ruler.opacity = 255
+        ruler.getChildByName('box').active = false
+        let num = this.isRight(this.ruler.position)
+        if(num == 1) {
+            //AudioManager.getInstance().playSound('正确提醒', false)
+            this.mask.active = true
+            let level = ReportManager.getInstance().getLevel()
+            ReportManager.getInstance().answerRight()   
+            if(level == 1) {
+                ReportManager.getInstance().levelEnd(AnswerResult.AnswerRight)
+                let id = setTimeout(() => {
+                    this.round2()
+                    clearTimeout(id)
+                    let index = this.timeoutArr.indexOf(id)
+                    this.timeoutArr.splice(index, 1)
+                }, 4000);
+                this.timeoutArr[this.timeoutArr.length] = id
+            }else if(level == 2) {
+                ReportManager.getInstance().levelEnd(AnswerResult.AnswerRight)
+                let id = setTimeout(() => {
+                    this.round3()
+                    clearTimeout(id)
+                    let index = this.timeoutArr.indexOf(id)
+                    this.timeoutArr.splice(index, 1)
+                }, 4000);
+                this.timeoutArr[this.timeoutArr.length] = id
+            }else if(level == 3) {
+                ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
+                if(!this.isAction) {
+                    GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData())
+                }
+                this.isOver = true
+                let id = setTimeout(() => {
+                    UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧~', '', null, null, '挑战成功')
+                    clearTimeout(id)
+                    let index = this.timeoutArr.indexOf(id)
+                    this.timeoutArr.splice(index, 1)
+                }, 3000);
+                
+            }
+        }else if(num == 2){
+            ReportManager.getInstance().answerWrong()
+            AudioManager.getInstance().playSound('错误提醒', false)
+        }
+        if(!this.isAction) {
+            GameMsg.getInstance().actionSynchro({type: 3})
+            this.actionId++
+            this.archival.answerdata = ReportManager.getInstance().getAnswerData()
+            this.archival.angle = this.ruler.angle
+            this.archival.pos = this.ruler.position
+            this.archival.level = ReportManager.getInstance().getLevel()
+            this.archival.rightNum = ReportManager.getInstance().getRightNum()
+            this.archival.totalNum = ReportManager.getInstance().getTotalNum()
+            GameMsg.getInstance().dataArchival(this.actionId ,this.archival)
+        }
+    }
+
+    addlistenerOnRuler() {
+        let ruler = this.ruler
+        ruler.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            let pos = this.broadNode.convertToNodeSpaceAR(e.currentTouch._point)
+            this.weiyi = this.ruler.convertToNodeSpaceAR(e.currentTouch._point)
+            let angle = this.ruler.angle
+            let x = Math.sin((angle-Math.atan(this.weiyi.x/this.weiyi.y)*180 / Math.PI)*Math.PI/180)*Math.sqrt(Math.pow(this.weiyi.x,2) + Math.pow(this.weiyi.y,2))
+            let y = Math.cos((angle-Math.atan(this.weiyi.x/this.weiyi.y)*180 / Math.PI)*Math.PI/180)*Math.sqrt(Math.pow(this.weiyi.x,2) + Math.pow(this.weiyi.y,2))
+            let posReal = cc.v2(pos.x + x, pos.y - y)
+            this.gameResult = AnswerResult.AnswerHalf
+            if(!ReportManager.getInstance().isStart()) {
+                ReportManager.getInstance().levelStart(this.isBreak)
+            }
+            ReportManager.getInstance().touchStart()
+            ReportManager.getInstance().answerHalf()
+            ReportManager.getInstance().setAnswerNum(1)
+            if(!this.isAction) {
+                GameMsg.getInstance().actionSynchro({type: 1, pos: posReal})
+            }
+            this.starAction(posReal)
+        })
+        ruler.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
+            let pos = this.broadNode.convertToNodeSpaceAR(e.currentTouch._point)
+            let angle = this.ruler.angle
+            let x = Math.sin((angle-Math.atan(this.weiyi.x/this.weiyi.y)*180 / Math.PI)*Math.PI/180)*Math.sqrt(Math.pow(this.weiyi.x,2) + Math.pow(this.weiyi.y,2))
+            let y = Math.cos((angle-Math.atan(this.weiyi.x/this.weiyi.y)*180 / Math.PI)*Math.PI/180)*Math.sqrt(Math.pow(this.weiyi.x,2) + Math.pow(this.weiyi.y,2))
+            let posReal = cc.v2(pos.x + x, pos.y - y)
+            this.moveAction(posReal)
+            if(!this.isAction) {
+                GameMsg.getInstance().actionSynchro({type: 2, pos: posReal})
+            }
+        })
+        ruler.on(cc.Node.EventType.TOUCH_END, (e)=>{
+            this.endAction()
+        })
+        ruler.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+            this.endAction()
+        })
     }
 
     startAction() {
-        // let func = cc.callFunc(()=>{
-        //     let fun = cc.callFunc(()=>{
-        //         this.faguangtiAction()
-        //     }) 
-        //     this.guanzi.active = true
-        //     let seq = cc.sequence(cc.moveTo(1, cc.v2(600, -444)), fun)
-        //     this.guanzi.runAction(seq)
-        // })
+        AudioManager.getInstance().playSound('入场', false)
         this.tiban.node.active = true
         this.caozuoban.node.active = true
         this.tiban.setAnimation(0, 'chuchang-01', false)
@@ -164,6 +342,7 @@ export default class GamePanel extends BaseUI {
         .by(0.3, {position: cc.v2(30, 0)}, {easing:"easeSineOut", progress:null})
         .by(0.3, {position: cc.v2(-10, 0)}, {easing:"easeSineOut", progress:null})
         .call(()=>{
+            this.broadNode.runAction(cc.fadeIn(0.3))
             let fun = cc.callFunc(()=>{
                 this.faguangtiAction()
             }) 
@@ -172,9 +351,535 @@ export default class GamePanel extends BaseUI {
             this.guanzi.runAction(seq)
         })
         .start()
-        // this.quanquan.runAction(cc.sequence(cc.moveTo(0.5, cc.v2(938, 435)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut())))
-        // this.paipai.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(824, -172)).easing(cc.easeSineOut()), cc.moveBy(0.1, cc.v2(20, 0)).easing(cc.easeSineOut()) ))
-        // this.operationPanel.runAction(cc.sequence(cc.moveTo(0.7, cc.v2(809, -371)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(30, 0)).easing(cc.easeSineOut()), cc.moveBy(0.3, cc.v2(-10, 0)).easing(cc.easeSineOut()), func))
+    }
+
+    point(pos: cc.Vec2) {
+        let level = ReportManager.getInstance().getLevel()
+        console.log('00--------level', level)
+        let angle = this.ruler.angle%360
+        if(angle<0) {
+            angle = 360 - Math.abs(angle)
+        }
+        let cos = Math.cos(angle * Math.PI / 180)
+        let sin = Math.sin(angle * Math.PI / 180)
+        let width = 332
+        let height = 522
+        let sideArr = this.round1Node.getChildByName('side').children
+        let sideArr1 = this.round3Node.getChildByName('side').children
+        for(let i = 0; i < sideArr.length; ++i) {
+            sideArr[i].active = false
+        }
+        for(let i = 0; i < sideArr1.length; ++i) {
+            sideArr1[i].active = false
+        }
+        if(level == 1 || level == 2) {
+            if(angle <= 10 || angle >= 350) {
+                if(pos.x + width >= -611 && pos.x <= -148 && pos.y >=-137 && pos.y <= -97) {
+                    sideArr[2].active = true
+                }else if(pos.x + width >= -529 && pos.x <= -67 && pos.y >= 162 && pos.y <= 202) {
+                    sideArr[0].active = true
+                }
+            }else if(angle <= 85 && angle >= 65) {
+                let long = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
+                let long1 = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
+                if(pos.y <= 182 && pos.y + width*sin >= -117 && long <= 10) {
+                    sideArr[1].active = true
+                }else if(pos.y <= 182 && pos.y + width*sin >= -117 && long1 <= 10) {
+                    sideArr[3].active = true
+                }
+            }else if(angle <= 190 && angle >= 170) {
+                if(pos.x >= -529 && pos.x-width <= -67 && pos.y >=162 && pos.y <= 202) {
+                    sideArr[0].active = true
+                }else if(pos.x >= -611 && pos.x-width <= -148 && pos.y >=-137 && pos.y <= -97) {
+                    sideArr[2].active = true
+                }
+            }else if(angle <= 265 && angle >= 245) {
+                let long = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
+                let long1 = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
+                if(pos.y-width*-sin <= 182 && pos.y >= -117 && long <= 10) {
+                    sideArr[3].active = true
+                }else if(pos.y-width*-sin <= 182 && pos.y >= -117 && long1 <= 10) {
+                    sideArr[1].active = true
+                }
+            }else if(angle <= 280 && angle >= 260) {
+                if(pos.x+height >= -529 && pos.x <= -67 && pos.y >=162 && pos.y <= 202) {
+                    sideArr[0].active = true
+                }else if(pos.x+height >= -611 && pos.x <= -148 && pos.y >= -137 && pos.y <= -97) {
+                    sideArr[2].active = true
+                }
+            }else if(angle <= 100 && angle >= 80) {
+                if(pos.x >= -611 && pos.x-height <= -148 && pos.y >=-137 && pos.y <= -97) {
+                    sideArr[2].active = true
+                }else if(pos.x >= -529 && pos.x-height <= -67 && pos.y >= 162 && pos.y <= 202) {
+                    sideArr[0].active = true
+                }
+            }else if(angle <= 175 && angle >= 155) {
+                let long = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
+                let long1 = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
+                if(pos.y >= -117 && pos.y-height*-cos <= 182 && long <= 10) {
+                   sideArr[1].active = true
+                }else if(pos.y >= -117 && pos.y-height*-cos <= 182 && long1 <= 10) {
+                    sideArr[3].active = true
+                }
+            }else if(angle <= 355 && angle >= 335) {
+                let long = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
+                let long1 = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
+                if(pos.y <= 182 && pos.y+height*cos >= -117 && long <= 10) {
+                    sideArr[3].active = true
+                }else if(pos.y <= 182 && pos.y+height*cos >= -117 && long1 <= 10) {
+                    sideArr[1].active = true
+                }
+            }
+        }else if(level == 3) {
+            if(angle <= 10 || angle >= 350) {
+                if(pos.x+width >= -619 && pos.x <= -59 && pos.y <= -97 && pos.y >= -137) {
+                    sideArr1[1].active = true
+                }else if(pos.x+width >= -517 && pos.x <= -241 && pos.y <= 149 && pos.y >= 109) {
+                    sideArr1[0].active = true
+                }
+            }else if(angle <= 100 && angle >= 80) {
+                if(pos.x >= -619 && pos.x-height <= -59 && pos.y <= -97 && pos.y >= -137){
+                    sideArr1[1].active = true
+                }else if(pos.x >= -517 && pos.x-height <= -241 && pos.y <= 149 && pos.y >= 109) {
+                    sideArr1[0].active = true
+                }
+            }else if(angle <= 190 && angle >= 170) {
+                if(pos.x >= -517 && pos.x-width <= -241 && pos.y <= 149 && pos.y >= 109) {
+                    sideArr1[0].active = true
+                }else if(pos.x >= -619 && pos.x-width <= -59 && pos.y <= -97 && pos.y >= -137) {
+                    sideArr1[1].active = true
+                }
+            }else if(angle <= 280 && angle >= 260) {
+                if(pos.x+height >= -517 && pos.x <= -241 && pos.y <= 149 && pos.y >= 109) {
+                    sideArr1[0].active = true
+                }else if(pos.x+height >= -619 && pos.x <= -241 && pos.y <= -97 && pos.y >= -137) {
+                    sideArr1[1].active = true
+                } 
+            }else if(angle <= 46.4 && angle >= 26.4) {
+                let long = this.getJuLi(pos, cc.v2(-241, 129), cc.v2(-59, -117))
+                if(long <= 10 && pos.y <= 129 && pos.y + height*cos >= -117) {
+                    sideArr1[2].active = true
+                }
+            }else if(angle <= 136 && angle >= 116) {
+                let long = this.getJuLi(pos, cc.v2(-241, 129), cc.v2(-59, -117))
+                if(long <= 10 && pos.y <= 129 && pos.y + width*sin >= -117) {
+                    sideArr1[2].active = true
+                }
+            }else if(angle <= 259 && angle >= 239) {
+                let long = this.getJuLi(pos, cc.v2(-517, 129), cc.v2(-619, -117))
+                if(long <= 10 && pos.y >= -117 && pos.y - width*-sin <= 129) {
+                    sideArr1[3].active = true
+                }
+            }else if(angle <= 347 && angle >= 327) {
+                let long = this.getJuLi(pos, cc.v2(-517, 129), cc.v2(-619, -117))
+                if(long <= 10 && pos.y + height*cos >= -117 && pos.y  <= 129) {
+                    sideArr1[3].active = true
+                }
+            }
+        }
+    }
+
+    isRight(pos: cc.Vec2):any {
+        let level = ReportManager.getInstance().getLevel()
+        let angle = this.ruler.angle%360
+        if(angle<0) {
+            angle = 360 - Math.abs(angle)
+        }
+        let width = 332
+        let height = 522
+        let sideArr = this.round1Node.getChildByName('side').children
+        let sideArr1 = this.round3Node.getChildByName('side').children
+        for(let i = 0; i < sideArr.length; ++i) {
+            sideArr[i].active = false
+        }
+        for(let i = 0; i < sideArr1.length; ++i) {
+            sideArr1[i].active = false
+        }
+        this.gl.clear()
+        this.gc.clear()
+        if(level == 1 || level == 2) {
+            if(angle <= 10 || angle >= 350) {
+                this.ruler.angle = 0
+                if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position = cc.v2(pos.x, -117)
+                    if(pos.x > -148) {
+                        this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
+                        this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 430), this.gc)
+                    }
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(pos.x - 50, 50))
+                        this.di.setPosition(cc.v2(pos.x + 100, -167))
+                        this.gc.clear()
+                        this.drawLine2(cc.v2(pos.x, -117), cc.v2(pos.x, 182), this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 85 && angle >= 65) {
+                this.ruler.angle = 74.3
+                let angle = this.ruler.angle%360
+                if(angle<0) {
+                    angle = 360 - Math.abs(angle)
+                }
+                let cos = Math.cos(angle * Math.PI / 180)
+                let sin = Math.sin(angle * Math.PI / 180)
+                let long = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
+                if(this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos)) && long <= 10) {
+                    let jiaodian1 = this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
+                    let jiaodian2 = this.zhixianjiaodian(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position = jiaodian2
+                    if(jiaodian2.y < -117) {
+                        this.drawLine(jiaodian2, cc.v2(-67, 182), this.gl)
+                        this.drawLine(jiaodian2, cc.v2(pos.x-height*sin, pos.y + height*cos), this.gc)
+                    }
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(-360, jiaodian2.y - 10))
+                        this.di.setPosition(cc.v2(-50, jiaodian2.y + 60))
+                        this.gc.clear()
+                        this.drawLine2(jiaodian2, jiaodian1, this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 190 && angle >= 170) {
+                this.ruler.angle = 180
+                if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position = cc.v2(pos.x, 182)
+                    if(pos.x < -529) {
+                        this.drawLine(cc.v2(pos.x, 182), cc.v2(-67, 182), this.gl)
+                        this.drawLine(cc.v2(pos.x, 182), cc.v2(pos.x, -380), this.gc)
+                    }
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(pos.x + 50, 10))
+                        this.di.setPosition(cc.v2(pos.x - 100, 230))
+                        this.gc.clear()
+                        this.drawLine2(cc.v2(pos.x, 182), cc.v2(pos.x, -117), this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 265 && angle >= 245) {
+                this.ruler.angle = 254.3
+                let angle = this.ruler.angle%360
+                if(angle<0) {
+                    angle = 360 - Math.abs(angle)
+                }
+                let cos = Math.cos(angle * Math.PI / 180)
+                let sin = Math.sin(angle * Math.PI / 180)
+                let long = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
+                if(this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos)) && long <= 10) {
+                    let jiaodian1 = this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
+                    let jiaodian2 = this.zhixianjiaodian(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position = jiaodian2
+                    if(jiaodian2.y > 182) {
+                        this.drawLine(jiaodian2, cc.v2(-611, -117), this.gl)
+                        this.drawLine(jiaodian2, cc.v2(pos.x+height*-sin, pos.y - height*-cos), this.gc)
+                    }
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(-300, jiaodian2.y - 10))
+                        this.di.setPosition(cc.v2(jiaodian2.x - 30, jiaodian2.y - 100))
+                        this.gc.clear()
+                        this.drawLine2(jiaodian2, jiaodian1, this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 280 && angle >= 260) {
+                this.ruler.angle = 270
+                if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position = cc.v2(pos.x, 182)
+                    if(pos.x < -529) {
+                        this.drawLine(cc.v2(pos.x, 182), cc.v2(-67, 182), this.gl)
+                        this.drawLine(cc.v2(pos.x, 182), cc.v2(pos.x, -250), this.gc)
+                    }
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(pos.x - 30, 50))
+                        this.di.setPosition(cc.v2(pos.x + 200, 240))
+                        this.gc.clear()
+                        this.drawLine2(cc.v2(pos.x, 182), cc.v2(pos.x, -117), this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 100 && angle >= 80) {
+                this.ruler.angle = 90
+                if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position = cc.v2(pos.x, -117)
+                    if(pos.x > -148) {
+                        this.drawLine(cc.v2(pos.x, -117), cc.v2(-611, -117), this.gl)
+                        this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 250), this.gc)
+                    }
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(pos.x + 30, 50))
+                        this.di.setPosition(cc.v2(pos.x - 300, -147))
+                        this.gc.clear()
+                        this.drawLine2(cc.v2(pos.x, -117), cc.v2(pos.x, 182), this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 175 && angle >= 155) {
+                this.ruler.angle = 165
+                let angle = this.ruler.angle%360
+                if(angle<0) {
+                    angle = 360 - Math.abs(angle)
+                }
+                let cos = Math.cos(angle * Math.PI / 180)
+                let sin = Math.sin(angle * Math.PI / 180)
+                let long = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
+                if(long <= 10) {
+                    let jiaodian2 = this.zhixianjiaodian(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x-width*-cos, pos.y + width*sin))
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position = jiaodian2
+                    UIHelp.showTip('画出图形的高')
+                    return 2
+                }
+            }else if(angle <= 355 && angle >= 335) {
+                this.ruler.angle = 345
+                let angle = this.ruler.angle%360
+                if(angle<0) {
+                    angle = 360 - Math.abs(angle)
+                }
+                let cos = Math.cos(angle * Math.PI / 180)
+                let sin = Math.sin(angle * Math.PI / 180)
+                let long = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
+                if(long <= 10) {
+                    let jiaodian2 = this.zhixianjiaodian(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-width*cos, pos.y - width*-sin))
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position = jiaodian2
+                    UIHelp.showTip('画出图形的高')
+                    return 2
+                }
+            }
+        }else if(level == 3) {
+            if(angle <= 10 || angle >= 350) {
+                this.ruler.angle = 0
+                if(pos.x > -517 && pos.x < -241 && pos.y < -97 && pos.y > -137) {
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position= cc.v2(pos.x, -117)
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(pos.x - 50, 40))
+                        this.di.setPosition(cc.v2(pos.x + 200, -150))
+                        this.gc.clear()
+                        this.drawLine2(cc.v2(pos.x, -117), cc.v2(pos.x, 129), this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 100 && angle >= 80) {
+                this.ruler.angle = 90
+                if(pos.x > -517 && pos.x < -241 && pos.y < -97 && pos.y > -137) {
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position= cc.v2(pos.x, -117)
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(pos.x + 50, 40))
+                        this.di.setPosition(cc.v2(pos.x - 100, -150))
+                        this.gc.clear()
+                        this.drawLine2(cc.v2(pos.x, -117), cc.v2(pos.x, 129), this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 190 && angle >= 170) {
+                this.ruler.angle = 180
+                if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position= cc.v2(pos.x, 129)
+                    if(pos.x > -241 || pos.x < -517) {
+                        this.drawLine(cc.v2(-700, 129), cc.v2(25, 129), this.gl)
+                        this.drawLine(cc.v2(pos.x, 129), cc.v2(pos.x, -185), this.gc)
+                    }
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(pos.x + 30, 0))
+                        this.di.setPosition(cc.v2(pos.x - 30, 160))
+                        this.gc.clear()
+                        this.drawLine2(cc.v2(pos.x, 129), cc.v2(pos.x, -117), this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }else if(angle <= 280 && angle >= 260) {
+                this.ruler.angle = 270
+                if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
+                    AudioManager.getInstance().playSound('吸附', false)
+                    this.ruler.position= cc.v2(pos.x, 129)
+                    if(pos.x > -241 || pos.x < -517) {
+                        this.drawLine(cc.v2(-700, 129), cc.v2(25, 129), this.gl)
+                        this.drawLine(cc.v2(pos.x, 129), cc.v2(pos.x, -185), this.gc)
+                    }
+                    let id = setTimeout(() => {
+                        this.gao.active = true
+                        this.di.active = true
+                        this.gao.setPosition(cc.v2(pos.x - 30, 0))
+                        this.di.setPosition(cc.v2(pos.x + 50, 160))
+                        this.gc.clear()
+                        this.drawLine2(cc.v2(pos.x, 129), cc.v2(pos.x, -117), this.gc)
+                        clearTimeout(id)
+                        let index = this.timeoutArr.indexOf(id)
+                        this.timeoutArr.splice(index, 1)
+                    }, 800);
+                    this.timeoutArr[this.timeoutArr.length] = id
+                    return 1
+                }
+            }
+        }
+        return 3
+    } 
+
+    yanchangxian(pos: cc.Vec2):any {
+        let level = ReportManager.getInstance().getLevel()
+        let angle = this.ruler.angle%360
+        if(angle<0) {
+            angle = 360 - Math.abs(angle)
+        }
+        let width = 332
+        let height = 522
+        this.gl.clear()
+        this.gc.clear()
+        if(level == 1 || level == 2) {
+            if(angle <= 5 || angle >= 355) {
+                if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
+                    if(pos.x > -148) {
+                        this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
+                        this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 430), this.gc)
+                    }
+                }
+            }else if(angle <= 80 && angle >= 70) {
+                let angle = 74.3
+                if(angle<0) {
+                    angle = 360 - Math.abs(angle)
+                }
+                let cos = Math.cos(angle * Math.PI / 180)
+                let sin = Math.sin(angle * Math.PI / 180)
+                let long = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
+                if(this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos)) && long <= 10) {
+                    let jiaodian1 = this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
+                    let jiaodian2 = this.zhixianjiaodian(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
+                    if(jiaodian2.y < -117) {
+                        this.drawLine(jiaodian2, cc.v2(-67, 182), this.gl)
+                        this.drawLine(jiaodian2, cc.v2(pos.x-height*sin, pos.y + height*cos), this.gc)
+                    }
+                }
+            }else if(angle <= 185 && angle >= 175) {
+                if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
+                    if(pos.x < -529) {
+                        this.drawLine(cc.v2(pos.x, 182), cc.v2(-67, 182), this.gl)
+                        this.drawLine(cc.v2(pos.x, 182), cc.v2(pos.x, -380), this.gc)
+                    }
+                }
+            }else if(angle <= 260 && angle >= 250) {
+                let angle = 254.3
+                if(angle<0) {
+                    angle = 360 - Math.abs(angle)
+                }
+                let cos = Math.cos(angle * Math.PI / 180)
+                let sin = Math.sin(angle * Math.PI / 180)
+                let long = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
+                if(this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos)) && long <= 10) {
+                    let jiaodian1 = this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
+                    let jiaodian2 = this.zhixianjiaodian(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
+                    if(jiaodian2.y > 182) {
+                        this.drawLine(jiaodian2, cc.v2(-611, -117), this.gl)
+                        this.drawLine(jiaodian2, cc.v2(pos.x+height*-sin, pos.y - height*-cos), this.gc)
+                    }
+                }
+            }else if(angle <= 275 && angle >= 265) {
+                if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
+                    if(pos.x < -529) {
+                        this.drawLine(cc.v2(pos.x, 182), cc.v2(-67, 182), this.gl)
+                        this.drawLine(cc.v2(pos.x, 182), cc.v2(pos.x, -250), this.gc)
+                    }
+                }
+            }else if(angle <= 95 && angle >= 85) {
+                if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
+                    if(pos.x > -148) {
+                        this.drawLine(cc.v2(pos.x, -117), cc.v2(-611, -117), this.gl)
+                        this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 250), this.gc)
+                    }
+                }
+            }
+        }else if(level == 3) {
+            if(angle <= 5 || angle >= 355) {
+                // if(pos.x > -517 && pos.x < -241 && pos.y < -97 && pos.y > -137) {
+                //     this.gl.clear()
+                //     this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 200), this.gc)
+                // }
+            }else if(angle <= 95 && angle >= 85) {
+                // if(pos.x > -517 && pos.x < -241 && pos.y < -97 && pos.y > -137) {
+                //     this.gl.clear()
+                //     this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 200), this.gc)
+                // }
+            }else if(angle <= 185 && angle >= 175) {
+                if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
+                    if(pos.x > -241 || pos.x < -517) {
+                        this.drawLine(cc.v2(-700, 129), cc.v2(25, 129), this.gl)
+                        this.drawLine(cc.v2(pos.x, 129), cc.v2(pos.x, -185), this.gc)
+                    }
+                }
+            }else if(angle <= 275 && angle >= 265) {
+                if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
+                    if(pos.x > -241 || pos.x < -517) {
+                        this.drawLine(cc.v2(-700, 129), cc.v2(25, 129), this.gl)
+                        this.drawLine(cc.v2(pos.x, 129), cc.v2(pos.x, -185), this.gc)
+                    }
+                }
+            }
+        }
+    } 
+
+    setprogress(num: number) {
+        this.progressLabel.string = `${num}/3`
     }
 
     faguangtiAction() {
@@ -188,49 +893,438 @@ export default class GamePanel extends BaseUI {
         faguangti.runAction(forever)
     }
 
+    drawLine(start:cc.Vec2, end: cc.Vec2, gl: cc.Graphics){
+        //获得组件
+        var com = gl
+        com.clear()
+        com.strokeColor.fromHEX('#FFFFFF')
+        com.lineWidth = 10
+        //获得从start到end的向量
+        var line=end.sub(start)
+        //获得这个向量的长度
+        var lineLength=line.mag()
+        //设置虚线中每条线段的长度
+        var length=20
+        //根据每条线段的长度获得一个增量向量
+        var increment=line.normalize().mul(length)
+        //确定现在是画线还是留空的bool
+        var drawingLine=true
+        //
+        let canvas = cc.director.getScene().getChildByName('Canvas')
+        let width = canvas.width / 2
+        let height = canvas.height / 2
+        start = cc.v2(start.x + width, start.y + height)
+        end = cc.v2(end.x + width, end.y + height)
+        //临时变量
+        var pos=start.clone()
+        //com.strokeColor=cc.color(255,255,255)
+        //只要线段长度还大于每条线段的长度
+        for(;lineLength>length;lineLength-=length)
+        {
+            //画线
+            if(drawingLine)
+            {
+                com.moveTo(pos.x,pos.y)
+                pos.addSelf(increment)
+                com.lineTo(pos.x,pos.y)
+                com.stroke()
+            }
+            //留空
+            else
+            {
+                
+                pos.addSelf(increment)
+            }
+            //取反
+            drawingLine=!drawingLine
+        }
+        //最后一段
+        if(drawingLine)
+        {
+            com.moveTo(pos.x,pos.y)
+            com.lineTo(end.x,end.y)
+            com.stroke()
+        }
+    }
+
+    getJuLi(point: cc.Vec2, line1:cc.Vec2, line2:cc.Vec2){
+        let p1 = line1
+        let p2 = line2
+        let p3 = point
+        var len;
+    
+        //如果p1.x==p2.x 说明是条竖着的线
+        if(p1.x-p2.x==0)
+        {
+            len=Math.abs(p3.x-p1.x)
+        }
+        else
+        {
+            var A=(p1.y-p2.y)/(p1.x-p2.x)
+            var B=p1.y-A*p1.x
+            
+            len=Math.abs((A*p3.x+B-p3.y)/Math.sqrt(A*A+1))
+        }
+        
+        return len
+    }
+    
+    drawLine2(start:cc.Vec2, end: cc.Vec2, gl: cc.Graphics){
+        //获得组件
+        var com = gl
+        com.clear()
+        com.strokeColor.fromHEX('#FFFFFF')
+        com.lineWidth = 10
+        //获得从start到end的向量
+        var line=end.sub(start)
+        //获得这个向量的长度
+        var lineLength=line.mag()
+        //设置虚线中每条线段的长度
+        var length=20
+        //根据每条线段的长度获得一个增量向量
+        var increment=line.normalize().mul(length)
+        //确定现在是画线还是留空的bool
+        var drawingLine=true
+        //
+        let canvas = cc.director.getScene().getChildByName('Canvas')
+        let width = canvas.width / 2
+        let height = canvas.height / 2
+        start = cc.v2(start.x + width, start.y + height)
+        end = cc.v2(end.x + width, end.y + height)
+        //临时变量
+        var pos=start.clone()
+        //com.strokeColor=cc.color(255,255,255)
+        //只要线段长度还大于每条线段的长度
+        AudioManager.getInstance().playSound('连线', false)
+        let xuxianId = setInterval(()=>{
+            if(lineLength>length) {
+                   //画线
+                if(drawingLine)
+                {
+                    com.moveTo(pos.x,pos.y)
+                    pos.addSelf(increment)
+                    com.lineTo(pos.x,pos.y)
+                    com.stroke()
+                }
+                //留空
+                else
+                {
+                    
+                    pos.addSelf(increment)
+                }
+                //取反
+                drawingLine=!drawingLine
+                lineLength-=length
+            }else {
+                clearInterval(xuxianId)
+                    //最后一段
+                    if(drawingLine)
+                    {
+                        com.moveTo(pos.x,pos.y)
+                        com.lineTo(end.x,end.y)
+                        com.stroke()
+                    }
+            }
+        }, 50)
+    }
+
+     zhixianjiaodian(a:cc.Vec2,b:cc.Vec2,c:cc.Vec2,d:cc.Vec2):any{
+        var k0 = (b.y-a.y)/(b.x-a.x)
+    
+        var e = (b.y - k0*b.x)
+  
+        var k1 = (d.y-c.y)/(d.x-c.x)
+   
+        var e1 = (d.y - k1*d.x)
+  
+        var x = (e1-e)/(k0-k1)
+
+        var y = k0*x + e
+                                          
+        return cc.v2((e1-e)/(k0-k1), k0*x + e)
+    }
+   
+    segmentsIntr(a:cc.Vec2,b:cc.Vec2,c:cc.Vec2,d:cc.Vec2): any{
+        /**1解线性方程组,求线段交点.**/
+        //如果分母为0则平行或共线,不相交
+        var denominator=(b.y-a.y)*(d.x-c.x)-(a.x-b.x)*(c.y-d.y);
+        if(denominator==0){
+        return false;
+        }
+        //线段所在直线的交点坐标(x,y)
+        var x=((b.x-a.x)*(d.x-c.x)*(c.y-a.y)
+        +(b.y-a.y)*(d.x-c.x)*a.x
+        -(d.y-c.y)*(b.x-a.x)*c.x)/denominator;
+        var y=-((b.y-a.y)*(d.y-c.y)*(c.x-a.x)
+        +(b.x-a.x)*(d.y-c.y)*a.y
+        -(d.x-c.x)*(b.y-a.y)*c.y)/denominator;
+        /**2判断交点是否在两条线段上**/
+        if(
+        //交点在线段1上
+        (x-a.x)*(x-b.x)<=0&&(y-a.y)*(y-b.y)<=0
+        //且交点也在线段2上
+        &&(x-c.x)*(x-d.x)<=0&&(y-c.y)*(y-d.y)<=0
+        ){
+        //返回交点p
+        return cc.v2(x, y)
+        
+        }
+        //否则不相交
+        return false
+    }
+
+    rightStartAction() {
+        AudioManager.getInstance().playSound('点击', false)
+        this.isRightBtn = true
+        this.intervalId = setInterval(()=>{
+            let is = this.isRotation
+            if(is) {
+                return
+            }
+            this.isRotation = true
+            this.ruler.stopAllActions()
+            if(!this.isAction) {
+                GameMsg.getInstance().actionSynchro({type: 4})
+            }
+            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, 5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position))})))
+        }, 200)
+    }
+
+    rightEndAction() {
+        this.isRightBtn = false 
+        if(this.intervalId) {
+            clearInterval(this.intervalId) 
+            this.intervalId = null
+        }
+        if(!this.isRotation){
+            let is = this.isRotation
+            if(is) {
+                return
+            }
+            this.isRotation = true
+            this.ruler.stopAllActions()
+            if(!this.isAction) {
+                GameMsg.getInstance().actionSynchro({type: 5})
+            }
+            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, 5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position))})))
+        }
+    }
+
+    leftStartAction() {
+        AudioManager.getInstance().playSound('点击', false)
+        this.isLeftBtn = true
+        this.intervalId = setInterval(()=>{
+            let is = this.isRotation
+            if(is) {
+                return
+            }
+            this.isRotation = true
+            this.ruler.stopAllActions()
+            if(!this.isAction) {
+                GameMsg.getInstance().actionSynchro({type: 6})
+            }
+            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, -5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position))})))
+        }, 200)
+    }
+
+    leftEndAction() {
+        this.isLeftBtn = false 
+        if(this.intervalId) {
+            clearInterval(this.intervalId) 
+            this.intervalId = null
+        } 
+        if(!this.isRotation){
+            let is = this.isRotation
+            if(is) {
+                return
+            }
+            this.isRotation = true
+            this.ruler.stopAllActions()
+            if(!this.isAction) {
+                GameMsg.getInstance().actionSynchro({type: 7})
+            }
+            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, -5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position))})))
+        }
+    }
+
+    onBtnRight() {
+        let button = this.right
+        button.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            this.rightStartAction()
+        })
+        button.on(cc.Node.EventType.TOUCH_END, (e)=>{
+            this.rightEndAction()
+        })
+        button.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+            this.rightEndAction()
+        })
+    }
+
+    onBtnLeft() {
+        let button = this.left
+        button.on(cc.Node.EventType.TOUCH_START, (e)=>{
+            this.leftStartAction()
+        })
+        button.on(cc.Node.EventType.TOUCH_END, (e)=>{
+            this.leftEndAction()
+        })
+        button.on(cc.Node.EventType.TOUCH_CANCEL, (e)=>{
+            this.leftEndAction()
+        })
+    }
+    resetPos(oriPos: cc.Vec2):cc.Vec2{
+        let pos = oriPos
+        let rotation = this.ruler.angle%360
+        if(rotation < 0) {
+            rotation = 360 - Math.abs(rotation)
+        }
+        let cos = Math.cos(rotation * Math.PI / 180)
+        let sin = Math.sin(rotation * Math.PI / 180)
+        let width = 332
+        let height = 522
+        let angle = Math.abs(rotation) % 360
+        if(angle<90 && angle>=0) {
+            if(pos.x + width * cos > 460) {  
+                pos.x = 460  - width * cos
+            }else if(pos.x - height * sin < -855) {
+                pos.x = height * sin - 855
+            }
+            if(pos.y + width*sin > 440 || pos.y + height*cos > 440) {
+                if(width*sin > height*cos) {
+                    pos.y = 440 - width*sin
+                }else {
+                    pos.y = 440 - height*cos
+                }
+            }else if(pos.y < -430) {
+                pos.y = - 430
+            }
+        }else if(angle<180 && angle>=90) {
+            if(pos.x  > 460) {  
+                pos.x = 460 
+            }else if(pos.x - height*sin < -855 || pos.x - width*-cos < -855) {
+                if(height*sin > width*-cos) {
+                    pos.x = height*sin - 855
+                }else {
+                    pos.x = width*-cos -855
+                }
+            }
+            if(pos.y + width*sin > 440) {
+                pos.y = 440 - width*sin
+            }else if(pos.y - height*-cos < -430) {
+                pos.y = height*-cos - 430
+            }
+        }else if(angle<270 && angle>=180) {
+            if(pos.x + height * -sin > 460) {  
+                pos.x = 460  - height * -sin
+            }else if(pos.x - width * -cos < -855) {
+                pos.x = width * -cos - 855
+            }
+            if(pos.y > 440) {
+                pos.y = 440
+            }else if(pos.y - height*-cos < -430 || pos.y - width*-sin < -430) {
+               if(height*-cos > width*-sin) {
+                    pos.y = height*-cos - 430
+               }else {
+                   pos.y = width*-sin - 430
+               }
+            }
+        }else if(angle<360 && angle>=270) {
+            if(pos.x + width * cos > 460 || pos.x + height*-sin > 460) {  
+                if(width*cos > height*-sin) {
+                    pos.x = 460 - width * cos
+                }else {
+                    pos.x = 460 - height*-sin
+                }
+            }else if(pos.x < -855) {
+                pos.x = - 855
+            }
+            if(pos.y + height*cos > 440) {
+                pos.y = 440 - height*cos
+            }else if(pos.y - width*-sin< -430) {
+                pos.y = width*-sin - 430
+            }
+        }
+
+        return pos
+    }
+
     private onInit() {
+        this.actionId = 0
+        this.archival.angle = null
+        this.archival.answerdata = null
+        this.archival.level = null
+        this.archival.rightNum = null
+        this.archival.totalNum = null
+        this.archival.pos = null
         this.isOver = false
-      
         ReportManager.getInstance().answerReset()
         UIManager.getInstance().closeUI(OverTips)
-        this.rightNum = 0
         this.mask.active = true
         this.isAudio = true
-      
+        this.initGame()
+        let id = setTimeout(() => {
+            console.log('start action')
+            this.startAction()
+            let index = this.timeoutArr.indexOf(id)
+            this.timeoutArr.splice(index, 1)
+        }, 500);
+        this.timeoutArr[this.timeoutArr.length] = id
+        this.round1()
     }
 
     private onRecovery(data: any) {
+        this.isBreak = true
         this.isOver = false
-
+        let answerdata = data.answerdata
+        let level = data.level
+        let pos = data.pos
+        let angle = data.angle
+        let rightNum = data.rightNum
+        let totalNum = data.totalNum
+        if(level == 1) {
+            this.round1()
+        }else if(level == 2) {
+            this.round2()
+        }else if(level == 3) {
+            this.round3()
+        }
+        ReportManager.getInstance().setLevel(level)
+        ReportManager.getInstance().setAnswerData(answerdata)
+        this.ruler.angle = angle
+        this.ruler.position = pos
+        ReportManager.getInstance().setRightNum(rightNum)
+        ReportManager.getInstance().setTotalNum(totalNum)
     }
 
     addSDKEventListener() {
         GameMsg.getInstance().addEvent(GameMsgType.ACTION_SYNC_RECEIVE, this.onSDKMsgActionReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.DISABLED, this.onSDKMsgDisabledReceived.bind(this));
-        //GameMsg.getInstance().addEvent(GameMsgType.DATA_RECOVERY, this.onSDKMsgRecoveryReceived.bind(this));
+        GameMsg.getInstance().addEvent(GameMsgType.DATA_RECOVERY, this.onSDKMsgRecoveryReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.STOP, this.onSDKMsgStopReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.INIT, this.onSDKMsgInitReceived.bind(this));
     }
 
      //动作同步消息监听
      onSDKMsgActionReceived(data: any) {
-        data = eval(data)
-        if (data.action == -1) {
-           
-        }else if(data.action == -2) {
-           
-        }else if(data.action == -3) {
-           
-        }else if(data.action == -4) {
-           
-        }else if(data.action == -5) {
-           
-        }else if(data.action == -6) {
-            
-        } else {
-           
+        this.isAction = true
+        data = eval(data).action
+        if (data.type == 1) {
+            let pos = data.pos
+            this.starAction(pos)
+        }else if(data.type == 2) {
+            let pos = data.pos
+            this.moveAction(pos)
+        }else if(data.type == 3) {
+            this.endAction()
+        }else if(data.type == 4) {
+            this.rightStartAction()
+        }else if(data.type == 5) {
+            this.rightEndAction()
+        }else if(data.type == 6) {
+            this.leftStartAction()
+        }else if(data.type == 7) {
+            this.leftEndAction()
         }
-
     }
     //禁用消息监听
     onSDKMsgDisabledReceived() {
@@ -256,10 +1350,6 @@ export default class GamePanel extends BaseUI {
     }
     //初始化消息监听
     onSDKMsgInitReceived() {
-        this.actionId = 0
-        this.archival.gamedata = [
-           
-        ]
         this.onInit();
     }
 

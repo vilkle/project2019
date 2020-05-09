@@ -1,9 +1,9 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-29 14:55:20
- * @LastEditTime: 2020-03-01 12:51:42
+ * @LastEditTime: 2020-05-08 16:45:39
  * @Description: 游戏脚本
- * @FilePath: \wucaibinfenbang\assets\scripts\UI\panel\UploadAndReturnPanel.ts
+ * @FilePath: \xunzhaogao\assets\scripts\UI\panel\UploadAndReturnPanel.ts
  */
 import { BaseUI } from "../BaseUI";
 import { UIManager } from "../../Manager/UIManager";
@@ -15,6 +15,7 @@ import { DaAnData } from "../../Data/DaAnData";
 import { UIHelp } from "../../Utils/UIHelp";
 import { OverTips } from "../Item/OverTips";
 import { AudioManager } from "../../Manager/AudioManager";
+import { ReportManager } from "../../Manager/ReportManager";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -32,8 +33,9 @@ export default class UploadAndReturnPanel extends BaseUI {
         UIManager.getInstance().closeUI(UploadAndReturnPanel);
         UIManager.getInstance().closeUI(OverTips);
         UIManager.getInstance().closeUI(SubmissionPanel)
-        DaAnData.getInstance().submitEnable = false
+        DaAnData.getInstance().submitEnable = true
         AudioManager.getInstance().stopAll()
+        ReportManager.getInstance().answerReset()
     }
 
     onTiJiao() {

@@ -1,9 +1,9 @@
 /*
  * @Author: 马超
  * @Date: 2020-02-27 19:59:56
- * @LastEditTime: 2020-04-13 21:54:25
+ * @LastEditTime: 2020-05-07 18:19:46
  * @Description: 上报数据管理类
- * @FilePath: \wabaozang\assets\scripts\Manager\ReportManager.ts
+ * @FilePath: \xunzhaogao\assets\scripts\Manager\ReportManager.ts
  */
 import {AnswerResult} from "../Data/ConstValue";
 import GameMsg from "../Data/GameMsg"
@@ -27,7 +27,7 @@ export class ReportManager
     private levelNum: number = 0 //总的关卡数
     private coastTimes: number = 0 //计时结束的时间
     private timeId: number = null //计时器timeout id
-    private percentage: string = '0' //完成程度
+    private percentage: number = 0 //完成程度
     private answerdata = { //上报数据结构
         type : 'txt',
         index: 1,
@@ -73,13 +73,12 @@ export class ReportManager
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.NoAnswer
         if(isBreak) {
             this.answerdata.result[this.level - 1].answer_num += 0
-            let time: string = this.answerdata.result[this.level - 1].answer_time
-            let len = time.length
-            this.coastTimes = parseFloat(time.substring(0, len - 2)) * 100
+            let time: number = this.answerdata.result[this.level - 1].answer_time
+            this.coastTimes = time * 100
             this.answerdata.result[this.level - 1].answer_time = time
         }else {
             this.answerdata.result[this.level - 1].answer_num += 0
-            this.answerdata.result[this.level - 1].answer_time = '0s'
+            this.answerdata.result[this.level - 1].answer_time = 0
             this.coastTimes = 0
         }
         if(this.timeId != null) {
@@ -103,7 +102,8 @@ export class ReportManager
         this.timeId = null
         this.answerdata.result[this.level - 1].answer_res = result
         this.answerdata.result[this.level - 1].answer_num += 0
-        this.answerdata.result[this.level - 1].answer_time = (this.coastTimes/100).toString() + 's'
+        //this.answerdata.result[this.level - 1].answer_time = (this.coastTimes/100).toString() + 's'
+        this.answerdata.result[this.level - 1].answer_time = Math.ceil(this.coastTimes/100)
         this.answerdata.gameOver = null
     }
 
@@ -120,21 +120,22 @@ export class ReportManager
             this.levelEnd(result)
         }
         this.answerdata.gameOver = {
-            percentage: "0%",
+            percentage: 0,
             answer_all_state: AnswerResult.NoAnswer,
-            answer_all_time: '1s',
-            complete_degree: `0/${this.levelNum}`
+            answer_all_time: 0,
+            complete_degree: 0
         }
-        let percentage: string = ''
+        let percentage: number = 0
         let progress: string = ''
         if(this.totalNum == 0) {
-            percentage = '0.0'
+            percentage = 0
         }else {
-            percentage = (this.rightNum / this.totalNum * 100).toFixed(2)
+            //percentage = (this.rightNum / this.totalNum * 100).toFixed(2)
+            percentage = Math.ceil(this.rightNum / this.totalNum * 100)
         }
         progress = (this.rightNum / this.standardNum * 100).toFixed(2)
     
-        this.answerdata.gameOver.percentage = `${percentage}%`
+        this.answerdata.gameOver.percentage = percentage
         if(parseFloat(progress) == 0.00) {
             if(this.answerdata.result[0].answer_res == AnswerResult.NoAnswer) {
                 this.answerdata.gameOver.answer_all_state = AnswerResult.NoAnswer
@@ -149,17 +150,12 @@ export class ReportManager
         let time = 0
         for (const key in this.answerdata.result) {
             let timeStr = this.answerdata.result[key].answer_time
-            let len = timeStr.length
-            let str:string
-            if(len == 2) {
-                str = timeStr.substring(0)
-            }else {
-                str = timeStr.substring(0, len - 1)
-            }
-            time += parseFloat(str)
+            time += timeStr
         }
-        this.answerdata.gameOver.answer_all_time = `${time.toFixed(2)}s`
-        this.answerdata.gameOver.complete_degree = `${this.degreeNum}\/${this.levelNum}`
+        // this.answerdata.gameOver.answer_all_time = `${time.toFixed(2)}s`
+        // this.answerdata.gameOver.complete_degree = `${this.degreeNum}\/${this.levelNum}`
+        this.answerdata.gameOver.answer_all_time = Math.ceil(time)
+        this.answerdata.gameOver.complete_degree = Math.ceil(this.degreeNum/this.levelNum)
         console.log('answerdata-----', this.answerdata)
     }
 
@@ -188,8 +184,8 @@ export class ReportManager
         this.timeId = null
     }
 
-    setPercentage(str : string) {
-        this.percentage = str
+    setPercentage(num : number) {
+        this.percentage = num
     }
 
     isStart(): any {
