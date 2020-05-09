@@ -139,6 +139,20 @@ export default class GamePanel extends BaseUI {
         }, 500);
         this.timeoutArr[this.timeoutArr.length] = id
         this.round1()
+        this.paipaiAction('idle-01')
+    }
+
+    paipaiAction(str: string) {
+        let spine = this.paipai.getComponent(sp.Skeleton)
+        spine.setAnimation(0, str, false)
+        spine.setCompleteListener(trackEntry=>{
+            let index = Math.random() * 10
+            if(index >= 7) {
+                spine.setAnimation(0, 'idle-01', false)
+            }else {
+                spine.setAnimation(0, 'idle-02', false)
+            }
+        })
     }
 
     onDestroy() {
@@ -202,6 +216,7 @@ export default class GamePanel extends BaseUI {
     }
 
     starAction(pos: cc.Vec2) {
+        this.right.height = 100
         AudioManager.getInstance().playSound('点击', false)
         let ruler = this.ruler
         this.gl.clear()
@@ -219,6 +234,7 @@ export default class GamePanel extends BaseUI {
     }
 
     endAction() {
+        this.right.height = 130
         let ruler = this.ruler
         ruler.opacity = 255
         ruler.getChildByName('box').active = false
@@ -227,7 +243,8 @@ export default class GamePanel extends BaseUI {
             //AudioManager.getInstance().playSound('正确提醒', false)
             this.mask.active = true
             let level = ReportManager.getInstance().getLevel()
-            ReportManager.getInstance().answerRight()   
+            ReportManager.getInstance().answerRight() 
+            this.paipaiAction('correct-01')  
             if(level == 1) {
                 ReportManager.getInstance().levelEnd(AnswerResult.AnswerRight)
                 let id = setTimeout(() => {
@@ -262,6 +279,7 @@ export default class GamePanel extends BaseUI {
             }
         }else if(num == 2){
             ReportManager.getInstance().answerWrong()
+            this.paipaiAction('flase-01')
             AudioManager.getInstance().playSound('错误提醒', false)
         }
         if(!this.isAction) {
@@ -455,24 +473,44 @@ export default class GamePanel extends BaseUI {
                 }else if(pos.x+height >= -619 && pos.x <= -241 && pos.y <= -97 && pos.y >= -137) {
                     sideArr1[1].active = true
                 } 
-            }else if(angle <= 46.4 && angle >= 26.4) {
+            }else if(angle <= 56.4 && angle >= 16.4) {
                 let long = this.getJuLi(pos, cc.v2(-241, 129), cc.v2(-59, -117))
                 if(long <= 10 && pos.y <= 129 && pos.y + height*cos >= -117) {
                     sideArr1[2].active = true
                 }
-            }else if(angle <= 136 && angle >= 116) {
+            }else if(angle <= 146 && angle >= 106) {
                 let long = this.getJuLi(pos, cc.v2(-241, 129), cc.v2(-59, -117))
                 if(long <= 10 && pos.y <= 129 && pos.y + width*sin >= -117) {
                     sideArr1[2].active = true
                 }
-            }else if(angle <= 259 && angle >= 239) {
+            }else if(angle <= 237 && angle >= 197) {
+                let long = this.getJuLi(pos, cc.v2(-241, 129), cc.v2(-59, -117))
+                if(long <= 10 && pos.y-height*-cos <= 129 && pos.y >= -117) {
+                    sideArr1[2].active = true
+                }
+            }else if(angle <= 326 && angle >= 286) {
+                let long = this.getJuLi(pos, cc.v2(-241, 129), cc.v2(-59, -117))
+                if(long <= 10 && pos.y-width*-sin <= 129 && pos.y >= -117) {
+                    sideArr1[2].active = true
+                }
+            }else if(angle <= 269 && angle >= 229) {
                 let long = this.getJuLi(pos, cc.v2(-517, 129), cc.v2(-619, -117))
                 if(long <= 10 && pos.y >= -117 && pos.y - width*-sin <= 129) {
                     sideArr1[3].active = true
                 }
-            }else if(angle <= 347 && angle >= 327) {
+            }else if(angle <= 357 && angle >= 317) {
                 let long = this.getJuLi(pos, cc.v2(-517, 129), cc.v2(-619, -117))
                 if(long <= 10 && pos.y + height*cos >= -117 && pos.y  <= 129) {
+                    sideArr1[3].active = true
+                }
+            }else if(angle <= 88 && angle >= 48) {
+                let long = this.getJuLi(pos, cc.v2(-517, 129), cc.v2(-619, -117))
+                if(long <= 10 && pos.y + width*sin >= -117 && pos.y  <= 129) {
+                    sideArr1[3].active = true
+                }
+            }else if(angle <= 177 && angle >= 137) {
+                let long = this.getJuLi(pos, cc.v2(-517, 129), cc.v2(-619, -117))
+                if(long <= 10 && pos.y >= -117 && pos.y - height*-cos <= 129) {
                     sideArr1[3].active = true
                 }
             }
@@ -498,14 +536,16 @@ export default class GamePanel extends BaseUI {
         this.gl.clear()
         this.gc.clear()
         if(level == 1 || level == 2) {
-            if(angle <= 10 || angle >= 350) {
+            if(angle <= 10 || angle >= 350) {//
                 this.ruler.angle = 0
                 if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = cc.v2(pos.x, -117)
                     if(pos.x > -148) {
                         this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
-                        this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 430), this.gc)
+                        if(pos.x <= -47 && pos.x >= -87) {
+                            this.drawLine(cc.v2(-67, -117), cc.v2(-67, 455), this.gc)
+                        }
                     }
                     let id = setTimeout(() => {
                         this.gao.active = true
@@ -513,7 +553,11 @@ export default class GamePanel extends BaseUI {
                         this.gao.setPosition(cc.v2(pos.x - 50, 50))
                         this.di.setPosition(cc.v2(pos.x + 100, -167))
                         this.gc.clear()
-                        this.drawLine2(cc.v2(pos.x, -117), cc.v2(pos.x, 182), this.gc)
+                        if(pos.x <= -47 && pos.x >= -87) {
+                            this.drawLine2(cc.v2(-67, -117), cc.v2(-67, 182), this.gc)
+                        }else {
+                            this.drawLine2(cc.v2(pos.x, -117), cc.v2(pos.x, 182), this.gc)
+                        }
                         clearTimeout(id)
                         let index = this.timeoutArr.indexOf(id)
                         this.timeoutArr.splice(index, 1)
@@ -521,7 +565,7 @@ export default class GamePanel extends BaseUI {
                     this.timeoutArr[this.timeoutArr.length] = id
                     return 1
                 }
-            }else if(angle <= 85 && angle >= 65) {
+            }else if(angle <= 85 && angle >= 65) {//
                 this.ruler.angle = 74.3
                 let angle = this.ruler.angle%360
                 if(angle<0) {
@@ -535,9 +579,11 @@ export default class GamePanel extends BaseUI {
                     let jiaodian2 = this.zhixianjiaodian(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = jiaodian2
-                    if(jiaodian2.y < -117) {
-                        this.drawLine(jiaodian2, cc.v2(-67, 182), this.gl)
-                        this.drawLine(jiaodian2, cc.v2(pos.x-height*sin, pos.y + height*cos), this.gc)
+                    if(pos.y < -117) {
+                        this.drawLine(cc.v2(-197, -282), cc.v2(-50, 238), this.gl)
+                        if(pos.y >= -257 && pos.y <= -217){
+                            this.drawLine(cc.v2(-183, -237), cc.v2(-183-(height+150)*sin, -237+(height+150)*cos), this.gc)
+                        }
                     }
                     let id = setTimeout(() => {
                         this.gao.active = true
@@ -545,7 +591,11 @@ export default class GamePanel extends BaseUI {
                         this.gao.setPosition(cc.v2(-360, jiaodian2.y - 10))
                         this.di.setPosition(cc.v2(-50, jiaodian2.y + 60))
                         this.gc.clear()
-                        this.drawLine2(jiaodian2, jiaodian1, this.gc)
+                        if(pos.y >= -257 && pos.y <= -217) {
+                            this.drawLine2(cc.v2(-183, -237), cc.v2(-611, -117), this.gc)
+                        }else {
+                            this.drawLine2(jiaodian2, jiaodian1, this.gc)
+                        }
                         clearTimeout(id)
                         let index = this.timeoutArr.indexOf(id)
                         this.timeoutArr.splice(index, 1)
@@ -553,14 +603,16 @@ export default class GamePanel extends BaseUI {
                     this.timeoutArr[this.timeoutArr.length] = id
                     return 1
                 }
-            }else if(angle <= 190 && angle >= 170) {
+            }else if(angle <= 190 && angle >= 170) {//
                 this.ruler.angle = 180
                 if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = cc.v2(pos.x, 182)
                     if(pos.x < -529) {
-                        this.drawLine(cc.v2(pos.x, 182), cc.v2(-67, 182), this.gl)
-                        this.drawLine(cc.v2(pos.x, 182), cc.v2(pos.x, -380), this.gc)
+                        this.drawLine(cc.v2(100, 182), cc.v2(-690, 182), this.gl)
+                        if(pos.x >= -631 && pos.x <= -591) {
+                            this.drawLine(cc.v2(-611, 182), cc.v2(-611, -390), this.gc)
+                        }
                     }
                     let id = setTimeout(() => {
                         this.gao.active = true
@@ -568,7 +620,11 @@ export default class GamePanel extends BaseUI {
                         this.gao.setPosition(cc.v2(pos.x + 50, 10))
                         this.di.setPosition(cc.v2(pos.x - 100, 230))
                         this.gc.clear()
-                        this.drawLine2(cc.v2(pos.x, 182), cc.v2(pos.x, -117), this.gc)
+                        if(pos.x >= -631 && pos.x <= -591) {
+                            this.drawLine2(cc.v2(-611, 182), cc.v2(-611, -117), this.gc)
+                        }else  {
+                            this.drawLine2(cc.v2(pos.x, 182), cc.v2(pos.x, -117), this.gc)
+                        }
                         clearTimeout(id)
                         let index = this.timeoutArr.indexOf(id)
                         this.timeoutArr.splice(index, 1)
@@ -576,7 +632,7 @@ export default class GamePanel extends BaseUI {
                     this.timeoutArr[this.timeoutArr.length] = id
                     return 1
                 }
-            }else if(angle <= 265 && angle >= 245) {
+            }else if(angle <= 265 && angle >= 245) {//
                 this.ruler.angle = 254.3
                 let angle = this.ruler.angle%360
                 if(angle<0) {
@@ -590,9 +646,11 @@ export default class GamePanel extends BaseUI {
                     let jiaodian2 = this.zhixianjiaodian(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = jiaodian2
-                    if(jiaodian2.y > 182) {
-                        this.drawLine(jiaodian2, cc.v2(-611, -117), this.gl)
-                        this.drawLine(jiaodian2, cc.v2(pos.x+height*-sin, pos.y - height*-cos), this.gc)
+                    if(pos.y > 182) {
+                        this.drawLine(cc.v2(-493, 311), cc.v2(-639, -208), this.gl)
+                        if(pos.y >= 276 && pos.y <= 316) {
+                            this.drawLine(cc.v2(-498, 296), cc.v2(-498+(height+150)*-sin, 296 - (height+150)*-cos), this.gc)
+                        }
                     }
                     let id = setTimeout(() => {
                         this.gao.active = true
@@ -600,7 +658,11 @@ export default class GamePanel extends BaseUI {
                         this.gao.setPosition(cc.v2(-300, jiaodian2.y - 10))
                         this.di.setPosition(cc.v2(jiaodian2.x - 30, jiaodian2.y - 100))
                         this.gc.clear()
-                        this.drawLine2(jiaodian2, jiaodian1, this.gc)
+                        if(pos.y >= 276 && pos.y <= 316) {
+                            this.drawLine2(cc.v2(-498, 296), cc.v2(-67, 182), this.gc)
+                        }else {
+                            this.drawLine2(jiaodian2, jiaodian1, this.gc)
+                        }
                         clearTimeout(id)
                         let index = this.timeoutArr.indexOf(id)
                         this.timeoutArr.splice(index, 1)
@@ -608,14 +670,16 @@ export default class GamePanel extends BaseUI {
                     this.timeoutArr[this.timeoutArr.length] = id
                     return 1
                 }
-            }else if(angle <= 280 && angle >= 260) {
+            }else if(angle <= 280 && angle >= 260) {//
                 this.ruler.angle = 270
                 if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = cc.v2(pos.x, 182)
                     if(pos.x < -529) {
-                        this.drawLine(cc.v2(pos.x, 182), cc.v2(-67, 182), this.gl)
-                        this.drawLine(cc.v2(pos.x, 182), cc.v2(pos.x, -250), this.gc)
+                        this.drawLine(cc.v2(100, 182), cc.v2(-690, 182), this.gl)
+                        if(pos.x >= -631 && pos.x <= -591) {
+                            this.drawLine(cc.v2(-611, 182), cc.v2(-611, -260), this.gc)
+                        }
                     }
                     let id = setTimeout(() => {
                         this.gao.active = true
@@ -623,7 +687,11 @@ export default class GamePanel extends BaseUI {
                         this.gao.setPosition(cc.v2(pos.x - 30, 50))
                         this.di.setPosition(cc.v2(pos.x + 200, 240))
                         this.gc.clear()
-                        this.drawLine2(cc.v2(pos.x, 182), cc.v2(pos.x, -117), this.gc)
+                        if(pos.x >= -631 && pos.x <= -591) {
+                            this.drawLine2(cc.v2(-611, 182), cc.v2(-611, -117), this.gc)
+                        }else {
+                            this.drawLine2(cc.v2(pos.x, 182), cc.v2(pos.x, -117), this.gc)
+                        }
                         clearTimeout(id)
                         let index = this.timeoutArr.indexOf(id)
                         this.timeoutArr.splice(index, 1)
@@ -631,14 +699,16 @@ export default class GamePanel extends BaseUI {
                     this.timeoutArr[this.timeoutArr.length] = id
                     return 1
                 }
-            }else if(angle <= 100 && angle >= 80) {
+            }else if(angle <= 100 && angle >= 80) {//
                 this.ruler.angle = 90
                 if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = cc.v2(pos.x, -117)
                     if(pos.x > -148) {
-                        this.drawLine(cc.v2(pos.x, -117), cc.v2(-611, -117), this.gl)
-                        this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 250), this.gc)
+                        this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
+                        if(pos.x >= -87 && pos.x <= -47) {
+                            this.drawLine(cc.v2(-67, -117), cc.v2(-67, 290), this.gc)
+                        }
                     }
                     let id = setTimeout(() => {
                         this.gao.active = true
@@ -646,7 +716,11 @@ export default class GamePanel extends BaseUI {
                         this.gao.setPosition(cc.v2(pos.x + 30, 50))
                         this.di.setPosition(cc.v2(pos.x - 300, -147))
                         this.gc.clear()
-                        this.drawLine2(cc.v2(pos.x, -117), cc.v2(pos.x, 182), this.gc)
+                        if(pos.x >= -87 && pos.x <= -47) {
+                            this.drawLine2(cc.v2(-67, -117), cc.v2(-67, 182), this.gc)
+                        }else {
+                            this.drawLine2(cc.v2(pos.x, -117), cc.v2(pos.x, 182), this.gc)
+                        }
                         clearTimeout(id)
                         let index = this.timeoutArr.indexOf(id)
                         this.timeoutArr.splice(index, 1)
@@ -726,14 +800,18 @@ export default class GamePanel extends BaseUI {
                     this.timeoutArr[this.timeoutArr.length] = id
                     return 1
                 }
-            }else if(angle <= 190 && angle >= 170) {
+            }else if(angle <= 190 && angle >= 170) {//
                 this.ruler.angle = 180
                 if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position= cc.v2(pos.x, 129)
                     if(pos.x > -241 || pos.x < -517) {
-                        this.drawLine(cc.v2(-700, 129), cc.v2(25, 129), this.gl)
-                        this.drawLine(cc.v2(pos.x, 129), cc.v2(pos.x, -185), this.gc)
+                        this.drawLine(cc.v2(-750, 129), cc.v2(100, 129), this.gl)
+                        if(pos.x >= -79 && pos.x <= -39) {
+                            this.drawLine(cc.v2(-59, 129), cc.v2(-59, -420), this.gc)
+                        }else if(pos.x >= -639 && pos.x <= -599) {
+                            this.drawLine(cc.v2(-619, 129), cc.v2(-619, -420), this.gc)
+                        }
                     }
                     let id = setTimeout(() => {
                         this.gao.active = true
@@ -741,7 +819,13 @@ export default class GamePanel extends BaseUI {
                         this.gao.setPosition(cc.v2(pos.x + 30, 0))
                         this.di.setPosition(cc.v2(pos.x - 30, 160))
                         this.gc.clear()
-                        this.drawLine2(cc.v2(pos.x, 129), cc.v2(pos.x, -117), this.gc)
+                        if(pos.x >= -79 && pos.x <= -39) {
+                            this.drawLine2(cc.v2(-59, 129), cc.v2(-59, -117), this.gc)
+                        }else if(pos.x >= -639 && pos.x <= -599) {
+                            this.drawLine2(cc.v2(-619, 129), cc.v2(-619, -117), this.gc)
+                        }else {
+                            this.drawLine2(cc.v2(pos.x, 129), cc.v2(pos.x, -117), this.gc)
+                        }
                         clearTimeout(id)
                         let index = this.timeoutArr.indexOf(id)
                         this.timeoutArr.splice(index, 1)
@@ -749,14 +833,18 @@ export default class GamePanel extends BaseUI {
                     this.timeoutArr[this.timeoutArr.length] = id
                     return 1
                 }
-            }else if(angle <= 280 && angle >= 260) {
+            }else if(angle <= 280 && angle >= 260) {//
                 this.ruler.angle = 270
                 if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position= cc.v2(pos.x, 129)
                     if(pos.x > -241 || pos.x < -517) {
-                        this.drawLine(cc.v2(-700, 129), cc.v2(25, 129), this.gl)
-                        this.drawLine(cc.v2(pos.x, 129), cc.v2(pos.x, -185), this.gc)
+                        this.drawLine(cc.v2(-750, 129), cc.v2(100, 129), this.gl)
+                        if(pos.x >= -79 && pos.x <= -39) {
+                            this.drawLine(cc.v2(-59, 129), cc.v2(-59, -300), this.gc)
+                        }else if(pos.x >= -639 && pos.x <= -599) {
+                            this.drawLine(cc.v2(-619, 129), cc.v2(-619, -300), this.gc)
+                        }
                     }
                     let id = setTimeout(() => {
                         this.gao.active = true
@@ -764,7 +852,13 @@ export default class GamePanel extends BaseUI {
                         this.gao.setPosition(cc.v2(pos.x - 30, 0))
                         this.di.setPosition(cc.v2(pos.x + 50, 160))
                         this.gc.clear()
-                        this.drawLine2(cc.v2(pos.x, 129), cc.v2(pos.x, -117), this.gc)
+                        if(pos.x >= -79 && pos.x <= -39) {
+                            this.drawLine2(cc.v2(-59, 129), cc.v2(-59, -117), this.gc)
+                        }else if(pos.x >= -639 && pos.x <= -599) {
+                            this.drawLine2(cc.v2(-619, 129), cc.v2(-619, -117), this.gc)
+                        }else {
+                            this.drawLine2(cc.v2(pos.x, 129), cc.v2(pos.x, -117), this.gc)
+                        }
                         clearTimeout(id)
                         let index = this.timeoutArr.indexOf(id)
                         this.timeoutArr.splice(index, 1)
@@ -788,14 +882,16 @@ export default class GamePanel extends BaseUI {
         this.gl.clear()
         this.gc.clear()
         if(level == 1 || level == 2) {
-            if(angle <= 5 || angle >= 355) {
+            if(angle <= 10 || angle >= 350) {//
                 if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
                     if(pos.x > -148) {
                         this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
-                        this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 430), this.gc)
+                        if(pos.x <= -47 && pos.x >= -87) {
+                            this.drawLine(cc.v2(-67, -117), cc.v2(-67, 455), this.gc)
+                        }
                     }
                 }
-            }else if(angle <= 80 && angle >= 70) {
+            }else if(angle <= 85 && angle >= 65) {//
                 let angle = 74.3
                 if(angle<0) {
                     angle = 360 - Math.abs(angle)
@@ -806,19 +902,23 @@ export default class GamePanel extends BaseUI {
                 if(this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos)) && long <= 10) {
                     let jiaodian1 = this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
                     let jiaodian2 = this.zhixianjiaodian(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
-                    if(jiaodian2.y < -117) {
-                        this.drawLine(jiaodian2, cc.v2(-67, 182), this.gl)
-                        this.drawLine(jiaodian2, cc.v2(pos.x-height*sin, pos.y + height*cos), this.gc)
+                    if(pos.y < -117) {
+                        this.drawLine(cc.v2(-197, -282), cc.v2(-50, 238), this.gl)
+                        if(pos.y >= -257 && pos.y <= -217) {
+                            this.drawLine(cc.v2(-183, -237), cc.v2(-183-(height+150)*sin, -237+(height+150)*cos), this.gc)
+                        }
                     }
                 }
-            }else if(angle <= 185 && angle >= 175) {
+            }else if(angle <= 190 && angle >= 170) {
                 if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
                     if(pos.x < -529) {
-                        this.drawLine(cc.v2(pos.x, 182), cc.v2(-67, 182), this.gl)
-                        this.drawLine(cc.v2(pos.x, 182), cc.v2(pos.x, -380), this.gc)
+                        this.drawLine(cc.v2(100, 182), cc.v2(-690, 182), this.gl)
+                        if(pos.x >= -631 && pos.x <= -591) {
+                            this.drawLine(cc.v2(-611, 182), cc.v2(-611, -390), this.gc)
+                        }
                     }
                 }
-            }else if(angle <= 260 && angle >= 250) {
+            }else if(angle <= 265 && angle >= 245) {//
                 let angle = 254.3
                 if(angle<0) {
                     angle = 360 - Math.abs(angle)
@@ -829,23 +929,29 @@ export default class GamePanel extends BaseUI {
                 if(this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos)) && long <= 10) {
                     let jiaodian1 = this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
                     let jiaodian2 = this.zhixianjiaodian(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
-                    if(jiaodian2.y > 182) {
-                        this.drawLine(jiaodian2, cc.v2(-611, -117), this.gl)
-                        this.drawLine(jiaodian2, cc.v2(pos.x+height*-sin, pos.y - height*-cos), this.gc)
+                    if(pos.y > 182) {
+                        this.drawLine(cc.v2(-493, 311), cc.v2(-639, -208), this.gl)
+                        if(pos.y >= 276 && pos.y <= 316) {
+                            this.drawLine(cc.v2(-498, 296), cc.v2(-498+(height+150)*-sin, 296- (height+150)*-cos), this.gc)
+                        }
                     }
                 }
-            }else if(angle <= 275 && angle >= 265) {
+            }else if(angle <= 280 && angle >= 260) {//
                 if(pos.x >= -611 && pos.x <= -148 && pos.y >=162 && pos.y <= 202) {
                     if(pos.x < -529) {
-                        this.drawLine(cc.v2(pos.x, 182), cc.v2(-67, 182), this.gl)
-                        this.drawLine(cc.v2(pos.x, 182), cc.v2(pos.x, -250), this.gc)
+                        this.drawLine(cc.v2(100, 182), cc.v2(-690, 182), this.gl)
+                        if(pos.x >= -631 && pos.x <= -591) {
+                            this.drawLine(cc.v2(-611, 182), cc.v2(-611, -260), this.gc)
+                        }
                     }
                 }
-            }else if(angle <= 95 && angle >= 85) {
+            }else if(angle <= 100 && angle >= 80) {
                 if(pos.x >= -529 && pos.x <= -67 && pos.y >=-137 && pos.y <= -97) {
                     if(pos.x > -148) {
-                        this.drawLine(cc.v2(pos.x, -117), cc.v2(-611, -117), this.gl)
-                        this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 250), this.gc)
+                        this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
+                        if(pos.x >= -87 && pos.x <= -47) {
+                            this.drawLine(cc.v2(-67, -117), cc.v2(-67, 290), this.gc)
+                        }
                     }
                 }
             }
@@ -860,18 +966,26 @@ export default class GamePanel extends BaseUI {
                 //     this.gl.clear()
                 //     this.drawLine(cc.v2(pos.x, -117), cc.v2(pos.x, 200), this.gc)
                 // }
-            }else if(angle <= 185 && angle >= 175) {
+            }else if(angle <= 190 && angle >= 170) {//
                 if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
                     if(pos.x > -241 || pos.x < -517) {
-                        this.drawLine(cc.v2(-700, 129), cc.v2(25, 129), this.gl)
-                        this.drawLine(cc.v2(pos.x, 129), cc.v2(pos.x, -185), this.gc)
+                        this.drawLine(cc.v2(-750, 129), cc.v2(100, 129), this.gl)
+                        if(pos.x >= -79 && pos.x <= -39) {
+                            this.drawLine(cc.v2(-59, 129), cc.v2(-59, -420), this.gc)
+                        }else if(pos.x >= -639 && pos.x <= -599) {
+                            this.drawLine(cc.v2(-619, 129), cc.v2(-619, -420), this.gc)
+                        }
                     }
                 }
-            }else if(angle <= 275 && angle >= 265) {
+            }else if(angle <= 280 && angle >= 260) {
                 if(pos.x > -619 && pos.x < -59 && pos.y < 149 && pos.y > 109) {
                     if(pos.x > -241 || pos.x < -517) {
-                        this.drawLine(cc.v2(-700, 129), cc.v2(25, 129), this.gl)
-                        this.drawLine(cc.v2(pos.x, 129), cc.v2(pos.x, -185), this.gc)
+                        this.drawLine(cc.v2(-750, 129), cc.v2(100, 129), this.gl)
+                        if(pos.x >= -79 && pos.x <= -39) {
+                            this.drawLine(cc.v2(-59, 129), cc.v2(-59, -300), this.gc)
+                        }else if(pos.x >= -639 && pos.x <= -599) {
+                            this.drawLine(cc.v2(-619, 129), cc.v2(-619, -300), this.gc)
+                        }
                     }
                 }
             }
@@ -1262,6 +1376,7 @@ export default class GamePanel extends BaseUI {
         this.mask.active = true
         this.isAudio = true
         this.initGame()
+        this.paipaiAction('idle-01')
         let id = setTimeout(() => {
             console.log('start action')
             this.startAction()
