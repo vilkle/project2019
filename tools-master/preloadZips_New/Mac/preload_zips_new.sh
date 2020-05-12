@@ -36,9 +36,9 @@ do
 
     # copy floders
     cp -rf $coursewarePath/dist/static/courseware/$gameName originFiles/$gameName &&
-    cp -rf IpadFiles/courseware-v1.0.0-alpha.js originFiles/$gameName/$gameName/student &&
-    cp -rf IpadFiles/ipadIndex.html originFiles/$gameName/$gameName/student &&
-    cp -rf IpadFiles/webview-bridge.js originFiles/$gameName/$gameName/student && 
+    # cp -rf IpadFiles/courseware-v1.0.0-alpha.js originFiles/$gameName/$gameName/student &&
+    # cp -rf IpadFiles/ipadIndex.html originFiles/$gameName/$gameName/student &&
+    # cp -rf IpadFiles/webview-bridge.js originFiles/$gameName/$gameName/student && 
     rm -rf originFiles/$gameName/$gameName/teacher &&
     echo "copy student && sdk finished ... "
     echo "..."

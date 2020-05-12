@@ -1,13 +1,13 @@
 
 tiban.png
-size: 512,512
+size: 418,446
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-tiban
+img_tigan01
   rotate: false
   xy: 2, 2
-  size: 436, 442
-  orig: 436, 444
-  offset: 0, 1
+  size: 414, 442
+  orig: 414, 442
+  offset: 0, 0
   index: -1

@@ -70,6 +70,7 @@ export default class GamePanel extends BaseUI {
     private weiyi: cc.Vec2 = null //点击位置和锚点之间的距离
    
     private intervalId = null
+    private intervalId1 = null
     private xuxianId = null
     private isRightBtn: boolean = false
     private isLeftBtn: boolean = false
@@ -131,6 +132,8 @@ export default class GamePanel extends BaseUI {
         this.standardNum = 3
         ReportManager.getInstance().setStandardNum(this.standardNum)
         ReportManager.getInstance().setQuestionInfo(0, '一起动手，挑战下面的关卡吧！')
+        ReportManager.getInstance().setQuestionInfo(1, '一起动手，挑战下面的关卡吧！')
+        ReportManager.getInstance().setQuestionInfo(2, '一起动手，挑战下面的关卡吧！')
         let id = setTimeout(() => {
             console.log('start action')
             this.startAction()
@@ -159,6 +162,10 @@ export default class GamePanel extends BaseUI {
         if(this.intervalId) {
             clearInterval(this.intervalId)
             this.intervalId = null
+        }
+        if(this.intervalId1) {
+            clearInterval(this.intervalId1)
+            this.intervalId1= null
         }
         if(this.xuxianId) {
             clearInterval(this.xuxianId)
@@ -216,7 +223,6 @@ export default class GamePanel extends BaseUI {
     }
 
     starAction(pos: cc.Vec2) {
-        this.right.height = 100
         AudioManager.getInstance().playSound('点击', false)
         let ruler = this.ruler
         this.gl.clear()
@@ -234,7 +240,6 @@ export default class GamePanel extends BaseUI {
     }
 
     endAction() {
-        this.right.height = 130
         let ruler = this.ruler
         ruler.opacity = 255
         ruler.getChildByName('box').active = false
@@ -244,6 +249,7 @@ export default class GamePanel extends BaseUI {
             this.mask.active = true
             let level = ReportManager.getInstance().getLevel()
             ReportManager.getInstance().answerRight() 
+            //ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
             this.paipaiAction('correct-01')  
             if(level == 1) {
                 ReportManager.getInstance().levelEnd(AnswerResult.AnswerRight)
@@ -275,7 +281,6 @@ export default class GamePanel extends BaseUI {
                     let index = this.timeoutArr.indexOf(id)
                     this.timeoutArr.splice(index, 1)
                 }, 3000);
-                
             }
         }else if(num == 2){
             //ReportManager.getInstance().answerWrong()
@@ -309,7 +314,7 @@ export default class GamePanel extends BaseUI {
                 ReportManager.getInstance().levelStart(this.isBreak)
             }
             ReportManager.getInstance().touchStart()
-            ReportManager.getInstance().answerHalf()
+           //ReportManager.getInstance().answerHalf()
             ReportManager.getInstance().setAnswerNum(1)
             if(!this.isAction) {
                 GameMsg.getInstance().actionSynchro({type: 1, pos: posReal})
@@ -1268,7 +1273,7 @@ export default class GamePanel extends BaseUI {
             if(!this.isAction) {
                 GameMsg.getInstance().actionSynchro({type: 4})
             }
-            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, 5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position));console.log('--------', this.ruler.angle)})))
+            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, 5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position))})))
         }, 200)
     }
 
@@ -1288,14 +1293,14 @@ export default class GamePanel extends BaseUI {
             if(!this.isAction) {
                 GameMsg.getInstance().actionSynchro({type: 5})
             }
-            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, 5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position));console.log('--------', this.ruler.angle)})))
+            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, 5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position))})))
         }
     }
 
     leftStartAction() {
         AudioManager.getInstance().playSound('点击', false)
         this.isLeftBtn = true
-        this.intervalId = setInterval(()=>{
+        this.intervalId1 = setInterval(()=>{
             let is = this.isRotation
             if(is) {
                 return
@@ -1305,15 +1310,15 @@ export default class GamePanel extends BaseUI {
             if(!this.isAction) {
                 GameMsg.getInstance().actionSynchro({type: 6})
             }
-            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, -5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position));console.log('--------', this.ruler.angle)})))
+            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, -5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position))})))
         }, 200)
     }
 
     leftEndAction() {
         this.isLeftBtn = false 
-        if(this.intervalId) {
-            clearInterval(this.intervalId) 
-            this.intervalId = null
+        if(this.intervalId1) {
+            clearInterval(this.intervalId1) 
+            this.intervalId1 = null
         } 
         if(!this.isRotation){
             let is = this.isRotation
@@ -1325,7 +1330,7 @@ export default class GamePanel extends BaseUI {
             if(!this.isAction) {
                 GameMsg.getInstance().actionSynchro({type: 7})
             }
-            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, -5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position));console.log('--------', this.ruler.angle)})))
+            this.ruler.runAction(cc.sequence(cc.rotateBy(0.1, -5), cc.callFunc(()=>{this.isRotation = false; this.ruler.setPosition(this.resetPos(this.ruler.position))})))
         }
     }
 
@@ -1482,7 +1487,7 @@ export default class GamePanel extends BaseUI {
     addSDKEventListener() {
         GameMsg.getInstance().addEvent(GameMsgType.ACTION_SYNC_RECEIVE, this.onSDKMsgActionReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.DISABLED, this.onSDKMsgDisabledReceived.bind(this));
-        GameMsg.getInstance().addEvent(GameMsgType.DATA_RECOVERY, this.onSDKMsgRecoveryReceived.bind(this));
+        //GameMsg.getInstance().addEvent(GameMsgType.DATA_RECOVERY, this.onSDKMsgRecoveryReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.STOP, this.onSDKMsgStopReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.INIT, this.onSDKMsgInitReceived.bind(this));
     }
