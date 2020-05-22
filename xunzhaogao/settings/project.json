@@ -8,31 +8,34 @@
   "design-resolution-height": 960,
   "design-resolution-width": 1994,
   "excluded-modules": [
-    "Label Effect",
-    "ParticleSystem",
-    "TiledMap",
+    "Collider",
     "DragonBones",
-    "RichText",
+    "EditBox",
+    "Geom Utils",
+    "Intersection",
+    "Label Effect",
     "MotionStreak",
-    "ScrollBar",
-    "ScrollView",
-    "Toggle",
+    "NodePool",
+    "Native Socket",
+    "Physics",
     "PageView",
     "PageViewIndicator",
+    "ParticleSystem",
+    "RichText",
     "Slider",
-    "EditBox",
+    "ScrollBar",
+    "ScrollView",
+    "StudioComponent",
+    "Toggle",
+    "TiledMap",
     "VideoPlayer",
     "WebView",
-    "Collider",
-    "Physics",
-    "NodePool",
-    "StudioComponent",
-    "Intersection",
-    "Native Socket",
-    "Geom Utils",
     "3D",
     "3D Primitive",
-    "TypeScript Polyfill"
+    "TypeScript Polyfill",
+    "3D Physics/cannon.js",
+    "3D Physics/Builtin",
+    "3D Particle"
   ],
   "facebook": {
     "appID": "",
@@ -49,7 +52,7 @@
   "group-list": [
     "default"
   ],
-  "last-module-event-record-time": 1588846800677,
+  "last-module-event-record-time": 1589772409517,
   "simulator-orientation": false,
   "simulator-resolution": {
     "height": 640,
@@ -57,5 +60,6 @@
   },
   "use-customize-simulator": true,
   "use-project-simulator-setting": false,
-  "start-scene": "current"
+  "start-scene": "current",
+  "migrate-history": []
 }

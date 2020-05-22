@@ -1,10 +1,15 @@
 {
-  "ver": "2.2.0",
+  "ver": "2.3.4",
   "uuid": "36c838ef-4e0c-40fc-af9c-52dc58acb82a",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 50,
+  "height": 50,
+  "platformSettings": {},
   "subMetas": {
     "yuanJiao": {
       "ver": "1.0.4",

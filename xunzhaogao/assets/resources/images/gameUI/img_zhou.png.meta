@@ -1,10 +1,15 @@
 {
-  "ver": "2.2.0",
+  "ver": "2.3.4",
   "uuid": "b969eb31-9099-4b59-9754-72c01c6b9c94",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 322,
+  "height": 281,
+  "platformSettings": {},
   "subMetas": {
     "img_zhou": {
       "ver": "1.0.4",

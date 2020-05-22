@@ -1,10 +1,15 @@
 {
-  "ver": "2.2.0",
+  "ver": "2.3.4",
   "uuid": "918698e7-4efe-4dc9-978c-ae2471776d6e",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 39,
+  "height": 9,
+  "platformSettings": {},
   "subMetas": {
     "img_xifuanxianduan": {
       "ver": "1.0.4",

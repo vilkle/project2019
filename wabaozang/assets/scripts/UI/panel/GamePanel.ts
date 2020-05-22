@@ -151,6 +151,18 @@ export default class GamePanel extends BaseUI {
     protected static className = "GamePanel";
 
     onLoad() {
+         //监听新课堂发出的消息
+         this.addSDKEventListener()
+         //新课堂上报
+         GameMsg.getInstance().gameStart()
+         //预加载OverTip资源
+         cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab,()=>{})
+        //添加上报result数据
+        ReportManager.getInstance().addResult(1)
+        this.standardNum = 1
+        ReportManager.getInstance().setStandardNum(this.standardNum)
+        ReportManager.getInstance().setQuestionInfo(0, '一起动手，挑战下面的关卡吧！')
+        
         cc.loader.loadRes('prefab/ui/panel/OverTips', cc.Prefab, null);
         this.refreshBtn.interactable = false
         //this.submitBtn.interactable = false
@@ -171,17 +183,7 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
-         //监听新课堂发出的消息
-         this.addSDKEventListener()
-         //新课堂上报
-         GameMsg.getInstance().gameStart()
-         //预加载OverTip资源
-         cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab,()=>{})
-        //添加上报result数据
-        ReportManager.getInstance().addResult(1)
-        this.standardNum = 1
-        ReportManager.getInstance().setStandardNum(this.standardNum)
-        ReportManager.getInstance().setQuestionInfo(0, '一起动手，挑战下面的关卡吧！')
+        
         AudioManager.getInstance().playSound('sfx_12opne')
         this.oceanWave(this.wave1, this.wave2)
         let id = setTimeout(() => {

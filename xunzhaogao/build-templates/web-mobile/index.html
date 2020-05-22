@@ -273,17 +273,18 @@
         var bPreload = this.theRequest["bPreload"];//true为cdn   false为预加载
         var isOnline = this.theRequest["env"] == 'online' ? true : false;//判断是线上环境还是测试环境。
         window['isOnline'] = isOnline;
-        var src = bPreload ? "https://static.speiyou.com/_cdn_/game-msg/1.1.8/game-msg.min.js" : './game-msg.min.js'
-        document.write('<script src="' + src + '"><\/script>')
+        // var src = bPreload ? "https://static.speiyou.com/_cdn_/game-msg/1.1.8/game-msg.min.js" : './game-msg.min.js'
+        // document.write('<script src="' + src + '"><\/script>')
     </script>
 
+    <script src="game-msg.min.js" charset="utf-8"></script>
     <script src="src/settings.js" charset="utf-8"></script>
     <script src="main.js" charset="utf-8"></script>
     <script>
         //监听SDK传来的重载消息
         gameMsg.on_client_event('reload', data => {
             location.reload();
-        })  
+        }) 
     </script>
 
     <script type="text/javascript">
@@ -332,10 +333,10 @@
                         strDate = "0" + strDate;
                     }
 
-                    var hours = date.getHours();       //获取当前小时数(0-23)
-                    var minutes = date.getMinutes();     //获取当前分钟数(0-59)
-                    var seconds = date.getSeconds();     //获取当前秒数(0-59)
-                    var milliSceonds = date.getMilliseconds();    //获取当前毫秒数(0-999)
+                    var hours = date.getHours();       //获取当前小时数(0-23)
+                    var minutes = date.getMinutes();     //获取当前分钟数(0-59)
+                    var seconds = date.getSeconds();     //获取当前秒数(0-59)
+                    var milliSceonds = date.getMilliseconds();    //获取当前毫秒数(0-999)
                     if (hours >= 0 && hours <= 9) {
                         hours = "0" + hours;
                     }
@@ -365,7 +366,8 @@
                         data.ErrorLog = log;
                     }
                     data.curTime = getNowFormatDate();
-                    data.CoursewareName = "xunzhaogao_169_machao";
+                    data.CoursewareName = 'xunzhaogao2020_169';//拼音（非汉字）
+
 
                     img.src = (window['isOnline'] ? 'https://logserver.haibian.com/statistical/?type=7&' : 'https://ceshi-statistical.haibian.com/?type=7&') +
                         'coursewareId=' + theRequest["coursewareId"] +
@@ -382,10 +384,11 @@
                         "&event=" + eventName +
                         "&identity=1" +
                         "&extra=" + JSON.stringify(data)
+
                 }
                 upLog("engineLoadStart");
                 //新课堂上报事件
-                gameMsg.engine_load_start('cocos_creator', '2.2.0')
+                gameMsg.engine_load_start('cocos_creator', '2.0.9')
 
                 //引擎加载
                 var splash = document.getElementById('splash');

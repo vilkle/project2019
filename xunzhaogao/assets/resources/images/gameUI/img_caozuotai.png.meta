@@ -1,10 +1,15 @@
 {
-  "ver": "2.2.0",
+  "ver": "2.3.4",
   "uuid": "aa73b42a-cb6d-416b-8b65-737f369772f1",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 394,
+  "height": 491,
+  "platformSettings": {},
   "subMetas": {
     "img_caozuotai": {
       "ver": "1.0.4",

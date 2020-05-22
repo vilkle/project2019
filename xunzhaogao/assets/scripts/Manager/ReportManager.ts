@@ -103,8 +103,9 @@ export class ReportManager
         this.answerdata.result[this.level - 1].answer_res = result
         this.answerdata.result[this.level - 1].answer_num += 0
         //this.answerdata.result[this.level - 1].answer_time = (this.coastTimes/100).toString() + 's'
-        this.answerdata.result[this.level - 1].answer_time = Math.ceil(this.coastTimes/100)
+        this.answerdata.result[this.level - 1].answer_time = Math.round(this.coastTimes/100)
         this.answerdata.gameOver = null
+        this.coastTimes = 0
     }
 
 /**
@@ -117,6 +118,7 @@ export class ReportManager
             return
         }
         if(this.isStart()) {
+            console.log('--------there is no levelEnd')
             this.levelEnd(result)
         }
         this.answerdata.gameOver = {
@@ -127,11 +129,11 @@ export class ReportManager
         }
         let percentage: number = 0
         let progress: string = ''
-        if(this.totalNum == 0) {
+        if(this.rightNum < 3 ) {
             percentage = 0
         }else {
             //percentage = parseFloat((this.rightNum / this.totalNum * 100).toFixed(2)) 
-            percentage = Math.ceil(this.rightNum / this.standardNum * 100)
+            percentage = 100
         }
         progress = (this.rightNum / this.standardNum * 100).toFixed(2)
         this.answerdata.gameOver.percentage = percentage
@@ -153,8 +155,8 @@ export class ReportManager
         }
         // this.answerdata.gameOver.answer_all_time = `${time.toFixed(2)}s`
         // this.answerdata.gameOver.complete_degree = `${this.degreeNum}\/${this.levelNum}`
-        this.answerdata.gameOver.answer_all_time = Math.ceil(time)
-        this.answerdata.gameOver.complete_degree = Math.ceil(this.degreeNum/this.levelNum*100)
+        this.answerdata.gameOver.answer_all_time = Math.round(time)
+        this.answerdata.gameOver.complete_degree = Math.round(this.degreeNum/this.levelNum*100)
         console.log('answerdata-----', this.answerdata)
     }
 
@@ -209,7 +211,7 @@ export class ReportManager
     }
 
     setTime() {
-        this.answerdata.result[this.level - 1].answer_time = Math.ceil(this.coastTimes/100) 
+        this.answerdata.result[this.level - 1].answer_time = Math.round(this.coastTimes/100) 
     }
 
     setAnswerNum(num: number) {
@@ -232,25 +234,27 @@ export class ReportManager
         this.rightNum++
         this.totalNum++
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerHalf
-        this.answerdata.result[this.level - 1].answer_time = Math.ceil(this.coastTimes/100)
+        this.answerdata.result[this.level - 1].answer_time = Math.round(this.coastTimes/100)
         GameMsg.getInstance().answerSyncSend(this.answerdata)
     }
     answerRight() {
         this.rightNum++
         this.totalNum++
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerRight
-        this.answerdata.result[this.level - 1].answer_time = Math.ceil(this.coastTimes/100)
+        this.answerdata.result[this.level - 1].answer_time = Math.round(this.coastTimes/100)
         GameMsg.getInstance().answerSyncSend(this.answerdata)
     }
 
     answerWrong() {
         this.totalNum++
         this.answerdata.result[this.level - 1].answer_res = AnswerResult.AnswerError
-        this.answerdata.result[this.level - 1].answer_time = Math.ceil(this.coastTimes/100)
+        this.answerdata.result[this.level - 1].answer_time = Math.round(this.coastTimes/100)
         GameMsg.getInstance().answerSyncSend(this.answerdata)
     }
     getAnswerData(): any {
-        this.answerdata.result[this.level - 1].answer_time = Math.ceil(this.coastTimes/100)
+        if(this.coastTimes != 0) {
+            this.answerdata.result[this.level - 1].answer_time = Math.round(this.coastTimes/100)
+        }
         return this.answerdata
     }
 

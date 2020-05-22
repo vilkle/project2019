@@ -66,9 +66,9 @@ export default class GamePanel extends BaseUI {
     private gao:cc.Node = null
     @property(cc.Node)
     private di: cc.Node = null
-    @property(cc.Vec2)
+
+    private lastType: number = null
     private weiyi: cc.Vec2 = null //点击位置和锚点之间的距离
-   
     private intervalId = null
     private intervalId1 = null
     private xuxianId = null
@@ -86,6 +86,7 @@ export default class GamePanel extends BaseUI {
     private isAudio: boolean = false
     private archival = {
         answerdata: null,
+        lastType: null,
         level: null,
         angle: null,
         pos: null,
@@ -93,7 +94,6 @@ export default class GamePanel extends BaseUI {
         totalNum: null,
         standardNum: this.standardNum
     }
- 
 
     protected static className = "GamePanel";
 
@@ -111,18 +111,6 @@ export default class GamePanel extends BaseUI {
             }
         })
         this.initGame()
-        this.bg.on(cc.Node.EventType.TOUCH_START, (e)=>{
-        })
-        if(ConstValue.IS_TEACHER) {
-            UIManager.getInstance().openUI(UploadAndReturnPanel, 212)
-          
-            //this.setPanel()
-        }else {
-            this.getNet()
-        }
-    }
-
-    start() {
          //监听新课堂发出的消息
          this.addSDKEventListener()
          //新课堂上报
@@ -134,6 +122,16 @@ export default class GamePanel extends BaseUI {
         ReportManager.getInstance().setQuestionInfo(0, '一起动手，挑战下面的关卡吧！')
         ReportManager.getInstance().setQuestionInfo(1, '一起动手，挑战下面的关卡吧！')
         ReportManager.getInstance().setQuestionInfo(2, '一起动手，挑战下面的关卡吧！')
+        if(ConstValue.IS_TEACHER) {
+            UIManager.getInstance().openUI(UploadAndReturnPanel, 212)
+          
+            //this.setPanel()
+        }else {
+            this.getNet()
+        }
+    }
+
+    start() {
         let id = setTimeout(() => {
             console.log('start action')
             this.startAction()
@@ -198,6 +196,7 @@ export default class GamePanel extends BaseUI {
     }
 
     round2() {
+        UIHelp.showTip('请画出另一组高')
         this.round1Node.active = true
         this.round3Node.active = false
         this.setprogress(2)
@@ -245,13 +244,13 @@ export default class GamePanel extends BaseUI {
         ruler.getChildByName('box').active = false
         let num = this.isRight(this.ruler.position)
         if(num == 1) {
-            //AudioManager.getInstance().playSound('正确提醒', false)
             this.mask.active = true
             let level = ReportManager.getInstance().getLevel()
             ReportManager.getInstance().answerRight() 
-            //ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
             this.paipaiAction('correct-01')  
             if(level == 1) {
+                let angle = Math.abs(this.ruler.angle%360) 
+                this.lastType = this.getType(angle)
                 ReportManager.getInstance().levelEnd(AnswerResult.AnswerRight)
                 let id = setTimeout(() => {
                     this.round2()
@@ -271,33 +270,37 @@ export default class GamePanel extends BaseUI {
                 this.timeoutArr[this.timeoutArr.length] = id
             }else if(level == 3) {
                 ReportManager.getInstance().gameOver(AnswerResult.AnswerRight)
-                if(!this.isAction) {
-                    GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData())
-                }
+                // if(!this.isAction && !ConstValue.IS_TEACHER) {
+                //     GameMsg.getInstance().gameOver(ReportManager.getInstance().getAnswerData())
+                // }
                 this.isOver = true
                 let id = setTimeout(() => {
-                    UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧~', '', null, null, '挑战成功')
+                    UIHelp.showOverTip(2,'你真棒！等等还没做完的同学吧~', '', null, null, '闯关成功')
                     clearTimeout(id)
                     let index = this.timeoutArr.indexOf(id)
                     this.timeoutArr.splice(index, 1)
                 }, 3000);
             }
         }else if(num == 2){
-            //ReportManager.getInstance().answerWrong()
+            this.gao.active = false
+            this.di.active = false
+            this.gl.clear()
+            this.gc.clear()
             this.paipaiAction('flase-01')
             AudioManager.getInstance().playSound('错误提醒', false)
         }
-        if(!this.isAction) {
-            GameMsg.getInstance().actionSynchro({type: 3})
-            this.actionId++
-            this.archival.answerdata = ReportManager.getInstance().getAnswerData()
-            this.archival.angle = this.ruler.angle
-            this.archival.pos = this.ruler.position
-            this.archival.level = ReportManager.getInstance().getLevel()
-            this.archival.rightNum = ReportManager.getInstance().getRightNum()
-            this.archival.totalNum = ReportManager.getInstance().getTotalNum()
-            GameMsg.getInstance().dataArchival(this.actionId ,this.archival)
-        }
+        // if(!this.isAction && !ConstValue.IS_TEACHER) {
+        //     GameMsg.getInstance().actionSynchro({type: 3})
+        //     this.actionId++
+        //     this.archival.lastType = this.lastType
+        //     this.archival.answerdata = ReportManager.getInstance().getAnswerData()
+        //     this.archival.angle = this.ruler.angle
+        //     this.archival.pos = this.ruler.position
+        //     this.archival.level = ReportManager.getInstance().getLevel()
+        //     this.archival.rightNum = ReportManager.getInstance().getRightNum()
+        //     this.archival.totalNum = ReportManager.getInstance().getTotalNum()
+        //     GameMsg.getInstance().dataArchival(this.actionId ,this.archival)
+        // }
     }
 
     addlistenerOnRuler() {
@@ -314,11 +317,10 @@ export default class GamePanel extends BaseUI {
                 ReportManager.getInstance().levelStart(this.isBreak)
             }
             ReportManager.getInstance().touchStart()
-           //ReportManager.getInstance().answerHalf()
             ReportManager.getInstance().setAnswerNum(1)
-            if(!this.isAction) {
-                GameMsg.getInstance().actionSynchro({type: 1, pos: posReal})
-            }
+            // if(!this.isAction && !ConstValue.IS_TEACHER) {
+            //     GameMsg.getInstance().actionSynchro({type: 1, pos: posReal})
+            // }
             this.starAction(posReal)
         })
         ruler.on(cc.Node.EventType.TOUCH_MOVE, (e)=>{
@@ -328,9 +330,9 @@ export default class GamePanel extends BaseUI {
             let y = Math.cos((angle-Math.atan(this.weiyi.x/this.weiyi.y)*180 / Math.PI)*Math.PI/180)*Math.sqrt(Math.pow(this.weiyi.x,2) + Math.pow(this.weiyi.y,2))
             let posReal = cc.v2(pos.x + x, pos.y - y)
             this.moveAction(posReal)
-            if(!this.isAction) {
-                GameMsg.getInstance().actionSynchro({type: 2, pos: posReal})
-            }
+            // if(!this.isAction && !ConstValue.IS_TEACHER) {
+            //     GameMsg.getInstance().actionSynchro({type: 2, pos: posReal})
+            // }
         })
         ruler.on(cc.Node.EventType.TOUCH_END, (e)=>{
             this.endAction()
@@ -522,6 +524,14 @@ export default class GamePanel extends BaseUI {
         }
     }
 
+    getType(angle: number):number {
+        if(angle==0||angle==180||angle==90||angle==270){
+            return 1
+        }else {
+            return 2
+        }
+    }
+
     isRight(pos: cc.Vec2):any {
         let level = ReportManager.getInstance().getLevel()
         let angle = this.ruler.angle%360
@@ -544,6 +554,13 @@ export default class GamePanel extends BaseUI {
             if(angle <= 10 || angle >= 350) {//
                 this.ruler.angle = 0
                 if(pos.x >= -549 && pos.x <= -47 && pos.y >=-137 && pos.y <= -97) {
+                    if(level == 2) {
+                        let type = this.getType(angle)
+                        if(type == this.lastType) {
+                            UIHelp.showTip('请画出另一组高')
+                            return 2
+                        }   
+                    }
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = cc.v2(pos.x, -117)
                     this.drawLine(cc.v2(-680, -117), cc.v2(360, -117), this.gl)
@@ -578,6 +595,13 @@ export default class GamePanel extends BaseUI {
                 let sin = Math.sin(angle * Math.PI / 180)
                 let long = this.getJuLi(pos, cc.v2(-67, 182), cc.v2(-148, -117))
                 if(this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos)) && long <= 10) {
+                    if(level == 2) {
+                        let type = this.getType(angle)
+                        if(type == this.lastType) {
+                            UIHelp.showTip('请画出另一组高')
+                            return 2
+                        }   
+                    }
                     this.ruler.angle = 74.3
                     let jiaodian1 = this.segmentsIntr(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
                     let jiaodian2 = this.zhixianjiaodian(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x-height*sin, pos.y + height*cos))
@@ -611,6 +635,13 @@ export default class GamePanel extends BaseUI {
             }else if(angle <= 190 && angle >= 170) {//
                 this.ruler.angle = 180
                 if(pos.x >= -631 && pos.x <= -128 && pos.y >=162 && pos.y <= 202) {
+                    if(level == 2) {
+                        let type = this.getType(angle)
+                        if(type == this.lastType) {
+                            UIHelp.showTip('请画出另一组高')
+                            return 2
+                        }   
+                    }
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = cc.v2(pos.x, 182)
                     if(pos.x >= -631 && pos.x-width <= -87 && pos.y >=162 && pos.y <= 202) {
@@ -647,6 +678,13 @@ export default class GamePanel extends BaseUI {
                 let sin = Math.sin(angle * Math.PI / 180)
                 let long = this.getJuLi(pos, cc.v2(-529, 182), cc.v2(-611, -117))
                 if(this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos)) && long <= 10) {
+                    if(level == 2) {
+                        let type = this.getType(angle)
+                        if(type == this.lastType) {
+                            UIHelp.showTip('请画出另一组高')
+                            return 2
+                        }   
+                    }
                     this.ruler.angle = 254.3
                     let jiaodian1 = this.segmentsIntr(cc.v2(-67, 182), cc.v2(-148, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
                     let jiaodian2 = this.zhixianjiaodian(cc.v2(-529, 182), cc.v2(-611, -117), pos, cc.v2(pos.x+height*-sin, pos.y - height*-cos))
@@ -680,6 +718,13 @@ export default class GamePanel extends BaseUI {
             }else if(angle <= 280 && angle >= 260) {//
                 this.ruler.angle = 270
                 if(pos.x >= -631 && pos.x <= -128 && pos.y >=162 && pos.y <= 202) {
+                    if(level == 2) {
+                        let type = this.getType(angle)
+                        if(type == this.lastType) {
+                            UIHelp.showTip('请画出另一组高')
+                            return 2
+                        }   
+                    }
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = cc.v2(pos.x, 182)
                     if(pos.x+height >= -549 && pos.x <= -47 && pos.y >=162 && pos.y <= 202) {
@@ -710,6 +755,13 @@ export default class GamePanel extends BaseUI {
             }else if(angle <= 100 && angle >= 80) {//
                 this.ruler.angle = 90
                 if(pos.x >= -549 && pos.x <= -47 && pos.y >=-137 && pos.y <= -97) {
+                    if(level == 2) {
+                        let type = this.getType(angle)
+                        if(type == this.lastType) {
+                            UIHelp.showTip('请画出另一组高')
+                            return 2
+                        }   
+                    }
                     AudioManager.getInstance().playSound('吸附', false)
                     this.ruler.position = cc.v2(pos.x, -117)
                     if(pos.x >= -631 && pos.x-height <= -128 && pos.y >=-137 && pos.y <= -97) {
@@ -1100,8 +1152,8 @@ export default class GamePanel extends BaseUI {
         let canvas = cc.director.getScene().getChildByName('Canvas')
         let width = canvas.width / 2
         let height = canvas.height / 2
-        start = cc.v2(start.x + width, start.y + height)
-        end = cc.v2(end.x + width, end.y + height)
+        start = cc.v2(start.x, start.y)//+width+height
+        end = cc.v2(end.x, end.y)//+width+height
         //临时变量
         var pos=start.clone()
         //com.strokeColor=cc.color(255,255,255)
@@ -1176,8 +1228,8 @@ export default class GamePanel extends BaseUI {
         let canvas = cc.director.getScene().getChildByName('Canvas')
         let width = canvas.width / 2
         let height = canvas.height / 2
-        start = cc.v2(start.x + width, start.y + height)
-        end = cc.v2(end.x + width, end.y + height)
+        start = cc.v2(start.x, start.y)//+width+height
+        end = cc.v2(end.x, end.y)//+width+height
         //临时变量
         var pos=start.clone()
         //com.strokeColor=cc.color(255,255,255)
@@ -1443,7 +1495,9 @@ export default class GamePanel extends BaseUI {
         this.archival.rightNum = null
         this.archival.totalNum = null
         this.archival.pos = null
+        this.archival.lastType = null
         this.isOver = false
+        this.lastType = null
         ReportManager.getInstance().answerReset()
         UIManager.getInstance().closeUI(OverTips)
         this.mask.active = true
@@ -1469,6 +1523,8 @@ export default class GamePanel extends BaseUI {
         let angle = data.angle
         let rightNum = data.rightNum
         let totalNum = data.totalNum
+        let lastType = data.lastType
+        this.lastType = lastType
         if(level == 1) {
             this.round1()
         }else if(level == 2) {
@@ -1485,7 +1541,7 @@ export default class GamePanel extends BaseUI {
     }
 
     addSDKEventListener() {
-        GameMsg.getInstance().addEvent(GameMsgType.ACTION_SYNC_RECEIVE, this.onSDKMsgActionReceived.bind(this));
+        //GameMsg.getInstance().addEvent(GameMsgType.ACTION_SYNC_RECEIVE, this.onSDKMsgActionReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.DISABLED, this.onSDKMsgDisabledReceived.bind(this));
         //GameMsg.getInstance().addEvent(GameMsgType.DATA_RECOVERY, this.onSDKMsgRecoveryReceived.bind(this));
         GameMsg.getInstance().addEvent(GameMsgType.STOP, this.onSDKMsgStopReceived.bind(this));

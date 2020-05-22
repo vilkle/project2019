@@ -1,10 +1,15 @@
 {
-  "ver": "2.2.0",
+  "ver": "2.3.4",
   "uuid": "4ca45af6-0819-4d9e-979c-a013a82625be",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 115,
+  "height": 115,
+  "platformSettings": {},
   "subMetas": {
     "img_jindu": {
       "ver": "1.0.4",
