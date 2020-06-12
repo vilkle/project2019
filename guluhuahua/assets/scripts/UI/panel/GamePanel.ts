@@ -107,6 +107,20 @@ export default class GamePanel extends BaseUI {
     }
 
     onLoad() {
+         //监听新课堂发出的消息
+         this.addSDKEventListener()
+         //新课堂上报
+         GameMsg.getInstance().gameStart()
+         //预加载OverTip资源
+         cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab, function (err, prefab) {})
+         //添加上报result数据
+         ReportManager.getInstance().addResult(4)
+         ReportManager.getInstance().setStandardNum(standardNum)
+         ReportManager.getInstance().setQuestionInfo(0, '咕噜咕噜画了谁？找一找')
+         ReportManager.getInstance().setQuestionInfo(1, '咕噜咕噜画了谁？找一找')
+         ReportManager.getInstance().setQuestionInfo(2, '咕噜咕噜画了谁？找一找')
+         ReportManager.getInstance().setQuestionInfo(3, '咕噜咕噜画了谁？找一找')
+         
         if (ConstValue.IS_TEACHER) {
             DaAnData.getInstance().submitEnable = true //没有教师端直接提交
             UIManager.getInstance().openUI(UploadAndReturnPanel, 212)
@@ -143,20 +157,7 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
-        //监听新课堂发出的消息
-        this.addSDKEventListener()
-        //新课堂上报
-        GameMsg.getInstance().gameStart()
-        //预加载OverTip资源
-        cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab, function (err, prefab) {})
-        //添加上报result数据
-        ReportManager.getInstance().addResult(4)
-        ReportManager.getInstance().setStandardNum(standardNum)
-        ReportManager.getInstance().setQuestionInfo(0, '咕噜咕噜画了谁？找一找')
-        ReportManager.getInstance().setQuestionInfo(1, '咕噜咕噜画了谁？找一找')
-        ReportManager.getInstance().setQuestionInfo(2, '咕噜咕噜画了谁？找一找')
-        ReportManager.getInstance().setQuestionInfo(3, '咕噜咕噜画了谁？找一找')
-        
+       
         //初始化游戏
         this.initGame(1)
         let id = setTimeout(() => {

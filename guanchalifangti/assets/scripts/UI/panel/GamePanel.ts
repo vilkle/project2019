@@ -92,6 +92,15 @@ export default class GamePanel extends BaseUI {
     }
 
     onLoad() {
+         //监听新课堂发出的消息
+         this.addSDKEventListener()
+         //新课堂上报
+         GameMsg.getInstance().gameStart()
+         //预加载OverTip资源
+         cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab, function (err, prefab) {})
+         //添加上报result数据
+         ReportManager.getInstance().addResult(1)
+         ReportManager.getInstance().setQuestionInfo(0, '仔细观察,选出正确的立方体吧。')
         if (ConstValue.IS_TEACHER) {
             DaAnData.getInstance().submitEnable = true //没有教师端直接提交
             UIManager.getInstance().openUI(UploadAndReturnPanel, 212)
@@ -121,15 +130,6 @@ export default class GamePanel extends BaseUI {
     }
 
     start() {
-        //监听新课堂发出的消息
-        this.addSDKEventListener()
-        //新课堂上报
-        GameMsg.getInstance().gameStart()
-        //预加载OverTip资源
-        cc.loader.loadRes("prefab/ui/panel/OverTips", cc.Prefab, function (err, prefab) {})
-        //添加上报result数据
-        ReportManager.getInstance().addResult(1)
-        ReportManager.getInstance().setQuestionInfo(0, '仔细观察,选出正确的立方体吧。')
         //初始化游戏
         this.initGame()
         let id = setTimeout(() => {
